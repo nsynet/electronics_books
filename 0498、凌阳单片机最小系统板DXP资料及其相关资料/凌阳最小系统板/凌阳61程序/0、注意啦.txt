@@ -1,0 +1,66 @@
+//编译环境中出现
+//"_BREAK" "_FIQ" "_IRQ0" "_IRQ1" "_IRQ2" "_IRQ3" "_IRQ4" "_IRQ5" "_IRQ6" "_IRQ7" // function hasn't been defined. 
+//可以再程序中加入以下定义：
+
+
+/*void IRQ0(void)__attribute__((ISR));
+void IRQ0(void)
+{;
+}
+
+void IRQ1(void)__attribute__((ISR));
+void IRQ1(void)
+{;
+}
+
+void IRQ2(void)__attribute__((ISR));
+void IRQ2(void)
+{;
+}
+
+void IRQ3(void)__attribute__((ISR));
+void IRQ3(void)
+{;
+}
+
+void IRQ4(void)__attribute__((ISR));
+void IRQ4(void)
+{;
+}
+
+void IRQ5(void)__attribute__((ISR));
+void IRQ5(void)
+{;
+}
+
+void IRQ6(void)__attribute__((ISR));
+void IRQ6(void)
+{;
+}
+
+void IRQ7(void)__attribute__((ISR));
+void IRQ7(void)
+{;
+}
+
+void BREAK(void)__attribute__((ISR));
+void BREAK(void)
+{;
+}
+
+void FIQ(void)__attribute__((ISR));
+void FIQ(void)
+{;
+}*/
+
+
+
+//凌阳单片机位的应用定义：
+	/*#define     SET_BIT(x,y)           ((x)|=(0x0001<<(y)))        //置x的第y位为一
+	#define     CLR_BIT(x,y)           ((x)&=~(0x0001<<(y)))       //清x的第y位为零
+	#define     CPL_BIT(x,y)           ((x)^=(0x0001<<(y)))        //x的第y位取反
+	#define     GET_BIT(x,y)           (((x)&(1<<(y)))== 0 ? 0:1)  //读取x的第y位，返回0或1
+	#define     LET_BIT(x,y,z)         ((x)=(x)&(~(0x0001<<(y)))|((z)<<y))  //将x的第y位写上z(0/1)*/
+
+//读SRAM时可直接定义一个数据存储的地址，对该地址可直接进行数据的存储!!!!!
+//Flash的擦除操作是将所有位都恢复成1；

@@ -1,0 +1,337 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        08/22/2009  14:25:51  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE 24C08jishi.obj TO 24C08jishi RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  24C08jishi.obj (24C08JISHI)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  24C08jishi (24C08JISHI)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?24C08JISHI
+            DATA    000BH     0001H     UNIT         _DATA_GROUP_
+                    000CH     0014H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         ?BI?24C08JISHI
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     002CH     UNIT         ?PR?MAIN?24C08JISHI
+            CODE    00BBH     002AH     UNIT         ?PR?LEDSHOW?24C08JISHI
+            CODE    00E5H     0025H     UNIT         ?PR?READ_BYTE?24C08JISHI
+            CODE    010AH     0020H     UNIT         ?PR?RESPONS?24C08JISHI
+            CODE    012AH     001FH     UNIT         ?PR?_READ_24C08?24C08JISHI
+            CODE    0149H     001EH     UNIT         ?PR?_WRITE_BYTE?24C08JISHI
+            CODE    0167H     0018H     UNIT         ?PR?_WRITE_24C08?24C08JISHI
+            CODE    017FH     000EH     UNIT         ?PR?_DELAY1?24C08JISHI
+            CODE    018DH     000AH     UNIT         ?PR?START?24C08JISHI
+            CODE    0197H     000AH     UNIT         ?PR?STOP?24C08JISHI
+            CODE    01A1H     000AH     UNIT         ?PR?INIT_24C08?24C08JISHI
+            CODE    01ABH     000AH     UNIT         ?CO?24C08JISHI
+            CODE    01B5H     0006H     UNIT         ?PR?DELAY?24C08JISHI
+            CODE    01BBH     0006H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   24C08jishi (24C08JISHI)
+
+
+SEGMENT                               DATA_GROUP 
+  +--> CALLED SEGMENT               START    LENGTH
+---------------------------------------------------
+?C_C51STARTUP                       -----    -----
+  +--> ?PR?MAIN?24C08JISHI
+  +--> ?C_INITSEG
+
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/22/2009  14:25:51  PAGE 2
+
+
+?PR?MAIN?24C08JISHI                 -----    -----
+  +--> ?PR?INIT_24C08?24C08JISHI
+  +--> ?PR?_READ_24C08?24C08JISHI
+  +--> ?PR?_WRITE_24C08?24C08JISHI
+  +--> ?PR?LEDSHOW?24C08JISHI
+  +--> ?PR?_DELAY1?24C08JISHI
+
+?PR?INIT_24C08?24C08JISHI           -----    -----
+  +--> ?PR?DELAY?24C08JISHI
+
+?PR?_READ_24C08?24C08JISHI          -----    -----
+  +--> ?PR?RESPONS?24C08JISHI
+  +--> ?PR?_WRITE_BYTE?24C08JISHI
+  +--> ?PR?START?24C08JISHI
+  +--> ?PR?READ_BYTE?24C08JISHI
+  +--> ?PR?STOP?24C08JISHI
+
+?PR?RESPONS?24C08JISHI              000BH    0001H
+  +--> ?PR?START?24C08JISHI
+  +--> ?PR?_WRITE_BYTE?24C08JISHI
+  +--> ?PR?DELAY?24C08JISHI
+
+?PR?START?24C08JISHI                -----    -----
+  +--> ?PR?DELAY?24C08JISHI
+
+?PR?_WRITE_BYTE?24C08JISHI          -----    -----
+  +--> ?PR?DELAY?24C08JISHI
+
+?PR?READ_BYTE?24C08JISHI            -----    -----
+  +--> ?PR?DELAY?24C08JISHI
+
+?PR?STOP?24C08JISHI                 -----    -----
+  +--> ?PR?DELAY?24C08JISHI
+
+?PR?_WRITE_24C08?24C08JISHI         -----    -----
+  +--> ?PR?RESPONS?24C08JISHI
+  +--> ?PR?_WRITE_BYTE?24C08JISHI
+  +--> ?PR?STOP?24C08JISHI
+
+?PR?LEDSHOW?24C08JISHI              -----    -----
+  +--> ?CO?24C08JISHI
+  +--> ?PR?_DELAY1?24C08JISHI
+
+
+
+SYMBOL TABLE OF MODULE:  24C08jishi (24C08JISHI)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        24C08JISHI
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:01ABH         PUBLIC        table
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/22/2009  14:25:51  PAGE 3
+
+
+  B:00B0H.6       PUBLIC        shiwei
+  D:00A8H         PUBLIC        IE
+  C:0112H         PUBLIC        respons
+  C:012AH         PUBLIC        _read_24c08
+  C:01BAH         PUBLIC        delay
+  B:00B0H.7       PUBLIC        gewei
+  D:00B8H         PUBLIC        IP
+  C:00BBH         PUBLIC        LEDshow
+  B:00D0H.7       PUBLIC        CY
+  C:0167H         PUBLIC        _write_24c08
+  C:017FH         PUBLIC        _delay1
+  C:0149H         PUBLIC        _write_byte
+  C:008FH         PUBLIC        main
+  D:0008H         PUBLIC        count
+  B:0020H.0       PUBLIC        write
+  C:018DH         PUBLIC        start
+  D:0098H         PUBLIC        SCON
+  C:00E5H         PUBLIC        read_byte
+  D:0088H         PUBLIC        TCON
+  B:00A0H.3       PUBLIC        sda
+  D:000AH         PUBLIC        sec
+  B:00A0H.2       PUBLIC        scl
+  C:0197H         PUBLIC        stop
+  C:01A1H         PUBLIC        init_24c08
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  B:0090H.0       PUBLIC        K1
+  C:01B5H         SYMBOL        L?0033
+  -------         PROC          L?0032
+  -------         ENDPROC       L?0032
+  C:01B5H         SYMBOL        L?0033
+  -------         PROC          DELAY
+  C:01BAH         LINE#         16
+  C:01BAH         LINE#         17
+  -------         ENDPROC       DELAY
+  -------         PROC          _DELAY1
+  D:0007H         SYMBOL        x
+  -------         DO            
+  D:0007H         SYMBOL        a
+  D:0006H         SYMBOL        b
+  -------         ENDDO         
+  C:017FH         LINE#         20
+  C:017FH         LINE#         21
+  C:017FH         LINE#         23
+  C:0185H         LINE#         24
+  C:018CH         LINE#         25
+  -------         ENDPROC       _DELAY1
+  -------         PROC          START
+  C:018DH         LINE#         27
+  C:018DH         LINE#         28
+  C:018DH         LINE#         29
+  C:018FH         LINE#         30
+  C:018FH         LINE#         31
+  C:018FH         LINE#         32
+  C:0192H         LINE#         33
+  C:0194H         LINE#         34
+  -------         ENDPROC       START
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/22/2009  14:25:51  PAGE 4
+
+
+  -------         PROC          STOP
+  C:0197H         LINE#         38
+  C:0197H         LINE#         39
+  C:0197H         LINE#         40
+  C:0199H         LINE#         41
+  C:0199H         LINE#         42
+  C:0199H         LINE#         43
+  C:019CH         LINE#         44
+  C:019EH         LINE#         45
+  -------         ENDPROC       STOP
+  -------         PROC          L?0031
+  -------         ENDPROC       L?0031
+  -------         PROC          RESPONS
+  -------         DO            
+  D:000BH         SYMBOL        i
+  -------         ENDDO         
+  C:0112H         LINE#         48
+  C:0112H         LINE#         49
+  C:0112H         LINE#         51
+  C:0114H         LINE#         52
+  C:0117H         LINE#         53
+  C:0125H         LINE#         54
+  C:0127H         LINE#         55
+  -------         ENDPROC       RESPONS
+  -------         PROC          INIT_24C08
+  C:01A1H         LINE#         59
+  C:01A1H         LINE#         60
+  C:01A1H         LINE#         61
+  C:01A3H         LINE#         62
+  C:01A6H         LINE#         63
+  C:01A8H         LINE#         64
+  -------         ENDPROC       INIT_24C08
+  -------         PROC          _WRITE_BYTE
+  D:0007H         SYMBOL        date
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0007H         SYMBOL        temp
+  -------         ENDDO         
+  C:0149H         LINE#         67
+  C:0149H         LINE#         68
+  C:0149H         LINE#         70
+  C:0149H         LINE#         71
+  C:014BH         LINE#         72
+  C:014BH         LINE#         73
+  C:014FH         LINE#         74
+  C:0151H         LINE#         75
+  C:0154H         LINE#         76
+  C:0156H         LINE#         77
+  C:0156H         LINE#         78
+  C:0156H         LINE#         79
+  C:0159H         LINE#         82
+  C:015DH         LINE#         83
+  C:015FH         LINE#         84
+  C:0162H         LINE#         85
+  C:0164H         LINE#         86
+  -------         ENDPROC       _WRITE_BYTE
+  -------         PROC          READ_BYTE
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/22/2009  14:25:51  PAGE 5
+
+
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0007H         SYMBOL        k
+  -------         ENDDO         
+  C:00E5H         LINE#         89
+  C:00E5H         LINE#         90
+  C:00E5H         LINE#         92
+  C:00E7H         LINE#         93
+  C:00EAH         LINE#         94
+  C:00ECH         LINE#         95
+  C:00EFH         LINE#         96
+  C:00F1H         LINE#         97
+  C:00F1H         LINE#         98
+  C:00F3H         LINE#         99
+  C:00F6H         LINE#         100
+  C:0100H         LINE#         101
+  C:0102H         LINE#         102
+  C:0105H         LINE#         103
+  C:0109H         LINE#         104
+  C:0109H         LINE#         105
+  -------         ENDPROC       READ_BYTE
+  -------         PROC          _WRITE_24C08
+  D:0004H         SYMBOL        address
+  D:0005H         SYMBOL        shuju
+  C:0167H         LINE#         109
+  C:0169H         LINE#         110
+  C:0169H         LINE#         111
+  C:0169H         LINE#         112
+  C:0169H         LINE#         113
+  C:016CH         LINE#         114
+  C:0171H         LINE#         115
+  C:0174H         LINE#         116
+  C:0179H         LINE#         117
+  C:017CH         LINE#         118
+  -------         ENDPROC       _WRITE_24C08
+  -------         PROC          _READ_24C08
+  D:0005H         SYMBOL        address
+  -------         DO            
+  D:0007H         SYMBOL        date
+  -------         ENDDO         
+  C:012AH         LINE#         122
+  C:012CH         LINE#         123
+  C:012CH         LINE#         125
+  C:012CH         LINE#         126
+  C:012CH         LINE#         127
+  C:012FH         LINE#         128
+  C:0134H         LINE#         129
+  C:0137H         LINE#         131
+  C:013AH         LINE#         132
+  C:013FH         LINE#         133
+  C:0142H         LINE#         134
+  C:0145H         LINE#         135
+  C:0148H         LINE#         136
+  C:0148H         LINE#         137
+  -------         ENDPROC       _READ_24C08
+  -------         PROC          LEDSHOW
+  C:00BBH         LINE#         143
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/22/2009  14:25:51  PAGE 6
+
+
+  C:00BBH         LINE#         144
+  C:00BBH         LINE#         146
+  C:00C7H         LINE#         147
+  C:00C9H         LINE#         148
+  C:00CEH         LINE#         149
+  C:00D0H         LINE#         151
+  C:00DBH         LINE#         152
+  C:00DDH         LINE#         153
+  C:00E2H         LINE#         154
+  C:00E4H         LINE#         155
+  -------         ENDPROC       LEDSHOW
+  -------         PROC          MAIN
+  C:008FH         LINE#         158
+  C:008FH         LINE#         159
+  C:008FH         LINE#         161
+  C:0092H         LINE#         162
+  C:0099H         LINE#         163
+  C:009BH         LINE#         165
+  C:00A2H         LINE#         166
+  C:00A2H         LINE#         168
+  C:00A5H         LINE#         170
+  C:00A8H         LINE#         171
+  C:00ADH         LINE#         172
+  C:00B0H         LINE#         173
+  C:00B3H         LINE#         174
+  C:00B9H         LINE#         175
+  C:00B9H         LINE#         176
+  C:00B9H         LINE#         177
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        24C08JISHI
+
+Program Size: data=13.1 xdata=0 code=449
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

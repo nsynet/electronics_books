@@ -1,0 +1,26 @@
+Version: 3.0
+Options: m37
+Obj: "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\Resource.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\main.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\isr.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\48_48K.res"
+Lib: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\.\sacmv25.lib"
+Output: ".\Debug\S480.S37"
+;Locate: TEXT in "isr.obj" at 8009 
+;Align: TEXT in "isr.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 8B74  linkat 1A5 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "s480" of "sacmv25.lib"  at 1A4 
+;Align: RAM in "s480" of "sacmv25.lib"  with 0 
+;Locate: S480_Section in "s480" of "sacmv25.lib"  at 0 
+;Align: S480_Section in "s480" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_48_48K in "48_48K.res" at 8BAA 
+;Align: __sn_section_RES_48_48K in "48_48K.res" with 0 
+;Locate: CODE in "s480" of "sacmv25.lib"  at 8049 
+;Align: CODE in "s480" of "sacmv25.lib"  with 0 
+;Locate: CODE in "hardware.obj" at 8A10 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "main.obj" at 8B3D 
+;Align: CODE in "main.obj" with 0 

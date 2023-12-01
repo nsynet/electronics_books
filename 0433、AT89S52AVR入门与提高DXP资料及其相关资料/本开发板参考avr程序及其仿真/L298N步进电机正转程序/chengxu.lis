@@ -1,0 +1,179 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _run::
+ 0000                   .blkb 2
+                        .area idata
+ 0000 0E0C              .byte 14,12
+                        .area data(ram, con, rel)
+ 0002                   .blkb 2
+                        .area idata
+ 0002 0D09              .byte 13,9
+                        .area data(ram, con, rel)
+ 0004                   .blkb 2
+                        .area idata
+ 0004 0B03              .byte 11,3
+                        .area data(ram, con, rel)
+ 0006                   .blkb 2
+                        .area idata
+ 0006 0706              .byte 7,6
+                        .area data(ram, con, rel)
+ 0008                   .dbfile D:\Proteus\ATMEGA16\个人总结AVR\AVR控制步进电机程序\L298N步进电机正转程序\chengxu.c
+ 0008                   .dbsym e run _run A[8:8]c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\Proteus\ATMEGA16\个人总结AVR\AVR控制步进电机程序\L298N步进电机正转程序\chengxu.c
+ 0000                   .dbfunc e port_init _port_init fV
+                        .even
+ 0000           _port_init::
+ 0000                   .dbline -1
+ 0000                   .dbline 15
+ 0000           ; ////////////////////////汇诚科技////////////////////
+ 0000           ; //////////////////http://www.ourhc.cn///////////////
+ 0000           ; ///////////////////步进电机正转调试程序/////////////
+ 0000           ; #include <iom16v.h>
+ 0000           ; #include <macros.h>
+ 0000           ; 
+ 0000           ; /*------宏定义------*/
+ 0000           ; #define uchar unsigned char
+ 0000           ; #define uint unsigned int
+ 0000           ; uchar run[8]={0x0e,0x0c,0x0d,0x09,0x0b,0x03,0x07,0x06};  //两相四线八拍工作方式数组
+ 0000           ; /*******************************************************************
+ 0000           ;                              端口初始化
+ 0000           ; *******************************************************************/
+ 0000           ; void port_init(void)
+ 0000           ; {
+ 0000                   .dbline 16
+ 0000           ;  PORTB = 0xFF;
+ 0000 8FEF              ldi R24,255
+ 0002 88BB              out 0x18,R24
+ 0004                   .dbline 17
+ 0004           ;  DDRB  = 0xFF;
+ 0004 87BB              out 0x17,R24
+ 0006                   .dbline -2
+ 0006           L1:
+ 0006                   .dbline 0 ; func end
+ 0006 0895              ret
+ 0008                   .dbend
+ 0008                   .dbfunc e delay _delay fV
+ 0008           ;              j -> R20,R21
+ 0008           ;              k -> R22,R23
+ 0008           ;              i -> R16,R17
+                        .even
+ 0008           _delay::
+ 0008 0E940000          xcall push_gset2
+ 000C                   .dbline -1
+ 000C                   .dbline 23
+ 000C           ;  }
+ 000C           ; /*******************************************************************
+ 000C           ;                              延时函数
+ 000C           ; *******************************************************************/
+ 000C           ; void delay(uint i)//延时函数
+ 000C           ; {
+ 000C                   .dbline 25
+ 000C           ; uint j,k;
+ 000C           ; for(j=0;j<i;j++)
+ 000C 4427              clr R20
+ 000E 5527              clr R21
+ 0010 0BC0              xjmp L6
+ 0012           L3:
+ 0012                   .dbline 26
+ 0012 6627              clr R22
+ 0014 7727              clr R23
+ 0016 02C0              xjmp L10
+ 0018           L7:
+ 0018                   .dbline 26
+ 0018           L8:
+ 0018                   .dbline 26
+ 0018 6F5F              subi R22,255  ; offset = 1
+ 001A 7F4F              sbci R23,255
+ 001C           L10:
+ 001C                   .dbline 26
+ 001C 683E              cpi R22,232
+ 001E E3E0              ldi R30,3
+ 0020 7E07              cpc R23,R30
+ 0022 D0F3              brlo L7
+ 0024           L4:
+ 0024                   .dbline 25
+ 0024 4F5F              subi R20,255  ; offset = 1
+ 0026 5F4F              sbci R21,255
+ 0028           L6:
+ 0028                   .dbline 25
+ 0028 4017              cp R20,R16
+ 002A 5107              cpc R21,R17
+ 002C 90F3              brlo L3
+ 002E                   .dbline -2
+ 002E           L2:
+ 002E 0E940000          xcall pop_gset2
+ 0032                   .dbline 0 ; func end
+ 0032 0895              ret
+ 0034                   .dbsym r j 20 i
+ 0034                   .dbsym r k 22 i
+ 0034                   .dbsym r i 16 i
+ 0034                   .dbend
+ 0034                   .dbfunc e main _main fI
+ 0034           ;              y -> R20,R21
+ 0034           ;              z -> R22,R23
+                        .even
+ 0034           _main::
+ 0034                   .dbline -1
+ 0034                   .dbline 32
+ 0034           ; for(k=0;k<1000;k++);
+ 0034           ; }
+ 0034           ; /*******************************************************************
+ 0034           ;                              主函数
+ 0034           ; *******************************************************************/
+ 0034           ; main()
+ 0034           ; {
+ 0034                   .dbline 34
+ 0034           ; uint z,y;
+ 0034           ; y=40;     //定义延时时间，时间越长电机转速越慢反之则快
+ 0034 48E2              ldi R20,40
+ 0036 50E0              ldi R21,0
+ 0038                   .dbline 35
+ 0038           ; port_init();
+ 0038 E3DF              xcall _port_init
+ 003A 12C0              xjmp L13
+ 003C           L12:
+ 003C                   .dbline 37
+ 003C           ; while(1)
+ 003C           ; {
+ 003C                   .dbline 38
+ 003C           ; for(z=0;z<8;z++)  //改变数组的长度值需改变这个数字8，8为数组的长度。
+ 003C 6627              clr R22
+ 003E 7727              clr R23
+ 0040 0BC0              xjmp L18
+ 0042           L15:
+ 0042                   .dbline 39
+ 0042                   .dbline 40
+ 0042 80E0              ldi R24,<_run
+ 0044 90E0              ldi R25,>_run
+ 0046 FB01              movw R30,R22
+ 0048 E80F              add R30,R24
+ 004A F91F              adc R31,R25
+ 004C 2080              ldd R2,z+0
+ 004E 28BA              out 0x18,R2
+ 0050                   .dbline 41
+ 0050 8A01              movw R16,R20
+ 0052 DADF              xcall _delay
+ 0054                   .dbline 42
+ 0054           L16:
+ 0054                   .dbline 38
+ 0054 6F5F              subi R22,255  ; offset = 1
+ 0056 7F4F              sbci R23,255
+ 0058           L18:
+ 0058                   .dbline 38
+ 0058 6830              cpi R22,8
+ 005A E0E0              ldi R30,0
+ 005C 7E07              cpc R23,R30
+ 005E 88F3              brlo L15
+ 0060                   .dbline 43
+ 0060           L13:
+ 0060                   .dbline 36
+ 0060 EDCF              xjmp L12
+ 0062           X0:
+ 0062                   .dbline -2
+ 0062           L11:
+ 0062                   .dbline 0 ; func end
+ 0062 0895              ret
+ 0064                   .dbsym r y 20 i
+ 0064                   .dbsym r z 22 i
+ 0064                   .dbend

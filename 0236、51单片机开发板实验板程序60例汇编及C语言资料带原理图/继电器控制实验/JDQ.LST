@@ -1,0 +1,55 @@
+C51 COMPILER V8.02   JDQ                                                                   10/16/2007 12:50:35 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE JDQ
+OBJECT MODULE PLACED IN JDQ.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE JDQ.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          //按SW19 继电器吸合
+   3          
+   4          
+   5          //按SW20 继电器断开
+   6          /*********************************************************/
+   7          
+   8          #include <reg51.h>
+   9          
+  10          sbit  K1 =P1^0 ;                    //SW19
+  11          sbit  K2 =P1^1 ;                    //SW20
+  12          sbit JDQ=P2^0;
+  13          
+  14          /*********************************************************/
+  15          void main()
+  16          {  
+  17   1      
+  18   1         while(1){
+  19   2         
+  20   2         if (K1==0) 
+  21   2      {
+  22   3       JDQ=0;
+  23   3      }
+  24   2      
+  25   2      if (K2==0){
+  26   3               JDQ=1;
+  27   3      }
+  28   2         
+  29   2         
+  30   2         
+  31   2         }
+  32   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     12    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,177 @@
+C51 COMPILER V7.06   PROCESS                                                               03/16/2011 16:25:02 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE PROCESS
+OBJECT MODULE PLACED IN Process.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Process.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /***********************************************************
+   2          *作    者:温子祺 
+   3          *文    件:Process.c
+   4          *创建日期:2010-06-10
+   5          *功能说明:简易进程调度器
+   6          ***********************************************************/
+   7          #include "Typedef.h"
+   8          #include "Process.h"
+   9          
+  10          
+  11          
+  12          extern PROC_API void PROC_SetData (WPARAM Wp,LPARAM Lp);//外部引用PROC_SetData
+  13          extern PROC_API void PROC_SendData(WPARAM Wp,LPARAM Lp);//外部引用PROC_SendData
+  14          
+  15          
+  16          /*
+  17           ======================================================
+  18          
+  19                                   类型定义
+  20          
+  21           ======================================================
+  22          */
+  23          typedef struct _PROCCTRL 
+  24          {
+  25              PROC_API void (*Proc)(WPARAM Wp,LPARAM Lp);//进程
+  26                  BOOL   bAlive;                                   //进程是否有效标志位
+  27                  WPARAM WParam;                                  //参数1(可选)
+  28                  LPARAM LParam;                                  //参数2(可选)
+  29          }PROCCTRL;
+  30          
+  31          /*
+  32           ======================================================
+  33          
+  34                                   变量区
+  35          
+  36           ======================================================
+  37          */
+  38          static UINT8 g_ucCurProc=0;                   //当前进程
+  39          
+  40          static PROCCTRL g_StProcTbl[]={
+  41          
+  42                     #include "ProcessTab.h"                //引入进程列表
+  43          
+  44                                      };
+  45          
+  46          /*
+  47           ======================================================
+  48          
+  49                                   函数区
+  50          
+  51           ======================================================
+  52          */
+  53          #define EN_LOW_POWER     (0)        //是否允许低功耗模式
+  54          
+  55          #if     EN_LOW_POWER
+C51 COMPILER V7.06   PROCESS                                                               03/16/2011 16:25:02 PAGE 2   
+
+              /******************************************************
+              *文件名称:PROC_Idle
+              *输    入:无
+              *输    出:无
+              *功能说明:进入低功耗模式
+              *******************************************************/
+              static void PROC_Idle(void)
+              {
+                     //请自行添加代码(代码不宜太多,会影响系统性能)
+                         PCON|=0x01;
+              }
+              #endif
+  68          
+  69          /******************************************************
+  70          *文件名称:SetProcIsAlive
+  71          *输    入:unProc  进程序号
+  72                    bAlive  进程是否有效
+  73                           Wp       参数1(可选)
+  74                    Lp      参数2(可选)
+  75          *输    出:无
+  76          *功能说明:设置进程是否有效,并支持传参
+  77          *******************************************************/
+  78          void SetProcIsAlive(UINT8 unProc,BOOL bAlive,WPARAM Wp,LPARAM Lp)
+  79          {
+  80   1               g_StProcTbl[unProc].bAlive=bAlive?TRUE:FALSE;
+  81   1               g_StProcTbl[unProc].WParam=Wp;
+  82   1               g_StProcTbl[unProc].LParam=Lp;
+  83   1      }
+  84          /******************************************************
+  85          *文件名称:SetCurProcIsAlive
+  86          *输    入:bAlive  当前进程是否有效
+  87          *输    出:无
+  88          *功能说明:设置当前进程是否有效
+  89          *******************************************************/
+  90          void SetCurProcIsAlive(BOOL bAlive)
+  91          {
+  92   1               g_StProcTbl[g_ucCurProc].bAlive=bAlive?TRUE:FALSE;
+  93   1      }
+  94          /******************************************************
+  95          *文件名称:ProcPerform
+  96          *输    入:无
+  97          *输    出:无
+  98          *功能说明:进程调度
+  99          *******************************************************/
+ 100          void ProcPerform(void)
+ 101          {
+ 102   1      
+ 103   1      #if     EN_LOW_POWER                               //是否允许低功耗
+              
+              #define ENTER_IDLE_COUNT (3)                    //进入低功耗模式额定计数值
+               
+                   static UINT8 ucIdleCount=0;                //进入低功耗模式计数器 
+                       static BOOL  bIsFoundProcAlive=FALSE;    //是否发现有效的进程
+              
+              #endif
+ 111   1           
+ 112   1               for(g_ucCurProc=0;g_StProcTbl[g_ucCurProc].Proc !=0;g_ucCurProc++)
+ 113   1               {
+ 114   2                       if(g_StProcTbl[g_ucCurProc].bAlive) //发现有效的进程则执行并传入参数  
+ 115   2                       {
+ 116   3                              g_StProcTbl[g_ucCurProc].Proc(g_StProcTbl[g_ucCurProc].WParam,
+ 117   3                                                            g_StProcTbl[g_ucCurProc].LParam);                 
+C51 COMPILER V7.06   PROCESS                                                               03/16/2011 16:25:02 PAGE 3   
+
+ 118   3      #if  EN_LOW_POWER
+                                      bIsFoundProcAlive=TRUE;          //发现有效的进程
+              #endif          
+ 121   3                       }
+ 122   2      #if  EN_LOW_POWER
+                               else
+                               {
+                                      bIsFoundProcAlive=FALSE;         //没有发现有效的进程
+                               }
+              #endif
+ 128   2                                      
+ 129   2               }
+ 130   1      
+ 131   1      #if  EN_LOW_POWER
+              
+                   if(bIsFoundProcAlive)                       //发现有效的进程
+                       {
+                              ucIdleCount=0;                           //进入低功耗模式计数器清零  
+              
+                              return;
+                       }
+              
+                   if(++ucIdleCount >= ENTER_IDLE_COUNT)   //若进入低功耗模式计数器达到额定值
+                   {
+                        
+                        PROC_Idle();                           //进入低功耗模式
+              
+                        ucIdleCount=0;                         //进入低功耗模式计数器清零
+                   }
+              
+              #endif
+ 149   1      }
+ 150          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    144    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     25       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

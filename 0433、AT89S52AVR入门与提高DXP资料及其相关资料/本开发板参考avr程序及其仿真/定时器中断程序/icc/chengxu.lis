@@ -1,0 +1,124 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\TEMP\icc\chengxu.c
+ 0000                   .dbfunc e timer1_init _timer1_init fV
+                        .even
+ 0000           _timer1_init::
+ 0000                   .dbline -1
+ 0000                   .dbline 8
+ 0000           ; #include <iom16v.h>
+ 0000           ; #include <macros.h> 
+ 0000           ; 
+ 0000           ; #define DISP_DDR   DDRD
+ 0000           ; #define DISP_PORT  PORTD 
+ 0000           ; 
+ 0000           ; void timer1_init(void)
+ 0000           ; {
+ 0000                   .dbline 9
+ 0000           ;  TCCR1B = 0x00;  //stop timer 
+ 0000 2224              clr R2
+ 0002 2EBC              out 0x2e,R2
+ 0004                   .dbline 11
+ 0004           ; 
+ 0004           ;  TCNT1H = 0xE3;  //设置 TC1 的 计数寄存器 高8位值，基于7.3728M晶振
+ 0004 83EE              ldi R24,227
+ 0006 8DBD              out 0x2d,R24
+ 0008                   .dbline 12
+ 0008           ;  TCNT1L = 0xE1;  //设置 TC1 的 计数寄存器 低8位值，基于7.3728M晶振 
+ 0008 81EE              ldi R24,225
+ 000A 8CBD              out 0x2c,R24
+ 000C                   .dbline 14
+ 000C           ; 
+ 000C           ;  TCCR1A = 0x00;
+ 000C 2FBC              out 0x2f,R2
+ 000E                   .dbline 15
+ 000E           ;  TCCR1B = 0x05;  //设置TC1 为 CLK/1024分频，启动TC1 
+ 000E 85E0              ldi R24,5
+ 0010 8EBD              out 0x2e,R24
+ 0012                   .dbline 17
+ 0012           ; 
+ 0012           ;  MCUCR = 0x00;  //设置 MCU 的 控制寄存器
+ 0012 25BE              out 0x35,R2
+ 0014                   .dbline 18
+ 0014           ;  GICR  = 0x00;  //设置 中断控制寄存器
+ 0014 2BBE              out 0x3b,R2
+ 0016                   .dbline 19
+ 0016           ;  TIMSK = 0x04;  //设置 定时计数器 的 屏蔽寄存器
+ 0016 84E0              ldi R24,4
+ 0018 89BF              out 0x39,R24
+ 001A                   .dbline -2
+ 001A           L1:
+ 001A                   .dbline 0 ; func end
+ 001A 0895              ret
+ 001C                   .dbend
+                        .area vector(rom, abs)
+                        .org 32
+ 0020 0C940E00          jmp _timer1_ovf_isr
+                        .area text(rom, con, rel)
+ 001C                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\TEMP\icc\chengxu.c
+ 001C                   .dbfunc e timer1_ovf_isr _timer1_ovf_isr fV
+                        .even
+ 001C           _timer1_ovf_isr::
+ 001C 8A93              st -y,R24
+ 001E 9A93              st -y,R25
+ 0020 8FB7              in R24,0x3f
+ 0022 8A93              st -y,R24
+ 0024                   .dbline -1
+ 0024                   .dbline 24
+ 0024           ;  }
+ 0024           ; 
+ 0024           ; #pragma interrupt_handler timer1_ovf_isr:9
+ 0024           ; void timer1_ovf_isr(void)
+ 0024           ; {
+ 0024                   .dbline 25
+ 0024           ;  TCNT1H = 0xE3;  //reload counter high value
+ 0024 83EE              ldi R24,227
+ 0026 8DBD              out 0x2d,R24
+ 0028                   .dbline 26
+ 0028           ;  TCNT1L = 0xE1;  //reload counter low value
+ 0028 81EE              ldi R24,225
+ 002A 8CBD              out 0x2c,R24
+ 002C                   .dbline 27
+ 002C           ;  DISP_PORT++;  //每加1S，显示加1
+ 002C 82B3              in R24,0x12
+ 002E 8F5F              subi R24,255    ; addi 1
+ 0030 82BB              out 0x12,R24
+ 0032                   .dbline -2
+ 0032           L2:
+ 0032 8991              ld R24,y+
+ 0034 8FBF              out 0x3f,R24
+ 0036 9991              ld R25,y+
+ 0038 8991              ld R24,y+
+ 003A                   .dbline 0 ; func end
+ 003A 1895              reti
+ 003C                   .dbend
+ 003C                   .dbfunc e main _main fV
+                        .even
+ 003C           _main::
+ 003C                   .dbline -1
+ 003C                   .dbline 31
+ 003C           ; }
+ 003C           ; 
+ 003C           ; void main(void)
+ 003C           ; {
+ 003C                   .dbline 32
+ 003C           ;  DISP_DDR = 0XFF; //设置显示口为输出
+ 003C 8FEF              ldi R24,255
+ 003E 81BB              out 0x11,R24
+ 0040                   .dbline 33
+ 0040           ;  timer1_init();
+ 0040 DFDF              xcall _timer1_init
+ 0042                   .dbline 34
+ 0042           ;  SEI();
+ 0042 7894              sei
+ 0044           L4:
+ 0044                   .dbline 35
+ 0044           L5:
+ 0044                   .dbline 35
+ 0044 FFCF              xjmp L4
+ 0046           X0:
+ 0046                   .dbline -2
+ 0046           L3:
+ 0046                   .dbline 0 ; func end
+ 0046 0895              ret
+ 0048                   .dbend

@@ -1,0 +1,188 @@
+Sunplus u'nSP Assembler - Ver. 1.14.12
+              Listing File Has Been Relocated
+                            	
+                            	// Resource Table
+                            	// Created by IDE, Do not modify this table
+                            	
+00008026                    	.TEXT
+                            	.public _RES_Table;
+                            	.external __RES_T064_48K_sa
+                            	.public _RES_T064_48K_SA;
+                            	.external __RES_T064_48K_ea;
+                            	.public _RES_T064_48K_EA;
+                            	.external __RES_0_48K_sa
+                            	.public _RES_0_48K_SA;
+                            	.external __RES_0_48K_ea;
+                            	.public _RES_0_48K_EA;
+                            	.external __RES_1_48K_sa
+                            	.public _RES_1_48K_SA;
+                            	.external __RES_1_48K_ea;
+                            	.public _RES_1_48K_EA;
+                            	.external __RES_2_48K_sa
+                            	.public _RES_2_48K_SA;
+                            	.external __RES_2_48K_ea;
+                            	.public _RES_2_48K_EA;
+                            	.external __RES_3_48K_sa
+                            	.public _RES_3_48K_SA;
+                            	.external __RES_3_48K_ea;
+                            	.public _RES_3_48K_EA;
+                            	.external __RES_4_48K_sa
+                            	.public _RES_4_48K_SA;
+                            	.external __RES_4_48K_ea;
+                            	.public _RES_4_48K_EA;
+                            	.external __RES_5_48K_sa
+                            	.public _RES_5_48K_SA;
+                            	.external __RES_5_48K_ea;
+                            	.public _RES_5_48K_EA;
+                            	.external __RES_6_48K_sa
+                            	.public _RES_6_48K_SA;
+                            	.external __RES_6_48K_ea;
+                            	.public _RES_6_48K_EA;
+                            	.external __RES_7_48K_sa
+                            	.public _RES_7_48K_SA;
+                            	.external __RES_7_48K_ea;
+                            	.public _RES_7_48K_EA;
+                            	.external __RES_8_48K_sa
+                            	.public _RES_8_48K_SA;
+                            	.external __RES_8_48K_ea;
+                            	.public _RES_8_48K_EA;
+                            	.external __RES_9_48K_sa
+                            	.public _RES_9_48K_SA;
+                            	.external __RES_9_48K_ea;
+                            	.public _RES_9_48K_EA;
+                            	.external __RES_10_48K_sa
+                            	.public _RES_10_48K_SA;
+                            	.external __RES_10_48K_ea;
+                            	.public _RES_10_48K_EA;
+                            	.external __RES_BAI_48K_sa
+                            	.public _RES_BAI_48K_SA;
+                            	.external __RES_BAI_48K_ea;
+                            	.public _RES_BAI_48K_EA;
+                            	.external __RES_HJWD_48K_sa
+                            	.public _RES_HJWD_48K_SA;
+                            	.external __RES_HJWD_48K_ea;
+                            	.public _RES_HJWD_48K_EA;
+                            	.external __RES_MBWD_48K_sa
+                            	.public _RES_MBWD_48K_SA;
+                            	.external __RES_MBWD_48K_ea;
+                            	.public _RES_MBWD_48K_EA;
+                            	.external __RES_OK_48K_sa
+                            	.public _RES_OK_48K_SA;
+                            	.external __RES_OK_48K_ea;
+                            	.public _RES_OK_48K_EA;
+                            	.external __RES_SHD_48K_sa
+                            	.public _RES_SHD_48K_SA;
+                            	.external __RES_SHD_48K_ea;
+                            	.public _RES_SHD_48K_EA;
+                            	
+                            	
+                            	_RES_Table:
+                            	
+                            	_RES_T064_48K_SA:
+00008026 64 9F 00 00        		.DW offset __RES_T064_48K_sa,seg __RES_T064_48K_sa;
+                            	_RES_T064_48K_EA:
+00008028 DC 9F 00 00        		.DW offset __RES_T064_48K_ea,seg __RES_T064_48K_ea;
+                            	
+                            	_RES_0_48K_SA:
+0000802A 55 9C 00 00        		.DW offset __RES_0_48K_sa,seg __RES_0_48K_sa;
+                            	_RES_0_48K_EA:
+0000802C DF 9C 00 00        		.DW offset __RES_0_48K_ea,seg __RES_0_48K_ea;
+                            	
+                            	_RES_1_48K_SA:
+0000802E CB 9B 00 00        		.DW offset __RES_1_48K_sa,seg __RES_1_48K_sa;
+                            	_RES_1_48K_EA:
+00008030 55 9C 00 00        		.DW offset __RES_1_48K_ea,seg __RES_1_48K_ea;
+                            	
+                            	_RES_2_48K_SA:
+00008032 69 9D 00 00        		.DW offset __RES_2_48K_sa,seg __RES_2_48K_sa;
+                            	_RES_2_48K_EA:
+00008034 EA 9D 00 00        		.DW offset __RES_2_48K_ea,seg __RES_2_48K_ea;
+                            	
+                            	_RES_3_48K_SA:
+00008036 DA 98 00 00        		.DW offset __RES_3_48K_sa,seg __RES_3_48K_sa;
+                            	_RES_3_48K_EA:
+00008038 7F 99 00 00        		.DW offset __RES_3_48K_ea,seg __RES_3_48K_ea;
+                            	
+                            	_RES_4_48K_SA:
+0000803A 35 98 00 00        		.DW offset __RES_4_48K_sa,seg __RES_4_48K_sa;
+                            	_RES_4_48K_EA:
+0000803C DA 98 00 00        		.DW offset __RES_4_48K_ea,seg __RES_4_48K_ea;
+                            	
+                            	_RES_5_48K_SA:
+0000803E 6B 9E 00 00        		.DW offset __RES_5_48K_sa,seg __RES_5_48K_sa;
+                            	_RES_5_48K_EA:
+00008040 EC 9E 00 00        		.DW offset __RES_5_48K_ea,seg __RES_5_48K_ea;
+                            	
+                            	_RES_6_48K_SA:
+00008042 1B 9A 00 00        		.DW offset __RES_6_48K_sa,seg __RES_6_48K_sa;
+                            	_RES_6_48K_EA:
+00008044 AE 9A 00 00        		.DW offset __RES_6_48K_ea,seg __RES_6_48K_ea;
+                            	
+                            	_RES_7_48K_SA:
+00008046 AE 9A 00 00        		.DW offset __RES_7_48K_sa,seg __RES_7_48K_sa;
+                            	_RES_7_48K_EA:
+00008048 41 9B 00 00        		.DW offset __RES_7_48K_ea,seg __RES_7_48K_ea;
+                            	
+                            	_RES_8_48K_SA:
+0000804A EC 9E 00 00        		.DW offset __RES_8_48K_sa,seg __RES_8_48K_sa;
+                            	_RES_8_48K_EA:
+0000804C 64 9F 00 00        		.DW offset __RES_8_48K_ea,seg __RES_8_48K_ea;
+                            	
+                            	_RES_9_48K_SA:
+0000804E 7F 99 00 00        		.DW offset __RES_9_48K_sa,seg __RES_9_48K_sa;
+                            	_RES_9_48K_EA:
+00008050 1B 9A 00 00        		.DW offset __RES_9_48K_ea,seg __RES_9_48K_ea;
+                            	
+                            	_RES_10_48K_SA:
+00008052 DF 9C 00 00        		.DW offset __RES_10_48K_sa,seg __RES_10_48K_sa;
+                            	_RES_10_48K_EA:
+00008054 69 9D 00 00        		.DW offset __RES_10_48K_ea,seg __RES_10_48K_ea;
+                            	
+                            	_RES_BAI_48K_SA:
+00008056 41 9B 00 00        		.DW offset __RES_BAI_48K_sa,seg __RES_BAI_48K_sa;
+                            	_RES_BAI_48K_EA:
+00008058 CB 9B 00 00        		.DW offset __RES_BAI_48K_ea,seg __RES_BAI_48K_ea;
+                            	
+                            	_RES_HJWD_48K_SA:
+0000805A F9 94 00 00        		.DW offset __RES_HJWD_48K_sa,seg __RES_HJWD_48K_sa;
+                            	_RES_HJWD_48K_EA:
+0000805C 1C 96 00 00        		.DW offset __RES_HJWD_48K_ea,seg __RES_HJWD_48K_ea;
+                            	
+                            	_RES_MBWD_48K_SA:
+0000805E 1C 96 00 00        		.DW offset __RES_MBWD_48K_sa,seg __RES_MBWD_48K_sa;
+                            	_RES_MBWD_48K_EA:
+00008060 3F 97 00 00        		.DW offset __RES_MBWD_48K_ea,seg __RES_MBWD_48K_ea;
+                            	
+                            	_RES_OK_48K_SA:
+00008062 EA 9D 00 00        		.DW offset __RES_OK_48K_sa,seg __RES_OK_48K_sa;
+                            	_RES_OK_48K_EA:
+00008064 6B 9E 00 00        		.DW offset __RES_OK_48K_ea,seg __RES_OK_48K_ea;
+                            	
+                            	_RES_SHD_48K_SA:
+00008066 3F 97 00 00        		.DW offset __RES_SHD_48K_sa,seg __RES_SHD_48K_sa;
+                            	_RES_SHD_48K_EA:
+00008068 35 98 00 00        		.DW offset __RES_SHD_48K_ea,seg __RES_SHD_48K_ea;
+                            	
+                            	
+                            	// End Table
+                            	.PUBLIC T_SACM_S480_SpeechTable
+                            	T_SACM_S480_SpeechTable:
+0000806A 2A 80              		.DW _RES_0_48K_SA
+0000806B 2E 80              		.DW _RES_1_48K_SA
+0000806C 32 80              		.DW _RES_2_48K_SA
+0000806D 36 80              		.DW _RES_3_48K_SA
+0000806E 3A 80              		.DW _RES_4_48K_SA
+0000806F 3E 80              		.DW _RES_5_48K_SA
+00008070 42 80              		.DW _RES_6_48K_SA
+00008071 46 80              		.DW _RES_7_48K_SA
+00008072 4A 80              		.DW _RES_8_48K_SA
+00008073 4E 80              		.DW _RES_9_48K_SA
+00008074 56 80              		.DW _RES_BAI_48K_SA	
+00008075 52 80              		.DW _RES_10_48K_SA
+00008076 26 80              		.DW _RES_T064_48K_SA
+00008077 66 80              		.DW _RES_SHD_48K_SA	
+00008078 5A 80              		.DW _RES_HJWD_48K_SA
+00008079 5E 80              		.DW _RES_MBWD_48K_SA
+0000807A 62 80              		.DW _RES_OK_48K_SA
+0 error(s), 0 warning(s).
+

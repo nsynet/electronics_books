@@ -1,0 +1,272 @@
+XL
+H 4 areas 16 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+S empy16s Ref0000
+S div8u Ref0000
+A text size 1C6 flags 0
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的pwm脉宽调制器设计\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline C 4
+dbline D 4
+dbline E 6
+dbline E 6
+dbline E C
+dbline E C
+dbline E C
+dbline E C
+dbline E 10
+dbline E 16
+dbline D 16
+dbline D 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 12 2C
+dbline 12 2C
+dbline 13 2E
+dbline 14 32
+dbline 15 32
+dbline 16 38
+dbline 18 5E
+dbline 19 64
+dbline 1A 66
+dbline 13 66
+dbline 13 68
+dbline FFFFFFFE 6C
+dbline 0 70
+dbfunc e Add_Process 72 fV
+dbsym r p 10 pc
+dbline FFFFFFFF 72
+dbline 1E 72
+dbline 1E 72
+dbline 1F 7A
+dbline 1F 7A
+dbline 20 86
+dbline 20 8E
+dbline 20 8E
+dbline 20 94
+dbline 20 A0
+dbline 21 A0
+dbline FFFFFFFE A0
+dbline 0 A0
+dbfunc e Sub_Process A2 fV
+dbsym r temp 16 c
+dbsym r p 14 pc
+dbline FFFFFFFF A8
+dbline 25 A8
+dbline 26 A8
+dbline 27 B8
+dbline 28 BA
+dbline 28 BA
+dbline 29 BC
+dbline 2A C8
+dbline 2B D8
+dbline FFFFFFFE D8
+dbline 0 DC
+dbfunc e Key_Process DE fV
+dbline FFFFFFFF DE
+dbline 2F DE
+dbline 2F E0
+dbline 2F E0
+dbline 2F E6
+dbline 2F EC
+dbline 2F EC
+dbline 30 F2
+dbline 30 F2
+dbline 30 F8
+dbline 30 FE
+dbline 30 FE
+dbline 31 102
+dbline 32 10A
+dbline 32 10A
+dbline 33 110
+dbline 33 116
+dbline 34 116
+dbline 35 11E
+dbline 35 11E
+dbline 36 124
+dbline 36 12A
+dbline FFFFFFFE 12A
+dbline 0 12A
+dbfunc e Set_Process 12C fV
+dbsym r i 14 i
+dbsym r p 14 pc
+dbline FFFFFFFF 132
+dbline 3A 132
+dbline 3B 132
+dbline 3C 146
+dbline 3D 15A
+dbline 3E 162
+dbline FFFFFFFE 168
+dbline 0 16C
+dbfunc e Init_IO 16E fV
+dbline FFFFFFFF 16E
+dbline 42 16E
+dbline 42 16E
+dbline 43 172
+dbline 44 174
+dbline 45 176
+dbline 46 178
+dbline 47 17C
+dbline 48 17E
+dbline 49 180
+dbline FFFFFFFE 182
+dbline 0 182
+dbfunc e main 184 fV
+dbsym r i 14 c
+dbline FFFFFFFF 184
+dbline 4D 184
+dbline 4E 184
+dbline 4F 186
+dbline 50 18A
+dbline 52 18E
+dbline 53 190
+dbline 54 194
+dbline 56 19A
+dbline 56 19A
+dbline 57 19C
+dbline 58 1A2
+dbline 59 1A6
+dbline 58 1AC
+dbline 58 1AE
+dbline 5A 1B2
+dbline 5B 1B6
+dbline 5A 1BC
+dbline 5A 1BE
+dbline 5C 1C2
+dbline 55 1C2
+dbline FFFFFFFE 1C4
+dbline 0 1C4
+S _main Def0184
+S _DelayMs Def0000
+S _Display Def0026
+S _Add_Process Def0072
+S _Key_Process Def00DE
+S _Sub_Process Def00A2
+S _Set_Process Def012C
+S _Init_IO Def016E
+A data size 14 flags 20
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的pwm脉宽调制器设计\icc\chengxu.c
+dbsym e Table 0 A[12:12]c
+dbsym e Data1 C A[4:4]c
+dbsym e Data2 10 A[4:4]c
+S _Data1 Def000C
+S _Data2 Def0010
+S _Table Def0000
+A idata size 14 flags 0
+A bss size 2 flags 20
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的pwm脉宽调制器设计\icc\chengxu.c
+dbsym e Key2_Flag 0 c
+dbsym e Key1_Flag 1 c
+S _Key1_Flag Def0001
+S _Key2_Flag Def0000
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 79
+R 00 00 02 00
+T 0B 00 00
+R 00 00 02 00
+T 0C 00 0A 00
+R 00 00 02 00
+T 0E 00 05 00
+R 00 00 02 00
+T 10 00 03 09
+R 00 00 02 00
+T 12 00 01 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 04 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 1B C0 24 2E
+R 00 00 00 00 12 04 02 00
+T 34 00 20 94 25 BA E6 2F FF 27 EA 0D FB 1D E0 81
+R 00 00 00 00
+T 42 00 FF 27 80 E0 90 E0 E8 0F F9 1F 20 80 33 24
+R 00 00 00 00 20 04 01 00 00 00 40 06 01 00 00 00
+T 50 00 8F EF 90 E0 82 19 93 09 80 95 90 95 8B BB
+R 00 00 00 00
+T 5E 00 01 E0 10 E0 CE DF 44 0F 63 95 64 30 18 F3
+R 00 00 00 00
+T 6C 00 0E 94 00 00 08 95
+R 00 00 00 00 12 04 06 00
+T 72 00 F8 01 81 81 81 30 99 F0 C8 01 02 96 FC 01
+R 00 00 00 00
+T 80 00 80 81 8F 5F 80 83 F8 01 82 81 8A 30 49 F4
+R 00 00 00 00
+T 8E 00 22 24 F8 01 22 82 C8 01 01 96 FC 01 80 81
+R 00 00 00 00
+T 9C 00 8F 5F 80 83 08 95
+R 00 00 00 00
+T A2 00 0E 94 00 00 A8 01 FA 01 21 80 8A E0 82 9D
+R 00 00 00 00 12 04 01 00
+T B0 00 60 2D FA 01 22 80 62 0D 79 F0 6A 95 1A E0
+R 00 00 00 00
+T BE 00 06 2F 0E 94 00 00 FA 01 01 83 FA 01 21 80
+R 00 00 00 00 12 06 08 00
+T CC 00 8A E0 82 9D 26 2E 20 18 FA 01 22 82 0E 94
+R 00 00 00 00
+T DA 00 00 00 08 95
+R 00 00 00 00 12 02 05 00
+T DE 00 06 C0 00 E0 10 E0 A0 DF 81 E0 80 93
+R 00 00 00 00 20 04 01 00 0C 00 40 06 01 00 0C 00
+T EA 00 01 00 B0 9B F8 CF 06 C0 00 E0
+R 00 00 00 00 00 02 03 00 20 0A 01 00 0C 00
+T F4 00 10 E0 97 DF 81 E0 80 93 00 00 B1 9B F8 CF
+R 00 00 00 00 40 02 01 00 0C 00 00 0A 03 00
+T 02 01 80 91 01 00 81 30 31 F4 00 E0
+R 00 00 00 00 00 04 03 00 20 0A 01 00 0C 00
+T 0C 01 10 E0 B1 DF 22 24 20 92 01 00 80 91
+R 00 00 00 00 40 02 01 00 0C 00 00 0A 03 00
+T 18 01 00 00 81 30 31 F4 00 E0
+R 00 00 00 00 00 02 03 00 20 08 01 00 0C 00
+T 20 01 10 E0 BF DF 22 24 20 92 00 00 08 95
+R 00 00 00 00 40 02 01 00 0C 00 00 0A 03 00
+T 2C 01 0E 94 00 00 A8 01 FA 01 21 80 8A E0 82 9D
+R 00 00 00 00 12 04 00 00
+T 3A 01 10 01 FA 01 42 80 55 24 24 0C 35 1C 0F EF
+R 00 00 00 00
+T 48 01 13 E0 91 01 0E 94 00 00 2A E0 30 E0 0E 94
+R 00 00 00 00 12 08 07 00
+T 56 01 00 00 A8 01 1A 01 23 2C 33 24 2B BC CA 01
+R 00 00 00 00 12 02 03 00
+T 64 01 90 70 8A BD 0E 94 00 00 08 95
+R 00 00 00 00 12 08 04 00
+T 6E 01 8F EF 8A BB 8B BB 84 BB 85 BB 22 24 27 BA
+R 00 00 00 00
+T 7C 01 28 BA 81 BB 82 BB 08 95
+R 00 00 00 00
+T 84 01 F4 DF 8F EF 8B BB 22 24 25 BA 85 BB 83 EC
+R 00 00 00 00
+T 92 01 8F BD 82 E0 8E BD 14 C0 A1 DF 00 E0 10 E0
+R 00 00 00 00 20 0C 01 00 0C 00 40 0E 01 00 0C 00
+T A0 01 C5 DF 42 E3 04 C0 00 E0 10 E0 3D DF 4A 95
+R 00 00 00 00 20 08 01 00 0C 00 40 0A 01 00 0C 00
+T AE 01 44 23 D1 F7 42 E3 04 C0 00 E0 10 E0 35 DF
+R 00 00 00 00 20 0A 01 00 10 00 40 0C 01 00 10 00
+T BC 01 4A 95 44 23 D1 F7 EB CF 08 95
+R 00 00 00 00

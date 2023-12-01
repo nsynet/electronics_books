@@ -1,0 +1,396 @@
+__start:
+__text_start:
+    0031 E5CF      LDI	R28,0x5F
+    0032 E0D4      LDI	R29,4
+    0033 BFCD      OUT	0x3D,R28
+    0034 BFDE      OUT	0x3E,R29
+    0035 51C0      SUBI	R28,0x10
+    0036 40D0      SBCI	R29,0
+    0037 EA0A      LDI	R16,0xAA
+    0038 8308      STD	Y+0,R16
+    0039 2400      CLR	R0
+    003A E6EE      LDI	R30,0x6E
+    003B E0F0      LDI	R31,0
+    003C E010      LDI	R17,0
+    003D 36EE      CPI	R30,0x6E
+    003E 07F1      CPC	R31,R17
+    003F F011      BEQ	0x0042
+    0040 9201      ST	R0,Z+
+    0041 CFFB      RJMP	0x003D
+    0042 8300      STD	Z+0,R16
+    0043 E5E4      LDI	R30,0x54
+    0044 E0F0      LDI	R31,0
+    0045 E6A0      LDI	R26,0x60
+    0046 E0B0      LDI	R27,0
+    0047 E010      LDI	R17,0
+    0048 36E2      CPI	R30,0x62
+    0049 07F1      CPC	R31,R17
+    004A F021      BEQ	0x004F
+    004B 95C8      LPM
+    004C 9631      ADIW	R30,1
+    004D 920D      ST	R0,X+
+    004E CFF9      RJMP	0x0048
+    004F 940E00E1  CALL	_main
+_exit:
+    0051 CFFF      RJMP	_exit
+_DelayMs:
+  j                    --> R20
+  i                    --> R16
+    0052 940E0114  CALL	push_gset1
+FILE: D:\MYDOCU~1\AVR单片机应用系统开发经典实例\018、同步串行接口SPI的C语言编程-无仿真\icc\chengxu.c
+(0001) /********************************************************************
+(0002)     计算机通过RS232接口向计算机发送1,2,3,4四个数据。单片机收
+(0003) 到四个数据后在数码管上动态显示出来，然后单片机向计算机发送a，b，c，d，四
+(0004) 个字符，使用着通过“串口调试助手 ”等软件观察数据传输过程
+(0005) 
+(0006) *********************************************************************/
+(0007) #include <iom16v.h>
+(0008) #include <macros.h>
+(0009) /********************************************************************
+(0010)                 数据类型定义
+(0011) *********************************************************************/
+(0012) #define uchar unsigned char
+(0013) #define uint  unsigned int
+(0014) /********************************************************************
+(0015)                 数码管段码定义0123456789
+(0016) *********************************************************************/
+(0017) uchar Table[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+(0018) uchar Data[4]={0,0,0,0};			
+(0019) /**********************************************************************
+(0020) 				  MS级延时函数程序，参数i 延时时间					   	
+(0021) **********************************************************************/            
+(0022) void DelayMs(uint i)           //Ms级延时，参数i为延时时间
+(0023) {uint j;
+(0024)  for(;i!=0;i--)
+    0054 C00A      RJMP	0x005F
+(0025)   {for(j=8000;j!=0;j--) {;}}
+    0055 E440      LDI	R20,0x40
+    0056 E15F      LDI	R21,0x1F
+    0057 C002      RJMP	0x005A
+    0058 5041      SUBI	R20,1
+    0059 4050      SBCI	R21,0
+    005A 3040      CPI	R20,0
+    005B 0745      CPC	R20,R21
+    005C F7D9      BNE	0x0058
+    005D 5001      SUBI	R16,1
+    005E 4010      SBCI	R17,0
+    005F 3000      CPI	R16,0
+    0060 0701      CPC	R16,R17
+    0061 F799      BNE	0x0055
+    0062 940E0117  CALL	pop_gset1
+    0064 9508      RET
+_Display:
+  sel                  --> R20
+  i                    --> R22
+  p                    --> R10
+    0065 940E012F  CALL	push_gset3
+    0067 0158      MOVW	R10,R16
+(0026) }
+(0027) /**********************************************************************
+(0028) 				            显示函数		
+(0029) 注意：使用开发板时sel=0xef;
+(0030) **********************************************************************/
+(0031) void Display(uchar *p)         //动态显示函数，参数p为待显示的数组名
+(0032) {uchar i,sel=0xef;           
+    0068 EE4F      LDI	R20,0xEF
+(0033)  for(i=0;i<4;i++)
+    0069 2766      CLR	R22
+    006A C013      RJMP	0x007E
+(0034)   {PORTC=sel;                  //选通最右边的数码管
+    006B BB45      OUT	0x15,R20
+(0035)    PORTA=~Table[p[i]];          //送字型码
+    006C 2FE6      MOV	R30,R22
+    006D 27FF      CLR	R31
+    006E 0DEA      ADD	R30,R10
+    006F 1DFB      ADC	R31,R11
+    0070 81E0      LDD	R30,Z+0
+    0071 27FF      CLR	R31
+    0072 E680      LDI	R24,0x60
+    0073 E090      LDI	R25,0
+    0074 0FE8      ADD	R30,R24
+    0075 1FF9      ADC	R31,R25
+    0076 8020      LDD	R2,Z+0
+    0077 9420      COM	R2
+    0078 BA2B      OUT	0x1B,R2
+(0036)    DelayMs(1);                 //显示延时    
+    0079 E001      LDI	R16,1
+    007A E010      LDI	R17,0
+    007B DFD6      RCALL	_DelayMs
+(0037)    sel=sel<<1;                 //移位以显示前一位
+    007C 0F44      LSL	R20
+    007D 9563      INC	R22
+    007E 3064      CPI	R22,4
+    007F F358      BCS	0x006B
+    0080 940E0111  CALL	pop_gset3
+    0082 9508      RET
+(0038)   }
+(0039) }
+(0040) /**********************************************************************
+(0041) 				         初始化
+(0042) **********************************************************************/
+(0043) void DelayNOP(uchar i)
+(0044) {for(;i!=0;i--)  
+_DelayNOP:
+  i                    --> R16
+    0083 C002      RJMP	0x0086
+(0045)     { NOP();}
+    0084 0000      NOP
+    0085 950A      DEC	R16
+    0086 2300      TST	R16
+    0087 F7E1      BNE	0x0084
+    0088 9508      RET
+_Convert:
+  i                    --> R22
+  p                    --> R20
+    0089 940E012B  CALL	push_gset2
+    008B 2F62      MOV	R22,R18
+    008C 01A8      MOVW	R20,R16
+(0046) } 
+(0047) /**********************************************************************
+(0048) 				         数据格式转换
+(0049) **********************************************************************/
+(0050) void Convert(uchar *p,uchar i)
+(0051) {p[0]=0;		   //设实验室条件为正温度
+    008D 2422      CLR	R2
+    008E 01FA      MOVW	R30,R20
+    008F 8220      STD	Z+0,R2
+(0052)  p[1]=i/100;
+    0090 E614      LDI	R17,0x64
+    0091 2F06      MOV	R16,R22
+    0092 940E00F8  CALL	div8u
+    0094 01FA      MOVW	R30,R20
+    0095 8301      STD	Z+1,R16
+(0053)  p[2]=(i-p[1]*100)/10;
+    0096 01FA      MOVW	R30,R20
+    0097 8021      LDD	R2,Z+1
+    0098 E684      LDI	R24,0x64
+    0099 9D82      MUL	R24,R2
+    009A 2F06      MOV	R16,R22
+    009B 1900      SUB	R16,R0
+    009C E01A      LDI	R17,0xA
+    009D 940E00F8  CALL	div8u
+    009F 01FA      MOVW	R30,R20
+    00A0 8302      STD	Z+2,R16
+(0054)  p[3]=i-p[1]*100-p[2]*10;
+    00A1 01FA      MOVW	R30,R20
+    00A2 8021      LDD	R2,Z+1
+    00A3 E684      LDI	R24,0x64
+    00A4 9D82      MUL	R24,R2
+    00A5 2E26      MOV	R2,R22
+    00A6 1820      SUB	R2,R0
+    00A7 01FA      MOVW	R30,R20
+    00A8 8032      LDD	R3,Z+2
+    00A9 E08A      LDI	R24,0xA
+    00AA 9D83      MUL	R24,R3
+    00AB 1820      SUB	R2,R0
+    00AC 01FA      MOVW	R30,R20
+    00AD 8223      STD	Z+3,R2
+    00AE 940E010E  CALL	pop_gset2
+    00B0 9508      RET
+_Write_Byte:
+  clear                --> R20
+  Data                 --> R18
+  Address              --> R16
+    00B1 940E0114  CALL	push_gset1
+(0055) }
+(0056) /**********************************************************************
+(0057) 				        写数据函数	
+(0058) 			功能:向DS1722指定地址Address写一字节数据Date
+(0059) **********************************************************************/
+(0060) void Write_Byte(uchar Address,uchar Data)
+(0061) {uchar clear;
+(0062)  PORTB=PORTB|0x10; //使能SPI器件
+    00B3 9AC4      SBI	0x18,4
+(0063)  SPDR=Address;	   //送地址启动SPI时钟
+    00B4 B90F      OUT	0x0F,R16
+(0064)  while(!(SPSR&0x80)) {;}//等待数据发送完成
+    00B5 9B77      SBIS	0x0E,7
+    00B6 CFFE      RJMP	0x00B5
+(0065)  clear=SPSR;		 	//清除发送标志位				  
+    00B7 B14E      IN	R20,0x0E
+(0066)  clear=SPDR;			//清除发送标志位	
+    00B8 B14F      IN	R20,0x0F
+(0067)  SPDR=Data;				//发送数据，启动SPI时钟
+    00B9 B92F      OUT	0x0F,R18
+(0068)  while(!(SPSR&0x80)) {;}//等待数据发送完成
+    00BA 9B77      SBIS	0x0E,7
+    00BB CFFE      RJMP	0x00BA
+(0069)  clear=SPSR;		 	//清除发送标志位				  
+    00BC B14E      IN	R20,0x0E
+(0070)  clear=SPDR;			//清除发送标志位		
+    00BD B14F      IN	R20,0x0F
+(0071)  PORTB=PORTB&0xef;		//禁止SPI器件
+    00BE B388      IN	R24,0x18
+    00BF 7E8F      ANDI	R24,0xEF
+    00C0 BB88      OUT	0x18,R24
+    00C1 940E0117  CALL	pop_gset1
+    00C3 9508      RET
+_Read_Byte:
+  Data                 --> R20
+  clear                --> R22
+  Address              --> R16
+    00C4 940E012B  CALL	push_gset2
+(0072) }
+(0073) /**********************************************************************
+(0074) 				         读数据函数	
+(0075) 			 功能:从DS1722指定地址Address读取一字节数据Date
+(0076) **********************************************************************/
+(0077) uchar Read_Byte(uchar Address)
+(0078) {uchar clear;
+(0079)  uchar Data;
+(0080)  PORTB=PORTB|0x10;	  	//使能SPI器件
+    00C6 9AC4      SBI	0x18,4
+(0081)  SPDR=Address;			//送地址启动SPI时钟
+    00C7 B90F      OUT	0x0F,R16
+(0082)  while(!(SPSR&0x80)) {;}//等待数据发送完成
+    00C8 9B77      SBIS	0x0E,7
+    00C9 CFFE      RJMP	0x00C8
+(0083)  clear=SPSR;		 	//清除发送标志位				  
+    00CA B16E      IN	R22,0x0E
+(0084)  clear=SPDR;			//清除发送标志位
+    00CB B16F      IN	R22,0x0F
+(0085)  SPDR=Address;//发空数据，启动数据发送以接收数据
+    00CC B90F      OUT	0x0F,R16
+(0086)  while(!(SPSR&0x80)) {;}//等待数据发送/接收完成
+    00CD 9B77      SBIS	0x0E,7
+    00CE CFFE      RJMP	0x00CD
+(0087)  clear=SPSR;		 	//清除发送标志位					   
+    00CF B16E      IN	R22,0x0E
+(0088)  Data=SPDR;				//接收数据
+    00D0 B14F      IN	R20,0x0F
+(0089)  PORTB=PORTB&0xef;		//禁止SPI器件
+    00D1 B388      IN	R24,0x18
+    00D2 7E8F      ANDI	R24,0xEF
+    00D3 BB88      OUT	0x18,R24
+(0090)  return(Data);			//温度值返回
+    00D4 2F04      MOV	R16,R20
+    00D5 940E010E  CALL	pop_gset2
+    00D7 9508      RET
+(0091) }
+(0092) /**********************************************************************
+(0093) 				         初始化I/O口	
+(0094) **********************************************************************/
+(0095) void Init_IO(void)             //初始化I/O口
+(0096) {DDRA=0xff;                    //设置A口为推挽1输出
+_Init_IO:
+    00D8 EF8F      LDI	R24,0xFF
+    00D9 BB8A      OUT	0x1A,R24
+(0097)  PORTA=0xff;
+    00DA BB8B      OUT	0x1B,R24
+(0098)  DDRC=0xff;                    //设置C口为推挽1输出             
+    00DB BB84      OUT	0x14,R24
+(0099)  PORTC=0xff;
+    00DC BB85      OUT	0x15,R24
+(0100)  DDRC=0xbf;                    //设置C口为推挽1输出             
+    00DD EB8F      LDI	R24,0xBF
+    00DE BB84      OUT	0x14,R24
+(0101)  PORTC=0xbf;
+    00DF BB85      OUT	0x15,R24
+    00E0 9508      RET
+(0102)  }
+(0103) /**********************************************************************
+(0104) 				          主函数		
+(0105) **********************************************************************/
+(0106) void main(void)
+(0107) {
+(0108) uchar value;
+(0109) Init_IO();
+_main:
+  value                --> R20
+    00E1 DFF6      RCALL	_Init_IO
+(0110) SPCR=0x5c;//使能SPC功能，
+    00E2 E58C      LDI	R24,0x5C
+    00E3 B98D      OUT	0x0D,R24
+(0111)  Write_Byte(0x80,0xf0);//DS1722工作于自由转换模式，8位分辨率
+    00E4 EF20      LDI	R18,0xF0
+    00E5 E800      LDI	R16,0x80
+    00E6 DFCA      RCALL	_Write_Byte
+    00E7 C00C      RJMP	0x00F4
+(0112)  while(1)
+(0113)   {
+(0114)   value=Read_Byte(0x01);//读取温度数据寄存器低位数据
+    00E8 E001      LDI	R16,1
+    00E9 DFDA      RCALL	_Read_Byte
+(0115)    value=Read_Byte(0x02);//读取温度数据寄存器高位数据
+    00EA E002      LDI	R16,2
+    00EB DFD8      RCALL	_Read_Byte
+    00EC 2F40      MOV	R20,R16
+(0116)    Convert(Data,value);//温度数据格式转换
+    00ED 2F24      MOV	R18,R20
+    00EE E60A      LDI	R16,0x6A
+    00EF E010      LDI	R17,0
+    00F0 DF98      RCALL	_Convert
+(0117)    Display(Data);//温度数据显示
+FILE: <library>
+    00F1 E60A      LDI	R16,0x6A
+    00F2 E010      LDI	R17,0
+    00F3 DF71      RCALL	_Display
+    00F4 CFF3      RJMP	0x00E8
+    00F5 9508      RET
+mod8u:
+    00F6 9468      BSET	6
+    00F7 C001      RJMP	xdiv8u
+div8u:
+    00F8 94E8      BCLR	6
+xdiv8u:
+    00F9 932A      ST	R18,-Y
+    00FA 92FA      ST	R15,-Y
+    00FB 92EA      ST	R14,-Y
+    00FC 24FF      CLR	R15
+    00FD 24EE      CLR	R14
+    00FE E120      LDI	R18,0x10
+    00FF 0F00      LSL	R16
+    0100 1CFF      ROL	R15
+    0101 1CEE      ROL	R14
+    0102 16E1      CP	R14,R17
+    0103 F010      BCS	0x0106
+    0104 1AE1      SUB	R14,R17
+    0105 9503      INC	R16
+    0106 952A      DEC	R18
+    0107 F7B9      BNE	0x00FF
+    0108 F40E      BRTC	0x010A
+    0109 2D0E      MOV	R16,R14
+    010A 90E9      LD	R14,Y+
+    010B 90F9      LD	R15,Y+
+    010C 9129      LD	R18,Y+
+    010D 9508      RET
+pop_gset2:
+    010E E0E2      LDI	R30,2
+    010F 940C0118  JMP	pop
+pop_gset3:
+    0111 E0E4      LDI	R30,4
+    0112 940C0118  JMP	pop
+push_gset1:
+    0114 935A      ST	R21,-Y
+    0115 934A      ST	R20,-Y
+    0116 9508      RET
+pop_gset1:
+    0117 E0E1      LDI	R30,1
+pop:
+    0118 9149      LD	R20,Y+
+    0119 9159      LD	R21,Y+
+    011A FDE0      SBRC	R30,0
+    011B 9508      RET
+    011C 9169      LD	R22,Y+
+    011D 9179      LD	R23,Y+
+    011E FDE1      SBRC	R30,1
+    011F 9508      RET
+    0120 90A9      LD	R10,Y+
+    0121 90B9      LD	R11,Y+
+    0122 FDE2      SBRC	R30,2
+    0123 9508      RET
+    0124 90C9      LD	R12,Y+
+    0125 90D9      LD	R13,Y+
+    0126 FDE3      SBRC	R30,3
+    0127 9508      RET
+    0128 90E9      LD	R14,Y+
+    0129 90F9      LD	R15,Y+
+    012A 9508      RET
+push_gset2:
+    012B 937A      ST	R23,-Y
+    012C 936A      ST	R22,-Y
+    012D 940C0114  JMP	push_gset1
+push_gset3:
+    012F 92BA      ST	R11,-Y
+    0130 92AA      ST	R10,-Y
+    0131 940C012B  JMP	push_gset2

@@ -1,0 +1,164 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+F:\NEW 光盘资料\S52_M16两用开发板\本开发板配套程序及其仿真\十四、液晶1602的应用\keil\chengxu.uv2
+Project File Date:  12/15/2005
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(19): error C101: '':': invalid character constant
+CHENGXU.C(19): error C141: syntax error near '',''
+CHENGXU.C(19): error C101: '',': invalid character constant
+CHENGXU.C(25): error C141: syntax error near '{'
+CHENGXU.C(27): error C141: syntax error near 'for'
+CHENGXU.C(27): error C141: syntax error near '=', expected ')'
+CHENGXU.C(27): error C129: missing ';' before '<'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(19): error C101: '':': invalid character constant
+CHENGXU.C(19): error C141: syntax error near '',''
+CHENGXU.C(19): error C101: '',': invalid character constant
+CHENGXU.C(25): error C141: syntax error near '{'
+CHENGXU.C(27): error C141: syntax error near 'for'
+CHENGXU.C(27): error C141: syntax error near '=', expected ')'
+CHENGXU.C(27): error C129: missing ';' before '<'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(19): error C101: '':': invalid character constant
+CHENGXU.C(19): error C141: syntax error near '',''
+CHENGXU.C(19): error C101: '',': invalid character constant
+CHENGXU.C(25): error C141: syntax error near '{'
+CHENGXU.C(27): error C141: syntax error near 'for'
+CHENGXU.C(27): error C141: syntax error near '=', expected ')'
+CHENGXU.C(27): error C129: missing ';' before '<'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(19): error C101: '':': invalid character constant
+CHENGXU.C(19): error C141: syntax error near '',''
+CHENGXU.C(19): error C101: '',': invalid character constant
+CHENGXU.C(25): error C141: syntax error near '{'
+CHENGXU.C(27): error C141: syntax error near 'for'
+CHENGXU.C(27): error C141: syntax error near '=', expected ')'
+CHENGXU.C(27): error C129: missing ';' before '<'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(19): error C101: '':': invalid character constant
+CHENGXU.C(19): error C141: syntax error near '',''
+CHENGXU.C(19): error C101: '',': invalid character constant
+CHENGXU.C(25): error C141: syntax error near '{'
+CHENGXU.C(27): error C141: syntax error near 'for'
+CHENGXU.C(27): error C141: syntax error near '=', expected ')'
+CHENGXU.C(27): error C129: missing ';' before '<'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?CHENGXU
+Program Size: data=46.0 xdata=0 code=480
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 1 Warning(s).

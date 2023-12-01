@@ -1,0 +1,30 @@
+Version: 3.0
+Options: m37
+Obj: "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Resource.obj"
+Obj: "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+Obj: "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+Obj: "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+Obj: "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+Obj: "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+Obj: "F:\功能扩展\LcdSplc501Demo\splc501\Debug\main.obj"
+Obj: "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+Output: ".\Debug\splc501.S37"
+;Locate: TEXT in "irq.obj" at 8009 
+;Align: TEXT in "irq.obj" with 0 
+;Locate: IRAM in "hardware.obj" at C7EA  linkat A3 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "Splc501var.obj" at 0 
+;Align: RAM in "Splc501var.obj" with 0 
+;Locate: CODE in "SPLC501DisplayTAB.obj" at 8097 
+;Align: CODE in "SPLC501DisplayTAB.obj" with 0 
+;Locate: CODE in "Splc501sys.obj" at AEB4 
+;Align: CODE in "Splc501sys.obj" with 0 
+;Locate: CODE in "SPLC501Hardware.obj" at C321 
+;Align: CODE in "SPLC501Hardware.obj" with 0 
+;Locate: CODE in "main.obj" at C533 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "hardware.obj" at C6AB 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "irq.obj" at C7D8 
+;Align: CODE in "irq.obj" with 0 

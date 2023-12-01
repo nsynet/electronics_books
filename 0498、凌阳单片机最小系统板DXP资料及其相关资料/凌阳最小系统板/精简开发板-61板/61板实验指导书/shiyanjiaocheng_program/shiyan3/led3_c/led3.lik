@@ -1,0 +1,16 @@
+Version: 3.0
+Options: m37
+Obj: "C:\Program Files\Sunplus\unSPIDE184\unSPIDE\startupD.obj"
+Obj: "D:\program\shiyanjiaocheng_program\shiyan3\led3_c\Debug\Resource.obj"
+Obj: "D:\program\shiyanjiaocheng_program\shiyan3\led3_c\Debug\key.obj"
+Obj: "D:\program\shiyanjiaocheng_program\shiyan3\led3_c\Debug\main.obj"
+Lib: "C:\Program Files\Sunplus\unSPIDE184\unSPIDE\CMacro.lib"
+Output: "D:\program\shiyanjiaocheng_program\shiyan3\led3_c\Debug\led3.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: CODE in "key.obj" at 8026 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "main.obj" at 806F 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "rshu1" of "CMacro.lib"  at 80A7 
+;Align: CODE in "rshu1" of "CMacro.lib"  with 0 

@@ -1,0 +1,17 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRA~1\Sunplus\UNSPID~1.0\startupD.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_4_ExtInt\Debug\Resource.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_4_ExtInt\Debug\ExtInt_Main.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_4_ExtInt\Debug\ISR.obj"
+Lib: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_4_ExtInt\.\SPCE061V003.LIB"
+Output: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_4_ExtInt\Debug\Chapter6_4_ExtInt.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: IRAM in "ISR.obj" at 80F1  linkat 1 
+;Align: IRAM in "ISR.obj" with 0 
+;Locate: CODE in "ExtInt_Main.obj" at 80B8 
+;Align: CODE in "ExtInt_Main.obj" with 0 
+;Locate: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  at 80F2 
+;Align: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  with 0 
+;Locate: __sn_init_table at 8000 

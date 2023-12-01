@@ -1,0 +1,570 @@
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE NETPROTOCOL
+OBJECT MODULE PLACED IN .\Output\NETProtocol.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE NETProtocol.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\NETProtocol.obj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "Board.h" 
+   7          #include "Global.h"
+   8          #include "NETDefine.h"
+   9          #include "NETInterface.h"
+  10          #include "NETProtocol.h"
+  11          /****************************************************************************************************
+  12          *
+  13          *                                      变量区
+  14          * 
+  15          *****************************************************************************************************/
+  16          static UINT16 usTCPPort    =TCP_PORT; //TCP端口
+  17          static UINT8  acMACAddr[6] ={0};      //MAC地址
+  18          static UINT8  acIPAddr[4]  ={0};      //IP地址
+  19          static UINT16 usInfoHdrLen = 0 ;      //设备数据长度
+  20          static UINT16 usInfoDataLen= 0 ;      //数据长度
+  21          static UINT8  ucSeqNum     =0xa;      //TCP请求
+  22          /****************************************************************************************************
+  23          *
+  24          *                                      函数区
+  25          * 
+  26          *****************************************************************************************************/
+  27          /******************************************************************
+  28          *函数名称:NETPcCheckSum
+  29          *输    入:buf  数据
+  30                    len  长度
+  31                    type 协议类型 
+  32          *输    出:UINT16 数据
+  33          *说    明:校验和
+  34          *******************************************************************/ 
+  35          UINT16 NETPcCheckSum(UINT8 *buf, UINT16 len,UINT8 type)
+  36          {
+  37   1              UINT32 sum = 0;
+  38   1      
+  39   1              if(type==0) //IP
+  40   1                      {
+  41   2                     
+  42   2              }
+  43   1      
+  44   1              if(type==1)//UDP
+  45   1              {
+  46   2                      sum+=IP_PROTO_UDP_V; 
+  47   2                      sum+=len-8; // 获取UDP的真实长度
+  48   2              }
+  49   1      
+  50   1              if(type==2)//TCP
+  51   1              {
+  52   2                      sum+=IP_PROTO_TCP_V; 
+  53   2                      sum+=len-8; // 获取TCP的真实长度
+  54   2              }
+  55   1      
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 2   
+
+  56   1              while(len >1)
+  57   1              {
+  58   2                      sum += 0xFFFF & (((UINT32)*buf<<8)|*(buf+1));
+  59   2                      buf+=2;
+  60   2                      len-=2;
+  61   2              }
+  62   1      
+  63   1              if (len)
+  64   1              {
+  65   2                      sum += ((UINT32)(0xFF & *buf))<<8;
+  66   2              }
+  67   1      
+  68   1              while (sum>>16)
+  69   1              {
+  70   2                      sum = (sum & 0xFFFF)+(sum >> 16 &0xFFFF);
+  71   2              }
+  72   1              
+  73   1              return( (UINT16) sum ^ 0xFFFF);
+  74   1      }
+  75          
+  76          /******************************************************
+  77          *函数名称: NETPcInit
+  78          *输    入: mac地址 IP地址 端口
+  79          *输    出: 无
+  80          *说    明: 网络 初始化
+  81          *******************************************************/
+  82          void NETPcInit(UINT8 *mymac,UINT8 *myip,UINT16 port)
+  83          {
+  84   1              UINT8 i=0;
+  85   1              usTCPPort=port;              //保存TCP端口
+  86   1              
+  87   1              while(i<4)
+  88   1              {
+  89   2      
+  90   2                                acIPAddr[i]=myip[i];//保存本地IP地址
+  91   2      
+  92   2                      i++;
+  93   2              }  
+  94   1              
+  95   1              i=0;         
+  96   1              
+  97   1              while(i<6)
+  98   1              {
+  99   2                                acMACAddr[i]=mymac[i];//保存本地MAC地址
+ 100   2      
+ 101   2                      i++;
+ 102   2              }
+ 103   1      }
+ 104          /******************************************************
+ 105          *函数名称: NETPcEthIsArpAndMyIp
+ 106          *输    入: buf 数据包缓冲区；len 数据长度
+ 107          *输    出: 0/1
+ 108          *说    明: 检查数据包ARP是否匹配、IP是否匹配
+ 109          *******************************************************/
+ 110          UINT8 NETPcEthIsArpAndMyIp(UINT8 *buf,UINT16 len)
+ 111          {
+ 112   1              UINT8 i=0;
+ 113   1      
+ 114   1              if (len<41)              //检测长度不符合，即以太网首部+IP首部+ARP首部
+ 115   1              {
+ 116   2                      return(0);
+ 117   2              }     
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 3   
+
+ 118   1              
+ 119   1              if(buf[ETH_TYPE_H_P] != ETHTYPE_ARP_H_V || 
+ 120   1                 buf[ETH_TYPE_L_P] != ETHTYPE_ARP_L_V)           //检测以太网类型是否符合
+ 121   1              {
+ 122   2                      return(0);
+ 123   2              }
+ 124   1              while(i<4)
+ 125   1              {
+ 126   2                      if(buf[ETH_ARP_DST_IP_P+i] != acIPAddr[i])//检测IP地址是否符合
+ 127   2                      {
+ 128   3                              return(0);
+ 129   3                      }   
+ 130   2                      
+ 131   2                      i++;
+ 132   2              }  
+ 133   1              
+ 134   1              return(1);
+ 135   1      }  
+ 136          /******************************************************
+ 137          *函数名称: NETPcEthIsIpAndMyIp
+ 138          *输    入: packet 数据包缓冲区；len 数据长度
+ 139          *输    出: 0/1
+ 140          *说    明: 检查以太网类型、IP版本、IP地址是否符合
+ 141          *******************************************************/
+ 142          UINT8 NETPcEthIsIpAndMyIp(UINT8 *buf,UINT16 len)
+ 143          {
+ 144   1              UINT8 i=0;
+ 145   1       
+ 146   1              if (len<42)                               //检测长度是否不符合
+ 147   1              {
+ 148   2                      return(0);
+ 149   2              }   
+ 150   1              
+ 151   1              if(buf[ETH_TYPE_H_P]!=ETHTYPE_IP_H_V || 
+ 152   1                 buf[ETH_TYPE_L_P]!=ETHTYPE_IP_L_V) //检测以太网类型是否符合
+ 153   1              {
+ 154   2                      return(0);
+ 155   2              }
+ 156   1              
+ 157   1              if (buf[IP_HEADER_LEN_VER_P]!=0x45)    //检查IP版本是否IPV4
+ 158   1              {
+ 159   2                      return(0);
+ 160   2              }    
+ 161   1              
+ 162   1              while(i<4)
+ 163   1              {
+ 164   2                      if(buf[IP_DST_P+i]!=acIPAddr[i])//检查IP地址是否符合
+ 165   2                      {
+ 166   3                              return(0);
+ 167   3                      }  
+ 168   2                      
+ 169   2                      i++;
+ 170   2              }
+ 171   1              return(1);
+ 172   1      }
+ 173          /******************************************************
+ 174          *函数名称: NETPcMakeEth
+ 175          *输    入: buf 数据包缓冲区
+ 176          *输    出: 无
+ 177          *说    明: 建立以太网首部
+ 178          *******************************************************/
+ 179          void NETPcMakeEth(UINT8 *buf)
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 4   
+
+ 180          {
+ 181   1              UINT8 i=0;
+ 182   1              while(i<6)             //建立以太网首部，获取MAC地址
+ 183   1              {
+ 184   2                      buf[ETH_DST_MAC +i]=buf[ETH_SRC_MAC +i];
+ 185   2                      buf[ETH_SRC_MAC +i]=acMACAddr[i];
+ 186   2                      i++;
+ 187   2              }
+ 188   1      }
+ 189          /******************************************************
+ 190          *函数名称: NETPcFillIPHdrChkSum
+ 191          *输    入: buf 数据包缓冲区
+ 192          *输    出: 无
+ 193          *说    明: 填充IP包校验和
+ 194          *******************************************************/
+ 195          void NETPcFillIPHdrChkSum(UINT8 *buf)
+ 196          {
+ 197   1              UINT16 ck;
+ 198   1      
+ 199   1              buf[IP_CHECKSUM_P]=0;    //校验值低字节清零
+ 200   1              buf[IP_CHECKSUM_P+1]=0;  //校验值高字节清零
+ 201   1              buf[IP_FLAGS_P]=0x40;    //分段标志低字节设为0x40
+ 202   1              buf[IP_FLAGS_P+1]=0;     //分段标志高字节设为0x00
+ 203   1              buf[IP_TTL_P]=64;         //生存时间为64ms
+ 204   1      
+ 205   1              ck=NETPcCheckSum(&buf[IP_P], IP_HEADER_LEN,0);//校验IP首部
+ 206   1      
+ 207   1              buf[IP_CHECKSUM_P]=ck>>8;       //校验值低字节
+ 208   1              buf[IP_CHECKSUM_P+1]=ck& 0xff; //校验值高字节
+ 209   1      }
+ 210          /******************************************************
+ 211          *函数名称: NETPcMakeIP
+ 212          *输    入: buf数据包缓冲区
+ 213          *输    出: 无
+ 214          *说    明: 建立IP首部
+ 215          *******************************************************/
+ 216          void NETPcMakeIP(UINT8 *buf)
+ 217          {
+ 218   1              UINT8 i=0;
+ 219   1              
+ 220   1              while(i<4) //建立IP首部，获取IP地址
+ 221   1              {
+ 222   2                      buf[IP_DST_P+i]=buf[IP_SRC_P+i];
+ 223   2                      buf[IP_SRC_P+i]=acIPAddr[i];
+ 224   2                      i++;
+ 225   2              }  
+ 226   1              
+ 227   1              NETPcFillIPHdrChkSum(buf);
+ 228   1      }
+ 229          /******************************************************
+ 230          *函数名称: NETPcMakeTcpHead
+ 231          *输    入: buf数据包缓冲区
+ 232                     rel_ack_num 确认号
+ 233                             mss 是否设置最大报文大小
+ 234                             cp_seq 是否设置序号
+ 235          *输    出: 无
+ 236          *说    明: 建立TCP首部
+ 237          *******************************************************/
+ 238          void NETPcMakeTcpHead(UINT8 *buf,UINT16 rel_ack_num,UINT8 mss,UINT8 cp_seq)
+ 239          {
+ 240   1              UINT8 i=0;
+ 241   1              UINT8 tseq; 
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 5   
+
+ 242   1              
+ 243   1              while(i<2)                               //获取源端口
+ 244   1              {
+ 245   2                      buf[TCP_DST_PORT_H_P+i]=buf[TCP_SRC_PORT_H_P+i];
+ 246   2                      buf[TCP_SRC_PORT_H_P+i]=0;
+ 247   2                      i++;
+ 248   2              }
+ 249   1      
+ 250   1                 buf[TCP_SRC_PORT_H_P]=(usTCPPort>>8)&0xFF;//重新获取TCP端口
+ 251   1              buf[TCP_SRC_PORT_L_P]= usTCPPort    &0xFF;
+ 252   1      
+ 253   1              i=4;
+ 254   1      
+ 255   1              while(i>0) //设置32位序号和32位确认号
+ 256   1              {
+ 257   2                      rel_ack_num=buf[TCP_SEQ_H_P+i-1]+rel_ack_num;
+ 258   2                      tseq=buf[TCP_SEQACK_H_P+i-1];
+ 259   2                      buf[TCP_SEQACK_H_P+i-1]=0xff&rel_ack_num;
+ 260   2      
+ 261   2                      if (cp_seq)
+ 262   2                      {
+ 263   3                              buf[TCP_SEQ_H_P+i-1]=tseq;
+ 264   3                      }
+ 265   2      else
+ 266   2                      {
+ 267   3                              buf[TCP_SEQ_H_P+i-1]= 0; 
+ 268   3                      }
+ 269   2                      rel_ack_num=rel_ack_num>>8;
+ 270   2                      i--;
+ 271   2              }
+ 272   1      
+ 273   1              if (cp_seq==0)                 //检测请求序号是否为0
+ 274   1              {       //TCP_SEQ_H_P顺序号
+ 275   2                      buf[TCP_SEQ_H_P+0]= 0;
+ 276   2                      buf[TCP_SEQ_H_P+1]= 0;
+ 277   2                      buf[TCP_SEQ_H_P+2]= ucSeqNum; 
+ 278   2                      buf[TCP_SEQ_H_P+3]= 0;
+ 279   2                      ucSeqNum+=2;
+ 280   2              }
+ 281   1      
+ 282   1              buf[TCP_CHECKSUM_H_P]=0;//TCP首部校验值清零
+ 283   1              buf[TCP_CHECKSUM_L_P]=0;
+ 284   1      
+ 285   1              if (mss) //检查是否要设置最长报文大小，TCP首部会从20字节变为24字节        
+ 286   1      {
+ 287   2      
+ 288   2                      buf[TCP_OPTIONS_P]=2;
+ 289   2                      buf[TCP_OPTIONS_P+1]=4;
+ 290   2                      buf[TCP_OPTIONS_P+2]=0x05; 
+ 291   2                      buf[TCP_OPTIONS_P+3]=0x80;
+ 292   2                      buf[TCP_HEADER_LEN_P]=0x60;
+ 293   2              }
+ 294   1              else
+ 295   1              {
+ 296   2                      buf[TCP_HEADER_LEN_P]=0x50;
+ 297   2              }
+ 298   1      }
+ 299          /******************************************************
+ 300          *函数名称: NETPcMakeArpAnswer
+ 301          *输    入: buf 数据包缓冲区
+ 302          *输    出: 无
+ 303          *说    明: 网络ARP应答
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 6   
+
+ 304          *******************************************************/
+ 305          void NETPcMakeArpAnswer(UINT8 *buf)
+ 306          {
+ 307   1              UINT8 i=0;
+ 308   1      
+ 309   1              NETPcMakeEth(buf);      //建立以太网首部
+ 310   1              //设置ARP操作码
+ 311   1              buf[ETH_ARP_OPCODE_H_P]=ETH_ARP_OPCODE_REPLY_H_V;
+ 312   1              buf[ETH_ARP_OPCODE_L_P]=ETH_ARP_OPCODE_REPLY_L_V;
+ 313   1      
+ 314   1              while(i<6)//设置MAC地址
+ 315   1              {
+ 316   2                      buf[ETH_ARP_DST_MAC_P+i]=buf[ETH_ARP_SRC_MAC_P+i];
+ 317   2                      buf[ETH_ARP_SRC_MAC_P+i]=acMACAddr[i];
+ 318   2                      i++;
+ 319   2              }  
+ 320   1              
+ 321   1              i=0;  
+ 322   1              
+ 323   1              while(i<4)//设置IP地址
+ 324   1              {
+ 325   2                      buf[ETH_ARP_DST_IP_P+i]=buf[ETH_ARP_SRC_IP_P+i];
+ 326   2                      buf[ETH_ARP_SRC_IP_P+i]=acIPAddr[i];
+ 327   2                      i++;
+ 328   2              }
+ 329   1      
+ 330   1              NETCiPacketSend(buf,42); //发送数据
+ 331   1      }
+ 332          
+ 333          /******************************************************
+ 334          *函数名称: NETPcMakeEchoReply
+ 335          *输    入: buf 数据包缓冲 ，len 发送长度
+ 336          *输    出: 长度
+ 337          *说    明: 网络ECHO应答
+ 338          *******************************************************/
+ 339          void NETPcMakeEchoReply(UINT8 *buf,UINT16 len)
+ 340          {
+ 341   1              NETPcMakeEth(buf);//建立以太网首部
+ 342   1              NETPcMakeIP(buf); //建立IP包首部
+ 343   1              
+ 344   1              buf[ICMP_TYPE_P]=ICMP_TYPE_ECHOREPLY_V;//设置应答
+ 345   1      
+ 346   1              if (buf[ICMP_CHECKSUM_P] > (0xff-0x08))//设置校验值
+ 347   1              {
+ 348   2                      buf[ICMP_CHECKSUM_P+1]++;
+ 349   2              }
+ 350   1      
+ 351   1              buf[ICMP_CHECKSUM_P]+=0x08;
+ 352   1      
+ 353   1              NETCiPacketSend(buf,len);//发送数据
+ 354   1      }   
+ 355          /******************************************************************
+ 356          *函数名称:NETPcMakeUdpReply
+ 357          *输    入:buf      本机向网络发送的数据
+ 358                    sz       要添加的数据
+ 359                           datalen添加的数据的长度
+ 360                           port    端口      
+ 361          *输    出:无
+ 362          *说    明:填充UDP要应答的数据
+ 363          *******************************************************************/
+ 364          void NETPcMakeUdpReply(UINT8 *buf,UINT8 *sz,UINT8 datalen,UINT16 port) 
+ 365          {
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 7   
+
+ 366   1              UINT8 i=0;
+ 367   1              UINT16 ck;
+ 368   1              
+ 369   1              NETPcMakeEth(buf);    //建立以太网首部
+ 370   1              
+ 371   1              //设置IP包总长度
+ 372   1              buf[IP_TOTLEN_H_P]=0;
+ 373   1              buf[IP_TOTLEN_L_P]=IP_HEADER_LEN+UDP_HEADER_LEN+datalen;  
+ 374   1              
+ 375   1              NETPcMakeIP(buf);     //建立IP包
+ 376   1              
+ 377   1              buf[UDP_DST_PORT_H_P]=port>>8;//UDP目标端口高字节
+ 378   1              buf[UDP_DST_PORT_L_P]=port & 0xff;       //UDP目标端口低字节
+ 379   1              buf[UDP_LEN_H_P]=0;
+ 380   1              buf[UDP_LEN_L_P]=UDP_HEADER_LEN+datalen;//UDP包长度赋给低字节
+ 381   1              buf[UDP_CHECKSUM_H_P]=0;
+ 382   1              buf[UDP_CHECKSUM_L_P]=0;
+ 383   1      
+ 384   1              while(i<datalen)                   //UDP包数据
+ 385   1              {
+ 386   2                      buf[UDP_DATA_P+i]=sz[i];
+ 387   2                      i++;
+ 388   2              }  
+ 389   1             
+ 390   1              ck=NETPcCheckSum(&buf[IP_SRC_P], 16 + datalen,1);//校验数据
+ 391   1              buf[UDP_CHECKSUM_H_P]=ck>>8;     //校验值高字节
+ 392   1              buf[UDP_CHECKSUM_L_P]=ck& 0xff; //校验值低字节
+ 393   1              //发送UDP数据
+ 394   1              NETCiPacketSend(buf,UDP_HEADER_LEN+IP_HEADER_LEN+ETH_HEADER_LEN+datalen);
+ 395   1      }
+ 396          /******************************************************
+ 397          *函数名称: NETPcMakeTcpSynAck
+ 398          *输    入: buf 数据包缓冲区
+ 399          *输    出: 无
+ 400          *说    明: TCP同步应答
+ 401          *******************************************************/
+ 402          void NETPcMakeTcpSynAck(UINT8 *buf)
+ 403          {
+ 404   1              UINT16 ck;
+ 405   1              NETPcMakeEth(buf);//建立以太网首部
+ 406   1              // 原本20个字节的TCP头部,现在附加上了MSS的选项,变为24字节了
+ 407   1              buf[IP_TOTLEN_H_P]=0;
+ 408   1              buf[IP_TOTLEN_L_P]=IP_HEADER_LEN+TCP_HEADER_LEN_PLAIN+4;
+ 409   1              NETPcMakeIP(buf); //建立IP包首部
+ 410   1              buf[TCP_FLAGS_P]=TCP_FLAGS_SYNACK_V;//同步应答标志
+ 411   1              NETPcMakeTcpHead(buf,1,1,0);//建立TCP包首部
+ 412   1             
+ 413   1              ck=NETPcCheckSum(&buf[IP_SRC_P], 8+TCP_HEADER_LEN_PLAIN+4,2); //校验数据
+ 414   1              buf[TCP_CHECKSUM_H_P]=ck>>8;    //校验值高字节
+ 415   1              buf[TCP_CHECKSUM_L_P]=ck& 0xff;//校验值低字节
+ 416   1          //发送TCP数据
+ 417   1      NETCiPacketSend(buf,IP_HEADER_LEN+TCP_HEADER_LEN_PLAIN+4+ETH_HEADER_LEN);
+ 418   1      }
+ 419          
+ 420          /******************************************************
+ 421          *函数名称: NETPcGetTcpDataPointer
+ 422          *输    入: 无
+ 423          *输    出: 无
+ 424          *说    明: TCP包是否还有数据
+ 425          *******************************************************/
+ 426          UINT16 NETPcGetTcpDataPointer(void)
+ 427          {
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 8   
+
+ 428   1              if (usInfoDataLen)
+ 429   1              {
+ 430   2                      return((UINT16)TCP_SRC_PORT_H_P+usInfoHdrLen);
+ 431   2              }
+ 432   1              else
+ 433   1              {
+ 434   2                      return(0);
+ 435   2              }
+ 436   1      }
+ 437          
+ 438          /******************************************************
+ 439          *函数名称: NETPcInitLenInfo
+ 440          *输    入: 数据包缓冲区
+ 441          *输    出: 无
+ 442          *说    明: 初始化响应的长度变量
+ 443          *******************************************************/
+ 444          void NETPcInitLenInfo(UINT8 *buf)
+ 445          {
+ 446   1         usInfoDataLen =(((INT16)buf[IP_TOTLEN_H_P])<<8)|(buf[IP_TOTLEN_L_P]&0xff);
+ 447   1         usInfoDataLen-=IP_HEADER_LEN;
+ 448   1         usInfoHdrLen  =(buf[TCP_HEADER_LEN_P]>>4)*4; 
+ 449   1         usInfoDataLen-=usInfoHdrLen;  
+ 450   1              
+ 451   1         if (usInfoDataLen<=0)
+ 452   1         {
+ 453   2              usInfoDataLen=0;
+ 454   2         }
+ 455   1      }
+ 456          /******************************************************
+ 457          *函数名称: NETPcMakeTcpAck
+ 458          *输    入: buf  本机向网络发送的数据
+ 459                     bfin 本机是否主动断开链接
+ 460          *输    出: 无
+ 461          *说    明: 填充TCP应答信息
+ 462          *******************************************************/
+ 463          void NETPcMakeTcpAck(UINT8 *buf,BOOL bfin)
+ 464          {
+ 465   1              UINT16 j;
+ 466   1                      
+ 467   1              NETPcMakeEth(buf);//建立以太网首部
+ 468   1           
+ 469   1              buf[TCP_FLAGS_P]=TCP_FLAGS_ACK_V;//TCP应答
+ 470   1                      
+ 471   1                //这里一定要加上TCP_FLAGS_FIN_V来中断TCP连接
+ 472   1                //否则当客户端请求断开连接时,不加上这些头部位识别,会产生该端口无法释放.
+ 473   1                 if(bfin) buf[TCP_FLAGS_P]|=TCP_FLAGS_RST_V|TCP_FLAGS_FIN_V;
+ 474   1               
+ 475   1              if (usInfoDataLen==0)//数据长度是否为0
+ 476   1              {
+ 477   2                      NETPcMakeTcpHead(buf,1,0,1);              //建立TCP首部
+ 478   2              }
+ 479   1              else
+ 480   1              {
+ 481   2                      NETPcMakeTcpHead(buf,usInfoDataLen,0,1);//建立TCP首部
+ 482   2              }
+ 483   1      
+ 484   1      
+ 485   1              j=IP_HEADER_LEN+TCP_HEADER_LEN_PLAIN; //IP包首部长度、TCP包首部
+ 486   1              
+ 487   1              buf[IP_TOTLEN_H_P]=j>>8;     //IP数据包总长度高字节
+ 488   1              buf[IP_TOTLEN_L_P]=j& 0xff; //IP数据包总长度低字节
+ 489   1              
+C51 COMPILER V7.06   NETPROTOCOL                                                           03/16/2011 16:18:38 PAGE 9   
+
+ 490   1              NETPcMakeIP(buf);//建立IP包
+ 491   1      
+ 492   1              j=NETPcCheckSum(&buf[IP_SRC_P], 8+TCP_HEADER_LEN_PLAIN,2);//校验数据
+ 493   1      
+ 494   1              buf[TCP_CHECKSUM_H_P]=j>>8;    //校验值高字节
+ 495   1              buf[TCP_CHECKSUM_L_P]=j& 0xff;//校验值低字节
+ 496   1            //发送数据
+ 497   1      NETCiPacketSend(buf,IP_HEADER_LEN+TCP_HEADER_LEN_PLAIN+ETH_HEADER_LEN);
+ 498   1      }  
+ 499          /******************************************************
+ 500          *函数名称: NETPcMakeTcpAckWithData
+ 501          *输    入: buf 数据包缓冲区，dlen 数据长度
+ 502          *输    出: 无
+ 503          *说    明: 发送TCP数据
+ 504          *******************************************************/
+ 505          void NETPcMakeTcpAckWithData(UINT8 *buf,UINT16 dlen)
+ 506          {
+ 507   1              UINT16 j;
+ 508   1                      
+ 509   1                 buf[TCP_FLAGS_P]=TCP_FLAGS_ACK_V|TCP_FLAGS_PUSH_V;//应答标志和发送数据标志
+ 510   1              
+ 511   1              j=IP_HEADER_LEN+TCP_HEADER_LEN_PLAIN+dlen;//数据长度
+ 512   1      
+ 513   1              buf[IP_TOTLEN_H_P]=j>>8;     //IP数据包首部总长度高字节
+ 514   1              buf[IP_TOTLEN_L_P]=j& 0xff; //IP数据包首部总长度低字节
+ 515   1      
+ 516   1              NETPcFillIPHdrChkSum(buf);   //IP数据包首部校验
+ 517   1      
+ 518   1              buf[TCP_CHECKSUM_H_P]=0;      //TCP首部校验值清零
+ 519   1              buf[TCP_CHECKSUM_L_P]=0;
+ 520   1              
+ 521   1              //校验数据
+ 522   1              j=NETPcCheckSum(&buf[IP_SRC_P], 8+TCP_HEADER_LEN_PLAIN+dlen,2);
+ 523   1      
+ 524   1              buf[TCP_CHECKSUM_H_P]=j>>8;      //校验值高字节
+ 525   1              buf[TCP_CHECKSUM_L_P]=j& 0xff;   //校验值低字节
+ 526   1       //发送TCP数据
+ 527   1      NETCiPacketSend(buf,IP_HEADER_LEN+TCP_HEADER_LEN_PLAIN+dlen+ETH_HEADER_LEN);
+ 528   1      }
+ 529          
+ 530          
+ 531          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1991    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     17      65
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

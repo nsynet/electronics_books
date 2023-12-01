@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>1</fileVersion>
+  <configuration>
+    <name>Debug</name>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file>$PROJ_DIR$\Debug\Exe\cc2420.d43</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file>$TOOLKIT_DIR$\INC\msp430x44x.h</file>
+          <file>$TOOLKIT_DIR$\INC\in430.h</file>
+          <file>$TOOLKIT_DIR$\INC\intrinsics.h</file>
+          <file>$PROJ_DIR$\led.c</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\cc2420.d43</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file>$TOOLKIT_DIR$\CONFIG\lnk430C111.xcl</file>
+          <file>$TOOLKIT_DIR$\config\compactmath.xcl</file>
+          <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+          <file>$TOOLKIT_DIR$\LIB\CLIB\cl430f.r43</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+  </configuration>
+</project>
+
+

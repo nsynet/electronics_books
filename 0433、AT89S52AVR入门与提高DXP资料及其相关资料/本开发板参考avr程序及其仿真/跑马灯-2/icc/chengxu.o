@@ -1,0 +1,106 @@
+XL
+H 1 areas 5 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size B6 flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\已完成good\跑马灯-2\icc\chengxu.c
+dbfunc e delayms 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 7 4
+dbline 9 4
+dbline A 6
+dbline B 6
+dbline B C
+dbline B C
+dbline B 10
+dbline C 16
+dbline 9 16
+dbline 9 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e delayus 26 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 2A
+dbline 10 2A
+dbline 12 2A
+dbline 13 2C
+dbline 14 2C
+dbline 14 32
+dbline 14 32
+dbline 14 36
+dbline 15 3C
+dbline 12 3C
+dbline 12 40
+dbline FFFFFFFE 46
+dbline 0 4A
+dbfunc e main 4C fV
+dbsym r j 14 i
+dbsym r i 16 i
+dbline FFFFFFFF 4C
+dbline 19 4C
+dbline 1A 4C
+dbline 1D 52
+dbline 1F 52
+dbline 20 58
+dbline 21 58
+dbline 22 5C
+dbline 23 62
+dbline 1F 62
+dbline 1F 66
+dbline 24 6E
+dbline 25 72
+dbline 26 78
+dbline 27 78
+dbline 28 7C
+dbline 29 7E
+dbline 2A 84
+dbline 25 84
+dbline 25 88
+dbline 2B 90
+dbline 2C 94
+dbline 2D 9A
+dbline 2E 9A
+dbline 2F 9E
+dbline 30 A0
+dbline 31 A6
+dbline 2C A6
+dbline 2C AA
+dbline 32 B2
+dbline 1C B2
+dbline FFFFFFFE B4
+dbline 0 B4
+S _main Def004C
+S _delayms Def0000
+S _delayus Def0026
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 01 00
+T 26 00 0E 94 00 00 0A C0 44 E6 50 E0 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 34 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 42 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 01 00
+T 4C 00 8F EF 8A BB 30 C0 66 27 77 27 07 C0 8F EF
+R 00 00 00 00
+T 5A 00 8B BB 0A E0 10 E0 CF DF 6F 5F 7F 4F 64 30
+R 00 00 00 00
+T 68 00 E0 E0 7E 07 A8 F3 41 E0 50 E0 66 27 77 27
+R 00 00 00 00
+T 76 00 08 C0 44 0F 55 1F 4B BB 0A E0 10 E0 BE DF
+R 00 00 00 00
+T 84 00 6F 5F 7F 4F 68 30 E0 E0 7E 07 A0 F3 40 E8
+R 00 00 00 00
+T 92 00 50 E0 66 27 77 27 08 C0 56 95 47 95 4B BB
+R 00 00 00 00
+T A0 00 0A E0 10 E0 AD DF 6F 5F 7F 4F 68 30 E0 E0
+R 00 00 00 00
+T AE 00 7E 07 A0 F3 CF CF 08 95
+R 00 00 00 00

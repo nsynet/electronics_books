@@ -1,0 +1,99 @@
+C51 COMPILER V8.05a   ZLTS                                                                 04/26/2009 03:55:56 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE ZLTS
+OBJECT MODULE PLACED IN zlts.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE zlts.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #define uchar unsigned char
+   3          
+   4          unsigned char N=0;
+   5          unsigned char X=20;     //占空比初始值为50%
+   6          
+   7          int a,b;
+   8          
+   9          sbit PWM=P3^6;  //PWM输出脚
+  10          
+  11          sbit P2_0=P2^0;//M1启动
+  12          sbit P2_1=P2^1;//M1停止
+  13          sbit P2_2=P2^2;//M1加速
+  14          sbit P2_3=P2^3;//M2减速
+  15          
+  16          sbit P1_0=P1^0;//M1
+  17          sbit P1_1=P1^1;//M1
+  18          
+  19          
+  20          void scjs(void)interrupt 3
+  21          {
+  22   1      TH1=0Xff;
+  23   1      TL1=0x17;
+  24   1      b++;
+  25   1      }
+  26          
+  27          main()
+  28          {
+  29   1      TMOD=0x00;
+  30   1      IE=0X88;
+  31   1      TH1=0Xff;
+  32   1      TL1=0X17;
+  33   1      TR0=1;
+  34   1      TR1=1;
+  35   1      a=0;
+  36   1      b=0;
+  37   1      
+  38   1      
+  39   1      while(1)
+  40   1      {
+  41   2       PWM=1;
+  42   2       while(1)
+  43   2       {
+  44   3       b=0;
+  45   3       while(!b);
+  46   3       if (N==X)
+  47   3       PWM=0;
+  48   3       if (N==100)break;
+  49   3       N++;
+  50   3      
+  51   3       if(P2_0==0)//M1启动
+  52   3               {
+  53   4                P1_0=1;
+  54   4                    P1_1=0;
+  55   4                }
+C51 COMPILER V8.05a   ZLTS                                                                 04/26/2009 03:55:56 PAGE 2   
+
+  56   3       if(P2_1==0)//M1停止
+  57   3                {
+  58   4                 P1_0=1;
+  59   4                         P1_1=1;
+  60   4                }
+  61   3       if(P2_2==0)
+  62   3                 { 
+  63   4                      X++; 
+  64   4                               
+  65   4                 }
+  66   3       if(P2_3==0)
+  67   3                 {
+  68   4                      X--;     
+  69   4                 }
+  70   3            }
+  71   2                  N=0;
+  72   2          }
+  73   1      
+  74   1        }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    102    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

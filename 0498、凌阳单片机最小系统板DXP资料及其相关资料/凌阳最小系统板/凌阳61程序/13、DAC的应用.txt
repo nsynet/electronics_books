@@ -1,0 +1,28 @@
+//工程名称：DAC的简单应用.spj
+//功能描述：DAC的双通道输出
+//涉及的库：
+//组成文件：DAC.c
+//硬件连接：通过实验板的两通道DAC输出分别接示波器CH1、CH2可以观察输出波形——锯齿波
+ #include<MYSPCE061A.h>
+ void delay()
+ {
+ 	int i=0;
+ 	while(i<20)
+ 	{i++;}
+ }
+ int main()
+ {
+ 	int temp=0;
+ 	__asm("INT OFF");
+ 	P_DAC_Ctrl=0;
+ 	while(1)
+ 	{
+ 	P_Watchdog_Clear=0x0001;
+ 	temp+=0x0040;
+ 	P_DAC1=temp;
+ 	P_DAC2=temp;
+ 	if(temp>0x0cc0)temp=0;  //50个阶梯
+ 	delay();
+ 	}
+ 	return(0);
+ }

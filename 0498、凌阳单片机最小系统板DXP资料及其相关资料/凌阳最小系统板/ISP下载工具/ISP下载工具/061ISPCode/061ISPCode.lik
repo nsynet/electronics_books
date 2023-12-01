@@ -1,0 +1,12 @@
+Version: 3.0
+Options: m37
+Obj: "C:\Program Files\Sunplus\unSP IDE 2.6.2D\startupcode\startupD.obj"
+Obj: "F:\_Work\_SPCE061A\ISP Code\Release\Source Code\061ISPCode\Debug\main.obj"
+Obj: "F:\_Work\_SPCE061A\ISP Code\Release\Source Code\061ISPCode\Debug\Resource.obj"
+Obj: "F:\_Work\_SPCE061A\ISP Code\Release\Source Code\061ISPCode\Debug\ISP.obj"
+Output: "F:\_Work\_SPCE061A\ISP Code\Release\Source Code\061ISPCode\Debug\061ISPCode.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: CODE in "ISP.obj" at 80B5 
+;Align: CODE in "ISP.obj" with 0 
+;Locate: __sn_init_table at 8000 

@@ -1,0 +1,63 @@
+XL
+H 1 areas 5 global symbols
+M chengxu.c
+S push_gset2 Ref0000
+S pop_gset2 Ref0000
+A text size 54 flags 0
+dbfile C:\DOCUME~1\Administrator\◊¿√Ê\001°¢…¡À∏µ∆…Ëº∆\icc\chengxu.c
+dbfunc e int_io 0 fV
+dbline FFFFFFFF 0
+dbline D 0
+dbline E 0
+dbline FFFFFFFE 4
+dbline 0 4
+dbfunc e Delay_us 6 fV
+dbsym r i 14 I
+dbsym r j 16 I
+dbsym r Timer 10 I
+dbline FFFFFFFF A
+dbline 15 A
+dbline 17 A
+dbline 18 E
+dbline 19 12
+dbline 18 14
+dbline 18 18
+dbline 17 22
+dbline 17 26
+dbline FFFFFFFE 30
+dbline 0 34
+dbfunc e main 36 fV
+dbline FFFFFFFF 36
+dbline 20 36
+dbline 21 36
+dbline 22 38
+dbline 23 3A
+dbline 24 3C
+dbline 26 40
+dbline 27 40
+dbline 28 46
+dbline 29 48
+dbline 2A 4E
+dbline 2C 50
+dbline 25 50
+dbline FFFFFFFE 52
+dbline 0 52
+S _main Def0036
+S _Delay_us Def0006
+S _int_io Def0000
+T 00 00 8F EF 81 BB 08 95
+R 00 00 00 00
+T 06 00 0E 94 00 00 A8 01 0C C0 6B E0 70 E0 00 00
+R 00 00 00 00 12 04 00 00
+T 14 00 61 50 70 40 22 24 33 24 26 16 37 06 C4 F3
+R 00 00 00 00
+T 22 00 41 50 50 40 22 24 33 24 24 16 35 06 7C F3
+R 00 00 00 00
+T 30 00 0E 94 00 00 08 95
+R 00 00 00 00 12 04 01 00
+T 36 00 E4 DF 94 9A 95 9A 96 98 08 C0 00 E1 17 E2
+R 00 00 00 00
+T 44 00 E0 DF 97 98 00 E1 17 E2 DC DF 97 9A F7 CF
+R 00 00 00 00
+T 52 00 08 95
+R 00 00 00 00

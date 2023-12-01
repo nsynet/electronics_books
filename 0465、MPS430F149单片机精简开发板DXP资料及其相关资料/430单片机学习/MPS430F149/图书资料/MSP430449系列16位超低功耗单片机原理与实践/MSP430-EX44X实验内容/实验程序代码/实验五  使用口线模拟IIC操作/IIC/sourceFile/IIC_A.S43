@@ -1,0 +1,249 @@
+;***********************************************************************
+;      文件名称：
+;              IIC_A.s43
+;       文件说明：
+;              使用口线模拟IIC操作EEPROM，查看程序运行结果需具备调试
+;     的基本能力。程序在EEPROM的0x02处写入放在0x203处的数据，然后读出
+;     放到0x204,可在CHECK_POINT 处设置断点查看写入与读出的数据是否相同。
+;**********************************************************************
+#include  "msp430x44x.h "
+;************************************************************************
+;        端口定义
+;************************************************************************
+SDA             equ       080H                               ;SDA=P4.7
+SCL             equ       040H                               ;SCL=P4.6
+;************************************************************************
+;        读写命令定义
+;************************************************************************
+SLAW            equ       0A0H                               ;写命令字
+SLAR            equ       0A1H                               ;读命令字
+;************************************************************************
+;      RAM定义
+;************************************************************************
+FLAG_F0         equ       200H                               ;存储应答信号ACK
+BITI2C          equ       202H                               ;位计数器
+WR_I2C_ROM      equ       203H                               ;写缓冲
+RD_I2C_ROM      equ       204H                               ;读缓冲
+ADDR_I2C_ROM    equ       205H                               ;地址缓冲
+;************************************************************************
+                ORG     08000h                               ; 程序开始处
+;************************************************************************
+Reset
+              	mov.w   #0600h,SP                            ; 堆栈地址
+StopWDT       	mov.w   #WDTPW+WDTHOLD,&WDTCTL               ; 禁止看门狗
+                clr.b   &FLAG_F0
+                clr.b   R14
+
+mainloop
+                mov.b   #02H,&ADDR_I2C_ROM                   ;写地址02送入
+                mov.b   R14,&WR_I2C_ROM                      ;送入所写内容
+                call    #RANDOM_WRB                          ;调用随机写一字节函数
+                nop
+                nop
+                mov     #0ffh,R15
+loop_1122       dec.b   R15
+                jnz     loop_1122
+                mov.b   #02H ,&ADDR_I2C_ROM                   ;读地址02送入
+                call    #RANDOM_RDB                          ;调用随机读一字节函数
+                mov.b   &RD_I2C_ROM,R9                       ;读出数据送入R9，以便校验读写的数据        	
+                inc.b     R14
+                nop
+                nop
+CHECK_POINT    jmp     mainloop
+;************************************************************************-
+;VIIC
+;占用R15
+;说明：当写一个字节时，所写内容送入WR_I2C_ROM,地址送入ADDR_I2C_ROM,然后调用RANDOM_WRB?
+;当随机读一个字节时，地址送入ADDR_I2C_ROM,然后调用RANDOM_RDB，读出的数据在RD_I2C_ROM中
+;相关变量和常数定义如下：
+;SDA            equ        080H        ;SDA=P4.7
+;SCL            equ        040H        ;SDA=P4.6
+;SLAW           equ        0A0H        ;写命令字
+;SLAR           equ        0A1H        ;读命令字
+;FLAG_F0        equ        200H        ;存储应答信号ACK
+;BITI2C         equ        202H        ;位计数器
+;WR_I2C_ROM     equ        203H        ;写缓冲
+;RD_I2C_ROM     equ        204H        ;读缓冲
+;ADDR_I2C_ROM   equ        205H        ;地址缓冲
+;****************************************************************************
+;       启动IIC总线子程序
+;****************************************************************************
+STA
+          bic.b   #SDA+SCL,&P4OUT                             ;初始化输出缓冲
+          bic.b   #SDA,&P4DIR                                 ; SDA=1
+          call    #I2C_DELAY
+          bic.b   #SCL,&P4DIR                                 ; SCL=1
+          call    #I2C_DELAY
+          bis.b   #SDA,&P4DIR                                 ; SDA=0
+          call    #I2C_DELAY
+          bis.b   #SCL,&P4DIR                                 ; SCL=0
+          call    #I2C_DELAY
+          RET
+;****************************************************************************
+;          停止IIC总线子程序
+;****************************************************************************-
+STOP
+          bis.b   #SDA,&P4DIR                                 ; SDA=0
+          call    #I2C_DELAY
+          bic.b   #SCL,&P4DIR                                 ; SCL=1
+          call    #I2C_DELAY
+          bic.b   #SDA,&P4DIR                                 ; SDA=1
+          call    #I2C_DELAY
+          bis.b   #SDA,&P4DIR                                 ; SDA=0
+          call    #I2C_DELAY
+          bis.b   #SCL,&P4DIR                                 ; SCL=0
+          call    #I2C_DELAY
+          RET
+;****************************************************************************
+;         产生应答信号子程序
+;****************************************************************************
+MACK
+          bis.b   #SDA,&P4DIR                                 ; SDA=0
+          call    #I2C_DELAY
+          bic.b   #SCL,&P4DIR                                 ; SCL=1
+          call    #I2C_DELAY
+          bis.b   #SCL,&P4DIR                                 ; SCL=0
+          call    #I2C_DELAY
+          bic.b   #SDA,&P4DIR                                 ; SDA=1
+          call    #I2C_DELAY
+          RET
+;****************************************************************************
+;           不产生应答信号子程序
+;****************************************************************************
+MNACK
+          bic.b   #SDA,&P4DIR                                ; SDA=0
+          call    #I2C_DELAY
+          bic.b   #SCL,&P4DIR                                ; SCL=0
+          call    #I2C_DELAY
+          bis.b   #SCL,&P4DIR                                ; SCL=0
+          call    #I2C_DELAY
+          bis.b   #SDA,&P4DIR                                ; SDA=0
+          call    #I2C_DELAY
+          RET
+;****************************************************************************
+;          接收应答信号子程序程序
+;****************************************************************************
+CACK
+          bic.b   #SDA,&P4DIR                                ; SDA=1
+          call    #I2C_DELAY
+          bic.b   #SCL,&P4DIR                                ; SCL=1
+          mov.b   #00H,&FLAG_F0
+          call    #I2C_DELAY
+          bit.b   #SDA,&P4IN
+          jnc     ACK_LOW
+          mov.b   #01H,&FLAG_F0
+;****************************************************************************
+;         不接收应答信号子程序
+;****************************************************************************
+ACK_LOW   bis.b   #SCL,&P4DIR                               ;  SCL=0
+          call    #I2C_DELAY
+          RET
+
+;****************************************************************************
+;        发送一个字节
+;****************************************************************************
+WRBYT
+          mov.b   #08H,&BITI2C
+WR_LP
+          rla.b   R15
+          jc      WR1
+WR0       bis.b   #SDA,&P4DIR                               ; SDA=0
+          call    #I2C_DELAY
+          bic.b   #SCL,&P4DIR                               ; SCL=1
+          call    #I2C_DELAY
+          bis.b   #SCL,&P4DIR                               ; SCL=0
+          call    #I2C_DELAY
+          jmp     C_BITI2C
+WR1       bic.b   #SDA,&P4DIR                               ; SDA=1
+          call    #I2C_DELAY
+          bic.b   #SCL,&P4DIR                               ; SCL=1
+          call    #I2C_DELAY
+          bis.b   #SCL,&P4DIR                               ; SCL=0
+          call    #I2C_DELAY
+          bis.b   #SDA,&P4DIR                               ; SDA=0
+          call    #I2C_DELAY
+C_BITI2C  dec.b   &BITI2C
+          jnz     WR_LP
+          RET
+;******************************************************************************
+;          读数据
+;******************************************************************************
+RDBYT
+          mov.b   #08H,&BITI2C
+RD_LP
+          bic.b   #SDA,&P4DIR                               ; SDA=1
+          call    #I2C_DELAY
+          bic.b   #SCL,&P4DIR                               ; SCL=1
+          call    #I2C_DELAY
+          bit.b   #SDA,&P4IN
+          rlc.b   R15
+          call    #I2C_DELAY
+          bis.b   #SCL,&P4DIR                               ; SCL=0
+          call    #I2C_DELAY
+          dec.b   &BITI2C
+          jnz     RD_LP
+          RET
+;******************************************************************************-
+;              随机写入一个字
+;              WR_I2C_ROM,ADDR_I2C_ROM
+;******************************************************************************-
+RANDOM_WRB
+          call    #STA
+          mov.b   #SLAW,R15                                 ;发送指令
+          call    #WRBYT
+          call    #CACK
+          cmp     #01H,&FLAG_F0
+          jeq     RANDOM_WRB
+          mov.b   &ADDR_I2C_ROM,R15                         ;发地址
+          call    #WRBYT
+          call    #CACK
+          cmp     #01H,&FLAG_F0
+          jeq     RANDOM_WRB
+          mov.b   &WR_I2C_ROM,R15                           ;发送一个字节
+          call    #WRBYT
+          call    #CACK                                     ;
+          cmp     #01H,&FLAG_F0                             ;
+          jeq     RANDOM_WRB                                ;
+          call    #STOP
+          RET
+;********************************************************************************
+;             随机读取一个字节
+;             RD_I2C_ROM,ADDR_I2C_ROM
+;********************************************************************************
+RANDOM_RDB
+          call    #STA                 ; 启动总线
+          mov.b   #SLAW,R15            ;
+          call    #WRBYT               ; 发送写命令
+          call    #CACK                ; 应答
+          cmp     #01H,FLAG_F0         ; 检测总线是否空闲
+          jeq     RANDOM_RDB           ;
+          mov.b   &ADDR_I2C_ROM,R15    ; 设置地址
+          call    #WRBYT               ; 写入地址
+          call    #CACK                ; 应答
+          cmp     #01H,FLAG_F0         ;
+          jeq     RANDOM_RDB           ; 读
+          call    #STA                 ; 启动总线
+          mov.b   #SLAR,R15            ; 设置读命令
+          call    #WRBYT               ; 发送读命令
+          call    #CACK                ; 应答
+          cmp     #01H,FLAG_F0         ;
+          jeq     RANDOM_RDB           ; 读
+          call    #RDBYT
+          mov.b   R15,&RD_I2C_ROM
+          call    #MNACK
+          call    #STOP
+          RET
+;********************************************************************************
+;         延时子程序
+;********************************************************************************
+I2C_DELAY
+          nop               ;
+          nop               ; 延迟
+          nop               ;
+          RET
+;********************************************************************************
+;        中断向量表
+;********************************************************************************
+          ORG     0FFFEH
+          DW      Reset
+          END

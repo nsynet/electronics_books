@@ -1,0 +1,96 @@
+.stabs "startup_code.",0x3c,0,0,0
+.stabs "__sn_main:F15",36,0,0,     32844
+.stabs "__sn_end:F15",36,0,0,     32804
+.stabs "__sn_exception:F15",36,0,0,     32805
+.stabs "D:\program\shiyanjiaocheng_program\shiyan6\LED6_asm/", 0x64,0,0,0
+.stabs "D:\program\shiyanjiaocheng_program\shiyan6\LED6_asm\Resource.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabs "D:\program\shiyanjiaocheng_program\shiyan6\LED6_asm/", 0x64,0,0,0
+.stabs "D:\program\shiyanjiaocheng_program\shiyan6\LED6_asm\main.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     32806
+.stabn 0xe0,0,0,     32806
+.stabs "D:\program\shiyanjiaocheng_program\shiyan6\LED6_asm/", 0x64,0,0,0
+.stabs "D:\program\shiyanjiaocheng_program\shiyan6\LED6_asm\hardware.inc", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     32806
+.stabn 0xe0,0,0,     32806
+.stabs "D:\program\shiyanjiaocheng_program\shiyan6\LED6_asm/", 0x64,0,0,0
+.stabs "D:\program\shiyanjiaocheng_program\shiyan6\LED6_asm\main.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     32806
+.stabn 0xe0,0,0,     32806
+.stabn 0xc0,0,0,         0
+.stabs "Pos:S1",38,0,0,         0
+.stabs "Dig:S1",38,0,0,         1
+.stabs "TimerCnt:S1",38,0,0,         2
+.stabn 0xe0,0,0,         3
+.stabn 0xc0,0,0,     32877
+.stabn 0xe0,0,0,     32887
+.stabn 0xc0,0,0,     32806
+.stabn 0x44,0,59,     32806
+.stabn 0x44,0,61,     32807
+.stabn 0x44,0,62,     32808
+.stabn 0x44,0,64,     32810
+.stabn 0x44,0,65,     32812
+.stabn 0x44,0,66,     32814
+.stabn 0x44,0,67,     32816
+.stabn 0x44,0,68,     32818
+.stabn 0x44,0,69,     32820
+.stabn 0x44,0,72,     32822
+.stabn 0x44,0,73,     32824
+.stabn 0x44,0,75,     32826
+.stabn 0x44,0,76,     32827
+.stabn 0x44,0,77,     32828
+.stabn 0x44,0,78,     32829
+.stabn 0x44,0,81,     32831
+.stabn 0x44,0,82,     32833
+.stabn 0x44,0,83,     32835
+.stabn 0x44,0,84,     32836
+.stabn 0x44,0,85,     32837
+.stabn 0x44,0,86,     32839
+.stabn 0x44,0,87,     32840
+.stabn 0x44,0,89,     32842
+.stabn 0x44,0,90,     32843
+.stabn 0x44,0,98,     32844
+.stabn 0x44,0,101,     32845
+.stabn 0x44,0,103,     32847
+.stabn 0x44,0,104,     32849
+.stabn 0x44,0,105,     32850
+.stabn 0x44,0,107,     32852
+.stabn 0x44,0,108,     32854
+.stabn 0x44,0,109,     32856
+.stabn 0x44,0,110,     32857
+.stabn 0x44,0,111,     32858
+.stabn 0x44,0,112,     32859
+.stabn 0x44,0,114,     32860
+.stabn 0x44,0,116,     32862
+.stabn 0x44,0,117,     32864
+.stabn 0x44,0,118,     32865
+.stabn 0x44,0,119,     32867
+.stabn 0x44,0,120,     32868
+.stabn 0x44,0,122,     32869
+.stabn 0x44,0,123,     32870
+.stabn 0x44,0,125,     32871
+.stabn 0x44,0,126,     32872
+.stabn 0x44,0,127,     32873
+.stabn 0x44,0,128,     32874
+.stabn 0x44,0,129,     32875
+.stabn 0x44,0,131,     32876
+.stabn 0xe0,0,0,     32877

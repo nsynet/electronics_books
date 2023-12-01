@@ -1,0 +1,113 @@
+XL
+H 1 areas 5 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size A0 flags 0
+dbfile F:\NEW光~1\八路输入输出继电器控制板\基本输入输出控制\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 2
+dbline C 2
+dbline E 2
+dbline F 4
+dbline 10 4
+dbline 10 A
+dbline 10 A
+dbline 10 E
+dbline 11 14
+dbline E 14
+dbline E 18
+dbline FFFFFFFE 1E
+dbline 0 20
+dbfunc e Init_IO 22 fV
+dbline FFFFFFFF 22
+dbline 17 22
+dbline 19 22
+dbline 1A 26
+dbline 1C 28
+dbline 1D 2C
+dbline 1F 2E
+dbline 20 32
+dbline FFFFFFFE 34
+dbline 0 34
+dbfunc e main 36 fV
+dbline FFFFFFFF 36
+dbline 26 36
+dbline 27 36
+dbline 29 3A
+dbline 2A 3A
+dbline 2B 3C
+dbline 2C 40
+dbline 2C 40
+dbline 2C 44
+dbline 2C 48
+dbline 2D 48
+dbline 2E 4C
+dbline 2E 4C
+dbline 2E 50
+dbline 2E 54
+dbline 2F 54
+dbline 30 58
+dbline 30 58
+dbline 30 5C
+dbline 30 60
+dbline 31 60
+dbline 32 64
+dbline 32 64
+dbline 32 68
+dbline 32 6C
+dbline 33 6C
+dbline 34 70
+dbline 34 70
+dbline 34 74
+dbline 34 78
+dbline 35 78
+dbline 36 7C
+dbline 36 7C
+dbline 36 80
+dbline 36 84
+dbline 37 84
+dbline 38 88
+dbline 38 88
+dbline 38 8C
+dbline 38 90
+dbline 39 90
+dbline 3A 94
+dbline 3A 94
+dbline 3A 98
+dbline 3A 9C
+dbline 3B 9C
+dbline 28 9C
+dbline FFFFFFFE 9E
+dbline 0 9E
+S _main Def0036
+S _Init_IO Def0022
+S _DelayMS Def0000
+T 00 00 00 D0 0A C0 48 EE 53 E0 02 C0 41 50 50 40
+R 00 00 00 00 82 02 00 00
+T 0E 00 40 30 45 07 D9 F7 01 50 10 40 00 30 01 07
+R 00 00 00 00
+T 1C 00 99 F7 00 D0 08 95
+R 00 00 00 00 82 04 01 00
+T 22 00 8F E3 87 BB 88 BB 8F EF 84 BB 85 BB 22 24
+R 00 00 00 00
+T 30 00 21 BA 22 BA 08 95
+R 00 00 00 00
+T 36 00 F5 DF 31 C0 A8 95 80 99 04 C0 8E EF 85 BB
+R 00 00 00 00
+T 44 00 8F EF 88 BB 81 99 04 C0 8D EF 85 BB 8F EF
+R 00 00 00 00
+T 52 00 88 BB 82 99 04 C0 8B EF 85 BB 8F EF 88 BB
+R 00 00 00 00
+T 60 00 83 99 04 C0 87 EF 85 BB 8F EF 88 BB 84 99
+R 00 00 00 00
+T 6E 00 04 C0 8E EF 88 BB 8F EF 85 BB 85 99 04 C0
+R 00 00 00 00
+T 7C 00 8D EF 88 BB 8F EF 85 BB 86 99 04 C0 8B EF
+R 00 00 00 00
+T 8A 00 88 BB 8F EF 85 BB 87 99 04 C0 87 EF 88 BB
+R 00 00 00 00
+T 98 00 8F EF 85 BB CE CF 08 95
+R 00 00 00 00

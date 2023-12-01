@@ -1,0 +1,173 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile F:\NEW光~1\MEGA12~1\AVR单片机配套程序\001、闪烁灯设计\icc\chengxu.c
+ 0000                   .dbfunc e DelayMS _DelayMS fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMS::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 11
+ 0004           ; #include <iom128.h>
+ 0004           ; /**********************************************************************
+ 0004           ;                                 函数数据类型说明                                                              
+ 0004           ; **********************************************************************/
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; /**********************************************************************
+ 0004           ;                                 MS级延时函数程序，参数i 延时时间                                                                      
+ 0004           ; **********************************************************************/
+ 0004           ; void DelayMS(uint i)
+ 0004           ; {
+ 0004                   .dbline 13
+ 0004           ; uint j;
+ 0004           ; for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 14
+ 0006           ; {
+ 0006                   .dbline 15
+ 0006 40E4              ldi R20,8000
+ 0008 5FE1              ldi R21,31
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 15
+ 000C           L7:
+ 000C                   .dbline 15
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 15
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 16
+ 0016           L3:
+ 0016                   .dbline 13
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 13
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e main _main fV
+                        .even
+ 0026           _main::
+ 0026                   .dbline -1
+ 0026                   .dbline 22
+ 0026           ; for(j=8000;j!=0;j--);
+ 0026           ; }
+ 0026           ; }
+ 0026           ; /**********************************************************************
+ 0026           ;                                  主函数                                                       
+ 0026           ; **********************************************************************/
+ 0026           ; void main(void)
+ 0026           ; {
+ 0026                   .dbline 25
+ 0026           ;  //DDRD=0XFF;//端口设置，PD口设置为推挽1输出
+ 0026           ;  //PORTD=0XFF;
+ 0026           ;  DDRA=0XFF;//端口设置，PA口设置为推挽1输出
+ 0026 8FEF              ldi R24,255
+ 0028 8ABB              out 0x1a,R24
+ 002A                   .dbline 26
+ 002A           ;  PORTA=0XFF;
+ 002A 8BBB              out 0x1b,R24
+ 002C                   .dbline 27
+ 002C           ;  DDRB=0XFF;//端口设置，PB口设置为推挽1输出
+ 002C 87BB              out 0x17,R24
+ 002E                   .dbline 28
+ 002E           ;  PORTB=0XFF;
+ 002E 88BB              out 0x18,R24
+ 0030                   .dbline 29
+ 0030           ;  DDRC=0XFF;//端口设置，PC口设置为推挽1输出
+ 0030 84BB              out 0x14,R24
+ 0032                   .dbline 30
+ 0032           ;  PORTC=0XFF;
+ 0032 85BB              out 0x15,R24
+ 0034                   .dbline 31
+ 0034           ;  DDRD=0XFF;//端口设置，PD口设置为推挽1输出
+ 0034 81BB              out 0x11,R24
+ 0036                   .dbline 32
+ 0036           ;  PORTD=0XFF;
+ 0036 82BB              out 0x12,R24
+ 0038                   .dbline 33
+ 0038           ;  DDRE=0XFF;//端口设置，PE口设置为推挽1输出
+ 0038 82B9              out 0x2,R24
+ 003A                   .dbline 34
+ 003A           ;  PORTE=0XFF;
+ 003A 83B9              out 0x3,R24
+ 003C                   .dbline 35
+ 003C           ;  DDRF=0XFF;//端口设置，PF口设置为推挽1输出
+ 003C 80936100          sts 97,R24
+ 0040                   .dbline 36
+ 0040           ;  PORTF=0XFF;
+ 0040 80936200          sts 98,R24
+ 0044                   .dbline 37
+ 0044           ;  DDRG=0XFF;//端口设置，PG口设置为推挽1输出
+ 0044 80936400          sts 100,R24
+ 0048                   .dbline 38
+ 0048           ;  PORTG=0XFF;
+ 0048 80936500          sts 101,R24
+ 004C 1AC0              xjmp L12
+ 004E           L11:
+ 004E                   .dbline 40
+ 004E                   .dbline 42
+ 004E 2224              clr R2
+ 0050 2BBA              out 0x1b,R2
+ 0052                   .dbline 43
+ 0052 28BA              out 0x18,R2
+ 0054                   .dbline 44
+ 0054 25BA              out 0x15,R2
+ 0056                   .dbline 45
+ 0056 22BA              out 0x12,R2
+ 0058                   .dbline 46
+ 0058 23B8              out 0x3,R2
+ 005A                   .dbline 47
+ 005A 20926200          sts 98,R2
+ 005E                   .dbline 48
+ 005E 20926500          sts 101,R2
+ 0062                   .dbline 49
+ 0062 04E6              ldi R16,100
+ 0064 10E0              ldi R17,0
+ 0066 CCDF              xcall _DelayMS
+ 0068                   .dbline 51
+ 0068 8FEF              ldi R24,255
+ 006A 8BBB              out 0x1b,R24
+ 006C                   .dbline 52
+ 006C 88BB              out 0x18,R24
+ 006E                   .dbline 53
+ 006E 85BB              out 0x15,R24
+ 0070                   .dbline 54
+ 0070 82BB              out 0x12,R24
+ 0072                   .dbline 55
+ 0072 83B9              out 0x3,R24
+ 0074                   .dbline 56
+ 0074 80936200          sts 98,R24
+ 0078                   .dbline 57
+ 0078 80936500          sts 101,R24
+ 007C                   .dbline 58
+ 007C 04E6              ldi R16,100
+ 007E 10E0              ldi R17,0
+ 0080 BFDF              xcall _DelayMS
+ 0082                   .dbline 59
+ 0082           L12:
+ 0082                   .dbline 39
+ 0082 E5CF              xjmp L11
+ 0084           X2:
+ 0084                   .dbline -2
+ 0084           L10:
+ 0084                   .dbline 0 ; func end
+ 0084 0895              ret
+ 0086                   .dbend

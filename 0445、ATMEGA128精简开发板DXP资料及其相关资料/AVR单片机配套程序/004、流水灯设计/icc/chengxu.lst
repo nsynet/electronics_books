@@ -1,0 +1,177 @@
+__text_start:
+__start:
+    0046 EFCF      LDI	R28,0xFF
+    0047 E1D0      LDI	R29,0x10
+    0048 BFCD      OUT	0x3D,R28
+    0049 BFDE      OUT	0x3E,R29
+    004A 51C0      SUBI	R28,0x10
+    004B 40D0      SBCI	R29,0
+    004C EA0A      LDI	R16,0xAA
+    004D 8308      STD	Y+0,R16
+    004E 2400      CLR	R0
+    004F E0E0      LDI	R30,0
+    0050 E0F1      LDI	R31,1
+    0051 E011      LDI	R17,1
+    0052 30E0      CPI	R30,0
+    0053 07F1      CPC	R31,R17
+    0054 F011      BEQ	0x0057
+    0055 9201      ST	R0,Z+
+    0056 CFFB      RJMP	0x0052
+    0057 8300      STD	Z+0,R16
+    0058 E8EC      LDI	R30,0x8C
+    0059 E0F0      LDI	R31,0
+    005A E0A0      LDI	R26,0
+    005B E0B1      LDI	R27,1
+    005C E010      LDI	R17,0
+    005D 38EC      CPI	R30,0x8C
+    005E 07F1      CPC	R31,R17
+    005F F021      BEQ	0x0064
+    0060 95C8      LPM
+    0061 9631      ADIW	R30,1
+    0062 920D      ST	R0,X+
+    0063 CFF9      RJMP	0x005D
+    0064 940E007A  CALL	_main
+_exit:
+    0066 CFFF      RJMP	_exit
+_DelayMS:
+  j                    --> R20
+  i                    --> R16
+    0067 940E00AA  CALL	push_gset1
+FILE: F:\NEW光~1\MEGA12~1\AVR单片机配套程序\004、流水灯设计\icc\chengxu.c
+(0001) #include <iom128.h>
+(0002) /**********************************************************************
+(0003) 				  函数数据类型说明							   	
+(0004) **********************************************************************/
+(0005) #define uchar unsigned char 
+(0006) #define uint unsigned int
+(0007) /**********************************************************************
+(0008) 				  MS级延时函数程序，参数i 延时时间								   	
+(0009) **********************************************************************/
+(0010) void DelayMS(uint i)
+(0011) {
+(0012) uint j;
+(0013) for(;i!=0;i--)
+    0069 C00A      RJMP	0x0074
+(0014) {
+(0015) for(j=8000;j!=0;j--);
+    006A E440      LDI	R20,0x40
+    006B E15F      LDI	R21,0x1F
+    006C C002      RJMP	0x006F
+    006D 5041      SUBI	R20,1
+    006E 4050      SBCI	R21,0
+    006F 3040      CPI	R20,0
+    0070 0745      CPC	R20,R21
+    0071 F7D9      BNE	0x006D
+    0072 5001      SUBI	R16,1
+    0073 4010      SBCI	R17,0
+    0074 3000      CPI	R16,0
+    0075 0701      CPC	R16,R17
+    0076 F799      BNE	0x006A
+    0077 940E00AD  CALL	pop_gset1
+    0079 9508      RET
+(0016) }
+(0017) }
+(0018) /**********************************************************************
+(0019) 				   主函数						   	
+(0020) **********************************************************************/
+(0021) void main(void)
+(0022) {
+(0023) DDRD=0XFF;//端口设置，PA口设置为推挽1输出
+_main:
+    007A EF8F      LDI	R24,0xFF
+    007B BB81      OUT	0x11,R24
+(0024) PORTD=0XFF;
+    007C BB82      OUT	0x12,R24
+(0025) PORTD=0XFF;//PORTD初始化为1,灭掉所有的LED
+    007D BB82      OUT	0x12,R24
+    007E C029      RJMP	0x00A8
+(0026) 
+(0027)  while(1)
+(0028) {//***IO口输出低电平有效，如：0X01为十六进制数，二进制表示为00000001B，再取反
+(0029)     ////////A口输出//////
+(0030) 	PORTD=~0X01; //  ～表示取反 
+    007F EF8E      LDI	R24,0xFE
+    0080 BB82      OUT	0x12,R24
+(0031)     DelayMS(100);//延时100MS
+    0081 E604      LDI	R16,0x64
+    0082 E010      LDI	R17,0
+    0083 DFE3      RCALL	_DelayMS
+(0032) 	PORTD=~0X02; //  ～表示取反 
+    0084 EF8D      LDI	R24,0xFD
+    0085 BB82      OUT	0x12,R24
+(0033)     DelayMS(100);//延时100MS
+    0086 E604      LDI	R16,0x64
+    0087 E010      LDI	R17,0
+    0088 DFDE      RCALL	_DelayMS
+(0034) 	PORTD=~0X04; //  ～表示取反 
+    0089 EF8B      LDI	R24,0xFB
+    008A BB82      OUT	0x12,R24
+(0035)     DelayMS(100);//延时100MS
+    008B E604      LDI	R16,0x64
+    008C E010      LDI	R17,0
+    008D DFD9      RCALL	_DelayMS
+(0036) 	PORTD=~0X08; //  ～表示取反 
+    008E EF87      LDI	R24,0xF7
+    008F BB82      OUT	0x12,R24
+(0037)     DelayMS(100);//延时100MS
+    0090 E604      LDI	R16,0x64
+    0091 E010      LDI	R17,0
+    0092 DFD4      RCALL	_DelayMS
+(0038) 	PORTD=~0X10; //  ～表示取反 
+    0093 EE8F      LDI	R24,0xEF
+    0094 BB82      OUT	0x12,R24
+(0039)     DelayMS(100);//延时100MS
+    0095 E604      LDI	R16,0x64
+    0096 E010      LDI	R17,0
+    0097 DFCF      RCALL	_DelayMS
+(0040) 	PORTD=~0X20; //  ～表示取反 
+    0098 ED8F      LDI	R24,0xDF
+    0099 BB82      OUT	0x12,R24
+(0041)     DelayMS(100);//延时100MS
+    009A E604      LDI	R16,0x64
+    009B E010      LDI	R17,0
+    009C DFCA      RCALL	_DelayMS
+(0042) 	PORTD=~0X40; //  ～表示取反 
+    009D EB8F      LDI	R24,0xBF
+    009E BB82      OUT	0x12,R24
+(0043)     DelayMS(100);//延时100MS
+    009F E604      LDI	R16,0x64
+    00A0 E010      LDI	R17,0
+    00A1 DFC5      RCALL	_DelayMS
+(0044) 	PORTD=~0X80; //  ～表示取反 
+    00A2 E78F      LDI	R24,0x7F
+    00A3 EF9F      LDI	R25,0xFF
+    00A4 BB82      OUT	0x12,R24
+(0045)     DelayMS(100);//延时100MS
+FILE: <library>
+    00A5 E604      LDI	R16,0x64
+    00A6 E010      LDI	R17,0
+    00A7 DFBF      RCALL	_DelayMS
+    00A8 CFD6      RJMP	0x007F
+    00A9 9508      RET
+push_gset1:
+    00AA 935A      ST	R21,-Y
+    00AB 934A      ST	R20,-Y
+    00AC 9508      RET
+pop_gset1:
+    00AD E0E1      LDI	R30,1
+pop:
+    00AE 9149      LD	R20,Y+
+    00AF 9159      LD	R21,Y+
+    00B0 FDE0      SBRC	R30,0
+    00B1 9508      RET
+    00B2 9169      LD	R22,Y+
+    00B3 9179      LD	R23,Y+
+    00B4 FDE1      SBRC	R30,1
+    00B5 9508      RET
+    00B6 90A9      LD	R10,Y+
+    00B7 90B9      LD	R11,Y+
+    00B8 FDE2      SBRC	R30,2
+    00B9 9508      RET
+    00BA 90C9      LD	R12,Y+
+    00BB 90D9      LD	R13,Y+
+    00BC FDE3      SBRC	R30,3
+    00BD 9508      RET
+    00BE 90E9      LD	R14,Y+
+    00BF 90F9      LD	R15,Y+
+    00C0 9508      RET

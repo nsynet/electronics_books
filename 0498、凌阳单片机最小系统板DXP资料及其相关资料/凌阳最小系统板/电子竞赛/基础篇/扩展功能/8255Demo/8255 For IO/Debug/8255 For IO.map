@@ -1,0 +1,168 @@
+Wednesday, July 09, 21:00:59, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8009         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop                                          8025         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop2                                         8024         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\Resource.obj"
+F_SP_Send_PWM                                      8026         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Send_DAC1                                     8029         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Send_DAC2                                     802C         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  802F         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Send_Out                                      802F         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Get_ADC                                       8034         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             8037         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             803A         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             803D         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             8040         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                8043         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               8046         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             8049         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                804C         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                804F         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Write_INT_Status                              8052         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Read_INT_Status                               8055         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    808D         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    80B1         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    80C3         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    80E7         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_RampUpDAC1                                     808D         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_RampDnDAC1                                     80B1         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_RampUpDAC2                                     80C3         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_RampDnDAC2                                     80E7         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_Delay                                         8152         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_InitQueue                                     80FF         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_ReadQueue                                     810C         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_WriteQueue                                    811E         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+F_SP_TestQueue                                     812C         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_Export                                         8083         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_Import                                         8078         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_Init_IOB                                       8068         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_Init_IOA                                       8058         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_SP_GetResource                                    8144         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+R_InterruptStatus                                  1            "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+R_FIQTemp                                          2            "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"
+_ClearWatchDog                                     8153         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Init_IOB                                          8159         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Init_WR_InABC                                     8166         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+Init_WR_InABC                                      8166         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Init_WR_OutABC                                    8178         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+Init_WR_OutABC                                     8178         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Read_PA                                           818A         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+Read_PA                                            818A         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Read_PB                                           819C         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+Read_PB                                            819C         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Read_PC                                           81AE         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+Read_PC                                            81AE         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Writer_PA                                         81C0         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+Writer_PA                                          81C0         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Writer_PB                                         81D8         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+Writer_PB                                          81D8         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_Writer_PC                                         81F2         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+Writer_PC                                          81F2         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"
+_main                                              820A         "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\main.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8009                 8025         1D     *
+* "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\Resource.obj"               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\hardware.obj"               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8026                 8152         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          8271 (1)             82A6 (36)    36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\8255sub.obj"                *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8153                 8209         B7     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           0                    0            1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\基础篇\扩展功能－新颜\8255Demo\8255 For IO\Debug\main.obj"                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          820A                 8270         67     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  37           7C9                   *
+* "First Bank Rom"                  7C00                 2A7          7959                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\8255 For IO.S37
+Disk  Mapping Filename : .\Debug\8255 For IO.map
+Symbol  Table FileName : .\Debug\8255 For IO.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

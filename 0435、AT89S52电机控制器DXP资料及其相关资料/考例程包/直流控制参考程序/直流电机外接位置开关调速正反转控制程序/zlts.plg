@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+D:\电机控制器\直流电机外接位置开关调速正反转控制程序\zlts.uv2
+Project File Date:  01/16/2009
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling zlts.c...
+linking...
+Program Size: data=15.0 xdata=0 code=263
+creating hex file from "zlts"...
+"zlts" - 0 Error(s), 0 Warning(s).

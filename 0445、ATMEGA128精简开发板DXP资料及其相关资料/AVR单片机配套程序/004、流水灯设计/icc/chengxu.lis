@@ -1,0 +1,157 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile F:\NEW光~1\MEGA12~1\AVR单片机配套程序\004、流水灯设计\icc\chengxu.c
+ 0000                   .dbfunc e DelayMS _DelayMS fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMS::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 11
+ 0004           ; #include <iom128.h>
+ 0004           ; /**********************************************************************
+ 0004           ;                                 函数数据类型说明                                                              
+ 0004           ; **********************************************************************/
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; /**********************************************************************
+ 0004           ;                                 MS级延时函数程序，参数i 延时时间                                                                      
+ 0004           ; **********************************************************************/
+ 0004           ; void DelayMS(uint i)
+ 0004           ; {
+ 0004                   .dbline 13
+ 0004           ; uint j;
+ 0004           ; for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 14
+ 0006           ; {
+ 0006                   .dbline 15
+ 0006 40E4              ldi R20,8000
+ 0008 5FE1              ldi R21,31
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 15
+ 000C           L7:
+ 000C                   .dbline 15
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 15
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 16
+ 0016           L3:
+ 0016                   .dbline 13
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 13
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e main _main fV
+                        .even
+ 0026           _main::
+ 0026                   .dbline -1
+ 0026                   .dbline 22
+ 0026           ; for(j=8000;j!=0;j--);
+ 0026           ; }
+ 0026           ; }
+ 0026           ; /**********************************************************************
+ 0026           ;                                  主函数                                                       
+ 0026           ; **********************************************************************/
+ 0026           ; void main(void)
+ 0026           ; {
+ 0026                   .dbline 23
+ 0026           ; DDRD=0XFF;//端口设置，PA口设置为推挽1输出
+ 0026 8FEF              ldi R24,255
+ 0028 81BB              out 0x11,R24
+ 002A                   .dbline 24
+ 002A           ; PORTD=0XFF;
+ 002A 82BB              out 0x12,R24
+ 002C                   .dbline 25
+ 002C           ; PORTD=0XFF;//PORTD初始化为1,灭掉所有的LED
+ 002C 82BB              out 0x12,R24
+ 002E 29C0              xjmp L12
+ 0030           L11:
+ 0030                   .dbline 28
+ 0030                   .dbline 30
+ 0030 8EEF              ldi R24,254
+ 0032 82BB              out 0x12,R24
+ 0034                   .dbline 31
+ 0034 04E6              ldi R16,100
+ 0036 10E0              ldi R17,0
+ 0038 E3DF              xcall _DelayMS
+ 003A                   .dbline 32
+ 003A 8DEF              ldi R24,253
+ 003C 82BB              out 0x12,R24
+ 003E                   .dbline 33
+ 003E 04E6              ldi R16,100
+ 0040 10E0              ldi R17,0
+ 0042 DEDF              xcall _DelayMS
+ 0044                   .dbline 34
+ 0044 8BEF              ldi R24,251
+ 0046 82BB              out 0x12,R24
+ 0048                   .dbline 35
+ 0048 04E6              ldi R16,100
+ 004A 10E0              ldi R17,0
+ 004C D9DF              xcall _DelayMS
+ 004E                   .dbline 36
+ 004E 87EF              ldi R24,247
+ 0050 82BB              out 0x12,R24
+ 0052                   .dbline 37
+ 0052 04E6              ldi R16,100
+ 0054 10E0              ldi R17,0
+ 0056 D4DF              xcall _DelayMS
+ 0058                   .dbline 38
+ 0058 8FEE              ldi R24,239
+ 005A 82BB              out 0x12,R24
+ 005C                   .dbline 39
+ 005C 04E6              ldi R16,100
+ 005E 10E0              ldi R17,0
+ 0060 CFDF              xcall _DelayMS
+ 0062                   .dbline 40
+ 0062 8FED              ldi R24,223
+ 0064 82BB              out 0x12,R24
+ 0066                   .dbline 41
+ 0066 04E6              ldi R16,100
+ 0068 10E0              ldi R17,0
+ 006A CADF              xcall _DelayMS
+ 006C                   .dbline 42
+ 006C 8FEB              ldi R24,191
+ 006E 82BB              out 0x12,R24
+ 0070                   .dbline 43
+ 0070 04E6              ldi R16,100
+ 0072 10E0              ldi R17,0
+ 0074 C5DF              xcall _DelayMS
+ 0076                   .dbline 44
+ 0076 8FE7              ldi R24,-129
+ 0078 9FEF              ldi R25,-1
+ 007A 82BB              out 0x12,R24
+ 007C                   .dbline 45
+ 007C 04E6              ldi R16,100
+ 007E 10E0              ldi R17,0
+ 0080 BFDF              xcall _DelayMS
+ 0082                   .dbline 46
+ 0082           L12:
+ 0082                   .dbline 27
+ 0082 D6CF              xjmp L11
+ 0084           X2:
+ 0084                   .dbline -2
+ 0084           L10:
+ 0084                   .dbline 0 ; func end
+ 0084 0895              ret
+ 0086                   .dbend

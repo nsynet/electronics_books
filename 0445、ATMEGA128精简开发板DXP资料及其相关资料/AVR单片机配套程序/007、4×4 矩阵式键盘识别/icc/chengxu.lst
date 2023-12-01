@@ -1,0 +1,389 @@
+__text_start:
+__start:
+    004E EFCF      LDI	R28,0xFF
+    004F E1D0      LDI	R29,0x10
+    0050 BFCD      OUT	0x3D,R28
+    0051 BFDE      OUT	0x3E,R29
+    0052 51C0      SUBI	R28,0x10
+    0053 40D0      SBCI	R29,0
+    0054 EA0A      LDI	R16,0xAA
+    0055 8308      STD	Y+0,R16
+    0056 2400      CLR	R0
+    0057 E1E0      LDI	R30,0x10
+    0058 E0F1      LDI	R31,1
+    0059 E011      LDI	R17,1
+    005A 31E1      CPI	R30,0x11
+    005B 07F1      CPC	R31,R17
+    005C F011      BEQ	0x005F
+    005D 9201      ST	R0,Z+
+    005E CFFB      RJMP	0x005A
+    005F 8300      STD	Z+0,R16
+    0060 E8EC      LDI	R30,0x8C
+    0061 E0F0      LDI	R31,0
+    0062 E0A0      LDI	R26,0
+    0063 E0B1      LDI	R27,1
+    0064 E010      LDI	R17,0
+    0065 39EC      CPI	R30,0x9C
+    0066 07F1      CPC	R31,R17
+    0067 F021      BEQ	0x006C
+    0068 95C8      LPM
+    0069 9631      ADIW	R30,1
+    006A 920D      ST	R0,X+
+    006B CFF9      RJMP	0x0065
+    006C 940E0155  CALL	_main
+_exit:
+    006E CFFF      RJMP	_exit
+_DelayMS:
+  j                    --> R20
+  i                    --> R16
+    006F 940E0168  CALL	push_gset1
+FILE: F:\NEW光~1\MEGA12~1\AVR单片机配套程序\007、4~1\icc\chengxu.c
+(0001) #include <iom128.h>
+(0002) /********************************************************************
+(0003)                 数据类型定义
+(0004) *********************************************************************/
+(0005) #define uchar unsigned char 
+(0006) #define uint unsigned int
+(0007) /********************************************************************
+(0008)                 数码管段码定义0123456789
+(0009) *********************************************************************/
+(0010) uchar Table[16]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xc6,0xa1,0x86,0x8e };	 //所需的段的位码
+(0011) uchar k;           
+(0012) /**********************************************************************
+(0013) 				  MS级延时函数程序，参数i 延时时间					   	
+(0014) **********************************************************************/
+(0015) void DelayMS(uint i)
+(0016) {
+(0017) uint j;
+(0018) for(;i!=0;i--)
+    0071 C00A      RJMP	0x007C
+(0019) {
+(0020) for(j=800;j!=0;j--);
+    0072 E240      LDI	R20,0x20
+    0073 E053      LDI	R21,3
+    0074 C002      RJMP	0x0077
+    0075 5041      SUBI	R20,1
+    0076 4050      SBCI	R21,0
+    0077 3040      CPI	R20,0
+    0078 0745      CPC	R20,R21
+    0079 F7D9      BNE	0x0075
+    007A 5001      SUBI	R16,1
+    007B 4010      SBCI	R17,0
+    007C 3000      CPI	R16,0
+    007D 0701      CPC	R16,R17
+    007E F799      BNE	0x0072
+    007F 940E016B  CALL	pop_gset1
+    0081 9508      RET
+_Getch:
+  Z                    --> R20
+  Y                    --> R20
+  X                    --> R22
+    0082 940E017F  CALL	push_gset2
+(0021) }
+(0022) }
+(0023) /**********************************************************************
+(0024)                 矩阵键盘函数
+(0025) *********************************************************************/  
+(0026) void Getch ( )
+(0027) { 
+(0028) unsigned char X,Y,Z;
+(0029) DDRF=0xF0;
+    0084 EF80      LDI	R24,0xF0
+    0085 93800061  STS	0x61,R24
+(0030) PORTF=0x0F;
+    0087 E08F      LDI	R24,0xF
+    0088 93800062  STS	0x62,R24
+(0031) if(PINF!=0x0F) //判断是否有键按下
+    008A B180      IN	R24,0x00
+    008B 308F      CPI	R24,0xF
+    008C F409      BNE	0x008E
+    008D C0B9      RJMP	0x0147
+(0032) {
+(0033) DelayMS(1); //延时,软件去干扰
+    008E E001      LDI	R16,1
+    008F E010      LDI	R17,0
+    0090 DFDE      RCALL	_DelayMS
+(0034) if(PINF!=0x0F) //确认按键按下
+    0091 B180      IN	R24,0x00
+    0092 308F      CPI	R24,0xF
+    0093 F409      BNE	0x0095
+    0094 C0B2      RJMP	0x0147
+(0035) {
+(0036) X=PINF|0xF0;
+    0095 B160      IN	R22,0x00
+    0096 6F60      ORI	R22,0xF0
+(0037) DelayMS(1);
+    0097 E001      LDI	R16,1
+    0098 E010      LDI	R17,0
+    0099 DFD5      RCALL	_DelayMS
+(0038) DDRF=0x0f;
+    009A E08F      LDI	R24,0xF
+    009B 93800061  STS	0x61,R24
+(0039) PORTF=0xf0;
+    009D EF80      LDI	R24,0xF0
+    009E 93800062  STS	0x62,R24
+(0040) if(PINF!=0xf0) //判断是否有键按下
+    00A0 B180      IN	R24,0x00
+    00A1 3F80      CPI	R24,0xF0
+    00A2 F409      BNE	0x00A4
+    00A3 C0A3      RJMP	0x0147
+(0041) {
+(0042) DelayMS(1); //延时,软件去干扰
+    00A4 E001      LDI	R16,1
+    00A5 E010      LDI	R17,0
+    00A6 DFC8      RCALL	_DelayMS
+(0043) if(PINF!=0xf0) //确认按键按下
+    00A7 B180      IN	R24,0x00
+    00A8 3F80      CPI	R24,0xF0
+    00A9 F409      BNE	0x00AB
+    00AA C09C      RJMP	0x0147
+(0044) {
+(0045) Y=PINF|0x0F;
+    00AB B140      IN	R20,0x00
+    00AC 604F      ORI	R20,0xF
+(0046) Z=X&Y; //取出键值
+    00AD 2E26      MOV	R2,R22
+    00AE 2224      AND	R2,R20
+    00AF 2D42      MOV	R20,R2
+(0047) switch ( Z ) //判断键值（那一个键按下）
+    00B0 2755      CLR	R21
+    00B1 3B47      CPI	R20,0xB7
+    00B2 E0E0      LDI	R30,0
+    00B3 075E      CPC	R21,R30
+    00B4 F409      BNE	0x00B6
+    00B5 C08A      RJMP	0x0140
+    00B6 3B4B      CPI	R20,0xBB
+    00B7 E0E0      LDI	R30,0
+    00B8 075E      CPC	R21,R30
+    00B9 F409      BNE	0x00BB
+    00BA C075      RJMP	0x0130
+    00BB 3B4D      CPI	R20,0xBD
+    00BC E0E0      LDI	R30,0
+    00BD 075E      CPC	R21,R30
+    00BE F409      BNE	0x00C0
+    00BF C060      RJMP	0x0120
+    00C0 3B4E      CPI	R20,0xBE
+    00C1 E0E0      LDI	R30,0
+    00C2 075E      CPC	R21,R30
+    00C3 F409      BNE	0x00C5
+    00C4 C04B      RJMP	0x0110
+    00C5 EB8E      LDI	R24,0xBE
+    00C6 E090      LDI	R25,0
+    00C7 1784      CP	R24,R20
+    00C8 0795      CPC	R25,R21
+    00C9 F0AC      BLT	0x00DF
+    00CA 3747      CPI	R20,0x77
+    00CB E0E0      LDI	R30,0
+    00CC 075E      CPC	R21,R30
+    00CD F409      BNE	0x00CF
+    00CE C075      RJMP	0x0144
+    00CF 374B      CPI	R20,0x7B
+    00D0 E0E0      LDI	R30,0
+    00D1 075E      CPC	R21,R30
+    00D2 F409      BNE	0x00D4
+    00D3 C060      RJMP	0x0134
+    00D4 374D      CPI	R20,0x7D
+    00D5 E0E0      LDI	R30,0
+    00D6 075E      CPC	R21,R30
+    00D7 F409      BNE	0x00D9
+    00D8 C04B      RJMP	0x0124
+    00D9 374E      CPI	R20,0x7E
+    00DA E0E0      LDI	R30,0
+    00DB 075E      CPC	R21,R30
+    00DC F409      BNE	0x00DE
+    00DD C036      RJMP	0x0114
+    00DE C068      RJMP	0x0147
+    00DF 3D47      CPI	R20,0xD7
+    00E0 E0E0      LDI	R30,0
+    00E1 075E      CPC	R21,R30
+    00E2 F409      BNE	0x00E4
+    00E3 C058      RJMP	0x013C
+    00E4 3D4B      CPI	R20,0xDB
+    00E5 E0E0      LDI	R30,0
+    00E6 075E      CPC	R21,R30
+    00E7 F409      BNE	0x00E9
+    00E8 C043      RJMP	0x012C
+    00E9 3D4D      CPI	R20,0xDD
+    00EA E0E0      LDI	R30,0
+    00EB 075E      CPC	R21,R30
+    00EC F179      BEQ	0x011C
+    00ED 3D4E      CPI	R20,0xDE
+    00EE E0E0      LDI	R30,0
+    00EF 075E      CPC	R21,R30
+    00F0 F0D9      BEQ	0x010C
+    00F1 3D47      CPI	R20,0xD7
+    00F2 E0E0      LDI	R30,0
+    00F3 075E      CPC	R21,R30
+    00F4 F40C      BGE	0x00F6
+    00F5 C051      RJMP	0x0147
+    00F6 3E47      CPI	R20,0xE7
+    00F7 E0E0      LDI	R30,0
+    00F8 075E      CPC	R21,R30
+    00F9 F409      BNE	0x00FB
+    00FA C03D      RJMP	0x0138
+    00FB 3E4B      CPI	R20,0xEB
+    00FC E0E0      LDI	R30,0
+    00FD 075E      CPC	R21,R30
+    00FE F149      BEQ	0x0128
+    00FF 3E4D      CPI	R20,0xED
+    0100 E0E0      LDI	R30,0
+    0101 075E      CPC	R21,R30
+    0102 F0A9      BEQ	0x0118
+    0103 3E4E      CPI	R20,0xEE
+    0104 E0E0      LDI	R30,0
+    0105 075E      CPC	R21,R30
+    0106 F009      BEQ	0x0108
+    0107 C03F      RJMP	0x0147
+(0048) {
+(0049) case 0xee: k=0; break; //对键值赋值
+    0108 2422      CLR	R2
+    0109 92200110  STS	_k,R2
+    010B C03B      RJMP	0x0147
+(0050) case 0xde: k=1; break;
+    010C E081      LDI	R24,1
+    010D 93800110  STS	_k,R24
+    010F C037      RJMP	0x0147
+(0051) case 0xbe: k=2; break;
+    0110 E082      LDI	R24,2
+    0111 93800110  STS	_k,R24
+    0113 C033      RJMP	0x0147
+(0052) case 0x7e: k=3; break;
+    0114 E083      LDI	R24,3
+    0115 93800110  STS	_k,R24
+    0117 C02F      RJMP	0x0147
+(0053) case 0xed: k=4; break;
+    0118 E084      LDI	R24,4
+    0119 93800110  STS	_k,R24
+    011B C02B      RJMP	0x0147
+(0054) case 0xdd: k=5; break;
+    011C E085      LDI	R24,5
+    011D 93800110  STS	_k,R24
+    011F C027      RJMP	0x0147
+(0055) case 0xbd: k=6; break;
+    0120 E086      LDI	R24,6
+    0121 93800110  STS	_k,R24
+    0123 C023      RJMP	0x0147
+(0056) case 0x7d: k=7; break;
+    0124 E087      LDI	R24,7
+    0125 93800110  STS	_k,R24
+    0127 C01F      RJMP	0x0147
+(0057) case 0xeb: k=8; break;
+    0128 E088      LDI	R24,0x8
+    0129 93800110  STS	_k,R24
+    012B C01B      RJMP	0x0147
+(0058) case 0xdb: k=9; break;
+    012C E089      LDI	R24,0x9
+    012D 93800110  STS	_k,R24
+    012F C017      RJMP	0x0147
+(0059) case 0xbb: k=10;break;
+    0130 E08A      LDI	R24,0xA
+    0131 93800110  STS	_k,R24
+    0133 C013      RJMP	0x0147
+(0060) case 0x7b: k=11;break;
+    0134 E08B      LDI	R24,0xB
+    0135 93800110  STS	_k,R24
+    0137 C00F      RJMP	0x0147
+(0061) case 0xe7: k=12;break;
+    0138 E08C      LDI	R24,0xC
+    0139 93800110  STS	_k,R24
+    013B C00B      RJMP	0x0147
+(0062) case 0xd7: k=13;break;
+    013C E08D      LDI	R24,0xD
+    013D 93800110  STS	_k,R24
+    013F C007      RJMP	0x0147
+(0063) case 0xb7: k=14;break;
+    0140 E08E      LDI	R24,0xE
+    0141 93800110  STS	_k,R24
+    0143 C003      RJMP	0x0147
+(0064) case 0x77: k=15;break;
+    0144 E08F      LDI	R24,0xF
+    0145 93800110  STS	_k,R24
+(0065) } } } }}} //请注意写程序时的格式规范，此处是为了节省纸张  
+    0147 940E0165  CALL	pop_gset2
+    0149 9508      RET
+(0066) //////////////////////////////初始化////////////////////////////////////
+(0067) void Init_IO(void)//初始化I/O
+(0068) {
+(0069) //设置D口为输出
+(0070) DDRD=0xFF;
+_Init_IO:
+    014A EF8F      LDI	R24,0xFF
+    014B BB81      OUT	0x11,R24
+(0071) PORTD=0xFF;
+    014C BB82      OUT	0x12,R24
+(0072) //设置E口为输出
+(0073) DDRE=0xFF;
+    014D B982      OUT	0x02,R24
+(0074) PORTE=0xFF;
+    014E B983      OUT	0x03,R24
+(0075) //设置F口为输入
+(0076) DDRF=0x00;
+    014F 2422      CLR	R2
+    0150 92200061  STS	0x61,R2
+(0077) PORTF=0xff;
+    0152 93800062  STS	0x62,R24
+    0154 9508      RET
+(0078) 
+(0079) }
+(0080) 
+(0081) /**********************************************************************
+(0082) 				           主函数						  	
+(0083) **********************************************************************/
+(0084) void main(void)
+(0085) {
+(0086) Init_IO();  //初始化I/O
+_main:
+    0155 DFF4      RCALL	_Init_IO
+    0156 C00C      RJMP	0x0163
+(0087) while(1)
+(0088) {
+(0089) Getch();
+    0157 DF2A      RCALL	_Getch
+(0090) PORTD=Table[k]; //查表LED输出
+    0158 E080      LDI	R24,0
+    0159 E091      LDI	R25,1
+    015A 91E00110  LDS	R30,_k
+    015C 27FF      CLR	R31
+    015D 0FE8      ADD	R30,R24
+    015E 1FF9      ADC	R31,R25
+    015F 8020      LDD	R2,Z+0
+    0160 BA22      OUT	0x12,R2
+(0091) PORTE=0x0f; //输出相同的四位数据//仿真
+FILE: <library>
+    0161 E08F      LDI	R24,0xF
+    0162 B983      OUT	0x03,R24
+    0163 CFF3      RJMP	0x0157
+    0164 9508      RET
+pop_gset2:
+    0165 E0E2      LDI	R30,2
+    0166 940C016C  JMP	pop
+push_gset1:
+    0168 935A      ST	R21,-Y
+    0169 934A      ST	R20,-Y
+    016A 9508      RET
+pop_gset1:
+    016B E0E1      LDI	R30,1
+pop:
+    016C 9149      LD	R20,Y+
+    016D 9159      LD	R21,Y+
+    016E FDE0      SBRC	R30,0
+    016F 9508      RET
+    0170 9169      LD	R22,Y+
+    0171 9179      LD	R23,Y+
+    0172 FDE1      SBRC	R30,1
+    0173 9508      RET
+    0174 90A9      LD	R10,Y+
+    0175 90B9      LD	R11,Y+
+    0176 FDE2      SBRC	R30,2
+    0177 9508      RET
+    0178 90C9      LD	R12,Y+
+    0179 90D9      LD	R13,Y+
+    017A FDE3      SBRC	R30,3
+    017B 9508      RET
+    017C 90E9      LD	R14,Y+
+    017D 90F9      LD	R15,Y+
+    017E 9508      RET
+push_gset2:
+    017F 937A      ST	R23,-Y
+    0180 936A      ST	R22,-Y
+    0181 940C0168  JMP	push_gset1

@@ -1,0 +1,158 @@
+XL
+H 3 areas B global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset3 Ref0000
+S pop_gset1 Ref0000
+S pop_gset3 Ref0000
+A text size CE flags 0
+dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 19 4
+dbline 1A 4
+dbline 1B 6
+dbline 1B 6
+dbline 1B C
+dbline 1B C
+dbline 1B C
+dbline 1B C
+dbline 1B 10
+dbline 1B 16
+dbline 1A 16
+dbline 1A 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 22 2C
+dbline 22 2C
+dbline 23 2E
+dbline 24 32
+dbline 24 32
+dbline 25 34
+dbline 26 4E
+dbline 27 54
+dbline 28 56
+dbline 23 56
+dbline 23 58
+dbline FFFFFFFE 5C
+dbline 0 60
+dbfunc e Init_IO 62 fV
+dbline FFFFFFFF 62
+dbline 2E 62
+dbline 2E 62
+dbline 2F 66
+dbline 30 68
+dbline 31 6A
+dbline FFFFFFFE 6C
+dbline 0 6C
+dbfunc e main 6E fV
+dbsym r i 14 c
+dbline FFFFFFFF 6E
+dbline 38 6E
+dbline 39 6E
+dbline 3A 70
+dbline 3B 74
+dbline 3C 78
+dbline 3D 7C
+dbline 3E 7C
+dbline 3E 7C
+dbline 3E 82
+dbline 3D 82
+dbline 3F 86
+dbline 3F 98
+dbline 3C 98
+dbline 3C 9A
+dbline 40 9E
+dbline 41 A2
+dbline 42 A2
+dbline 42 A2
+dbline 42 A8
+dbline 41 A8
+dbline 43 AC
+dbline 43 BC
+dbline 40 BC
+dbline 40 BE
+dbline 45 C4
+dbline 45 C4
+dbline 45 CA
+dbline 44 CA
+dbline FFFFFFFE CC
+dbline 0 CC
+S _main Def006E
+S _DelayMs Def0000
+S _Display Def0026
+S _Init_IO Def0062
+A data size 18 flags 20
+dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+dbsym e Table 0 A[16:16]c
+dbsym e Send_Data 10 A[4:4]c
+dbsym e Receive_Data 14 A[4:4]c
+S _Table Def0000
+S _Send_Data Def0010
+S _Receive_Data Def0014
+A idata size 18 flags 0
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 77 7C
+R 00 00 02 00
+T 0C 00 39 5E
+R 00 00 02 00
+T 0E 00 79 71
+R 00 00 02 00
+T 10 00 61 62
+R 00 00 02 00
+T 12 00 63 64
+R 00 00 02 00
+T 14 00 00 00
+R 00 00 02 00
+T 16 00 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 02 00
+T 26 00 0E 94 00 00 58 01 4F EE 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 01 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 20 94 2B BA 01 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 10 E0 D6 DF 44 0F 63 95 64 30 58 F3 0E 94
+R 00 00 00 00
+T 5E 00 00 00 08 95
+R 00 00 00 00 12 02 03 00
+T 62 00 8F EF 8A BB 8B BB 84 BB 85 BB 08 95
+R 00 00 00 00
+T 6E 00 F9 DF 83 E3 89 B9 88 E1 8A B9 44 27 0F C0
+R 00 00 00 00
+T 7C 00 00 E0 10 E0 D2 DF 5F 9B FB CF
+R 00 00 00 00 20 02 01 00 14 00 40 04 01 00 14 00
+T 86 00 80 E0 90 E0 E4 2F FF 27 E8 0F F9 1F 8C B1
+R 00 00 00 00 20 02 01 00 14 00 40 04 01 00 14 00
+T 94 00 80 53 80 83 43 95 44 30 90 F3 44 27 0E C0
+R 00 00 00 00
+T A2 00 00 E0 10 E0 BF DF 5D 9B FB CF
+R 00 00 00 00 20 02 01 00 14 00 40 04 01 00 14 00
+T AC 00 80 E0 90 E0 E4 2F FF 27 E8 0F F9 1F 20 80
+R 00 00 00 00 20 02 01 00 10 00 40 04 01 00 10 00
+T BA 00 2C B8 43 95 4C 30 98 F3 03 C0 00 E0 10 E0
+R 00 00 00 00 20 0C 01 00 14 00 40 0E 01 00 14 00
+T C8 00 AE DF FC CF 08 95
+R 00 00 00 00

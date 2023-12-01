@@ -1,0 +1,333 @@
+;------------------------------------------------------------------------------
+;文件名称：
+;          232_a.s43
+;文件说明：
+;         用于两个对等的实验板通过232接口进行通讯，本方通过行列扫描键盘发送的
+;     数据现在在对方的LED上，波特率使用9600
+;------------------------------------------------------------------------------
+
+#include "msp430x44x.h"
+
+;------------------------------------------------------------------------------
+;  定义数据
+;------------------------------------------------------------------------------
+Receive_Buf  equ   200H                          ;232接收缓冲区
+Send_Buf     equ   201H                          ;232发送缓冲区
+R_Flag       equ   202H                          ;接收到数据标识
+LED_Buf      equ   203H                          ;LED显示数据缓存，共六个字节
+
+LED_CTRL    equ    209H                          ;LED显示位控制
+KEY_Pressed equ    20AH                          ;按键是否按下
+KEY_Val     equ    20BH                          ;键值
+KEY_Flag    equ    20CH                          ;键值是否可以读取
+
+;------------------------------------------------------------------------------
+            ORG     08000h                  ; 程序开始
+;------------------------------------------------------------------------------
+RESET       mov.w   #0600h,SP               ; 初始化堆栈   
+main:
+             push.w  R10
+             mov.w   #0x5A80,&WDTCTL        ;关看门狗
+             call    #init_Keyboard         ;初始化键盘
+             call    #init_LED              ;初始化LED
+             call    #init_BT               ;初始化Basic Timer
+             call    #init_232              ;初始化232
+             eint                           ;开中断
+MainLoop     call    #key_Event             ;检测键盘
+             cmp.b   #0x1,&KEY_Flag         ;如果有键值可读取
+             jne     T12                    
+             mov.b   &KEY_Val,&Send_Buf
+             call    #rs232_SendData        ;发送数据
+             clr.b   &KEY_Flag              ;清除键值标识
+T12          cmp.b   #0x1,&R_Flag           ;是否收到数据
+             jnc     MainLoop
+             clr.b   R10
+T14          cmp.b   #0x5,R10               ;LED_Buf的数据移动
+             jc      T13
+             mov.b   R10,R14
+             and.w   #0xFF,R14
+             mov.w   #LED_Buf,R15
+             mov.b   R10,R12
+             and.w   #0xFF,R12
+             add.w   R12,R15
+             mov.b   0x1(R15),LED_Buf(R14)
+             inc.b   R10
+             jmp     T14
+T13          push.b  R14
+             mov.b   #0x05,R14
+             mov.b   &Receive_Buf,LED_Buf(R14) ;把收到的数据放到LED_Buf[5]
+             pop.b   R14
+             clr.b   &R_Flag                   ;清除收到数据标识
+             jmp     T12
+;------------------------------------------------------------------------------
+;   初始化Basic Timer
+;------------------------------------------------------------------------------
+init_BT:
+            mov.b   #0x16,&BTCTL     ; 初始化BT       
+            bis.b   #0x80,&IE2       ; 使能中断
+            ret 
+;-------------------------------------------------------------------------------
+;  Basic timer的中断函数
+;-------------------------------------------------------------------------------    
+BT_Interrupt:
+                 push.w  R13                   ;保存寄存器
+                 push.w  R12                   ;
+                 push.w  R15                   ;
+                 push.w  R14                   ;
+                 call    #led_Display          ;LED显示
+                 pop.w   R14                   ;
+                 pop.w   R15                   ;寄存器值出栈
+                 pop.w   R12
+                 pop.w   R13
+                 reti    
+;------------------------------------------------------------------------------
+; 移位操作
+;------------------------------------------------------------------------------   
+Shift_L:
+                 tst.b   R14
+                 jeq     EXIT_S
+SHIFT            rla.w   R12        ; 左移
+                 dec.b   R14
+                 jne     SHIFT  
+EXIT_S           ret
+;------------------------------------------------------------------------------
+;  硬件乘法器操作
+;------------------------------------------------------------------------------     
+H_Mul:
+                 push.w  SR          ;
+                 dint                ;
+                 nop                 ;
+                 mov.w   R12,&MPY    ;
+                 mov.w   R14,&OP2    ;
+                 mov.w   &RESLO,R12  ; R12，R13返回数据
+                 mov.w   &RESHI,R13  ;
+                 reti    
+;------------------------------------------------------------------------------
+;   初始化RS232
+;------------------------------------------------------------------------------
+init_232:
+         bic.b   #0x40,&FLL_CTL0       ;
+         bis.b   #0x1,&U0CTL           ;
+         bis.b   #0x10,&U0CTL          ;8-bit 字符
+         bis.b   #0x34,&FLL_CTL1       ;开启第二个振荡器
+CLEAR_F  bic.b   #0x2,&IFG1            ;清除OSCFault标识
+         mov.b   #0xFF,R14             ;
+T1       cmp.b   #0x1,R14              ;
+         jnc     T2
+         add.b   #0xFF,R14
+         jmp     T1
+T2       bit.b   #0x8,&FLL_CTL0        ;检测第二个振荡器是否正常工作
+         jc      CLEAR_F               ;
+         bis.b   #0x1,&U0CTL           ;
+         bis.b   #0x10,&U0CTL          ;
+         mov.b   #0x30,&U0TCTL         ;uclk=smclk
+         mov.b   #0xA0,&U0BR0          ;在4MHz下进行9600波特率通讯
+         mov.b   #0x1,&U0BR1           ;
+         mov.b   #0x5E,&U0MCTL         ;
+         bic.b   #0x1,&U0CTL           ;
+         bis.b   #0xC0,&ME1
+         bis.b   #0x40,&IE1            ;使能接收中断
+         clr.b   &IFG1
+         bis.b   #0x30,&P2SEL          ;设置 TX,RX
+         and.b   #0xCF,&P2DIR
+         bis.b   #0x10,&P2DIR
+         clr.b   &Receive_Buf          ;清零接收缓冲
+         clr.b   &Send_Buf             ;清零发送缓冲
+         ret
+;------------------------------------------------------------------------------
+;  发送数据
+;------------------------------------------------------------------------------              
+rs232_SendData:
+          mov.b   &Send_Buf,&U0TXBUF
+T3        bit.b   #0x1,&U0TCTL       ; 是否发送成功了？
+          jnc     T3
+          ret     
+;------------------------------------------------------------------------------
+;   接收数据
+;------------------------------------------------------------------------------
+data_Receive:
+         mov.b   &U0RXBUF,&Receive_Buf ; 接受数据 
+         mov.b   #0x1,&R_Flag          ; 设置标识
+         reti  
+;------------------------------------------------------------------------------
+;   初始化LED
+;------------------------------------------------------------------------------
+init_LED:
+         mov.b   #0xFF,&P3DIR        ; 设置输出模式
+         clr.b   &P3OUT              ;
+         bis.b   #0x3,&P4DIR         ;
+         and.b   #0xFC,&P4OUT        ;
+         clr.b   &LED_CTRL           ;
+         clr.b   R14                 ; 
+T4       cmp.b   #0x6,R14            ;
+         jc      EXIT_I              ;
+         mov.b   R14,R15             ; 初始化LED_Buf
+         and.w   #0xFF,R15           ;
+         clr.b   LED_Buf(R15)        ;
+         inc.b   R14                 ;
+         jmp     T4                  ;
+EXIT_I   ret    
+;------------------------------------------------------------------------------
+;   LED显示数据
+;------------------------------------------------------------------------------
+led_Display:
+             mov.w   #0x1,R15                  ;
+             mov.b   &LED_CTRL,R14             ;  设定LED控制位
+             and.w   #0xFF,R14                 ; 
+             mov.b   LED_Buf(R14),R14          ;  获取LED_Buf的内容
+             and.w   #0xFF,R14                 ;  
+             mov.b   NUM_LED(R14),&P3OUT       ;  设定LED显示段码
+             bis.b   #0x2,&P4OUT               ;
+             bic.b   #0x2,&P4OUT               ;
+             mov.b   R15,R12                   ;
+             mov.b   &LED_CTRL,R14             ;
+             call    #Shift_L                  ;  改变控制位
+             inv.b   R12                       ;
+             mov.b   R12,&P3OUT                ;
+             bis.b   #0x1,&P4OUT               ;
+             bic.b   #0x1,&P4OUT               ;
+             inc.b   &LED_CTRL                 ;
+             cmp.b   #0x6,&LED_CTRL            ;  如果LED_Ctrl >5 ,LED_Ctrl=0
+             jnc     EXIT_D                    ;
+             clr.b   &LED_CTRL                 ;
+EXIT_D       ret     
+;------------------------------------------------------------------------------
+; 初始化keyboard  
+;------------------------------------------------------------------------------
+init_Keyboard:
+             and.b   #0x1,&P1DIR              ; 设置P1输入输出模式
+             bis.b   #0xE,&P1DIR              ; 
+             bis.b   #0xE,&P1OUT              ; 
+             clr.b   &KEY_Flag                ;  清零 key_Flag
+             clr.b   &KEY_Pressed             ;  清零 key_Pressed
+             ret    
+;------------------------------------------------------------------------------
+;   获取键值
+;------------------------------------------------------------------------------
+check_Key:
+                 push.w  R10                 ; 进栈
+                 push.w  R11                 ;
+                 push.w  R8                  ;
+                 push.w  R9                  ;
+                 mov.b   #0x8,R8             ;
+                 clr.b   R10                 ;
+T9               cmp.b   #0x3,R10            ;  检测行
+                 jc      T5                  ;
+                 bis.b   #0xE,&P1OUT         ;
+                 sub.b   R8,&P1OUT           ;
+                 clrc                        ;
+                 rrc.b   R8                  ; 移位
+                 mov.b   &P1IN,R14           ; 
+                 and.b   #0xF0,R14           ;
+                 cmp.b   #0xF0,R14           ;
+                 jc      T6                  ;
+                 mov.b   #0x80,R9            ;
+                 clr.b   R11                 ;
+T8               cmp.b   #0x4,R11            ; 检测列
+                 jc      T6                  ;
+                 mov.b   &P1IN,R14           ;
+                 and.b   R9,R14              ;
+                 tst.b   R14                 ;
+                 jne     T7                  ;
+                 mov.b   R10,R12             ;
+                 and.w   #0xFF,R12           ;
+                 mov.w   #0x4,R14            ;
+                 call    #H_Mul              ;
+                 mov.b   R11,R14             ;
+                 and.w   #0xFF,R14           ;
+                 add.w   R12,R14             ;
+                 mov.b  KEY_MAP(R14),&KEY_Val ; 获取键值
+                 jmp     T5                   ;
+T7               clrc                         ;
+                 rrc.b   R9                   ;
+                 inc.b   R11                  ;
+                 jmp     T8                   ;
+T6               inc.b   R10                  ;
+                 jmp     T9                   ;
+T5               pop.w   R9                   ; 出栈
+                 pop.w   R8                   ;
+                 pop.w   R11                  ;
+                 pop.w   R10                  ;
+                 ret     
+    
+delay:
+                 mov.w   #0xFF,R14            ;
+T10              tst.w   R14                  ;
+                 jeq     EXIT_Delay           ;
+                 add.w   #0xFFFF,R14          ;
+                 jmp     T10                  ;
+EXIT_Delay       ret                          ;
+;------------------------------------------------------------------------------
+;  检测键盘是否有按键按下
+;------------------------------------------------------------------------------
+key_Event:
+                push.w  R10                  ;
+                and.b   #0x1,&P1OUT          ;
+                mov.b   &P1IN,R10            ;
+                tst.b   &KEY_Pressed         ; 测试是否有键按下
+                jne     T11                  ;
+                mov.b   R10,R14              ;
+                and.b   #0xF0,R14            ;
+                cmp.b   #0xF0,R14            ;
+                jc      T11                  ;
+                mov.b   #0x1,&KEY_Pressed    ;
+                call    #delay               ; 延时
+                call    #check_Key           ; 获取键值
+                jmp     EXIT_K               ;
+T11             cmp.b   #0x1,&KEY_Pressed    ;
+                jne     EXIT_K               ;
+                and.b   #0xF0,R10            ;
+                cmp.b   #0xF0,R10            ;
+                jne     EXIT_K               ;
+                clr.b   &KEY_Pressed         ; 
+                mov.b   #0x1,&KEY_Flag       ; 置位
+EXIT_K          pop.w   R10                  ;
+                ret                          ;
+;------------------------------------------------------------------------------
+;   LED段码  
+;------------------------------------------------------------------------------
+NUM_LED
+               db   0xd7          ;0
+               db   0x14          ;1
+               db   0xcd          ;2
+               db   0x5d          ;3
+               db   0x1E          ;4
+               db   0x5b          ;5
+               db   0xdb          ;6
+               db   0x15          ;7
+               db   0xdf          ;8
+               db   0x5f          ;9
+               db   0x9f          ;A
+               db   0xda          ;B
+               db   0xc3          ;C
+               db   0xcc          ;D
+               db   0xcf          ;E
+               db   0x8b          ;F
+               db   0x00          ;用于清空LED显示
+;------------------------------------------------------------------------------
+;   行列键盘的键值对应表
+;------------------------------------------------------------------------------
+KEY_MAP
+               db   0x01         ; 1
+               db   0x02         ; 2
+               db   0x03         ; 3
+               db   0x0A         ; A
+               db   0x04         ; 4
+               db   0x05         ; 5
+               db   0x06         ; 6
+               db   0x00         ; 0
+               db   0x07         ; 7
+               db   0x08         ; 8
+               db   0x09         ; 9 
+               db   0x0b         ; B
+;------------------------------------------------------------------------------
+;           中断向量          
+;------------------------------------------------------------------------------
+            ORG     0FFFEh                  ; MSP430 RESET 向量
+            DW      RESET                   ; 
+            ORG     0fff2H                  ; USART 接收中断   
+            DW      data_Receive            ;
+            ORG     0FFE0H                  ; basic Timer中断
+            DW      BT_Interrupt            ;
+            END
+    

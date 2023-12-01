@@ -1,0 +1,169 @@
+XL
+H 3 areas 12 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S mod16s Ref0000
+S div16s Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+S mod8u Ref0000
+S div8u Ref0000
+A text size 104 flags 0
+dbfile D:\整理\个人总结的M8程序\008、基于T_CO的计数器设计\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 13 4
+dbline 14 4
+dbline 15 6
+dbline 15 6
+dbline 15 C
+dbline 15 C
+dbline 15 C
+dbline 15 C
+dbline 15 10
+dbline 15 16
+dbline 14 16
+dbline 14 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 1D 2C
+dbline 1D 2C
+dbline 1E 2E
+dbline 1F 32
+dbline 1F 32
+dbline 20 34
+dbline 21 4E
+dbline 22 54
+dbline 23 56
+dbline 1E 56
+dbline 1E 58
+dbline FFFFFFFE 5C
+dbline 0 60
+dbfunc e Process 62 fV
+dbsym r p 16 pc
+dbsym r i 14 c
+dbline FFFFFFFF 6A
+dbline 29 6A
+dbline 29 6A
+dbline 2A 7A
+dbline 2B 88
+dbline 2C 92
+dbline 2D 9C
+dbline 2E A6
+dbline 2F B0
+dbline FFFFFFFE B4
+dbline 0 B8
+dbfunc e Init_IO BA fV
+dbline FFFFFFFF BA
+dbline 35 BA
+dbline 35 BA
+dbline 36 BE
+dbline 37 C0
+dbline 38 C4
+dbline 39 C6
+dbline 3A C8
+dbline FFFFFFFE CA
+dbline 0 CA
+dbfunc e main CC fV
+dbsym r Load 14 c
+dbline FFFFFFFF CC
+dbline 40 CC
+dbline 41 CC
+dbline 42 CE
+dbline 43 D2
+dbline 44 D6
+dbline 45 DC
+dbline 46 E0
+dbline 47 E4
+dbline 49 F0
+dbline 49 F0
+dbline 4A F2
+dbline 4B FA
+dbline 4C 100
+dbline 48 100
+dbline FFFFFFFE 102
+dbline 0 102
+S _main Def00CC
+S _DelayMs Def0000
+S _Display Def0026
+S _Process Def0062
+S _Init_IO Def00BA
+A data size 10 flags 20
+dbfile D:\整理\个人总结的M8程序\008、基于T_CO的计数器设计\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[4:4]c
+dbsym e CNT E i
+S _CNT Def000E
+S _Table Def0000
+S _Data Def000A
+A idata size 10 flags 0
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 00
+R 00 00 02 00
+T 0E 00 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 05 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 02 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 20 94 28 BA 01 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 10 E0 D6 DF 44 0F 63 95 64 30 58 F3 0E 94
+R 00 00 00 00
+T 5E 00 00 00 08 95
+R 00 00 00 00 12 02 07 00
+T 62 00 0E 94 00 00 B9 01 40 2F 28 EE 33 E0 04 2F
+R 00 00 00 00 12 04 01 00
+T 70 00 11 27 0E 94 00 00 FB 01 00 83 28 EE 33 E0
+R 00 00 00 00 12 06 04 00
+T 7E 00 04 2F 11 27 0E 94 00 00 40 2F 14 E6 0E 94
+R 00 00 00 00 12 08 03 00
+T 8C 00 00 00 FB 01 01 83 14 E6 04 2F 0E 94 00 00
+R 00 00 00 00 12 02 09 00 12 0E 08 00
+T 9A 00 40 2F 1A E0 0E 94 00 00 FB 01 02 83 1A E0
+R 00 00 00 00 12 08 09 00
+T A8 00 04 2F 0E 94 00 00 40 2F FB 01 43 83 0E 94
+R 00 00 00 00 12 06 08 00
+T B6 00 00 00 08 95
+R 00 00 00 00 12 02 06 00
+T BA 00 8F EF 87 BB 88 BB 22 24 21 BA 22 BA 84 BB
+R 00 00 00 00
+T C8 00 85 BB 08 95
+R 00 00 00 00
+T CC 00 F6 DF 8F EF 88 BB 22 24 25 BA 0E E1 10 E0
+R 00 00 00 00
+T DA 00 92 DF 8F EF 85 BB 86 E0 83 BF 20 90 0E 00
+R 00 00 00 00 00 0E 01 00
+T E8 00 30 90 0F 00 22 BE 08 C0 42 B7 20 E0
+R 00 00 00 00 00 04 01 00 20 0C 01 00 0A 00
+T F4 00 30 E0 04 2F B4 DF 00 E0
+R 00 00 00 00 40 02 01 00 0A 00 20 08 01 00 0A 00
+T FC 00 10 E0 93 DF F7 CF 08 95
+R 00 00 00 00 40 02 01 00 0A 00

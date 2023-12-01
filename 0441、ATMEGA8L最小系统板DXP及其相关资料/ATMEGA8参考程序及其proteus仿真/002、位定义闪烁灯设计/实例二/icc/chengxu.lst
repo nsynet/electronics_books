@@ -1,0 +1,138 @@
+__start:
+__text_start:
+    002A E5CF      LDI	R28,0x5F
+    002B E0D4      LDI	R29,4
+    002C BFCD      OUT	0x3D,R28
+    002D BFDE      OUT	0x3E,R29
+    002E 51C0      SUBI	R28,0x10
+    002F 40D0      SBCI	R29,0
+    0030 EA0A      LDI	R16,0xAA
+    0031 8308      STD	Y+0,R16
+    0032 2400      CLR	R0
+    0033 E6E0      LDI	R30,0x60
+    0034 E0F0      LDI	R31,0
+    0035 E010      LDI	R17,0
+    0036 36E0      CPI	R30,0x60
+    0037 07F1      CPC	R31,R17
+    0038 F011      BEQ	0x003B
+    0039 9201      ST	R0,Z+
+    003A CFFB      RJMP	0x0036
+    003B 8300      STD	Z+0,R16
+    003C E5E4      LDI	R30,0x54
+    003D E0F0      LDI	R31,0
+    003E E6A0      LDI	R26,0x60
+    003F E0B0      LDI	R27,0
+    0040 E010      LDI	R17,0
+    0041 35E4      CPI	R30,0x54
+    0042 07F1      CPC	R31,R17
+    0043 F021      BEQ	0x0048
+    0044 95C8      LPM
+    0045 9631      ADIW	R30,1
+    0046 920D      ST	R0,X+
+    0047 CFF9      RJMP	0x0041
+    0048 940E0061  CALL	_main
+_exit:
+    004A CFFF      RJMP	_exit
+_delay:
+  i                    --> R20
+  j                    --> R22
+  MS                   --> R16
+    004B 940E0088  CALL	push_gset2
+FILE: D:\整理\个人总结的M8程序\002、位定义闪烁灯设计\实例二\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) #include <macros.h>
+(0003) /**********************************************************************
+(0004) 				  函数数据类型说明							   	
+(0005) **********************************************************************/
+(0006) #define uchar unsigned char 
+(0007) #define uint unsigned int
+(0008) 
+(0009) /**********************************************************************
+(0010) 				   延时函数						   	
+(0011) **********************************************************************/
+(0012) void delay(uint MS)		  
+(0013) {
+(0014)  uint i,j;
+(0015)  for( i=0;i<MS;i++)
+    004D 2744      CLR	R20
+    004E 2755      CLR	R21
+    004F C00B      RJMP	0x005B
+(0016)  for(j=0;j<1141;j++);	//1141是在8MHz晶振下，通过软件仿真反复实验得到的数值
+    0050 2766      CLR	R22
+    0051 2777      CLR	R23
+    0052 C002      RJMP	0x0055
+    0053 5F6F      SUBI	R22,0xFF
+    0054 4F7F      SBCI	R23,0xFF
+    0055 3765      CPI	R22,0x75
+    0056 E0E4      LDI	R30,4
+    0057 077E      CPC	R23,R30
+    0058 F3D0      BCS	0x0053
+    0059 5F4F      SUBI	R20,0xFF
+    005A 4F5F      SBCI	R21,0xFF
+    005B 1740      CP	R20,R16
+    005C 0751      CPC	R21,R17
+    005D F390      BCS	0x0050
+    005E 940E006E  CALL	pop_gset2
+    0060 9508      RET
+(0017) }
+(0018) /**********************************************************************
+(0019) 				主函数						   	
+(0020) **********************************************************************/
+(0021) void main()
+(0022) {
+(0023)      DDRB=0XFF;
+_main:
+    0061 EF8F      LDI	R24,0xFF
+    0062 BB87      OUT	0x17,R24
+    0063 C008      RJMP	0x006C
+(0024) 	 //PORTB=0XFF;
+(0025)      while(1)
+(0026)      {
+(0027) 	    PORTB|=BIT(3);//00001000
+    0064 9AC3      SBI	0x18,3
+(0028)      	delay(1000);
+    0065 EE08      LDI	R16,0xE8
+    0066 E013      LDI	R17,3
+    0067 DFE3      RCALL	_delay
+(0029) 		PORTB&=~BIT(3);
+    0068 98C3      CBI	0x18,3
+(0030) 		delay(1000);
+FILE: <library>
+    0069 EE08      LDI	R16,0xE8
+    006A E013      LDI	R17,3
+    006B DFDF      RCALL	_delay
+    006C CFF7      RJMP	0x0064
+    006D 9508      RET
+pop_gset2:
+    006E E0E2      LDI	R30,2
+    006F 940C0075  JMP	pop
+push_gset1:
+    0071 935A      ST	R21,-Y
+    0072 934A      ST	R20,-Y
+    0073 9508      RET
+pop_gset1:
+    0074 E0E1      LDI	R30,1
+pop:
+    0075 9149      LD	R20,Y+
+    0076 9159      LD	R21,Y+
+    0077 FDE0      SBRC	R30,0
+    0078 9508      RET
+    0079 9169      LD	R22,Y+
+    007A 9179      LD	R23,Y+
+    007B FDE1      SBRC	R30,1
+    007C 9508      RET
+    007D 90A9      LD	R10,Y+
+    007E 90B9      LD	R11,Y+
+    007F FDE2      SBRC	R30,2
+    0080 9508      RET
+    0081 90C9      LD	R12,Y+
+    0082 90D9      LD	R13,Y+
+    0083 FDE3      SBRC	R30,3
+    0084 9508      RET
+    0085 90E9      LD	R14,Y+
+    0086 90F9      LD	R15,Y+
+    0087 9508      RET
+push_gset2:
+    0088 937A      ST	R23,-Y
+    0089 936A      ST	R22,-Y
+    008A 940C0071  JMP	push_gset1

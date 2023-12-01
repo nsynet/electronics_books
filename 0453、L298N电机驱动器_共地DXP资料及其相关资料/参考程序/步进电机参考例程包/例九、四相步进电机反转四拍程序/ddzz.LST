@@ -1,0 +1,52 @@
+C51 COMPILER V8.05a   DDZZ                                                                 04/01/2009 18:10:34 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE DDZZ
+OBJECT MODULE PLACED IN ddzz.OBJ
+COMPILER INVOKED BY: D:\Program Files\C51\BIN\C51.EXE ddzz.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          ////////////////////////汇诚科技////////////////////
+   3          //////////////////http://www.ourhc.cn///////////////
+   4          ///////////////////步进电机反转调试程序/////////////
+   5          
+   6          #include<reg52.h>  
+   7          
+   8          /*****P1.0=A ;P1.1=B ;P1.2=A' ; P1.3=B'****/  
+   9          code unsigned char run[4]={0x08,0x04,0x02,0x01};  //四相四拍工作方式
+  10          unsigned char s,i,j,k;
+  11          
+  12          void delay(i)//延时函数
+  13          {
+  14   1      for(j=0;j<i;j++)
+  15   1      for(k=0;k<250;k++);
+  16   1      }
+  17          main()
+  18          {
+  19   1      unsigned char z,y;
+  20   1      y=10;       //定义延时时间，时间越长电机转速越慢反之则快
+  21   1      while(1)
+  22   1      {
+  23   2      for(z=0;z<4;z++)
+  24   2      {
+  25   3      P1=run[z];
+  26   3      delay(y);
+  27   3      }
+  28   2      }
+  29   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     55    ----
+   CONSTANT SIZE    =      4    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,239 @@
+__start:
+__text_start:
+    0052 E5CF      LDI	R28,0x5F
+    0053 E0D4      LDI	R29,4
+    0054 BFCD      OUT	0x3D,R28
+    0055 BFDE      OUT	0x3E,R29
+    0056 51C0      SUBI	R28,0x10
+    0057 40D0      SBCI	R29,0
+    0058 EA0A      LDI	R16,0xAA
+    0059 8308      STD	Y+0,R16
+    005A 2400      CLR	R0
+    005B EAEF      LDI	R30,0xAF
+    005C E0F0      LDI	R31,0
+    005D E010      LDI	R17,0
+    005E 3AEF      CPI	R30,0xAF
+    005F 07F1      CPC	R31,R17
+    0060 F011      BEQ	0x0063
+    0061 9201      ST	R0,Z+
+    0062 CFFB      RJMP	0x005E
+    0063 8300      STD	Z+0,R16
+    0064 E5E4      LDI	R30,0x54
+    0065 E0F0      LDI	R31,0
+    0066 E6A0      LDI	R26,0x60
+    0067 E0B0      LDI	R27,0
+    0068 E010      LDI	R17,0
+    0069 3AE3      CPI	R30,0xA3
+    006A 07F1      CPC	R31,R17
+    006B F021      BEQ	0x0070
+    006C 95C8      LPM
+    006D 9631      ADIW	R30,1
+    006E 920D      ST	R0,X+
+    006F CFF9      RJMP	0x0069
+    0070 940E00AA  CALL	_main
+_exit:
+    0072 CFFF      RJMP	_exit
+FILE: D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式二\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) #include <macros.h>
+(0003) /********************************************************************
+(0004)                       串口初始化子程序
+(0005) *********************************************************************/
+(0006) void Uart_Init(void)
+(0007) {
+(0008)     UCSRB  =  0x00;     //disable while setting baud rate
+_Uart_Init:
+    0073 2422      CLR	R2
+    0074 B82A      OUT	0x0A,R2
+(0009)     UCSRA  =  0x00;     //Bit1为1则倍速发送
+    0075 B82B      OUT	0x0B,R2
+(0010)     UCSRC  =  0x86;  
+    0076 E886      LDI	R24,0x86
+    0077 BD80      OUT	0x20,R24
+(0011)     UBRRL  =  0x33;     //波特率：9600 Bps
+    0078 E383      LDI	R24,0x33
+    0079 B989      OUT	0x09,R24
+(0012)     UBRRH  =  0x00;     //误差率：0.156%
+    007A BC20      OUT	0x20,R2
+(0013)     UCSRB  =  0x18;  
+    007B E188      LDI	R24,0x18
+    007C B98A      OUT	0x0A,R24
+    007D 9508      RET
+(0014) }
+(0015) /********************************************************************
+(0016)                       串口接收字节子程序
+(0017) *********************************************************************/
+(0018) unsigned char Getchar(void)
+(0019) {
+(0020)    while(!(UCSRA& (1<<RXC)));
+_Getchar:
+    007E 9B5F      SBIS	0x0B,7
+    007F CFFE      RJMP	_Getchar
+(0021)    return UDR;
+    0080 B10C      IN	R16,0x0C
+    0081 9508      RET
+(0022) }
+(0023) /********************************************************************
+(0024)                      串口发送字节子程序
+(0025) *********************************************************************/
+(0026) void Putchar(unsigned char c)
+(0027) {
+(0028)    while (!(UCSRA&(1<<UDRE)));
+_Putchar:
+  c                    --> R16
+    0082 9B5D      SBIS	0x0B,5
+    0083 CFFE      RJMP	_Putchar
+(0029)    UDR=c;
+    0084 B90C      OUT	0x0C,R16
+    0085 9508      RET
+_Putstr:
+  s                    --> R20
+    0086 940E00CE  CALL	push_gset1
+    0088 01A8      MOVW	R20,R16
+(0030) }
+(0031) /********************************************************************
+(0032)                      串口发送字符串子程序
+(0033) *********************************************************************/
+(0034) void Putstr(char *s)
+(0035) {
+    0089 C005      RJMP	0x008F
+(0036)    while (*s)
+(0037)    {
+(0038)       Putchar(*s);
+    008A 01FA      MOVW	R30,R20
+    008B 8100      LDD	R16,Z+0
+    008C DFF5      RCALL	_Putchar
+(0039)       s++;
+    008D 5F4F      SUBI	R20,0xFF
+    008E 4F5F      SBCI	R21,0xFF
+    008F 01FA      MOVW	R30,R20
+    0090 8020      LDD	R2,Z+0
+    0091 2022      TST	R2
+    0092 F7B9      BNE	0x008A
+    0093 940E00D1  CALL	pop_gset1
+    0095 9508      RET
+_Puts:
+  s                    --> R20
+    0096 940E00CE  CALL	push_gset1
+    0098 01A8      MOVW	R20,R16
+(0040)    }
+(0041) }
+(0042) /********************************************************************
+(0043)                      串口发送字符串子程序(带有换行符)
+(0044) *********************************************************************/
+(0045) void Puts(char *s)
+(0046) {
+    0099 C005      RJMP	0x009F
+(0047)    while (*s)
+(0048)    {
+(0049)       Putchar(*s);
+    009A 01FA      MOVW	R30,R20
+    009B 8100      LDD	R16,Z+0
+    009C DFE5      RCALL	_Putchar
+(0050)       s++;
+    009D 5F4F      SUBI	R20,0xFF
+    009E 4F5F      SBCI	R21,0xFF
+    009F 01FA      MOVW	R30,R20
+    00A0 8020      LDD	R2,Z+0
+    00A1 2022      TST	R2
+    00A2 F7B9      BNE	0x009A
+(0051)    }
+(0052)    Putchar(0x0a);   //回车换行
+    00A3 E00A      LDI	R16,0xA
+    00A4 DFDD      RCALL	_Putchar
+(0053)    Putchar(0x0d);
+    00A5 E00D      LDI	R16,0xD
+    00A6 DFDB      RCALL	_Putchar
+    00A7 940E00D1  CALL	pop_gset1
+    00A9 9508      RET
+(0054) }
+(0055) /********************************************************************
+(0056)                             主函数
+(0057) *********************************************************************/
+(0058) void main(void)
+(0059) {
+(0060)    unsigned char i=0;
+_main:
+  i                    --> R20
+    00AA 2744      CLR	R20
+(0061) 
+(0062)    Uart_Init();
+    00AB DFC7      RCALL	_Uart_Init
+(0063) 
+(0064)    Puts("zhang xin chun ");
+    00AC E90F      LDI	R16,0x9F
+    00AD E010      LDI	R17,0
+    00AE DFE7      RCALL	_Puts
+(0065)    Puts("Http://www.ourhc.cn");
+    00AF E80B      LDI	R16,0x8B
+    00B0 E010      LDI	R17,0
+    00B1 DFE4      RCALL	_Puts
+(0066)    Puts("ATMega16 UART TEST");
+    00B2 E708      LDI	R16,0x78
+    00B3 E010      LDI	R17,0
+    00B4 DFE1      RCALL	_Puts
+(0067)    Putchar(0x0a);
+    00B5 E00A      LDI	R16,0xA
+    00B6 DFCB      RCALL	_Putchar
+(0068)    Putchar(0x0d);
+    00B7 E00D      LDI	R16,0xD
+    00B8 DFC9      RCALL	_Putchar
+    00B9 C012      RJMP	0x00CC
+(0069)    while(1)
+(0070)    {
+(0071)       i=Getchar();
+    00BA DFC3      RCALL	_Getchar
+    00BB 2F40      MOV	R20,R16
+(0072)       if (i!=0)    //发送0x0F开始测试
+    00BC 2300      TST	R16
+    00BD F071      BEQ	0x00CC
+(0073)       {
+(0074)          i=0;
+    00BE 2744      CLR	R20
+(0075)          Puts("AVR-ARM RS232 TEST CODE");
+    00BF E600      LDI	R16,0x60
+    00C0 E010      LDI	R17,0
+    00C1 DFD4      RCALL	_Puts
+(0076)          Puts("Http://www.ourhc.cn");
+    00C2 E80B      LDI	R16,0x8B
+    00C3 E010      LDI	R17,0
+    00C4 DFD1      RCALL	_Puts
+(0077)          Puts("ATMega16 UART TEST");
+    00C5 E708      LDI	R16,0x78
+    00C6 E010      LDI	R17,0
+    00C7 DFCE      RCALL	_Puts
+(0078)          Putchar(0x0a);
+    00C8 E00A      LDI	R16,0xA
+    00C9 DFB8      RCALL	_Putchar
+(0079)          Putchar(0x0d);
+FILE: <library>
+    00CA E00D      LDI	R16,0xD
+    00CB DFB6      RCALL	_Putchar
+    00CC CFED      RJMP	0x00BA
+    00CD 9508      RET
+push_gset1:
+    00CE 935A      ST	R21,-Y
+    00CF 934A      ST	R20,-Y
+    00D0 9508      RET
+pop_gset1:
+    00D1 E0E1      LDI	R30,1
+pop:
+    00D2 9149      LD	R20,Y+
+    00D3 9159      LD	R21,Y+
+    00D4 FDE0      SBRC	R30,0
+    00D5 9508      RET
+    00D6 9169      LD	R22,Y+
+    00D7 9179      LD	R23,Y+
+    00D8 FDE1      SBRC	R30,1
+    00D9 9508      RET
+    00DA 90A9      LD	R10,Y+
+    00DB 90B9      LD	R11,Y+
+    00DC FDE2      SBRC	R30,2
+    00DD 9508      RET
+    00DE 90C9      LD	R12,Y+
+    00DF 90D9      LD	R13,Y+
+    00E0 FDE3      SBRC	R30,3
+    00E1 9508      RET
+    00E2 90E9      LD	R14,Y+
+    00E3 90F9      LD	R15,Y+
+    00E4 9508      RET

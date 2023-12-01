@@ -1,0 +1,107 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile F:\NEW光~1\MEGA12~1\AVR单片机配套程序\002、位定义闪烁灯设计\实例二\icc\chengxu.c
+ 0000                   .dbfunc e delay _delay fV
+ 0000           ;              i -> R20,R21
+ 0000           ;              j -> R22,R23
+ 0000           ;             MS -> R16,R17
+                        .even
+ 0000           _delay::
+ 0000 0E940000          xcall push_gset2
+ 0004                   .dbline -1
+ 0004                   .dbline 13
+ 0004           ; #include <iom128.h>
+ 0004           ; #include <macros.h>
+ 0004           ; /**********************************************************************
+ 0004           ;                                 函数数据类型说明                                                              
+ 0004           ; **********************************************************************/
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; 
+ 0004           ; /**********************************************************************
+ 0004           ;                                  延时函数                                                     
+ 0004           ; **********************************************************************/
+ 0004           ; void delay(uint MS)             
+ 0004           ; {
+ 0004                   .dbline 15
+ 0004           ;  uint i,j;
+ 0004           ;  for( i=0;i<MS;i++)
+ 0004 4427              clr R20
+ 0006 5527              clr R21
+ 0008 0BC0              xjmp L5
+ 000A           L2:
+ 000A                   .dbline 16
+ 000A 6627              clr R22
+ 000C 7727              clr R23
+ 000E 02C0              xjmp L9
+ 0010           L6:
+ 0010                   .dbline 16
+ 0010           L7:
+ 0010                   .dbline 16
+ 0010 6F5F              subi R22,255  ; offset = 1
+ 0012 7F4F              sbci R23,255
+ 0014           L9:
+ 0014                   .dbline 16
+ 0014 6537              cpi R22,117
+ 0016 E4E0              ldi R30,4
+ 0018 7E07              cpc R23,R30
+ 001A D0F3              brlo L6
+ 001C           L3:
+ 001C                   .dbline 15
+ 001C 4F5F              subi R20,255  ; offset = 1
+ 001E 5F4F              sbci R21,255
+ 0020           L5:
+ 0020                   .dbline 15
+ 0020 4017              cp R20,R16
+ 0022 5107              cpc R21,R17
+ 0024 90F3              brlo L2
+ 0026                   .dbline -2
+ 0026           L1:
+ 0026 0E940000          xcall pop_gset2
+ 002A                   .dbline 0 ; func end
+ 002A 0895              ret
+ 002C                   .dbsym r i 20 i
+ 002C                   .dbsym r j 22 i
+ 002C                   .dbsym r MS 16 i
+ 002C                   .dbend
+ 002C                   .dbfunc e main _main fV
+                        .even
+ 002C           _main::
+ 002C                   .dbline -1
+ 002C                   .dbline 22
+ 002C           ;  for(j=0;j<1141;j++); //1141是在8MHz晶振下，通过软件仿真反复实验得到的数值
+ 002C           ; }
+ 002C           ; /**********************************************************************
+ 002C           ;                               主函数                                                  
+ 002C           ; **********************************************************************/
+ 002C           ; void main()
+ 002C           ; {
+ 002C                   .dbline 23
+ 002C           ;      DDRD=0XFF;//PD口作为输出口
+ 002C 8FEF              ldi R24,255
+ 002E 81BB              out 0x11,R24
+ 0030 08C0              xjmp L12
+ 0032           L11:
+ 0032                   .dbline 25
+ 0032                   .dbline 26
+ 0032 939A              sbi 0x12,3
+ 0034                   .dbline 27
+ 0034 08EE              ldi R16,1000
+ 0036 13E0              ldi R17,3
+ 0038 E3DF              xcall _delay
+ 003A                   .dbline 28
+ 003A 9398              cbi 0x12,3
+ 003C                   .dbline 29
+ 003C 08EE              ldi R16,1000
+ 003E 13E0              ldi R17,3
+ 0040 DFDF              xcall _delay
+ 0042                   .dbline 30
+ 0042           L12:
+ 0042                   .dbline 24
+ 0042 F7CF              xjmp L11
+ 0044           X0:
+ 0044                   .dbline -2
+ 0044           L10:
+ 0044                   .dbline 0 ; func end
+ 0044 0895              ret
+ 0046                   .dbend

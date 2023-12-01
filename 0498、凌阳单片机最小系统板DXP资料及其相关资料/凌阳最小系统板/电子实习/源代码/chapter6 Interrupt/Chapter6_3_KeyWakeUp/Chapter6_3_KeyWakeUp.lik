@@ -1,0 +1,19 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\KeyWakeUp_Main.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+Lib: "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\.\SPCE061V003.LIB"
+Lib: "E:\Program Files\Sunplus\unSPIDE180\IDE180\CMacro.lib"
+Output: ".\Debug\Chapter6_3_KeyWakeUp.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: RAM in "ISR.obj" at 0 
+;Align: RAM in "ISR.obj" with 0 
+;Locate: CODE in "KeyWakeUp_Main.obj" at 80CE 
+;Align: CODE in "KeyWakeUp_Main.obj" with 0 
+;Locate: CODE in "rshu1" of "CMacro.lib"  at 8106 
+;Align: CODE in "rshu1" of "CMacro.lib"  with 0 
+;Locate: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  at 811B 
+;Align: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  with 0 

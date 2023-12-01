@@ -1,0 +1,10 @@
+Version: 3.0
+Options: m37
+Obj: "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "E:\ele_competition\voice\MIC_AD\Debug\Resource.obj"
+Obj: "E:\ele_competition\voice\MIC_AD\Debug\main.obj"
+Output: ".\Debug\MIC_AD.S37"
+;Locate: TEXT in "main.obj" at 8009 
+;Align: TEXT in "main.obj" with 0 
+;Locate: CODE in "main.obj" at 8036 
+;Align: CODE in "main.obj" with 0 

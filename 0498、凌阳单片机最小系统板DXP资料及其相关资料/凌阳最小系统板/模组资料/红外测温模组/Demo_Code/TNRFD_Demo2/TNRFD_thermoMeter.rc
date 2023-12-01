@@ -1,0 +1,123 @@
+# Begin Project
+# Begin SubItem "TNRFD_thermoMeter  Resources"
+# Begin Source File
+SOURCE=voice\T064.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T064_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\0.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_0_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\1.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_1_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\2.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_2_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\3.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_3_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\4.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_4_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\5.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_5_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\6.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_6_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\7.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_7_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\8.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_8_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\9.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_9_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\10.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_10_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\bai.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_BAI_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\hjwd.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_HJWD_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\mbwd.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_MBWD_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\ok.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_OK_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\shd.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_SHD_48K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

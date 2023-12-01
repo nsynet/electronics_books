@@ -1,0 +1,291 @@
+XL
+H 4 areas 16 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+S mod8u Ref0000
+S div8u Ref0000
+A text size 208 flags 0
+dbfile E:\设计资料套装\001、0~999999——百万计数器\备份2\icc源程序\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 1D 4
+dbline 1E 4
+dbline 1F 6
+dbline 1F 6
+dbline 1F C
+dbline 1F C
+dbline 1F C
+dbline 1F C
+dbline 1F 10
+dbline 1F 16
+dbline 1E 16
+dbline 1E 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 26 2C
+dbline 27 2C
+dbline 28 2E
+dbline 29 32
+dbline 2A 32
+dbline 2B 34
+dbline 2C 4E
+dbline 2D 54
+dbline 2E 56
+dbline 28 56
+dbline 28 58
+dbline FFFFFFFE 5C
+dbline 0 60
+dbfunc e Process 62 fV
+dbsym r p 14 pc
+dbsym r i 16 c
+dbline FFFFFFFF 6A
+dbline 34 6A
+dbline 35 6A
+dbline 36 6C
+dbline 36 70
+dbline 36 70
+dbline 36 7A
+dbline 36 7E
+dbline 37 7E
+dbline 38 82
+dbline 39 8E
+dbline 3A 9A
+dbline 3A A2
+dbline 3A A2
+dbline 3A AC
+dbline 3A B2
+dbline 3B B2
+dbline 3C C0
+dbline 3D CE
+dbline 3D D6
+dbline 3D D6
+dbline 3D DC
+dbline 3E DC
+dbline 3F EA
+dbline FFFFFFFE F8
+dbline 0 FC
+dbfunc e Init_IO FE fV
+dbline FFFFFFFF FE
+dbline 46 FE
+dbline 47 FE
+dbline 48 102
+dbline 49 104
+dbline 4A 108
+dbline 4B 10A
+dbline 4C 10C
+dbline FFFFFFFE 10E
+dbline 0 10E
+dbfunc e get_key 110 fV
+dbline FFFFFFFF 110
+dbline 53 110
+dbline 54 110
+dbline 54 114
+dbline 54 114
+dbline 54 11A
+dbline FFFFFFFE 11A
+dbline 0 11A
+dbfunc e Write_EEPROM 11C fV
+dbsym r Address 16 i
+dbsym r Data 14 c
+dbline FFFFFFFF 124
+dbline 5D 124
+dbline 5D 124
+dbline 5D 128
+dbline 5E 12E
+dbline 5F 136
+dbline 60 13C
+dbline 61 13E
+dbline 62 140
+dbline 63 142
+dbline FFFFFFFE 148
+dbline 0 14C
+dbfunc e Read_EEPROM 14E fc
+dbsym r i 14 c
+dbsym r Address 14 i
+dbline FFFFFFFF 154
+dbline 6A 154
+dbline 6B 154
+dbline 6B 158
+dbline 6C 15E
+dbline 6D 166
+dbline 6E 16C
+dbline 6F 16E
+dbline 70 174
+dbline 71 176
+dbline FFFFFFFE 178
+dbline 0 17C
+dbfunc e main 17E fV
+dbsym l Load 1 c
+dbline FFFFFFFF 17E
+dbline 77 17E
+dbline 79 17E
+dbline 7A 180
+dbline 7B 184
+dbline 7C 188
+dbline 7D 18E
+dbline 7E 192
+dbline 7F 196
+dbline 80 1A0
+dbline 81 1AA
+dbline 82 1B4
+dbline 84 1BC
+dbline 85 1BC
+dbline 85 1C4
+dbline 85 1C4
+dbline 85 1C8
+dbline 85 1CC
+dbline 85 1D0
+dbline 85 1D4
+dbline 86 1D4
+dbline 87 1DE
+dbline 88 1E4
+dbline 89 1E6
+dbline 8A 1F0
+dbline 8B 1FA
+dbline 8C 204
+dbline 83 204
+dbline FFFFFFFE 206
+dbline 0 206
+S _Read_EEPROM Def014E
+S _main Def017E
+S _DelayMs Def0000
+S _Display Def0026
+S _Process Def0062
+S _get_key Def0110
+S _Write_EEPROM Def011C
+S _Init_IO Def00FE
+A data size 13 flags 20
+dbfile E:\设计资料套装\001、0~999999——百万计数器\备份2\icc源程序\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[6:6]c
+dbsym e y 10 c
+dbsym e j 11 c
+dbsym e k 12 c
+S _Table Def0000
+S _j Def0011
+S _k Def0012
+S _y Def0010
+S _Data Def000A
+A idata size 13 flags 0
+A bss size 1 flags 20
+dbfile E:\设计资料套装\001、0~999999——百万计数器\备份2\icc源程序\chengxu.c
+dbsym e key_up 0 c
+S _key_up Def0000
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 00
+R 00 00 02 00
+T 0E 00 00 00
+R 00 00 02 00
+T 10 00 00
+R 00 00 02 00
+T 11 00 00
+R 00 00 02 00
+T 12 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 02 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 20 94 28 BA 01 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 10 E0 D6 DF 44 0F 63 95 66 30 58 F3 0E 94
+R 00 00 00 00
+T 5E 00 00 00 08 95
+R 00 00 00 00 12 02 05 00
+T 62 00 0E 94 00 00 A9 01 60 2F 62 B7 64 36 38 F0
+R 00 00 00 00 12 04 01 00
+T 70 00 80 91 11 00 8F 5F 80 93 11 00 22 24 22 BE
+R 00 00 00 00 00 04 01 00 00 0A 01 00
+T 7E 00 60 93 10 00 1A E0 06 2F 0E 94 00 00 FA 01
+R 00 00 00 00 00 04 01 00 12 0C 06 00
+T 8C 00 05 83 1A E0 06 2F 0E 94 00 00 FA 01 04 83
+R 00 00 00 00 12 0A 07 00
+T 9A 00 80 91 11 00 84 36 40 F0 80 91 12 00 8F 5F
+R 00 00 00 00 00 04 01 00 00 0C 01 00
+T A8 00 80 93 12 00 22 24 20 92 11 00 1A E0 00 91
+R 00 00 00 00 00 04 01 00 00 0A 01 00
+T B6 00 11 00 0E 94 00 00 FA 01 03 83 1A E0 00 91
+R 00 00 00 00 00 02 01 00 12 06 06 00
+T C4 00 11 00 0E 94 00 00 FA 01 02 83 80 91 12 00
+R 00 00 00 00 00 02 01 00 12 06 07 00 00 0E 01 00
+T D2 00 84 36 18 F0 22 24 20 92 12 00 1A E0 00 91
+R 00 00 00 00 00 0A 01 00
+T E0 00 12 00 0E 94 00 00 FA 01 01 83 1A E0 00 91
+R 00 00 00 00 00 02 01 00 12 06 06 00
+T EE 00 12 00 0E 94 00 00 FA 01 00 83 0E 94 00 00
+R 00 00 00 00 00 02 01 00 12 06 07 00 12 0E 04 00
+T FC 00 08 95
+R 00 00 00 00
+T FE 00 8F EF 87 BB 88 BB 22 24 21 BA 22 BA 84 BB
+R 00 00 00 00
+T 0C 01 85 BB 08 95
+R 00 00 00 00
+T 10 01 85 99 03 C0 81 E0 80 93 00 00 08 95
+R 00 00 00 00 00 0A 03 00
+T 1C 01 0E 94 00 00 B9 01 40 2F E5 9B 03 C0 04 E0
+R 00 00 00 00 12 04 01 00
+T 2A 01 10 E0 69 DF 1B 01 23 2C 33 24 2F BA CB 01
+R 00 00 00 00
+T 38 01 90 70 8E BB 4D BB E2 9A E1 9A 04 E0 10 E0
+R 00 00 00 00
+T 46 01 5C DF 0E 94 00 00 08 95
+R 00 00 00 00 12 06 04 00
+T 4E 01 0E 94 00 00 A8 01 E0 9B 03 C0 04 E0 10 E0
+R 00 00 00 00 12 04 00 00
+T 5C 01 51 DF 1A 01 23 2C 33 24 2F BA CA 01 90 70
+R 00 00 00 00
+T 6A 01 8E BB E0 9A 05 E0 10 E0 46 DF 4D B3 04 2F
+R 00 00 00 00
+T 78 01 0E 94 00 00 08 95
+R 00 00 00 00 12 04 03 00
+T 7E 01 BF DF 8F EF 88 BB 22 24 25 BA 0E E1 10 E0
+R 00 00 00 00
+T 8C 01 39 DF 8F EF 85 BB 86 E0 83 BF 01 E0 10 E0
+R 00 00 00 00
+T 9A 01 D9 DF 00 93 10 00 02 E0 10 E0 D4 DF 00 93
+R 00 00 00 00 00 06 01 00
+T A8 01 11 00 03 E0 10 E0 CF DF 00 93 12 00 20 90
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T B6 01 10 00 22 BE 24 C0 80 91 00 00 81 30 41 F4
+R 00 00 00 00 00 02 01 00 00 0A 03 00
+T C4 01 22 24 22 BE 20 92 11 00 20 92 12 00 20 92
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T D2 01 00 00 20 E0
+R 00 00 00 00 00 02 03 00 20 04 01 00 0A 00
+T D6 01 30 E0 00 91 10 00 42 DF
+R 00 00 00 00 40 02 01 00 0A 00 00 06 01 00
+T DE 01 00 E0 10 E0 21 DF 95 DF 21 E0 30 E0 00 91
+R 00 00 00 00 20 02 01 00 0A 00 40 04 01 00 0A 00
+T EC 01 10 00 96 DF 22 E0 30 E0 00 91 11 00 91 DF
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T FA 01 23 E0 30 E0 00 91 12 00 8C DF DB CF 08 95
+R 00 00 00 00 00 08 01 00

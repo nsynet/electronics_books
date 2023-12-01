@@ -1,0 +1,241 @@
+;******************************************************************************
+;     文件名称：
+;              ADC_LCD.s43
+;     文件说明：
+;              通过ADC12 对内部温度传感器进行数据采样，把
+;              温度显示到LCD，温度显示的格式是华氏温度，带两位小数
+;*****************************************************************************
+#include          "msp430x44x.h"                 ; 
+;***************************************************************************** 
+                 ORG     08000h                  ; 程序起始
+;***************************************************************************** 
+RESET            mov     #0600h,SP               ; 初始化堆栈
+StopWDT          mov     #WDTPW+WDTHOLD,&WDTCTL  ; 关看门狗
+SetupFLL         bis.b   #XCAP14PF,&FLL_CTL0     ; 配置晶振去耦电容
+
+                 mov     #0fffh,r15          
+os_wait          dec     r15                     ;延迟
+                 jnz     os_wait
+               
+                 call    #lcd_display_ona        ;初始化LCD 
+;*****************************************************************************
+;        设置ADC12
+;*****************************************************************************   
+                 
+SetupADC12       mov     #ADC12ON+REFON+REF2_5V+SHT0_6,&ADC12CTL0 
+                                                 ; 启动ADC12，使用内部2.5V参考电压， SHT0
+                                                 ; 位置位
+                 mov     #SHP,&ADC12CTL1         ; 使用采样定时器    
+                 mov.b   #INCH_10+SREF_1,&ADC12MCTL0  ; 使用 A10, Vref+
+                 bis     #BIT0,&ADC12IE          ; 使能中断           
+                                                 ;
+                 mov     #03600h,R15             ; 设置delay量
+L$1              dec     R15                     ; 
+                 jnz     L$1                     ;
+                                            
+                 bis     #ENC,&ADC12CTL0         ; 使能转换
+                 eint                            ; 使能中断         
+;*****************************************************************************
+;                主循环
+;*****************************************************************************
+                                               
+Mainloop         bis     #ADC12SC,&ADC12CTL0     ; 启动转换
+                 bis     #CPUOFF,SR              ; 低功耗等待转换完成
+                                                 ;
+DispTemp         mov     #0h,R15                 ; 清零R15
+                 mov     #32h,R5 
+                                                 ; 
+                 jmp     First_cmp               ; 跳转
+CMPloop          incd    R15                     ; inc R15          
+                 dadd    #1,R5                   ; 
+First_cmp        cmp     Temp_Tab(R15),R6        ; 比较 A/D 结果
+                 jge     CMPloop                 ; 
+                                                 ;  
+                                                 ; 
+L_C              mov     #00h,r7
+                 mov     #0h,r15
+                 jmp     First_cmp_c             ; 
+CMPloop_c        incd    R15                     ; 
+                 dadd    #55h,R7                 ;
+First_cmp_c      cmp     Temp_Tab(R15),R6        ; 
+                 jge     CMPloop_c               ; 
+                                                 ;  
+                                                 ;
+                               
+;**************************************************************************
+;      显示温度到LCD
+;**************************************************************************	    
+LCD_DISP         
+                 call     #show_clr                                
+                 mov       r7,r13                
+                 and       #000fh,r13
+                 mov.b     lcd_table(R13),&LCDM1             
+                 mov       r7,r13                 ;显示 D1
+                 rra       r13
+                 rra       r13
+                 rra       r13
+                 rra       r13
+                 and       #000fh,r13
+                 mov.b     lcd_table(R13),&LCDM2                
+                 mov.b     r7,r13                 ;·D2
+                 swpb      r13
+                 and       #000fh,r13
+                 mov.b     lcd_table(R13),R15
+                 add.b     #80h,r15
+                 mov.b     r15,&LCDM3             ;显示 "."
+                 mov       r7,r13                 ;显示 D3
+                 swpb      r13
+                 rra       r13
+                 rra       r13
+                 rra       r13
+                 rra       r13
+                 and       #000fh,r13
+                 mov.b     lcd_table(R13),&LCDM4   ;显示 d4
+                 
+RET_1      
+                 mov      #0ffh,r15                ;延迟
+delay_1          dec      r15
+                 jnz      delay_1            
+                 jmp      Mainloop                            
+            
+            
+;*************************************************************************
+;            初始化LCD
+;*************************************************************************
+
+lcd_display_ona   mov.b    #0ffh,&P3DIR
+                  mov.b    #03h,&P4DIR
+	          mov.b    #0FCh,&P5SEL                         ;设置为外围模块
+	          mov.b    #LCDON+LCD4MUX+LCDP1,&LCDCTL         ;设置 4Mux 模式
+	          mov.b    #BTFRFQ1,&BTCTL                      ;设置Basic Timer : SSEL=0 DIV=0 Reset=1,
+	                                                        ;ACLK,32768/256 = 128Hz 
+	                                                        ;使能Basic Timer 中断
+	        call     #show_clr                              ;LCD清0	            
+	        ret         
+;****************************************************-   
+;             清除LCD缓冲区
+;****************************************************-
+show_clr
+            	mov.b	#01h,R15                      ; 清除LCD缓存
+show_clr1
+            	mov.b   #00h,LCDMEM(r15)              ; 设置LCD初始值              
+            	inc.b   R15                           ; 计数器加一
+            	cmp.b	#0ah,R15                      ; if r15>10
+            	jnz     show_clr1
+            	ret
+            
+delay       	mov.b   #0ffh,R15                     
+ttt         	nop
+            	nop
+            	dec.b   R15
+            	jnz     ttt
+            	ret          
+;***********************************************************************
+;           温度转换参考表，表值是根据公式计算得到，取的是近似值
+;**********************************************************************
+Temp_Tab    DW      064Fh                   ;32F
+            DW      0652h
+            DW      0656h
+            DW      0659h                   ;35F
+            DW      065Ch
+            DW      065Fh
+            DW      0662h
+            DW      0666h
+            DW      0669h                   ;40F
+            DW      066Ch
+            DW      066Fh
+            DW      0673h
+            DW      0676h
+            DW      0679h                   ;45F
+            DW      067Ch
+            DW      0680h
+            DW      0683h
+            DW      0686h
+            DW      0689h                   ;50F
+            DW      068Ch
+            DW      0690h
+            DW      0693h
+            DW      0696h
+            DW      0699h                   ;55F
+            DW      069Dh
+            DW      06A0h
+            DW      06A3h
+            DW      06A6h
+            DW      06AAh                   ;60F
+            DW      06ADh
+            DW      06B0h
+            DW      06B3h
+            DW      06B6h
+            DW      06BAh                   ;65F
+            DW      06BDh
+            DW      06C0h
+            DW      06C3h
+            DW      06C7h
+            DW      06CAh                   ;70F
+            DW      06CDh          
+            DW      06D0h
+            DW      06D4h
+            DW      06D7h
+            DW      06DAh                   ;75F
+            DW      06DDh
+            DW      06E0h
+            DW      06E4h
+            DW      06E7h
+            DW      06EAh                   ;80F
+            DW      06EDh
+            DW      06F1h
+            DW      06F4h
+            DW      06F7h
+            DW      06FAh                   ;85F
+            DW      06FEh
+            DW      0701h
+            DW      0704h
+            DW      0707h
+            DW      070Bh                   ;90F
+            DW      070Eh
+            DW      0711h
+            DW      0714h
+            DW      0717h
+            DW      071Bh                   ;95F
+            DW      071Eh
+            DW      0721h
+            DW      0724h
+            DW      0728h
+            DW      072Bh                   ;100F
+            DW      0FFFh                   ;温度太高，超出处理范围
+;********************************************************
+;             LCD的数字对照表
+;********************************************************
+lcd_table
+            db        7bh            ;0
+            db        12h            ;1
+            db        4fh            ;2
+            db        1fh            ;3
+            db        36h            ;4
+            db        3dh            ;5
+            db        7dh            ;6
+            db        13h            ;7
+            db        7fh            ;8
+            db        3fh            ;9
+            db        73h            ;A
+            db        7ch            ;B
+            db        69h            ;C
+            db        5eh            ;d
+            db        6fh            ;e
+            db        65h            ;F
+             
+;*******************************************************************
+ADC12ISR    ; ADC12终端
+;*******************************************************************
+            mov     &ADC12MEM0,R6           ; 保存结果到R6
+            bic     #CPUOFF,0(SP)           ; 
+            reti                            ;
+                                            ;
+;*******************************************************************
+;           中断向量表         
+;*******************************************************************
+            ORG     0FFFEh                  ; MSP430 RESET 向量 
+            DW      RESET                   ;
+            ORG     0FFEEh                  ; ADC12 中断向量
+            DW      ADC12ISR                ;
+            END     

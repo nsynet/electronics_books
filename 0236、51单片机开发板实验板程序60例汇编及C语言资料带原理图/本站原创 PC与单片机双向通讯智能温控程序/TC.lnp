@@ -1,0 +1,4 @@
+"TCMain.obj",
+"C:\Keil\C51\LIB\C51S.LIB",
+".\STARTUP.obj" 
+TO "TC" 

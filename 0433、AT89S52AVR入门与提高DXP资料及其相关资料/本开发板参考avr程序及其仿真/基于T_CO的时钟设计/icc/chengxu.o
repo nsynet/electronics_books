@@ -1,0 +1,195 @@
+XL
+H 4 areas 11 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+S div8u Ref0000
+A text size 146 flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\基于T_CO的计数器设计\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline B 4
+dbline D 4
+dbline E 6
+dbline F 6
+dbline F C
+dbline F C
+dbline F 10
+dbline 10 16
+dbline D 16
+dbline D 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 14 2C
+dbline 15 2C
+dbline 16 2E
+dbline 17 32
+dbline 18 32
+dbline 19 34
+dbline 1A 4C
+dbline 1B 52
+dbline 1C 54
+dbline 16 54
+dbline 16 56
+dbline FFFFFFFE 5A
+dbline 0 5E
+dbfunc e Process 60 fV
+dbsym r p2 14 pc
+dbsym r p1 16 pc
+dbline FFFFFFFF 68
+dbline 24 68
+dbline 25 68
+dbline 26 76
+dbline 27 86
+dbline 28 94
+dbline FFFFFFFE A6
+dbline 0 AA
+dbfunc e Init_IO AC fV
+dbline FFFFFFFF AC
+dbline 2C AC
+dbline 2E AC
+dbline 2F B0
+dbline 31 B2
+dbline 32 B4
+dbline FFFFFFFE B6
+dbline 0 B6
+dbfunc e main B8 fV
+dbline FFFFFFFF B8
+dbline 36 B8
+dbline 38 B8
+dbline 39 BA
+dbline 3A BE
+dbline 3B C2
+dbline 3C C8
+dbline 3D CC
+dbline 3F D0
+dbline 40 D4
+dbline 42 D8
+dbline 45 DE
+dbline 46 DE
+dbline 47 E8
+dbline 48 EE
+dbline 44 EE
+dbline FFFFFFFE F0
+dbline 0 F0
+dbfunc e Timer0 F2 fV
+dbline FFFFFFFF FC
+dbline 4D FC
+dbline 4E FC
+dbline 4F 106
+dbline 50 10A
+dbline 51 10A
+dbline 52 110
+dbline 53 11A
+dbline 54 11E
+dbline 55 11E
+dbline 56 122
+dbline 57 12C
+dbline 58 12C
+dbline 59 134
+dbline 5A 134
+dbline 5B 13A
+dbline 5C 13A
+dbline FFFFFFFE 13A
+dbline 0 144
+S _main Def00B8
+S _Display Def0026
+S _Process Def0060
+S _Timer0 Def00F2
+S _Init_IO Def00AC
+S _DelayMS Def0000
+A data size 11 flags 20
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\基于T_CO的计数器设计\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[4:4]c
+dbsym e CNT E c
+dbsym e Timer F A[2:2]c
+S _CNT Def000E
+S _Table Def0000
+S _Timer Def000F
+S _Data Def000A
+A idata size 11 flags 0
+A vector size 28 flags C
+T 00 00 C0 F9
+R 00 00 02 00
+T 02 00 A4 B0
+R 00 00 02 00
+T 04 00 99 92
+R 00 00 02 00
+T 06 00 82 F8
+R 00 00 02 00
+T 08 00 80 90
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 00
+R 00 00 02 00
+T 0E 00 00
+R 00 00 02 00
+T 0F 00 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 12 C0 45 BB
+R 00 00 00 00 12 04 02 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 22 BA 01 E0 10 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 D7 DF 44 0F 63 95 64 30 60 F3 0E 94 00 00
+R 00 00 00 00 12 0E 05 00
+T 5E 00 08 95
+R 00 00 00 00
+T 60 00 0E 94 00 00 A9 01 B8 01 1A E0 FB 01 00 81
+R 00 00 00 00 12 04 01 00
+T 6E 00 0E 94 00 00 FA 01 00 83 20 80 8A E0 82 9D
+R 00 00 00 00 12 04 06 00
+T 7C 00 FB 01 20 80 20 18 FA 01 21 82 1A E0 FB 01
+R 00 00 00 00
+T 8A 00 01 81 0E 94 00 00 FA 01 02 83 FA 01 22 80
+R 00 00 00 00 12 06 06 00
+T 98 00 8A E0 82 9D FB 01 21 80 20 18 FA 01 23 82
+R 00 00 00 00
+T A6 00 0E 94 00 00 08 95
+R 00 00 00 00 12 04 04 00
+T AC 00 8F EF 84 BB 85 BB 81 BB 82 BB 08 95
+R 00 00 00 00
+T B8 00 F9 DF 8F EF 85 BB 22 24 22 BA 0E E1 10 E0
+R 00 00 00 00
+T C6 00 9C DF 8F EF 82 BB 84 E0 83 BF 86 E0 82 BF
+R 00 00 00 00
+T D4 00 81 E0 89 BF 80 E8 8F BF 08 C0 20 E0 30 E0
+R 00 00 00 00 20 0C 01 00 0A 00 40 0E 01 00 0A 00
+T E2 00 00 E0 10 E0 BC DF
+R 00 00 00 00 20 02 01 00 0F 00 40 04 01 00 0F 00
+T E8 00 00 E0 10 E0 9C DF F7 CF 08 95
+R 00 00 00 00 20 02 01 00 0A 00 40 04 01 00 0A 00
+T 24 00 0C 94 79 00
+R 00 00 03 00 10 04 00 00
+T F2 00 2A 92 8A 93 9A 93 2F B6 2A 92 80 91 0E 00
+R 00 00 00 00 00 0E 01 00
+T 00 01 8F 5F 80 93 0E 00 8D 37 C1 F4 22 24 20 92
+R 00 00 00 00 00 06 01 00
+T 0E 01 0E 00 80 91 10 00 8F 5F 80 93 10 00 8C 33
+R 00 00 00 00 00 02 01 00 00 06 01 00 00 0C 01 00
+T 1C 01 39 F4 20 92 10 00 80 91 0F 00 8F 5F 80 93
+R 00 00 00 00 00 06 01 00 00 0A 01 00
+T 2A 01 0F 00 80 91 0F 00 8C 33 19 F4 22 24 20 92
+R 00 00 00 00 00 02 01 00 00 06 01 00
+T 38 01 0F 00 29 90 2F BE 99 91 89 91 29 90 18 95
+R 00 00 00 00 00 02 01 00

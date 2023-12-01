@@ -1,0 +1,159 @@
+XL
+H 3 areas 6 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size 13A flags 0
+dbfile D:\整理\个人总结的M8程序\005、四位数码管静态显示程序\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline F 4
+dbline 11 4
+dbline 12 6
+dbline 13 6
+dbline 13 C
+dbline 13 C
+dbline 13 10
+dbline 14 16
+dbline 11 16
+dbline 11 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Init_IO 26 fV
+dbline FFFFFFFF 26
+dbline 18 26
+dbline 1A 26
+dbline 1B 2A
+dbline 1D 2C
+dbline 1E 2E
+dbline FFFFFFFE 30
+dbline 0 30
+dbfunc e main 32 fV
+dbline FFFFFFFF 32
+dbline 24 32
+dbline 25 32
+dbline 28 36
+dbline 29 36
+dbline 2A 3C
+dbline 2B 40
+dbline 2C 46
+dbline 2D 4C
+dbline 2E 50
+dbline 2F 56
+dbline 30 5C
+dbline 31 60
+dbline 32 66
+dbline 33 6C
+dbline 34 70
+dbline 35 76
+dbline 36 7C
+dbline 37 80
+dbline 38 86
+dbline 39 8C
+dbline 3A 90
+dbline 3B 96
+dbline 3C 9C
+dbline 3D A0
+dbline 3E A6
+dbline 3F AC
+dbline 40 B0
+dbline 41 B6
+dbline 42 BC
+dbline 43 C0
+dbline 44 C6
+dbline 45 CC
+dbline 46 D0
+dbline 47 D6
+dbline 48 DC
+dbline 49 E0
+dbline 4A E6
+dbline 4B EC
+dbline 4C F0
+dbline 4D F6
+dbline 4E FC
+dbline 4F 100
+dbline 50 106
+dbline 51 10C
+dbline 52 110
+dbline 53 116
+dbline 54 11C
+dbline 55 120
+dbline 56 126
+dbline 57 12C
+dbline 58 130
+dbline 59 136
+dbline 27 136
+dbline FFFFFFFE 138
+dbline 0 138
+S _main Def0032
+S _Init_IO Def0026
+S _DelayMS Def0000
+A data size 10 flags 20
+dbfile D:\整理\个人总结的M8程序\005、四位数码管静态显示程序\icc\chengxu.c
+dbsym e Table 0 A[16:16]c
+S _Table Def0000
+A idata size 10 flags 0
+T 00 00 C0 F9
+R 00 00 02 00
+T 02 00 A4 B0
+R 00 00 02 00
+T 04 00 99 92
+R 00 00 02 00
+T 06 00 82 F8
+R 00 00 02 00
+T 08 00 80 90
+R 00 00 02 00
+T 0A 00 88 83
+R 00 00 02 00
+T 0C 00 C6 A1
+R 00 00 02 00
+T 0E 00 86 8E
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 01 00
+T 26 00 8F EF 87 BB 88 BB 84 BB 85 BB 08 95
+R 00 00 00 00
+T 32 00 F9 DF 80 C0 20 90 00 00 28 BA 8F E0 85 BB
+R 00 00 00 00 00 08 01 00
+T 40 00 04 E6 10 E0 DD DF 20 90 01 00 28 BA 8F E0
+R 00 00 00 00 00 0A 01 00
+T 4E 00 85 BB 04 E6 10 E0 D5 DF 20 90 02 00 28 BA
+R 00 00 00 00 00 0C 01 00
+T 5C 00 8F E0 85 BB 04 E6 10 E0 CD DF 20 90 03 00
+R 00 00 00 00 00 0E 01 00
+T 6A 00 28 BA 8F E0 85 BB 04 E6 10 E0 C5 DF 20 90
+R 00 00 00 00
+T 78 00 04 00 28 BA 8F E0 85 BB 04 E6 10 E0 BD DF
+R 00 00 00 00 00 02 01 00
+T 86 00 20 90 05 00 28 BA 8F E0 85 BB 04 E6 10 E0
+R 00 00 00 00 00 04 01 00
+T 94 00 B5 DF 20 90 06 00 28 BA 8F E0 85 BB 04 E6
+R 00 00 00 00 00 06 01 00
+T A2 00 10 E0 AD DF 20 90 07 00 28 BA 8F E0 85 BB
+R 00 00 00 00 00 08 01 00
+T B0 00 04 E6 10 E0 A5 DF 20 90 08 00 28 BA 8F E0
+R 00 00 00 00 00 0A 01 00
+T BE 00 85 BB 04 E6 10 E0 9D DF 20 90 09 00 28 BA
+R 00 00 00 00 00 0C 01 00
+T CC 00 8F E0 85 BB 04 E6 10 E0 95 DF 20 90 0A 00
+R 00 00 00 00 00 0E 01 00
+T DA 00 28 BA 8F E0 85 BB 04 E6 10 E0 8D DF 20 90
+R 00 00 00 00
+T E8 00 0B 00 28 BA 8F E0 85 BB 04 E6 10 E0 85 DF
+R 00 00 00 00 00 02 01 00
+T F6 00 20 90 0C 00 28 BA 8F E0 85 BB 04 E6 10 E0
+R 00 00 00 00 00 04 01 00
+T 04 01 7D DF 20 90 0D 00 28 BA 8F E0 85 BB 04 E6
+R 00 00 00 00 00 06 01 00
+T 12 01 10 E0 75 DF 20 90 0E 00 28 BA 8F E0 85 BB
+R 00 00 00 00 00 08 01 00
+T 20 01 04 E6 10 E0 6D DF 20 90 0F 00 28 BA 8F E0
+R 00 00 00 00 00 0A 01 00
+T 2E 01 85 BB 04 E6 10 E0 65 DF 7F CF 08 95
+R 00 00 00 00

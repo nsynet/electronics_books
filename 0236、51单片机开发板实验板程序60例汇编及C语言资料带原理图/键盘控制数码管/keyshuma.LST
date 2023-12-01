@@ -1,0 +1,101 @@
+A51 MACRO ASSEMBLER  KEYSHUMA                                                             09/18/2007 17:24:46 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN keyshuma.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE keyshuma.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     ;硬件描述：P0口接LED数码管；P3.7 控制数码管  P1.0控制加P1.1控制减
+                       3     ;功能描述：数码显示实验
+                       4     
+                       5               
+0000                   6                ORG 0000H  
+0000 0130              7                AJMP START
+0030                   8                ORG 0030H
+                       9     
+0030 7590FF           10     START:     MOV P1,#0FFH
+0033 7800             11                MOV R0,#0
+0035 C2B7             12                CLR P3.7
+0037 12005A           13                LCALL SHOW  
+003A 309005           14     AAA:       JNB P1.0,INCH
+003D 30910E           15                JNB P1.1,DECH
+0040 013A             16                AJMP AAA
+                      17      
+0042 120072           18     INCH:      LCALL DELAY1
+0045 E8               19                MOV A,R0
+0046 04               20                INC A
+0047 F8               21                MOV R0,A
+0048 12005A           22                LCALL SHOW
+004B 013A             23                AJMP AAA
+004D 22               24                RET      
+                      25               
+004E 120072           26     DECH:      LCALL DELAY1
+0051 E8               27                MOV A,R0
+0052 14               28                DEC A
+0053 F8               29                MOV R0,A
+0054 12005A           30                LCALL SHOW
+0057 013A             31                AJMP AAA
+0059 22               32                RET
+                      33     
+005A E8               34     SHOW:      MOV A,R0
+005B 900077           35                MOV DPTR,#LED
+005E 93               36                MOVC A,@A+DPTR
+005F F580             37                MOV P0,A
+0061 120065           38                LCALL DELAY
+0064 22               39                RET
+                      40     
+0065 7FFA             41     DELAY:     MOV R7,#250
+0067 7E64             42     DL1:       MOV R6,#100
+0069 7D0A             43     DL2:       MOV R5,#10
+006B DDFE             44                DJNZ R5,$
+006D DEFA             45                DJNZ R6,DL2
+006F DFF6             46                DJNZ R7,DL1
+0071 22               47                RET 
+                      48     
+0072 7C02             49     DELAY1:    MOV R4,#2
+0074 DCFE             50                DJNZ R4,$
+0076 22               51                RET       
+                      52     
+                      53     
+0077 C0F9A4B0         54     LED:       DB 0C0H,0F9H,0A4H,0B0H,99H,92H,82H,0F8H,80H,90H
+007B 999282F8                
+007F 8090                    
+                      55                
+0081 8883C6A1         56                DB 88H,83H,0C6H,0A1H,86H,8EH
+A51 MACRO ASSEMBLER  KEYSHUMA                                                             09/18/2007 17:24:46 PAGE     2
+
+0085 868E                    
+                      57                
+                      58     
+                      59                END
+                             
+A51 MACRO ASSEMBLER  KEYSHUMA                                                             09/18/2007 17:24:46 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AAA. . . . . . . .  C ADDR   003AH   A   
+DECH . . . . . . .  C ADDR   004EH   A   
+DELAY. . . . . . .  C ADDR   0065H   A   
+DELAY1 . . . . . .  C ADDR   0072H   A   
+DL1. . . . . . . .  C ADDR   0067H   A   
+DL2. . . . . . . .  C ADDR   0069H   A   
+INCH . . . . . . .  C ADDR   0042H   A   
+LED. . . . . . . .  C ADDR   0077H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+SHOW . . . . . . .  C ADDR   005AH   A   
+START. . . . . . .  C ADDR   0030H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

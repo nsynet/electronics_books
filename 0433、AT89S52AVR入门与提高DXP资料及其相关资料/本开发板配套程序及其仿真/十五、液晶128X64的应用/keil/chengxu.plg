@@ -1,0 +1,245 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+F:\NEW 光盘资料\S52_M16两用开发板\本开发板配套程序及其仿真\十五、液晶128X64的应用\keil\chengxu.uv2
+Project File Date:  12/15/2005
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHN_DISP?CHENGXU
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?CHENGXU
+Program Size: data=13.0 xdata=0 code=254
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHN_DISP?CHENGXU
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?CHENGXU
+Program Size: data=13.0 xdata=0 code=254
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHN_DISP?CHENGXU
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?CHENGXU
+Program Size: data=13.0 xdata=0 code=254
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHN_DISP?CHENGXU
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?CHENGXU
+Program Size: data=13.0 xdata=0 code=254
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(173): error C202: 'RS': undefined identifier
+CHENGXU.C(174): error C202: 'RW': undefined identifier
+CHENGXU.C(175): error C202: 'E': undefined identifier
+CHENGXU.C(178): error C202: 'E': undefined identifier
+CHENGXU.C(190): error C202: 'RS': undefined identifier
+CHENGXU.C(191): error C202: 'RW': undefined identifier
+CHENGXU.C(192): error C202: 'E': undefined identifier
+CHENGXU.C(195): error C202: 'E': undefined identifier
+CHENGXU.C(202): error C202: 'RS': undefined identifier
+CHENGXU.C(203): error C202: 'RW': undefined identifier
+CHENGXU.C(204): error C202: 'E': undefined identifier
+CHENGXU.C(207): error C202: 'E': undefined identifier
+CHENGXU.C(402): error C202: 'PSB': undefined identifier
+CHENGXU.C(404): error C202: 'PSB': undefined identifier
+CHENGXU.C(405): error C202: 'RW': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(173): error C202: 'RS': undefined identifier
+CHENGXU.C(174): error C202: 'RW': undefined identifier
+CHENGXU.C(175): error C202: 'E': undefined identifier
+CHENGXU.C(178): error C202: 'E': undefined identifier
+CHENGXU.C(190): error C202: 'RS': undefined identifier
+CHENGXU.C(191): error C202: 'RW': undefined identifier
+CHENGXU.C(192): error C202: 'E': undefined identifier
+CHENGXU.C(195): error C202: 'E': undefined identifier
+CHENGXU.C(202): error C202: 'RS': undefined identifier
+CHENGXU.C(203): error C202: 'RW': undefined identifier
+CHENGXU.C(204): error C202: 'E': undefined identifier
+CHENGXU.C(207): error C202: 'E': undefined identifier
+CHENGXU.C(402): error C202: 'PSB': undefined identifier
+CHENGXU.C(404): error C202: 'PSB': undefined identifier
+CHENGXU.C(405): error C202: 'RW': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(174): error C202: 'RS': undefined identifier
+CHENGXU.C(175): error C202: 'RW': undefined identifier
+CHENGXU.C(176): error C202: 'E': undefined identifier
+CHENGXU.C(179): error C202: 'E': undefined identifier
+CHENGXU.C(191): error C202: 'RS': undefined identifier
+CHENGXU.C(192): error C202: 'RW': undefined identifier
+CHENGXU.C(193): error C202: 'E': undefined identifier
+CHENGXU.C(196): error C202: 'E': undefined identifier
+CHENGXU.C(203): error C202: 'RS': undefined identifier
+CHENGXU.C(204): error C202: 'RW': undefined identifier
+CHENGXU.C(205): error C202: 'E': undefined identifier
+CHENGXU.C(208): error C202: 'E': undefined identifier
+CHENGXU.C(403): error C202: 'PSB': undefined identifier
+CHENGXU.C(405): error C202: 'PSB': undefined identifier
+CHENGXU.C(406): error C202: 'RW': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(174): error C202: 'RS': undefined identifier
+CHENGXU.C(175): error C202: 'RW': undefined identifier
+CHENGXU.C(176): error C202: 'E': undefined identifier
+CHENGXU.C(179): error C202: 'E': undefined identifier
+CHENGXU.C(191): error C202: 'RS': undefined identifier
+CHENGXU.C(192): error C202: 'RW': undefined identifier
+CHENGXU.C(193): error C202: 'E': undefined identifier
+CHENGXU.C(196): error C202: 'E': undefined identifier
+CHENGXU.C(203): error C202: 'RS': undefined identifier
+CHENGXU.C(204): error C202: 'RW': undefined identifier
+CHENGXU.C(205): error C202: 'E': undefined identifier
+CHENGXU.C(208): error C202: 'E': undefined identifier
+CHENGXU.C(403): error C202: 'PSB': undefined identifier
+CHENGXU.C(405): error C202: 'PSB': undefined identifier
+CHENGXU.C(406): error C202: 'RW': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3345
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=15.0 xdata=0 code=3339
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3339
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=15.0 xdata=0 code=3339
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=15.0 xdata=0 code=3339
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).

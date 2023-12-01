@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SPCE061A_ISP_PC_TOOL - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/SPCE061A_ISP_PC_TOOL.res" /d "_DEBUG" /d "_AFXDLL" "F:\_Work\_SPCE061A\ISP Code\Release\SPCE061A_ISP_PC_TOOL\SPCE061A_ISP_PC_TOOL.rc"" 
+Creating temporary file "c:\temp\RSPBE.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SPCE061A_ISP_PC_TOOL.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\_Work\_SPCE061A\ISP Code\Release\SPCE061A_ISP_PC_TOOL\ISP\ISP.cpp"
+"F:\_Work\_SPCE061A\ISP Code\Release\SPCE061A_ISP_PC_TOOL\SPCE061A_ISP_PC_TOOL.cpp"
+"F:\_Work\_SPCE061A\ISP Code\Release\SPCE061A_ISP_PC_TOOL\SPCE061A_ISP_PC_TOOLDlg.cpp"
+]
+Creating command line "cl.exe @c:\temp\RSPBE.tmp" 
+Creating temporary file "c:\temp\RSPBF.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SPCE061A_ISP_PC_TOOL.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\_Work\_SPCE061A\ISP Code\Release\SPCE061A_ISP_PC_TOOL\StdAfx.cpp"
+]
+Creating command line "cl.exe @c:\temp\RSPBF.tmp" 
+Creating temporary file "c:\temp\RSPC0.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/ISP Tool.pdb" /debug /machine:I386 /out:"Debug/ISP Tool.exe" /pdbtype:sept 
+".\Debug\ISP.obj"
+".\Debug\SPCE061A_ISP_PC_TOOL.obj"
+".\Debug\SPCE061A_ISP_PC_TOOLDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SPCE061A_ISP_PC_TOOL.res"
+]
+Creating command line "link.exe @c:\temp\RSPC0.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ISP.cpp
+SPCE061A_ISP_PC_TOOL.cpp
+SPCE061A_ISP_PC_TOOLDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ISP Tool.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

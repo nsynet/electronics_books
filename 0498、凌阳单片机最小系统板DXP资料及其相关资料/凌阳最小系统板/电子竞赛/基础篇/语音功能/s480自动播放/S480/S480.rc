@@ -1,0 +1,11 @@
+# Begin Project
+# Begin SubItem "S480  Resources"
+# Begin Source File
+SOURCE=voice\48.48K
+USEPARAM=FALSE
+PARAM=
+ID=RES_48_48K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$TOOLKIT_DIR$\config\multiplier.xcl</file>
+      <file>$PROJ_DIR$\keyBoard3\keyBoard3.s43</file>
+      <file>$PROJ_DIR$\Debug\Exe\RS_485.d43</file>
+      <file>$TOOLKIT_DIR$\config\lnk430F449.xcl</file>
+      <file>$PROJ_DIR$\RS_485\485_a.s43</file>
+      <file>$PROJ_DIR$\Debug\Obj\keyBoard3.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\485_a.r43</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x44x.h</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\keyBoard3\keyBoard3.s43</name>
+      <outputs>
+        <tool>
+          <name>A430</name>
+          <file> 5</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 2</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\RS_485.d43</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 3 0 6</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\RS_485\485_a.s43</name>
+      <outputs>
+        <tool>
+          <name>A430</name>
+          <file> 6</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>A430</name>
+          <file> 7</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

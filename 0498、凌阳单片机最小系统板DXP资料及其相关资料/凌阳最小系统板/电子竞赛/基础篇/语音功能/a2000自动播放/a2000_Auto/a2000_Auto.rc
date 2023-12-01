@@ -1,0 +1,11 @@
+# Begin Project
+# Begin SubItem "a2000_Auto  Resources"
+# Begin Source File
+SOURCE=voice\A32_16K.a20
+USEPARAM=FALSE
+PARAM=
+ID=RES_A32_16K_A20
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

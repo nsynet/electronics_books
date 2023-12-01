@@ -1,0 +1,758 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	//////////////////////////////////////////////////////////////////
+                            	// File: sflash.asm    
+                            	// Function: SERIAL Flash Interface with Serial Flash V1.1
+                            	// Writen by: Honda
+                            	// Modified by: Arthur Shieh
+                            	// Modify list:
+                            	//              2001/08/23 : first version
+                            	//              2002/05/26 : Modified to use with DVR by Arthur Shieh
+                            	//              2002/06/06 : API wrapping 
+                            	// Note:
+                            	//      1. Modify the C_SIOCLOCK to speed up the serial IO bus
+                            	//      2. Modified the delay to shorten the waiting time for flash writing
+                            	//////////////////////////////////////////////////////////////////
+                            	
+                            	.include spce.inc;
+                     <      	//========================================================================================
+                     <      	// Program: Standard function definition V1.0
+                     <      	// Arranged by: Arthur Shieh
+                     <      	// Platform:  SPCE500A/060A/061A, IDE 1.63, Windows 2000
+                     <      	//
+                     <      	// Date: 	2002/10/31 V1.0 : first version
+                     <      	//
+                     <      	// Note: 1)This inc file defines the ports available for user to use SPCE series.
+                     <      	//         The port setting constants is also included for users' convenience. 
+                     <      	//       2)Naming rule:
+                     <      	//         C : define constant 
+                     <      	//         P : define I/O port
+                     <      	//=======================================================================================
+                     <      	
+                     <      	//---------------------------------------------------------- 
+                     <      	//CPU Type definition : User needs to modified this according to the body used
+                     <      	//---------------------------------------------------------- 
+                     <      	.define SPCE500A 0
+                     <      	.define SPCE061A 1   // SPCE060A as well
+                     <      	
+                     <      	//.define BODY_TYPE SPCE500A	       // SPCE500A 
+                     <      	.define BODY_TYPE SPCE061A	       // SPCE061A 
+                     <      	//---------------------------------------------------------- 
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define Area for I/O									
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	//PortA,PortB contain some special functions
+                     <      	P_IOA_Data:			.VDEF  0x7000;		// Write Data into data register and read from IOA pad
+                     <      	P_IOA_Buffer:   	.VDEF  0x7001;		// Write Data into buffer register and read from buffer register
+                     <      	P_IOA_Dir:      	.VDEF  0x7002;     // Direction vector for IOA
+                     <      	P_IOA_Attrib:   	.VDEF  0x7003;     // Attribute vector for IOA
+                     <      	P_IOA_Latch:		.VDEF  0x7004;     // Latch PortA data for key change wake-up
+                     <      	
+                     <      	P_IOB_Data:         .VDEF  0x7005      // Write Data into the data register and read from IOB pad
+                     <      	P_IOB_Buffer:       .VDEF  0x7006      // Write Data into buffer register and read from buffer register
+                     <      	P_IOB_Dir:          .VDEF  0x7007      // Direction vector for IOB
+                     <      	P_IOB_Attrib:       .VDEF  0x7008  	// Attribute vector for IOB
+                     <      	
+                     <      	P_FeedBack:     	.VDEF  0x7009;     // Clock form external R,C
+                     <      	P_TimerA_Data:  	.VDEF  0x700A;     // Data port for TimerA 
+                     <      	P_TimerA_Ctrl:  	.VDEF  0x700B;     // Control Port for TimerA
+                     <      	P_TimerB_Data:  	.VDEF  0x700C;     // Data port for TimerB
+                     <      	P_TimerB_Ctrl:  	.VDEF  0x700D;     // Control Port for TimerB
+                     <      	P_TimeBase_Setup:  	.VDEF  0x700E;     // TimerBase Freq. Set
+                     <      	P_TimeBase_Clear:  	.VDEF  0x700F;   	// Reset Timerbase counter
+                     <      	P_INT_Ctrl:     	.VDEF  0x7010;     // for read INT flag(R)
+                     <      	P_INT_Clear:    	.VDEF  0x7011;     // Clear interrupt source
+                     <      	P_Watchdog_Clear:   .VDEF  0x7012;     // Watchdog Reset
+                     <      	P_SystemClock:      .VDEF  0x7013;     // Change system clock frequency(include go to standby mode)
+                     <      	
+                     <      	P_ADC: 	        	.VDEF  0x7014;     // Data Port for AD
+                     <      	P_ADC_Ctrl:    		.VDEF  0x7015;     // Control Port for AD control
+                     <      	P_ADC_Status:   	.VDEF  0x7015;     // AD Port Status
+                     <      	P_DAC2:         	.VDEF  0x7016;     // Data Port for DAC2
+                     <      	P_PWM:          	.VDEF  0x7016;     // Data Port for PWM
+                     <      	P_DAC1:	        	.VDEF  0x7017;     // Data Port for DAC1
+                     <      	P_DAC_Ctrl:	    	.VDEF  0x702A;		// Control Port for two DAC and audio output mode
+                     <      	
+                     <      	P_LVD_Ctrl:     	.VDEF  0x7019;     // Control Port for LVD
+                     <      	
+                     <      	P_SIO_Data:	    	.VDEF  0x701A;		// serial interface IO	
+                     <      	P_SIO_Addr_Low:  	.VDEF  0x701B;		// Address Port low
+                     <      	P_SIO_Addr_Mid:  	.VDEF  0x701C;		// Address Port middle
+                     <      	P_SIO_Addr_High:    .VDEF  0x701D;		// Address Port high
+                     <      	P_SIO_Ctrl:    	    .VDEF  0x701E;		// Control Port
+                     <      	P_SIO_Start:    	.VDEF  0x701F;		// Start port for serial interface
+                     <      	P_SIO_Stop:     	.VDEF  0x7020;		// Stop port for serial interface
+                     <      	
+                     <      	P_UART_Command1:    .VDEF 	0x7021;		// Command1 Port for UART
+                     <      	P_UART_Command2:    .VDEF 	0x7022;		// Command2 Port for UART
+                     <      	P_UART_Data: 	    .VDEF 	0x7023; 	// Data Port for UART
+                     <      	P_UART_BaudScalarLow:  .VDEF  	0x7024;		// Set Baud Rate scalar low
+                     <      	P_UART_BaudScalarHigh: .VDEF  	0x7025;		// Set Baud Rate scalar high
+                     <      	
+                     <      	//SPCE061A new ports
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	P_ADC_MUX_Ctrl:  	.VDEF  	0x702B		// Control Port
+                     <      	P_ADC_LINEIN_Data:  .VDEF  	0x702C		// Line in data
+                     <      	P_INT_Mask:         .VDEF   0x702D		//R/W INT enable/disable
+                     <      	P_Flash_Ctrl:       .VDEF   0x7555		//Internal flash access enable/disable
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define Area for constants									
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define for P_INT_Ctrl 
+                     <      	.DEFINE C_IRQ6_TMB2             0x0001;     //TMB2 IRQ6
+                     <      	.DEFINE C_IRQ6_TMB1             0x0002;		//TMB1 IRQ6
+                     <      	.DEFINE C_IRQ5_2Hz              0x0004;     //2Hz IRQ5
+                     <      	.DEFINE C_IRQ5_4Hz              0x0008;     //4Hz IRQ5
+                     <      	.DEFINE C_IRQ4_1KHz            	0x0010;     //1024Hz IRQ4
+                     <      	.DEFINE C_IRQ4_2KHz            	0x0020;     //2048 IRQ4
+                     <      	.DEFINE C_IRQ4_4KHz            	0x0040;     //4096 IRQ4
+                     <      	.DEFINE C_IRQ3_KEY         		0x0080;     //Key Change IRQ3
+                     <      	.DEFINE C_IRQ3_Ext1             0x0100;     //Ext1 IRQ3
+                     <      	.DEFINE C_IRQ3_Ext2             0x0200;     //Ext2 IRQ3
+                     <      	.DEFINE C_IRQ2_TMB            	0x0400;     //Timer B IRQ2
+                     <      	.DEFINE C_FIQ_TMB           	0x0800;     //Timer B FIQ
+                     <      	.DEFINE C_IRQ1_TMA            	0x1000;     //Timer A IRQ1
+                     <      	.DEFINE C_FIQ_TMA            	0x2000;     //Timer A FIQ
+                     <      	.DEFINE C_IRQ0_PWM              0x4000;     //PWM IRQ0
+                     <      	.DEFINE C_FIQ_PWM               0x8000;     //PWM FIQ
+                     <      	
+                     <      	// Define for P_TimerA_Ctrl, P_TimerB_Ctrl                               
+                     <      	.DEFINE	C_Timer_Fosc_2			0x0000;		// b0--b2: clock of source A
+                     <      	.DEFINE	C_Timer_Fosc_256		0x0001;		//
+                     <      	.DEFINE	C_Timer_32768Hz			0x0002;		//
+                     <      	.DEFINE	C_Timer_8192Hz			0x0003;		//
+                     <      	.DEFINE	C_Timer_4096Hz			0x0004;		//
+                     <      	.DEFINE	C_Timer_A1				0x0005;		//
+                     <      	.DEFINE C_Timer_A0				0x0006;		//
+                     <      	.DEFINE C_Timer_Ext1			0x0007;		//
+                     <      	
+                     <      	.DEFINE	C_Timer_2048Hz			0x0000;		//b3--b5: clock of source B
+                     <      	.DEFINE	C_Timer_1024Hz			0x0008;		//
+                     <      	.DEFINE	C_Timer_256Hz			0x0000;		//
+                     <      	.DEFINE	C_Timer_TMB1			0x0018;		//
+                     <      	.DEFINE	C_Timer_4Hz				0x0020;		//
+                     <      	.DEFINE	C_Timer_2Hz				0x0028;		//
+                     <      	.DEFINE	C_Timer_B1				0x0030;		//
+                     <      	.DEFINE	C_Timer_Ext2			0x0038;		//
+                     <      	
+                     <      	.DEFINE	C_PWMO_Off				0x0000;		//b6--b9: output pulse
+                     <      	.DEFINE C_PWMO_D1				0x0040;		//
+                     <      	.DEFINE C_PWMO_D2				0x0080;		//
+                     <      	.DEFINE C_PWMO_D3				0x00C0;		//
+                     <      	.DEFINE C_PWMO_D4				0x0100;		//
+                     <      	.DEFINE C_PWMO_D5				0x0140;		//
+                     <      	.DEFINE C_PWMO_D6				0x0180;		//
+                     <      	.DEFINE C_PWMO_D7				0x01C0;		//
+                     <      	.DEFINE C_PWMO_D8				0x0200;		//
+                     <      	.DEFINE C_PWMO_D9				0x0240;		//
+                     <      	.DEFINE C_PWMO_D10				0x0280;		//
+                     <      	.DEFINE C_PWMO_D11				0x02C0;		//
+                     <      	.DEFINE C_PWMO_D12				0x0300;		//
+                     <      	.DEFINE C_PWMO_D13				0x0340;		//
+                     <      	.DEFINE C_PWMO_D14				0x0380;		//
+                     <      	.DEFINE C_PWMO_Div_2			0x03C0;		// 
+                     <      	
+                     <      	
+                     <      	// Define for P_SystemClock
+                     <      	// SPCE 061 PLL
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_Fosc_49M				0x0080			// b7..b5
+                     <      	.DEFINE C_Fosc_41M				0x0060			//
+                     <      	.DEFINE C_Fosc_33M				0x0040			//
+                     <      	.DEFINE C_Fosc_20M				0x0020			// (default)
+                     <      	.DEFINE C_Fosc_24M				0x0000			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	.DEFINE C_Fosc					0x0000;		// b2..b0: frequency select 
+                     <      	.DEFINE C_Fosc_Div_2			0x0001;		//
+                     <      	.DEFINE C_Fosc_Div_4			0x0002;		//
+                     <      	.DEFINE C_Fosc_Div_8			0x0003;		// (default)
+                     <      	.DEFINE C_Fosc_Div_16			0x0004;		//
+                     <      	.DEFINE C_Fosc_Div_32			0x0005;		//
+                     <      	.DEFINE C_Fosc_Div_64			0x0006;		//
+                     <      	.DEFINE C_Sleep					0x0007;		//
+                     <      	
+                     <      	.DEFINE	C_32K_Work				0x0010;		// b4 = 1: at sleep mode,32.768k still work 
+                     <      	.DEFINE C_32K_Off				0x0000;		// b4 = 0: at sleep mode,32.768k off 
+                     <      	.DEFINE C_StrongMode			0x0008;		// b3 = 1: force strong mode
+                     <      	.DEFINE C_AutoWeakMode			0x0000;		// b3 = 0: auto weak mode(default) 
+                     <      	
+                     <      	.DEFINE	C_PLL_Freq_24M			0x0000		//b5..b7: PLL frequency select
+                     <      	.DEFINE	C_PLL_Freq_20M			0x0020		//
+                     <      	.DEFINE	C_PLL_Freq_32M			0x0040		//
+                     <      	.DEFINE	C_PLL_Freq_40M			0x0060		//
+                     <      	.DEFINE	C_PLL_Freq_49M			0x0080		//
+                     <      	
+                     <      	
+                     <      	// Define for P_ADC_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE	C_AD_Enable				0x0001;		//b0=1: enable A/D converter
+                     <      	.DEFINE C_AD_Disable			0x0000;		//b0=0: disable A/D converter
+                     <      	.DEFINE C_AD_Line_In			0x0002;		//b1=1: microphone disable
+                     <      	.DEFINE C_AD_MIC_In				0x0000;		//b1=0: microphone enable
+                     <      	.DEFINE C_AGC_Enable			0x0004;		//b2=1: enable AGC function
+                     <      	.DEFINE C_AGC_Disable			0x0000;		//b2=0: disable AGC function
+                     <      	.DEFINE C_AD_Sample	 			0x0004;		//b3=1: sample the analog signal(manual mode)
+                     <      	.DEFINE C_AD_Hold				0x0000;		//b3=0: hold(manual mode)
+                     <      	.DEFINE C_Auto_Mode	 			0x0010;		//b4=1: A/D auto mode
+                     <      	.DEFINE C_Manual_Mode	 		0x0000;		//b4=0: A/D manual mode
+                     <      	//b5: ADINI?
+                     <      	.DEFINE C_DAC_Current_2mA		0x0040;		//b6=1: DAC current = 2mA @ vdd=3V(new option)
+                     <      	.DEFINE C_DAC_Current_3mA		0x0000;		//b6=0: DAC current = 3mA @ vdd=3V(Default)
+                     <      	.DEFINE C_AD_Vref_VDD			0x0080;		//b7=1: Vref is VDD
+                     <      	.DEFINE C_AD_Vref_VRTPAD		0x0000;		//b7=0: Vref is from pin "VRTPAD"
+                     <      	.DEFINE C_AD_COMP				0x4000;		//b14=1: output voltage of DAC0<Analog input signal
+                     <      												//b14=0: output voltage of DAC0>Analog input signal
+                     <      	.DEFINE C_AD_RDY				0x8000;		//b15=1: A/D digital data ready; 0: not ready
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE	C_AD					0x0001 			//
+                     <      	.DEFINE C_DA					0x0000 			//
+                     <      	.DEFINE C_MIC					0x0000 			//
+                     <      	.DEFINE C_LINE					0x0002 			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	// Define for P_DAC_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE	C_DAC1_Direct			0x0000;		// b8 b7: DAC1 latch
+                     <      	.DEFINE C_DAC1_LatchA			0x0080;		// Latch data to DAC1 by TimerA 
+                     <      	.DEFINE C_DAC1_LatchB			0x0100;		// Latch data to DAC1 by TimerB
+                     <      	.DEFINE C_DAC1_LatchAB			0x0180;		// Latch data to DAC1 by TimerA or TimerB
+                     <      	
+                     <      	.DEFINE	C_DAC2_Direct			0x0000;		// b6 b5: DAC2 latch
+                     <      	.DEFINE C_DAC2_LatchA			0x0020;		// Latch data to DAC2 by TimerA
+                     <      	.DEFINE C_DAC2_LatchB			0x0040;		// Latch data to DAC2 by TimerB
+                     <      	.DEFINE C_DAC2_LatchAB			0x0060;		// Latch data to DAC2 by TimerA or TimerB
+                     <      	
+                     <      	.DEFINE	C_ADC_Direct			0x0000;		// b4 b3: ADC latch
+                     <      	.DEFINE C_ADC_LatchA			0x0008;		// Latch data to ADC by TimerA
+                     <      	.DEFINE C_ADC_LatchB			0x0010;		// Latch data to ADC by TimerB
+                     <      	.DEFINE C_ADC_LatchAB			0x0018;		// Latch data to ADC by TimerA or TimerB
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE C_PushPull				0x0000 			// b0, (default) 
+                     <      	.DEFINE C_DoubleEnd				0x0001 			// b0
+                     <      	.DEFINE	C_DAC_Mode				0x0000 			// b1, (default)
+                     <      	.DEFINE C_PWM_Mode				0x0002 			// b1
+                     <      	
+                     <      	.DEFINE	C_D1_Direct				0x0000 			// DAC1 latch
+                     <      	.DEFINE C_D1_LatchA				0x0008 			// 
+                     <      	.DEFINE C_D1_LatchB				0x0010 			//
+                     <      	.DEFINE C_D1_LatchAB			0x0018 			//
+                     <      	
+                     <      	.DEFINE	C_D2_Direct				0x0000 			// DAC2 latch
+                     <      	.DEFINE C_D2_LatchA				0x0020 			// 
+                     <      	.DEFINE C_D2_LatchB				0x0040 			//
+                     <      	.DEFINE C_D2_LatchAB			0x00C0 			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	// Define for P_LVD_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_LVD24V				0x0000;		// LVD = 2.4V; b1b0 
+                     <      	.DEFINE C_LVD28V				0x0001;		// LVD = 2.8V
+                     <      	.DEFINE C_LVD32V				0x0002;		// LVD = 3.2V
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE C_LVD26V				0x0000 			// LVD = 2.6V 
+                     <      	.DEFINE C_LVD30V				0x0001 			// LVD = 3.0V
+                     <      	.DEFINE C_LVD36V				0x0002 			// LVD = 3.6V
+                     <      	.DEFINE C_LVD40V				0x0003 			// LVD = 4.0V
+                     <      	.endif
+                     <      	
+                     <      	.DEFINE C_LVD_Result			0x8000;		// b15 = 1: below the selected LVD level
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	// SPCE061 flash operation instruction definition
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_EnableFlashAccess		0xAAAA;
+                     <      	.DEFINE C_EraseFlashPage  		0x5511;
+                     <      	.DEFINE C_ProgramFlash 	   		0x5533;
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	
+                     <      	//===============================================================
+                     <      	// Sunplus APIs for SPCE 061A
+                     <      	//===============================================================
+                     <      	//////////////////////////////////////////////////
+                     <      	// Note: This register will map to the P_INT_Ctrl
+                     <      	//	(0x7010), The SACMvxx.lib use this register to
+                     <      	//	combine with user's interrupt setting.
+                     <      	//  In SPCE061, it is not necessary since the 
+                     <      	//  P_INT_Mask(0x702D) already does this. It is for 
+                     <      	//  compatibility to keep it here. 
+                     <      	//////////////////////////////////////////////////
+                     <      	//.EXTERNAL	R_InterruptStatus 
+                     <      	
+                     <      	//========================================================================================        
+                     <      	// End of SPCE061A.inc
+                     <      	//========================================================================================
+                     <      	
+                     <      	
+                     <      	        
+                            	
+                            	.DEFINE C_SIOCLOCK           0x0010;        // CPUCLOCK/8
+                            	
+0000A03A                    	.CODE
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Send A Byte to Serial Flash
+                            	// Syntax: SP_SIOSendAByte(AddressLow,AddressHigh,  data)
+                            	// c level public
+                            	// Used register: r1,r2,r3
+                            	//////////////////////////////////////////////////////////////////
+                            	.public _SP_SIOSendAByte;
+                            	_SP_SIOSendAByte: .PROC
+                            	F_SIOSendAByte:
+0000A03A 88 DA              	    PUSH BP,BP TO [SP];
+0000A03B 08 0B 01 00        	    BP = SP + 1;
+0000A03D 03 92              		R1 = [BP+3];
+0000A03E 19 D3 1B 70        	    [P_SIO_Addr_Low]=r1;        // input SFLASH low address
+0000A040 79 93              	    r1=r1 lsr 4;         		// right shift 8
+0000A041 79 93              	    r1=r1 lsr 4;
+0000A042 19 D3 1C 70        	    [P_SIO_Addr_Mid]=r1; 		// input SFLASH mid address
+0000A044 04 92              	    R1 = [BP+4];                // Port direction
+0000A045 47 B2              	    r1=r1&0x0007;  				// input SFLASH hi address
+0000A046 19 D3 1D 70        	        [P_SIO_Addr_High]=r1;
+0000A048 09 93 D3 00        	        r1=0x00C3+C_SIOCLOCK;
+0000A04A 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;        // clk=CPUclk/8, 24 bit address  ;write
+0000A04C 19 D3 1F 70        	        [P_SIO_Start]=r1;       // enable write mode
+0000A04E 05 92              	        R1 = [BP+5];
+0000A04F 19 D3 1A 70        	        [P_SIO_Data]=r1;        // state to transmit data
+                            	L_WaitSIOSendReady:
+0000A051 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A053 09 C3 80 00        	        test    r1,0x0080
+0000A055 45 4E              	        jnz     L_WaitSIOSendReady
+0000A056 19 D3 20 70        	        [P_SIO_Stop]=r1;                   //disable write mode
+0000A058 88 98              	        POP BP,BP FROM [SP];
+0000A059 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Read A Byte to Serial Flash
+                            	// Syntax: SP_SIOReadAByte(AddressLow, AddressHigh)
+                            	// c level public
+                            	// Used register: r1,r2,r3
+                            	// Return register: r1
+                            	//////////////////////////////////////////////////////////////////         
+                            	
+                            	.public _SP_SIOReadAByte;
+                            	_SP_SIOReadAByte: .PROC
+                            	F_SIOReadAByte:
+0000A05A 88 DA              	                PUSH BP,BP TO [SP];
+0000A05B 08 0B 01 00        	        BP = SP + 1;
+0000A05D 03 92              	        R1 = [BP+3];
+0000A05E 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1; 		// input SFLASH low address
+0000A060 79 93              	        r1=r1 lsr 4;
+0000A061 79 93              	        r1=r1 lsr 4;
+0000A062 19 D3 1C 70        	        [P_SIO_Addr_Mid]=r1; 		// input SFLASH mid address
+0000A064 04 92              	        R1 = [BP+4];                // Port direction
+0000A065 47 B2              	        r1=r1&0x0007;  				// input SFLASH hi address
+0000A066 19 D3 1D 70        	        [P_SIO_Addr_High]=r1;
+0000A068 09 93 93 00        	        r1=0x0083+C_SIOCLOCK;
+0000A06A 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;            // clk=CPUclk/16, 24 bit address  ;read
+0000A06C 19 D3 1F 70        	        [P_SIO_Start]=r1;           // enable read mode
+0000A06E 12 95 1A 70        	        r2=[P_SIO_Data];            // Clear SFLASH buffer
+                            	L_WaitSIOReadReady1:
+0000A070 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A072 09 C3 80 00        	        test    r1,0x0080
+0000A074 45 4E              	        jnz     L_WaitSIOReadReady1
+0000A075 11 93 1A 70        	        r1=[P_SIO_Data];          	// Read exact Data
+                            	L_WaitSIOReadReady2:                // Wait read stop
+0000A077 12 95 1F 70        	        r2=[P_SIO_Start];
+0000A079 0A C5 80 00        	        test    r2,0x0080
+0000A07B 45 4E              	        jnz     L_WaitSIOReadReady2
+0000A07C 1A D5 20 70        	        [P_SIO_Stop]=r2;            // disable read mode
+0000A07E 88 98              	        POP BP,BP FROM [SP];
+0000A07F 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Send A Word to Serial Flash
+                            	// Syntax: SP_SIOSendAData(AddressLow,AddressHigh,  data) Address must be even
+                            	// c level public
+                            	// Used register: r1,r2,r3
+                            	//////////////////////////////////////////////////////////////////
+                            	.public _SP_SIOSendAWord;
+                            	_SP_SIOSendAWord: .PROC
+                            	F_SIOSendAWord:
+0000A080 88 DA              	        PUSH BP,BP TO [SP];
+0000A081 08 0B 01 00        	        BP = SP + 1;
+                            	//        PUSH r1,r3 TO [SP];
+0000A083 09 93 D3 00        	        r1=0x00C3+C_SIOCLOCK;
+0000A085 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;            // clk=CPUclk/8, 24 bit address  ;write
+0000A087 03 92              	        R1 = [BP+3];
+0000A088 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1;  		// input Sflash low address
+0000A08A 79 93              	        r1=r1 lsr 4;          		// right shift 8
+0000A08B 79 93              	        r1=r1 lsr 4;
+0000A08C 19 D3 1C 70        	        [P_SIO_Addr_Mid]=r1;  		// input SFLASH mid address
+0000A08E 04 92              	        R1 = [BP+4];                // Port direction
+0000A08F 47 B2              	        r1=r1&0x0007;  				// input SFLASH hi address
+0000A090 19 D3 1D 70        	        [P_SIO_Addr_High]=r1;
+                            	        
+0000A092 19 D3 1F 70        	        [P_SIO_Start]=r1;           // enable write mode
+0000A094 05 92              	        R1 = [BP+5];
+0000A095 19 D3 1A 70        	        [P_SIO_Data]=r1;            //start to transmit low byte
+                            	L_WaitSIOSendReadyLB:
+0000A097 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A099 09 C3 80 00        	        test    r1,0x0080
+0000A09B 45 4E              	        jnz     L_WaitSIOSendReadyLB
+0000A09C 40 F0 4D A1        	        call    F_DelayPT           // Delay necessary for the writing   
+0000A09E 40 F0 4D A1        	        call    F_DelayPT 
+0000A0A0 40 F0 4D A1        	        call    F_DelayPT 
+0000A0A2 40 F0 4D A1        	        call    F_DelayPT            //modify by abin
+                            	     //   call    F_DelayPT            //modify by abin
+                            	     //   call    F_DelayPT            //modify by abin
+                            	        
+0000A0A4 19 D3 20 70        	        [P_SIO_Stop]=r1;            // disable write mode
+0000A0A6 03 92              	         R1 = [BP+3];
+0000A0A7 41 02              	         r1+=1;
+0000A0A8 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1; 		// input SFLASH low address
+                            	             
+0000A0AA 19 D3 1F 70        	        [P_SIO_Start]=r1;           //enable write mode
+0000A0AC 05 92              	        r1=[BP+5]; 
+0000A0AD 79 93              	        r1=r1 lsr 4;         		// right shift 8
+0000A0AE 79 93              	        r1=r1 lsr 4;
+0000A0AF 19 D3 1A 70        	        [P_SIO_Data]=r1;            //start to transmit high byte
+                            	L_WaitSIOSendReadyHB:
+0000A0B1 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A0B3 09 C3 80 00        	        test    r1,0x0080
+0000A0B5 45 4E              	        jnz     L_WaitSIOSendReadyHB
+0000A0B6 40 F0 4D A1        	     	call    F_DelayPT          //modify by abin
+0000A0B8 40 F0 4D A1        	      	call    F_DelayPT          //modify by abin
+0000A0BA 40 F0 4D A1        	        call    F_DelayPT
+0000A0BC 40 F0 4D A1        	        call    F_DelayPT
+0000A0BE 19 D3 20 70        	        [P_SIO_Stop]=r1;            //disable write mode
+                            	//        POP r1,r3 FROM [SP];
+0000A0C0 88 98              	        POP BP,BP FROM [SP];
+0000A0C1 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Read A Word from Serial Flash
+                            	// Syntax: SP_SIOReadAWord(AddressLow, AddressHigh)
+                            	// c level public
+                            	// Used register: r1,r2,r3,r4
+                            	// Return register: r1
+                            	//////////////////////////////////////////////////////////////////         
+                            	
+                            	.public _SP_SIOReadAWord;
+                            	_SP_SIOReadAWord: .PROC
+                            	F_SIOReadAWord:
+0000A0C2 88 DA              	        PUSH BP,BP TO [SP];
+0000A0C3 08 0B 01 00        	        BP = SP + 1;
+                            	      //  PUSH r2,r4 TO [SP];   modify by 
+0000A0C5 0C 99 FF 00        	        r4=0x00FF;
+0000A0C7 03 92              	        R1 = [BP+3];
+0000A0C8 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1; 		// input SFLASH low address
+0000A0CA 79 93              	        r1=r1 lsr 4;
+0000A0CB 79 93              	        r1=r1 lsr 4;
+0000A0CC 19 D3 1C 70        	        [P_SIO_Addr_Mid]=r1; 		// input SFLASH mid address
+0000A0CE 04 92              	        R1 = [BP+4];                // Port direction
+0000A0CF 47 B2              	        r1=r1&0x0007;  				// input SFLASH hi address
+0000A0D0 19 D3 1D 70        	        [P_SIO_Addr_High]=r1;
+                            	     //   r1=0x0083+C_SIOCLOCK;       // C_SIOCLOCK 0x0010
+0000A0D2 09 93 83 00        	        r1=0x0083;    //+C_SIOCLOCK;       // C_SIOCLOCK 0x0010
+0000A0D4 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;           	// clk=CPUclk/16, 24 bit address  ;read
+0000A0D6 19 D3 1F 70        	        [P_SIO_Start]=r1;       	// enable read mode
+                            	        ////////
+0000A0D8 12 95 1A 70        	        r2=[P_SIO_Data];          	// Clear SFLASH buffer
+                            	        ////////
+                            	L_WaitSIOReadReady1LB:
+0000A0DA 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A0DC 09 C3 80 00        	        test    r1,0x0080
+0000A0DE 45 4E              	        jnz     L_WaitSIOReadReady1LB
+                            	        
+                            	        
+                            	        
+0000A0DF 14 B5 1A 70        	        r2=r4&[P_SIO_Data];          // Read exact Low Byte
+                            	L_WaitSIOReadReady2LB:               // Wait read stop
+0000A0E1 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A0E3 09 C3 80 00        	        test    r1,0x0080
+0000A0E5 45 4E              	        jnz     L_WaitSIOReadReady2LB
+                            	        
+                            	        
+0000A0E6 14 B7 1A 70        	        r3=r4&[P_SIO_Data];          // Read exact High Byte
+                            	
+                            	L_WaitSIOReadReady2HB:               // Wait read stop
+0000A0E8 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A0EA 09 C3 80 00        	        test    r1,0x0080
+0000A0EC 45 4E              	        jnz     L_WaitSIOReadReady2HB
+                            	       
+0000A0ED 19 D3 20 70        	        [P_SIO_Stop]=r1;             // disable read mode
+                            	 
+0000A0EF 5B 97              	        r3=r3 lsl 4;     //shift left 8
+0000A0F0 5B 93              	        r1=r3 lsl 4;
+0000A0F1 02 A3              	        r1|=r2;         //return data
+                            	       // POP r2,r4 FROM [SP];
+0000A0F2 88 98              	        POP BP,BP FROM [SP];
+0000A0F3 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	///////////////////////////////////////////////////////////////
+                            	//Function : Page Erase for S_Flash (Page Size 1K)
+                            	// Syntax: SP_SIOPageErase(Page)
+                            	// Used register: r1,r2
+                            	///////////////////////////////////////////////////////////////
+                            	.public _SP_SIOPageErase;
+                            	_SP_SIOPageErase: .PROC
+                            	F_SIOPageErase:
+0000A0F4 88 DA              	                PUSH BP,BP TO [SP];
+0000A0F5 08 0B 01 00        	        BP = SP + 1;
+                            	 
+0000A0F7 03 92              	        R1 = [BP+3];
+0000A0F8 49 93              	        r1=r1 lsl 2;      		// 1K page size
+0000A0F9 09 B3 FF 01        	        r1=r1&0x01FF;
+0000A0FB 09 A3 00 80        	        r1=r1|0x8000;
+0000A0FD 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1; 	// input SFLASH low address ;for A15 and A10
+0000A0FF 79 93              	        r1=r1 lsr 4;
+0000A100 79 93              	        r1=r1 lsr 4;
+0000A101 19 D3 1C 70        	        [P_SIO_Addr_Mid]=r1; 	// input SFLASH mid address ;for A16
+0000A103 09 93 D0 00        	        r1=0x00C0+C_SIOCLOCK;
+0000A105 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;        // clk=CPUclk/8, 16 bit address  ;write
+0000A107 19 D3 1F 70        	        [P_SIO_Start]=r1;       // enable write mode
+0000A109 40 92              	        r1=0;                   // A7~A0 = 0
+0000A10A 19 D3 1A 70        	        [P_SIO_Data]=r1;        // state to transmit data
+                            	
+                            	L_WaitSIOSendReadyPage:
+0000A10C 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A10E 09 C3 80 00        	        test    r1,0x0080
+0000A110 45 4E              	        jnz     L_WaitSIOSendReadyPage
+0000A111 19 D3 20 70        	        [P_SIO_Stop]=r1;         //disable write mode
+                            	
+0000A113 40 F0 3D A1        	        call    F_Delay11ms
+                            	        
+0000A115 88 98              	        POP BP,BP FROM [SP];
+0000A116 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	///////////////////////////////////////////////////////////////
+                            	//Function : Mass Erase for S_Flash
+                            	// Syntax: SIOMassErase()
+                            	// Used register: r1,r2
+                            	///////////////////////////////////////////////////////////////
+                            	
+                            	.public _SP_SIOMassErase;
+                            	_SP_SIOMassErase: .PROC
+                            	F_SIOMassErase:
+0000A117 90 D4              	        push r1,r2 to [sp];
+0000A118 09 93 D0 00        	        r1=0x00C0+C_SIOCLOCK;
+0000A11A 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;            // clk=CPUclk/8, 16 bit address  ;write
+0000A11C 40 94              	        r2=0x0000;
+0000A11D 1A D5 1B 70        	        [P_SIO_Addr_Low]=r2; 		// input SFLASH low address
+0000A11F 0A 95 C0 00        	        r2=0x00C0;
+0000A121 1A D5 1C 70        	        [P_SIO_Addr_Mid]=r2; 		// input SFLASH mid address
+0000A123 0A 95 C0 00        	        r2=0x00C0;
+0000A125 1A D5 1D 70        	       [P_SIO_Addr_High]=r2; 
+                            	//        r1=0x00C0+C_SIOCLOCK;
+                            	  //      [P_SIO_Ctrl]=r1;            // clk=CPUclk/8, 16 bit address  ;write
+0000A127 19 D3 1F 70        	        [P_SIO_Start]=r1;           // enable write mode
+0000A129 40 92              	        r1=0;                       // A7~A0 = 0
+0000A12A 19 D3 1A 70        	        [P_SIO_Data]=r1;            // state to transmit data
+                            	
+                            	L_WaitSIOSendReadyMass:
+0000A12C 11 93 1F 70        	        r1=[P_SIO_Start];
+0000A12E 09 C3 80 00        	        test    r1,0x0080
+0000A130 45 4E              	        jnz     L_WaitSIOSendReadyMass
+                            	                      //disable write mode
+0000A131 19 D3 20 70        			[P_SIO_Stop]=r1;
+                            	
+0000A133 40 F0 3D A1        	        call    F_Delay11ms
+0000A135 40 F0 3D A1        	        call    F_Delay11ms      //modify by abin
+0000A137 40 F0 3D A1        	        call    F_Delay11ms
+0000A139 40 F0 3D A1        	        call    F_Delay11ms
+0000A13B 90 90              	        pop r1,r2 from [sp];
+0000A13C 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	F_Delay11ms:
+0000A13D 88 D2              	        push r1,r1 to [sp];
+                            	        //r1=17*10;
+0000A13E 09 93 C8 00        	        r1=20*10;  // delay 
+                            	L_LoopDelay11:
+0000A140 40 F0 46 A1        	        call    F_Delay100uS;
+0000A142 41 22              	        r1-=1;
+0000A143 44 4E              	        jne     L_LoopDelay11
+0000A144 88 90              	        pop r1,r1 from [sp];
+0000A145 90 9A              	        retf;
+                            	
+                            	
+                            	///////////////////////////////////////////////////////////////
+                            	//Function : 100us Dealy for S_Flash programming time (base on CPUCLK= 24MHz)
+                            	// Syntax: Delay100uS()
+                            	// Used register: r1,r2
+                            	///////////////////////////////////////////////////////////////
+                            	
+                            	.public _Delay100uS;
+                            	_Delay100uS: .PROC
+                            	F_Delay100uS:  //13
+0000A146 88 D2              	        push r1,r1 to [sp];             //7
+0000A147 09 93 26 01        	        r1=294;  //6
+                            	L_DelayLoop:
+0000A149 41 22              	        r1-=1;  //3           26+19+8*294 =2400
+0000A14A 42 4E              	        jne     L_DelayLoop;   //5
+0000A14B 88 90              	        pop r1,r1 from [sp];    //7
+0000A14C 90 9A              	        retf;      //12
+                            	        .ENDP;
+                            	
+                            	///////////////////////////////////////////////////////////////
+                            	//Function : Dealy for S_Flash programming time (base on CPUCLK= 24MHz)
+                            	// Syntax: DelayPT()
+                            	// Used register: r1
+                            	///////////////////////////////////////////////////////////////
+                            	
+                            	.public _DelayPT;
+                            	_DelayPT: .PROC
+                            	F_DelayPT:  //13
+0000A14D 88 D2              	        push r1,r1 to [sp];             //7
+                            	        //r1=294;  //6
+                            	        //r1=147;
+                            	        //r1=1600;
+                            	        //r1=100;
+0000A14E 09 93 A0 00        	        r1=160
+                            	        //r1=200;
+                            	L_DelayLoopPT:
+0000A150 41 22              	        r1-=1;  //3           26+19+8*160 =1325  ----> 56us
+0000A151 42 4E              	        jne     L_DelayLoopPT;   //5
+0000A152 88 90              	        pop r1,r1 from [sp];    //7
+0000A153 90 9A              	        retf;      //12
+                            	        .ENDP;
+                            	
+                            	
+                            	///////////////////////////////////////////////////////////////
+                            	//Function : Write head. There are 8 bytes. The first 4 bytes is address of ending speech
+                            	//           The last 4 bytes is 1' complement of first 4 bytes
+                            	// Syntax  : SP_WriteHeader( Low Address of header, High Address of header, DataLow, DataHigh)
+                            	// Used register: r1-r3
+                            	///////////////////////////////////////////////////////////////
+                            	
+                            	.public _SP_WriteHeader;
+                            	_SP_WriteHeader: .PROC
+                            	F_WriteHeader:
+0000A154 88 DA              	        PUSH BP,BP TO [SP];
+0000A155 08 0B 01 00        	        BP = SP + 1;
+0000A157 05 96              	        r3=[BP+5];  //data for programming
+0000A158 04 94              	        r2=[BP+4];  //high addr for programming
+0000A159 03 92              	        r1=[BP+3];  //low addr for programming
+0000A15A 98 D6              	        PUSH r1,r3 TO [SP];
+0000A15B 40 F0 80 A0        	        call    F_SIOSendAWord;
+0000A15D 98 90              	        pop r1,r3 from [SP];
+0000A15E 06 96              	        r3=[BP+6];  //data for programming
+0000A15F 04 94              	        r2=[BP+4];  //high addr for programming
+0000A160 03 92              	        r1=[BP+3];  //low addr for programming
+0000A161 42 02              	        r1+=2;
+0000A162 40 14              	        r2+=0, carry;
+0000A163 98 D6              	        PUSH r1,r3 TO [SP];
+0000A164 40 F0 80 A0        	        call    F_SIOSendAWord;
+0000A166 98 90              	        pop r1,r3 from [SP];
+0000A167 05 96              	        r3=[BP+5];  //data for programming
+0000A168 0B 87 FF FF        	        r3^=0xffff;
+0000A16A 04 94              	        r2=[BP+4];  //high addr for programming
+0000A16B 03 92              	        r1=[BP+3];  //low addr for programming
+0000A16C 44 02              	        r1+=4;
+0000A16D 40 14              	        r2+=0, carry;
+0000A16E 98 D6              	        PUSH r1,r3 TO [SP];
+0000A16F 40 F0 80 A0        	        call    F_SIOSendAWord;
+0000A171 98 90              	        pop r1,r3 from [SP];
+0000A172 06 96              	        r3=[BP+6];  //data for programming
+0000A173 0B 87 FF FF        	        r3^=0xffff;
+0000A175 04 94              	        r2=[BP+4];  //high addr for programming
+0000A176 03 92              	        r1=[BP+3];  //low addr for programming
+0000A177 46 02              	        r1+=6;
+0000A178 40 14              	        r2+=0, carry;
+0000A179 98 D6              	        PUSH r1,r3 TO [SP];
+0000A17A 40 F0 80 A0        	        call    F_SIOSendAWord;
+0000A17C 98 90              	        pop r1,r3 from [SP];
+0000A17D 88 98              	        POP BP,BP FROM [SP];
+0000A17E 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	
+                            	///////////////////////////////////////////////////////////////
+                            	//Function : Check header. Header has 8 bytes. The first 4 bytes is address of ending speech
+                            	//           The last 4 bytes is 1' complement of first 4 bytes
+                            	// Syntax  : CheckHeader( Low Address of header, High Address of header)
+                            	// Used register: r1
+                            	// return value : r1, r2  (if r1=0xffff and r2=0xffff, error)
+                            	///////////////////////////////////////////////////////////////
+                            	
+                            	.public _SP_CheckHeader;
+                            	_SP_CheckHeader: .PROC
+                            	F_CheckHeader:
+0000A17F 88 DA              	        PUSH BP,BP TO [SP];
+0000A180 08 0B 01 00        	        BP = SP + 1;
+0000A182 04 96              	        r3=[BP+4];  //high addr for reading
+0000A183 03 94              	        r2=[BP+3];  //low addr for reading
+0000A184 42 04              	        r2+=2;
+0000A185 40 16              	        r3+=0, carry;
+0000A186 98 D8              	        PUSH r2,r4 TO [SP];
+0000A187 40 F0 C2 A0        	        call    F_SIOReadAWord;
+0000A189 98 92              	        pop r2,r4 from [SP];
+0000A18A 01 99              	        r4=r1;
+0000A18B 04 96              	        r3=[BP+4];  //high addr for reading
+0000A18C 03 94              	        r2=[BP+3];  //low addr for reading
+0000A18D 46 04              	        r2+=6;
+0000A18E 40 16              	        r3+=0, carry;
+0000A18F 98 D8              	        PUSH r2,r4 TO [SP];
+0000A190 40 F0 C2 A0        	        call    F_SIOReadAWord;
+0000A192 98 92              	        pop r2,r4 from [SP];
+0000A193 09 83 FF FF        	        r1^=0xffff;
+0000A195 04 43              	        cmp r1,r4
+0000A196 18 4E              	        jne L_HeaderError
+0000A197 88 D8              	        PUSH r4,r4 TO [SP];     //save high byte of return data
+0000A198 04 96              	        r3=[BP+4];  //high addr for reading
+0000A199 03 94              	        r2=[BP+3];  //low addr for reading
+0000A19A 98 D8              	        PUSH r2,r4 TO [SP];
+0000A19B 40 F0 C2 A0        	        call    F_SIOReadAWord;
+0000A19D 98 92              	        pop r2,r4 from [SP];
+0000A19E 01 99              	        r4=r1;
+0000A19F 04 96              	        r3=[BP+4];  //high addr for reading
+0000A1A0 03 94              	        r2=[BP+3];  //low addr for reading
+0000A1A1 44 04              	        r2+=4;
+0000A1A2 40 16              	        r3+=0, carry;
+0000A1A3 98 D8              	        PUSH r2,r4 TO [SP];
+0000A1A4 40 F0 C2 A0        	        call    F_SIOReadAWord;
+0000A1A6 98 92              	        pop r2,r4 from [SP];
+0000A1A7 09 83 FF FF        	        r1^=0xffff;
+0000A1A9 04 43              	        cmp r1,r4
+0000A1AA 03 4E              	        jne  L_HeaderError2
+0000A1AB 88 92              	        POP r2,r2 FROM [SP];     //get high byte of return data
+0000A1AC 88 98              	        POP BP,BP FROM [SP];
+0000A1AD 90 9A              	        retf;
+                            	
+                            	L_HeaderError2:
+0000A1AE 88 96              	        POP r4,r4 FROM [SP];     //remove high byte of return data
+                            	
+                            	L_HeaderError:
+0000A1AF 09 93 FF FF        	        r1=0xffff;
+0000A1B1 0A 95 FF FF        	        r2=0xffff;
+0000A1B3 88 98              	        POP BP,BP FROM [SP];
+                            	        .ENDP;
+                            	
+                            	
+                            	
+                            	
+0 error(s), 0 warning(s).
+

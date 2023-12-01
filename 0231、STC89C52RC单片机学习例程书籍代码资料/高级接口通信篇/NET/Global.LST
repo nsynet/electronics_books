@@ -1,0 +1,94 @@
+C51 COMPILER V7.06   GLOBAL                                                                03/16/2011 16:18:38 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE GLOBAL
+OBJECT MODULE PLACED IN .\Output\Global.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Global.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\Global.obj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "Board.h"
+   7          #include "Global.h "  
+   8          
+   9          
+  10          static DATA volatile UINT8 __ucSysMsg=SYS_IDLE;
+  11          
+  12          /******************************************************************
+  13          *函数名称:DelayNus
+  14          *输    入:t 延时时间
+  15          *输    出:无
+  16          *说    明:微秒级延时
+  17          *******************************************************************/
+  18          void DelayNus(UINT16 t)
+  19          {     
+  20   1              do
+  21   1              {
+  22   2                      NOP();
+  23   2              }while(--t >0); 
+  24   1      
+  25   1      }
+  26          /******************************************************************
+  27          *函数名称:DelayNms
+  28          *输    入:t 延时时间
+  29          *输    出:无
+  30          *说    明:毫秒级延时
+  31          *******************************************************************/
+  32          void DelayNms(UINT16 t)
+  33          {
+  34   1               do
+  35   1               {
+  36   2                      DelayNus(1000);
+  37   2      
+  38   2               }while(--t >0);
+  39   1      }
+  40          /*************************************************************
+  41          * 函数名称:SYSIdle
+  42          * 输    入:无
+  43          * 输    出:无
+  44          * 说    明:空闲任务
+  45          **************************************************************/
+  46          void SYSIdle(void)
+  47          {
+  48   1               MCU_IDLE();
+  49   1      }
+  50          /*************************************************************
+  51          * 函数名称:SYSPostCurMsg
+  52          * 输    入:消息
+  53          * 输    出:无
+  54          * 说    明:发送系统消息
+  55          **************************************************************/
+C51 COMPILER V7.06   GLOBAL                                                                03/16/2011 16:18:38 PAGE 2   
+
+  56          void SYSPostCurMsg(UINT8 msg)
+  57          {
+  58   1              __ucSysMsg=msg;
+  59   1      }
+  60          /*************************************************************
+  61          * 函数名称:SYSRecvMsg
+  62          * 输    入:无
+  63          * 输    出:当前
+  64          * 说    明:捕获系统消息
+  65          **************************************************************/
+  66          UINT8 SYSRecvCurMsg(void)
+  67          {
+  68   1              return __ucSysMsg;
+  69   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     52    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

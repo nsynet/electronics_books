@@ -1,0 +1,84 @@
+Friday, July 11, 18:18:04, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8009         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8025         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         8024         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         0            "D:\文档\ad\AD_CH7\Debug\Resource.obj"
+chanal_data                                        0            "D:\文档\ad\AD_CH7\Debug\main.obj"
+_main                                              8026         "D:\文档\ad\AD_CH7\Debug\main.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8009                 8025         1D     *
+* "D:\文档\ad\AD_CH7\Debug\Resource.obj"                                                    *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "D:\文档\ad\AD_CH7\Debug\main.obj"                                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8026                 8041         1C     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         8042 (0)             8048 (6)     7      *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   7            39                    *
+* "Ram"                             800                  7            7F9                   *
+* "First Bank Rom"                  7C00                 49           7BB7                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\AD_CH7.S37
+Disk  Mapping Filename : .\Debug\AD_CH7.map
+Symbol  Table FileName : .\Debug\AD_CH7.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

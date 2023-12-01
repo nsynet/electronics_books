@@ -1,0 +1,22 @@
+Version: 3.0
+Options: m37
+Obj: "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\Resource.obj"
+Obj: "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\main.obj"
+Obj: "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\sys.obj"
+Obj: "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\isr.obj"
+Obj: "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+Lib: "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\CMacro.lib"
+Output: ".\Debug\count.S37"
+;Locate: TEXT in "isr.obj" at 8009 
+;Align: TEXT in "isr.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 81DB  linkat 0 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: CODE in "hardware.obj" at 8044 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "main.obj" at 8171 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "sys.obj" at 81AF 
+;Align: CODE in "sys.obj" with 0 
+;Locate: CODE in "rshu1" of "CMacro.lib"  at 81C6 
+;Align: CODE in "rshu1" of "CMacro.lib"  with 0 

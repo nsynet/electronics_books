@@ -1,0 +1,99 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        09/12/2007  21:48:43  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE deng.obj TO keydeng
+
+
+INPUT MODULES INCLUDED:
+  deng.obj (DENG)
+
+
+LINK MAP OF MODULE:  keydeng (DENG)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0091H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  keydeng (DENG)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DENG
+  C:0036H         SYMBOL        AAA
+  C:0046H         SYMBOL        BBB
+  C:0055H         SYMBOL        DDD
+  C:0080H         SYMBOL        DELAY
+  C:0089H         SYMBOL        DELAY1
+  C:0082H         SYMBOL        DL1
+  C:008BH         SYMBOL        DL2
+  C:0064H         SYMBOL        EEE
+  C:0073H         SYMBOL        FFF
+  D:0080H         SYMBOL        P0
+  D:0090H         SYMBOL        P1
+  C:0044H         SYMBOL        SHOW1
+  C:0053H         SYMBOL        SHOW2
+  C:0062H         SYMBOL        SHOW3
+  C:0071H         SYMBOL        SHOW4
+  C:0030H         SYMBOL        START
+  C:0000H         LINE#         4
+  C:0030H         LINE#         7
+  C:0033H         LINE#         8
+  C:0036H         LINE#         10
+  C:0039H         LINE#         11
+  C:003CH         LINE#         12
+  C:003FH         LINE#         13
+  C:0042H         LINE#         14
+  C:0044H         LINE#         16
+  C:0046H         LINE#         17
+  C:0048H         LINE#         18
+  C:004BH         LINE#         19
+  C:004EH         LINE#         20
+  C:004FH         LINE#         21
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/12/2007  21:48:43  PAGE 2
+
+
+  C:0052H         LINE#         22
+  C:0053H         LINE#         24
+  C:0055H         LINE#         25
+  C:0057H         LINE#         26
+  C:005AH         LINE#         27
+  C:005DH         LINE#         28
+  C:005EH         LINE#         29
+  C:0061H         LINE#         30
+  C:0062H         LINE#         32
+  C:0064H         LINE#         33
+  C:0066H         LINE#         34
+  C:0069H         LINE#         35
+  C:006CH         LINE#         36
+  C:006DH         LINE#         37
+  C:0070H         LINE#         38
+  C:0071H         LINE#         40
+  C:0073H         LINE#         41
+  C:0075H         LINE#         42
+  C:0078H         LINE#         43
+  C:007BH         LINE#         44
+  C:007CH         LINE#         45
+  C:007FH         LINE#         46
+  C:0080H         LINE#         48
+  C:0082H         LINE#         49
+  C:0084H         LINE#         50
+  C:0086H         LINE#         51
+  C:0088H         LINE#         52
+  C:0089H         LINE#         54
+  C:008BH         LINE#         55
+  C:008EH         LINE#         56
+  C:0090H         LINE#         57
+  -------         ENDMOD        DENG
+
+Program Size: data=8.0 xdata=0 code=145
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

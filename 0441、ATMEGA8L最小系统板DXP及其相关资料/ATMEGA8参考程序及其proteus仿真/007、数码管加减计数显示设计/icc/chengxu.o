@@ -1,0 +1,201 @@
+XL
+H 4 areas D global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+A text size 196 flags 0
+dbfile D:\整理\个人总结的M8程序\007、数码管加减计数显示设计\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 15 4
+dbline 17 4
+dbline 18 6
+dbline 19 6
+dbline 19 C
+dbline 19 C
+dbline 19 10
+dbline 1A 16
+dbline 17 16
+dbline 17 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Led 26 fV
+dbsym r m 14 c
+dbline FFFFFFFF 2A
+dbline 21 2A
+dbline 22 2A
+dbline 24 2C
+dbline 25 30
+dbline 26 4E
+dbline 27 54
+dbline 28 58
+dbline 29 5C
+dbline 2A 60
+dbline 2B 86
+dbline 2C 8C
+dbline 2D 90
+dbline 2E 94
+dbline 2F 98
+dbline 30 BE
+dbline 31 C4
+dbline 32 C8
+dbline 33 CC
+dbline 34 D0
+dbline 35 EE
+dbline 36 F4
+dbline 37 F8
+dbline FFFFFFFE FC
+dbline 0 100
+dbfunc e init_io 102 fV
+dbline FFFFFFFF 102
+dbline 3D 102
+dbline 3F 102
+dbline 40 106
+dbline 42 108
+dbline 43 10C
+dbline 45 10E
+dbline 46 110
+dbline FFFFFFFE 112
+dbline 0 112
+dbfunc e get_key 114 fV
+dbline FFFFFFFF 114
+dbline 4F 114
+dbline 51 116
+dbline 51 116
+dbline 52 11C
+dbline 53 11E
+dbline 50 11E
+dbline 55 124
+dbline 55 124
+dbline 56 12A
+dbline 56 12C
+dbline 54 12C
+dbline FFFFFFFE 130
+dbline 0 130
+dbfunc e main 132 fV
+dbline FFFFFFFF 132
+dbline 5C 132
+dbline 5D 132
+dbline 60 136
+dbline 61 136
+dbline 62 138
+dbline 63 13A
+dbline 64 142
+dbline 65 142
+dbline 66 152
+dbline 67 152
+dbline 68 15C
+dbline 69 162
+dbline 6A 162
+dbline 6B 162
+dbline 6C 16A
+dbline 6D 16A
+dbline 6E 17A
+dbline 6F 17A
+dbline 70 18C
+dbline 71 192
+dbline 72 192
+dbline 73 192
+dbline 5F 192
+dbline FFFFFFFE 194
+dbline 0 194
+S _main Def0132
+S _get_key Def0114
+S _init_io Def0102
+S _Led Def0026
+S _DelayMS Def0000
+A data size C flags 20
+dbfile D:\整理\个人总结的M8程序\007、数码管加减计数显示设计\icc\chengxu.c
+dbsym e table 0 A[10:10]c
+dbsym e cnt A i
+S _table Def0000
+S _cnt Def000A
+A idata size C flags 0
+A bss size 2 flags 20
+dbfile D:\整理\个人总结的M8程序\007、数码管加减计数显示设计\icc\chengxu.c
+dbsym e key_down 0 c
+dbsym e key_up 1 c
+S _key_down Def0000
+S _key_up Def0001
+T 00 00 C0 F9
+R 00 00 02 00
+T 02 00 A4 B0
+R 00 00 02 00
+T 04 00 99 92
+R 00 00 02 00
+T 06 00 82 F8
+R 00 00 02 00
+T 08 00 80 90
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 0E 94 00 00 41 E0 81 E0 85 BB 28 EE 33 E0
+R 00 00 00 00 12 04 00 00
+T 34 00 00 91 0A 00 10 91 0B 00 0E 94 00 00 F8 01
+R 00 00 00 00 00 04 01 00 00 08 01 00 12 0C 02 00
+T 42 00 80 E0 90 E0 E8 0F F9 1F 20 80 28 BA 04 2F
+R 00 00 00 00 20 02 01 00 00 00 40 04 01 00 00 00
+T 50 00 11 27 D6 DF 22 24 25 BA 8F EF 88 BB 82 E0
+R 00 00 00 00
+T 5E 00 85 BB 28 EE 33 E0 00 91 0A 00 10 91 0B 00
+R 00 00 00 00 00 0A 01 00 00 0E 01 00
+T 6C 00 0E 94 00 00 24 E6 30 E0 0E 94 00 00 F8 01
+R 00 00 00 00 12 04 01 00 12 0C 02 00
+T 7A 00 80 E0 90 E0 E8 0F F9 1F 20 80 28 BA 04 2F
+R 00 00 00 00 20 02 01 00 00 00 40 04 01 00 00 00
+T 88 00 11 27 BA DF 22 24 25 BA 8F EF 88 BB 84 E0
+R 00 00 00 00
+T 96 00 85 BB 24 E6 30 E0 00 91 0A 00 10 91 0B 00
+R 00 00 00 00 00 0A 01 00 00 0E 01 00
+T A4 00 0E 94 00 00 2A E0 30 E0 0E 94 00 00 F8 01
+R 00 00 00 00 12 04 01 00 12 0C 02 00
+T B2 00 80 E0 90 E0 E8 0F F9 1F 20 80 28 BA 04 2F
+R 00 00 00 00 20 02 01 00 00 00 40 04 01 00 00 00
+T C0 00 11 27 9E DF 22 24 25 BA 8F EF 88 BB 88 E0
+R 00 00 00 00
+T CE 00 85 BB 2A E0 30 E0 00 91 0A 00 10 91 0B 00
+R 00 00 00 00 00 0A 01 00 00 0E 01 00
+T DC 00 0E 94 00 00 F8 01 80 E0
+R 00 00 00 00 12 04 01 00 20 08 01 00 00 00
+T E4 00 90 E0 E8 0F F9 1F 20 80 28 BA 04 2F 11 27
+R 00 00 00 00 40 02 01 00 00 00
+T F2 00 86 DF 22 24 25 BA 8F EF 88 BB 0E 94 00 00
+R 00 00 00 00 12 0E 03 00
+T 00 01 08 95
+R 00 00 00 00
+T 02 01 8F EF 87 BB 88 BB 22 24 21 BA 22 BA 84 BB
+R 00 00 00 00
+T 10 01 85 BB 08 95
+R 00 00 00 00
+T 14 01 04 C0 81 E0 80 93 01 00 84 DF 80 9B FA CF
+R 00 00 00 00 00 08 03 00
+T 22 01 04 C0 81 E0 80 93 00 00 7D DF 81 9B FA CF
+R 00 00 00 00 00 08 03 00
+T 30 01 08 95
+R 00 00 00 00
+T 32 01 E7 DF 2E C0 EE DF 76 DF 80 91 01 00 81 30
+R 00 00 00 00 00 0C 03 00
+T 40 01 81 F4 80 91 0A 00 90 91 0B 00 8F 30 E7 E2
+R 00 00 00 00 00 06 01 00 00 0A 01 00
+T 4E 01 9E 07 41 F0 01 96 90 93 0B 00 80 93 0A 00
+R 00 00 00 00 00 0A 01 00 00 0E 01 00
+T 5C 01 22 24 20 92 01 00 80 91 00 00 81 30 A1 F4
+R 00 00 00 00 00 06 03 00 00 0A 03 00
+T 6A 01 20 90 0A 00 30 90 0B 00 22 20 11 F4 33 20
+R 00 00 00 00 00 04 01 00 00 08 01 00
+T 78 01 61 F0 80 91 0A 00 90 91 0B 00 01 97 90 93
+R 00 00 00 00 00 06 01 00 00 0A 01 00
+T 86 01 0B 00 80 93 0A 00 22 24 20 92 00 00 D1 CF
+R 00 00 00 00 00 02 01 00 00 06 01 00 00 0C 03 00
+T 94 01 08 95
+R 00 00 00 00

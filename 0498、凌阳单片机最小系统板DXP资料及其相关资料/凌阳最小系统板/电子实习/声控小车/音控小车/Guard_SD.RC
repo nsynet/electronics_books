@@ -1,0 +1,53 @@
+# Begin Project
+# Begin SubItem "Guard_SD  Resources"
+# Begin Source File
+SOURCE=voice\dcqzy.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_DCQZY_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\fbf.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_FBF_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\gjg.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_GJG_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\qj.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_QJ_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\ssmay.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_SSMAY_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\yeah.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_YEAH_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\S12.24K
+USEPARAM=FALSE
+PARAM=
+ID=RES_S12_24K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

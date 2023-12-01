@@ -1,0 +1,71 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+E:\产品最新整理\汇诚科技产品最新整理\S52_M16两用开发板\本开发板配套程序及其仿真\十三、模数转换 DAC0832的应用--输出0~5V的锯齿波或三角波\keil\chengxu.uv2
+Project File Date:  12/15/2005
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(18): error C202: 'P3_2': undefined identifier
+CHENGXU.C(21): error C202: 'P3_2': undefined identifier
+CHENGXU.C(28): error C202: 'P3_2': undefined identifier
+CHENGXU.C(31): error C202: 'P3_3': undefined identifier
+CHENGXU.C(34): error C202: 'P3_3': undefined identifier
+CHENGXU.C(42): error C202: 'P3_2': undefined identifier
+CHENGXU.C(77): error C231: 'TMOD': redefinition
+CHENGXU.C(77): error C231: 'TMOD': redefinition
+CHENGXU.C(78): error C231: 'ET0': redefinition
+CHENGXU.C(78): error C231: 'ET0': redefinition
+CHENGXU.C(79): error C231: 'EA': redefinition
+CHENGXU.C(79): error C231: 'EA': redefinition
+CHENGXU.C(80): error C141: syntax error near 'while'
+CHENGXU.C(80): error C141: syntax error near '1'
+CHENGXU.C(81): error C231: 'KEY': redefinition
+CHENGXU.C(81): error C141: syntax error near '}'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=11.1 xdata=0 code=297
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.1 xdata=0 code=297
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(20): error C202: 'P3_2': undefined identifier
+CHENGXU.C(23): error C202: 'P3_2': undefined identifier
+CHENGXU.C(30): error C202: 'P3_2': undefined identifier
+CHENGXU.C(33): error C202: 'P3_3': undefined identifier
+CHENGXU.C(36): error C202: 'P3_3': undefined identifier
+CHENGXU.C(44): error C202: 'P3_2': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=11.1 xdata=0 code=297
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=11.1 xdata=0 code=297
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=11.1 xdata=0 code=297
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=11.1 xdata=0 code=297
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).

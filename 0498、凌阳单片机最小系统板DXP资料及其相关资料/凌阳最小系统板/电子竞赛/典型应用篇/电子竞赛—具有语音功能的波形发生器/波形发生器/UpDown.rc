@@ -1,0 +1,88 @@
+# Begin Project
+# Begin SubItem "UpDown  Resources"
+# Begin Source File
+SOURCE=voice\T022.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T022_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T023.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T023_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T024.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T024_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T025.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T025_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T026.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T026_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T027.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T027_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T028.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T028_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T029.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T029_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T030.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T030_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T031.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T031_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T066.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T066_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T016.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T016_48K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

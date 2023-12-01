@@ -1,0 +1,112 @@
+C51 COMPILER V7.06   USBAPPLICATION                                                        03/16/2011 16:14:50 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE USBAPPLICATION
+OBJECT MODULE PLACED IN .\Output\USBApplication.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE USBApplication.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\USBApplication.o
+                    -bj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "global.h"
+   8          #include "USBDefine.h"
+   9          #include "USBInterface.h"
+  10          #include "USBApplication.h"
+  11          
+  12          
+  13          /****************************************************************************************************
+  14          *
+  15          *                                      变量区
+  16          * 
+  17          *****************************************************************************************************/
+  18          static IDATA UINT8 USBMainBuf[EP2_PACKET_SIZE]={0};
+  19          /****************************************************************************************************
+  20          *
+  21          *                                      函数区
+  22          * 
+  23          *****************************************************************************************************/
+  24          
+  25          /****************************************************
+  26          * 函数名称: USBApDisposeData
+  27          * 输    入: 无
+  28          * 输    出: 无
+  29          * 功能描述: USB 处理数据
+  30          *****************************************************/
+  31          void USBApDisposeData(void)
+  32          {
+  33   1              UINT8 ucintStatus;                  //定义中断状态变量
+  34   1              UINT8 ucrecvLen;                    //定义接收数据长度变量
+  35   1              
+  36   1              ENTER_CRITICAL();                   //关闭全局中断
+  37   1      
+  38   1              SYSPostCurMsg(SYS_IDLE);              //设置下个任务状态为空闲状态
+  39   1              USBCiWriteSingleCmd(CMD_GET_STATUS);//请求获取USB状态
+  40   1                                                               
+  41   1              ucintStatus =USBCiReadSingleData();//读取USB状态
+  42   1      
+  43   1              switch(ucintStatus)                  //检测是哪一种状态                                 
+  44   1              {  
+  45   2                      case USB_INT_EP2_OUT:            //端点2接收到数据
+  46   2                               {
+  47   3                        //读取数据长度
+  48   3                                        ucrecvLen=USBCiReadPortData(USBMainBuf);
+  49   3                        //将读到的数据返回到上位机
+  50   3                                        USBCiEP2Send(USBMainBuf,ucrecvLen);
+  51   3                               }
+  52   2                   break;
+  53   2      
+  54   2                      case USB_INT_EP2_IN:                                                                                                         {
+C51 COMPILER V7.06   USBAPPLICATION                                                        03/16/2011 16:14:50 PAGE 2   
+
+  55   3                          //端点2发送完毕，释放缓冲区。
+  56   3                                        USBCiWriteSingleCmd (CMD_UNLOCK_USB);                 
+  57   3                               }
+  58   2                               break;
+  59   2      
+  60   2                      case USB_INT_EP1_OUT: 
+  61   2                               {
+  62   3                         //读取数据长度
+  63   3                                   ucrecvLen=USBCiReadPortData(USBMainBuf);
+  64   3                         //将读到的数据返回到上位机
+  65   3                                       USBCiEP1Send(USBMainBuf,ucrecvLen);
+  66   3                               } 
+  67   2                               break;
+  68   2      
+  69   2                      case USB_INT_EP1_IN:                                                                                                         
+  70   2                   {
+  71   3                                      //端点1发送完毕，释放缓冲区。
+  72   3                                      USBCiWriteSingleCmd (CMD_UNLOCK_USB);                           
+  73   3                               }
+  74   2                               break;
+  75   2      
+  76   2                      default:
+  77   2                                {
+  78   3                      //释放缓冲区。
+  79   3                                      USBCiWriteSingleCmd (CMD_UNLOCK_USB);                                 
+  80   3                    }
+  81   2                                break;
+  82   2         }
+  83   1      
+  84   1              EXIT_CRITICAL();//开启全局中断
+  85   1      }
+  86          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     86    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =     64    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

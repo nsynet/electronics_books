@@ -1,0 +1,116 @@
+//工程名称：ocmj815b.spj
+//功能描述：触模屏ocmj8x15b显示字符
+//涉及的库：
+//组成文件：lcd.c
+//硬件连接：IOB0~IOB7：数据端口       IOB8：REQ        IOB9：busy
+#include <SPCE061A.h>	
+		
+#define     SET_BIT(x,y)          ((x)|=(0x0001<<(y)))                 //置x的第y位为一
+#define     CLR_BIT(x,y)          ((x)&=~(0x0001<<(y)))                //清x的第y位为零
+#define     CPL_BIT(x,y)          ((x)^=(0x0001<<(y)))                 //x的第y位取反
+#define     GET_BIT(x,y)          (((x)&(1<<(y)))== 0 ? 0:1)           //读取x的第y位，返回0或1
+#define     LET_BIT(x,y,z)        ((x)=(x)&(~(0x0001<<(y)))|((z)<<y))  //将x的第y位写上z(0/1)
+
+#define data_ora   *P_IOB_Data              //数据发送端口5~12 引脚
+#define uchar      unsigned char
+#define uint       unsigned int
+
+////////////////////////// 触摸屏显示字库文字//////////////////
+void delay1 (uint ms);
+void wr_zb(uchar comm,uchar addr_x,uchar addr_y);
+void send(uchar dat);
+void send (uchar dat);					 //写命令或数据
+void disp_eng (uchar *eng);		 //显示字符
+//////////////////////显示以下英文字母///////////////////////
+
+uchar tab4[]={						
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+"ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"
+};
+///////////////////////显示部分主程序/////////////////////////
+
+void display2()
+{   	
+    send(0xf4);			  //清屏命令格式：F4
+    disp_eng(tab4);		  //显示字符
+    delay1(800);		  //延时
+    send(0xf4);			  //清屏命令格式：F4
+  	
+}
+
+////////////////////////////主函数程序///////////////////////////
+ int main ()
+{
+  /////管脚设定，IOB低八位为数据输出端，IOB8为数据输出端，IOB9为数据输入端//////////////
+  *P_IOB_Dir=0x01ff;
+  *P_IOB_Attrib=0x03ff;
+  *P_IOB_Data=0x01ff;
+  CLR_BIT(*P_IOB_Data,8);
+  SET_BIT(*P_IOB_Data,9);
+  while(1)
+ {
+   display2();
+   *P_Watchdog_Clear=0x0001;  //清看门狗
+  }
+  return(0);
+}
+/*--------------显示字符------------------*/
+
+void disp_eng (uchar *eng)
+{
+  uchar i,j;				   
+  for(j=0;j<4;j++)			  //前4行为8X16的字符,左上角为坐标零点
+  {
+    for(i=0;i<30;i++)
+    {
+      wr_zb(0xf9,i,j*16);	  //显示8X16 ASCII字符 命令格式：F9 XX YY AS
+      send(eng[j*30+i]);
+      *P_Watchdog_Clear=0x0001;  //清看门狗
+    }
+  }
+  for(j=4;j<12;j++)			  //后8行为8X8的字符
+  {
+    for(i=0;i<30;i++)
+    {
+      wr_zb(0xf1,i,(j+4)*8);  //显示8X8 ASCII字符式：F1 XX YY AS  4取决于启始行数
+      send(eng[j*30+i]);
+      *P_Watchdog_Clear=0x0001;  //清看门狗
+    }
+  }	
+}
+
+
+/*---------------延时子程序2（长延时毫秒）----------------*/
+void delay1 (uint ms)
+{
+  uint i,j;
+  for(i=0;i<ms;i++)
+  for(j=0;j<1000;j++)
+  ;
+}
+/*------------写命令或数据到LCD--------------*/
+void wr_zb (uchar comm,uchar addr_x,uchar addr_y)
+{
+  send(comm);
+  send(addr_x);
+  send(addr_y);
+}
+/*------------写命令或数据--------------*/
+void send (uchar dat)               
+{
+  while(GET_BIT(*P_IOB_Data,9)==1);
+  data_ora=dat;
+  SET_BIT(*P_IOB_Data,8);
+  while(GET_BIT(*P_IOB_Data,9)==0);
+  CLR_BIT(*P_IOB_Data,8);
+}

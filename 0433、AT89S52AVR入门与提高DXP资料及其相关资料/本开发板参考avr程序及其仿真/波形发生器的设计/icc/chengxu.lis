@@ -1,0 +1,624 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _duan::
+ 0000                   .blkb 2
+                        .area idata
+ 0000 3F06              .byte 63,6
+                        .area data(ram, con, rel)
+ 0002                   .blkb 2
+                        .area idata
+ 0002 5B4F              .byte 91,'O
+                        .area data(ram, con, rel)
+ 0004                   .blkb 2
+                        .area idata
+ 0004 666D              .byte 'f,'m
+                        .area data(ram, con, rel)
+ 0006                   .blkb 2
+                        .area idata
+ 0006 7D07              .byte 125,7
+                        .area data(ram, con, rel)
+ 0008                   .blkb 2
+                        .area idata
+ 0008 7F6F              .byte 127,'o
+                        .area data(ram, con, rel)
+ 000A                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\波形发生器的设计\icc\chengxu.c
+ 000A                   .dbsym e duan _duan A[10:10]c
+ 000A           _wei::
+ 000A                   .blkb 2
+                        .area idata
+ 000A 0E0D              .byte 14,13
+                        .area data(ram, con, rel)
+ 000C                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\波形发生器的设计\icc\chengxu.c
+ 000C                   .blkb 2
+                        .area idata
+ 000C 0B07              .byte 11,7
+                        .area data(ram, con, rel)
+ 000E                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\波形发生器的设计\icc\chengxu.c
+ 000E                   .dbsym e wei _wei A[4:4]c
+ 000E           _date::
+ 000E                   .blkb 2
+                        .area idata
+ 000E 0100              .word 1
+                        .area data(ram, con, rel)
+ 0010                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\波形发生器的设计\icc\chengxu.c
+ 0010                   .dbsym e date _date i
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\波形发生器的设计\icc\chengxu.c
+ 0000                   .dbfunc e delay _delay fV
+ 0000           ;              i -> R20
+ 0000           ;              j -> R22
+ 0000           ;              t -> R16
+                        .even
+ 0000           _delay::
+ 0000 0E940000          xcall push_gset2
+ 0004                   .dbline -1
+ 0004                   .dbline 14
+ 0004           ; #include <iom16v.h> 
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; uchar duan[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};    //所需的段的位码
+ 0004           ; //uchar wei[4]={0XFE,0XFD,0XFB,0XF7}; //位的控制端    (开发板)
+ 0004           ; uchar wei[4]={0X0e,0X0d,0X0b,0X07};   //位的控制端    (仿真)
+ 0004           ; uchar Key1_Flag,Key2_Flag,Key3_Flag;  //按键控制频率加减复位                          
+ 0004           ; uint z,x,c,v, date;   //定义数据类型
+ 0004           ; uint date=1;        //频率初始值1K
+ 0004           ; /******************************************************************
+ 0004           ; 延时函数
+ 0004           ; ******************************************************************/
+ 0004           ; void delay(uchar t)
+ 0004           ; {
+ 0004                   .dbline 16
+ 0004           ;   uchar i,j;
+ 0004           ;    for(i=0;i<t;i++)
+ 0004 4427              clr R20
+ 0006 07C0              xjmp L5
+ 0008           L2:
+ 0008                   .dbline 17
+ 0008           ;    {
+ 0008                   .dbline 18
+ 0008 6DE0              ldi R22,13
+ 000A 01C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 18
+ 000C           L7:
+ 000C                   .dbline 18
+ 000C 6A95              dec R22
+ 000E           L9:
+ 000E                   .dbline 18
+ 000E 2224              clr R2
+ 0010 2616              cp R2,R22
+ 0012 E0F3              brlo L6
+ 0014                   .dbline 19
+ 0014                   .dbline 19
+ 0014                   .dbline 19
+ 0014                   .dbline 20
+ 0014           L3:
+ 0014                   .dbline 16
+ 0014 4395              inc R20
+ 0016           L5:
+ 0016                   .dbline 16
+ 0016 4017              cp R20,R16
+ 0018 B8F3              brlo L2
+ 001A                   .dbline -2
+ 001A           L1:
+ 001A 0E940000          xcall pop_gset2
+ 001E                   .dbline 0 ; func end
+ 001E 0895              ret
+ 0020                   .dbsym r i 20 c
+ 0020                   .dbsym r j 22 c
+ 0020                   .dbsym r t 16 c
+ 0020                   .dbend
+ 0020                   .dbfunc e xianshi _xianshi fV
+ 0020           ;              i -> R20,R21
+ 0020           ;              j -> R20,R21
+                        .even
+ 0020           _xianshi::
+ 0020 0E940000          xcall push_gset1
+ 0024                   .dbline -1
+ 0024                   .dbline 26
+ 0024           ;        for(j=13;j>0;j--);
+ 0024           ;        { ; }
+ 0024           ;    }
+ 0024           ; }
+ 0024           ; /**********************************************************************
+ 0024           ;                 数码管动态扫描
+ 0024           ; *********************************************************************/
+ 0024           ; void xianshi()
+ 0024           ;  { 
+ 0024                   .dbline 29
+ 0024           ;  uint i,j;
+ 0024           ;  /*************************数据转换*****************************/ 
+ 0024           ;   z=date/1000;                         //求千位
+ 0024 28EE              ldi R18,1000
+ 0026 33E0              ldi R19,3
+ 0028 00910E00          lds R16,_date
+ 002C 10910F00          lds R17,_date+1
+ 0030 0E940000          xcall div16u
+ 0034 10930700          sts _z+1,R17
+ 0038 00930600          sts _z,R16
+ 003C                   .dbline 30
+ 003C           ;   x=date%1000/100;             //求百位
+ 003C 28EE              ldi R18,1000
+ 003E 33E0              ldi R19,3
+ 0040 00910E00          lds R16,_date
+ 0044 10910F00          lds R17,_date+1
+ 0048 0E940000          xcall mod16u
+ 004C 24E6              ldi R18,100
+ 004E 30E0              ldi R19,0
+ 0050 0E940000          xcall div16u
+ 0054 10930500          sts _x+1,R17
+ 0058 00930400          sts _x,R16
+ 005C                   .dbline 31
+ 005C           ;   c=date%100/10;               //求十位
+ 005C 24E6              ldi R18,100
+ 005E 30E0              ldi R19,0
+ 0060 00910E00          lds R16,_date
+ 0064 10910F00          lds R17,_date+1
+ 0068 0E940000          xcall mod16u
+ 006C 2AE0              ldi R18,10
+ 006E 30E0              ldi R19,0
+ 0070 0E940000          xcall div16u
+ 0074 10930300          sts _c+1,R17
+ 0078 00930200          sts _c,R16
+ 007C                   .dbline 32
+ 007C           ;   v=date%10;                   //求个位
+ 007C 2AE0              ldi R18,10
+ 007E 30E0              ldi R19,0
+ 0080 00910E00          lds R16,_date
+ 0084 10910F00          lds R17,_date+1
+ 0088 0E940000          xcall mod16u
+ 008C 10930100          sts _v+1,R17
+ 0090 00930000          sts _v,R16
+ 0094                   .dbline 34
+ 0094           ;  /*****************设置比较寄存器值*****************************/ 
+ 0094           ;  i=z*1000+x*100+c*10+v;
+ 0094 20910400          lds R18,_x
+ 0098 30910500          lds R19,_x+1
+ 009C 04E6              ldi R16,100
+ 009E 10E0              ldi R17,0
+ 00A0 0E940000          xcall empy16s
+ 00A4 1801              movw R2,R16
+ 00A6 20910600          lds R18,_z
+ 00AA 30910700          lds R19,_z+1
+ 00AE 08EE              ldi R16,1000
+ 00B0 13E0              ldi R17,3
+ 00B2 0E940000          xcall empy16s
+ 00B6 A801              movw R20,R16
+ 00B8 420D              add R20,R2
+ 00BA 531D              adc R21,R3
+ 00BC 20910200          lds R18,_c
+ 00C0 30910300          lds R19,_c+1
+ 00C4 0AE0              ldi R16,10
+ 00C6 10E0              ldi R17,0
+ 00C8 0E940000          xcall empy16s
+ 00CC 400F              add R20,R16
+ 00CE 511F              adc R21,R17
+ 00D0 20900000          lds R2,_v
+ 00D4 30900100          lds R3,_v+1
+ 00D8 420D              add R20,R2
+ 00DA 531D              adc R21,R3
+ 00DC                   .dbline 35
+ 00DC           ;  j=500/i;
+ 00DC 04EF              ldi R16,500
+ 00DE 11E0              ldi R17,1
+ 00E0 9A01              movw R18,R20
+ 00E2 0E940000          xcall div16u
+ 00E6 A801              movw R20,R16
+ 00E8                   .dbline 36
+ 00E8           ;  OCR1AH=j>>8;
+ 00E8 1A01              movw R2,R20
+ 00EA 232C              mov R2,R3
+ 00EC 3324              clr R3
+ 00EE 2BBC              out 0x2b,R2
+ 00F0                   .dbline 37
+ 00F0           ;  OCR1AL=j&0x00ff;
+ 00F0 CA01              movw R24,R20
+ 00F2 9070              andi R25,0
+ 00F4 8ABD              out 0x2a,R24
+ 00F6                   .dbline 40
+ 00F6           ;  /********************数码管扫描显示****************************/ 
+ 00F6           ; 
+ 00F6           ;       PORTC=wei[0];
+ 00F6 20900A00          lds R2,_wei
+ 00FA 25BA              out 0x15,R2
+ 00FC                   .dbline 41
+ 00FC           ;         PORTA=duan[z];
+ 00FC 80E0              ldi R24,<_duan
+ 00FE 90E0              ldi R25,>_duan
+ 0100 E0910600          lds R30,_z
+ 0104 F0910700          lds R31,_z+1
+ 0108 E80F              add R30,R24
+ 010A F91F              adc R31,R25
+ 010C 2080              ldd R2,z+0
+ 010E 2BBA              out 0x1b,R2
+ 0110                   .dbline 42
+ 0110           ;         delay(50);  
+ 0110 02E3              ldi R16,50
+ 0112 76DF              xcall _delay
+ 0114                   .dbline 43
+ 0114           ;         PORTC=wei[1];
+ 0114 20900B00          lds R2,_wei+1
+ 0118 25BA              out 0x15,R2
+ 011A                   .dbline 44
+ 011A           ;       PORTA=duan[x];
+ 011A 80E0              ldi R24,<_duan
+ 011C 90E0              ldi R25,>_duan
+ 011E E0910400          lds R30,_x
+ 0122 F0910500          lds R31,_x+1
+ 0126 E80F              add R30,R24
+ 0128 F91F              adc R31,R25
+ 012A 2080              ldd R2,z+0
+ 012C 2BBA              out 0x1b,R2
+ 012E                   .dbline 45
+ 012E           ;         delay(50);  
+ 012E 02E3              ldi R16,50
+ 0130 67DF              xcall _delay
+ 0132                   .dbline 46
+ 0132           ;         PORTC=wei[2];
+ 0132 20900C00          lds R2,_wei+2
+ 0136 25BA              out 0x15,R2
+ 0138                   .dbline 47
+ 0138           ;       PORTA=duan[c];
+ 0138 80E0              ldi R24,<_duan
+ 013A 90E0              ldi R25,>_duan
+ 013C E0910200          lds R30,_c
+ 0140 F0910300          lds R31,_c+1
+ 0144 E80F              add R30,R24
+ 0146 F91F              adc R31,R25
+ 0148 2080              ldd R2,z+0
+ 014A 2BBA              out 0x1b,R2
+ 014C                   .dbline 48
+ 014C           ;         delay(50);  
+ 014C 02E3              ldi R16,50
+ 014E 58DF              xcall _delay
+ 0150                   .dbline 49
+ 0150           ;       PORTC=wei[3];
+ 0150 20900D00          lds R2,_wei+3
+ 0154 25BA              out 0x15,R2
+ 0156                   .dbline 50
+ 0156           ;       PORTA=duan[v];
+ 0156 80E0              ldi R24,<_duan
+ 0158 90E0              ldi R25,>_duan
+ 015A E0910000          lds R30,_v
+ 015E F0910100          lds R31,_v+1
+ 0162 E80F              add R30,R24
+ 0164 F91F              adc R31,R25
+ 0166 2080              ldd R2,z+0
+ 0168 2BBA              out 0x1b,R2
+ 016A                   .dbline 51
+ 016A           ;         delay(50);  
+ 016A 02E3              ldi R16,50
+ 016C 49DF              xcall _delay
+ 016E                   .dbline -2
+ 016E           L10:
+ 016E 0E940000          xcall pop_gset1
+ 0172                   .dbline 0 ; func end
+ 0172 0895              ret
+ 0174                   .dbsym r i 20 i
+ 0174                   .dbsym r j 20 i
+ 0174                   .dbend
+ 0174                   .dbfunc e Key_Process _Key_Process fV
+                        .even
+ 0174           _Key_Process::
+ 0174                   .dbline -1
+ 0174                   .dbline 57
+ 0174           ;       }
+ 0174           ; /**********************************************************************
+ 0174           ;                           频率调节按键控制
+ 0174           ; *********************************************************************/
+ 0174           ; void Key_Process()
+ 0174           ; {
+ 0174 04C0              xjmp L16
+ 0176           L15:
+ 0176                   .dbline 58
+ 0176                   .dbline 58
+ 0176 54DF              xcall _xianshi
+ 0178                   .dbline 58
+ 0178 81E0              ldi R24,1
+ 017A 80930A00          sts _Key1_Flag,R24
+ 017E                   .dbline 58
+ 017E           L16:
+ 017E                   .dbline 58
+ 017E           ;  while((PINB&0x01)==0) {xianshi();Key1_Flag=1;}
+ 017E B09B              sbis 0x16,0
+ 0180 FACF              rjmp L15
+ 0182 04C0              xjmp L19
+ 0184           L18:
+ 0184                   .dbline 59
+ 0184                   .dbline 59
+ 0184 4DDF              xcall _xianshi
+ 0186                   .dbline 59
+ 0186 81E0              ldi R24,1
+ 0188 80930900          sts _Key2_Flag,R24
+ 018C                   .dbline 59
+ 018C           L19:
+ 018C                   .dbline 59
+ 018C           ;  while((PINB&0x02)==0) {xianshi();Key2_Flag=1;}
+ 018C B19B              sbis 0x16,1
+ 018E FACF              rjmp L18
+ 0190 04C0              xjmp L22
+ 0192           L21:
+ 0192                   .dbline 60
+ 0192                   .dbline 60
+ 0192 46DF              xcall _xianshi
+ 0194                   .dbline 60
+ 0194 81E0              ldi R24,1
+ 0196 80930800          sts _Key3_Flag,R24
+ 019A                   .dbline 60
+ 019A           L22:
+ 019A                   .dbline 60
+ 019A           ;  while((PINB&0x04)==0) {xianshi();Key3_Flag=1;}
+ 019A B29B              sbis 0x16,2
+ 019C FACF              rjmp L21
+ 019E                   .dbline 61
+ 019E           ;  if(Key1_Flag==1) //处理频率百位，最高4
+ 019E 80910A00          lds R24,_Key1_Flag
+ 01A2 8130              cpi R24,1
+ 01A4 B1F4              brne L24
+ 01A6                   .dbline 62
+ 01A6           ;    {
+ 01A6                   .dbline 63
+ 01A6           ;     date++;//设置频率值加
+ 01A6 80910E00          lds R24,_date
+ 01AA 90910F00          lds R25,_date+1
+ 01AE 0196              adiw R24,1
+ 01B0 90930F00          sts _date+1,R25
+ 01B4 80930E00          sts _date,R24
+ 01B8                   .dbline 64
+ 01B8           ;       if(date>=30) date=30;//设置最大值为30KHZ
+ 01B8 8E31              cpi R24,30
+ 01BA E0E0              ldi R30,0
+ 01BC 9E07              cpc R25,R30
+ 01BE 30F0              brlo L26
+ 01C0                   .dbline 64
+ 01C0 8EE1              ldi R24,30
+ 01C2 90E0              ldi R25,0
+ 01C4 90930F00          sts _date+1,R25
+ 01C8 80930E00          sts _date,R24
+ 01CC           L26:
+ 01CC                   .dbline 65
+ 01CC           ;       Key1_Flag=0;
+ 01CC 2224              clr R2
+ 01CE 20920A00          sts _Key1_Flag,R2
+ 01D2                   .dbline 66
+ 01D2           ;       }   
+ 01D2           L24:
+ 01D2                   .dbline 67
+ 01D2           ;  if(Key2_Flag==1) //处理频率十位，最高9
+ 01D2 80910900          lds R24,_Key2_Flag
+ 01D6 8130              cpi R24,1
+ 01D8 D1F4              brne L28
+ 01DA                   .dbline 68
+ 01DA           ;     {
+ 01DA                   .dbline 69
+ 01DA           ;       if(date<=0) date=1;  //设置最大值为0HZ
+ 01DA 20900E00          lds R2,_date
+ 01DE 30900F00          lds R3,_date+1
+ 01E2 2220              tst R2
+ 01E4 41F4              brne L30
+ 01E6 3320              tst R3
+ 01E8 31F4              brne L30
+ 01EA           X0:
+ 01EA                   .dbline 69
+ 01EA 81E0              ldi R24,1
+ 01EC 90E0              ldi R25,0
+ 01EE 90930F00          sts _date+1,R25
+ 01F2 80930E00          sts _date,R24
+ 01F6           L30:
+ 01F6                   .dbline 70
+ 01F6           ;       date--;//设置频率值减
+ 01F6 80910E00          lds R24,_date
+ 01FA 90910F00          lds R25,_date+1
+ 01FE 0197              sbiw R24,1
+ 0200 90930F00          sts _date+1,R25
+ 0204 80930E00          sts _date,R24
+ 0208                   .dbline 71
+ 0208           ;       Key2_Flag=0;
+ 0208 2224              clr R2
+ 020A 20920900          sts _Key2_Flag,R2
+ 020E                   .dbline 72
+ 020E           ;        }
+ 020E           L28:
+ 020E                   .dbline 73
+ 020E 80910800          lds R24,_Key3_Flag
+ 0212 8130              cpi R24,1
+ 0214 49F4              brne L32
+ 0216                   .dbline 74
+ 0216                   .dbline 75
+ 0216 81E0              ldi R24,1
+ 0218 90E0              ldi R25,0
+ 021A 90930F00          sts _date+1,R25
+ 021E 80930E00          sts _date,R24
+ 0222                   .dbline 76
+ 0222 2224              clr R2
+ 0224 20920800          sts _Key3_Flag,R2
+ 0228                   .dbline 77
+ 0228           L32:
+ 0228                   .dbline -2
+ 0228           L14:
+ 0228                   .dbline 0 ; func end
+ 0228 0895              ret
+ 022A                   .dbend
+ 022A                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 022A           _Init_IO::
+ 022A                   .dbline -1
+ 022A                   .dbline 85
+ 022A           ;  if(Key3_Flag==1) //处理频率各位，最高9
+ 022A           ;     {
+ 022A           ;       date=1;//设置频率复位
+ 022A           ;       Key3_Flag=0;
+ 022A           ;        }
+ 022A           ; }
+ 022A           ; /******************************************************************
+ 022A           ; 
+ 022A           ; /**********************************************************************
+ 022A           ;                          初始化I/O口
+ 022A           ; *********************************************************************/
+ 022A           ; void Init_IO(void)             //初始化I/O口
+ 022A           ; {DDRA=0xff;                    //设置A口为推挽1输出
+ 022A                   .dbline 85
+ 022A 8FEF              ldi R24,255
+ 022C 8ABB              out 0x1a,R24
+ 022E                   .dbline 86
+ 022E           ;  PORTA=0xff;
+ 022E 8BBB              out 0x1b,R24
+ 0230                   .dbline 87
+ 0230           ;  DDRC=0xff;                    //设置C口为推挽1输出             
+ 0230 84BB              out 0x14,R24
+ 0232                   .dbline 88
+ 0232           ;  PORTC=0xff;
+ 0232 85BB              out 0x15,R24
+ 0234                   .dbline 89
+ 0234           ;  DDRB=0x00;                    //设置B口为三态输入
+ 0234 2224              clr R2
+ 0236 27BA              out 0x17,R2
+ 0238                   .dbline 90
+ 0238           ;  PORTB=0x00;
+ 0238 28BA              out 0x18,R2
+ 023A                   .dbline 91
+ 023A           ;  DDRD=0xff;                    //设置D口为推挽1输出
+ 023A 81BB              out 0x11,R24
+ 023C                   .dbline 92
+ 023C           ;  PORTD=0xff;    
+ 023C 82BB              out 0x12,R24
+ 023E                   .dbline -2
+ 023E           L34:
+ 023E                   .dbline 0 ; func end
+ 023E 0895              ret
+ 0240                   .dbend
+ 0240                   .dbfunc e Init_Timer1 _Init_Timer1 fV
+                        .even
+ 0240           _Init_Timer1::
+ 0240                   .dbline -1
+ 0240                   .dbline 98
+ 0240           ; }
+ 0240           ; /**********************************************************************
+ 0240           ;                          初始化I/O口
+ 0240           ; *********************************************************************/
+ 0240           ; void Init_Timer1(void)         //初始化T/C1的输入捕获中断
+ 0240           ; {TIMSK=TIMSK|0x10;             //输出比较使能
+ 0240                   .dbline 98
+ 0240 89B7              in R24,0x39
+ 0242 8061              ori R24,16
+ 0244 89BF              out 0x39,R24
+ 0246                   .dbline 99
+ 0246           ;  TCCR1B=0x0a;                  //时钟1频,输出比较匹配清除定时器值
+ 0246 8AE0              ldi R24,10
+ 0248 8EBD              out 0x2e,R24
+ 024A                   .dbline 100
+ 024A           ;  TCNT1H=0x00;                  //清除定时器值
+ 024A 2224              clr R2
+ 024C 2DBC              out 0x2d,R2
+ 024E                   .dbline 101
+ 024E           ;  TCNT1L=0x00;
+ 024E 2CBC              out 0x2c,R2
+ 0250                   .dbline 102
+ 0250           ;  SREG=SREG|0x80;               //全局中断开
+ 0250 7894              bset 7
+ 0252                   .dbline -2
+ 0252           L35:
+ 0252                   .dbline 0 ; func end
+ 0252 0895              ret
+ 0254                   .dbend
+ 0254                   .dbfunc e main _main fV
+                        .even
+ 0254           _main::
+ 0254                   .dbline -1
+ 0254                   .dbline 108
+ 0254           ; } 
+ 0254           ; /**********************************************************************
+ 0254           ;                           主函数
+ 0254           ; *********************************************************************/
+ 0254           ; void main(void)
+ 0254           ; {
+ 0254                   .dbline 109
+ 0254           ;  Init_IO(); //初始化I/O口
+ 0254 EADF              xcall _Init_IO
+ 0256                   .dbline 110
+ 0256           ;  xianshi(); //显示初始值
+ 0256 E4DE              xcall _xianshi
+ 0258                   .dbline 111
+ 0258           ;  Init_Timer1();//初始化T/C1的输入捕获中断 
+ 0258 F3DF              xcall _Init_Timer1
+ 025A 02C0              xjmp L38
+ 025C           L37:
+ 025C                   .dbline 114
+ 025C                   .dbline 116
+ 025C 8BDF              xcall _Key_Process
+ 025E                   .dbline 117
+ 025E E0DE              xcall _xianshi
+ 0260                   .dbline 119
+ 0260           L38:
+ 0260                   .dbline 113
+ 0260 FDCF              xjmp L37
+ 0262           X1:
+ 0262                   .dbline -2
+ 0262           L36:
+ 0262                   .dbline 0 ; func end
+ 0262 0895              ret
+ 0264                   .dbend
+                        .area vector(rom, abs)
+                        .org 24
+ 0018 0C943201          jmp _Compare
+                        .area text(rom, con, rel)
+ 0264                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\波形发生器的设计\icc\chengxu.c
+ 0264                   .dbfunc e Compare _Compare fV
+                        .even
+ 0264           _Compare::
+ 0264 2A92              st -y,R2
+ 0266 2FB6              in R2,0x3f
+ 0268 2A92              st -y,R2
+ 026A                   .dbline -1
+ 026A                   .dbline 126
+ 026A           ;  
+ 026A           ;  while(1)
+ 026A           ;  {
+ 026A           ; 
+ 026A           ; Key_Process();//按键值函数
+ 026A           ; xianshi();//频率值显示
+ 026A           ; 
+ 026A           ;  }
+ 026A           ; }
+ 026A           ; /**********************************************************************
+ 026A           ;                           中断服务函数
+ 026A           ; *********************************************************************/
+ 026A           ; #pragma interrupt_handler Compare:7
+ 026A           ; void Compare(void)
+ 026A           ; {
+ 026A                   .dbline 127
+ 026A           ; PORTD=~PORTD;//PD口输出
+ 026A 22B2              in R2,0x12
+ 026C 2094              com R2
+ 026E 22BA              out 0x12,R2
+ 0270                   .dbline -2
+ 0270           L40:
+ 0270 2990              ld R2,y+
+ 0272 2FBE              out 0x3f,R2
+ 0274 2990              ld R2,y+
+ 0276                   .dbline 0 ; func end
+ 0276 1895              reti
+ 0278                   .dbend
+                        .area bss(ram, con, rel)
+ 0000                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\波形发生器的设计\icc\chengxu.c
+ 0000           _v::
+ 0000                   .blkb 2
+ 0002                   .dbsym e v _v i
+ 0002           _c::
+ 0002                   .blkb 2
+ 0004                   .dbsym e c _c i
+ 0004           _x::
+ 0004                   .blkb 2
+ 0006                   .dbsym e x _x i
+ 0006           _z::
+ 0006                   .blkb 2
+ 0008                   .dbsym e z _z i
+ 0008           _Key3_Flag::
+ 0008                   .blkb 1
+ 0009                   .dbsym e Key3_Flag _Key3_Flag c
+ 0009           _Key2_Flag::
+ 0009                   .blkb 1
+ 000A                   .dbsym e Key2_Flag _Key2_Flag c
+ 000A           _Key1_Flag::
+ 000A                   .blkb 1
+ 000B                   .dbsym e Key1_Flag _Key1_Flag c

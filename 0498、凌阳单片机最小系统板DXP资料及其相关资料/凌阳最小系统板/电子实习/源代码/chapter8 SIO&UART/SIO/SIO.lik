@@ -1,0 +1,14 @@
+Version: 3.0
+Options: m37
+Obj: "F:\SPCE061A\IDE\startupcode\startupD.obj"
+Obj: "E:\单片机整理\凌阳单片机\凌阳16位单片机C语言程序设计\源代码\chapter8 SIO&UART\SIO\Debug\Resource.obj"
+Obj: "E:\单片机整理\凌阳单片机\凌阳16位单片机C语言程序设计\源代码\chapter8 SIO&UART\SIO\Debug\main.obj"
+Lib: "F:\SPCE061A\IDE\library\CMacro\CMacro1016.lib"
+Output: "E:\单片机整理\凌阳单片机\凌阳16位单片机C语言程序设计\源代码\chapter8 SIO&UART\SIO\Debug\SIO.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: CODE in "main.obj" at 8026 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "./rshu2" of "CMacro1016.lib"  at 8156 
+;Align: CODE in "./rshu2" of "CMacro1016.lib"  with 0 
+;Locate: __sn_init_table at 8000 

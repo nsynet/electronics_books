@@ -1,0 +1,49 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	
+                            	// Resource Table
+                            	// Created by IDE, Do not modify this table
+                            	
+00008071                    	.TEXT
+                            	.public _RES_Table;
+                            	.external __RES_PK3_sa
+                            	.public _RES_PK3_SA;
+                            	.external __RES_PK3_ea;
+                            	.public _RES_PK3_EA;
+                            	.external __RES_PK2_sa
+                            	.public _RES_PK2_SA;
+                            	.external __RES_PK2_ea;
+                            	.public _RES_PK2_EA;
+                            	.external __RES_PK1_sa
+                            	.public _RES_PK1_SA;
+                            	.external __RES_PK1_ea;
+                            	.public _RES_PK1_EA;
+                            	
+                            	
+                            	_RES_Table:
+                            	
+                            	_RES_PK3_SA:
+00008071 B9 8F 00 00        		.DW offset __RES_PK3_sa,seg __RES_PK3_sa;
+                            	_RES_PK3_EA:
+00008073 3D 90 00 00        		.DW offset __RES_PK3_ea,seg __RES_PK3_ea;
+                            	
+                            	_RES_PK2_SA:
+00008075 24 8F 00 00        		.DW offset __RES_PK2_sa,seg __RES_PK2_sa;
+                            	_RES_PK2_EA:
+00008077 B9 8F 00 00        		.DW offset __RES_PK2_ea,seg __RES_PK2_ea;
+                            	
+                            	_RES_PK1_SA:
+00008079 70 8E 00 00        		.DW offset __RES_PK1_sa,seg __RES_PK1_sa;
+                            	_RES_PK1_EA:
+0000807B 24 8F 00 00        		.DW offset __RES_PK1_ea,seg __RES_PK1_ea;
+                            	
+                            	
+                            	// End Table
+                            	.public T_SACM_S240_SpeechTable
+                            	T_SACM_S240_SpeechTable:
+0000807D 71 80              		.dw _RES_PK3_SA
+0000807E 75 80              		.dw _RES_PK2_SA
+0000807F 79 80              		.dw _RES_PK1_SA
+                            		
+0 error(s), 0 warning(s).
+

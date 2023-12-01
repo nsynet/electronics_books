@@ -1,0 +1,158 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\整理\个人总结的M8程序\022、IO口基本输出\icc\chengxu.c
+ 0000                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 0000           _Init_IO::
+ 0000                   .dbline -1
+ 0000                   .dbline 6
+ 0000           ; #include <iom8v.h>
+ 0000           ; #define uchar unsigned char 
+ 0000           ; #define uint unsigned int
+ 0000           ; //////////////////////////////初始化////////////////////////////////////
+ 0000           ; void Init_IO(void)//初始化I/O
+ 0000           ; {
+ 0000                   .dbline 8
+ 0000           ; //设置B口为输出
+ 0000           ; DDRB=0xFF;
+ 0000 8FEF              ldi R24,255
+ 0002 87BB              out 0x17,R24
+ 0004                   .dbline 9
+ 0004           ; PORTB=0xFF;
+ 0004 88BB              out 0x18,R24
+ 0006                   .dbline 11
+ 0006           ; //设置C口为输出
+ 0006           ; DDRC=0xFF;
+ 0006 84BB              out 0x14,R24
+ 0008                   .dbline 12
+ 0008           ; PORTC=0xFF;
+ 0008 85BB              out 0x15,R24
+ 000A                   .dbline 14
+ 000A           ; //设置D口为输入
+ 000A           ; DDRD=0X00;
+ 000A 2224              clr R2
+ 000C 21BA              out 0x11,R2
+ 000E                   .dbline 15
+ 000E           ; PORTD=0xFF;
+ 000E 82BB              out 0x12,R24
+ 0010                   .dbline -2
+ 0010           L1:
+ 0010                   .dbline 0 ; func end
+ 0010 0895              ret
+ 0012                   .dbend
+ 0012                   .dbfunc e main _main fV
+                        .even
+ 0012           _main::
+ 0012                   .dbline -1
+ 0012                   .dbline 19
+ 0012           ; }
+ 0012           ; /////////////////////////////主函数/////////////////////////////////////
+ 0012           ; void main(void)
+ 0012           ; {
+ 0012                   .dbline 20
+ 0012           ; Init_IO();  //初始化I/O
+ 0012 F6DF              rcall _Init_IO
+ 0014 20C0              rjmp L4
+ 0016           L3:
+ 0016                   .dbline 22
+ 0016           ; while(1)
+ 0016           ; {
+ 0016                   .dbline 24
+ 0016           ; 
+ 0016           ; if((PIND&0X01)==0)//按键加计数标志
+ 0016 8099              sbic 0x10,0
+ 0018 02C0              rjmp L6
+ 001A                   .dbline 25
+ 001A           ; {PORTB=0xfe;}
+ 001A                   .dbline 25
+ 001A 8EEF              ldi R24,254
+ 001C 88BB              out 0x18,R24
+ 001E                   .dbline 25
+ 001E           L6:
+ 001E                   .dbline 26
+ 001E           ; if((PIND&0X02)==0)//按键加计数标志
+ 001E 8199              sbic 0x10,1
+ 0020 02C0              rjmp L8
+ 0022                   .dbline 27
+ 0022           ; {PORTB=0xfd;}
+ 0022                   .dbline 27
+ 0022 8DEF              ldi R24,253
+ 0024 88BB              out 0x18,R24
+ 0026                   .dbline 27
+ 0026           L8:
+ 0026                   .dbline 28
+ 0026           ; if((PIND&0X04)==0)//按键加计数标志
+ 0026 8299              sbic 0x10,2
+ 0028 02C0              rjmp L10
+ 002A                   .dbline 29
+ 002A           ; {PORTB=0xfb;}
+ 002A                   .dbline 29
+ 002A 8BEF              ldi R24,251
+ 002C 88BB              out 0x18,R24
+ 002E                   .dbline 29
+ 002E           L10:
+ 002E                   .dbline 30
+ 002E           ; if((PIND&0X08)==0)//按键加计数标志
+ 002E 8399              sbic 0x10,3
+ 0030 02C0              rjmp L12
+ 0032                   .dbline 31
+ 0032           ; {PORTB=0xf7;}
+ 0032                   .dbline 31
+ 0032 87EF              ldi R24,247
+ 0034 88BB              out 0x18,R24
+ 0036                   .dbline 31
+ 0036           L12:
+ 0036                   .dbline 32
+ 0036           ; if((PIND&0X10)==0)//按键加计数标志
+ 0036 8499              sbic 0x10,4
+ 0038 02C0              rjmp L14
+ 003A                   .dbline 33
+ 003A           ; {PORTC=0xfe;}
+ 003A                   .dbline 33
+ 003A 8EEF              ldi R24,254
+ 003C 85BB              out 0x15,R24
+ 003E                   .dbline 33
+ 003E           L14:
+ 003E                   .dbline 34
+ 003E           ; if((PIND&0X20)==0)//按键加计数标志
+ 003E 8599              sbic 0x10,5
+ 0040 02C0              rjmp L16
+ 0042                   .dbline 35
+ 0042           ; {PORTC=0xfd;}
+ 0042                   .dbline 35
+ 0042 8DEF              ldi R24,253
+ 0044 85BB              out 0x15,R24
+ 0046                   .dbline 35
+ 0046           L16:
+ 0046                   .dbline 36
+ 0046           ; if((PIND&0X40)==0)//按键加计数标志
+ 0046 8699              sbic 0x10,6
+ 0048 02C0              rjmp L18
+ 004A                   .dbline 37
+ 004A           ; {PORTC=0xfb;}
+ 004A                   .dbline 37
+ 004A 8BEF              ldi R24,251
+ 004C 85BB              out 0x15,R24
+ 004E                   .dbline 37
+ 004E           L18:
+ 004E                   .dbline 38
+ 004E           ; if((PIND&0X80)==0)//按键加计数标志
+ 004E 8799              sbic 0x10,7
+ 0050 02C0              rjmp L20
+ 0052                   .dbline 39
+ 0052           ; {PORTC=0xf7;}
+ 0052                   .dbline 39
+ 0052 87EF              ldi R24,247
+ 0054 85BB              out 0x15,R24
+ 0056                   .dbline 39
+ 0056           L20:
+ 0056                   .dbline 40
+ 0056           L4:
+ 0056                   .dbline 21
+ 0056 DFCF              rjmp L3
+ 0058           X0:
+ 0058                   .dbline -2
+ 0058           L2:
+ 0058                   .dbline 0 ; func end
+ 0058 0895              ret
+ 005A                   .dbend

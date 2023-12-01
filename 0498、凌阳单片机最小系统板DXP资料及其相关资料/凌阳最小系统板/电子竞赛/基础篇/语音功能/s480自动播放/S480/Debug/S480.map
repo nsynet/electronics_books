@@ -1,0 +1,170 @@
+Friday, July 11, 12:17:06, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             802C         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop                                          8048         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop2                                         8047         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+_RES_Table                                         8027         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\Resource.obj"
+_RES_48_48K_SA                                     8027         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\Resource.obj"
+_RES_48_48K_EA                                     8029         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\Resource.obj"
+T_SACM_S480_SpeechTable                            802B         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\Resource.obj"
+_main                                              8B3D         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\main.obj"
+_FIQ                                               8009         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\isr.obj"
+F_SP_Send_PWM                                      8A10         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Send_DAC1                                     8A13         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Send_DAC2                                     8A16         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  8A19         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Send_Out                                      8A19         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Get_ADC                                       8A1E         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             8A21         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             8A24         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             8A27         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             8A2A         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                8A2D         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               8A30         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             8A33         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                8A36         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                8A39         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Write_INT_Status                              8A3C         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Read_INT_Status                               8A3F         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    8A77         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    8A9B         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    8AAD         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    8AD1         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_RampUpDAC1                                     8A77         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_RampDnDAC1                                     8A9B         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_RampUpDAC2                                     8AAD         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_RampDnDAC2                                     8AD1         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_Delay                                         8B3C         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_InitQueue                                     8AE9         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_ReadQueue                                     8AF6         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_WriteQueue                                    8B08         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+F_SP_TestQueue                                     8B16         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_Export                                         8A6D         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_Import                                         8A62         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_Init_IOB                                       8A52         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_Init_IOA                                       8A42         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+_SP_GetResource                                    8B2E         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+R_InterruptStatus                                  1A5          "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+R_FIQTemp                                          1A6          "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+__RES_48_48K_sa                                    8BAA         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\48_48K.res"
+__RES_48_48K_ea                                    8F9C         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\48_48K.res"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            802C                 8048         1D     *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8027                 802B         5      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8B3D                 8B73         37     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\isr.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8026         1E     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\hardware.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8A10                 8B3C         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          8B74 (1A5)           8BA9 (1DA)   36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\S480\Debug\48_48K.res"
+*    __sn_section_RES_48_48K(DATA)                 8BAA                 8F9B         3F2    *
+* "d:\working\unsp\mix\release\s480"                                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8049                 8A0F         9C7    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1A4                  1A4          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    S480_Section(ORAM)                            0                    1A3          1A4    *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  1DB          625                   *
+* "First Bank Rom"                  7C00                 F9C          6C64                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\S480.S37
+Disk  Mapping Filename : .\Debug\S480.map
+Symbol  Table FileName : .\Debug\S480.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

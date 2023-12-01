@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Project>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+        <Column0>118</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Disassembly>
+        
+        
+        
+      <MixedMode>1</MixedMode><CodeCovEnabled>0</CodeCovEnabled><CodeCovShow>0</CodeCovShow></Disassembly>
+      <Debug-Log/>
+      <Build><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>723</ColumnWidth1><ColumnWidth2>193</ColumnWidth2><ColumnWidth3>48</ColumnWidth3></Build>
+      <Watch>
+        <Format>
+          <struct_types/>
+          <watch_formats/>
+        </Format>
+      <Column0>100</Column0><Column1>100</Column1><Column2>100</Column2><Column3>100</Column3></Watch>
+      <Register/>
+    <Find-in-Files><ColumnWidth0>350</ColumnWidth0><ColumnWidth1>50</ColumnWidth1><ColumnWidth2>601</ColumnWidth2></Find-in-Files></Static>
+    <Windows>
+      
+      
+      
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-15367-28193</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>cc2420_rx</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-26116-28197</Identity>
+            <TabName>Disassembly</TabName>
+            <Factory>Disassembly</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-14844-28203</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-25593-28207</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-9782-17980</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-13925-29039</Identity>
+            <TabName>Watch</TabName>
+            <Factory>Watch</Factory>
+            <Session>
+              <Expressions>
+                
+                
+              <Expression><Expression>IFG1</Expression></Expression><Expression><Expression>URXIFG0</Expression></Expression><Expression><Expression>tmpv</Expression></Expression><Expression><Expression>data</Expression></Expression><Expression><Expression>READ_PIN_FIFOP</Expression></Expression><Expression><Expression>data</Expression></Expression></Expressions>
+              
+              
+              
+              
+              
+            <TabId>0</TabId><Column0>100</Column0><Column1>100</Column1><Column2>100</Column2><Column3>100</Column3></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-11833-29078</Identity>
+            <TabName>Register</TabName>
+            <Factory>Register</Factory>
+            <Session>
+              
+              
+              
+              
+            <REG1>0</REG1><REG2>0</REG2><Group>4</Group><States>0</States></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd4></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Administrator\&#x684C;&#x9762;\cc2420 RX\led.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>140</SelStart><SelEnd>140</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Administrator\&#x684C;&#x9762;\cc2420 RX\cc2420run.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>77</SelStart><SelEnd>77</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Administrator\&#x684C;&#x9762;\cc2420 RX\led.c</Filename><XPos>0</XPos><YPos>30</YPos><SelStart>1253</SelStart><SelEnd>1253</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Administrator\&#x684C;&#x9762;\cc2420 RX\cc2420const.h</Filename><XPos>0</XPos><YPos>169</YPos><SelStart>8145</SelStart><SelEnd>8145</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\Program Files\IAR Systems\Embedded Workbench 4.0\430\inc\msp430x44x.h</Filename><XPos>1</XPos><YPos>171</YPos><SelStart>5892</SelStart><SelEnd>5892</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Administrator\&#x684C;&#x9762;\cc2420 RX\port_config_CC2420.h</Filename><XPos>7</XPos><YPos>38</YPos><SelStart>1134</SelStart><SelEnd>1141</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Administrator\&#x684C;&#x9762;\cc2420 RX\cc2420init.c</Filename><XPos>0</XPos><YPos>40</YPos><SelStart>878</SelStart><SelEnd>878</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Administrator\&#x684C;&#x9762;\cc2420 RX\cc2420run.c</Filename><XPos>0</XPos><YPos>12</YPos><SelStart>727</SelStart><SelEnd>727</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\Administrator\&#x684C;&#x9762;\cc2420 RX\main.c</Filename><XPos>0</XPos><YPos>12</YPos><SelStart>2656</SelStart><SelEnd>2656</SelEnd></Tab><ActiveTab>8</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003be8b0><key>iaridepm1</key></Toolbar-003be8b0></Sizes></Row0><Row1><Sizes><Toolbar-02de6c98><key>430fet1</key></Toolbar-02de6c98></Sizes></Row1><Row2><Sizes><Toolbar-00fb2bb0><key>debuggergui1</key></Toolbar-00fb2bb0></Sizes></Row2><Row3><Sizes/></Row3><Row4><Sizes/></Row4><Row5><Sizes/></Row5><Row6><Sizes/></Row6><Row7><Sizes/></Row7><Row8><Sizes/></Row8><Row9><Sizes/></Row9><Row10><Sizes/></Row10><Row11><Sizes/></Row11><Row12><Sizes/></Row12><Row13><Sizes/></Row13><Row14><Sizes/></Row14><Row15><Sizes/></Row15><Row16><Sizes/></Row16><Row17><Sizes/></Row17><Row18><Sizes/></Row18></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>428</Bottom><Right>192</Right><x>-2</x><y>-2</y><xscreen>194</xscreen><yscreen>203</yscreen><sizeHorzCX>189453</sizeHorzCX><sizeHorzCY>281163</sizeHorzCY><sizeVertCX>189453</sizeVertCX><sizeVertCY>595568</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>428</Bottom><Right>140</Right><x>-2</x><y>-2</y><xscreen>194</xscreen><yscreen>203</yscreen><sizeHorzCX>189453</sizeHorzCX><sizeHorzCY>281163</sizeHorzCY><sizeVertCX>138672</sizeVertCX><sizeVertCY>595568</sizeVertCY></Rect></Wnd1></Sizes></Row0><Row1><Sizes><Wnd3><Rect><Top>-2</Top><Left>138</Left><Bottom>428</Bottom><Right>322</Right><x>138</x><y>-2</y><xscreen>196</xscreen><yscreen>205</yscreen><sizeHorzCX>191406</sizeHorzCX><sizeHorzCY>283934</sizeHorzCY><sizeVertCX>179688</sizeVertCX><sizeVertCY>595568</sizeVertCY></Rect></Wnd3></Sizes></Row1><Row2><Sizes><Wnd4><Rect><Top>-2</Top><Left>320</Left><Bottom>428</Bottom><Right>516</Right><x>320</x><y>-2</y><xscreen>196</xscreen><yscreen>205</yscreen><sizeHorzCX>191406</sizeHorzCX><sizeHorzCY>283934</sizeHorzCY><sizeVertCX>191406</sizeVertCX><sizeVertCY>595568</sizeVertCY></Rect></Wnd4></Sizes></Row2></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>201</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>203</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>281163</sizeHorzCY><sizeVertCX>189453</sizeVertCX><sizeVertCY>281163</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Project>
+
+

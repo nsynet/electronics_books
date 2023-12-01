@@ -1,0 +1,219 @@
+C51 COMPILER V8.05a   CHENGXU                                                              04/17/2010 20:29:27 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE CHENGXU
+OBJECT MODULE PLACED IN chengxu.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE chengxu.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.H>
+   2          #include <stdio.h>
+   3          #include <absacc.h>
+   4          unsigned char code table[]={ 0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x40};
+   5          signed char sec=1; //定义计数值，每过1 秒，sec加1
+   6          unsigned int tcnt; //定时中断次数
+   7          unsigned char jd=0;
+   8          unsigned char gd=0;
+   9          bit write=0; //写24C08 的标志；
+  10          sbit gewei=P2^6; //个位选通定义
+  11          sbit shiwei=P2^5; //十位选通定义
+  12          sbit baiwei=P2^7; //百位选通定义
+  13          sbit qianwei=P2^4; //千位选通定义
+  14          sbit P10=P1^0;
+  15          sbit P11=P1^1;
+  16          sbit P12=P1^2;
+  17          sbit P13=P1^3;
+  18          sbit P14=P1^4;
+  19          sbit P15=P1^5;
+  20          sbit P16=P1^6;
+  21          sbit P17=P1^7;
+  22          sbit P30=P3^0;
+  23          sbit P31=P3^1;
+  24          sbit P32=P3^2;
+  25          sbit P35=P3^5;
+  26          
+  27          
+  28          
+  29          sbit jia=P2^0;
+  30          sbit jian=P2^1;
+  31          sbit res=P2^2;
+  32          
+  33          /////////24C08 读写驱动程序////////////////////
+  34          sbit scl=P3^3; // 24c08 SCL
+  35          sbit sda=P3^4; // 24c08 SDA
+  36          void delay1(unsigned char x)
+  37          { unsigned int i;
+  38   1      for(i=0;i<x;i++);
+  39   1      ;}
+  40          void flash()
+  41          { ; ; }
+  42          void x24c08_init() //24c08 初始化子程序
+  43          {scl=1; flash(); sda=1;                     flash();}
+  44          void start() //启动（I方C）总线
+  45          {sda=1; flash(); scl=1; flash(); sda=0; flash(); scl=0; flash();}
+  46          void stop() //停止（I方C）总线
+  47          {sda=0; flash(); scl=1; flash(); sda=1; flash();}
+  48          void writex(unsigned char j) //写一个字节
+  49          { unsigned char i,temp;
+  50   1      temp=j;
+  51   1      for (i=0;i<8;i++)
+  52   1      {temp=temp<<1; scl=0; flash(); sda=CY; flash(); scl=1; flash();}
+  53   1      scl=0; flash(); sda=1; flash();
+  54   1      }
+  55          unsigned char readx() //读一个字节
+C51 COMPILER V8.05a   CHENGXU                                                              04/17/2010 20:29:27 PAGE 2   
+
+  56          {
+  57   1      unsigned char i,j,k=0;
+  58   1      scl=0; flash(); sda=1;
+  59   1      for (i=0;i<8;i++)
+  60   1      {
+  61   2      flash(); scl=1; flash();
+  62   2      if (sda==1) j=1;
+  63   2      else j=0;
+  64   2      k=(k<<1)|j;
+  65   2      scl=0;}
+  66   1      flash(); return(k);
+  67   1      }
+  68          void clock() //(I方C）线时钟
+  69          {
+  70   1      unsigned char i=0;
+  71   1      scl=1; flash();
+  72   1      while ((sda==1)&&(i<255))i++;
+  73   1      scl=0; flash();
+  74   1      }
+  75          ////////从24c02 的地址address 中读取一个字节数据/////
+  76          unsigned char x24c08_read(unsigned char address)
+  77          {
+  78   1      unsigned char i;
+  79   1      start(); writex(0xa0);
+  80   1      clock(); writex(address);
+  81   1      clock(); start();
+  82   1      writex(0xa1); clock();
+  83   1      i=readx(); stop();
+  84   1      delay1(10);
+  85   1      return(i);
+  86   1      }
+  87          //////向24c02 的address                     地址中写入一字节数据info/////
+  88          void x24c08_write(unsigned char address,unsigned char info)
+  89          {
+  90   1      EA=0;
+  91   1      start(); writex(0xa0);
+  92   1      clock(); writex(address);
+  93   1      clock(); writex(info);
+  94   1      clock(); stop();
+  95   1      EA=1;
+  96   1      delay1(50);
+  97   1      }
+  98          /////////////24C08 读写驱动程序完/////////////////////
+  99          void Delay(unsigned int tc) //延时程序
+ 100          {
+ 101   1      while( tc != 0 )
+ 102   1      {unsigned int i;
+ 103   2      for(i=0; i<100; i++);
+ 104   2      tc--;}
+ 105   1      }
+ 106          void LED() //LED显示函数
+ 107          {
+ 108   1      qianwei=0; P0=0xc0; Delay(3); qianwei=1;
+ 109   1      baiwei=0; P0=0xc0; Delay(3); baiwei=1;
+ 110   1      shiwei=0; P0=table[sec/10]; Delay(3); shiwei=1;
+ 111   1      gewei=0; P0=table[sec%10]; Delay(3); gewei=1;
+ 112   1      
+ 113   1      }
+ 114          
+ 115          void t0(void) interrupt 1 using 0 //定时中断服务函数
+ 116          {
+ 117   1      TH0=(65536-50000)/256; //对TH0 TL0 赋值
+C51 COMPILER V8.05a   CHENGXU                                                              04/17/2010 20:29:27 PAGE 3   
+
+ 118   1      TL0=(65536-50000)%256; //重装计数初值
+ 119   1      tcnt++; //每过250ust tcnt 加一
+ 120   1      if(tcnt==1) //计满20次（1 秒）时
+ 121   1      {
+ 122   2      tcnt=0; //重新再计
+ 123   2      write=1; //1 秒写一次24C08
+ 124   2      }
+ 125   1      }
+ 126          void main(void)
+ 127          {
+ 128   1      TMOD=0x01; //定时器工作在方式1
+ 129   1      ET0=1; EA=1;
+ 130   1      x24c08_init(); //初始化24C08
+ 131   1      sec=x24c08_read(2);//读出保存的数据赋于sec
+ 132   1      TH0=(65536-50000)/256;                     //对TH0 TL0 赋值
+ 133   1      TL0=(65536-50000)%256; //使定时器0.05 秒中断一次
+ 134   1      TR0=1; //开始计时*/
+ 135   1      
+ 136   1      while(1)
+ 137   1      {
+ 138   2      
+ 139   2      
+ 140   2      if(jia==0){Delay(8);   while(!jia){LED();}; {sec++;if(sec==36){sec=0;}} }
+ 141   2      if(jian==0){ Delay(8); while(!jian){LED();};{sec--;if(sec<0){sec=35;}} }
+ 142   2      if(res==0){sec=0;}
+ 143   2      switch(sec)
+ 144   2      {
+ 145   3      case 0:P1=0X81;P30=1;P31=1;P32=1;P35=1;break;
+ 146   3      case 1:P1=0X82;P30=1;P31=1;P32=1;P35=1;break;
+ 147   3      case 2:P1=0X84;P30=1;P31=1;P32=1;P35=1;break;
+ 148   3      case 3:P1=0X88;P30=1;P31=1;P32=1;P35=1;break;
+ 149   3      case 4:P1=0X90;P30=1;P31=1;P32=1;P35=1;break;
+ 150   3      case 5:P1=0XA0;P30=1;P31=1;P32=1;P35=1;break;
+ 151   3      case 6:P1=0X41;P30=1;P31=1;P32=1;P35=1;break;
+ 152   3      case 7:P1=0X42;P30=1;P31=1;P32=1;P35=1;break;
+ 153   3      case 8:P1=0X44;P30=1;P31=1;P32=1;P35=1;break;
+ 154   3      case 9:P1=0X48;P30=1;P31=1;P32=1;P35=1;break;
+ 155   3      case 10:P1=0X50;P30=1;P31=1;P32=1;P35=1;break;
+ 156   3      case 11:P1=0X60;P30=1;P31=1;P32=1;P35=1;break;
+ 157   3      case 12:P1=0XC1;P30=0;P31=1;P32=1;P35=1;break;
+ 158   3      case 13:P1=0XC2;P30=0;P31=1;P32=1;P35=1;break;
+ 159   3      case 14:P1=0XC4;P30=0;P31=1;P32=1;P35=1;break;
+ 160   3      case 15:P1=0XC8;P30=0;P31=1;P32=1;P35=1;break;
+ 161   3      case 16:P1=0XD0;P30=0;P31=1;P32=1;P35=1;break;
+ 162   3      case 17:P1=0XE0;P30=0;P31=1;P32=1;P35=1;break;
+ 163   3      case 18:P1=0XC1;P30=1;P31=0;P32=1;P35=1;break;
+ 164   3      case 19:P1=0XC2;P30=1;P31=0;P32=1;P35=1;break;
+ 165   3      case 20:P1=0XC4;P30=1;P31=0;P32=1;P35=1;break;
+ 166   3      case 21:P1=0XC8;P30=1;P31=0;P32=1;P35=1;break;
+ 167   3      case 22:P1=0XD0;P30=1;P31=0;P32=1;P35=1;break;
+ 168   3      case 23:P1=0XE0;P30=1;P31=0;P32=1;P35=1;break;
+ 169   3      case 24:P1=0XC1;P30=1;P31=1;P32=0;P35=1;break;
+ 170   3      case 25:P1=0XC2;P30=1;P31=1;P32=0;P35=1;break;
+ 171   3      case 26:P1=0XC4;P30=1;P31=1;P32=0;P35=1;break;
+ 172   3      case 27:P1=0XC8;P30=1;P31=1;P32=0;P35=1;break;
+ 173   3      case 28:P1=0XD0;P30=1;P31=1;P32=0;P35=1;break;
+ 174   3      case 29:P1=0XE0;P30=1;P31=1;P32=0;P35=1;break;
+ 175   3      case 30:P1=0XC1;P30=1;P31=1;P32=1;P35=0;break;
+ 176   3      case 31:P1=0XC2;P30=1;P31=1;P32=1;P35=0;break;
+ 177   3      case 32:P1=0XC4;P30=1;P31=1;P32=1;P35=0;break;
+ 178   3      case 33:P1=0XC8;P30=1;P31=1;P32=1;P35=0;break;
+ 179   3      case 34:P1=0XD0;P30=1;P31=1;P32=1;P35=0;break;
+C51 COMPILER V8.05a   CHENGXU                                                              04/17/2010 20:29:27 PAGE 4   
+
+ 180   3      case 35:P1=0XE0;P30=1;P31=1;P32=1;P35=0;break;
+ 181   3      default:break;
+ 182   3      }
+ 183   2      LED();
+ 184   2      if(write==1) //判断计时器是否计时一秒
+ 185   2      {
+ 186   3      write=0; //清零
+ 187   3      x24c08_write(2,sec); //在24c08 的地址2 中写入数据sec
+ 188   3      } 
+ 189   2      }
+ 190   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    847    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

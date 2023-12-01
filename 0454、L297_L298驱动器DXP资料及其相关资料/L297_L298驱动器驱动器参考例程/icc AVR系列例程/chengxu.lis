@@ -1,0 +1,157 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile C:\DOCUME~1\Administrator\桌面\数码管显示程序\icc\chengxu.c
+ 0000                   .dbfunc e delay _delay fV
+ 0000           ;              i -> R20,R21
+ 0000           ;              j -> R22,R23
+ 0000           ;              t -> R16,R17
+                        .even
+ 0000           _delay::
+ 0000 00D0              rcall push_gset2
+ 0002                   .dbline -1
+ 0002                   .dbline 14
+ 0002           ; #include <iom8v.h>
+ 0002           ; #define uchar unsigned char 
+ 0002           ; #define uint unsigned int
+ 0002           ; 
+ 0002           ; //CW控制步进电机的方向
+ 0002           ; //H_F控制步进电机的工作方式（1为四拍工作方式，0为八拍工作方式）
+ 0002           ; //CLK控制步进电机的转动速度，一个脉冲电机转动一个步进角。
+ 0002           ; //RES使能控制(为1时电机运行，为0时电机停止)
+ 0002           ; 
+ 0002           ; /******************************************************************
+ 0002           ; 延时函数
+ 0002           ; ******************************************************************/
+ 0002           ; void delay(uint t)
+ 0002           ; {
+ 0002                   .dbline 16
+ 0002           ;   uint i,j;
+ 0002           ;    for(i=0;i<t;i++)
+ 0002 4427              clr R20
+ 0004 5527              clr R21
+ 0006 0AC0              rjmp L5
+ 0008           L2:
+ 0008                   .dbline 17
+ 0008           ;    {
+ 0008                   .dbline 18
+ 0008 60E2              ldi R22,800
+ 000A 73E0              ldi R23,3
+ 000C 02C0              rjmp L9
+ 000E           L6:
+ 000E                   .dbline 18
+ 000E           L7:
+ 000E                   .dbline 18
+ 000E 6150              subi R22,1
+ 0010 7040              sbci R23,0
+ 0012           L9:
+ 0012                   .dbline 18
+ 0012 6030              cpi R22,0
+ 0014 6707              cpc R22,R23
+ 0016 D9F7              brne L6
+ 0018           X0:
+ 0018                   .dbline 19
+ 0018                   .dbline 19
+ 0018                   .dbline 20
+ 0018                   .dbline 21
+ 0018           L3:
+ 0018                   .dbline 16
+ 0018 4F5F              subi R20,255  ; offset = 1
+ 001A 5F4F              sbci R21,255
+ 001C           L5:
+ 001C                   .dbline 16
+ 001C 4017              cp R20,R16
+ 001E 5107              cpc R21,R17
+ 0020 98F3              brlo L2
+ 0022                   .dbline -2
+ 0022           L1:
+ 0022 00D0              rcall pop_gset2
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r i 20 i
+ 0026                   .dbsym r j 22 i
+ 0026                   .dbsym r t 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 0026           _Init_IO::
+ 0026                   .dbline -1
+ 0026                   .dbline 25
+ 0026           ;        for(j=800;j>0;j--);
+ 0026           ;        { ;
+ 0026           ;        }
+ 0026           ;    }
+ 0026           ; }
+ 0026           ; /***********************************初始化*****************************/
+ 0026           ; void Init_IO(void)//初始化I/O
+ 0026           ; {
+ 0026                   .dbline 27
+ 0026           ; //设置B口为输出
+ 0026           ; DDRB=0xff;
+ 0026 8FEF              ldi R24,255
+ 0028 87BB              out 0x17,R24
+ 002A                   .dbline 28
+ 002A           ; PORTB=0xff;
+ 002A 88BB              out 0x18,R24
+ 002C                   .dbline 30
+ 002C           ; //设置C口为输出
+ 002C           ; DDRC=0xff;
+ 002C 84BB              out 0x14,R24
+ 002E                   .dbline 31
+ 002E           ; PORTC=0xff;
+ 002E 85BB              out 0x15,R24
+ 0030                   .dbline 33
+ 0030           ; //设置D口为输入
+ 0030           ; DDRD=0X00;
+ 0030 2224              clr R2
+ 0032 21BA              out 0x11,R2
+ 0034                   .dbline 34
+ 0034           ; PORTD=0x00;
+ 0034 22BA              out 0x12,R2
+ 0036                   .dbline -2
+ 0036           L10:
+ 0036                   .dbline 0 ; func end
+ 0036 0895              ret
+ 0038                   .dbend
+ 0038                   .dbfunc e main _main fV
+                        .even
+ 0038           _main::
+ 0038                   .dbline -1
+ 0038                   .dbline 40
+ 0038           ; }
+ 0038           ;  /*************************************************************************
+ 0038           ;                                 主函数        
+ 0038           ; **************************************************************************/
+ 0038           ;  void main()
+ 0038           ; {  
+ 0038                   .dbline 41
+ 0038           ;     Init_IO();
+ 0038 F6DF              rcall _Init_IO
+ 003A 0BC0              rjmp L13
+ 003C           L12:
+ 003C                   .dbline 43
+ 003C                   .dbline 45
+ 003C 8FEF              ldi R24,255
+ 003E 85BB              out 0x15,R24
+ 0040                   .dbline 48
+ 0040 88BB              out 0x18,R24
+ 0042                   .dbline 49
+ 0042 0AE0              ldi R16,10
+ 0044 10E0              ldi R17,0
+ 0046 DCDF              rcall _delay
+ 0048                   .dbline 50
+ 0048 2224              clr R2
+ 004A 28BA              out 0x18,R2
+ 004C                   .dbline 51
+ 004C 0AE0              ldi R16,10
+ 004E 10E0              ldi R17,0
+ 0050 D7DF              rcall _delay
+ 0052                   .dbline 53
+ 0052           L13:
+ 0052                   .dbline 42
+ 0052 F4CF              rjmp L12
+ 0054           X1:
+ 0054                   .dbline -2
+ 0054           L11:
+ 0054                   .dbline 0 ; func end
+ 0054 0895              ret
+ 0056                   .dbend

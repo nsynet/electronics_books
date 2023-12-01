@@ -1,0 +1,26 @@
+Version: 3.0
+Options: m37
+Obj: "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_Auto\Debug\Resource.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_Auto\Debug\main.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_Auto\Debug\isr.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_Auto\Debug\hardware.obj"
+Obj: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_Auto\Debug\A32_16K_a20.res"
+Lib: "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_Auto\.\sacmv25.lib"
+Output: ".\Debug\a2000_Auto.S37"
+;Locate: TEXT in "isr.obj" at 8009 
+;Align: TEXT in "isr.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 8E36  linkat 2F8 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "a2000" of "sacmv25.lib"  at 2F7 
+;Align: RAM in "a2000" of "sacmv25.lib"  with 0 
+;Locate: A2000_Section in "a2000" of "sacmv25.lib"  at 0 
+;Align: A2000_Section in "a2000" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_A32_16K_A20 in "A32_16K_a20.res" at 8E6C 
+;Align: __sn_section_RES_A32_16K_A20 in "A32_16K_a20.res" with 0 
+;Locate: CODE in "a2000" of "sacmv25.lib"  at 804B 
+;Align: CODE in "a2000" of "sacmv25.lib"  with 0 
+;Locate: CODE in "hardware.obj" at 8CBF 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "main.obj" at 8DEC 
+;Align: CODE in "main.obj" with 0 

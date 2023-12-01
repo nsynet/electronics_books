@@ -1,0 +1,366 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _Table::
+ 0000                   .blkb 2
+                        .area idata
+ 0000 3F06              .byte 63,6
+                        .area data(ram, con, rel)
+ 0002                   .blkb 2
+                        .area idata
+ 0002 5B4F              .byte 91,'O
+                        .area data(ram, con, rel)
+ 0004                   .blkb 2
+                        .area idata
+ 0004 666D              .byte 'f,'m
+                        .area data(ram, con, rel)
+ 0006                   .blkb 2
+                        .area idata
+ 0006 7D07              .byte 125,7
+                        .area data(ram, con, rel)
+ 0008                   .blkb 2
+                        .area idata
+ 0008 7F6F              .byte 127,'o
+                        .area data(ram, con, rel)
+ 000A                   .dbfile D:\Proteus\ATMEGA16\Ad转换的c语言编程\icc\chengxu.c
+ 000A                   .dbsym e Table _Table A[10:10]c
+ 000A           _Data::
+ 000A                   .blkb 2
+                        .area idata
+ 000A 0000              .byte 0,0
+                        .area data(ram, con, rel)
+ 000C                   .dbfile D:\Proteus\ATMEGA16\Ad转换的c语言编程\icc\chengxu.c
+ 000C                   .blkb 2
+                        .area idata
+ 000C 0000              .byte 0,0
+                        .area data(ram, con, rel)
+ 000E                   .dbfile D:\Proteus\ATMEGA16\Ad转换的c语言编程\icc\chengxu.c
+ 000E                   .dbsym e Data _Data A[4:4]c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\Proteus\ATMEGA16\Ad转换的c语言编程\icc\chengxu.c
+ 0000                   .dbfunc e DelayMs _DelayMs fV
+ 0000           ;              j -> R20
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMs::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 14
+ 0004           ; #include <iom16v.h>
+ 0004           ; #include <macros.h> 
+ 0004           ; #define uchar unsigned char
+ 0004           ; #define uint  unsigned int
+ 0004           ; /**********************************************************************
+ 0004           ;                                                               定义数组                                                                        
+ 0004           ; **********************************************************************/
+ 0004           ; uchar Table[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+ 0004           ; uchar Data[4]={0,0,0,0};
+ 0004           ; /**********************************************************************
+ 0004           ;                                                               延时函数                                                                        
+ 0004           ; **********************************************************************/
+ 0004           ; void DelayMs(uint i)  //0.25ms
+ 0004           ; {uchar j;
+ 0004                   .dbline 15
+ 0004           ;  for(;i!=0;i--)
+ 0004 07C0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 16
+ 0006                   .dbline 16
+ 0006 4AEF              ldi R20,250
+ 0008 01C0              xjmp L9
+ 000A           L6:
+ 000A                   .dbline 16
+ 000A                   .dbline 16
+ 000A                   .dbline 16
+ 000A           L7:
+ 000A                   .dbline 16
+ 000A 4A95              dec R20
+ 000C           L9:
+ 000C                   .dbline 16
+ 000C 4423              tst R20
+ 000E E9F7              brne L6
+ 0010                   .dbline 16
+ 0010           L3:
+ 0010                   .dbline 15
+ 0010 0150              subi R16,1
+ 0012 1040              sbci R17,0
+ 0014           L5:
+ 0014                   .dbline 15
+ 0014 0030              cpi R16,0
+ 0016 0107              cpc R16,R17
+ 0018 B1F7              brne L2
+ 001A           X0:
+ 001A                   .dbline -2
+ 001A           L1:
+ 001A 0E940000          xcall pop_gset1
+ 001E                   .dbline 0 ; func end
+ 001E 0895              ret
+ 0020                   .dbsym r j 20 c
+ 0020                   .dbsym r i 16 i
+ 0020                   .dbend
+ 0020                   .dbfunc e Display _Display fV
+ 0020           ;            sel -> R20
+ 0020           ;              i -> R22
+ 0020           ;              p -> R10,R11
+                        .even
+ 0020           _Display::
+ 0020 0E940000          xcall push_gset3
+ 0024 5801              movw R10,R16
+ 0026                   .dbline -1
+ 0026                   .dbline 22
+ 0026           ;   {for(j=250;j!=0;j--) {;}}
+ 0026           ; }
+ 0026           ; /**********************************************************************
+ 0026           ;                                                               显示函数                                                                        
+ 0026           ; **********************************************************************/
+ 0026           ; void Display(uchar *p) //间隔5ms显示
+ 0026           ; {uchar i,sel=0x01;
+ 0026                   .dbline 22
+ 0026 41E0              ldi R20,1
+ 0028                   .dbline 23
+ 0028           ;  for(i=0;i<4;i++)
+ 0028 6627              clr R22
+ 002A 17C0              xjmp L14
+ 002C           L11:
+ 002C                   .dbline 24
+ 002C                   .dbline 24
+ 002C 42BB              out 0x12,R20
+ 002E                   .dbline 25
+ 002E E62F              mov R30,R22
+ 0030 FF27              clr R31
+ 0032 EA0D              add R30,R10
+ 0034 FB1D              adc R31,R11
+ 0036 E081              ldd R30,z+0
+ 0038 FF27              clr R31
+ 003A 80E0              ldi R24,<_Table
+ 003C 90E0              ldi R25,>_Table
+ 003E E80F              add R30,R24
+ 0040 F91F              adc R31,R25
+ 0042 2080              ldd R2,z+0
+ 0044 3324              clr R3
+ 0046 8FEF              ldi R24,255
+ 0048 90E0              ldi R25,0
+ 004A 8219              sub R24,R2
+ 004C 9309              sbc R25,R3
+ 004E 88BB              out 0x18,R24
+ 0050                   .dbline 26
+ 0050 04E1              ldi R16,20
+ 0052 10E0              ldi R17,0
+ 0054 D5DF              xcall _DelayMs
+ 0056                   .dbline 27
+ 0056 440F              lsl R20
+ 0058                   .dbline 28
+ 0058           L12:
+ 0058                   .dbline 23
+ 0058 6395              inc R22
+ 005A           L14:
+ 005A                   .dbline 23
+ 005A 6430              cpi R22,4
+ 005C 38F3              brlo L11
+ 005E                   .dbline -2
+ 005E           L10:
+ 005E 0E940000          xcall pop_gset3
+ 0062                   .dbline 0 ; func end
+ 0062 0895              ret
+ 0064                   .dbsym r sel 20 c
+ 0064                   .dbsym r i 22 c
+ 0064                   .dbsym r p 10 pc
+ 0064                   .dbend
+ 0064                   .dbfunc e ADC_Convert _ADC_Convert fi
+ 0064           ;          temp1 -> R22,R23
+ 0064           ;          temp2 -> R20,R21
+                        .even
+ 0064           _ADC_Convert::
+ 0064 0E940000          xcall push_gset2
+ 0068                   .dbline -1
+ 0068                   .dbline 34
+ 0068           ;   {PORTD=sel;
+ 0068           ;    PORTB=0xff-Table[p[i]];
+ 0068           ;    DelayMs(20);
+ 0068           ;    sel=sel<<1;
+ 0068           ;   }
+ 0068           ; }
+ 0068           ; /**********************************************************************
+ 0068           ;                                                               电压值处理                                                                      
+ 0068           ; **********************************************************************/
+ 0068           ; uint ADC_Convert(void)
+ 0068           ; {uint temp1,temp2;
+ 0068                   .dbline 35
+ 0068           ;  temp1=(uint)ADCL;
+ 0068 64B1              in R22,0x4
+ 006A 7727              clr R23
+ 006C                   .dbline 36
+ 006C           ;  temp2=(uint)ADCH;
+ 006C 45B1              in R20,0x5
+ 006E 5527              clr R21
+ 0070                   .dbline 40
+ 0070           ;  //temp1=2;
+ 0070           ;  //temp2=1;
+ 0070           ;  //temp2=2356;
+ 0070           ;  temp2=(temp2<<8)+temp1;
+ 0070 1A01              movw R2,R20
+ 0072 322C              mov R3,R2
+ 0074 2224              clr R2
+ 0076 260E              add R2,R22
+ 0078 371E              adc R3,R23
+ 007A                   .dbline 41
+ 007A           ;  temp2=temp2*4;
+ 007A 04E0              ldi R16,4
+ 007C 10E0              ldi R17,0
+ 007E 9101              movw R18,R2
+ 0080 0E940000          xcall empy16s
+ 0084 A801              movw R20,R16
+ 0086                   .dbline 42
+ 0086           ;  return(temp2);
+ 0086                   .dbline -2
+ 0086           L15:
+ 0086 0E940000          xcall pop_gset2
+ 008A                   .dbline 0 ; func end
+ 008A 0895              ret
+ 008C                   .dbsym r temp1 22 i
+ 008C                   .dbsym r temp2 20 i
+ 008C                   .dbend
+ 008C                   .dbfunc e Process _Process fV
+ 008C           ;              p -> R20,R21
+ 008C           ;              i -> R22,R23
+                        .even
+ 008C           _Process::
+ 008C 0E940000          xcall push_gset2
+ 0090 A901              movw R20,R18
+ 0092 B801              movw R22,R16
+ 0094                   .dbline -1
+ 0094                   .dbline 48
+ 0094           ; }
+ 0094           ; /**********************************************************************
+ 0094           ;                                                               显示处理                                                                        
+ 0094           ; **********************************************************************/
+ 0094           ; void Process(uint i,uchar *p)
+ 0094           ; {p[0]=i/1000;
+ 0094                   .dbline 48
+ 0094 28EE              ldi R18,1000
+ 0096 33E0              ldi R19,3
+ 0098 8B01              movw R16,R22
+ 009A 0E940000          xcall div16u
+ 009E FA01              movw R30,R20
+ 00A0 0083              std z+0,R16
+ 00A2                   .dbline 49
+ 00A2           ;  i=i%1000;
+ 00A2 28EE              ldi R18,1000
+ 00A4 33E0              ldi R19,3
+ 00A6 8B01              movw R16,R22
+ 00A8 0E940000          xcall mod16u
+ 00AC B801              movw R22,R16
+ 00AE                   .dbline 50
+ 00AE           ;  p[1]=i/100;
+ 00AE 24E6              ldi R18,100
+ 00B0 30E0              ldi R19,0
+ 00B2 0E940000          xcall div16u
+ 00B6 FA01              movw R30,R20
+ 00B8 0183              std z+1,R16
+ 00BA                   .dbline 51
+ 00BA           ;  i=i%100;
+ 00BA 24E6              ldi R18,100
+ 00BC 30E0              ldi R19,0
+ 00BE 8B01              movw R16,R22
+ 00C0 0E940000          xcall mod16u
+ 00C4 B801              movw R22,R16
+ 00C6                   .dbline 52
+ 00C6           ;  p[2]=i/10;
+ 00C6 2AE0              ldi R18,10
+ 00C8 30E0              ldi R19,0
+ 00CA 0E940000          xcall div16u
+ 00CE FA01              movw R30,R20
+ 00D0 0283              std z+2,R16
+ 00D2                   .dbline 53
+ 00D2           ;  i=i%10;
+ 00D2 2AE0              ldi R18,10
+ 00D4 30E0              ldi R19,0
+ 00D6 8B01              movw R16,R22
+ 00D8 0E940000          xcall mod16u
+ 00DC B801              movw R22,R16
+ 00DE                   .dbline 54
+ 00DE           ;  p[3]=i;
+ 00DE FA01              movw R30,R20
+ 00E0 6383              std z+3,R22
+ 00E2                   .dbline -2
+ 00E2           L16:
+ 00E2 0E940000          xcall pop_gset2
+ 00E6                   .dbline 0 ; func end
+ 00E6 0895              ret
+ 00E8                   .dbsym r p 20 pc
+ 00E8                   .dbsym r i 22 i
+ 00E8                   .dbend
+ 00E8                   .dbfunc e main _main fV
+ 00E8           ;              i -> R20,R21
+                        .even
+ 00E8           _main::
+ 00E8                   .dbline -1
+ 00E8                   .dbline 60
+ 00E8           ; }
+ 00E8           ; /**********************************************************************
+ 00E8           ;                                                               主函数                                                                  
+ 00E8           ; **********************************************************************/
+ 00E8           ; void main(void)
+ 00E8           ; {uint i;
+ 00E8                   .dbline 61
+ 00E8           ;  DDRA=0x00;                    //设置A口为不带上拉输入；
+ 00E8 2224              clr R2
+ 00EA 2ABA              out 0x1a,R2
+ 00EC                   .dbline 62
+ 00EC           ;  PORTA=0x00;
+ 00EC 2BBA              out 0x1b,R2
+ 00EE                   .dbline 63
+ 00EE           ;  DDRB=0xff;                    //设置B口为推挽1输出；
+ 00EE 8FEF              ldi R24,255
+ 00F0 87BB              out 0x17,R24
+ 00F2                   .dbline 64
+ 00F2           ;  PORTB=0xff;
+ 00F2 88BB              out 0x18,R24
+ 00F4                   .dbline 65
+ 00F4           ;  DDRD=0xff;                    //设置C口为推挽1输出；
+ 00F4 81BB              out 0x11,R24
+ 00F6                   .dbline 66
+ 00F6           ;  PORTD=0xff;
+ 00F6 82BB              out 0x12,R24
+ 00F8                   .dbline 67
+ 00F8           ;  PORTB=0x00;                   //B口初始化输出1；C口初始化输出0；点亮全部数码管；
+ 00F8 28BA              out 0x18,R2
+ 00FA                   .dbline 68
+ 00FA           ;  PORTD=0xff;
+ 00FA 82BB              out 0x12,R24
+ 00FC                   .dbline 69
+ 00FC           ;  ADMUX=0x00;                   //选择第一通道；
+ 00FC 27B8              out 0x7,R2
+ 00FE                   .dbline 70
+ 00FE           ;  ADCSR=0xe6;                   //125K转换速率，自由转换模式；启动AD转换器；
+ 00FE 86EE              ldi R24,230
+ 0100 86B9              out 0x6,R24
+ 0102                   .dbline 71
+ 0102           ;  DelayMs(3000);                //延时待系统稳定；
+ 0102 08EB              ldi R16,3000
+ 0104 1BE0              ldi R17,11
+ 0106 7CDF              xcall _DelayMs
+ 0108 08C0              xjmp L19
+ 010A           L18:
+ 010A                   .dbline 73
+ 010A                   .dbline 74
+ 010A ACDF              xcall _ADC_Convert
+ 010C A801              movw R20,R16
+ 010E                   .dbline 76
+ 010E 20E0              ldi R18,<_Data
+ 0110 30E0              ldi R19,>_Data
+ 0112 BCDF              xcall _Process
+ 0114                   .dbline 77
+ 0114 00E0              ldi R16,<_Data
+ 0116 10E0              ldi R17,>_Data
+ 0118 83DF              xcall _Display
+ 011A                   .dbline 78
+ 011A           L19:
+ 011A                   .dbline 72
+ 011A F7CF              xjmp L18
+ 011C           X1:
+ 011C                   .dbline -2
+ 011C           L17:
+ 011C                   .dbline 0 ; func end
+ 011C 0895              ret
+ 011E                   .dbsym r i 20 i
+ 011E                   .dbend

@@ -1,0 +1,389 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\Proteus\ATMEGA16\Eeprom的c语言编程\icc\chengxu.c
+ 0000                   .dbfunc e DelayMs _DelayMs fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMs::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 13
+ 0004           ; #include <iom16v.h>
+ 0004           ; #include <macros.h> 
+ 0004           ; #define uchar unsigned char
+ 0004           ; #define uint  unsigned int
+ 0004           ; #define uchar unsigned char    //数据类型说明
+ 0004           ; #define uint  unsigned int     //数据类型说明
+ 0004           ; /**********************************************************************
+ 0004           ;                                                               延时函数                        
+ 0004           ; 
+ 0004           ;                                               
+ 0004           ; **********************************************************************/
+ 0004           ; void DelayMs(uint i)           //Ms级延时函数,参数i：延时时间
+ 0004           ; {uint j;
+ 0004                   .dbline 14
+ 0004           ;  for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 15
+ 0006                   .dbline 15
+ 0006 40ED              ldi R20,2000
+ 0008 57E0              ldi R21,7
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 15
+ 000C                   .dbline 15
+ 000C                   .dbline 15
+ 000C           L7:
+ 000C                   .dbline 15
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 15
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 16
+ 0016           L3:
+ 0016                   .dbline 14
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 14
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e Horse _Horse fV
+ 0026           ;              i -> R16
+                        .even
+ 0026           _Horse::
+ 0026 0E940000          xcall push_gset1
+ 002A                   .dbline -1
+ 002A                   .dbline 24
+ 002A           ;   {for(j=2000;j!=0;j--) {;}
+ 002A           ;   }
+ 002A           ; }
+ 002A           ; /**********************************************************************
+ 002A           ;                                                               跑马灯函数                      
+ 002A           ; 
+ 002A           ;                                               
+ 002A           ; **********************************************************************/
+ 002A           ; void Horse(uchar i)            //跑马灯程序，通过步判断点亮相应的LED
+ 002A           ; {switch(i)                     //高电平点亮LED
+ 002A                   .dbline 24
+ 002A 402F              mov R20,R16
+ 002C 5527              clr R21
+ 002E 4130              cpi R20,1
+ 0030 E0E0              ldi R30,0
+ 0032 5E07              cpc R21,R30
+ 0034 E9F0              breq L14
+ 0036 4230              cpi R20,2
+ 0038 E0E0              ldi R30,0
+ 003A 5E07              cpc R21,R30
+ 003C E1F0              breq L15
+ 003E 4330              cpi R20,3
+ 0040 E0E0              ldi R30,0
+ 0042 5E07              cpc R21,R30
+ 0044 D9F0              breq L16
+ 0046 4430              cpi R20,4
+ 0048 E0E0              ldi R30,0
+ 004A 5E07              cpc R21,R30
+ 004C D1F0              breq L17
+ 004E 4530              cpi R20,5
+ 0050 E0E0              ldi R30,0
+ 0052 5E07              cpc R21,R30
+ 0054 C9F0              breq L18
+ 0056 4630              cpi R20,6
+ 0058 E0E0              ldi R30,0
+ 005A 5E07              cpc R21,R30
+ 005C C1F0              breq L19
+ 005E 4730              cpi R20,7
+ 0060 E0E0              ldi R30,0
+ 0062 5E07              cpc R21,R30
+ 0064 B9F0              breq L20
+ 0066 4830              cpi R20,8
+ 0068 E0E0              ldi R30,0
+ 006A 5E07              cpc R21,R30
+ 006C B1F0              breq L21
+ 006E 17C0              xjmp L12
+ 0070           X2:
+ 0070                   .dbline 25
+ 0070           L14:
+ 0070                   .dbline 25
+ 0070           ;  {case 1:PORTA=0xfe;break;     //1111 1110B 点亮LED1
+ 0070 8EEF              ldi R24,254
+ 0072 8BBB              out 0x1b,R24
+ 0074                   .dbline 25
+ 0074 14C0              xjmp L12
+ 0076           L15:
+ 0076                   .dbline 26
+ 0076           ;   case 2:PORTA=0xfc;break;     //1111 1100B 点亮LED1~LED2
+ 0076 8CEF              ldi R24,252
+ 0078 8BBB              out 0x1b,R24
+ 007A                   .dbline 26
+ 007A 11C0              xjmp L12
+ 007C           L16:
+ 007C                   .dbline 27
+ 007C           ;   case 3:PORTA=0xf8;break;     //1111 1000B 点亮LED1~LED3
+ 007C 88EF              ldi R24,248
+ 007E 8BBB              out 0x1b,R24
+ 0080                   .dbline 27
+ 0080 0EC0              xjmp L12
+ 0082           L17:
+ 0082                   .dbline 28
+ 0082           ;   case 4:PORTA=0xf0;break;     //1111 0000B 点亮LED1~LED4
+ 0082 80EF              ldi R24,240
+ 0084 8BBB              out 0x1b,R24
+ 0086                   .dbline 28
+ 0086 0BC0              xjmp L12
+ 0088           L18:
+ 0088                   .dbline 29
+ 0088           ;   case 5:PORTA=0xe0;break;     //1110 0000B 点亮LED1~LED5
+ 0088 80EE              ldi R24,224
+ 008A 8BBB              out 0x1b,R24
+ 008C                   .dbline 29
+ 008C 08C0              xjmp L12
+ 008E           L19:
+ 008E                   .dbline 30
+ 008E           ;   case 6:PORTA=0xc0;break;     //1100 0000B 点亮LED1~LED6
+ 008E 80EC              ldi R24,192
+ 0090 8BBB              out 0x1b,R24
+ 0092                   .dbline 30
+ 0092 05C0              xjmp L12
+ 0094           L20:
+ 0094                   .dbline 31
+ 0094           ;   case 7:PORTA=0x80;break;     //1000 0000B 点亮LED1~LED7
+ 0094 80E8              ldi R24,128
+ 0096 8BBB              out 0x1b,R24
+ 0098                   .dbline 31
+ 0098 02C0              xjmp L12
+ 009A           L21:
+ 009A                   .dbline 32
+ 009A 2224              clr R2
+ 009C 2BBA              out 0x1b,R2
+ 009E                   .dbline 32
+ 009E                   .dbline 33
+ 009E           L12:
+ 009E                   .dbline -2
+ 009E           L10:
+ 009E 0E940000          xcall pop_gset1
+ 00A2                   .dbline 0 ; func end
+ 00A2 0895              ret
+ 00A4                   .dbsym r i 16 c
+ 00A4                   .dbend
+ 00A4                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 00A4           _Init_IO::
+ 00A4                   .dbline -1
+ 00A4                   .dbline 39
+ 00A4           ;   case 8:PORTA=0x00;break;     //0000 0000B 点亮LED1~LED8
+ 00A4           ;   default:break;}
+ 00A4           ; }
+ 00A4           ; /**********************************************************************
+ 00A4           ;                                                               初始化I/0                                                       
+ 00A4           ; **********************************************************************/
+ 00A4           ; void Init_IO(void)             //初始化I/O口
+ 00A4           ; {
+ 00A4                   .dbline 40
+ 00A4           ; DDRA=0xff;                    //端口设置：PA口设置为推挽1输出
+ 00A4 8FEF              ldi R24,255
+ 00A6 8ABB              out 0x1a,R24
+ 00A8                   .dbline 41
+ 00A8           ;  PORTA=0xff;
+ 00A8 8BBB              out 0x1b,R24
+ 00AA                   .dbline -2
+ 00AA           L22:
+ 00AA                   .dbline 0 ; func end
+ 00AA 0895              ret
+ 00AC                   .dbend
+ 00AC                   .dbfunc e WDT_init _WDT_init fV
+                        .even
+ 00AC           _WDT_init::
+ 00AC                   .dbline -1
+ 00AC                   .dbline 47
+ 00AC           ; }
+ 00AC           ; /**********************************************************************
+ 00AC           ;                                                               看门狗初始化                                            
+ 00AC           ; **********************************************************************/
+ 00AC           ; void WDT_init(void)
+ 00AC           ; {
+ 00AC                   .dbline 48
+ 00AC           ;  WDR();//WDT 复位 
+ 00AC A895              wdr
+ 00AE                   .dbline 49
+ 00AE           ;  WDTCR = 0x0F;//使能看门狗
+ 00AE 8FE0              ldi R24,15
+ 00B0 81BD              out 0x21,R24
+ 00B2                   .dbline -2
+ 00B2           L23:
+ 00B2                   .dbline 0 ; func end
+ 00B2 0895              ret
+ 00B4                   .dbend
+ 00B4                   .dbfunc e init_eatdog _init_eatdog fV
+                        .even
+ 00B4           _init_eatdog::
+ 00B4                   .dbline -1
+ 00B4                   .dbline 53
+ 00B4           ; }
+ 00B4           ; /**********************************************************************/
+ 00B4           ; void init_eatdog(void)
+ 00B4           ; {
+ 00B4                   .dbline 54
+ 00B4           ;  CLI(); //禁止所有中断
+ 00B4 F894              cli
+ 00B6                   .dbline 55
+ 00B6           ;  WDT_init();
+ 00B6 FADF              xcall _WDT_init
+ 00B8                   .dbline 56
+ 00B8           ;  SEI();//开全局中断
+ 00B8 7894              sei
+ 00BA                   .dbline -2
+ 00BA           L24:
+ 00BA                   .dbline 0 ; func end
+ 00BA 0895              ret
+ 00BC                   .dbend
+ 00BC                   .dbfunc e WDT_off _WDT_off fV
+                        .even
+ 00BC           _WDT_off::
+ 00BC                   .dbline -1
+ 00BC                   .dbline 63
+ 00BC           ; }
+ 00BC           ; 
+ 00BC           ; /**********************************************************************
+ 00BC           ;                                                               看门狗关闭(喂狗)                                        
+ 00BC           ; **********************************************************************/
+ 00BC           ; void WDT_off(void)
+ 00BC           ; {
+ 00BC                   .dbline 64
+ 00BC           ;  WDR();//WDT 复位
+ 00BC A895              wdr
+ 00BE                   .dbline 65
+ 00BE           ;  WDTCR |= (1<<WDTOE) | (1<<WDE); //置位 WDTOE 和 WDE
+ 00BE 81B5              in R24,0x21
+ 00C0 8861              ori R24,24
+ 00C2 81BD              out 0x21,R24
+ 00C4                   .dbline 66
+ 00C4           ;  WDTCR = 0x00;//关闭WDT 
+ 00C4 2224              clr R2
+ 00C6 21BC              out 0x21,R2
+ 00C8                   .dbline -2
+ 00C8           L25:
+ 00C8                   .dbline 0 ; func end
+ 00C8 0895              ret
+ 00CA                   .dbend
+ 00CA                   .dbfunc e main _main fV
+ 00CA           ;              i -> R20
+                        .even
+ 00CA           _main::
+ 00CA                   .dbline -1
+ 00CA                   .dbline 73
+ 00CA           ; }
+ 00CA           ; 
+ 00CA           ; /**********************************************************************
+ 00CA           ;                                                               主函数                                                  
+ 00CA           ; **********************************************************************/
+ 00CA           ; void main(void)               
+ 00CA           ; {uchar i;
+ 00CA                   .dbline 74
+ 00CA           ;  Init_IO();
+ 00CA ECDF              xcall _Init_IO
+ 00CC                   .dbline 75
+ 00CC           ;  PORTA=0x00;                   //PORTA初始值为0，灭掉所有的LED      
+ 00CC 2224              clr R2
+ 00CE 2BBA              out 0x1b,R2
+ 00D0                   .dbline 76
+ 00D0           ;  DelayMs(100);                //延时
+ 00D0 04E6              ldi R16,100
+ 00D2 10E0              ldi R17,0
+ 00D4 95DF              xcall _DelayMs
+ 00D6                   .dbline 77
+ 00D6           ;  WDTCR=0x00;                             //看门狗开启使能  1.9S
+ 00D6 2224              clr R2
+ 00D8 21BC              out 0x21,R2
+ 00DA 1CC0              xjmp L28
+ 00DC           L27:
+ 00DC                   .dbline 79
+ 00DC           ;  while(1)                      //程序无条件执行
+ 00DC           ;   { 
+ 00DC                   .dbline 81
+ 00DC           ;   
+ 00DC           ;   for(i=1;i<9;i++)           //依次点亮LED1~LED8
+ 00DC 41E0              ldi R20,1
+ 00DE 08C0              xjmp L33
+ 00E0           L30:
+ 00E0                   .dbline 82
+ 00E0                   .dbline 82
+ 00E0 042F              mov R16,R20
+ 00E2 A1DF              xcall _Horse
+ 00E4                   .dbline 83
+ 00E4 04E6              ldi R16,100
+ 00E6 10E0              ldi R17,0
+ 00E8 8BDF              xcall _DelayMs
+ 00EA                   .dbline 84
+ 00EA E4DF              xcall _init_eatdog
+ 00EC                   .dbline 85
+ 00EC E7DF              xcall _WDT_off
+ 00EE                   .dbline 86
+ 00EE           L31:
+ 00EE                   .dbline 81
+ 00EE 4395              inc R20
+ 00F0           L33:
+ 00F0                   .dbline 81
+ 00F0 4930              cpi R20,9
+ 00F2 B0F3              brlo L30
+ 00F4                   .dbline 87
+ 00F4           ;       {Horse(i);
+ 00F4           ;          DelayMs(100);         //延时
+ 00F4           ;          init_eatdog();                //看门狗初始化
+ 00F4           ;          WDT_off();                    //喂狗（如果停止喂狗系统自动复位）
+ 00F4           ;          }         
+ 00F4           ;       for(i=9;i>0;i--)          //依次熄灭LED8~LED1
+ 00F4 49E0              ldi R20,9
+ 00F6 06C0              xjmp L37
+ 00F8           L34:
+ 00F8                   .dbline 88
+ 00F8                   .dbline 88
+ 00F8 042F              mov R16,R20
+ 00FA 95DF              xcall _Horse
+ 00FC                   .dbline 89
+ 00FC 04E6              ldi R16,100
+ 00FE 10E0              ldi R17,0
+ 0100 7FDF              xcall _DelayMs
+ 0102                   .dbline 89
+ 0102           L35:
+ 0102                   .dbline 87
+ 0102 4A95              dec R20
+ 0104           L37:
+ 0104                   .dbline 87
+ 0104 2224              clr R2
+ 0106 2416              cp R2,R20
+ 0108 B8F3              brlo L34
+ 010A                   .dbline 90
+ 010A 8FEF              ldi R24,255
+ 010C 8BBB              out 0x1b,R24
+ 010E                   .dbline 91
+ 010E 04E6              ldi R16,100
+ 0110 10E0              ldi R17,0
+ 0112 76DF              xcall _DelayMs
+ 0114                   .dbline 92
+ 0114           L28:
+ 0114                   .dbline 78
+ 0114 E3CF              xjmp L27
+ 0116           X3:
+ 0116                   .dbline -2
+ 0116           L26:
+ 0116                   .dbline 0 ; func end
+ 0116 0895              ret
+ 0118                   .dbsym r i 20 c
+ 0118                   .dbend

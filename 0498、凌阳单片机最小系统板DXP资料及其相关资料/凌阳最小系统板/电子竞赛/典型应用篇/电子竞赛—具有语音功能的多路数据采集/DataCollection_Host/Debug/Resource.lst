@@ -1,0 +1,241 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	
+                            	// Resource Table
+                            	// Created by IDE, Do not modify this table
+                            	
+00008009                    	.TEXT
+                            	.public _RES_Table;
+                            	.external __RES_9_72K_sa
+                            	.public _RES_9_72K_SA;
+                            	.external __RES_9_72K_ea;
+                            	.public _RES_9_72K_EA;
+                            	.external __RES_10_72K_sa
+                            	.public _RES_10_72K_SA;
+                            	.external __RES_10_72K_ea;
+                            	.public _RES_10_72K_EA;
+                            	.external __RES_11_72K_sa
+                            	.public _RES_11_72K_SA;
+                            	.external __RES_11_72K_ea;
+                            	.public _RES_11_72K_EA;
+                            	.external __RES_12_72K_sa
+                            	.public _RES_12_72K_SA;
+                            	.external __RES_12_72K_ea;
+                            	.public _RES_12_72K_EA;
+                            	.external __RES_13_72K_sa
+                            	.public _RES_13_72K_SA;
+                            	.external __RES_13_72K_ea;
+                            	.public _RES_13_72K_EA;
+                            	.external __RES_14_72K_sa
+                            	.public _RES_14_72K_SA;
+                            	.external __RES_14_72K_ea;
+                            	.public _RES_14_72K_EA;
+                            	.external __RES_15_72K_sa
+                            	.public _RES_15_72K_SA;
+                            	.external __RES_15_72K_ea;
+                            	.public _RES_15_72K_EA;
+                            	.external __RES_16_72K_sa
+                            	.public _RES_16_72K_SA;
+                            	.external __RES_16_72K_ea;
+                            	.public _RES_16_72K_EA;
+                            	.external __RES_17_72K_sa
+                            	.public _RES_17_72K_SA;
+                            	.external __RES_17_72K_ea;
+                            	.public _RES_17_72K_EA;
+                            	.external __RES_18_72K_sa
+                            	.public _RES_18_72K_SA;
+                            	.external __RES_18_72K_ea;
+                            	.public _RES_18_72K_EA;
+                            	.external __RES_19_72K_sa
+                            	.public _RES_19_72K_SA;
+                            	.external __RES_19_72K_ea;
+                            	.public _RES_19_72K_EA;
+                            	.external __RES_2_72K_sa
+                            	.public _RES_2_72K_SA;
+                            	.external __RES_2_72K_ea;
+                            	.public _RES_2_72K_EA;
+                            	.external __RES_20_72K_sa
+                            	.public _RES_20_72K_SA;
+                            	.external __RES_20_72K_ea;
+                            	.public _RES_20_72K_EA;
+                            	.external __RES_21_72K_sa
+                            	.public _RES_21_72K_SA;
+                            	.external __RES_21_72K_ea;
+                            	.public _RES_21_72K_EA;
+                            	.external __RES_22_72K_sa
+                            	.public _RES_22_72K_SA;
+                            	.external __RES_22_72K_ea;
+                            	.public _RES_22_72K_EA;
+                            	.external __RES_3_72K_sa
+                            	.public _RES_3_72K_SA;
+                            	.external __RES_3_72K_ea;
+                            	.public _RES_3_72K_EA;
+                            	.external __RES_4_72K_sa
+                            	.public _RES_4_72K_SA;
+                            	.external __RES_4_72K_ea;
+                            	.public _RES_4_72K_EA;
+                            	.external __RES_5_72K_sa
+                            	.public _RES_5_72K_SA;
+                            	.external __RES_5_72K_ea;
+                            	.public _RES_5_72K_EA;
+                            	.external __RES_6_72K_sa
+                            	.public _RES_6_72K_SA;
+                            	.external __RES_6_72K_ea;
+                            	.public _RES_6_72K_EA;
+                            	.external __RES_7_72K_sa
+                            	.public _RES_7_72K_SA;
+                            	.external __RES_7_72K_ea;
+                            	.public _RES_7_72K_EA;
+                            	.external __RES_8_72K_sa
+                            	.public _RES_8_72K_SA;
+                            	.external __RES_8_72K_ea;
+                            	.public _RES_8_72K_EA;
+                            	.external __RES_1_72K_sa
+                            	.public _RES_1_72K_SA;
+                            	.external __RES_1_72K_ea;
+                            	.public _RES_1_72K_EA;
+                            	
+                            	
+                            	_RES_Table:
+                            	
+                            	_RES_9_72K_SA:
+00008009 9F AE 00 00        		.DW offset __RES_9_72K_sa,seg __RES_9_72K_sa;
+                            	_RES_9_72K_EA:
+0000800B 18 B1 00 00        		.DW offset __RES_9_72K_ea,seg __RES_9_72K_ea;
+                            	
+                            	_RES_10_72K_SA:
+0000800D 98 B5 00 00        		.DW offset __RES_10_72K_sa,seg __RES_10_72K_sa;
+                            	_RES_10_72K_EA:
+0000800F 8E B6 00 00        		.DW offset __RES_10_72K_ea,seg __RES_10_72K_ea;
+                            	
+                            	_RES_11_72K_SA:
+00008011 41 A9 00 00        		.DW offset __RES_11_72K_sa,seg __RES_11_72K_sa;
+                            	_RES_11_72K_EA:
+00008013 02 AC 00 00        		.DW offset __RES_11_72K_ea,seg __RES_11_72K_ea;
+                            	
+                            	_RES_12_72K_SA:
+00008015 88 B3 00 00        		.DW offset __RES_12_72K_sa,seg __RES_12_72K_sa;
+                            	_RES_12_72K_EA:
+00008017 90 B4 00 00        		.DW offset __RES_12_72K_ea,seg __RES_12_72K_ea;
+                            	
+                            	_RES_13_72K_SA:
+00008019 42 BA 00 00        		.DW offset __RES_13_72K_sa,seg __RES_13_72K_sa;
+                            	_RES_13_72K_EA:
+0000801B 26 BB 00 00        		.DW offset __RES_13_72K_ea,seg __RES_13_72K_ea;
+                            	
+                            	_RES_14_72K_SA:
+0000801D C1 BC 00 00        		.DW offset __RES_14_72K_sa,seg __RES_14_72K_sa;
+                            	_RES_14_72K_EA:
+0000801F 81 BD 00 00        		.DW offset __RES_14_72K_ea,seg __RES_14_72K_ea;
+                            	
+                            	_RES_15_72K_SA:
+00008021 81 BD 00 00        		.DW offset __RES_15_72K_sa,seg __RES_15_72K_sa;
+                            	_RES_15_72K_EA:
+00008023 41 BE 00 00        		.DW offset __RES_15_72K_ea,seg __RES_15_72K_ea;
+                            	
+                            	_RES_16_72K_SA:
+00008025 5E B9 00 00        		.DW offset __RES_16_72K_sa,seg __RES_16_72K_sa;
+                            	_RES_16_72K_EA:
+00008027 42 BA 00 00        		.DW offset __RES_16_72K_ea,seg __RES_16_72K_ea;
+                            	
+                            	_RES_17_72K_SA:
+00008029 71 B8 00 00        		.DW offset __RES_17_72K_sa,seg __RES_17_72K_sa;
+                            	_RES_17_72K_EA:
+0000802B 5E B9 00 00        		.DW offset __RES_17_72K_ea,seg __RES_17_72K_ea;
+                            	
+                            	_RES_18_72K_SA:
+0000802D 84 B7 00 00        		.DW offset __RES_18_72K_sa,seg __RES_18_72K_sa;
+                            	_RES_18_72K_EA:
+0000802F 71 B8 00 00        		.DW offset __RES_18_72K_ea,seg __RES_18_72K_ea;
+                            	
+                            	_RES_19_72K_SA:
+00008031 8E B6 00 00        		.DW offset __RES_19_72K_sa,seg __RES_19_72K_sa;
+                            	_RES_19_72K_EA:
+00008033 84 B7 00 00        		.DW offset __RES_19_72K_ea,seg __RES_19_72K_ea;
+                            	
+                            	_RES_2_72K_SA:
+00008035 6E A3 00 00        		.DW offset __RES_2_72K_sa,seg __RES_2_72K_sa;
+                            	_RES_2_72K_EA:
+00008037 80 A6 00 00        		.DW offset __RES_2_72K_ea,seg __RES_2_72K_ea;
+                            	
+                            	_RES_20_72K_SA:
+00008039 F8 BB 00 00        		.DW offset __RES_20_72K_sa,seg __RES_20_72K_sa;
+                            	_RES_20_72K_EA:
+0000803B C1 BC 00 00        		.DW offset __RES_20_72K_ea,seg __RES_20_72K_ea;
+                            	
+                            	_RES_21_72K_SA:
+0000803D 90 B4 00 00        		.DW offset __RES_21_72K_sa,seg __RES_21_72K_sa;
+                            	_RES_21_72K_EA:
+0000803F 98 B5 00 00        		.DW offset __RES_21_72K_ea,seg __RES_21_72K_ea;
+                            	
+                            	_RES_22_72K_SA:
+00008041 26 BB 00 00        		.DW offset __RES_22_72K_sa,seg __RES_22_72K_sa;
+                            	_RES_22_72K_EA:
+00008043 F8 BB 00 00        		.DW offset __RES_22_72K_ea,seg __RES_22_72K_ea;
+                            	
+                            	_RES_3_72K_SA:
+00008045 18 B1 00 00        		.DW offset __RES_3_72K_sa,seg __RES_3_72K_sa;
+                            	_RES_3_72K_EA:
+00008047 88 B3 00 00        		.DW offset __RES_3_72K_ea,seg __RES_3_72K_ea;
+                            	
+                            	_RES_4_72K_SA:
+00008049 02 AC 00 00        		.DW offset __RES_4_72K_sa,seg __RES_4_72K_sa;
+                            	_RES_4_72K_EA:
+0000804B 9F AE 00 00        		.DW offset __RES_4_72K_ea,seg __RES_4_72K_ea;
+                            	
+                            	_RES_5_72K_SA:
+0000804D 80 A6 00 00        		.DW offset __RES_5_72K_sa,seg __RES_5_72K_sa;
+                            	_RES_5_72K_EA:
+0000804F 41 A9 00 00        		.DW offset __RES_5_72K_ea,seg __RES_5_72K_ea;
+                            	
+                            	_RES_6_72K_SA:
+00008051 E7 9C 00 00        		.DW offset __RES_6_72K_sa,seg __RES_6_72K_sa;
+                            	_RES_6_72K_EA:
+00008053 38 A0 00 00        		.DW offset __RES_6_72K_ea,seg __RES_6_72K_ea;
+                            	
+                            	_RES_7_72K_SA:
+00008055 38 A0 00 00        		.DW offset __RES_7_72K_sa,seg __RES_7_72K_sa;
+                            	_RES_7_72K_EA:
+00008057 6E A3 00 00        		.DW offset __RES_7_72K_ea,seg __RES_7_72K_ea;
+                            	
+                            	_RES_8_72K_SA:
+00008059 91 98 00 00        		.DW offset __RES_8_72K_sa,seg __RES_8_72K_sa;
+                            	_RES_8_72K_EA:
+0000805B E7 9C 00 00        		.DW offset __RES_8_72K_ea,seg __RES_8_72K_ea;
+                            	
+                            	_RES_1_72K_SA:
+0000805D DB 90 00 00        		.DW offset __RES_1_72K_sa,seg __RES_1_72K_sa;
+                            	_RES_1_72K_EA:
+0000805F 91 98 00 00        		.DW offset __RES_1_72K_ea,seg __RES_1_72K_ea;
+                            	
+                            	
+                            	// End Table
+                            	//.public T_SACM_S480_SpeechTable
+                            	//T_SACM_S480_SpeechTable:
+                            	.public T_SACM_S480_SpeechTable;
+                            	T_SACM_S480_SpeechTable:
+00008061 5D 80              	.dw _RES_1_72K_SA//1.欢迎使用SPCE061A开发数据采集系统
+00008062 35 80              	.dw _RES_2_72K_SA//2.请选择采集模式
+00008063 45 80              	.dw _RES_3_72K_SA//3.模式选择完毕
+00008064 49 80              	.dw _RES_4_72K_SA//4.请输入通道号
+00008065 4D 80              	.dw _RES_5_72K_SA//5.通道号选择完毕
+00008066 51 80              	.dw _RES_6_72K_SA//6.开始循环采集数据
+00008067 55 80              	.dw _RES_7_72K_SA//7.开始选择采集数据
+00008068 59 80              	.dw _RES_8_72K_SA//8.请重新设置数据采集模式
+00008069 09 80              	.dw _RES_9_72K_SA//9.通道的电压为
+0000806A 0D 80              	.dw _RES_10_72K_SA//10.伏
+0000806B 11 80              	.dw _RES_11_72K_SA//11.终端连接失败
+0000806C 15 80              	.dw _RES_12_72K_SA//12. 0
+0000806D 19 80              	.dw _RES_13_72K_SA
+0000806E 1D 80              	.dw _RES_14_72K_SA
+0000806F 21 80              	.dw _RES_15_72K_SA
+00008070 25 80              	.dw _RES_16_72K_SA
+00008071 29 80              	.dw _RES_17_72K_SA
+00008072 2D 80              	.dw _RES_18_72K_SA
+00008073 31 80              	.dw _RES_19_72K_SA
+00008074 39 80              	.dw _RES_20_72K_SA
+00008075 3D 80              	.dw _RES_21_72K_SA//21. 9
+00008076 41 80              	.dw _RES_22_72K_SA//22. 点
+                            		
+0 error(s), 0 warning(s).
+

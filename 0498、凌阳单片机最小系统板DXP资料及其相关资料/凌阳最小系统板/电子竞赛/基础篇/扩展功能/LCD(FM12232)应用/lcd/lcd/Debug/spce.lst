@@ -1,0 +1,35 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	//========================================================================================
+                            	// 
+                            	//
+                            	// Last modified date: 
+                            	// 		2002/09/27: first version
+                            	// Note: This file contains a variable declaration for SPCE 500A to keep track of the 
+                            	//       interrupt setting status. 
+                            	//========================================================================================
+                            	
+0000033B                    	.IRAM
+                            	.public	R_InterruptStatus;	
+0000033B 00 00              	.VAR	R_InterruptStatus = 0;					// for feature using, not necessary for SPCE061				
+                            	////////////////////////////////////////////////////
+                            	// Note: This register should always map to the P_INT_Ctrl(W)
+                            	//	(0x7010), The SACMvxx.lib use this register to
+                            	//	combine with user's interrupt setting.
+                            	//  In SPCE061A, it is not necessary since the 
+                            	//  P_INT_Mask(0x702D) already does this. It is for 
+                            	//  compatibility to keep it here. 
+                            	//////////////////////////////////////////////////
+                            	  
+                            	              
+                            	//========================================================================================        
+                            	// End of SPCE.asm
+                            	//========================================================================================
+                            	
+                            	
+                            	
+                            	        
+                            	        
+                            	        
+0 error(s), 0 warning(s).
+

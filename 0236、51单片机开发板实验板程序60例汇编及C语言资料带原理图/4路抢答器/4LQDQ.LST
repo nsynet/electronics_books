@@ -1,0 +1,126 @@
+C51 COMPILER V8.15   4LQDQ                                                                 07/08/2008 10:32:52 PAGE 1   
+
+
+C51 COMPILER V8.15, COMPILATION OF MODULE 4LQDQ
+OBJECT MODULE PLACED IN 4LQDQ.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 4LQDQ.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include <intrins.h>
+   3          
+   4          #define uchar unsigned char
+   5          #define uint  unsigned int
+   6          
+   7          sbit  K1 = P1^0; sbit  K2 = P1^1;  // K1对应SW19  K2对应Sw20 K3对应SW21 K4对应Sw22
+   8          sbit  K3 = P1^2; sbit  K4 = P1^3;
+   9          sbit BEEP = P2^1; //蜂鸣器控制端口P21
+  10          uchar  temp;
+  11          void beep();              //蜂鸣器
+  12          void delay0(uchar x);      //x*0.14MS
+  13          
+  14          
+  15           //--------------------------------------------------
+  16          /* 延时子程序*/
+  17          
+  18          void  delay1(uchar x)
+  19          { uchar j;
+  20   1          while((x--)!=0)
+  21   1          { for(j=0;j<125;j++)
+  22   2               {;}
+  23   2          }
+  24   1      }
+  25          //--------------------------------------------------
+  26          
+  27          
+  28          /**********************************************************/
+  29          void delay(uint ms) 
+  30          {
+  31   1         uchar t;
+  32   1         while(ms--)
+  33   1         { 
+  34   2           for(t = 0; t < 120; t++);
+  35   2         }
+  36   1      }
+  37          
+  38          /*********************************************************/
+  39          void beep()
+  40          {
+  41   1        unsigned char i;
+  42   1        for (i=0;i<100;i++)
+  43   1         {
+  44   2         delay0(4);
+  45   2         BEEP=!BEEP;       //BEEP取反
+  46   2         } 
+  47   1         BEEP=1;           //关闭蜂鸣器
+  48   1         delay1(250);       //延时     
+  49   1      }
+  50          //--------------------------------------------------
+  51          void delay0(uchar x)    //x*0.14MS
+  52          {
+  53   1       unsigned char i;
+  54   1        while(x--)
+  55   1       {
+C51 COMPILER V8.15   4LQDQ                                                                 07/08/2008 10:32:52 PAGE 2   
+
+  56   2        for (i = 0; i<13; i++) {}
+  57   2       }
+  58   1      }
+  59          main()
+  60          {
+  61   1         P0 = 0xff;
+  62   1         P3 = 0xff;
+  63   1         while(1)
+  64   1         {
+  65   2           P0 = 0xc0;           //显示“0”
+  66   2        P3 = 0x7f;
+  67   2        P1 = 0x0f;           //置P1.0-P1.3为输入状态
+  68   2        _nop_();
+  69   2        temp = P1;
+  70   2      
+  71   2        while(temp==0x0f)   
+  72   2        {
+  73   3          temp = P1;
+  74   3      temp=temp&0x0f;   
+  75   3        }
+  76   2      
+  77   2           if(K1==0)
+  78   2        {     beep(); 
+  79   3             P0 = 0xf9;         //显示”1“ 
+  80   3      delay(4000);
+  81   3      
+  82   3        }
+  83   2        else  if(K2==0)
+  84   2        {    beep();
+  85   3             P0 = 0xa4;        //显示”2“ 
+  86   3         delay(4000);
+  87   3        }
+  88   2        else  if(K3==0)
+  89   2        {     beep();
+  90   3             P0 = 0xb0;        //显示“3” 
+  91   3      delay(4000);
+  92   3        }
+  93   2        else  if(K4==0)
+  94   2        {     beep();
+  95   3             P0 = 0x99;        //显示“4” 
+  96   3         delay(4000);
+  97   3        }
+  98   2         }
+  99   1      }
+ 100          
+ 101          /*********************************************************/
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    174    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

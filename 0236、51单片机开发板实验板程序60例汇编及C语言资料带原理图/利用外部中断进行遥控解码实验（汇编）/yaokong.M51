@@ -1,0 +1,119 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        09/18/2007  17:27:21  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE ramote.obj TO yaokong
+
+
+INPUT MODULES INCLUDED:
+  ramote.obj (RAMOTE)
+
+
+LINK MAP OF MODULE:  yaokong (RAMOTE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0178H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  yaokong (RAMOTE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        RAMOTE
+  C:015FH         SYMBOL        D1
+  C:0168H         SYMBOL        D2
+  C:0171H         SYMBOL        D3
+  B:00A8H.7       SYMBOL        EA
+  B:00A8H.0       SYMBOL        EX0
+  C:015AH         SYMBOL        EXIT
+  C:0108H         SYMBOL        INTT0
+  B:0088H.0       SYMBOL        IT0
+  C:012FH         SYMBOL        JJJJ
+  C:011AH         SYMBOL        JJJJA
+  C:0100H         SYMBOL        MAIN
+  D:0080H         SYMBOL        P0
+  D:00A0H         SYMBOL        P2
+  D:00B0H         SYMBOL        P3
+  C:012DH         SYMBOL        PP
+  C:010CH         SYMBOL        SB
+  C:013CH         SYMBOL        UUU
+  C:0127H         SYMBOL        UUUA
+  C:015DH         SYMBOL        YS1
+  C:0166H         SYMBOL        YS2
+  C:016FH         SYMBOL        YS3
+  C:0000H         LINE#         55
+  C:0003H         LINE#         61
+  C:0100H         LINE#         67
+  C:0102H         LINE#         68
+  C:0104H         LINE#         69
+  C:0106H         LINE#         74
+  C:0108H         LINE#         85
+  C:010AH         LINE#         90
+  C:010CH         LINE#         91
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/18/2007  17:27:21  PAGE 2
+
+
+  C:010EH         LINE#         92
+  C:0111H         LINE#         93
+  C:0113H         LINE#         103
+  C:0116H         LINE#         104
+  C:0118H         LINE#         115
+  C:011AH         LINE#         120
+  C:011DH         LINE#         121
+  C:0120H         LINE#         122
+  C:0122H         LINE#         123
+  C:0124H         LINE#         124
+  C:0127H         LINE#         125
+  C:0129H         LINE#         135
+  C:012BH         LINE#         136
+  C:012DH         LINE#         137
+  C:012FH         LINE#         142
+  C:0132H         LINE#         143
+  C:0135H         LINE#         144
+  C:0137H         LINE#         145
+  C:0139H         LINE#         146
+  C:013CH         LINE#         151
+  C:013DH         LINE#         152
+  C:013EH         LINE#         153
+  C:013FH         LINE#         154
+  C:0141H         LINE#         155
+  C:0142H         LINE#         156
+  C:0144H         LINE#         161
+  C:0146H         LINE#         162
+  C:0147H         LINE#         163
+  C:014AH         LINE#         173
+  C:014DH         LINE#         174
+  C:014FH         LINE#         175
+  C:0152H         LINE#         176
+  C:0155H         LINE#         177
+  C:0158H         LINE#         178
+  C:015AH         LINE#         183
+  C:015CH         LINE#         184
+  C:015DH         LINE#         194
+  C:015FH         LINE#         195
+  C:0161H         LINE#         196
+  C:0163H         LINE#         197
+  C:0165H         LINE#         198
+  C:0166H         LINE#         203
+  C:0168H         LINE#         204
+  C:016AH         LINE#         205
+  C:016CH         LINE#         206
+  C:016EH         LINE#         207
+  C:016FH         LINE#         210
+  C:0171H         LINE#         211
+  C:0173H         LINE#         212
+  C:0175H         LINE#         213
+  C:0177H         LINE#         214
+  -------         ENDMOD        RAMOTE
+
+Program Size: data=8.0 xdata=0 code=376
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

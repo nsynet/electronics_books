@@ -1,0 +1,26 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\A2000_manual\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\A2000_manual\Debug\hardware.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\A2000_manual\Debug\ISR.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\A2000_manual\Debug\main.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\A2000_manual\Debug\d1_24K.res"
+Lib: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\A2000_manual\.\sacmv25.lib"
+Output: ".\Debug\A2000_manual.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 8E92  linkat 2F8 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "a2000" of "sacmv25.lib"  at 2F7 
+;Align: RAM in "a2000" of "sacmv25.lib"  with 0 
+;Locate: A2000_Section in "a2000" of "sacmv25.lib"  at 0 
+;Align: A2000_Section in "a2000" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_D1_24K in "d1_24K.res" at 8EC8 
+;Align: __sn_section_RES_D1_24K in "d1_24K.res" with 0 
+;Locate: CODE in "a2000" of "sacmv25.lib"  at 8093 
+;Align: CODE in "a2000" of "sacmv25.lib"  with 0 
+;Locate: CODE in "hardware.obj" at 8D07 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "main.obj" at 8E34 
+;Align: CODE in "main.obj" with 0 

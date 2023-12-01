@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>ADC_LCD_A/Debug</Project><Project>ADC_LCD/Debug</Project></CurrentConfigs><CurrentProj>ADC_LCD</CurrentProj><OverviewSelected>1</OverviewSelected></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+        <Column0>12</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+    <Build><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>723</ColumnWidth1><ColumnWidth2>193</ColumnWidth2><ColumnWidth3>48</ColumnWidth3></Build><TerminalIO/><Profiling/><Debug-Log/></Static>
+    <Windows>
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-5996-27487</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>&lt;ws></ExpandedNode><ExpandedNode>&lt;ws>/ADC_LCD</ExpandedNode><ExpandedNode>&lt;ws>/ADC_LCD/main.c</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-4805-4445</Identity><TabName>Build</TabName><Factory>Build</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x516B;  ADC&#x4e0e;LCD\ADC&amp;LCD\SourceFile\main.c</Filename><XPos>0</XPos><YPos>11</YPos><SelStart>310</SelStart><SelEnd>312</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x516B;  ADC&#x4e0e;LCD\ADC&amp;LCD\SourceFile\adc12.c</Filename><XPos>0</XPos><YPos>35</YPos><SelStart>1427</SelStart><SelEnd>1427</SelEnd></Tab><ActiveTab>1</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x516B;  ADC&#x4e0e;LCD\ADC&amp;LCD\SourceFile\lcd.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003bb078><key>iaridepm1</key></Toolbar-003bb078></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>360</Bottom><Right>86</Right><x>-2</x><y>-2</y><xscreen>86</xscreen><yscreen>127</yscreen><sizeHorzCX>145025</sizeHorzCX><sizeHorzCY>199686</sizeHorzCY><sizeVertCX>148398</sizeVertCX><sizeVertCY>569182</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>231</Bottom><Right>595</Right><x>-2</x><y>-2</y><xscreen>597</xscreen><yscreen>233</yscreen><sizeHorzCX>1006745</sizeHorzCX><sizeHorzCY>366352</sizeHorzCY><sizeVertCX>145025</sizeVertCX><sizeVertCY>199686</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

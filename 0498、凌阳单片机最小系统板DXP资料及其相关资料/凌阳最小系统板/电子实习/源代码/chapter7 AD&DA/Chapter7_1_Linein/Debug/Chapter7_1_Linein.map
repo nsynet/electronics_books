@@ -1,0 +1,183 @@
+Wednesday, July 09, 16:43:30, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8009         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8025         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         8024         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\Chapter7_1_Linein\Debug\Resource.obj"
+_main                                              8026         "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\Chapter7_1_Linein\Debug\main.obj"
+_AD                                                80F8         "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\Chapter7_1_Linein\Debug\main.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8009                 8025         1D     *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\Chapter7_1_Linein\Debug\Resource.obj" *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\Chapter7_1_Linein\Debug\main.obj"     *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8026                 8115         F0     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "mulf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          81FA                 82C9         D0     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8116                 81F9         E4     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "addf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          82CA                 8395         CC     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvi2f2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          843C                 8452         17     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "rshu2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8416                 843B         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "mulu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          83CA                 83EF         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "common"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           0                    3            4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "lshiu2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          83F0                 8415         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvi1f2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8396                 83C9         34     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  4            7FC                   *
+* "First Bank Rom"                  7C00                 453          77AD                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\Chapter7_1_Linein.S37
+Disk  Mapping Filename : .\Debug\Chapter7_1_Linein.map
+Symbol  Table FileName : .\Debug\Chapter7_1_Linein.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

@@ -1,0 +1,144 @@
+A51 MACRO ASSEMBLER  SHUMAXIANSHI                                                         09/17/2007 17:11:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN shumaxianshi.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE shumaxianshi.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+  0008                 2     LED1    EQU     08H
+  0009                 3     LED2    EQU     09H
+  000A                 4     LED3    EQU     0AH
+  000B                 5     LED4    EQU     0BH
+                       6     
+                       7     
+0000                   8     ORG 0000H 
+0000 020010            9     LJMP START;转入主程序
+0010                  10     ORG 0010H 
+0010                  11     START:
+0010 758160           12             MOV     SP,#60H
+0013 90007C           13             MOV     DPTR,#TABLE
+0016 7800             14             MOV     R0,#00H
+0018 7900             15             MOV     R1,#00H
+                      16     
+001A                  17     MAIN:
+                      18     
+001A 750801           19             MOV     LED1,#1
+001D 750902           20             MOV     LED2,#2
+0020 750A03           21             MOV     LED3,#3
+0023 750B04           22             MOV     LED4,#4
+                      23     
+                      24     
+0026                  25     SCAN:
+                      26     
+0026 08               27             INC     R0
+0027 B86416           28             CJNE    R0,#100,SCAN_1
+                      29     
+002A 7800             30             MOV     R0,#00H
+                      31             
+002C E508             32             MOV     A,LED1
+002E F5F0             33             MOV     B,A
+0030 E509             34             MOV     A,LED2
+0032 F508             35             MOV     LED1,A
+0034 E50A             36             MOV     A,LED3
+0036 F509             37             MOV     LED2,A
+0038 E50B             38             MOV     A,LED4
+003A F50A             39             MOV     LED3,A
+003C E5F0             40             MOV     A,B
+003E F50B             41             MOV     LED4,A
+                      42     
+0040                  43     SCAN_1:
+                      44     
+                      45     
+0040 E508             46             MOV     A,LED1
+0042 93               47             MOVC    A,@A+DPTR
+0043 F580             48             MOV     P0,A
+0045 C2B7             49             CLR     P3.7
+0047 120073           50             LCALL   DELAY1MS
+004A D2B7             51             SETB    P3.7
+                      52     
+004C E509             53             MOV     A,LED2
+004E 93               54             MOVC    A,@A+DPTR
+004F F580             55             MOV     P0,A
+0051 C2B6             56             CLR     P3.6
+0053 120073           57             LCALL   DELAY1MS
+0056 D2B6             58             SETB    P3.6
+A51 MACRO ASSEMBLER  SHUMAXIANSHI                                                         09/17/2007 17:11:02 PAGE     2
+
+                      59     
+0058 E50A             60             MOV     A,LED3
+005A 93               61             MOVC    A,@A+DPTR
+005B F580             62             MOV     P0,A
+005D C2B5             63             CLR     P3.5
+005F 120073           64             LCALL   DELAY1MS
+0062 D2B5             65             SETB    P3.5
+                      66     
+0064 E50B             67             MOV     A,LED4
+0066 93               68             MOVC    A,@A+DPTR
+0067 F580             69             MOV     P0,A
+0069 C2B4             70             CLR     P3.4
+006B 120073           71             LCALL   DELAY1MS
+006E D2B4             72             SETB    P3.4
+                      73     
+0070 020026           74     LJMP    SCAN
+                      75     
+                      76     
+0073                  77     DELAY1MS: 
+0073 7C02             78             MOV     R4,#2
+0075                  79     DELAY10MSA:
+0075 7DF7             80             MOV     R5,#247
+0077 DDFE             81             DJNZ    R5,$
+0079 DCFA             82             DJNZ    R4,DELAY10MSA
+007B 22               83     RET
+                      84     
+007C                  85     TABLE:
+007C C0               86             DB      11000000B       ;0
+007D F9               87             DB      11111001B       ;1
+007E A4               88             DB      10100100B       ;2
+007F B0               89             DB      10110000B       ;3
+0080 99               90             DB      10011001B       ;4
+0081 92               91             DB      10010010B       ;5
+0082 82               92             DB      10000010B       ;6
+0083 F8               93             DB      11111000B       ;7
+0084 80               94             DB      10000000B       ;8
+0085 90               95             DB      10010000B       ;9
+0086 88               96             DB      10001000B       ;A
+0087 83               97             DB      10000011B       ;b
+0088 C6               98             DB      11000110B       ;C
+0089 A1               99             DB      10100001B       ;d
+008A 86              100             DB      10000110B       ;E
+008B 8E              101             DB      10001110B       ;F
+008C F7              102             DB      11110111B       ;-
+008D FF              103             DB      11111111B       ;
+                     104     end
+A51 MACRO ASSEMBLER  SHUMAXIANSHI                                                         09/17/2007 17:11:02 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY10MSA . . . .  C ADDR   0075H   A   
+DELAY1MS . . . . .  C ADDR   0073H   A   
+LED1 . . . . . . .  N NUMB   0008H   A   
+LED2 . . . . . . .  N NUMB   0009H   A   
+LED3 . . . . . . .  N NUMB   000AH   A   
+LED4 . . . . . . .  N NUMB   000BH   A   
+MAIN . . . . . . .  C ADDR   001AH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+SCAN . . . . . . .  C ADDR   0026H   A   
+SCAN_1 . . . . . .  C ADDR   0040H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+START. . . . . . .  C ADDR   0010H   A   
+TABLE. . . . . . .  C ADDR   007CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

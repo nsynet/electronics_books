@@ -1,0 +1,138 @@
+Version: 3.0
+Options: m37
+Obj: "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\功能扩展\UpDown\Debug\Resource.obj"
+Obj: "F:\功能扩展\UpDown\Debug\line.obj"
+Obj: "F:\功能扩展\UpDown\Debug\main.obj"
+Obj: "F:\功能扩展\UpDown\Debug\key.obj"
+Obj: "F:\功能扩展\UpDown\Debug\key1.obj"
+Obj: "F:\功能扩展\UpDown\Debug\initial.obj"
+Obj: "F:\功能扩展\UpDown\Debug\delay1ms.obj"
+Obj: "F:\功能扩展\UpDown\Debug\single.obj"
+Obj: "F:\功能扩展\UpDown\Debug\isr.obj"
+Obj: "F:\功能扩展\UpDown\Debug\system.obj"
+Obj: "F:\功能扩展\UpDown\Debug\hardware.obj"
+Obj: "F:\功能扩展\UpDown\Debug\T022_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T023_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T024_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T025_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T026_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T027_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T028_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T029_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T030_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T031_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T066_48k.res"
+Obj: "F:\功能扩展\UpDown\Debug\T016_48k.res"
+Lib: "D:\Program Files\Sunplus\unSPIDE180\Library\math.lib"
+Lib: "D:\Program Files\Sunplus\unSPIDE180\Library\sacmv25.lib"
+Lib: "D:\Program Files\Sunplus\unSPIDE180\IDE180\CMacro.lib"
+Output: ".\Debug\UpDown.S37"
+;Locate: TEXT in "ef_rem_pio2" of "math.lib"  at 8009 
+;Align: TEXT in "ef_rem_pio2" of "math.lib"  with 0 
+;Locate: IRAM in "hardware.obj" at A901  linkat 1BB 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "main.obj" at 1A4 
+;Align: RAM in "main.obj" with 0 
+;Locate: S480_Section in "s480" of "sacmv25.lib"  at 0 
+;Align: S480_Section in "s480" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_T016_48K in "T016_48k.res" at AADC 
+;Align: __sn_section_RES_T016_48K in "T016_48k.res" with 0 
+;Locate: __sn_section_RES_T022_48K in "T022_48k.res" at AD10 
+;Align: __sn_section_RES_T022_48K in "T022_48k.res" with 0 
+;Locate: __sn_section_RES_T023_48K in "T023_48k.res" at B048 
+;Align: __sn_section_RES_T023_48K in "T023_48k.res" with 0 
+;Locate: __sn_section_RES_T024_48K in "T024_48k.res" at B0AD 
+;Align: __sn_section_RES_T024_48K in "T024_48k.res" with 0 
+;Locate: __sn_section_RES_T025_48K in "T025_48k.res" at AC75 
+;Align: __sn_section_RES_T025_48K in "T025_48k.res" with 0 
+;Locate: __sn_section_RES_T026_48K in "T026_48k.res" at AE19 
+;Align: __sn_section_RES_T026_48K in "T026_48k.res" with 0 
+;Locate: __sn_section_RES_T027_48K in "T027_48k.res" at AF75 
+;Align: __sn_section_RES_T027_48K in "T027_48k.res" with 0 
+;Locate: __sn_section_RES_T028_48K in "T028_48k.res" at AF07 
+;Align: __sn_section_RES_T028_48K in "T028_48k.res" with 0 
+;Locate: __sn_section_RES_T029_48K in "T029_48k.res" at ABC8 
+;Align: __sn_section_RES_T029_48K in "T029_48k.res" with 0 
+;Locate: __sn_section_RES_T030_48K in "T030_48k.res" at AFE3 
+;Align: __sn_section_RES_T030_48K in "T030_48k.res" with 0 
+;Locate: __sn_section_RES_T031_48K in "T031_48k.res" at AE99 
+;Align: __sn_section_RES_T031_48K in "T031_48k.res" with 0 
+;Locate: __sn_section_RES_T066_48K in "T066_48k.res" at AD99 
+;Align: __sn_section_RES_T066_48K in "T066_48k.res" with 0 
+;Locate: CODE in "main.obj" at 8235 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "s480" of "sacmv25.lib"  at 8C99 
+;Align: CODE in "s480" of "sacmv25.lib"  with 0 
+;Locate: CODE in "kf_rem_pio2" of "math.lib"  at 9660 
+;Align: CODE in "kf_rem_pio2" of "math.lib"  with 0 
+;Locate: CODE in "ef_rem_pio2" of "math.lib"  at 9AC8 
+;Align: CODE in "ef_rem_pio2" of "math.lib"  with 0 
+;Locate: CODE in "line.obj" at 9D7E 
+;Align: CODE in "line.obj" with 0 
+;Locate: CODE in "hardware.obj" at 9F4C 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "divf2" of "CMacro.lib"  at A079 
+;Align: CODE in "divf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "mulf2" of "CMacro.lib"  at A15D 
+;Align: CODE in "mulf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "addf2" of "CMacro.lib"  at A22D 
+;Align: CODE in "addf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "divu2" of "CMacro.lib"  at A2F9 
+;Align: CODE in "divu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "kf_cos" of "math.lib"  at A39D 
+;Align: CODE in "kf_cos" of "math.lib"  with 0 
+;Locate: CODE in "kf_sin" of "math.lib"  at A42B 
+;Align: CODE in "kf_sin" of "math.lib"  with 0 
+;Locate: CODE in "sf_scalbn" of "math.lib"  at A4B8 
+;Align: CODE in "sf_scalbn" of "math.lib"  with 0 
+;Locate: CODE in "sf_sin" of "math.lib"  at A529 
+;Align: CODE in "sf_sin" of "math.lib"  with 0 
+;Locate: CODE in "sf_floor" of "math.lib"  at A587 
+;Align: CODE in "sf_floor" of "math.lib"  with 0 
+;Locate: CODE in "divi2" of "CMacro.lib"  at A5DF 
+;Align: CODE in "divi2" of "CMacro.lib"  with 0 
+;Locate: CODE in "divu1" of "CMacro.lib"  at A62C 
+;Align: CODE in "divu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "divi1" of "CMacro.lib"  at A66A 
+;Align: CODE in "divi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvi1f2" of "CMacro.lib"  at A6A1 
+;Align: CODE in "cvi1f2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cmpf2" of "CMacro.lib"  at A6D5 
+;Align: CODE in "cmpf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvf2i2" of "CMacro.lib"  at A703 
+;Align: CODE in "cvf2i2" of "CMacro.lib"  with 0 
+;Locate: CODE in "modi1" of "CMacro.lib"  at A731 
+;Align: CODE in "modi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "sf_poly" of "math.lib"  at A759 
+;Align: CODE in "sf_poly" of "math.lib"  with 0 
+;Locate: CODE in "mulu1" of "CMacro.lib"  at A780 
+;Align: CODE in "mulu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvf2i1" of "CMacro.lib"  at A7A6 
+;Align: CODE in "cvf2i1" of "CMacro.lib"  with 0 
+;Locate: CODE in "lshiu2" of "CMacro.lib"  at A7CC 
+;Align: CODE in "lshiu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro.lib"  at A7F2 
+;Align: CODE in "rshu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "delay1ms.obj" at A818 
+;Align: CODE in "delay1ms.obj" with 0 
+;Locate: CODE in "key.obj" at A83C 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "key1.obj" at A85C 
+;Align: CODE in "key1.obj" with 0 
+;Locate: CODE in "initial.obj" at A87B 
+;Align: CODE in "initial.obj" with 0 
+;Locate: CODE in "rshi1" of "CMacro.lib"  at A89A 
+;Align: CODE in "rshi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvi2f2" of "CMacro.lib"  at A8B4 
+;Align: CODE in "cvi2f2" of "CMacro.lib"  with 0 
+;Locate: CODE in "system.obj" at A8CB 
+;Align: CODE in "system.obj" with 0 
+;Locate: CODE in "lshiu1" of "CMacro.lib"  at A8E0 
+;Align: CODE in "lshiu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "subf2" of "CMacro.lib"  at A8F5 
+;Align: CODE in "subf2" of "CMacro.lib"  with 0 
+;Locate: DATA in "line.obj" at A94C 
+;Align: DATA in "line.obj" with 0 
+;Locate: DATA in "single.obj" at B109 
+;Align: DATA in "single.obj" with 0 

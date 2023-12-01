@@ -1,0 +1,85 @@
+C51 COMPILER V7.06   GLOBAL                                                                03/16/2011 16:14:50 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE GLOBAL
+OBJECT MODULE PLACED IN .\Output\global.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE global.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\global.obj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "Global.h"
+   8          /****************************************************************************************************
+   9          *
+  10          *                                      变量区
+  11          * 
+  12          *****************************************************************************************************/
+  13          //系统消息变量
+  14          static
+  15          volatile UINT8 __ucSysMsg=SYS_IDLE;
+  16          
+  17          /****************************************************
+  18          * 函数名称: DelayNus
+  19          * 输    入: t 延时时间
+  20          * 输    出: 无
+  21          * 功能描述: 微秒级延时
+  22          *****************************************************/
+  23          void DelayNus(UINT16 t)
+  24          {
+  25   1              do
+  26   1              {
+  27   2                      NOP();
+  28   2              }while(--t >0); 
+  29   1      }
+  30          
+  31          /****************************************************
+  32          * 函数名称:SYSIdle
+  33          * 输    入:无
+  34          * 输    出:无
+  35          * 说    明:空闲任务
+  36          ****************************************************/
+  37          void SYSIdle(void)
+  38          {
+  39   1               MCU_IDLE();
+  40   1      }
+  41          /****************************************************
+  42          * 函数名称:SYSPostCurMsg
+  43          * 输    入:无
+  44          * 输    出:无
+  45          * 说    明:发送当前消息
+  46          ****************************************************/
+  47          void  SYSPostCurMsg(UINT8 msg)
+  48          {
+  49   1              __ucSysMsg=msg;
+  50   1      }
+  51          /****************************************************
+  52          * 函数名称:SYSRecvCurMsg
+  53          * 输    入:无
+  54          * 输    出:无
+  55          * 说    明:获取当前消息
+C51 COMPILER V7.06   GLOBAL                                                                03/16/2011 16:14:50 PAGE 2   
+
+  56          ****************************************************/
+  57          UINT8 SYSRecvCurMsg(void)
+  58          {
+  59   1              return __ucSysMsg;
+  60   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     26    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

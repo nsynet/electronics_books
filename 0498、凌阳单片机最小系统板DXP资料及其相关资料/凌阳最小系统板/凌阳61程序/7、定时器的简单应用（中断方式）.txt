@@ -1,0 +1,138 @@
+//  工程名称：61-study.spj
+//  功能描述: 61板定时器的学习(数码管高两位为秒计数显示，100秒定时器
+//  硬件连接：A低八位的高四位为数码管位选通，低三位为按键输入，B端口的低七位为数码管的数据端口，在应用61板时，若用到键盘，建议采用矩阵键盘接法
+//  涉及的库：	CMacro1016.lib
+//  调用函数：
+	//端口A相关寄存器
+	#define		P_IOA_Data			   (*(volatile unsigned int *)0x7000)
+	#define		P_IOA_Buffer		   (*(volatile unsigned int *)0x7001)
+	#define		P_IOA_Dir			   (*(volatile unsigned int *)0x7002)
+	#define		P_IOA_Attrib		   (*(volatile unsigned int *)0x7003)
+	#define		P_IOA_Latch			   (*(volatile unsigned int *)0x7004)
+    //端口B相关寄存器
+	#define		P_IOB_Data			   (*(volatile unsigned int *)0x7005)
+	#define		P_IOB_Buffer		   (*(volatile unsigned int *)0x7006)
+	#define		P_IOB_Dir			   (*(volatile unsigned int *)0x7007)
+	#define		P_IOB_Attrib		   (*(volatile unsigned int *)0x7008)
+	//看门狗相关寄存器
+	#define     P_Watchdog_Clear       (*(volatile unsigned int *)0x7012)
+	//系统时钟源
+	#define		P_SystemClock		   (*(volatile unsigned int *)0x7013)
+    //定时器相关寄存器
+    #define		P_TimerA_Data		   (*(volatile unsigned int *)0x700A)
+	#define		P_TimerA_Ctrl		   (*(volatile unsigned int *)0x700B)
+	#define		P_TimerB_Data		   (*(volatile unsigned int *)0x700C)
+	#define		P_TimerB_Ctrl		   (*(volatile unsigned int *)0x700D)
+	//中断控制相关寄存器	
+	#define		P_INT_Ctrl			   (*(volatile unsigned int *)0x7010)
+	#define		P_INT_Clear			   (*(volatile unsigned int *)0x7011)
+	#define		P_INT_Mask			   (*(volatile unsigned int *)0x702D)
+	#define		P_INT_Ctrl_New		   (*(volatile unsigned int *)0x702D)	
+	//定义位操作	
+	#define     SET_BIT(x,y)           ((x)|=(0x0001<<(y)))                   //置x的第y位为一
+	#define     CLR_BIT(x,y)           ((x)&=~(0x0001<<(y)))                  //清x的第y位为零
+	#define     CPL_BIT(x,y)           ((x)^=(0x0001<<(y)))                   //x的第y位取反
+	#define     GET_BIT(x,y)           (((x)&(1<<(y)))== 0 ? 0:1)             //读取x的第y位，返回0或1
+	#define     LET_BIT(x,y,z)         ((x)=(x)&(~(0x0001<<(y)))|((z)<<y))    //将x的第y位写上z(0/1)
+    const unsigned char sect[]={0x00c0,0x00f9,0x00a4,0x00b0,0x0099,0x0092,0x0082,0x00f8,0x0080,0x0090,0x0088,0x0083,0x00c6,0x00a1,0x0086,0x008e};
+	//const：表示为数值不能在程序中更改，数码管显示0~9	
+	unsigned char sec,number;	//定义全局变量
+    /****************延时函数**************/
+	int delay(unsigned int t)
+	{
+		unsigned int i,delayValue;
+		for(i=0;i<100;i++)
+		 for(delayValue=0;delayValue<t;delayValue++)
+		 {
+			P_Watchdog_Clear=0x0001;   //12us清一次看门狗
+		 }
+		return(0);//无返回值，编译是一定要加入此句，否则会出现编译警告 
+    }
+    /*********************显示函数************************/
+    int Display()
+    { 
+     CLR_BIT(P_IOA_Data,4); 	 
+     P_IOB_Data=sect[number%10];
+     delay(2);
+     P_IOA_Data=0xffff;
+     CLR_BIT(P_IOA_Data,5); 	 
+     P_IOB_Data=sect[number/10];
+     delay(2);
+     P_IOA_Data=0xffff;
+     CLR_BIT(P_IOA_Data,6); 	 
+     P_IOB_Data=sect[sec%10];
+     delay(2);
+     P_IOA_Data=0xffff;
+     CLR_BIT(P_IOA_Data,7); 	 
+     P_IOB_Data=sect[sec/10];
+     delay(2);
+     P_IOA_Data=0xffff;
+     return(0);//无返回值，编译是一定要加入此句，否则会出现编译警告 
+    }
+    /*****************按键扫描***********/
+    int scan()
+    {
+    if(GET_BIT(P_IOA_Data,0)==0) //按键判别
+   		{
+   			delay(2);
+   			if(GET_BIT(P_IOA_Data,0)==0) //确认真有按键按下
+   			{
+   			P_INT_Ctrl_New =0;	    //禁止中断,但不清除中断标志位
+   			}
+   		}
+   	if(GET_BIT(P_IOA_Data,1)==0) //按键判别
+   		{
+   			delay(2);
+   			if(GET_BIT(P_IOA_Data,1)==0) //确认真有按键按下
+   			{
+   			P_INT_Ctrl_New =0x1000;	 //开启中断
+   			}
+   		}
+   	if(GET_BIT(P_IOA_Data,2)==0) //按键判别
+   		{
+   			delay(2);
+   			if(GET_BIT(P_IOA_Data,2)==0) //确认真有按键按下
+   			{
+   			number=0;
+   			sec=0;                       //计数清零
+   			}
+   		}
+    return(0);//无返回值，编译是一定要加入此句，否则会出现编译警告 		
+    }
+    /***************中断函数*************/
+    void IRQ1(void) __attribute__((ISR));
+    void IRQ1(void)
+    {
+    	number++;
+   			if(number>100)
+   			{
+   				sec++;number=0;
+   				if(sec>100)  sec=0;
+   			}
+   	    	P_INT_Clear	=0x1000;//清除中断标志位	
+    }
+	/*****************主函数**************/	
+   int main()
+   {
+   	//A端口操作设置，设置低八位的高四位为数码管选通端，带数据寄存器的高电平输出，低四位为带上拉电阻的输入引脚
+   	P_IOA_Data   = 0xffff;   //数据单元
+   	P_IOA_Attrib = 0xfff0;   //属性向量单元
+   	P_IOA_Dir    = 0xfff0;   //方向向量单元
+   	//B端口操作设置，设置低八位为数码管的段数据输出端，带数据寄存器的高电平输出
+   	P_IOB_Data	 = 0xffff;   //数据单
+   	P_IOB_Attrib = 0xffff;   //属性向量单元
+   	P_IOB_Dir	 = 0xffff;   //方向向量单元
+   	//系统时钟源的设定，Fosc=24.756MHz，CPU时钟：24.756MHz
+   	P_SystemClock= 0x0000;
+   	//定时器操作
+   	P_TimerA_Data= 0xffad;  //设置计数器的初值为0xffad,每10ms溢出一次
+   	P_INT_Ctrl   = 0x1000;   //开启IRQ_TMA
+   	P_TimerA_Ctrl= 0x0033;   //设置A时钟源为8192HZ，时钟源B为1
+   	__asm("INT IRQ");
+   	while(1)
+   	{
+   		scan();
+        Display();//显示函数	
+   	}
+   	return(0); //无返回值函数，也可不加，但编译时会提示警告，可不管！
+   }		

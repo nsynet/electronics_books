@@ -1,0 +1,139 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\流水灯\icc\chengxu.c
+ 0000                   .dbfunc e main _main fI
+ 0000           ;            led -> R18
+ 0000           ;              i -> R20
+ 0000           ;              k -> R16
+ 0000           ;              j -> R22
+                        .even
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000                   .dbline 3
+ 0000           ; #include <iom16v.h>
+ 0000           ; int main( void )
+ 0000           ; {
+ 0000                   .dbline 4
+ 0000           ; unsigned char i, j, k,led=0;
+ 0000 2227              clr R18
+ 0002                   .dbline 5
+ 0002           ; DDRA=0xFF;//为输出
+ 0002 8FEF              ldi R24,255
+ 0004 8ABB              out 0x1a,R24
+ 0006                   .dbline 6
+ 0006           ; DDRB=0xFF;
+ 0006 87BB              out 0x17,R24
+ 0008                   .dbline 7
+ 0008           ; DDRC=0XFF;
+ 0008 84BB              out 0x14,R24
+ 000A                   .dbline 8
+ 000A           ; DDRD=0XFF;
+ 000A 81BB              out 0x11,R24
+ 000C 27C0              xjmp L3
+ 000E           L2:
+ 000E                   .dbline 10
+ 000E           ; while (1)
+ 000E           ; {
+ 000E                   .dbline 11
+ 000E           ; if(led)
+ 000E 2223              tst R18
+ 0010 69F0              breq L5
+ 0012                   .dbline 12
+ 0012           ; {
+ 0012                   .dbline 13
+ 0012           ; PORTA|=0XFF;
+ 0012 8BB3              in R24,0x1b
+ 0014 8F6F              ori R24,255
+ 0016 8BBB              out 0x1b,R24
+ 0018                   .dbline 14
+ 0018           ; PORTB|=0XFF;
+ 0018 88B3              in R24,0x18
+ 001A 8F6F              ori R24,255
+ 001C 88BB              out 0x18,R24
+ 001E                   .dbline 15
+ 001E           ; PORTC|=0XFF;
+ 001E 85B3              in R24,0x15
+ 0020 8F6F              ori R24,255
+ 0022 85BB              out 0x15,R24
+ 0024                   .dbline 16
+ 0024           ; PORTD|=0XFF;
+ 0024 82B3              in R24,0x12
+ 0026 8F6F              ori R24,255
+ 0028 82BB              out 0x12,R24
+ 002A                   .dbline 17
+ 002A           ; }
+ 002A 05C0              xjmp L6
+ 002C           L5:
+ 002C                   .dbline 19
+ 002C           ; else
+ 002C           ; {
+ 002C                   .dbline 20
+ 002C           ; PORTA&=0X00;
+ 002C 2224              clr R2
+ 002E 2BBA              out 0x1b,R2
+ 0030                   .dbline 21
+ 0030           ; PORTB&=0X00;
+ 0030 28BA              out 0x18,R2
+ 0032                   .dbline 22
+ 0032           ; PORTC&=0X00;
+ 0032 25BA              out 0x15,R2
+ 0034                   .dbline 23
+ 0034           ; PORTD&=0X00;
+ 0034 22BA              out 0x12,R2
+ 0036                   .dbline 24
+ 0036           ; }
+ 0036           L6:
+ 0036                   .dbline 25
+ 0036           ; led=!led;//取反
+ 0036 2223              tst R18
+ 0038 19F4              brne L7
+ 003A 41E0              ldi R20,1
+ 003C 50E0              ldi R21,0
+ 003E 02C0              xjmp L8
+ 0040           L7:
+ 0040 4427              clr R20
+ 0042 5527              clr R21
+ 0044           L8:
+ 0044 242F              mov R18,R20
+ 0046                   .dbline 28
+ 0046           ; 
+ 0046           ; ////////////延时////////////////
+ 0046           ; for (i=0; i<255; i++)
+ 0046 4427              clr R20
+ 0048 07C0              xjmp L12
+ 004A           L9:
+ 004A                   .dbline 29
+ 004A           ; for(j=0; j<255;j++)
+ 004A 6627              clr R22
+ 004C 02C0              xjmp L16
+ 004E           L13:
+ 004E                   .dbline 30
+ 004E 0395              inc R16
+ 0050           L14:
+ 0050                   .dbline 29
+ 0050 6395              inc R22
+ 0052           L16:
+ 0052                   .dbline 29
+ 0052 6F3F              cpi R22,255
+ 0054 E0F3              brlo L13
+ 0056           L10:
+ 0056                   .dbline 28
+ 0056 4395              inc R20
+ 0058           L12:
+ 0058                   .dbline 28
+ 0058 4F3F              cpi R20,255
+ 005A B8F3              brlo L9
+ 005C                   .dbline 31
+ 005C           L3:
+ 005C                   .dbline 9
+ 005C D8CF              xjmp L2
+ 005E           X0:
+ 005E                   .dbline -2
+ 005E           L1:
+ 005E                   .dbline 0 ; func end
+ 005E 0895              ret
+ 0060                   .dbsym r led 18 c
+ 0060                   .dbsym r i 20 c
+ 0060                   .dbsym r k 16 c
+ 0060                   .dbsym r j 22 c
+ 0060                   .dbend

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\DEBUG\OBJ\ADC_LCD.pbd</file>
+      <file>$PROJ_DIR$\DEBUG\OBJ\main.pbi</file>
+      <file>$PROJ_DIR$\SourceFile\lcd.c</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$PROJ_DIR$\SourceFile\main.c</file>
+      <file>$PROJ_DIR$\SourceFile\adc12.c</file>
+      <file>$PROJ_DIR$\Debug\Exe\ADC_LCD.d43</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x44x.h</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\DEBUG\OBJ\ADC_LCD.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 7</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\SourceFile\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 4</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 8 9 3 6 2</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

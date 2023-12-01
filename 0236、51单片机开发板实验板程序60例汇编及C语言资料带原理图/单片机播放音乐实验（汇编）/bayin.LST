@@ -1,0 +1,110 @@
+A51 MACRO ASSEMBLER  BAYIN                                                                09/17/2007 16:43:04 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN bayin.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE bayin.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 0150              2     ajmp main
+000B                   3     org 000bh
+000B 0130              4      ajmp timer0
+0030                   5     org 0030h
+                       6     
+0030                   7     timer0:
+0030 C2AF              8     clr ea
+0032 D53318            9     djnz 33h,exit
+0035 855333           10     mov 33h,53h
+0038 D53212           11     djnz 32h,exit
+003B 855232           12     mov 32h,52h
+003E D5310A           13     djnz 31h,exit1
+0041 855131           14     mov 31h,51h
+0044 D53004           15     djnz 30h,exit1
+0047 D2D5             16     setb f0
+0049 014D             17     ajmp exit
+004B B2A1             18     exit1: cpl p2.1
+004D D2AF             19     exit: setb ea
+004F 32               20     reti
+0050                  21     main:
+0050 758902           22     mov tmod,#02h
+0053 75A882           23     mov ie,#82h
+0056 758CFE           24     mov th0,#254
+0059 758AFE           25     mov tl0,#254
+005C 900098           26     mov dptr,#tab
+005F                  27     main1:
+005F 754000           28     mov 40h,#00h
+0062                  29     loop:
+0062 C2AF             30     clr ea
+0064 E540             31     mov a,40h
+0066 93               32     movc a,@a+dptr
+0067 F530             33     mov 30h,a
+0069 F550             34     mov 50h,a
+006B 0540             35     inc 40h
+006D E540             36     mov a,40h
+006F 93               37     movc a,@a+dptr
+0070 F531             38     mov 31h,a
+0072 F551             39     mov 51h,a
+0074 0540             40     inc 40h
+0076 E540             41     mov a,40h
+0078 93               42     movc a,@a+dptr
+0079 F532             43     mov 32h,a
+007B F552             44     mov 52h,a
+007D 0540             45     inc 40h
+007F E540             46     mov a,40h
+0081 93               47     movc a,@a+dptr
+0082 F533             48     mov 33h,a
+0084 F553             49     mov 53h,a
+0086 D2AF             50     setb ea
+0088 D28C             51     setb tr0
+008A 30D5FD           52     jnb f0,$
+008D C2D5             53     clr f0
+008F 0540             54     inc 40h
+0091 E540             55     mov a,40h
+0093 B428CC           56     cjne a,#40,loop
+0096 015F             57     ajmp main1
+0098                  58     tab: ; 30h,31h,32h,33h
+A51 MACRO ASSEMBLER  BAYIN                                                                09/17/2007 16:43:04 PAGE     2
+
+0098 02191810         59     db 2,25,24,16 ;low frequency
+009C 04191808         60     db 4,25,24,8
+00A0 08191804         61     db 8,25,24,4
+00A4 0C190C04         62     db 12,25,12,4
+00A8 14190604         63     db 20,25,6,4
+00AC 1E190504         64     db 30,25,5,4
+00B0 28190404         65     db 40,25,4,4
+00B4 32190304         66     db 50,25,3,4
+00B8 3C190204         67     db 60,25,2,4
+00BC 46320104         68     db 70,50,1,4
+                      69     
+                      70     end 
+A51 MACRO ASSEMBLER  BAYIN                                                                09/17/2007 16:43:04 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EXIT . . . . . . .  C ADDR   004DH   A   
+EXIT1. . . . . . .  C ADDR   004BH   A   
+F0 . . . . . . . .  B ADDR   00D0H.5 A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+LOOP . . . . . . .  C ADDR   0062H   A   
+MAIN . . . . . . .  C ADDR   0050H   A   
+MAIN1. . . . . . .  C ADDR   005FH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+TAB. . . . . . . .  C ADDR   0098H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIMER0 . . . . . .  C ADDR   0030H   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

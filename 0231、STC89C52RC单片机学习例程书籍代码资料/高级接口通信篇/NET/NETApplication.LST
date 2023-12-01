@@ -1,0 +1,149 @@
+C51 COMPILER V7.06   NETAPPLICATION                                                        03/16/2011 16:18:38 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE NETAPPLICATION
+OBJECT MODULE PLACED IN .\Output\NETApplication.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE NETApplication.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\NETApplication.o
+                    -bj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "Board.h" 
+   7          #include "Global.h"
+   8          #include "NETDefine.h" 
+   9          #include "NETInterface.h"
+  10          #include "NETProtocol.h"
+  11          #include "NETApplication.h"
+  12          
+  13          /****************************************************************************************************
+  14          *
+  15          *                                      变量区
+  16          * 
+  17          *****************************************************************************************************/
+  18          static XDATA NET_PACKET Packet;
+  19          
+  20          /****************************************************************************************************
+  21          *
+  22          *                                      函数区
+  23          * 
+  24          *****************************************************************************************************/
+  25          
+  26          /******************************************************************
+  27          *函数名称:NETApDisposeData(void)
+  28          *输    入:无
+  29          *输    出:无
+  30          *说    明:NET 应用程序处理数据
+  31          *******************************************************************/
+  32          void NETApDisposeData(void)
+  33          {
+  34   1              UINT16 usnetRecvLen=0;//声明网络接收长度变量
+  35   1              UINT8  ucdatP      =0; //声明网络数据包中数据的位置变量
+  36   1      
+  37   1              SYSPostCurMsg(RUN_NET_DISPOSE_DATA);//查询法,设置当前任务
+  38   1              
+  39   1          //查询是否接收到数据
+  40   1              usnetRecvLen=NETCiPacketReceive(Packet.p,MAX_FRAME_LEN);
+  41   1              
+  42   1              if(!usnetRecvLen) //接收长度为0
+  43   1              {
+  44   2                      return;        //函数返回
+  45   2              }
+  46   1              
+  47   1           //校验ARP和IP
+  48   1              if(NETPcEthIsArpAndMyIp(Packet.p,usnetRecvLen))
+  49   1              {
+  50   2                      NETPcMakeArpAnswer(Packet.p);//ARP应答
+  51   2                      
+  52   2                      return; //函数返回
+  53   2              }
+  54   1              
+C51 COMPILER V7.06   NETAPPLICATION                                                        03/16/2011 16:18:38 PAGE 2   
+
+  55   1      //校验IP
+  56   1              if(!(NETPcEthIsIpAndMyIp(Packet.p,usnetRecvLen)))
+  57   1              {
+  58   2                      return; //函数返回
+  59   2              }
+  60   1      /*
+  61   1              控制报文协议:ICMP --------------------------------------    ICMP片段
+  62   1      */      
+  63   1          //检测是否ICMP（控制报文协议）
+  64   1              if(IP_PROTO_ICMP_V           == Packet.icmp.ip.protocal\
+  65   1               &&ICMP_TYPE_ECHOREQUEST_V  == Packet.icmp.type )
+  66   1              {
+  67   2                  NETPcMakeEchoReply(Packet.p,usnetRecvLen);  //应答
+  68   2                  return;                                                 //函数返回
+  69   2              }
+  70   1      /*
+  71   1              传输控制协议:TCP--------------------------------------     TCP片段
+  72   1      */      
+  73   1      //检测是否TCP（传输控制协议）
+  74   1          if(IP_PROTO_TCP_V ==      Packet.tcp.ip.protocal \
+  75   1              && TCP_PORT       ==NSTOH(Packet.tcp.destport))
+  76   1              {
+  77   2                      if(Packet.p[TCP_FLAGS_P] & TCP_FLAGS_SYN_V)//检测到新连接
+  78   2                      {
+  79   3                              NETPcMakeTcpSynAck(Packet.p);//发送同步应答信息
+  80   3                              return;//函数返回
+  81   3                      }               
+  82   2                      if(Packet.p[TCP_FLAGS_P] & TCP_FLAGS_ACK_V)//检测到请求端的应答
+  83   2                      {
+  84   3                              NETPcInitLenInfo(Packet.p);//初始化关于网络用到的长度变量
+  85   3                              
+  86   3                              ucdatP=NETPcGetTcpDataPointer();//返回数据位置
+  87   3                              
+  88   3                              if(!ucdatP)//检测不是请求数据的
+  89   3                              {
+  90   4                                      if(Packet.p[TCP_FLAGS_P] & TCP_FLAGS_FIN_V)//检测到终止连接
+  91   4                                      {      
+  92   5                             NETPcMakeTcpAck(Packet.p,1); //发送终止应答
+  93   5                                                                                
+  94   5                                      }
+  95   4                                      
+  96   4                                      return;//函数返回
+  97   4                              }
+  98   3      
+  99   3                              NETPcMakeTcpAck(Packet.p,0);//对请求端发送应答信息
+ 100   3                              //54=EthHead+IPHead+TCPHead
+ 101   3                    //对请求端发送数据
+ 102   3                  
+ 103   3                              NETPcMakeTcpAckWithData(Packet.p,usnetRecvLen-54);
+ 104   3                      }
+ 105   2              }  
+ 106   1      /*
+ 107   1              用户数据包协议:UDP--------------------------------------     UDP片段
+ 108   1      */              
+ 109   1       //检测是否UDP（用户数据包协议）
+ 110   1              if(IP_PROTO_UDP_V ==       Packet.udp.ip.protocal \
+ 111   1               &&UDP_PORT       == NSTOH(Packet.udp.destport))
+ 112   1              {
+ 113   2                  //UDP发送数据
+ 114   2                 //42=EthHead+IPHead+UDPHead
+ 115   2                  NETPcMakeUdpReply(Packet.p,
+ 116   2                                               &Packet.p[UDP_DATA_P],
+C51 COMPILER V7.06   NETAPPLICATION                                                        03/16/2011 16:18:38 PAGE 3   
+
+ 117   2                                                    usnetRecvLen-42,
+ 118   2                                                                UDP_PORT);    
+ 119   2              }
+ 120   1      }
+ 121          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    268    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    254    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,182 @@
+C51 COMPILER V8.02   24XLED                                                                09/17/2007 14:18:51 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE 24XLED
+OBJECT MODULE PLACED IN 24xled.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 24xled.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>
+   3          #define uchar unsigned char 
+   4          #define uint unsigned int 
+   5          #define OP_WRITE 0xa0          // 器件地址以及写入操作 
+   6          #define OP_READ  0xa1           // 器件地址以及读取操作 
+   7          uchar code display[72]={ 
+   8                  0xFE,0xFD,0xFB,0xF7,0xEF,0xDF,0xBF,0x7F, 
+   9                  0xBF,0xDF,0xEF,0xF7,0xFB,0xFD,0xFE,0xFF, 
+  10                  0xFE,0xFC,0xF8,0xF0,0xE0,0xC0,0x80,0x00, 
+  11                  0x80,0xC0,0xE0,0xF0,0xF8,0xFC,0xFE,0xFF, 
+  12                  0xFC,0xF9,0xF3,0xE7,0xCF,0x9F,0x3F, 
+  13                  0x9F,0xCF,0xE7,0xF3,0xF9,0xFC,0xFF, 
+  14                  0xE7,0xDB,0xBD,0x7E,0xBD,0xDB,0xE7,0xFF, 
+  15                  0xE7,0xC3,0x81,0x00,0x81,0xC3,0xE7,0xFF, 
+  16                  0xAA,0x55,0x18,0xFF,0xF0,0x0F, 
+  17                  0x00,0xFF,0x00,0xFF }; 
+  18          sbit SDA = P2^3; 
+  19          sbit SCL = P2^2; 
+  20          void start(); 
+  21          void stop(); 
+  22          uchar shin(); 
+  23          bit shout(uchar write_data); 
+  24          void write_byte( uchar addr, uchar write_data); 
+  25          void fill_byte(uchar fill_size,uchar fill_data); 
+  26          void delayms(uint ms); 
+  27          uchar read_current(); 
+  28          uchar read_random(uchar random_addr); 
+  29          #define delayNOP(); {_nop_();_nop_();_nop_();_nop_();}; 
+  30          /**********************************************************/ 
+  31          main(void) 
+  32          { 
+  33   1         uchar i; 
+  34   1         SDA = 1; 
+  35   1         SCL = 1; 
+  36   1         fill_byte(72,0xff);          // 将前72字节填充0xff 
+  37   1         for(i = 0 ; i < 72; i++)    //写入显示代码到AT24C02 
+  38   1          { 
+  39   2            write_byte(i,display[i]); 
+  40   2          } 
+  41   1         for(i =0 ;i <72 ; i++)      //从AT24C02移出数据送到P0口显示 
+  42   1         { 
+  43   2            P0 = read_random(i); 
+  44   2            delayms(350); 
+  45   2         }  
+  46   1      } 
+  47          /**********************************************************/ 
+  48          void start() 
+  49           //开始位 
+  50          { 
+  51   1         SDA = 1; 
+  52   1         SCL = 1; 
+  53   1         delayNOP(); 
+  54   1         SDA = 0; 
+  55   1         delayNOP(); 
+C51 COMPILER V8.02   24XLED                                                                09/17/2007 14:18:51 PAGE 2   
+
+  56   1         SCL = 0; 
+  57   1      } 
+  58          /**********************************************************/ 
+  59          void stop() 
+  60           // 停止位 
+  61          { 
+  62   1         SDA = 0; 
+  63   1         delayNOP(); 
+  64   1         SCL = 1; 
+  65   1         delayNOP(); 
+  66   1         SDA = 1; 
+  67   1      } 
+  68          /**********************************************************/ 
+  69          uchar shin() 
+  70          // 从AT24C02移出数据到MCU 
+  71          { 
+  72   1         uchar i,read_data; 
+  73   1         for(i = 0; i < 8; i++) 
+  74   1         { 
+  75   2          SCL = 1; 
+  76   2          read_data <<= 1; 
+  77   2          read_data |= SDA; 
+  78   2          SCL = 0; 
+  79   2         } 
+  80   1          return(read_data); 
+  81   1      } 
+  82          /**********************************************************/ 
+  83          bit shout(uchar write_data)  
+  84          // 从MCU移出数据到AT24C02 
+  85          { 
+  86   1         uchar i; 
+  87   1         bit ack_bit; 
+  88   1         for(i = 0; i < 8; i++)   // 循环移入8个位 
+  89   1         { 
+  90   2           SDA = (bit)(write_data & 0x80); 
+  91   2          _nop_(); 
+  92   2          SCL = 1; 
+  93   2          delayNOP(); 
+  94   2          SCL = 0; 
+  95   2          write_data <<= 1; 
+  96   2         } 
+  97   1         SDA = 1;                     // 读取应答 
+  98   1         delayNOP(); 
+  99   1         SCL = 1; 
+ 100   1         delayNOP(); 
+ 101   1         ack_bit = SDA; 
+ 102   1         SCL = 0; 
+ 103   1         return ack_bit;            // 返回AT24C02应答位 
+ 104   1      } 
+ 105          /**********************************************************/ 
+ 106          void write_byte(uchar addr, uchar write_data) 
+ 107          // 在指定地址addr处写入数据write_data 
+ 108          { 
+ 109   1         start(); 
+ 110   1         shout(OP_WRITE); 
+ 111   1         shout(addr); 
+ 112   1         shout(write_data); 
+ 113   1         stop(); 
+ 114   1         delayms(10);          // 写入周期 
+ 115   1      } 
+ 116          /**********************************************************/ 
+ 117          void fill_byte(uchar fill_size,uchar fill_data) 
+C51 COMPILER V8.02   24XLED                                                                09/17/2007 14:18:51 PAGE 3   
+
+ 118          // 填充数据fill_data到EEPROM内fill_size字节 
+ 119          { 
+ 120   1         uchar i; 
+ 121   1         for(i = 0; i < fill_size; i++) 
+ 122   1         { 
+ 123   2           write_byte(i, fill_data); 
+ 124   2         } 
+ 125   1      } 
+ 126          /**********************************************************/ 
+ 127          uchar read_current() 
+ 128          // 在当前地址读取 
+ 129          { 
+ 130   1         uchar read_data; 
+ 131   1         start(); 
+ 132   1         shout(OP_READ); 
+ 133   1         read_data = shin(); 
+ 134   1         stop(); 
+ 135   1         return read_data; 
+ 136   1      } 
+ 137          /**********************************************************/ 
+ 138          uchar read_random(uchar random_addr) 
+ 139          // 在指定地址读取 
+ 140          { 
+ 141   1         start(); 
+ 142   1         shout(OP_WRITE); 
+ 143   1         shout(random_addr); 
+ 144   1         return(read_current()); 
+ 145   1      } 
+ 146          /**********************************************************/ 
+ 147          void delayms(uint ms)  
+ 148          // 延时子程序 
+ 149          { 
+ 150   1         uchar k; 
+ 151   1         while(ms--) 
+ 152   1         { 
+ 153   2            for(k = 0; k < 120; k++); 
+ 154   2         } 
+ 155   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    271    ----
+   CONSTANT SIZE    =     72    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

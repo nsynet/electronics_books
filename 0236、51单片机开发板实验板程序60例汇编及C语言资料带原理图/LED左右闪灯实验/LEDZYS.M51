@@ -1,0 +1,126 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        09/13/2007  10:12:56  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE LEDZYS.obj TO LEDZYS
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  LEDZYS.obj (LEDZYS)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  LEDZYS (LEDZYS)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     003AH     UNIT         ?PR?MAIN?LEDZYS
+            CODE    003DH     0017H     UNIT         ?PR?_DELAYMS?LEDZYS
+            CODE    0054H     0016H     UNIT         ?PR?FLASH?LEDZYS
+            CODE    006AH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   LEDZYS (LEDZYS)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?LEDZYS
+
+?PR?MAIN?LEDZYS
+  +--> ?PR?_DELAYMS?LEDZYS
+  +--> ?PR?FLASH?LEDZYS
+
+?PR?FLASH?LEDZYS
+  +--> ?PR?_DELAYMS?LEDZYS
+
+
+
+SYMBOL TABLE OF MODULE:  LEDZYS (LEDZYS)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LEDZYS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:0054H         PUBLIC        flash
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/13/2007  10:12:56  PAGE 2
+
+
+  C:0003H         PUBLIC        main
+  C:0042H         PUBLIC        _delayms
+  C:003EH         SYMBOL        L?0017
+  -------         PROC          L?0016
+  -------         ENDPROC       L?0016
+  C:003EH         SYMBOL        L?0017
+  -------         PROC          _DELAYMS
+  D:0007H         SYMBOL        ms
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0042H         LINE#         5
+  C:0042H         LINE#         7
+  C:0042H         LINE#         9
+  C:0048H         LINE#         10
+  C:0048H         LINE#         11
+  C:0053H         LINE#         12
+  C:0053H         LINE#         13
+  -------         ENDPROC       _DELAYMS
+  -------         PROC          FLASH
+  C:0054H         LINE#         16
+  C:0054H         LINE#         17
+  C:0054H         LINE#         18
+  C:0057H         LINE#         19
+  C:005AH         LINE#         20
+  C:005FH         LINE#         21
+  C:005FH         LINE#         22
+  C:0062H         LINE#         23
+  C:0065H         LINE#         24
+  -------         ENDPROC       FLASH
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        LED
+  -------         ENDDO         
+  C:0003H         LINE#         27
+  C:0003H         LINE#         28
+  C:0003H         LINE#         30
+  C:0005H         LINE#         31
+  C:0007H         LINE#         33
+  C:0007H         LINE#         34
+  C:0007H         LINE#         36
+  C:0013H         LINE#         37
+  C:0013H         LINE#         38
+  C:0016H         LINE#         39
+  C:0019H         LINE#         41
+  C:001CH         LINE#         43
+  C:001FH         LINE#         45
+  C:0025H         LINE#         46
+  C:0025H         LINE#         48
+  C:0033H         LINE#         49
+  C:0036H         LINE#         50
+  C:0038H         LINE#         52
+  C:003BH         LINE#         54
+  C:003BH         LINE#         56
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        LEDZYS
+
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/13/2007  10:12:56  PAGE 3
+
+
+Program Size: data=9.0 xdata=0 code=118
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

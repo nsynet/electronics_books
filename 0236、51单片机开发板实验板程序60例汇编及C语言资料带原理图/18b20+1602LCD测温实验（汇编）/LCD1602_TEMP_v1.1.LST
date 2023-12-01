@@ -1,0 +1,1032 @@
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN LCD1602_TEMP_v1.1.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE LCD1602_TEMP_v1.1.ASM SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 802E              2     JMP INPORT
+000B                   3     ORG 0BH
+                       4     ;JMP TM0
+0030                   5     ORG 30H
+0030                   6     INPORT:
+  0029                 7     TMP_H EQU 29H ;温度高字节
+  0028                 8     TMP_L EQU 28H
+  00B0                 9     RS EQU P3.0;确定具体硬件的连接方式 
+  00B1                10     RW EQU P3.1 ;确定具体硬件的连接方式
+  00B2                11     E  EQU P3.2 ;确定具体硬件的连接方式
+  0091                12     KEY_SET EQU P1.1
+  0090                13     KEY_UP  EQU P1.0
+  0092                14     KEY_DOWN EQU P1.2
+  0070                15     DS18B20_FLAG EQU 70h
+  0001                16     SET_FLAG EQU 01H
+  0002                17     FLASH_FLAG EQU 02H
+  0003                18     K_ON EQU 03H
+0030 7525FF           19     MOV 25H,#0FFH ;位00h-07h全部置1
+0033 7C0E             20     MOV R4,#14
+0035 758901           21     MOV TMOD,#01H
+0038 758AB0           22     MOV TL0,#0B0H
+003B 758C3C           23     MOV TH0,#3CH
+003E 75A882           24     MOV IE,#10000010B ;(8:总控,2:定时0溢出中断控制位)
+                      25     
+                      26     
+0041                  27     LCD_INIT:
+                      28     ;15MS
+0041 7E1E             29     MOV R6,#30
+0043 912D             30     CALL DELAY_BY_R6 ;15ms
+0045 758038           31     MOV P0,#38H ;写38h
+0048 5160             32     ACALL WRITE_NOT_CHECK_BUSY 
+004A 7E0A             33     MOV R6,#10
+004C 912D             34     CALL DELAY_BY_R6 ;5ms                                                                      
+                                                                                                                        
+                                                                                                       
+004E 758038           35     MOV P0,#38H
+0051 5160             36     ACALL WRITE_NOT_CHECK_BUSY
+0053 7E0A             37     MOV R6,#10
+0055 912D             38     CALL DELAY_BY_R6 ;5ms
+                      39     ;-----设转初始值
+0057 D2B2             40     SETB E
+0059 758001           41     MOV P0,#00000001B ;清屏并光标复位
+005C 516B             42     ACALL ENABLE;调用写入命令子程序 
+005E 758038           43     MOV P0,#00111000B ;8位2行5x7点阵 
+0061 516B             44     ACALL ENABLE ;调用写入命令子程序 
+0063 75800E           45     MOV P0,#00001110B ;显示器开、光标开、光标允许闪烁
+0066 516B             46     ACALL ENABLE ;调用写入命令子程序
+0068 758006           47     MOV P0,#00000110B;文字不动，光标自动右移 
+006B 516B             48     ACALL ENABLE ;调用写入命令子程序
+                      49     
+                      50     
+006D                  51     STORE_DEFINE_DATA: ;把自定义字符存入CGRAM
+006D 758040           52     MOV P0,#40H ;CGRAM起始地址
+0070 516B             53     ACALL ENABLE
+0072 7A08             54     MOV R2,#8
+0074 90045B           55     MOV DPTR,#DEFINE_DATA
+0077 7B00             56     MOV R3,#0
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     2
+
+0079                  57     NEXTP:
+0079 EB               58     MOV A,R3
+007A 93               59     MOVC A,@A+DPTR
+007B F580             60     MOV P0,A
+007D 518E             61     CALL WRITE_DATA_TO_LCD
+007F 0B               62     INC R3
+0080 DAF7             63     DJNZ R2,NEXTP
+                      64     
+                      65     ;****************主程序*******************
+0082                  66     START:
+0082 31FA             67     CALL RESET
+0084 30700E           68     JNB  70h,MAIN1
+0087 7580C0           69     MOV P0,#0C0H ;写入显示起始地址（第二行第一个位置）
+008A 516B             70     ACALL ENABLE ;调用写入命令子程序
+                      71     
+008C                  72     DS18B20_NOT_READY: 
+008C 71AB             73     CALL DISPLAY_18B20_ERROR
+                      74     
+008E                  75     LOOP1: 
+008E 31FA             76     CALL RESET
+0090 307002           77     JNB 70h,MAIN1
+0093 80F9             78     JMP LOOP1 ;如果栓测不到18b20程序下面不执行
+                      79     
+0095                  80     MAIN1: 
+0095 758001           81     MOV P0,#00000001B ;清屏并光标复位
+0098 516B             82     ACALL ENABLE;调用写入命令子程序 
+009A 71BA             83     CALL DISPLAY_WATING ;等待第一次结果.
+009C 31E6             84     CALL SKIP_ROM 
+009E 31F0             85     CALL TEMP_CONV
+00A0 913F             86     CALL DELAY_600MS 
+00A2 758001           87     MOV P0,#00000001B ;清屏并光标复位
+00A5 516B             88     ACALL ENABLE;调用写入命令子程序
+                      89     
+                      90     
+                      91     
+                      92        
+00A7                  93     MAIN :
+00A7 31FA             94     CALL RESET
+00A9 31E6             95     CALL SKIP_ROM 
+00AB 31EB             96     CALL RECALL_EPROM ;调入温度限值.
+00AD                  97     MAIN_MAIN:
+00AD 31D2             98     CALL READ_TEMP ;读18b20的内部温度
+00AF 2070DA           99     JB 70h,DS18B20_NOT_READY ;中途失败!
+00B2 519D            100     CALL DATA_CONV ; 数据转换
+00B4 7104            101     CALL DISPLAY_18B20_TEMP
+00B6 7149            102     CALL DISPLAY_18B20_TEMP_XZ;显示限值.
+00B8 11BF            103     CALL CONTROL
+00BA 30910E          104     JNB KEY_SET,S1
+00BD 80EE            105     JMP MAIN_MAIN
+                     106     
+                     107     
+00BF                 108     CONTROL:
+00BF 300305          109     JNB 03H,CONTROL1
+00C2 120419          110     LCALL DISPLAY_OFF
+00C5 01CA            111     AJMP CONTROL_END
+00C7                 112     CONTROL1:
+00C7 12040A          113     LCALL DISPLAY_ON
+00CA                 114     CONTROL_END:
+00CA 22              115     RET 
+                     116     
+00CB                 117     S1:
+00CB 120434          118     LCALL DELAY_2MS ;延时消抖
+00CE 2091D6          119     JB KEY_SET,MAIN
+00D1 3091FD          120     JNB KEY_SET,$
+00D4 1200D9          121     LCALL KEY ;有键输入
+00D7 01A7            122     AJMP MAIN
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     3
+
+                     123     
+                     124     
+                     125     ;***************键处理程序******************
+00D9 D201            126     KEY: SETB 01H
+00DB                 127     KEY_IN:;有键输入的程序
+00DB 758001          128     MOV P0,#00000001B ;清屏并光标复位
+00DE 516B            129     ACALL ENABLE;调用写入命令子程序
+00E0 300122          130     JNB 01H,DSP_SET_L ;01如果是0,则显示L:
+00E3                 131     DSP_SET_H: ;显示高温的限值
+00E3 758080          132     MOV P0,#10000000B
+00E6 71E2            133     ACALL DISPLAY_SETING_TEMP_H ;显示SETING_TEMP:H ..
+00E8 900463          134     MOV DPTR,#LED_DATA
+00EB A942            135     MOV R1,42H ;码表初值
+00ED 7801            136     MOV R0,#1;字数
+00EF 5156            137     CALL DISPLAY
+                     138     ;---------------显示温度限值低位
+00F1 900463          139     MOV DPTR,#LED_DATA
+00F4 A941            140     MOV R1,41H ;码表初值
+00F6 7801            141     MOV R0,#1;字数
+00F8 5156            142     CALL DISPLAY
+                     143     ;---------------显示温度限值低位
+00FA 900463          144     MOV DPTR,#LED_DATA
+00FD A940            145     MOV R1,40H ;码表初值
+00FF 7801            146     MOV R0,#1;字数
+0101 5156            147     CALL DISPLAY
+0103 2127            148     AJMP KEY_SELECT
+                     149     
+0105                 150     DSP_SET_L:;显示低温的限值
+0105 758080          151     MOV P0,#10000000B
+0108 71F6            152     ACALL DISPLAY_SETING_TEMP_L ;显示SETING_TEMP:L ..
+010A 900463          153     MOV DPTR,#LED_DATA
+010D A945            154     MOV R1,45H ;码表初值
+010F 7801            155     MOV R0,#1;字数
+0111 5156            156     CALL DISPLAY
+                     157     ;---------------显示温度限值低位
+0113 900463          158     MOV DPTR,#LED_DATA
+0116 A944            159     MOV R1,44H ;码表初值
+0118 7801            160     MOV R0,#1;字数
+011A 5156            161     CALL DISPLAY
+                     162     ;---------------显示温度限值低位
+011C 900463          163     MOV DPTR,#LED_DATA
+011F A943            164     MOV R1,43H ;码表初值
+0121 7801            165     MOV R0,#1;字数
+0123 5156            166     CALL DISPLAY
+0125 2127            167     AJMP KEY_SELECT 
+                     168     
+                     169     
+0127                 170     KEY_SELECT:
+0127 309108          171     JNB KEY_SET,K_SET
+012A 309020          172     JNB KEY_UP,K_UP
+012D 30923D          173     JNB KEY_DOWN,K_DOWN
+0130 2127            174     AJMP KEY_SELECT 
+                     175     
+                     176     
+0132                 177     K_SET:
+0132 120434          178     LCALL DELAY_2MS
+0135 120434          179     lcall delay_2ms
+0138 120434          180     lcall delay_2ms
+013B 2091E9          181     JB KEY_SET,KEY_SELECT 
+                     182     
+                     183     
+013E 7DFA            184     MOV R5,#250
+0140                 185     KSET_LOOP:
+0140 20916B          186     JB KEY_SET,KEY_CPL
+0143 120434          187     LCALL DELAY_2MS
+0146 120434          188     LCALL DELAY_2MS
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     4
+
+0149 DDF5            189     DJNZ R5,KSET_LOOP
+014B 21B2            190     AJMP EXT_KEY
+                     191     
+                     192     
+014D                 193     K_UP:
+014D 120434          194     LCALL DELAY_2MS
+0150 120434          195     lcall delay_2ms
+0153 2090D1          196     JB KEY_UP,KEY_SELECT
+0156 30010A          197     JNB  01H,K_UP_LOW
+                     198     
+0159                 199     K_UP_HIGH:
+0159 3090FD          200     JNB KEY_UP,$
+015C E52A            201     MOV A,2AH
+015E 04              202     INC A 
+015F F52A            203     MOV 2AH,A
+0161 8025            204     JMP K_UP_DOWN_END
+                     205     
+0163                 206     K_UP_LOW:
+0163 3090FD          207     JNB KEY_UP,$
+0166 E52B            208     MOV A,2BH
+0168 04              209     INC A 
+0169 F52B            210     MOV 2BH,A
+016B 801B            211     JMP K_UP_DOWN_END
+                     212     
+                     213     ;*********************
+                     214     
+016D                 215     K_DOWN:
+016D 120434          216     LCALL DELAY_2MS
+0170 2092B4          217     JB KEY_DOWN,KEY_SELECT
+0173 30010A          218     JNB  01H,K_DOWN_LOW
+                     219     
+0176                 220     K_DOWN_HIGH:
+0176 3092FD          221     JNB KEY_DOWN,$
+0179 E52A            222     MOV A,2AH
+017B 14              223     DEC A 
+017C F52A            224     MOV 2AH,A
+017E 8008            225     JMP K_UP_DOWN_END
+                     226     
+0180                 227     K_DOWN_LOW:
+0180 3092FD          228     JNB KEY_DOWN,$
+0183 E52B            229     MOV A,2BH
+0185 14              230     DEC A 
+0186 F52B            231     MOV 2BH,A
+                     232     
+0188                 233     K_UP_DOWN_END:
+                     234     
+0188 E52A            235     MOV A,2AH
+018A 75F00A          236     MOV B,#10
+018D 84              237     DIV AB
+018E 85F040          238     MOV 40H,B ;高温限值个位 
+0191 75F00A          239     MOV B,#10
+0194 84              240     DIV AB
+0195 85F041          241     MOV 41H,B;十位
+0198 F542            242     MOV 42H,A;百位
+                     243     ;----------------------------
+019A E52B            244     MOV A,2BH
+019C 75F00A          245     MOV B,#10
+019F 84              246     DIV AB
+01A0 85F043          247     MOV 43H,B ;低温限值位个位 
+01A3 75F00A          248     MOV B,#10
+01A6 84              249     DIV AB
+01A7 85F044          250     MOV 44H,B ;十位
+01AA F545            251     MOV 45H,A ;百位
+                     252     
+01AC 01DB            253     AJMP KEY_IN 
+                     254     
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     5
+
+                     255     
+01AE                 256     KEY_CPL:
+01AE B201            257     CPL 01H
+01B0 01DB            258     AJMP KEY_IN
+                     259     
+                     260     
+                     261     
+                     262     
+01B2                 263     EXT_KEY:
+01B2 758001          264     MOV P0,#00000001B ;清屏并光标复位
+01B5 516B            265     CALL ENABLE;调用写入命令子程序
+01B7 71CE            266     CALL DISPLAY_SAVE
+                     267     
+01B9 31FA            268     CALL RESET
+01BB 31E6            269     CALL SKIP_ROM
+01BD 744E            270     MOV A,#4EH
+01BF 511B            271     CALL WRITE
+01C1 E52A            272     MOV A,2AH ;2A数据送高温限值寄存器.
+01C3 511B            273     CALL WRITE
+01C5 E52B            274     MOV A,2BH ;2B数据送低温限什寄存器.
+01C7 511B            275     CALL WRITE
+                     276     
+01C9 31FA            277     CALL RESET 
+01CB 31E6            278     CALL SKIP_ROM
+01CD 7448            279     MOV A,#48H ;将高低温限值寄存器数据送18B20-EPROM保存.
+01CF 511B            280     CALL WRITE
+01D1                 281     A_END:
+                     282     
+01D1 22              283     RET
+                     284     
+                     285     
+                     286     
+                     287     
+                     288     
+                     289     
+                     290     
+                     291     ;***************18b20指令子程序**********************
+01D2                 292     READ_TEMP:  ;读1820内部温度子程序.
+01D2 31FA            293          CALL RESET
+01D4 20700E          294          JB 70h,EXT1 
+01D7 31E6            295          CALL SKIP_ROM 
+01D9 31F0            296          CALL TEMP_CONV ;温度AD变换
+01DB 913F            297          CALL DELAY_600MS  ;时........
+01DD 31FA            298          CALL RESET
+01DF 31E6            299          CALL SKIP_ROM 
+01E1 31F5            300          CALL TEMP_GET ;发取温度的命令
+01E3 5134            301          CALL READ ;接收...
+01E5                 302               EXT1:
+01E5 22              303          RET 
+                     304     
+01E6                 305     SKIP_ROM:;跳过ROM检测
+01E6 74CC            306         MOV A,#0CCH ;#0CCH为跳过rom命令
+01E8 511B            307         CALL WRITE
+01EA 22              308         RET 
+                     309     
+01EB                 310     RECALL_EPROM:;重调Eprom
+01EB 74B8            311         MOV A,#0B8H
+01ED 511B            312         CALL WRITE
+01EF 22              313         RET 
+                     314     
+                     315      
+01F0                 316     TEMP_CONV:
+01F0 7444            317         MOV A,#44H ;AD变换
+01F2 511B            318              CALL WRITE
+01F4 22              319              RET
+                     320     
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     6
+
+01F5                 321     TEMP_GET:
+01F5 74BE            322         MOV A ,#0BEH;读18b20命令
+01F7 511B            323         CALL WRITE
+01F9 22              324         RET 
+                     325     
+                     326     
+                     327     ;****************************18B20基本时序子程序*********************************
+01FA                 328     RESET:  ;初始化子程序
+01FA D2A7            329        SETB P2.7 
+01FC 00              330        NOP 
+01FD C2A7            331        CLR P2.7    ;拉低
+01FF 7B96            332        MOV R3,#150 ; *4=600US
+0201 9128            333        CALL DELAY_BY_R3
+0203 D2A7            334        SETB P2.7    ;拉高
+0205 7B0F            335        MOV R3,#15  ; 60US
+0207 9128            336        CALL DELAY_BY_R3
+0209 7B3C            337        MOV R3,#60 ;4个周期*60=240US内检测 
+020B 30A706          338     A1: JNB P2.7,A2 ;检测到低平信号
+020E DBFB            339         DJNZ R3,A1 ;如果没有应答的低电平信号,返回A1重新检测,超时后下一行,
+0210 D270            340         SETB 70h ;DS1820不存在.
+0212 8006            341         JMP A3
+0214 C270            342     A2: CLR 70h
+0216 AB78            343         MOV R3,120;240US;等恢复时间2*120=240us
+0218 DBFE            344         DJNZ R3, $
+021A                 345     A3: 
+021A 22              346        RET
+                     347     ;------------------------
+                     348     
+021B                 349     WRITE:
+021B 7A08            350         MOV R2,#8;一个字节为8位
+021D C3              351         CLR C ;C位清0 C位用来放A的一位数据,用移位的方法放入C
+021E D2A7            352     B1: SETB P2.7
+0220 00              353              NOP 
+0221 C2A7            354         CLR P2.7
+0223 7B04            355              MOV R3,#4 ;16US
+0225 9128            356              CALL DELAY_BY_R3
+0227 13              357              RRC A        ;把A中的数送入C
+0228 92A7            358              MOV P2.7,C   ;把C送入总线
+022A 7B0C            359         MOV R3,#12    ;48US(一位数据的发送:60us<tx<120us)
+022C 9128            360              CALL DELAY_BY_R3
+022E D2A7            361              SETB P2.7  ;拉高1us结束一位
+0230 00              362              NOP 
+0231 DAEB            363              DJNZ R2,B1
+0233 22              364              RET
+                     365     
+0234                 366     READ:
+0234 7904            367     MOV R1,#4 ;接收4个字节数据依次是1.低位 2.高位. 3.高限 4.低限
+0236 7828            368     MOV R0,#28H;低位放28H;高位放29h (1. 28H,2. 29H 3. 2AH 4. 2BH )
+0238 7A08            369     C0: MOV R2,#8;一字节数据8位
+023A C3              370     C1: CLR C ;清除C
+023B D2A7            371     SETB P2.7
+023D 00              372     NOP 
+023E 00              373     NOP 
+023F C2A7            374     CLR P2.7 ;拉低.
+0241 00              375     NOP ;1us秒后拉高?
+0242 D2A7            376     SETB P2.7
+0244 7B04            377     MOV R3,#4  ;16us后采数据
+0246 9128            378     CALL DELAY_BY_R3
+0248 A2A7            379     MOV C,P2.7 ;读出18b20的数据
+024A 13              380     RRC  A ;移入A
+024B 7B0C            381     MOV R3,#12;48US恢复时间
+024D 9128            382     CALL DELAY_BY_R3
+024F DAE9            383     DJNZ R2,C1 ;一个字节收完
+0251 F6              384     MOV @R0,A  ;移入存储位
+0252 08              385     INC  R0     ;下一位;29h
+0253 D9E3            386     DJNZ R1,C0 ;全部取完吗?没有重复
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     7
+
+0255 22              387     RET 
+                     388     ;*********************************************************************************
+                     389     
+                     390     
+                     391     
+                     392     ;*****************LCD_控制命令***************
+0256 E9              393     DISPLAY: MOV A,R1
+0257 93              394     MOVC A,@A+DPTR
+0258 F580            395     MOV P0,A
+025A 518E            396     CALL WRITE_DATA_TO_LCD
+025C 09              397     INC R1
+025D D8F7            398     DJNZ R0,DISPLAY
+025F 22              399     RET 
+                     400     
+                     401     
+0260                 402     WRITE_NOT_CHECK_BUSY:
+0260 D2B2            403     SETB E 
+0262 00              404     NOP
+0263 00              405     NOP 
+0264 C2B0            406     CLR RS ;写入控制命令的子程序
+0266 C2B1            407     CLR RW 
+0268 C2B2            408     CLR E 
+026A 22              409     RET 
+                     410     
+                     411     
+026B                 412     ENABLE:
+026B D2B2            413     SETB E
+026D 00              414     NOP
+026E 00              415     NOP
+026F C2B0            416     CLR RS ;写入控制命令的子程序
+0271 C2B1            417     CLR RW 
+0273 C2B2            418     CLR E 
+0275 517A            419     ACALL TEST_BUSY
+0277 D2B2            420     SETB E 
+0279 22              421     RET
+                     422     
+                     423     
+027A                 424     TEST_BUSY:
+027A D2B2            425     SETB E 
+027C 00              426     NOP
+027D 00              427     NOP 
+027E 7580FF          428     MOV P0,#0FFH ;判断液晶显示器是否忙的子程序
+0281 C2B0            429     CLR RS 
+0283 D2B1            430     SETB RW
+0285 C2B2            431     CLR E 
+0287 00              432     NOP 
+0288 D2B2            433     SETB E 
+028A 2087ED          434     JB P0.7,TEST_BUSY ;如果P1.7为高电平表示忙就循环等待 
+028D 22              435     RET
+                     436     
+                     437     
+028E                 438     WRITE_DATA_TO_LCD:
+028E D2B2            439     SETB E 
+0290 00              440     NOP
+0291 00              441     NOP
+0292 D2B0            442     SETB RS ;RS=1 
+0294 C2B1            443     CLR RW ;RW=0 ;准备写入数据
+0296 C2B2            444     CLR E ;E=0 ;执行显示命令
+0298 517A            445     ACALL TEST_BUSY ;判断液晶模块是否忙?
+029A D2B2            446     SETB E ;E=1 ;显示完成,程序停车
+029C 22              447     RET 
+                     448     
+                     449     
+                     450     
+                     451     
+                     452     ;***************************数据转换***************************
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     8
+
+029D                 453     DATA_CONV:  ;数据转换
+029D E528            454     MOV A,28H ;低字节
+029F 540F            455     ANL A,#0FH;去除高位
+02A1 75F006          456     MOV B,#6;乘6得到实际数值的100倍.
+02A4 A4              457     MUL AB
+02A5 75F00A          458     MOV B,#10
+02A8 84              459     DIV AB
+02A9 F533            460     MOV 33H,A;小数位高
+02AB 85F032          461     MOV 32H,B; 小数位低
+02AE E528            462     MOV A,28H
+02B0 A248            463     MOV C,29H.0 ;29h高位的低4字节
+02B2 13              464     RRC A 
+02B3 A249            465     MOV C,29H.1
+02B5 13              466     RRC A 
+02B6 A24A            467     MOV C,29H.2
+02B8 13              468     RRC A 
+02B9 A24B            469     MOV C,29H.3
+02BB 13              470     RRC A 
+02BC F528            471     MOV 28H,A ;重新合成.结果存在28H.
+02BE E528            472     MOV A,28H
+02C0 75F00A          473     MOV B,#10
+02C3 84              474     DIV AB 
+02C4 F526            475     MOV 26H,A ;整数位高
+02C6 85F025          476     MOV 25H,B ;整数位低 
+                     477     ;-------------------------
+02C9 E52A            478     MOV A,2AH
+02CB 75F00A          479     MOV B,#10
+02CE 84              480     DIV AB
+02CF 85F040          481     MOV 40H,B ;高温限值个位 
+02D2 75F00A          482     MOV B,#10
+02D5 84              483     DIV AB
+02D6 85F041          484     MOV 41H,B;十位
+02D9 F542            485     MOV 42H,A;百位
+                     486     ;----------------------------
+02DB E52B            487     MOV A,2BH
+02DD 75F00A          488     MOV B,#10
+02E0 84              489     DIV AB
+02E1 85F043          490     MOV 43H,B ;低温限值位个位 
+02E4 75F00A          491     MOV B,#10
+02E7 84              492     DIV AB
+02E8 85F044          493     MOV 44H,B ;十位
+02EB F545            494     MOV 45H,A ;百位
+                     495     
+02ED C3              496     CLR C 
+02EE E528            497     MOV A,28H;现温度值与高温限值比较
+02F0 952A            498     SUBB A,2AH
+02F2 4009            499     JC BIG ;如果高.则关机器
+02F4 C3              500     CLR C 
+02F5 E52B            501     MOV A,2BH;现温度与低温限值比较
+02F7 9528            502     SUBB A,28H
+02F9 4006            503     JC X_BIG ;低温限值比现温高,则开机器
+02FB 6103            504     AJMP CONVERT_END
+02FD                 505     BIG:
+02FD C203            506     CLR K_ON
+02FF 6103            507     AJMP CONVERT_END
+0301                 508     X_BIG:
+0301 D203            509     SETB K_ON 
+0303                 510     CONVERT_END:
+0303 22              511     RET 
+                     512     
+                     513     
+                     514     
+                     515     
+                     516     
+                     517     
+                     518     
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE     9
+
+                     519     ;********************显示温度*************************
+0304                 520     DISPLAY_18B20_TEMP: ;LCD_显示子程序
+0304 758080          521     MOV P0,#10000000B; 显示位置
+0307 516B            522     ACALL ENABLE ;执行指令
+0309 9004A1          523     MOV DPTR,#TAB3;显示'WENDU:'
+030C 7900            524     MOV R1,#0 ;码表初值
+030E 7807            525     MOV R0,#7;字数
+0310 5156            526     CALL DISPLAY
+                     527     ;---------------显示温度值高位
+0312 900463          528     MOV DPTR,#LED_DATA
+0315 A926            529     MOV R1,26H ;码表初值
+0317 7801            530     MOV R0,#1;字数
+0319 5156            531     CALL DISPLAY
+                     532     ;---------------显示温度值低位
+031B 900463          533     MOV DPTR,#LED_DATA
+031E A925            534     MOV R1,25H ;码表初值
+0320 7801            535     MOV R0,#1;字数
+0322 5156            536     CALL DISPLAY
+                     537     ;---------------显示小数点
+0324 9004A8          538     MOV DPTR,#DOT
+0327 7900            539     MOV R1,#0 ;码表初值
+0329 7801            540     MOV R0,#1;字数
+032B 5156            541     CALL DISPLAY
+                     542     ;---------------显示温度值小数高位
+032D 900463          543     MOV DPTR,#LED_DATA
+0330 A933            544     MOV R1,33H ;码表初值
+0332 7801            545     MOV R0,#1;字数
+0334 5156            546     CALL DISPLAY
+                     547     ;---------------显示温度值小数低位
+0336 900463          548     MOV DPTR,#LED_DATA
+0339 A932            549     MOV R1,32H ;码表初值
+033B 7801            550     MOV R0,#1;字数
+033D 5156            551     CALL DISPLAY
+                     552     ;---------------显示单位度
+033F 9004A9          553     MOV DPTR,#SIGN
+0342 7900            554     MOV R1,#0 ;码表初值
+0344 7802            555     MOV R0,#2;字数
+0346 5156            556     CALL DISPLAY
+0348 22              557     RET 
+                     558     
+                     559     
+                     560     
+                     561     ;******************显示限值.*****************
+0349                 562     DISPLAY_18B20_TEMP_XZ:
+0349 7580C0          563     MOV P0,#11000000B; 显示位置
+034C 516B            564     ACALL ENABLE ;执行指令
+034E 9004AB          565     MOV DPTR,#TAB_L ; 显示'L:'
+0351 7900            566     MOV R1,#0 ;码表初值
+0353 7802            567     MOV R0,#2;字数
+0355 5156            568     CALL DISPLAY
+                     569     
+                     570     ;---------------显示温度限值高位
+0357 900463          571     MOV DPTR,#LED_DATA
+035A A945            572     MOV R1,45H ;码表初值
+035C 7801            573     MOV R0,#1;字数
+035E 5156            574     CALL DISPLAY
+                     575     ;---------------显示温度限值低位
+0360 900463          576     MOV DPTR,#LED_DATA
+0363 A944            577     MOV R1,44H ;码表初值
+0365 7801            578     MOV R0,#1;字数
+0367 5156            579     CALL DISPLAY
+                     580     ;-----------------
+0369 900463          581     MOV DPTR,#LED_DATA
+036C A943            582     MOV R1,43H ;码表初值
+036E 7801            583     MOV R0,#1;字数
+0370 5156            584     CALL DISPLAY
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE    10
+
+                     585     
+0372 7580C7          586     MOV P0,#11000111B; 显示位置
+0375 516B            587     ACALL ENABLE 
+                     588     ;----
+0377 9004AD          589     MOV DPTR,#TAB_H ; 显示'H:'
+037A 7900            590     MOV R1,#0 ;码表初值
+037C 7802            591     MOV R0,#2;字数
+037E 5156            592     CALL DISPLAY
+                     593     ;---------------显示高温度限值高位
+0380 900463          594     MOV DPTR,#LED_DATA
+0383 A942            595     MOV R1,42H ;码表初值
+0385 7801            596     MOV R0,#1;字数
+0387 5156            597     CALL DISPLAY
+                     598     ;---------------显示高温度限值低位
+0389 900463          599     MOV DPTR,#LED_DATA
+038C A941            600     MOV R1,41H ;码表初值
+038E 7801            601     MOV R0,#1;字数
+0390 5156            602     CALL DISPLAY
+                     603     ;-------------------
+0392 900463          604     MOV DPTR,#LED_DATA
+0395 A940            605     MOV R1,40H ;码表初值
+0397 7801            606     MOV R0,#1;字数
+0399 5156            607     CALL DISPLAY
+039B 22              608     RET 
+                     609     
+                     610     
+                     611     
+                     612           
+                     613     ;**********************提示语**********************
+039C                 614     DISPLAY_18B20_HELLO:
+039C 758080          615     MOV P0,#10000000B; 显示位置
+039F 516B            616     ACALL ENABLE ;执行指令
+03A1 90046D          617     MOV DPTR,#TAB_HELLO
+03A4 7900            618     MOV R1,#0 ;码表初值
+03A6 7810            619     MOV R0,#16;字数
+03A8 5156            620     CALL DISPLAy
+03AA 22              621     RET 
+                     622     
+                     623     
+                     624     
+                     625     
+                     626     
+                     627     
+                     628     
+                     629     
+                     630     
+                     631     
+                     632     
+                     633     
+                     634     
+03AB                 635     DISPLAY_18B20_ERROR:
+03AB 758001          636     MOV P0,#00000001B ;清屏并光标复位
+03AE 516B            637     ACALL ENABLE
+03B0 900484          638     MOV DPTR,#TAB1
+03B3 7900            639     MOV R1,#0 ;码表初值
+03B5 7810            640     MOV R0,#16;字数
+03B7 5156            641     CALL DISPLAy
+03B9 22              642     RET 
+                     643     
+                     644     
+                     645     
+03BA                 646     DISPLAY_WATING: 
+03BA 758001          647     MOV P0,#00000001B ;清屏并光标复位
+03BD 516B            648     ACALL ENABLE;调用写入命令子程序
+03BF 758080          649     MOV P0,#10000000B; 显示位置
+03C2 516B            650     ACALL ENABLE ;执行指令
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE    11
+
+03C4 900494          651     MOV DPTR,#TAB2
+03C7 7900            652     MOV R1,#0 ;码表初值
+03C9 780D            653     MOV R0,#13;字数
+03CB 5156            654     CALL DISPLAy
+03CD 22              655     RET 
+                     656     
+03CE                 657     DISPLAY_SAVE: 
+03CE 758001          658     MOV P0,#00000001B ;清屏并光标复位
+03D1 516B            659     ACALL ENABLE;调用写入命令子程序
+03D3 758080          660     MOV P0,#10000000B; 显示位置
+03D6 516B            661     ACALL ENABLE ;执行指令
+03D8 9004C9          662     MOV DPTR,#TAB_SAVE
+03DB 7900            663     MOV R1,#0 ;码表初值
+03DD 780A            664     MOV R0,#10;字数
+03DF 5156            665     CALL DISPLAy
+03E1 22              666     RET 
+                     667     
+                     668     
+03E2                 669     DISPLAY_SETING_TEMP_H:
+03E2 758001          670     MOV P0,#00000001B ;清屏并光标复位
+03E5 516B            671     ACALL ENABLE;调用写入命令子程序
+03E7 758080          672     MOV P0,#10000000B; 显示位置
+03EA 516B            673     ACALL ENABLE ;执行指令
+03EC 9004AF          674     MOV DPTR,#TAB_SETING_TEMP_H
+03EF 7900            675     MOV R1,#0 ;码表初值
+03F1 780D            676     MOV R0,#13;字数
+03F3 5156            677     CALL DISPLAy
+03F5 22              678     RET
+                     679     
+03F6                 680     DISPLAY_SETING_TEMP_L:
+03F6 758001          681     MOV P0,#00000001B ;清屏并光标复位
+03F9 516B            682     ACALL ENABLE;调用写入命令子程序
+03FB 758080          683     MOV P0,#10000000B; 显示位置
+03FE 516B            684     ACALL ENABLE ;执行指令
+0400 9004BC          685     MOV DPTR,#TAB_SETING_TEMP_L
+0403 7900            686     MOV R1,#0 ;码表初值
+0405 780D            687     MOV R0,#13;字数
+0407 5156            688     CALL DISPLAy
+0409 22              689     RET
+                     690     
+                     691     
+040A                 692     DISPLAY_ON:
+040A 7580CD          693     MOV P0,#11001101B; 显示位置
+040D 516B            694     ACALL ENABLE ;执行指令
+040F 9004D3          695     MOV DPTR,#TAB_ON
+0412 7900            696     MOV R1,#0 ;码表初值
+0414 7803            697     MOV R0,#3;字数
+0416 5156            698     CALL DISPLAy
+0418 22              699     RET
+                     700     
+0419                 701     DISPLAY_OFF:
+0419 7580CD          702     MOV P0,#11001101B; 显示位置
+041C 516B            703     ACALL ENABLE ;执行指令
+041E 9004D6          704     MOV DPTR,#TAB_OFF
+0421 7900            705     MOV R1,#0 ;码表初值
+0423 7803            706     MOV R0,#3;字数
+0425 5156            707     CALL DISPLAy
+0427 22              708     RET
+                     709     
+                     710     
+                     711     
+                     712     
+                     713     
+                     714     
+                     715     
+                     716     
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE    12
+
+                     717      
+                     718     ;*****************提示语**********************
+                     719     
+                     720     
+                     721     
+                     722     
+                     723     
+                     724     
+                     725     
+                     726     
+                     727     
+                     728     
+                     729     
+                     730     
+                     731     ;**************廷时程序************************
+0428                 732     DELAY_BY_R3: 
+0428 00              733     NOP
+0429 00              734     NOP 
+042A DBFC            735     DJNZ R3,DELAY_BY_R3
+042C 22              736     RET 
+                     737     
+042D                 738     DELAY_BY_R6:
+042D 7F00            739     D1: MOV R7,#0
+042F DFFE            740     DJNZ R7,$
+0431 DEFA            741     DJNZ R6,D1
+0433 22              742     RET
+                     743     
+                     744     
+                     745     
+                     746     
+0434                 747     DELAY_2MS:
+0434 7E02            748               MOV R6,#2
+0436 7F4B            749     F2:       MOV R7,#75
+0438 00              750     F1:       NOP 
+0439 00              751               NOP 
+043A DFFC            752               DJNZ R7,F1
+043C DEF8            753               DJNZ R6,F2
+043E 22              754               RET 
+                     755     
+043F                 756     DELAY_600MS:
+043F 7E00            757               MOV R6,#0
+0441 7F00            758     G2:       MOV R7,#0
+0443 00              759     G1:       NOP 
+0444 00              760               NOP
+0445 00              761               NOP
+0446 00              762               NOP 
+0447 00              763               NOP 
+0448 00              764               NOP
+0449 00              765               NOP 
+044A 00              766               NOP
+044B DFF6            767               DJNZ R7,G1
+044D DEF2            768               DJNZ R6,G2
+044F 22              769               RET 
+                     770      
+0450                 771     DELAY_1M:
+0450 7E00            772     MOV R6,#0
+0452 7F00            773     MOV R7,#0
+0454 00              774     E1:  NOP
+0455 00              775     NOP
+0456 DFFC            776     DJNZ R7,E1
+0458 DEFA            777     DJNZ R6,E1
+045A 22              778     RET 
+                     779     
+                     780     
+                     781     
+                     782     
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE    13
+
+045B                 783     DEFINE_DATA:
+045B 0C12120C        784     DB 0CH,12H,12H,0CH,00H,00H,00H,00H;度
+045F 00000000                
+                     785     ;DB 04H,0CH,12H,0DH,1EH,04H,08H,00H;今
+                     786     ;DB 0EH,04H,1FH,04H,04H,0AH,11H,00H;天
+                     787     ;DB 0EH,0EH,0EH,1FH,04H,0EH,17H,00H;是
+                     788     ;DB 10H,1FH,02H,0FH,0AH,1FH,02H,00H;年
+                     789     ;DB 0FH,09H,0FH,09H,0FH,09H,13H,00H;月
+                     790     ;DB 0FH,09H,09H,0FH,09H,09H,0FH,00H;日
+                     791     
+0463 30313233        792     LED_DATA: DB '0123456789'
+0467 34353637                
+046B 3839                    
+                     793              
+                     794     
+046D                 795     TAB_HELLO: 
+046D 48656C6C        796         DB 'Hello!' ;6
+0471 6F21                    
+0473 00010203        797         DB 0H,1H,2H,3H,4H,5H,6H
+0477 040506                  
+                     798     
+047A                 799     TAB_TESTING:
+047A 54455854        800         DB 'TEXTING...' ;10
+047E 494E472E                
+0482 2E2E                    
+                     801     
+0484                 802     TAB1:
+0484 31384232        803         DB '18B20 NO CONNECT'
+0488 30204E4F                
+048C 20434F4E                
+0490 4E454354                
+                     804     
+0494                 805     TAB2:
+0494 57616974        806         DB 'Waiting......'
+0498 696E672E                
+049C 2E2E2E2E                
+04A0 2E                      
+                     807     
+04A1                 808     TAB3:
+04A1 57454E44        809         DB 'WENDU: '
+04A5 553A20                  
+                     810     
+04A8                 811     DOT:
+04A8 2E              812         DB "."
+                     813     
+04A9                 814     SIGN:
+04A9 0043            815         DB 00H,'C'
+                     816     
+04AB                 817     TAB_L:
+04AB 4C3A            818         DB 'L:'
+                     819     
+04AD                 820     TAB_H:
+04AD 483A            821         DB 'H:' 
+                     822        
+04AF                 823     TAB_SETING_TEMP_H:
+04AF 53455449        824         DB 'SETING_TMP:H '
+04B3 4E475F54                
+04B7 4D503A48                
+04BB 20                      
+                     825     
+04BC                 826     TAB_SETING_TEMP_L:
+04BC 53455449        827         DB 'SETING_TMP:L '
+04C0 4E475F54                
+04C4 4D503A4C                
+04C8 20                      
+                     828     
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE    14
+
+04C9                 829     TAB_SAVE:
+04C9 53415645        830         DB 'SAVEING...'
+04CD 494E472E                
+04D1 2E2E                    
+                     831     
+04D3                 832     TAB_ON:
+04D3 4F4E20          833         DB 'ON '
+                     834     
+04D6                 835     TAB_OFF:
+04D6 4F4646          836         DB 'OFF'
+                     837     
+                     838     
+                     839     END 
+                             
+                             
+                             
+                             
+                             
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE    15
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                T Y P E  V A L U E   ATTRIBUTES
+
+A1. . . . . . . . . .  C ADDR   020BH   A   
+A2. . . . . . . . . .  C ADDR   0214H   A   
+A3. . . . . . . . . .  C ADDR   021AH   A   
+A_END . . . . . . . .  C ADDR   01D1H   A   
+B . . . . . . . . . .  D ADDR   00F0H   A   
+B1. . . . . . . . . .  C ADDR   021EH   A   
+BIG . . . . . . . . .  C ADDR   02FDH   A   
+C0. . . . . . . . . .  C ADDR   0238H   A   
+C1. . . . . . . . . .  C ADDR   023AH   A   
+CONTROL . . . . . . .  C ADDR   00BFH   A   
+CONTROL1. . . . . . .  C ADDR   00C7H   A   
+CONTROL_END . . . . .  C ADDR   00CAH   A   
+CONVERT_END . . . . .  C ADDR   0303H   A   
+D1. . . . . . . . . .  C ADDR   042DH   A   
+DATA_CONV . . . . . .  C ADDR   029DH   A   
+DEFINE_DATA . . . . .  C ADDR   045BH   A   
+DELAY_1M. . . . . . .  C ADDR   0450H   A   
+DELAY_2MS . . . . . .  C ADDR   0434H   A   
+DELAY_600MS . . . . .  C ADDR   043FH   A   
+DELAY_BY_R3 . . . . .  C ADDR   0428H   A   
+DELAY_BY_R6 . . . . .  C ADDR   042DH   A   
+DISPLAY . . . . . . .  C ADDR   0256H   A   
+DISPLAY_18B20_ERROR .  C ADDR   03ABH   A   
+DISPLAY_18B20_HELLO .  C ADDR   039CH   A   
+DISPLAY_18B20_TEMP. .  C ADDR   0304H   A   
+DISPLAY_18B20_TEMP_XZ  C ADDR   0349H   A   
+DISPLAY_OFF . . . . .  C ADDR   0419H   A   
+DISPLAY_ON. . . . . .  C ADDR   040AH   A   
+DISPLAY_SAVE. . . . .  C ADDR   03CEH   A   
+DISPLAY_SETING_TEMP_H  C ADDR   03E2H   A   
+DISPLAY_SETING_TEMP_L  C ADDR   03F6H   A   
+DISPLAY_WATING. . . .  C ADDR   03BAH   A   
+DOT . . . . . . . . .  C ADDR   04A8H   A   
+DS18B20_FLAG. . . . .  N NUMB   0070H   A   
+DS18B20_NOT_READY . .  C ADDR   008CH   A   
+DSP_SET_H . . . . . .  C ADDR   00E3H   A   
+DSP_SET_L . . . . . .  C ADDR   0105H   A   
+E . . . . . . . . . .  B ADDR   00B0H.2 A   
+E1. . . . . . . . . .  C ADDR   0454H   A   
+ENABLE. . . . . . . .  C ADDR   026BH   A   
+EXT1. . . . . . . . .  C ADDR   01E5H   A   
+EXT_KEY . . . . . . .  C ADDR   01B2H   A   
+F1. . . . . . . . . .  C ADDR   0438H   A   
+F2. . . . . . . . . .  C ADDR   0436H   A   
+FLASH_FLAG. . . . . .  N NUMB   0002H   A   
+G1. . . . . . . . . .  C ADDR   0443H   A   
+G2. . . . . . . . . .  C ADDR   0441H   A   
+IE. . . . . . . . . .  D ADDR   00A8H   A   
+INPORT. . . . . . . .  C ADDR   0030H   A   
+KEY . . . . . . . . .  C ADDR   00D9H   A   
+KEY_CPL . . . . . . .  C ADDR   01AEH   A   
+KEY_DOWN. . . . . . .  B ADDR   0090H.2 A   
+KEY_IN. . . . . . . .  C ADDR   00DBH   A   
+KEY_SELECT. . . . . .  C ADDR   0127H   A   
+KEY_SET . . . . . . .  B ADDR   0090H.1 A   
+KEY_UP. . . . . . . .  B ADDR   0090H.0 A   
+KSET_LOOP . . . . . .  C ADDR   0140H   A   
+K_DOWN. . . . . . . .  C ADDR   016DH   A   
+K_DOWN_HIGH . . . . .  C ADDR   0176H   A   
+K_DOWN_LOW. . . . . .  C ADDR   0180H   A   
+A51 MACRO ASSEMBLER  LCD1602_TEMP_V1_1                                                    09/17/2007 14:00:32 PAGE    16
+
+K_ON. . . . . . . . .  N NUMB   0003H   A   
+K_SET . . . . . . . .  C ADDR   0132H   A   
+K_UP. . . . . . . . .  C ADDR   014DH   A   
+K_UP_DOWN_END . . . .  C ADDR   0188H   A   
+K_UP_HIGH . . . . . .  C ADDR   0159H   A   
+K_UP_LOW. . . . . . .  C ADDR   0163H   A   
+LCD_INIT. . . . . . .  C ADDR   0041H   A   
+LED_DATA. . . . . . .  C ADDR   0463H   A   
+LOOP1 . . . . . . . .  C ADDR   008EH   A   
+MAIN. . . . . . . . .  C ADDR   00A7H   A   
+MAIN1 . . . . . . . .  C ADDR   0095H   A   
+MAIN_MAIN . . . . . .  C ADDR   00ADH   A   
+NEXTP . . . . . . . .  C ADDR   0079H   A   
+P0. . . . . . . . . .  D ADDR   0080H   A   
+P1. . . . . . . . . .  D ADDR   0090H   A   
+P2. . . . . . . . . .  D ADDR   00A0H   A   
+P3. . . . . . . . . .  D ADDR   00B0H   A   
+READ. . . . . . . . .  C ADDR   0234H   A   
+READ_TEMP . . . . . .  C ADDR   01D2H   A   
+RECALL_EPROM. . . . .  C ADDR   01EBH   A   
+RESET . . . . . . . .  C ADDR   01FAH   A   
+RS. . . . . . . . . .  B ADDR   00B0H.0 A   
+RW. . . . . . . . . .  B ADDR   00B0H.1 A   
+S1. . . . . . . . . .  C ADDR   00CBH   A   
+SET_FLAG. . . . . . .  N NUMB   0001H   A   
+SIGN. . . . . . . . .  C ADDR   04A9H   A   
+SKIP_ROM. . . . . . .  C ADDR   01E6H   A   
+START . . . . . . . .  C ADDR   0082H   A   
+STORE_DEFINE_DATA . .  C ADDR   006DH   A   
+TAB1. . . . . . . . .  C ADDR   0484H   A   
+TAB2. . . . . . . . .  C ADDR   0494H   A   
+TAB3. . . . . . . . .  C ADDR   04A1H   A   
+TAB_H . . . . . . . .  C ADDR   04ADH   A   
+TAB_HELLO . . . . . .  C ADDR   046DH   A   
+TAB_L . . . . . . . .  C ADDR   04ABH   A   
+TAB_OFF . . . . . . .  C ADDR   04D6H   A   
+TAB_ON. . . . . . . .  C ADDR   04D3H   A   
+TAB_SAVE. . . . . . .  C ADDR   04C9H   A   
+TAB_SETING_TEMP_H . .  C ADDR   04AFH   A   
+TAB_SETING_TEMP_L . .  C ADDR   04BCH   A   
+TAB_TESTING . . . . .  C ADDR   047AH   A   
+TEMP_CONV . . . . . .  C ADDR   01F0H   A   
+TEMP_GET. . . . . . .  C ADDR   01F5H   A   
+TEST_BUSY . . . . . .  C ADDR   027AH   A   
+TH0 . . . . . . . . .  D ADDR   008CH   A   
+TL0 . . . . . . . . .  D ADDR   008AH   A   
+TMOD. . . . . . . . .  D ADDR   0089H   A   
+TMP_H . . . . . . . .  N NUMB   0029H   A   
+TMP_L . . . . . . . .  N NUMB   0028H   A   
+WRITE . . . . . . . .  C ADDR   021BH   A   
+WRITE_DATA_TO_LCD . .  C ADDR   028EH   A   
+WRITE_NOT_CHECK_BUSY.  C ADDR   0260H   A   
+X_BIG . . . . . . . .  C ADDR   0301H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

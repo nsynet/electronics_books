@@ -1,0 +1,120 @@
+C51 COMPILER V8.02   NEWJS                                                                 01/22/2008 09:46:17 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE NEWJS
+OBJECT MODULE PLACED IN newjs.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE newjs.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1           #include<reg51.h>
+   2                                                                     
+   3          //sbit P30=P3^4;
+   4          sbit P35=P3^5;
+   5          sbit P36=P3^6;
+   6          sbit P37=P3^7;
+   7          //sbit P21=P2^1;
+   8           unsigned int js;
+   9          static unsigned int i;
+  10          unsigned char code LEDDis[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90,0xFF,0xBF};
+  11          void Delay(unsigned int ii)
+  12          {
+  13   1      unsigned int jj;
+  14   1      for(;ii>0;ii--)
+  15   1      for(jj=0;jj<125;jj++)
+  16   1      {;}
+  17   1      
+  18   1      }
+  19          void Delay500(unsigned int iii)
+  20          {
+  21   1      unsigned int jjj;
+  22   1      for(;iii>0;iii--)
+  23   1      for(jjj=0;jjj<60;jjj++)
+  24   1      {;}
+  25   1      
+  26   1      }
+  27          
+  28          
+  29          
+  30          void main()
+  31          {
+  32   1       
+  33   1              EA = 1;                                 //允许CPU中断
+  34   1              ET0 = 1;                                //定时器0中断打开
+  35   1              TMOD = 0x1;                     //设定时器0为模式1，16位模式
+  36   1              TH0=0xB1;
+  37   1              TL0=0xDF;                               //设定时值为20000us（20ms）
+  38   1              TR0 = 1;
+  39   1      
+  40   1      
+  41   1      
+  42   1      
+  43   1      
+  44   1      while(1)
+  45   1      {
+  46   2      for(i=0;i<=999;i++)
+  47   2      {
+  48   3      js=i;
+  49   3       Delay(500);
+  50   3      
+  51   3       //P21=1;
+  52   3         //Delay500(10);
+  53   3         //P21=0;
+  54   3      
+  55   3      }
+C51 COMPILER V8.02   NEWJS                                                                 01/22/2008 09:46:17 PAGE 2   
+
+  56   2      
+  57   2        
+  58   2      }
+  59   1      
+  60   1      
+  61   1      }
+  62          
+  63          //定时器0中断外理中键扫描和显示
+  64          void KeyAndDis_Time0(void) interrupt 1 using 2
+  65          {
+  66   1        TH0=0xB1;
+  67   1              TL0=0xDF;                               //设定时值为20000us（20ms)
+  68   1      
+  69   1        P0=LEDDis[js/100];
+  70   1      P35=0;
+  71   1        Delay500(5);
+  72   1                P35=1;
+  73   1        P0=LEDDis[(js-(js/100)*100)/10];
+  74   1      P36=0;
+  75   1        Delay500(5);
+  76   1       P36=1;
+  77   1       P0=LEDDis[(js-(js/100)*100)-((js-(js/100)*100)/10)*10];
+  78   1      P37=0;
+  79   1       Delay500(5);
+  80   1        P37=1;
+  81   1      
+  82   1      
+  83   1         //P0=LEDDis[6];
+  84   1      //P33=0;
+  85   1       //Delay500(5);
+  86   1        //P33=1;
+  87   1      
+  88   1        
+  89   1      
+  90   1      
+  91   1      
+  92   1      
+  93   1      
+  94   1      }
+  95          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    327    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

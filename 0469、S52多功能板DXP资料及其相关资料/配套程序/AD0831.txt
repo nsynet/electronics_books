@@ -1,0 +1,108 @@
+  #include<reg52.h>
+  #include<stdio.h>
+  #include<string.h>
+#include<math.h>
+#define uchar unsigned char
+#define uint unsigned int
+
+sbit pianxuan=P3^3;   片选
+sbit shuchu=P3^1;           数据线
+sbit clk=P3^2;          时钟线
+code unsigned char seg7code[10]={ 0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90}; //显示段码 数码管字跟：
+
+
+
+Delay(unsigned int tc) //延时程序
+{
+while( tc != 0 ) //如果tc 为0 则终止延时
+{
+unsigned int i; //局部正整数变量 i
+for(i=0; i<50; i++); //执行400 次将耗时1毫秒
+tc--; //tc计数减一
+}
+}
+uchar M=0;
+
+uchar shuzi=0;
+delayms()
+{
+  uchar j=0;
+  for(j=0; j<100; j++);
+ 
+}
+
+
+void Led(int date) //显示函数
+{ 
+
+P1=P1&0xf7; //P2.7 输出低电平，选通千位数
+P0=seg7code[date/1000]; //取出千位数，查表，输出。
+Delay(5); //延时
+P1=P1|0x0f; //销隐
+P1=P1&0xfb; //P2.6 输出低电平，选通百位数
+P0=seg7code[date%1000/100]; //取出百位数，查表，输出。
+Delay(5); //延时
+P1=P1|0x0f; //销隐
+P1=P1&0xfd; //P2.5 输出低电平，选通十位数
+P0=seg7code[date%100/10]; //取出十位数，查表，输出。
+Delay(5); //延时
+P1=P1|0x0f; //销隐
+P1=P1&0xfe;
+P0=seg7code[date%10]; //取出个位数，查表，输出。
+Delay(5);
+ P1=P1|0x0f; //销隐
+}
+    
+ void lxm0831ttl(void)
+{
+ while(1)
+{
+uint t; 
+  uchar i;
+   pianxuan=0;
+  clk=1;
+  delayms();
+  clk=0;
+
+    clk=1;
+  delayms();
+  clk=0;
+   
+ clk=1;
+ delayms();
+ clk=0;
+  for(i=8;i>=1;i--)
+     {
+	       delayms();
+           clk=1;
+	      delayms();
+           clk=0;
+           shuzi<<=1;
+	       shuzi+=((uchar)(shuchu));
+
+	 	 }
+
+         delayms();
+         pianxuan=1;
+ t=1.0/51*1000;
+	t=t*shuzi;
+ Led(t);
+  
+ }
+ 
+}
+
+main()
+{
+uchar n,z;
+ while(1)
+ {
+ // fenli(1234);
+
+lxm0831ttl();
+ for(n=0;n<100;n++)
+ for(z=0;z<500;z++);
+  }
+  }
+
+

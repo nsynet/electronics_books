@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$TOOLKIT_DIR$\inc\msp430x44x.h</file>
+      <file>$PROJ_DIR$\..\KeyBoard12\SourceFile\keyboard12.s43</file>
+      <file>$PROJ_DIR$\SourceFile\keyboard3.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\keyBoard3.r43</file>
+      <file>$PROJ_DIR$\..\KeyBoard12\SourceFile\main.c</file>
+      <file>$PROJ_DIR$\KB3_A.ewp</file>
+      <file>$PROJ_DIR$\..\KeyBoard12\SourceFile\keyboard12.c</file>
+      <file>$PROJ_DIR$\SourceFile\main.c</file>
+      <file>$TOOLKIT_DIR$\config\multiplier.xcl</file>
+      <file>$PROJ_DIR$\..\LED\led.c</file>
+      <file>$TOOLKIT_DIR$\config\lnk430F449.xcl</file>
+      <file>$PROJ_DIR$\Debug\Exe\KB3_A.d43</file>
+      <file>$PROJ_DIR$\SourceFile\keyBoard3.s43</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 11</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\KB3_A.d43</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 10 8 3</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\SourceFile\keyBoard3.s43</name>
+      <outputs>
+        <tool>
+          <name>A430</name>
+          <file> 3</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>A430</name>
+          <file> 0</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

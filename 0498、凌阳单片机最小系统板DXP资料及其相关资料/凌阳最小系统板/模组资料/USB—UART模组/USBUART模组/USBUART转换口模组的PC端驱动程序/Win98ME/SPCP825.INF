@@ -1,0 +1,115 @@
+;       SPCP825.INF - INF file for USB-to-Serial Device
+;       Copyright (C) 2003, Sunplus Technology Inc.
+;
+;       03/14/2001
+[Manufacturer]
+%Sunplus%=Sunplus
+
+[Sunplus]
+%DeviceDesc%=ComPort, USB\VID_04FC&PID_0201
+
+[SourceDisksNames]
+1=%Sunplus.Disk%,,,
+
+[SourceDisksFiles]
+SPCP825W.SYS=1
+SPCP825V.VXD=1
+SP825_98.INF=1
+SPCP825.INF=1
+
+[SourceDisksFiles.x86]
+SPCP825K.sys=1
+
+[DestinationDirs]
+USB2UART.Files.Ext = 11
+USB2UART.Files.Inf = 10,INF
+DefaultDestDir=12
+ComPort.NT.Copy=12
+
+[ComPort_install]
+;Windows98_ME
+
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+ClassGUID={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%Sunplus%
+DriverVer=07/07/2003
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[ComPort]
+CopyFiles=USB2UART.Files.Ext, USB2UART.Files.Inf
+AddReg=USB2UART.AddReg
+
+[USB2UART.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,SPCP825W.SYS
+
+[USB2UART.Files.Ext]
+SPCP825W.SYS
+SPCP825V.VXD
+
+[USB2UART.Files.Inf]
+SPCP825.INF
+SP825_98.INF
+
+;========================================================================
+;
+;========================================================================
+[ComPort_Install.NTx86]
+;Windows2000
+
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%Sunplus%
+LayoutFile=layout.inf
+DriverVer=03/29/2001,1.3.0.0
+
+[ComPort.NT]
+CopyFiles=ComPort.NT.Copy
+AddReg=ComPort.NT.AddReg
+
+[ComPort.NT.HW]
+AddReg=ComPort.NT.HW.AddReg
+
+[ComPort.NT.Copy]
+SPCP825K.sys
+
+[ComPort.NT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,SPCP825K.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[ComPort.NT.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+
+[ComPort.NT.Services]
+AddService = SPCP825K, 0x00000002, Serial_Service_Inst
+AddService = Serenum,,Serenum_Service_Inst
+
+[Serial_Service_Inst]
+DisplayName    = %Serial.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_SYSTEM_START (this driver may do detection)
+ErrorControl   = 1               ; SERVICE_ERROR_IGNORE
+ServiceBinary  = %12%\SPCP825K.sys
+LoadOrderGroup = Base
+
+[Serenum_Service_Inst]
+DisplayName    = %Serenum.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\serenum.sys
+LoadOrderGroup = PNP Filter
+
+[Strings]
+Sunplus = "Sunplus"
+Sunplus.Disk = "USB-Serial Cable Diskete"
+DeviceDesc = "Sunplus USB to Serial COM Port"
+Serial.SVCDESC   = "Sunplus Serial port driver"
+Serenum.SVCDESC = "Serenum Filter Driver"

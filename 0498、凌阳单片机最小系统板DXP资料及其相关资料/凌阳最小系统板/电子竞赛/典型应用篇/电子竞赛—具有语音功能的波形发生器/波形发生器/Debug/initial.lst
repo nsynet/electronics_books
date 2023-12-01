@@ -1,0 +1,45 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	.define		P_DAC_Ctrl		0x702A 
+                            	.define		P_DAC1			0x7017
+                            	.define		P_DAC2			0x7016
+                            	.define     P_System_Clock  0x7013
+                            	.external _Bianxing
+                            	.external _Bianxing1
+0000A87B                    	.code
+                            	.public _Gaopin;
+                            	_Gaopin:.proc
+0000A87B 09 93 98 00        	 r1=0x0098
+0000A87D 19 D3 13 70        	    [P_System_Clock]=r1
+0000A87F 40 92              	    r1=0x0000;
+0000A880 19 D3 2A 70        	    [P_DAC_Ctrl]=r1;
+0000A882 0B 97 FF FF        	    r3=0xffff					//D/A转换为10位，即B15~B6
+0000A884 40 92              	    r1=0x0000;
+0000A885 40 92              	    r1=0
+0000A886 19 D3 FF 01        	    [_Bianxing]=r1
+0000A888 19 D3 00 02        	    [_Bianxing1]=r1
+                            	    
+0000A88A 90 9A              	retf
+                            	.endp
+                            	
+                            	
+                            	.public _Dipin;
+                            	_Dipin:.proc
+0000A88B 65 92              	 r1=0x0025
+0000A88C 19 D3 13 70        	    [P_System_Clock]=r1
+0000A88E 40 92              	    r1=0x0000;
+0000A88F 19 D3 2A 70        	    [P_DAC_Ctrl]=r1;
+0000A891 0B 97 FF FF        	    r3=0xffff					//D/A转换为10位，即B15~B6
+0000A893 40 92              	    r1=0x0000;
+0000A894 90 9A              	retf
+                            	.endp
+                            	
+                            	.public _DAC_FW;
+                            	_DAC_FW:.proc
+0000A895 19 D3 17 70        	 [P_DAC1]=r1
+0000A897 19 D3 16 70        	 [P_DAC2]=r1
+                            	    
+0000A899 90 9A              	retf
+                            	.endp
+0 error(s), 0 warning(s).
+

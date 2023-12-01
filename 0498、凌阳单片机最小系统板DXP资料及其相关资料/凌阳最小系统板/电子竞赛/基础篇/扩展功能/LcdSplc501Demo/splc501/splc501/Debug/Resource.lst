@@ -1,0 +1,16 @@
+Sunplus u'nSP Assember - Ver. 1.3.0 (Build:2)
+              Listing File Has Been Relocated
+                            	
+                            	// Resource Table
+                            	// Created by IDE, Do not modify this table
+                            	
+00000000                    	.TEXT
+                            	.public _RES_Table;
+                            	
+                            	
+                            	_RES_Table:
+                            	
+                            	
+                            	// End Table
+0 error(s), 0 warning(s).
+

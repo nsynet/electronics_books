@@ -1,0 +1,118 @@
+Version: 3.0
+Options: m37
+Obj: "F:\SPCE061A\IDE\startupcode\startupD.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\Resource.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\TNRFDriver.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\hardware.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\isr.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\TNDriverUser.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\Key.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\main.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\PlayData.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\T064_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\0_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\1_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\2_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\3_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\4_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\5_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\6_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\7_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\8_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\9_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\10_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\bai_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\hjwd_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\mbwd_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\ok_48k.res"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\shd_48k.res"
+Lib: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\.\sacmv26e.lib"
+Lib: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\CMacro1016.lib"
+Output: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo2\Debug\TNRFD_thermoMeter.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 9462  linkat 1A8 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: IRAM in "main.obj" at 94F5  linkat 23B 
+;Align: IRAM in "main.obj" with 0 
+;Locate: IRAM in "S480" of "sacmv26e.lib"  at 94F7  linkat 23D 
+;Align: IRAM in "S480" of "sacmv26e.lib"  with 0 
+;Locate: RAM in "TNRFDriver.obj" at 1A4 
+;Align: RAM in "TNRFDriver.obj" with 0 
+;Locate: OVERLAP_RAM_BLOCK in "S480" of "sacmv26e.lib"  at 1 
+;Align: OVERLAP_RAM_BLOCK in "S480" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "TNRFDriver.obj" at 9291 
+;Align: CODE in "TNRFDriver.obj" with 0 
+;Locate: CODE in "hardware.obj" at 8A9E 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "TNDriverUser.obj" at 90A1 
+;Align: CODE in "TNDriverUser.obj" with 0 
+;Locate: CODE in "Key.obj" at 9222 
+;Align: CODE in "Key.obj" with 0 
+;Locate: CODE in "main.obj" at 8E0D 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "PlayData.obj" at 8C7C 
+;Align: CODE in "PlayData.obj" with 0 
+;Locate: __sn_section_RES_T064_48K in "T064_48k.res" at 9F64 
+;Align: __sn_section_RES_T064_48K in "T064_48k.res" with 0 
+;Locate: __sn_section_RES_0_48K in "0_48k.res" at 9C55 
+;Align: __sn_section_RES_0_48K in "0_48k.res" with 0 
+;Locate: __sn_section_RES_1_48K in "1_48k.res" at 9BCB 
+;Align: __sn_section_RES_1_48K in "1_48k.res" with 0 
+;Locate: __sn_section_RES_2_48K in "2_48k.res" at 9D69 
+;Align: __sn_section_RES_2_48K in "2_48k.res" with 0 
+;Locate: __sn_section_RES_3_48K in "3_48k.res" at 98DA 
+;Align: __sn_section_RES_3_48K in "3_48k.res" with 0 
+;Locate: __sn_section_RES_4_48K in "4_48k.res" at 9835 
+;Align: __sn_section_RES_4_48K in "4_48k.res" with 0 
+;Locate: __sn_section_RES_5_48K in "5_48k.res" at 9E6B 
+;Align: __sn_section_RES_5_48K in "5_48k.res" with 0 
+;Locate: __sn_section_RES_6_48K in "6_48k.res" at 9A1B 
+;Align: __sn_section_RES_6_48K in "6_48k.res" with 0 
+;Locate: __sn_section_RES_7_48K in "7_48k.res" at 9AAE 
+;Align: __sn_section_RES_7_48K in "7_48k.res" with 0 
+;Locate: __sn_section_RES_8_48K in "8_48k.res" at 9EEC 
+;Align: __sn_section_RES_8_48K in "8_48k.res" with 0 
+;Locate: __sn_section_RES_9_48K in "9_48k.res" at 997F 
+;Align: __sn_section_RES_9_48K in "9_48k.res" with 0 
+;Locate: __sn_section_RES_10_48K in "10_48k.res" at 9CDF 
+;Align: __sn_section_RES_10_48K in "10_48k.res" with 0 
+;Locate: __sn_section_RES_BAI_48K in "bai_48k.res" at 9B41 
+;Align: __sn_section_RES_BAI_48K in "bai_48k.res" with 0 
+;Locate: __sn_section_RES_HJWD_48K in "hjwd_48k.res" at 94F9 
+;Align: __sn_section_RES_HJWD_48K in "hjwd_48k.res" with 0 
+;Locate: __sn_section_RES_MBWD_48K in "mbwd_48k.res" at 961C 
+;Align: __sn_section_RES_MBWD_48K in "mbwd_48k.res" with 0 
+;Locate: __sn_section_RES_OK_48K in "ok_48k.res" at 9DEA 
+;Align: __sn_section_RES_OK_48K in "ok_48k.res" with 0 
+;Locate: __sn_section_RES_SHD_48K in "shd_48k.res" at 973F 
+;Align: __sn_section_RES_SHD_48K in "shd_48k.res" with 0 
+;Locate: CODE in "S480" of "sacmv26e.lib"  at 80A4 
+;Align: CODE in "S480" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "subf2" of "CMacro1016.lib"  at 9456 
+;Align: CODE in "subf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "divf2" of "CMacro1016.lib"  at 9162 
+;Align: CODE in "divf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "cvi2f2" of "CMacro1016.lib"  at 943F 
+;Align: CODE in "cvi2f2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "modi1" of "CMacro1016.lib"  at 93C1 
+;Align: CODE in "modi1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "cvf2i1" of "CMacro1016.lib"  at 939B 
+;Align: CODE in "cvf2i1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "mulf2" of "CMacro1016.lib"  at 8F01 
+;Align: CODE in "mulf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "addf2" of "CMacro1016.lib"  at 8FD2 
+;Align: CODE in "addf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "cvi1f2" of "CMacro1016.lib"  at 92F5 
+;Align: CODE in "cvi1f2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "divi1" of "CMacro1016.lib"  at 936A 
+;Align: CODE in "divi1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "divu1" of "CMacro1016.lib"  at 9336 
+;Align: CODE in "divu1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro1016.lib"  at 93E5 
+;Align: CODE in "rshu2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "mulu1" of "CMacro1016.lib"  at 9403 
+;Align: CODE in "mulu1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "lshiu2" of "CMacro1016.lib"  at 9421 
+;Align: CODE in "lshiu2" of "CMacro1016.lib"  with 0 
+;Locate: __sn_init_table at 8000 

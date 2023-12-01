@@ -1,0 +1,111 @@
+__text_start:
+__start:
+    002A E5CF      LDI	R28,0x5F
+    002B E0D4      LDI	R29,4
+    002C BFCD      OUT	0x3D,R28
+    002D BFDE      OUT	0x3E,R29
+    002E 51C0      SUBI	R28,0x10
+    002F 40D0      SBCI	R29,0
+    0030 EA0A      LDI	R16,0xAA
+    0031 8308      STD	Y+0,R16
+    0032 2400      CLR	R0
+    0033 E6E0      LDI	R30,0x60
+    0034 E0F0      LDI	R31,0
+    0035 E010      LDI	R17,0
+    0036 36E0      CPI	R30,0x60
+    0037 07F1      CPC	R31,R17
+    0038 F011      BEQ	0x003B
+    0039 9201      ST	R0,Z+
+    003A CFFB      RJMP	0x0036
+    003B 8300      STD	Z+0,R16
+    003C E5E4      LDI	R30,0x54
+    003D E0F0      LDI	R31,0
+    003E E6A0      LDI	R26,0x60
+    003F E0B0      LDI	R27,0
+    0040 E010      LDI	R17,0
+    0041 35E4      CPI	R30,0x54
+    0042 07F1      CPC	R31,R17
+    0043 F021      BEQ	0x0048
+    0044 95C8      LPM
+    0045 9631      ADIW	R30,1
+    0046 920D      ST	R0,X+
+    0047 CFF9      RJMP	0x0041
+    0048 940E0069  CALL	_main
+_exit:
+    004A CFFF      RJMP	_exit
+FILE: D:\Proteus仿真实例\ATMEGA16\个人总结AVR\TEMP\icc\chengxu.c
+(0001) #include <iom16v.h>
+(0002) #include <macros.h> 
+(0003) 
+(0004) #define DISP_DDR   DDRD
+(0005) #define DISP_PORT  PORTD 
+(0006) 
+(0007) void timer1_init(void)
+(0008) {
+(0009)  TCCR1B = 0x00;  //stop timer 
+_timer1_init:
+    004B 2422      CLR	R2
+    004C BC2E      OUT	0x2E,R2
+(0010) 
+(0011)  TCNT1H = 0xE3;  //设置 TC1 的 计数寄存器 高8位值，基于7.3728M晶振
+    004D EE83      LDI	R24,0xE3
+    004E BD8D      OUT	0x2D,R24
+(0012)  TCNT1L = 0xE1;  //设置 TC1 的 计数寄存器 低8位值，基于7.3728M晶振 
+    004F EE81      LDI	R24,0xE1
+    0050 BD8C      OUT	0x2C,R24
+(0013) 
+(0014)  TCCR1A = 0x00;
+    0051 BC2F      OUT	0x2F,R2
+(0015)  TCCR1B = 0x05;  //设置TC1 为 CLK/1024分频，启动TC1 
+    0052 E085      LDI	R24,5
+    0053 BD8E      OUT	0x2E,R24
+(0016) 
+(0017)  MCUCR = 0x00;  //设置 MCU 的 控制寄存器
+    0054 BE25      OUT	0x35,R2
+(0018)  GICR  = 0x00;  //设置 中断控制寄存器
+    0055 BE2B      OUT	0x3B,R2
+(0019)  TIMSK = 0x04;  //设置 定时计数器 的 屏蔽寄存器
+    0056 E084      LDI	R24,4
+    0057 BF89      OUT	0x39,R24
+    0058 9508      RET
+_timer1_ovf_isr:
+    0059 938A      ST	R24,-Y
+    005A 939A      ST	R25,-Y
+    005B B78F      IN	R24,0x3F
+    005C 938A      ST	R24,-Y
+(0020)  }
+(0021) 
+(0022) #pragma interrupt_handler timer1_ovf_isr:9
+(0023) void timer1_ovf_isr(void)
+(0024) {
+(0025)  TCNT1H = 0xE3;  //reload counter high value
+    005D EE83      LDI	R24,0xE3
+    005E BD8D      OUT	0x2D,R24
+(0026)  TCNT1L = 0xE1;  //reload counter low value
+    005F EE81      LDI	R24,0xE1
+    0060 BD8C      OUT	0x2C,R24
+(0027)  DISP_PORT++;  //每加1S，显示加1
+    0061 B382      IN	R24,0x12
+    0062 5F8F      SUBI	R24,0xFF
+    0063 BB82      OUT	0x12,R24
+    0064 9189      LD	R24,Y+
+    0065 BF8F      OUT	0x3F,R24
+    0066 9199      LD	R25,Y+
+    0067 9189      LD	R24,Y+
+    0068 9518      RETI
+(0028) }
+(0029) 
+(0030) void main(void)
+(0031) {
+(0032)  DISP_DDR = 0XFF; //设置显示口为输出
+_main:
+    0069 EF8F      LDI	R24,0xFF
+    006A BB81      OUT	0x11,R24
+(0033)  timer1_init();
+    006B DFDF      RCALL	_timer1_init
+(0034)  SEI();
+    006C 9478      BSET	7
+(0035)  while(1);
+FILE: <library>
+    006D CFFF      RJMP	0x006D
+    006E 9508      RET

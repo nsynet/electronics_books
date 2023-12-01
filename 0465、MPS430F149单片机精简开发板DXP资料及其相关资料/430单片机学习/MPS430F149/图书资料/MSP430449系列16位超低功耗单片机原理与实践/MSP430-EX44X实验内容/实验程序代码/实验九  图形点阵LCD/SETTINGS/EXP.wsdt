@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+    
+    
+  <CurrentConfigs><Project>LCD/Debug</Project><Project>LCD_A/Debug</Project></CurrentConfigs><CurrentProj>LCD</CurrentProj><OverviewSelected>1</OverviewSelected></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>723</ColumnWidth1><ColumnWidth2>193</ColumnWidth2><ColumnWidth3>48</ColumnWidth3></Build>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>193</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+    <TerminalIO/><Profiling/><Find-in-Files><ColumnWidth0>350</ColumnWidth0><ColumnWidth1>50</ColumnWidth1><ColumnWidth2>601</ColumnWidth2></Find-in-Files></Static>
+    <Windows>
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-27767-8292</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-8351-16822</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-5748-8295</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>&lt;ws></ExpandedNode><ExpandedNode>&lt;ws>/LCD</ExpandedNode><ExpandedNode>&lt;ws>/LCD/Output</ExpandedNode><ExpandedNode>&lt;ws>/LCD/Output/LCD.d43</ExpandedNode><ExpandedNode>&lt;ws>/LCD_A</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd1></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>D:\MPS430F149\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430449&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e5D;  &#x56Fe;&#x5F62;&#x70B9;&#x9635;LCD\LCD\SourceFile\main.c</Filename><XPos>0</XPos><YPos>231</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><ActiveTab>0</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003bb328><key>iaridepm1</key></Toolbar-003bb328></Sizes></Row0><Row1><Sizes><Toolbar-015c9f20><key>debuggergui1</key></Toolbar-015c9f20></Sizes></Row1><Row2><Sizes><Toolbar-01446ef0><key>430fet1</key></Toolbar-01446ef0></Sizes></Row2></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>444</Bottom><Right>267</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>201</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>292151</sizeHorzCY><sizeVertCX>262695</sizeVertCX><sizeVertCY>648256</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>199</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>201</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>292151</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>292151</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

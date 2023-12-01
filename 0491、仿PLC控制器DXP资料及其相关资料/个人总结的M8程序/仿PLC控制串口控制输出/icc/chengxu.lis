@@ -1,0 +1,298 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _x::
+ 0000                   .blkb 2
+                        .area idata
+ 0000 C800              .word 200
+                        .area data(ram, con, rel)
+ 0002                   .dbfile E:\Proteus\ATMEGA8\个人总结的M8程序\仿PLC控制输入输出\icc\chengxu.c
+ 0002                   .dbsym e x _x i
+                        .area text(rom, con, rel)
+ 0000                   .dbfile E:\Proteus\ATMEGA8\个人总结的M8程序\仿PLC控制输入输出\icc\chengxu.c
+ 0000                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 0000           _Init_IO::
+ 0000                   .dbline -1
+ 0000                   .dbline 7
+ 0000           ; #include <iom8v.h>
+ 0000           ; #define uchar unsigned char 
+ 0000           ; #define uint unsigned int
+ 0000           ; uint x=200;
+ 0000           ; //////////////////////////////初始化////////////////////////////////////
+ 0000           ; void Init_IO(void)//初始化I/O
+ 0000           ; {
+ 0000                   .dbline 9
+ 0000           ; //设置B口为输出
+ 0000           ; DDRB=0xff;
+ 0000 8FEF              ldi R24,255
+ 0002 87BB              out 0x17,R24
+ 0004                   .dbline 10
+ 0004           ; PORTB=0xff;
+ 0004 88BB              out 0x18,R24
+ 0006                   .dbline 12
+ 0006           ; //设置C口为输出
+ 0006           ; DDRC=0xff;
+ 0006 84BB              out 0x14,R24
+ 0008                   .dbline 13
+ 0008           ; PORTC=0xff;
+ 0008 85BB              out 0x15,R24
+ 000A                   .dbline 15
+ 000A           ; //设置D口为输入
+ 000A           ; DDRD=0X00;
+ 000A 2224              clr R2
+ 000C 21BA              out 0x11,R2
+ 000E                   .dbline 16
+ 000E           ; PORTD=0x00;
+ 000E 22BA              out 0x12,R2
+ 0010                   .dbline -2
+ 0010           L1:
+ 0010                   .dbline 0 ; func end
+ 0010 0895              ret
+ 0012                   .dbend
+ 0012                   .dbfunc e delay _delay fV
+ 0012           ;              i -> R20,R21
+ 0012           ;              j -> R22,R23
+ 0012           ;              t -> R16,R17
+                        .even
+ 0012           _delay::
+ 0012 00D0              rcall push_gset2
+ 0014                   .dbline -1
+ 0014                   .dbline 24
+ 0014           ; }
+ 0014           ; /******************************************************************
+ 0014           ; 
+ 0014           ; 延时函数
+ 0014           ; 
+ 0014           ; ******************************************************************/
+ 0014           ; void delay(uint t)
+ 0014           ; {
+ 0014                   .dbline 26
+ 0014           ;   uint i,j;
+ 0014           ;    for(i=0;i<t;i++)
+ 0014 4427              clr R20
+ 0016 5527              clr R21
+ 0018 0AC0              rjmp L6
+ 001A           L3:
+ 001A                   .dbline 27
+ 001A           ;    {
+ 001A                   .dbline 28
+ 001A 68EE              ldi R22,1000
+ 001C 73E0              ldi R23,3
+ 001E 02C0              rjmp L10
+ 0020           L7:
+ 0020                   .dbline 28
+ 0020           L8:
+ 0020                   .dbline 28
+ 0020 6150              subi R22,1
+ 0022 7040              sbci R23,0
+ 0024           L10:
+ 0024                   .dbline 28
+ 0024 6030              cpi R22,0
+ 0026 6707              cpc R22,R23
+ 0028 D9F7              brne L7
+ 002A           X0:
+ 002A                   .dbline 29
+ 002A                   .dbline 29
+ 002A                   .dbline 30
+ 002A                   .dbline 31
+ 002A           L4:
+ 002A                   .dbline 26
+ 002A 4F5F              subi R20,255  ; offset = 1
+ 002C 5F4F              sbci R21,255
+ 002E           L6:
+ 002E                   .dbline 26
+ 002E 4017              cp R20,R16
+ 0030 5107              cpc R21,R17
+ 0032 98F3              brlo L3
+ 0034                   .dbline -2
+ 0034           L2:
+ 0034 00D0              rcall pop_gset2
+ 0036                   .dbline 0 ; func end
+ 0036 0895              ret
+ 0038                   .dbsym r i 20 i
+ 0038                   .dbsym r j 22 i
+ 0038                   .dbsym r t 16 i
+ 0038                   .dbend
+ 0038                   .dbfunc e main _main fV
+                        .even
+ 0038           _main::
+ 0038                   .dbline -1
+ 0038                   .dbline 35
+ 0038           ;        for(j=1000;j>0;j--);
+ 0038           ;        { ;
+ 0038           ;        }
+ 0038           ;    }
+ 0038           ; }
+ 0038           ; /////////////////////////////主函数/////////////////////////////////////
+ 0038           ; void main(void)
+ 0038           ; {
+ 0038                   .dbline 36
+ 0038           ; Init_IO();  //初始化I/O
+ 0038 E3DF              rcall _Init_IO
+ 003A 97C0              rjmp L13
+ 003C           L12:
+ 003C                   .dbline 39
+ 003C                   .dbline 40
+ 003C 00910000          lds R16,_x
+ 0040 10910100          lds R17,_x+1
+ 0044 E6DF              rcall _delay
+ 0046                   .dbline 41
+ 0046 8FE0              ldi R24,15
+ 0048 85BB              out 0x15,R24
+ 004A                   .dbline 42
+ 004A 00910000          lds R16,_x
+ 004E 10910100          lds R17,_x+1
+ 0052 DFDF              rcall _delay
+ 0054                   .dbline 43
+ 0054 87E0              ldi R24,7
+ 0056 88BB              out 0x18,R24
+ 0058                   .dbline 44
+ 0058 00910000          lds R16,_x
+ 005C 10910100          lds R17,_x+1
+ 0060 D8DF              rcall _delay
+ 0062                   .dbline 45
+ 0062 8BE0              ldi R24,11
+ 0064 88BB              out 0x18,R24
+ 0066                   .dbline 46
+ 0066 00910000          lds R16,_x
+ 006A 10910100          lds R17,_x+1
+ 006E D1DF              rcall _delay
+ 0070                   .dbline 47
+ 0070 8DE0              ldi R24,13
+ 0072 88BB              out 0x18,R24
+ 0074                   .dbline 48
+ 0074 00910000          lds R16,_x
+ 0078 10910100          lds R17,_x+1
+ 007C CADF              rcall _delay
+ 007E                   .dbline 49
+ 007E 8EE0              ldi R24,14
+ 0080 88BB              out 0x18,R24
+ 0082                   .dbline 50
+ 0082 00910000          lds R16,_x
+ 0086 10910100          lds R17,_x+1
+ 008A C3DF              rcall _delay
+ 008C                   .dbline 51
+ 008C 8FE0              ldi R24,15
+ 008E 88BB              out 0x18,R24
+ 0090                   .dbline 52
+ 0090 87E0              ldi R24,7
+ 0092 85BB              out 0x15,R24
+ 0094                   .dbline 53
+ 0094 00910000          lds R16,_x
+ 0098 10910100          lds R17,_x+1
+ 009C BADF              rcall _delay
+ 009E                   .dbline 54
+ 009E 8BE0              ldi R24,11
+ 00A0 85BB              out 0x15,R24
+ 00A2                   .dbline 55
+ 00A2 00910000          lds R16,_x
+ 00A6 10910100          lds R17,_x+1
+ 00AA B3DF              rcall _delay
+ 00AC                   .dbline 56
+ 00AC 8DE0              ldi R24,13
+ 00AE 85BB              out 0x15,R24
+ 00B0                   .dbline 57
+ 00B0 00910000          lds R16,_x
+ 00B4 10910100          lds R17,_x+1
+ 00B8 ACDF              rcall _delay
+ 00BA                   .dbline 58
+ 00BA 8EE0              ldi R24,14
+ 00BC 85BB              out 0x15,R24
+ 00BE                   .dbline 59
+ 00BE 00910000          lds R16,_x
+ 00C2 10910100          lds R17,_x+1
+ 00C6 A5DF              rcall _delay
+ 00C8                   .dbline 60
+ 00C8 8AE0              ldi R24,10
+ 00CA 85BB              out 0x15,R24
+ 00CC                   .dbline 61
+ 00CC 00910000          lds R16,_x
+ 00D0 10910100          lds R17,_x+1
+ 00D4 9EDF              rcall _delay
+ 00D6                   .dbline 62
+ 00D6 85E0              ldi R24,5
+ 00D8 85BB              out 0x15,R24
+ 00DA                   .dbline 63
+ 00DA 00910000          lds R16,_x
+ 00DE 10910100          lds R17,_x+1
+ 00E2 97DF              rcall _delay
+ 00E4                   .dbline 64
+ 00E4 8FE0              ldi R24,15
+ 00E6 85BB              out 0x15,R24
+ 00E8                   .dbline 65
+ 00E8 00910000          lds R16,_x
+ 00EC 10910100          lds R17,_x+1
+ 00F0 90DF              rcall _delay
+ 00F2                   .dbline 66
+ 00F2 2224              clr R2
+ 00F4 25BA              out 0x15,R2
+ 00F6                   .dbline 67
+ 00F6 00910000          lds R16,_x
+ 00FA 10910100          lds R17,_x+1
+ 00FE 89DF              rcall _delay
+ 0100                   .dbline 68
+ 0100 8FE0              ldi R24,15
+ 0102 85BB              out 0x15,R24
+ 0104                   .dbline 69
+ 0104 00910000          lds R16,_x
+ 0108 10910100          lds R17,_x+1
+ 010C 82DF              rcall _delay
+ 010E                   .dbline 70
+ 010E 8AE0              ldi R24,10
+ 0110 88BB              out 0x18,R24
+ 0112                   .dbline 71
+ 0112 00910000          lds R16,_x
+ 0116 10910100          lds R17,_x+1
+ 011A 7BDF              rcall _delay
+ 011C                   .dbline 72
+ 011C 85E0              ldi R24,5
+ 011E 88BB              out 0x18,R24
+ 0120                   .dbline 73
+ 0120 00910000          lds R16,_x
+ 0124 10910100          lds R17,_x+1
+ 0128 74DF              rcall _delay
+ 012A                   .dbline 74
+ 012A 8FE0              ldi R24,15
+ 012C 88BB              out 0x18,R24
+ 012E                   .dbline 75
+ 012E 00910000          lds R16,_x
+ 0132 10910100          lds R17,_x+1
+ 0136 6DDF              rcall _delay
+ 0138                   .dbline 76
+ 0138 2224              clr R2
+ 013A 28BA              out 0x18,R2
+ 013C                   .dbline 77
+ 013C 00910000          lds R16,_x
+ 0140 10910100          lds R17,_x+1
+ 0144 66DF              rcall _delay
+ 0146                   .dbline 78
+ 0146 8FE0              ldi R24,15
+ 0148 88BB              out 0x18,R24
+ 014A                   .dbline 79
+ 014A 00910000          lds R16,_x
+ 014E 10910100          lds R17,_x+1
+ 0152 5FDF              rcall _delay
+ 0154                   .dbline 80
+ 0154 2224              clr R2
+ 0156 28BA              out 0x18,R2
+ 0158                   .dbline 81
+ 0158 25BA              out 0x15,R2
+ 015A                   .dbline 82
+ 015A 00910000          lds R16,_x
+ 015E 10910100          lds R17,_x+1
+ 0162 57DF              rcall _delay
+ 0164                   .dbline 83
+ 0164 8FE0              ldi R24,15
+ 0166 88BB              out 0x18,R24
+ 0168                   .dbline 84
+ 0168 85BB              out 0x15,R24
+ 016A                   .dbline 85
+ 016A           L13:
+ 016A                   .dbline 38
+ 016A 68CF              rjmp L12
+ 016C           X1:
+ 016C                   .dbline -2
+ 016C           L11:
+ 016C                   .dbline 0 ; func end
+ 016C 0895              ret
+ 016E                   .dbend

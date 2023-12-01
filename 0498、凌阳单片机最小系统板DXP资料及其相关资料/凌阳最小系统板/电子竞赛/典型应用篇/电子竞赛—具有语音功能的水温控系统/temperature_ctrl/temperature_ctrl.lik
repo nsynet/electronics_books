@@ -1,0 +1,93 @@
+Version: 3.0
+Options: m37
+Obj: "D:\Program Files\Sunplus\unSPIDE1.10.0\startupD.obj"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\Resource.obj"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\system.obj"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\led.obj"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\main.obj"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\isr.obj"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\hardware.obj"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\key.obj"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T034_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T046_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T047_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T048_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T049_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T050_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T051_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T052_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T053_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T054_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T055_16k.res"
+Obj: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Debug\T056_16k.res"
+Lib: "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\.\sacmv25.lib"
+Lib: "D:\Program Files\Sunplus\unSPIDE1.10.0\CMacro.lib"
+Output: ".\Debug\temperature_ctrl.S37"
+;Locate: TEXT in "isr.obj" at 8009 
+;Align: TEXT in "isr.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 982B  linkat 31D 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "main.obj" at 2F7 
+;Align: RAM in "main.obj" with 0 
+;Locate: A2000_Section in "a2000" of "sacmv25.lib"  at 0 
+;Align: A2000_Section in "a2000" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_T034_16K in "T034_16k.res" at 986A 
+;Align: __sn_section_RES_T034_16K in "T034_16k.res" with 0 
+;Locate: __sn_section_RES_T046_16K in "T046_16k.res" at 9C5D 
+;Align: __sn_section_RES_T046_16K in "T046_16k.res" with 0 
+;Locate: __sn_section_RES_T047_16K in "T047_16k.res" at 9E70 
+;Align: __sn_section_RES_T047_16K in "T047_16k.res" with 0 
+;Locate: __sn_section_RES_T048_16K in "T048_16k.res" at A965 
+;Align: __sn_section_RES_T048_16K in "T048_16k.res" with 0 
+;Locate: __sn_section_RES_T049_16K in "T049_16k.res" at A023 
+;Align: __sn_section_RES_T049_16K in "T049_16k.res" with 0 
+;Locate: __sn_section_RES_T050_16K in "T050_16k.res" at A53C 
+;Align: __sn_section_RES_T050_16K in "T050_16k.res" with 0 
+;Locate: __sn_section_RES_T051_16K in "T051_16k.res" at A1D6 
+;Align: __sn_section_RES_T051_16K in "T051_16k.res" with 0 
+;Locate: __sn_section_RES_T052_16K in "T052_16k.res" at A6BF 
+;Align: __sn_section_RES_T052_16K in "T052_16k.res" with 0 
+;Locate: __sn_section_RES_T053_16K in "T053_16k.res" at A812 
+;Align: __sn_section_RES_T053_16K in "T053_16k.res" with 0 
+;Locate: __sn_section_RES_T054_16K in "T054_16k.res" at AC0B 
+;Align: __sn_section_RES_T054_16K in "T054_16k.res" with 0 
+;Locate: __sn_section_RES_T055_16K in "T055_16k.res" at A389 
+;Align: __sn_section_RES_T055_16K in "T055_16k.res" with 0 
+;Locate: __sn_section_RES_T056_16K in "T056_16k.res" at AAB8 
+;Align: __sn_section_RES_T056_16K in "T056_16k.res" with 0 
+;Locate: CODE in "a2000" of "sacmv25.lib"  at 80E2 
+;Align: CODE in "a2000" of "sacmv25.lib"  with 0 
+;Locate: CODE in "main.obj" at 8D56 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "hardware.obj" at 9297 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "mulf2" of "CMacro.lib"  at 93C4 
+;Align: CODE in "mulf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "addf2" of "CMacro.lib"  at 9494 
+;Align: CODE in "addf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "system.obj" at 9560 
+;Align: CODE in "system.obj" with 0 
+;Locate: CODE in "key.obj" at 95F1 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "divu1" of "CMacro.lib"  at 966F 
+;Align: CODE in "divu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "divi1" of "CMacro.lib"  at 96AD 
+;Align: CODE in "divi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvi1f2" of "CMacro.lib"  at 96E4 
+;Align: CODE in "cvi1f2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cmpf2" of "CMacro.lib"  at 9718 
+;Align: CODE in "cmpf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "modi1" of "CMacro.lib"  at 9746 
+;Align: CODE in "modi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro.lib"  at 976E 
+;Align: CODE in "rshu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "mulu1" of "CMacro.lib"  at 9794 
+;Align: CODE in "mulu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "lshiu2" of "CMacro.lib"  at 97BA 
+;Align: CODE in "lshiu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvf2i1" of "CMacro.lib"  at 97E0 
+;Align: CODE in "cvf2i1" of "CMacro.lib"  with 0 
+;Locate: CODE in "led.obj" at 9806 
+;Align: CODE in "led.obj" with 0 
+;Locate: DATA in "led.obj" at ACFE 
+;Align: DATA in "led.obj" with 0 

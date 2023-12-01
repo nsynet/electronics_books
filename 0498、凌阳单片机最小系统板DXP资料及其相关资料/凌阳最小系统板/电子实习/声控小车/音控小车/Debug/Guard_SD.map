@@ -1,0 +1,1047 @@
+Saturday, September 12, 19:13:46, 2009
+
+                    Sunplus u'nSP Linker version 1.14.3 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+_RESET                                             A69F         "C:\Program Files\Sunplus\unSP IDE 2.0.0\startupD.obj"
+__sn_loop                                          A6BB         "C:\Program Files\Sunplus\unSP IDE 2.0.0\startupD.obj"
+__sn_loop2                                         A6BA         "C:\Program Files\Sunplus\unSP IDE 2.0.0\startupD.obj"
+__sn_init_table                                    8000         "Linker internal symbol"
+__sn_sp_val                                        7FF          "Linker internal symbol"
+_InitIO                                            CD72         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\InitIO.obj"
+_ShowRes                                           CD6A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\InitIO.obj"
+_ClearWatchDog                                     CD53         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\InitIO.obj"
+_InterruptOff                                      CD61         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\InitIO.obj"
+_Interrupt                                         CD59         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\InitIO.obj"
+_F_Delay                                           CD76         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\InitIO.obj"
+F_SP_RampUpDAC1                                    CC65         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    CC89         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    CC9B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    CCBF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_RampUpDAC1                                     CC65         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_RampDnDAC1                                     CC89         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_RampUpDAC2                                     CC9B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_RampDnDAC2                                     CCBF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_InitQueue                                      CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_InitQueue_A2000                                CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_InitQueue_S480                                 CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_InitQueue_S240                                 CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_InitQueue_MS01                                 CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_InitQueue_DVR                                  CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_InitQueue                                     CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_InitQueue_A2000                               CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_InitQueue_S480                                CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_InitQueue_S240                                CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_InitQueue_MS01                                CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_InitQueue_DVR                                 CB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue                                     CB4C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_A2000                               CB4C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_S480                                CB4C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_S240                                CB4C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_MS01                                CB4C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_DVR                                 CB4C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_NIC                                 CB5F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_A2000                           CB5F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_S480                            CB5F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_S240                            CB5F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_MS01                            CB5F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_DVR                             CB5F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_WriteQueue                                    CB68         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_WriteQueue_A2000                              CB68         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_WriteQueue_S480                               CB68         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_WriteQueue_S240                               CB68         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_WriteQueue_MS01                               CB68         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_WriteQueue_DVR                                CB68         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_TestQueue                                     CB77         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_TestQueue_A2000                               CB77         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_TestQueue_S480                                CB77         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_TestQueue_S240                                CB77         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_TestQueue_MS01                                CB77         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_TestQueue_DVR                                 CB77         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_Export                                         CCFE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_Import                                         CCF7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_Init_IOB                                       CCE7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_Init_IOA                                       CCD7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_SP_GetResource                                    CD08         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_GetResource                                   CD16         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_SACM_A2000_Init_                              CB90         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_SACM_S480_Init_                               CBAC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_SACM_S240_Init_                               CBC7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_SACM_MS01_Init_                               CBE2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_PlayMode0_                                    CBF4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_PlayMode1_                                    CC04         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_PlayMode2_                                    CC15         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_PlayMode3_                                    CC26         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_SACM_DVR_Init_                                CC37         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_SACM_DVR_Rec_Init_                            CC55         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_SP_SACM_DVR_Play_Init_                           CC5D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+R_InterruptStatus                                  48A          "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_RampUpDAC1                                       CC65         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_RampDnDAC1                                       CC89         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_RampUpDAC2                                       CC9B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+F_RampDnDAC2                                       CCBF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_STD_RampUpDAC1                                    CC65         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_STD_RampDnDAC1                                    CC89         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_STD_RampUpDAC2                                    CC9B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_STD_RampDnDAC2                                    CCBF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+_FIQ                                               A60E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_BREAK                                             A62E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_IRQ0                                              A62E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_IRQ1                                              A62E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_IRQ2                                              A62E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_IRQ3                                              A62E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_IRQ4                                              A652         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_IRQ5                                              A652         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_IRQ6                                              A678         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_IRQ7                                              A678         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+T_SACM_S480_SpeechTable                            A607         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+T_SACM_A2000_SpeechTable                           A60D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_F_Speed                                           CD92         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+_RES_Table                                         A678         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_DCQZY_48K_SA                                  A678         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_DCQZY_48K_EA                                  A67A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_FBF_48K_SA                                    A67C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_FBF_48K_EA                                    A67E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_GJG_48K_SA                                    A680         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_GJG_48K_EA                                    A682         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_QJ_48K_SA                                     A684         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_QJ_48K_EA                                     A686         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_SSMAY_48K_SA                                  A688         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_SSMAY_48K_EA                                  A68A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_YEAH_48K_SA                                   A68C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_YEAH_48K_EA                                   A68E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_S12_24K_SA                                    A690         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_RES_S12_24K_EA                                    A692         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+_gActivated                                        4F1          "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_gTriggerRespond                                   4F2          "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_gComm2Respond                                     4F5          "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_PlayFlag                                          4F8          "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_uiSpeed                                           4F9          "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_PlayRespond2                                      B6E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_PlayRespond                                       B71C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_TrainWord                                         B750         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_F_GoAheadCtr                                      B7BE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_F_BackUpCtr                                       B80A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_F_TurnLeftCtr                                     B856         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_F_TurnRightCtr                                    B8A2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_F_StopCtr                                         B8EE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_F_ShunCtr                                         B8FE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_main                                              B9A5         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_commandID                                         4FA          "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_g_Ret                                             4FB          "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+_F_FlashWrite1Word                                 CD1E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Flash.obj"
+_F_FlashWrite                                      CD2E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Flash.obj"
+_F_FlashErase                                      CD44         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Flash.obj"
+_F_Pwm                                             CD84         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Bpwm.obj"
+_Set_IOA_Bit                                       A6BC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA_Bit                                        A6BC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB_Bit                                       A706         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB_Bit                                        A706         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_IOA_Bit                                       A750         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_IOA_Bit                                        A750         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_IOB_Bit                                       A774         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_IOB_Bit                                        A774         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA0_Dir0                                     A798         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA0_Dir0                                      A798         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA0_Dir1                                     A7A2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA0_Dir1                                      A7A2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA1_Dir0                                     A7AE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA1_Dir0                                      A7AE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA1_Dir1                                     A7B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA1_Dir1                                      A7B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA2_Dir0                                     A7C4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA2_Dir0                                      A7C4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA2_Dir1                                     A7CE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA2_Dir1                                      A7CE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA3_Dir0                                     A7DA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA3_Dir0                                      A7DA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA3_Dir1                                     A7E4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA3_Dir1                                      A7E4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA4_Dir0                                     A7F0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA4_Dir0                                      A7F0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA4_Dir1                                     A7FA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA4_Dir1                                      A7FA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA5_Dir0                                     A806         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA5_Dir0                                      A806         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA5_Dir1                                     A810         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA5_Dir1                                      A810         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA6_Dir0                                     A81C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA6_Dir0                                      A81C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA6_Dir1                                     A826         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA6_Dir1                                      A826         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA7_Dir0                                     A833         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA7_Dir0                                      A833         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA7_Dir1                                     A83D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA7_Dir1                                      A83D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA8_Dir0                                     A84A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA8_Dir0                                      A84A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA8_Dir1                                     A854         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA8_Dir1                                      A854         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA9_Dir0                                     A861         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA9_Dir0                                      A861         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA9_Dir1                                     A86B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA9_Dir1                                      A86B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA10_Dir0                                    A878         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA10_Dir0                                     A878         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA10_Dir1                                    A882         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA10_Dir1                                     A882         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA11_Dir0                                    A88F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA11_Dir0                                     A88F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA11_Dir1                                    A899         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA11_Dir1                                     A899         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA12_Dir0                                    A8A6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA12_Dir0                                     A8A6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA12_Dir1                                    A8B0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA12_Dir1                                     A8B0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA13_Dir0                                    A8BD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA13_Dir0                                     A8BD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA13_Dir1                                    A8C7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA13_Dir1                                     A8C7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA14_Dir0                                    A8D4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA14_Dir0                                     A8D4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA14_Dir1                                    A8DE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA14_Dir1                                     A8DE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA15_Dir0                                    A8EB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA15_Dir0                                     A8EB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA15_Dir1                                    A8F5         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA15_Dir1                                     A8F5         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA0_Attrib0                                  A902         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA0_Attrib0                                   A902         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA0_Attrib1                                  A90C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA0_Attrib1                                   A90C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA1_Attrib0                                  A918         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA1_Attrib0                                   A918         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA1_Attrib1                                  A922         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA1_Attrib1                                   A922         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA2_Attrib0                                  A92E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA2_Attrib0                                   A92E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA2_Attrib1                                  A938         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA2_Attrib1                                   A938         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA3_Attrib0                                  A944         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA3_Attrib0                                   A944         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA3_Attrib1                                  A94E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA3_Attrib1                                   A94E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA4_Attrib0                                  A95A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA4_Attrib0                                   A95A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA4_Attrib1                                  A964         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA4_Attrib1                                   A964         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA5_Attrib0                                  A970         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA5_Attrib0                                   A970         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA5_Attrib1                                  A97A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA5_Attrib1                                   A97A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA6_Attrib0                                  A986         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA6_Attrib0                                   A986         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA6_Attrib1                                  A990         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA6_Attrib1                                   A990         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA7_Attrib0                                  A99D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA7_Attrib0                                   A99D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA7_Attrib1                                  A9A7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA7_Attrib1                                   A9A7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA8_Attrib0                                  A9B4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA8_Attrib0                                   A9B4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA8_Attrib1                                  A9BE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA8_Attrib1                                   A9BE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA9_Attrib0                                  A9CB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA9_Attrib0                                   A9CB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA9_Attrib1                                  A9D5         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA9_Attrib1                                   A9D5         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA10_Attrib0                                 A9E2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA10_Attrib0                                  A9E2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA10_Attrib1                                 A9EC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA10_Attrib1                                  A9EC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA11_Attrib0                                 A9F9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA11_Attrib0                                  A9F9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA11_Attrib1                                 AA03         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA11_Attrib1                                  AA03         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA12_Attrib0                                 AA10         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA12_Attrib0                                  AA10         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA12_Attrib1                                 AA1A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA12_Attrib1                                  AA1A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA13_Attrib0                                 AA27         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA13_Attrib0                                  AA27         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA13_Attrib1                                 AA31         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA13_Attrib1                                  AA31         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA14_Attrib0                                 AA3E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA14_Attrib0                                  AA3E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA14_Attrib1                                 AA48         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA14_Attrib1                                  AA48         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA15_Attrib0                                 AA55         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA15_Attrib0                                  AA55         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA15_Attrib1                                 AA5F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA15_Attrib1                                  AA5F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA0_Buffer0                                  AA6C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA0_Buffer0                                   AA6C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA0_Buffer1                                  AA76         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA0_Buffer1                                   AA76         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA1_Buffer0                                  AA82         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA1_Buffer0                                   AA82         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA1_Buffer1                                  AA8C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA1_Buffer1                                   AA8C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA2_Buffer0                                  AA98         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA2_Buffer0                                   AA98         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA2_Buffer1                                  AAA2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA2_Buffer1                                   AAA2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA3_Buffer0                                  AAAE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA3_Buffer0                                   AAAE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA3_Buffer1                                  AAB8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA3_Buffer1                                   AAB8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA4_Buffer0                                  AAC4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA4_Buffer0                                   AAC4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA4_Buffer1                                  AACE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA4_Buffer1                                   AACE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA5_Buffer0                                  AADA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA5_Buffer0                                   AADA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA5_Buffer1                                  AAE4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA5_Buffer1                                   AAE4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA6_Buffer0                                  AAF0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA6_Buffer0                                   AAF0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA6_Buffer1                                  AAFA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA6_Buffer1                                   AAFA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA7_Buffer0                                  AB07         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA7_Buffer0                                   AB07         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA7_Buffer1                                  AB11         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA7_Buffer1                                   AB11         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA8_Buffer0                                  AB1E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA8_Buffer0                                   AB1E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA8_Buffer1                                  AB28         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA8_Buffer1                                   AB28         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA9_Buffer0                                  AB35         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA9_Buffer0                                   AB35         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA9_Buffer1                                  AB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA9_Buffer1                                   AB3F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA10_Buffer0                                 AB4C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA10_Buffer0                                  AB4C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA10_Buffer1                                 AB56         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA10_Buffer1                                  AB56         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA11_Buffer0                                 AB63         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA11_Buffer0                                  AB63         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA11_Buffer1                                 AB6D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA11_Buffer1                                  AB6D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA12_Buffer0                                 AB7A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA12_Buffer0                                  AB7A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA12_Buffer1                                 AB84         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA12_Buffer1                                  AB84         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA13_Buffer0                                 AB91         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA13_Buffer0                                  AB91         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA13_Buffer1                                 AB9B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA13_Buffer1                                  AB9B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA14_Buffer0                                 ABA8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA14_Buffer0                                  ABA8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA14_Buffer1                                 ABB2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA14_Buffer1                                  ABB2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA15_Buffer0                                 ABBF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA15_Buffer0                                  ABBF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA15_Buffer1                                 ABC9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA15_Buffer1                                  ABC9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA0_Data0                                    ABD6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA0_Data0                                     ABD6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA0_Data1                                    ABE0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA0_Data1                                     ABE0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA1_Data0                                    ABEC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA1_Data0                                     ABEC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA1_Data1                                    ABF6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA1_Data1                                     ABF6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA2_Data0                                    AC02         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA2_Data0                                     AC02         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA2_Data1                                    AC0C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA2_Data1                                     AC0C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA3_Data0                                    AC18         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA3_Data0                                     AC18         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA3_Data1                                    AC22         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA3_Data1                                     AC22         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA4_Data0                                    AC2E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA4_Data0                                     AC2E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA4_Data1                                    AC38         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA4_Data1                                     AC38         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA5_Data0                                    AC44         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA5_Data0                                     AC44         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA5_Data1                                    AC4E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA5_Data1                                     AC4E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA6_Data0                                    AC5A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA6_Data0                                     AC5A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA6_Data1                                    AC64         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA6_Data1                                     AC64         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA7_Data0                                    AC71         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA7_Data0                                     AC71         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA7_Data1                                    AC7B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA7_Data1                                     AC7B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA8_Data0                                    AC88         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA8_Data0                                     AC88         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA8_Data1                                    AC92         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA8_Data1                                     AC92         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA9_Data0                                    AC9F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA9_Data0                                     AC9F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA9_Data1                                    ACA9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA9_Data1                                     ACA9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA10_Data0                                   ACB6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA10_Data0                                    ACB6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA10_Data1                                   ACC0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA10_Data1                                    ACC0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA11_Data0                                   ACCD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA11_Data0                                    ACCD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA11_Data1                                   ACD7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA11_Data1                                    ACD7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA12_Data0                                   ACE4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA12_Data0                                    ACE4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA12_Data1                                   ACEE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA12_Data1                                    ACEE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA13_Data0                                   ACFB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA13_Data0                                    ACFB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA13_Data1                                   AD05         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA13_Data1                                    AD05         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA14_Data0                                   AD12         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA14_Data0                                    AD12         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA14_Data1                                   AD1C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA14_Data1                                    AD1C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA15_Data0                                   AD29         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA15_Data0                                    AD29         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOA15_Data1                                   AD33         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOA15_Data1                                    AD33         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB0_Dir0                                     AD40         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB0_Dir0                                      AD40         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB0_Dir1                                     AD4A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB0_Dir1                                      AD4A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB1_Dir0                                     AD56         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB1_Dir0                                      AD56         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB1_Dir1                                     AD60         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB1_Dir1                                      AD60         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB2_Dir0                                     AD6C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB2_Dir0                                      AD6C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB2_Dir1                                     AD76         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB2_Dir1                                      AD76         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB3_Dir0                                     AD82         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB3_Dir0                                      AD82         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB3_Dir1                                     AD8C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB3_Dir1                                      AD8C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB4_Dir0                                     AD98         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB4_Dir0                                      AD98         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB4_Dir1                                     ADA2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB4_Dir1                                      ADA2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB5_Dir0                                     ADAE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB5_Dir0                                      ADAE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB5_Dir1                                     ADB8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB5_Dir1                                      ADB8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB6_Dir0                                     ADC4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB6_Dir0                                      ADC4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB6_Dir1                                     ADCE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB6_Dir1                                      ADCE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB7_Dir0                                     ADDB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB7_Dir0                                      ADDB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB7_Dir1                                     ADE5         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB7_Dir1                                      ADE5         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB8_Dir0                                     ADF2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB8_Dir0                                      ADF2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB8_Dir1                                     ADFC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB8_Dir1                                      ADFC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB9_Dir0                                     AE09         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB9_Dir0                                      AE09         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB9_Dir1                                     AE13         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB9_Dir1                                      AE13         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB10_Dir0                                    AE20         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB10_Dir0                                     AE20         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB10_Dir1                                    AE2A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB10_Dir1                                     AE2A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB11_Dir0                                    AE37         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB11_Dir0                                     AE37         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB11_Dir1                                    AE41         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB11_Dir1                                     AE41         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB12_Dir0                                    AE4E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB12_Dir0                                     AE4E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB12_Dir1                                    AE58         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB12_Dir1                                     AE58         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB13_Dir0                                    AE65         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB13_Dir0                                     AE65         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB13_Dir1                                    AE6F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB13_Dir1                                     AE6F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB14_Dir0                                    AE7C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB14_Dir0                                     AE7C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB14_Dir1                                    AE86         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB14_Dir1                                     AE86         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB15_Dir0                                    AE93         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB15_Dir0                                     AE93         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB15_Dir1                                    AE9D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB15_Dir1                                     AE9D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB0_Attrib0                                  AEAA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB0_Attrib0                                   AEAA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB0_Attrib1                                  AEB4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB0_Attrib1                                   AEB4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB1_Attrib0                                  AEC0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB1_Attrib0                                   AEC0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB1_Attrib1                                  AECA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB1_Attrib1                                   AECA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB2_Attrib0                                  AED6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB2_Attrib0                                   AED6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB2_Attrib1                                  AEE0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB2_Attrib1                                   AEE0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB3_Attrib0                                  AEEC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB3_Attrib0                                   AEEC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB3_Attrib1                                  AEF6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB3_Attrib1                                   AEF6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB4_Attrib0                                  AF02         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB4_Attrib0                                   AF02         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB4_Attrib1                                  AF0C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB4_Attrib1                                   AF0C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB5_Attrib0                                  AF18         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB5_Attrib0                                   AF18         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB5_Attrib1                                  AF22         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB5_Attrib1                                   AF22         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB6_Attrib0                                  AF2E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB6_Attrib0                                   AF2E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB6_Attrib1                                  AF38         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB6_Attrib1                                   AF38         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB7_Attrib0                                  AF45         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB7_Attrib0                                   AF45         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB7_Attrib1                                  AF4F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB7_Attrib1                                   AF4F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB8_Attrib0                                  AF5C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB8_Attrib0                                   AF5C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB8_Attrib1                                  AF66         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB8_Attrib1                                   AF66         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB9_Attrib0                                  AF73         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB9_Attrib0                                   AF73         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB9_Attrib1                                  AF7D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB9_Attrib1                                   AF7D         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB10_Attrib0                                 AF8A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB10_Attrib0                                  AF8A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB10_Attrib1                                 AF94         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB10_Attrib1                                  AF94         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB11_Attrib0                                 AFA1         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB11_Attrib0                                  AFA1         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB11_Attrib1                                 AFAB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB11_Attrib1                                  AFAB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB12_Attrib0                                 AFB8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB12_Attrib0                                  AFB8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB12_Attrib1                                 AFC2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB12_Attrib1                                  AFC2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB13_Attrib0                                 AFCF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB13_Attrib0                                  AFCF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB13_Attrib1                                 AFD9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB13_Attrib1                                  AFD9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB14_Attrib0                                 AFE6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB14_Attrib0                                  AFE6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB14_Attrib1                                 AFF0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB14_Attrib1                                  AFF0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB15_Attrib0                                 AFFD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB15_Attrib0                                  AFFD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB15_Attrib1                                 B007         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB15_Attrib1                                  B007         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB0_Buffer0                                  B014         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB0_Buffer0                                   B014         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB0_Buffer1                                  B01E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB0_Buffer1                                   B01E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB1_Buffer0                                  B02A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB1_Buffer0                                   B02A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB1_Buffer1                                  B034         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB1_Buffer1                                   B034         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB2_Buffer0                                  B040         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB2_Buffer0                                   B040         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB2_Buffer1                                  B04A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB2_Buffer1                                   B04A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB3_Buffer0                                  B056         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB3_Buffer0                                   B056         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB3_Buffer1                                  B060         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB3_Buffer1                                   B060         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB4_Buffer0                                  B06C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB4_Buffer0                                   B06C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB4_Buffer1                                  B076         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB4_Buffer1                                   B076         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB5_Buffer0                                  B082         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB5_Buffer0                                   B082         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB5_Buffer1                                  B08C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB5_Buffer1                                   B08C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB6_Buffer0                                  B098         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB6_Buffer0                                   B098         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB6_Buffer1                                  B0A2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB6_Buffer1                                   B0A2         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB7_Buffer0                                  B0AF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB7_Buffer0                                   B0AF         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB7_Buffer1                                  B0B9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB7_Buffer1                                   B0B9         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB8_Buffer0                                  B0C6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB8_Buffer0                                   B0C6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB8_Buffer1                                  B0D0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB8_Buffer1                                   B0D0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB9_Buffer0                                  B0DD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB9_Buffer0                                   B0DD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB9_Buffer1                                  B0E7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB9_Buffer1                                   B0E7         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB10_Buffer0                                 B0F4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB10_Buffer0                                  B0F4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB10_Buffer1                                 B0FE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB10_Buffer1                                  B0FE         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB11_Buffer0                                 B10B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB11_Buffer0                                  B10B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB11_Buffer1                                 B115         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB11_Buffer1                                  B115         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB12_Buffer0                                 B122         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB12_Buffer0                                  B122         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB12_Buffer1                                 B12C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB12_Buffer1                                  B12C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB13_Buffer0                                 B139         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB13_Buffer0                                  B139         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB13_Buffer1                                 B143         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB13_Buffer1                                  B143         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB14_Buffer0                                 B150         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB14_Buffer0                                  B150         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB14_Buffer1                                 B15A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB14_Buffer1                                  B15A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB15_Buffer0                                 B167         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB15_Buffer0                                  B167         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB15_Buffer1                                 B171         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB15_Buffer1                                  B171         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB0_Data0                                    B17E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB0_Data0                                     B17E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB0_Data1                                    B188         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB0_Data1                                     B188         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB1_Data0                                    B194         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB1_Data0                                     B194         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB1_Data1                                    B19E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB1_Data1                                     B19E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB2_Data0                                    B1AA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB2_Data0                                     B1AA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB2_Data1                                    B1B4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB2_Data1                                     B1B4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB3_Data0                                    B1C0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB3_Data0                                     B1C0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB3_Data1                                    B1CA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB3_Data1                                     B1CA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB4_Data0                                    B1D6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB4_Data0                                     B1D6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB4_Data1                                    B1E0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB4_Data1                                     B1E0         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB5_Data0                                    B1EC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB5_Data0                                     B1EC         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB5_Data1                                    B1F6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB5_Data1                                     B1F6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB6_Data0                                    B202         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB6_Data0                                     B202         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB6_Data1                                    B20C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB6_Data1                                     B20C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB7_Data0                                    B219         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB7_Data0                                     B219         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB7_Data1                                    B223         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB7_Data1                                     B223         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB8_Data0                                    B230         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB8_Data0                                     B230         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB8_Data1                                    B23A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB8_Data1                                     B23A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB9_Data0                                    B247         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB9_Data0                                     B247         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB9_Data1                                    B251         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB9_Data1                                     B251         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB10_Data0                                   B25E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB10_Data0                                    B25E         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB10_Data1                                   B268         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB10_Data1                                    B268         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB11_Data0                                   B275         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB11_Data0                                    B275         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB11_Data1                                   B27F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB11_Data1                                    B27F         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB12_Data0                                   B28C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB12_Data0                                    B28C         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB12_Data1                                   B296         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB12_Data1                                    B296         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB13_Data0                                   B2A3         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB13_Data0                                    B2A3         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB13_Data1                                   B2AD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB13_Data1                                    B2AD         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB14_Data0                                   B2BA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB14_Data0                                    B2BA         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB14_Data1                                   B2C4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB14_Data1                                    B2C4         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB15_Data0                                   B2D1         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB15_Data0                                    B2D1         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Set_IOB15_Data1                                   B2DB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Set_IOB15_Data1                                    B2DB         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA0                                   B2E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA0                                    B2E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA1                                   B2F8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA1                                    B2F8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA2                                   B308         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA2                                    B308         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA3                                   B318         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA3                                    B318         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA4                                   B328         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA4                                    B328         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA5                                   B338         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA5                                    B338         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA6                                   B348         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA6                                    B348         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA7                                   B358         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA7                                    B358         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA8                                   B368         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA8                                    B368         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA9                                   B378         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA9                                    B378         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA10                                  B388         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA10                                   B388         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA11                                  B398         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA11                                   B398         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA12                                  B3A8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA12                                   B3A8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA13                                  B3B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA13                                   B3B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA14                                  B3C8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA14                                   B3C8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOA15                                  B3D8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOA15                                   B3D8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA0                                     B3E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA0                                      B3E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA1                                     B3F8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA1                                      B3F8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA2                                     B408         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA2                                      B408         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA3                                     B418         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA3                                      B418         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA4                                     B428         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA4                                      B428         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA5                                     B438         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA5                                      B438         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA6                                     B448         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA6                                      B448         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA7                                     B458         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA7                                      B458         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA8                                     B468         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA8                                      B468         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA9                                     B478         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA9                                      B478         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA10                                    B488         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA10                                     B488         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA11                                    B498         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA11                                     B498         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA12                                    B4A8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA12                                     B4A8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA13                                    B4B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA13                                     B4B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA14                                    B4C8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA14                                     B4C8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOA15                                    B4D8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOA15                                     B4D8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB0                                   B4E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB0                                    B4E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB1                                   B4F8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB1                                    B4F8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB2                                   B508         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB2                                    B508         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB3                                   B518         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB3                                    B518         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB4                                   B528         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB4                                    B528         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB5                                   B538         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB5                                    B538         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB6                                   B548         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB6                                    B548         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB7                                   B558         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB7                                    B558         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB8                                   B568         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB8                                    B568         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB9                                   B578         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB9                                    B578         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB10                                  B588         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB10                                   B588         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB11                                  B598         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB11                                   B598         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB12                                  B5A8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB12                                   B5A8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB13                                  B5B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB13                                   B5B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB14                                  B5C8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB14                                   B5C8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Buffer_IOB15                                  B5D8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Buffer_IOB15                                   B5D8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB0                                     B5E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB0                                      B5E8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB1                                     B5F8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB1                                      B5F8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB2                                     B608         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB2                                      B608         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB3                                     B618         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB3                                      B618         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB4                                     B628         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB4                                      B628         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB5                                     B638         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB5                                      B638         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB6                                     B648         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB6                                      B648         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB7                                     B658         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB7                                      B658         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB8                                     B668         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB8                                      B668         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB9                                     B678         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB9                                      B678         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB10                                    B688         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB10                                     B688         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB11                                    B698         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB11                                     B698         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB12                                    B6A8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB12                                     B6A8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB13                                    B6B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB13                                     B6B8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB14                                    B6C8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB14                                     B6C8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+_Get_Data_IOB15                                    B6D8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Get_Data_IOB15                                     B6D8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+__RES_DCQZY_48K_sa                                 D49B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\dcqzy_48k.res"
+__RES_DCQZY_48K_ea                                 D67B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\dcqzy_48k.res"
+__RES_FBF_48K_sa                                   D909         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\fbf_48k.res"
+__RES_FBF_48K_ea                                   D9F6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\fbf_48k.res"
+__RES_GJG_48K_sa                                   D80A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\gjg_48k.res"
+__RES_GJG_48K_ea                                   D909         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\gjg_48k.res"
+__RES_QJ_48K_sa                                    D9F6         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\qj_48k.res"
+__RES_QJ_48K_ea                                    DAC8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\qj_48k.res"
+__RES_SSMAY_48K_sa                                 D67B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\ssmay_48k.res"
+__RES_SSMAY_48K_ea                                 D80A         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\ssmay_48k.res"
+__RES_YEAH_48K_sa                                  DAC8         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\yeah_48k.res"
+__RES_YEAH_48K_ea                                  DB64         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\yeah_48k.res"
+__RES_S12_24K_sa                                   CE20         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\S12_24K.res"
+__RES_S12_24K_ea                                   D49B         "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\S12_24K.res"
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+*                             S E C T I O N     S U M M A R Y                                                                                                                                                                                                                                             *
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size                                                                                                                                                                                                                 *
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+* "C:\Program Files\Sunplus\unSP IDE 2.0.0\startupD.obj"                                                                                                                                                                                                                                                  *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    unSP_StartUp(TEXT)                            A69F                 A6BB         1D                                                                                                                                                                                                                   *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\InitIO.obj"                                                                                                                                                                                                                            *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          CD53                 CD83         31                                                                                                                                                                                                                   *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"                                                                                                                                                                                                                          *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          CB3F                 CD1D         1DF                                                                                                                                                                                                                  *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IRAM                                          CDA9  (48A)          CE0F  (4F0)  67                                                                                                                                                                                                                   *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"                                                                                                                                                                                                                               *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          CD92                 CD9C         B                                                                                                                                                                                                                    *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          A607                 A677         71                                                                                                                                                                                                                   *
+*    IRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           47D                  47D          1                                                                                                                                                                                                                    *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"                                                                                                                                                                                                                          *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          A678                 A693         1C                                                                                                                                                                                                                   *
+*    IRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"                                                                                                                                                                                                                              *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          B6E8                 BE40         759                                                                                                                                                                                                                  *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          A694                 A69E         B                                                                                                                                                                                                                    *
+*    IRAM                                          CE10  (4F1)          CE1A  (4FB)  B                                                                                                                                                                                                                    *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Flash.obj"                                                                                                                                                                                                                             *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          CD1E                 CD52         35                                                                                                                                                                                                                   *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Bpwm.obj"                                                                                                                                                                                                                              *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          CD84                 CD91         E                                                                                                                                                                                                                    *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"                                                                                                                                                                                                                          *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          A6BC                 B6E7         102C                                                                                                                                                                                                                 *
+*    DATA                                          DB64                 DB83         20                                                                                                                                                                                                                   *
+*    TEXT                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    CTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DTOR                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    IM                                            ----                 ----         ----                                                                                                                                                                                                                 *
+*    LINKONCE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+*    VTBL                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_MERGE                                      ----                 ----         ----                                                                                                                                                                                                                 *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\dcqzy_48k.res"                                                                                                                                                                                                                         *
+*    __sn_section_RES_DCQZY_48K(DATA)              D49B                 D67A         1E0                                                                                                                                                                                                                  *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\fbf_48k.res"                                                                                                                                                                                                                           *
+*    __sn_section_RES_FBF_48K(DATA)                D909                 D9F5         ED                                                                                                                                                                                                                   *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\gjg_48k.res"                                                                                                                                                                                                                           *
+*    __sn_section_RES_GJG_48K(DATA)                D80A                 D908         FF                                                                                                                                                                                                                   *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\qj_48k.res"                                                                                                                                                                                                                            *
+*    __sn_section_RES_QJ_48K(DATA)                 D9F6                 DAC7         D2                                                                                                                                                                                                                   *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\ssmay_48k.res"                                                                                                                                                                                                                         *
+*    __sn_section_RES_SSMAY_48K(DATA)              D67B                 D809         18F                                                                                                                                                                                                                  *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\yeah_48k.res"                                                                                                                                                                                                                          *
+*    __sn_section_RES_YEAH_48K(DATA)               DAC8                 DB63         9C                                                                                                                                                                                                                   *
+* "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\S12_24K.res"                                                                                                                                                                                                                           *
+*    __sn_section_RES_S12_24K(DATA)                CE20                 D49A         67B                                                                                                                                                                                                                  *
+* "BSRSDCON"                                                                                                                                                                                                                                                                                              *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          8009                 9C65         1C5D                                                                                                                                                                                                                 *
+*    IRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    BSR_IRAM_EXCLUSIVE(IRAM)                      CD9D  (47E)          CDA8  (489)  C                                                                                                                                                                                                                    *
+*    BSR_RAM_EXCLUSIVE(RAM)                        467                  47C          16                                                                                                                                                                                                                   *
+*    BSR_RAM_BLOCK(RAM)                            39D                  466          CA                                                                                                                                                                                                                   *
+*    OVERLAP_RAM_BLOCK(ORAM)                       1                    361          361                                                                                                                                                                                                                  *
+* "D:\WORKING\UNSP\LIBMAK~1\RELEASE\S480"                                                                                                                                                                                                                                                                 *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          BE41                 C549         709                                                                                                                                                                                                                  *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          A316                 A606         2F1                                                                                                                                                                                                                  *
+*    IRAM                                          CE1E  (4FF)          CE1F  (500)  2                                                                                                                                                                                                                    *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    OVERLAP_RAM_BLOCK(ORAM)                       1                    1A3          1A3                                                                                                                                                                                                                  *
+* "D:\WORKING\UNSP\LIBMAK~1\RELEASE\A2000"                                                                                                                                                                                                                                                                *
+*    DEBUG                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    CODE                                          C54A                 CB3E         5F5                                                                                                                                                                                                                  *
+*    DATA                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    TEXT                                          9C66                 A315         6B0                                                                                                                                                                                                                  *
+*    IRAM                                          CE1B  (4FC)          CE1D  (4FE)  3                                                                                                                                                                                                                    *
+*    ISRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    RAM                                           ----                 ----         ----                                                                                                                                                                                                                 *
+*    SRAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    ORAM                                          ----                 ----         ----                                                                                                                                                                                                                 *
+*    OSRAM                                         ----                 ----         ----                                                                                                                                                                                                                 *
+*    NB_DATA                                       ----                 ----         ----                                                                                                                                                                                                                 *
+*    OVERLAP_SRAM_BLOCK(ORAM)                      362                  39C          3B                                                                                                                                                                                                                   *
+*    OVERLAP_RAM_BLOCK(ORAM)                       1                    2B9          2B9                                                                                                                                                                                                                  *
+* "Init Table"                                     8000                 8008         9                                                                                                                                                                                                                    *
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                                                                                                                                                                                                                               *
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+*     Type                          Total               Using        Remain                                                                                                                                                                                                                               *
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                                                                                                                                                                                                                                  *
+* "Ram"                             800                  501          2FF                                                                                                                                                                                                                                 *
+* "First Bank Rom"                  7C00                 5B84         207C                                                                                                                                                                                                                                *
+* "Other Banks Rom"                 0                    0            0                                                                                                                                                                                                                                   *
+***********************************************************************************************************************************************************************************************************************************************************************************************************
+
+Linker Output Filename : F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Guard_SD.S37
+Disk  Mapping Filename : F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Guard_SD.map
+Symbol  Table FileName : F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Guard_SD.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

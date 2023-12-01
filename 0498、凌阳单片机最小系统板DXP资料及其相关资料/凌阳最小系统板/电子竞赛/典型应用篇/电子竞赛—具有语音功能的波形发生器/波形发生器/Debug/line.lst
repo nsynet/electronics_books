@@ -1,0 +1,719 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	.define		P_IOB_Data  	0x7005;
+                            	.define		P_IOB_Dir  	0x7007;
+                            	.define		P_IOB_Attrib		0x7008;
+                            	.define		P_INT_CTRL		0x7010;
+                            	.define		P_INT_CLEAR		0x7011;
+                            	.define		P_Feedback		0x7009;
+                            	.define		P_DAC_Ctrl		0x702A 
+                            	.define		P_DAC1			0x7017
+                            	.define		P_DAC2			0x7016
+                            	.define     P_System_Clock  0x7013
+                            	.define P_TimerA_Ctrl  0x700b
+                            	.define P_TimerA_Data 0x700a
+                            	
+                            	.external _main
+                            	.external _pp
+                            	.external _Mk_Z,_Mk_F;
+                            	.external _V_GA
+                            	.external _Bianxing
+                            	.external _Bianxing1
+                            	.external _sanju
+                            	.external  _Mk_Z1,_Mk_F1,_Mk_Z2,_Mk_F2,_Mk_Z3,_Mk_F3,_Mk_Z4,_Mk_F4,_Mk_Z5,_Mk_F5;
+00000203                    	.iram
+00000203 00 00 00 00        	.var R_SUM,V_FuDu=0,T_PinLv=1;
+         01 00      
+0000A94C                    	.data 
+                            	DB_Up: 
+0000A94C 00 80 A3 80        	.dw 0x8000,0x80a3,0x8146,0x81e9,0x828c,0x832f,0x83d2,0x8475,0x8518,0x85bb; 
+         46 81 E9 81
+         8C 82 2F 83
+         D2 83 75 84
+         18 85 BB 85
+0000A956 5E 86 01 87        	.dw 0x865e,0x8701,0x87a4,0x8847,0x88ea,0x898d,0x8a30,0x8ad3,0x8b76,0x8c19;
+         A4 87 47 88
+         EA 88 8D 89
+         30 8A D3 8A
+         76 8B 19 8C
+0000A960 BC 8C 5F 8D        	.dw 0x8cbc,0x8d5f,0x8e02,0x8ea5,0x8f48,0x8feb,0x908e,0x9131,0x91d4,0x9277;
+         02 8E A5 8E
+         48 8F EB 8F
+         8E 90 31 91
+         D4 91 77 92
+0000A96A 1A 93 BD 93        	.dw 0x931a,0x93bd,0x9460,0x9503,0x95a6,0x9649,0x9bec,0x978f,0x9832,0x98d5;
+         60 94 03 95
+         A6 95 49 96
+         EC 9B 8F 97
+         32 98 D5 98
+0000A974 78 99 1B 9A        	.dw 0x9978,0x9a1b,0x9abe,0x9b61,0x9c04,0x9ca7,0x9d4a,0x9ded,0x9e90,0x9f33;
+         BE 9A 61 9B
+         04 9C A7 9C
+         4A 9D ED 9D
+         90 9E 33 9F
+0000A97E D6 9F 79 A0        	.dw 0x9fd6,0xa079,0xa11c,0xa1bf,0xa262,0xa305,0xa3a8,0xa44b,0xa4ee,0xa591;
+         1C A1 BF A1
+         62 A2 05 A3
+         A8 A3 4B A4
+         EE A4 91 A5
+0000A988 34 A6 D7 A6        	.dw 0xa634,0xa6d7,0xa77a,0xa81d,0xa8c0,0xa963,0xaa06,0xaaa9,0xab4c,0xabef;
+         7A A7 1D A8
+         C0 A8 63 A9
+         06 AA A9 AA
+         4C AB EF AB
+0000A992 92 AC 35 AD        	.dw 0xac92,0xad35,0xadd8,0xae7b,0xaf1e,0xafc1,0xb064,0xb107,0xb1aa,0xb24d;
+         D8 AD 7B AE
+         1E AF C1 AF
+         64 B0 07 B1
+         AA B1 4D B2
+0000A99C F0 B2 93 B3        	.dw 0xb2f0,0xb393,0xb436,0xb4d9,0xb57c,0xb61f,0xb6c2,0xb765,0xb808,0xb8ab;
+         36 B4 D9 B4
+         7C B5 1F B6
+         C2 B6 65 B7
+         08 B8 AB B8
+0000A9A6 4E B9 F1 B9        	.dw 0xb94e,0xb9f1,0xba94,0xbb37,0xbbda,0xbc7d,0xbd20,0xbdc3,0xbe66,0xbf09;
+         94 BA 37 BB
+         DA BB 7D BC
+         20 BD C3 BD
+         66 BE 09 BF
+                            	DB_Down:
+0000A9B0 00 80 5D 7F        	.dw 0x8000,0x7f5d,0x7eba,0x7e17,0x7d74,0x7cd1,0x7c2e,0x7b8b,0x7ae8,0x7a45;
+         BA 7E 17 7E
+         74 7D D1 7C
+         2E 7C 8B 7B
+         E8 7A 45 7A
+0000A9BA A2 79 FF 78        	.dw 0x79a2,0x78ff,0x785c,0x77b9,0x7716,0x7673,0x75d0,0x752d,0x748a,0x73e7;
+         5C 78 B9 77
+         16 77 73 76
+         D0 75 2D 75
+         8A 74 E7 73
+0000A9C4 44 73 A1 72        	.dw 0x7344,0x72a1,0x71fe,0x715b,0x70b8,0x7015,0x6f27,0x6ecf,0x6e2c,0x6d89;
+         FE 71 5B 71
+         B8 70 15 70
+         27 6F CF 6E
+         2C 6E 89 6D
+0000A9CE E6 6C 43 6C        	.dw 0x6ce6,0x6c43,0x6ba0,0x6afd,0x6a5a,0x69b7,0x6914,0x6871,0x67ce,0x672b;
+         A0 6B FD 6A
+         5A 6A B7 69
+         14 69 71 68
+         CE 67 2B 67
+0000A9D8 88 66 E5 65        	.dw 0x6688,0x65e5,0x6542,0x649f,0x63fc,0x6359,0x62b6,0x6213,0x6170,0x60cd;
+         42 65 9F 64
+         FC 63 59 63
+         B6 62 13 62
+         70 61 CD 60
+0000A9E2 2A 60 87 5F        	.dw 0x602a,0x5f87,0x5ee4,0x5e41,0x5d9e,0x5cfb,0x5c58,0x5bb5,0x5b12,0x5a6f;
+         E4 5E 41 5E
+         9E 5D FB 5C
+         58 5C B5 5B
+         12 5B 6F 5A
+0000A9EC CC 59 29 59        	.dw 0x59cc,0x5929,0x5886,0x57e3,0x5740,0x569d,0x55fa,0x5557,0x54b4,0x5411;
+         86 58 E3 57
+         40 57 9D 56
+         FA 55 57 55
+         B4 54 11 54
+0000A9F6 6E 53 CB 52        	.dw 0x536e,0x52cb,0x5228,0x5185,0x50e2,0x503f,0x4f9c,0x4ef9,0x4e56,0x4db3;
+         28 52 85 51
+         E2 50 3F 50
+         9C 4F F9 4E
+         56 4E B3 4D
+0000AA00 10 4D 6D 4C        	.dw 0x4d10,0x4c6d,0x4bca,0x4b27,0x4a84,0x49e1,0x493e,0x489b,0x47f8,0x4755;
+         CA 4B 27 4B
+         84 4A E1 49
+         3E 49 9B 48
+         F8 47 55 47
+0000AA0A B2 46 0F 46        	.dw 0x46b2,0x460f,0x45bc,0x44c9,0x4426,0x4383,0x42e0,0x423d,0x419a,0x40f7;
+         BC 45 C9 44
+         26 44 83 43
+         E0 42 3D 42
+         9A 41 F7 40
+                            	TBsin: 
+0000AA14 00 80 02 82        	.dw 0x8000,0x8202,0x8403,0x8604,0x8803,0x8a00,0x8bfb,0x8df2,0x8fe6,0x91d7; 
+         03 84 04 86
+         03 88 00 8A
+         FB 8B F2 8D
+         E6 8F D7 91
+0000AA1E C1 93 B8 95        	.dw 0x93c1,0x95b8,0x9789,0x9964,0x9b39,0x9d06,0x9ecd,0xa08b,0xa242,0xa3f0;
+         89 97 64 99
+         39 9B 06 9D
+         CD 9E 8B A0
+         42 A2 F0 A3
+0000AA28 94 AB 30 A7        	.dw 0xab94,0xa730,0xa8c1,0xaa48,0xabc4,0xad35,0xae9b,0xaff5,0xb143,0xb285;
+         C1 A8 48 AA
+         C4 AB 35 AD
+         9B AE F5 AF
+         43 B1 85 B2
+0000AA32 B9 B3 E1 B4        	.dw 0xb3b9,0xb4e1,0xb5fb,0xb708,0xb807,0xb8f7,0xb9da,0xbaad,0xbb72,0xbc28;
+         FB B5 08 B7
+         07 B8 F7 B8
+         DA B9 AD BA
+         72 BB 28 BC
+0000AA3C CE BC 6B BD        	.dw 0xbcce,0xbd6b,0xbded,0xbe65,0xbece,0xbf26,0xbf6e,0xbfa7,0xbfcf,0xbfe7;
+         ED BD 65 BE
+         CE BE 26 BF
+         6E BF A7 BF
+         CF BF E7 BF
+0000AA46 F0 BF E7 BF        	.dw 0xbff0,0xbfe7,0xbfcf,0xbfa7,0xbf6e,0xbf26,0xbece,0xbe65,0xbded,0xbd66;
+         CF BF A7 BF
+         6E BF 26 BF
+         CE BE 65 BE
+         ED BD 66 BD
+0000AA50 CE BC 28 BC        	.dw 0xbcce,0xbc28,0xbb72,0xbaad,0xb9da,0xb8f8,0xb807,0xb708,0xb5fb,0xb4ee;
+         72 BB AD BA
+         DA B9 F8 B8
+         07 B8 08 B7
+         FB B5 EE B4
+0000AA5A BA B3 85 B2        	.dw 0xb3ba,0xb285,0xb143,0xaff5,0xae96,0xad35,0xabc4,0xaa48,0xa8c1,0xa730;
+         43 B1 F5 AF
+         96 AE 35 AD
+         C4 AB 48 AA
+         C1 A8 30 A7
+0000AA64 94 A5 F0 A3        	.dw 0xa594,0xa3f0,0xa242,0xa08c,0x9ecd,0x9d06,0x9b39,0x9964,0x9789,0x95a8;
+         42 A2 8C A0
+         CD 9E 06 9D
+         39 9B 64 99
+         89 97 A8 95
+0000AA6E C2 93 D6 91        	.dw 0x93c2,0x91d6,0x8fe6,0x8df2,0x8bfb,0x8a00,0x8803,0x8604,0x8403,0x8000;
+         E6 8F F2 8D
+         FB 8B 00 8A
+         03 88 04 86
+         03 84 00 80
+0000AA78 00 80 FE 7D        	.dw 0x8000,0x7dfe,0x7bfd,0x79fc,0x77fd,0x7600,0x7405,0x720e,0x701a,0x6e2a;
+         FD 7B FC 79
+         FD 77 00 76
+         05 74 0E 72
+         1A 70 2A 6E
+0000AA82 3F 6C 58 6A        	.dw 0x6c3f,0x6a58,0x6877,0x669c,0x64c7,0x62fa,0x6133,0x5f75,0x5dbe,0x5c10;
+         77 68 9C 66
+         C7 64 FA 62
+         33 61 75 5F
+         BE 5D 10 5C
+0000AA8C BC 5A D0 58        	.dw 0x5abc,0x58d0,0x573f,0x55b8,0x543c,0x52cb,0x5165,0x500b,0x4ebd,0x4d7b;
+         3F 57 B8 55
+         3C 54 CB 52
+         65 51 0B 50
+         BD 4E 7B 4D
+0000AA96 47 4C 1F 4B        	.dw 0x4c47,0x4b1f,0x4a05,0x48f8,0x47f9,0x4709,0x4626,0x4553,0x448e,0x43d8;
+         05 4A F8 48
+         F9 47 09 47
+         26 46 53 45
+         8E 44 D8 43
+0000AAA0 32 43 9A 42        	.dw 0x4332,0x429a,0x4213,0x419b,0x4132,0x40da,0x4092,0x4059,0x4031,0x4019;
+         13 42 9B 41
+         32 41 DA 40
+         92 40 59 40
+         31 40 19 40
+0000AAAA 10 40 19 40        	.dw 0x4010,0x4019,0x4031,0x4059,0x4092,0x40da,0x4132,0x419b,0x4213,0x429a;
+         31 40 59 40
+         92 40 DA 40
+         32 41 9B 41
+         13 42 9A 42
+0000AAB4 32 43 D8 43        	.dw 0x4332,0x43d8,0x448e,0x4553,0x4626,0x4708,0x47f9,0x48f8,0x4a05,0x4b1f;
+         8E 44 53 45
+         26 46 08 47
+         F9 47 F8 48
+         05 4A 1F 4B
+0000AABE 46 4C 7B 4D        	.dw 0x4c46,0x4d7b,0x4ebd,0x500b,0x5165,0x52cb,0x543c,0x55b8,0x5738,0x58d0;
+         BD 4E 0B 50
+         65 51 CB 52
+         3C 54 B8 55
+         38 57 D0 58
+0000AAC8 BC 5A 10 5C        	.dw 0x5abc,0x5c10,0x5dbe,0x5f74,0x6133,0x62fa,0x64c7,0x669c,0x6877,0x6a58;
+         BE 5D 74 5F
+         33 61 FA 62
+         C7 64 9C 66
+         77 68 58 6A
+0000AAD2 3F 6C 2A 6E        	.dw 0x6c3f,0x6e2a,0x701a,0x720e,0x7405,0x7600,0x77fd,0x79fc,0x7bfd,0x7dfe;//0x8000;
+         1A 70 0E 72
+         05 74 00 76
+         FD 77 FC 79
+         FD 7B FE 7D
+                            	
+                            	
+00009D7E                    	.code
+                            	.public _K_IRQ
+                            	_K_IRQ:.proc
+00009D7E 40 F1              		int off 
+00009D7F 42 F1              		int fiq
+                            	    //设置IOB2、IOB3设成带上拉电阻的输入端口
+00009D80 40 92              	    r1=0x0000;  
+00009D81 19 D3 07 70        	    [P_IOB_Dir]=r1; 
+00009D83 19 D3 08 70        		[P_IOB_Attrib]=r1; 
+00009D85 4C 92              		r1=0x000c ;
+00009D86 19 D3 05 70        	    [P_IOB_Data]=r1;
+00009D88 09 93 00 03        	   	r1=0x0300; 				 //开中断IRQ3_EXT1、IRQ3_EXT2
+00009D8A 19 D3 10 70        		[P_INT_CTRL]=r1; 
+00009D8C 41 F1              		int irq; 
+00009D8D 90 9A              	    retf
+                            	.endp
+                            	
+                            	
+00009D8E                    	.code
+                            	.public _Sanjiaobo;
+                            	_Sanjiaobo:.proc
+                            	
+                            	
+                            	    
+                            	
+                            	
+                            	_pppp:
+00009D8E 40 94              	 r2=0
+00009D8F 14 99 FE 01        	 r4=[_V_GA]
+                            	 
+                            	_Down1: 
+00009D91 1A D5 03 02        	  [R_SUM]=r2
+00009D93 12 05 FF 01        	  r2=r2+[_Bianxing]
+00009D95 12 05 05 02        	  r2=r2+[T_PinLv]
+00009D97 09 93 64 00        	  r1=100
+00009D99 04 23              	  r1=r1-r4
+00009D9A 09 03 B0 A9        	  r1=r1+DB_Down
+00009D9C 01 9B              	  bp=r1
+00009D9D 15 0B 03 02        	  bp=bp+[R_SUM]
+00009D9F C5 92              	  r1=[bp]
+                            	  
+00009DA0 09 03 09 3F        	  r1=r1+0x3f09
+00009DA2 11 03 04 02        	  r1=r1+[V_FuDu]
+00009DA4 19 D3 17 70        	  [P_DAC1]=r1
+00009DA6 04 97              	  r3=r4
+00009DA7 03 45              	cmp r2,r3
+00009DA8 58 0E              	jb _Down1
+                            	
+00009DA9 40 94              	 r2=0
+00009DAA 14 99 FE 01        	 r4=[_V_GA]
+                            	_Down: 
+00009DAC 1A D5 03 02        	  [R_SUM]=r2
+00009DAE 12 05 FF 01        	  r2=r2+[_Bianxing]
+00009DB0 12 05 05 02        	  r2=r2+[T_PinLv]
+00009DB2 09 93 B0 A9        	  r1=DB_Down
+00009DB4 01 9B              	  bp=r1
+00009DB5 15 0B 03 02        	  bp=bp+[R_SUM]
+00009DB7 C5 92              	  r1=[bp]
+00009DB8 11 23 04 02        	  r1=r1-[V_FuDu]
+00009DBA 19 D3 17 70        	  [P_DAC1]=r1
+00009DBC 04 97              	  r3=r4
+00009DBD 03 45              	cmp r2,r3
+00009DBE 53 0E              	jb _Down
+00009DBF 40 94              	r2=0
+00009DC0 14 99 FE 01        	r4=[_V_GA]
+00009DC2 01 EE              	jmp _Up1
+                            	 
+                            	_zhongzhan:
+00009DC3 76 EE              	    jmp _pppp
+                            	 
+                            	 
+                            	
+                            	 _Up1: 
+00009DC4 1A D5 03 02        	  [R_SUM]=r2
+00009DC6 12 05 00 02        	  r2=r2+[_Bianxing1]
+00009DC8 12 05 05 02        	  r2=r2+[T_PinLv]
+00009DCA 09 93 4C A9        	  r1=DB_Up
+00009DCC 01 9B              	  bp=r1
+00009DCD 15 0B 03 02        	  bp=bp+[R_SUM]
+00009DCF 09 93 64 00        	  r1=100
+00009DD1 04 23              	  r1=r1-r4
+00009DD2 01 0B              	  bp=bp+r1
+00009DD3 C5 92              	  r1=[bp]
+00009DD4 09 23 09 3F        	  r1=r1-0x3f09
+00009DD6 11 23 04 02        	  r1=r1-[V_FuDu]
+00009DD8 19 D3 17 70        	  [P_DAC1]=r1
+00009DDA 04 97              	  r3=r4
+00009DDB 03 45              	cmp r2,r3
+00009DDC 59 0E              	jb _Up1
+                            	
+00009DDD 40 94              	r2=0
+00009DDE 14 99 FE 01        	r4=[_V_GA]
+                            	_Up:
+00009DE0 1A D5 03 02        	[R_SUM]=r2
+00009DE2 12 05 00 02        	r2=r2+[_Bianxing1]
+00009DE4 12 05 05 02        	r2=r2+[T_PinLv]
+00009DE6 09 93 4C A9        	r1=DB_Up
+00009DE8 01 9B              	bp=r1
+00009DE9 15 0B 03 02        	bp=bp+[R_SUM]
+                            	
+00009DEB C5 92              	r1=[bp]
+00009DEC 11 03 04 02        	r1=r1+[V_FuDu]
+00009DEE 03 97              	r3=r3
+00009DEF 19 D3 17 70        	[P_DAC1]=r1
+00009DF1 04 97              	r3=r4
+00009DF2 03 45              	cmp r2,r3
+00009DF3 54 0E              	jb _Up
+00009DF4 72 EE              	jmp _zhongzhan
+                            	
+00009DF5 90 9A              	retf
+                            	.endp
+                            	
+00009DF6                    	.code
+                            	.public _Juchibo;
+                            	_Juchibo:.proc
+                            	
+                            	
+                            	   
+                            	_aaaa:
+00009DF6 40 94              	 r2=0
+00009DF7 14 99 FE 01        	 r4=[_V_GA]
+                            	_Upj1: 
+00009DF9 1A D5 03 02        	  [R_SUM]=r2
+00009DFB 12 05 FF 01        	  r2=r2+[_Bianxing]
+00009DFD 12 05 05 02        	  r2=r2+[T_PinLv]
+00009DFF 09 93 4C A9        	  r1=DB_Up
+00009E01 01 9B              	  bp=r1
+00009E02 15 0B 03 02        	  bp=bp+[R_SUM]
+00009E04 09 93 64 00        	   r1=100
+00009E06 04 23              	  r1=r1-r4
+00009E07 01 0B              	  bp=bp+r1
+00009E08 C5 92              	  r1=[bp]
+00009E09 09 23 09 3F        	   r1=r1-0x3f09
+00009E0B 11 23 04 02        	  r1=r1-[V_FuDu]
+00009E0D 19 D3 17 70        	  [P_DAC1]=r1
+00009E0F 04 97              	  r3=r4
+00009E10 03 45              	cmp r2,r3
+00009E11 59 0E              	jb _Upj1
+                            	
+00009E12 40 94              	r2=0
+00009E13 14 99 FE 01        	r4=[_V_GA]
+                            	_Upj:
+00009E15 1A D5 03 02        	[R_SUM]=r2
+00009E17 12 05 00 02        	r2=r2+[_Bianxing1]
+00009E19 12 05 05 02        	r2=r2+[T_PinLv]
+00009E1B 09 93 4C A9        	r1=DB_Up
+00009E1D 01 9B              	bp=r1
+00009E1E 15 0B 03 02        	bp=bp+[R_SUM]
+00009E20 C5 92              	r1=[bp]
+00009E21 11 03 04 02        	r1=r1+[V_FuDu]
+00009E23 19 D3 17 70        	[P_DAC1]=r1
+00009E25 04 97              	r3=r4
+00009E26 03 45              	cmp r2,r3
+00009E27 53 0E              	jb _Upj
+00009E28 73 EE              	jmp _aaaa
+                            	
+00009E29 90 9A              	retf
+                            	.endp
+                            	
+00009E2A                    	.code
+                            	.public _Fangbo;
+                            	_Fangbo:.proc
+                            	 _baaa:
+00009E2A 40 94              	 r2=0
+                            	_Gdp:
+00009E2B 1A D5 03 02        	[R_SUM]=r2
+00009E2D 12 05 05 02        	r2=r2+[T_PinLv]
+00009E2F 09 93 4C A9        	r1=DB_Up
+00009E31 01 9B              	bp=r1
+00009E32 0D 0B FF 4F        	bp=bp+0x4fff
+00009E34 C5 92              	r1=[bp]
+00009E35 11 03 04 02        	r1=r1+[V_FuDu]
+                            	
+00009E37 19 D3 17 70        	[P_DAC1]=r1
+00009E39 14 99 F3 01        	r4=[_Mk_F]
+00009E3B 04 97              	r3=r4
+00009E3C 03 45              	cmp r2,r3
+00009E3D 53 0E              	jb _Gdp
+                            	
+00009E3E 40 94              	 r2=0
+                            	_Ddp:
+00009E3F 1A D5 03 02        	[R_SUM]=r2
+00009E41 12 05 05 02        	r2=r2+[T_PinLv]
+00009E43 09 93 4C A9        	r1=DB_Up
+00009E45 01 9B              	bp=r1
+00009E46 0D 2B FF 4F        	bp=bp-0x4fff
+00009E48 C5 92              	r1=[bp]
+00009E49 11 23 04 02        	r1=r1-[V_FuDu]
+00009E4B 19 D3 17 70        	[P_DAC1]=r1
+00009E4D 14 99 F2 01        	r4=[_Mk_Z]
+00009E4F 04 97              	r3=r4
+00009E50 03 45              	cmp r2,r3
+00009E51 53 0E              	jb _Ddp
+00009E52 40 94              	 r2=0
+                            	_Gdp1:
+00009E53 1A D5 03 02        	[R_SUM]=r2
+00009E55 12 05 05 02        	r2=r2+[T_PinLv]
+00009E57 09 93 4C A9        	r1=DB_Up
+00009E59 01 9B              	bp=r1
+00009E5A 0D 0B FF 4F        	bp=bp+0x4fff
+00009E5C C5 92              	r1=[bp]
+00009E5D 11 03 04 02        	r1=r1+[V_FuDu]
+                            	
+00009E5F 19 D3 17 70        	[P_DAC1]=r1
+00009E61 14 99 F5 01        	r4=[_Mk_F1]
+00009E63 04 97              	r3=r4
+00009E64 03 45              	cmp r2,r3
+00009E65 53 0E              	jb _Gdp1
+                            	
+00009E66 40 94              	 r2=0
+                            	_Ddp1:
+00009E67 1A D5 03 02        	[R_SUM]=r2
+00009E69 12 05 05 02        	r2=r2+[T_PinLv]
+00009E6B 09 93 4C A9        	r1=DB_Up
+00009E6D 01 9B              	bp=r1
+00009E6E 0D 2B FF 4F        	bp=bp-0x4fff
+00009E70 C5 92              	r1=[bp]
+00009E71 11 23 04 02        	r1=r1-[V_FuDu]
+00009E73 19 D3 17 70        	[P_DAC1]=r1
+00009E75 14 99 F2 01        	r4=[_Mk_Z]
+00009E77 04 97              	r3=r4
+00009E78 03 45              	cmp r2,r3
+00009E79 53 0E              	jb _Ddp1
+00009E7A 40 94              	 r2=0
+                            	_Gdp2:
+00009E7B 1A D5 03 02        	[R_SUM]=r2
+00009E7D 12 05 05 02        	r2=r2+[T_PinLv]
+00009E7F 09 93 4C A9        	r1=DB_Up
+00009E81 01 9B              	bp=r1
+00009E82 0D 0B FF 4F        	bp=bp+0x4fff
+00009E84 C5 92              	r1=[bp]
+00009E85 11 03 04 02        	r1=r1+[V_FuDu]
+                            	
+00009E87 19 D3 17 70        	[P_DAC1]=r1
+00009E89 14 99 F7 01        	r4=[_Mk_F2]
+00009E8B 04 97              	r3=r4
+00009E8C 03 45              	cmp r2,r3
+00009E8D 53 0E              	jb _Gdp2
+                            	
+00009E8E 40 94              	 r2=0
+                            	_Ddp3:
+00009E8F 1A D5 03 02        	[R_SUM]=r2
+00009E91 12 05 05 02        	r2=r2+[T_PinLv]
+00009E93 09 93 4C A9        	r1=DB_Up
+00009E95 01 9B              	bp=r1
+00009E96 0D 2B FF 4F        	bp=bp-0x4fff
+00009E98 C5 92              	r1=[bp]
+00009E99 11 23 04 02        	r1=r1-[V_FuDu]
+00009E9B 19 D3 17 70        	[P_DAC1]=r1
+00009E9D 14 99 F2 01        	r4=[_Mk_Z]
+00009E9F 04 97              	r3=r4
+00009EA0 03 45              	cmp r2,r3
+00009EA1 53 0E              	jb _Ddp3
+00009EA2 40 94              	 r2=0
+                            	_Gdp4:
+00009EA3 1A D5 03 02        	[R_SUM]=r2
+00009EA5 12 05 05 02        	r2=r2+[T_PinLv]
+00009EA7 09 93 4C A9        	r1=DB_Up
+00009EA9 01 9B              	bp=r1
+00009EAA 0D 0B FF 4F        	bp=bp+0x4fff
+00009EAC C5 92              	r1=[bp]
+00009EAD 11 03 04 02        	r1=r1+[V_FuDu]
+                            	
+00009EAF 19 D3 17 70        	[P_DAC1]=r1
+00009EB1 14 99 F9 01        	r4=[_Mk_F3]
+00009EB3 04 97              	r3=r4
+00009EB4 03 45              	cmp r2,r3
+00009EB5 53 0E              	jb _Gdp4
+                            	
+00009EB6 40 94              	 r2=0
+                            	_Ddp5:
+00009EB7 1A D5 03 02        	[R_SUM]=r2
+00009EB9 12 05 05 02        	r2=r2+[T_PinLv]
+00009EBB 09 93 4C A9        	r1=DB_Up
+00009EBD 01 9B              	bp=r1
+00009EBE 0D 2B FF 4F        	bp=bp-0x4fff
+00009EC0 C5 92              	r1=[bp]
+00009EC1 11 23 04 02        	r1=r1-[V_FuDu]
+00009EC3 19 D3 17 70        	[P_DAC1]=r1
+00009EC5 14 99 F2 01        	r4=[_Mk_Z]
+00009EC7 04 97              	r3=r4
+00009EC8 03 45              	cmp r2,r3
+00009EC9 53 0E              	jb _Ddp5
+00009ECA 40 94              	 r2=0
+                            	 
+                            	_Gdp6:
+00009ECB 1A D5 03 02        	[R_SUM]=r2
+00009ECD 12 05 05 02        	r2=r2+[T_PinLv]
+00009ECF 09 93 4C A9        	r1=DB_Up
+00009ED1 01 9B              	bp=r1
+00009ED2 0D 0B FF 4F        	bp=bp+0x4fff
+00009ED4 C5 92              	r1=[bp]
+00009ED5 11 03 04 02        	r1=r1+[V_FuDu]
+                            	
+00009ED7 19 D3 17 70        	[P_DAC1]=r1
+00009ED9 14 99 FB 01        	r4=[_Mk_F4]
+00009EDB 04 97              	r3=r4
+00009EDC 03 45              	cmp r2,r3
+00009EDD 53 0E              	jb _Gdp6
+                            	
+00009EDE 40 94              	 r2=0
+                            	_Ddp7:
+00009EDF 1A D5 03 02        	[R_SUM]=r2
+00009EE1 12 05 05 02        	r2=r2+[T_PinLv]
+00009EE3 09 93 4C A9        	r1=DB_Up
+00009EE5 01 9B              	bp=r1
+00009EE6 0D 2B FF 4F        	bp=bp-0x4fff
+00009EE8 C5 92              	r1=[bp]
+00009EE9 11 23 04 02        	r1=r1-[V_FuDu]
+00009EEB 19 D3 17 70        	[P_DAC1]=r1
+00009EED 14 99 F2 01        	r4=[_Mk_Z]
+00009EEF 04 97              	r3=r4
+00009EF0 03 45              	cmp r2,r3
+00009EF1 53 0E              	jb _Ddp7
+00009EF2 40 94              	 r2=0
+                            	_Gdp8:
+00009EF3 1A D5 03 02        	[R_SUM]=r2
+00009EF5 12 05 05 02        	r2=r2+[T_PinLv]
+00009EF7 09 93 4C A9        	r1=DB_Up
+00009EF9 01 9B              	bp=r1
+00009EFA 0D 0B FF 4F        	bp=bp+0x4fff
+00009EFC C5 92              	r1=[bp]
+00009EFD 11 03 04 02        	r1=r1+[V_FuDu]
+                            	
+00009EFF 19 D3 17 70        	[P_DAC1]=r1
+00009F01 14 99 FD 01        	r4=[_Mk_F5]
+00009F03 04 97              	r3=r4
+00009F04 03 45              	cmp r2,r3
+00009F05 53 0E              	jb _Gdp8
+                            	
+00009F06 40 94              	 r2=0
+                            	_Ddp9:
+00009F07 1A D5 03 02        	[R_SUM]=r2
+00009F09 12 05 05 02        	r2=r2+[T_PinLv]
+00009F0B 09 93 4C A9        	r1=DB_Up
+00009F0D 01 9B              	bp=r1
+00009F0E 0D 2B FF 4F        	bp=bp-0x4fff
+00009F10 C5 92              	r1=[bp]
+00009F11 11 23 04 02        	r1=r1-[V_FuDu]
+00009F13 19 D3 17 70        	[P_DAC1]=r1
+00009F15 14 99 F2 01        	r4=[_Mk_Z]
+00009F17 04 97              	r3=r4
+00009F18 03 45              	cmp r2,r3
+00009F19 53 0E              	jb _Ddp9
+00009F1A 09 93 2A 9E        	r1=_baaa
+00009F1C 01 9F              	pc=r1
+                            	
+00009F1D 90 9A              	retf
+                            	.endp
+                            	
+                            	
+                            	.public _L_asin;
+                            	_L_asin:.proc
+                            	
+                            	    
+                            	   
+                            	   
+                            	  
+                            	    
+00009F1E 40 92              	    r1=0x0000;
+00009F1F 19 D3 2A 70        	    [P_DAC_Ctrl]=r1;
+00009F21 0B 97 FF FF        	    r3=0xffff					//D/A转换为10位，即B15~B6
+00009F23 40 92              	    r1=0x0000;
+                            	 _wait: 
+00009F24 09 93 00 80        	 r1=0x8000
+00009F26 19 D3 17 70        	    [P_DAC1]=r1   
+00009F28 0D 9B 14 AA        	     bp=TBsin;
+00009F2A 19 D3 17 70        	     [P_DAC1]=r1 
+00009F2C 40 94              	     r2=0
+00009F2D 1A D5 03 02        	     [R_SUM]=r2
+00009F2F 09 93 00 80        	     r1=0x8000
+00009F31 19 D3 17 70        	    [P_DAC1]=r1   
+                            	 _wait1: 
+00009F33 09 93 00 80        	 r1=0x8000
+00009F35 19 D3 17 70        	    [P_DAC1]=r1     
+00009F37 15 05 03 02        	     r2=bp+[R_SUM]
+00009F39 C2 92              	     r1=[r2];
+00009F3A 12 95 03 02        	     r2=[R_SUM]
+00009F3C 12 05 05 02        	     r2=r2+[T_PinLv]
+00009F3E 41 04              	     r2=r2+1
+00009F3F 1A D5 03 02        	    [R_SUM]=r2
+                            	    //r3=1
+                            	    //cmp r2,r3
+                            	    //jnb  _FUBAN
+                            	     //r1=r1+0x400f
+00009F41 19 D3 17 70        	     [P_DAC1]=r1
+                            	   //r3=100
+                            	    //cmp r2,r3
+                            	   // jb  _wait1
+                            	   //_FUBAN:
+                            	    //r1=r1-0x400f
+                            	    // [P_DAC1]=r1
+                            	    // [P_DAC2]=r1
+                            	   
+                            	     
+00009F43 0B 97 C8 00        	     r3=200
+00009F45 02 47              	     cmp r3,r2
+00009F46 54 1E              	  jnb _wait1
+00009F47 09 93 00 80        	  r1=0x8000
+00009F49 19 D3 17 70        	    [P_DAC1]=r1   
+00009F4B 68 EE              	  jmp _wait
+                            	    .endp
+                            	
+                            	
+                            	
+00008123                    	.text
+                            	.public _IRQ3
+                            	_IRQ3:
+00008123 A8 DA              	   push r1,r5 to [sp]		//压栈保护 
+00008124 09 93 00 01        	   r1=0x0100 	    
+00008126 11 C3 10 70        	   test r1,[P_INT_CTRL] 	//比较是否为IRQ3_EXT1	 
+00008128 2B 4E              	   jnz  irq3_ext1			//是，则转至对应程序段；
+00008129 09 93 00 02        	   r1=0x0200 	    
+0000812B 11 C3 10 70        	   test r1,[P_INT_CTRL] 	//否，则比较是否为IRQ3_EXT2
+0000812D 08 4E              	   jnz  irq3_ext2			//是，则转至对应程序段；
+0000812E 09 93 00 02        	   r1=0x0200 	    
+                            	   
+                            	irq3_key:					//否，则进入键唤醒中断
+00008130 09 93 80 00        		r1=0x0080 	     
+00008132 19 D3 11 70        		[P_INT_CLEAR]=r1 
+00008134 A8 90              		pop r1,r5 from [sp]   
+00008135 98 9A              		reti
+                            	
+                            	irq3_ext2:		
+00008136 11 93 04 02        	   r1=[V_FuDu]
+00008138 09 03 A3 00        	   r1=r1+0xa3
+0000813A 09 93 FF FF        	   r1=0xffff
+                            	   
+                            	    
+0000813C 19 D3 04 02        	   [V_FuDu]=r1			 			 
+                            	   
+0000813E 09 93 00 02        	   r1=0x0200 	     
+00008140 19 D3 11 70        	   [P_INT_CLEAR]=r1 
+00008142 A8 90              	   pop r1,r5 from [sp]
+00008143 19 D3 F1 01        	   [_pp]=r1
+                            	   
+00008145 08 91 FD 07        	   sp=0x07fd
+00008147 09 93 05 80        	   r1=0x8005
+00008149 40 94              	   r2=0x0000
+0000814A 0B 97 06 02        	   r3=0x0206
+0000814C 0C 99 10 A8        	   r4=0xa810
+0000814E 40 9A              	   bp=0x0000
+0000814F 0E 9D 40 01        	   sr=0x0140
+00008151 0F 9F 81 8E        	   pc=0x8e81;
+                            	   
+00008153 98 9A              	   reti
+                            	
+                            	irq3_ext1:
+00008154 11 93 05 02        	    r1=[T_PinLv]
+00008156 41 02              	   r1=r1+1
+00008157 72 94              	   r2=50
+00008158 01 45              	   cmp r2,r1
+00008159 0F 0E              	   jb _qing
+0000815A 19 D3 05 02        	   [T_PinLv]=r1				 			 
+0000815C 72 94              	   r2=50
+0000815D 01 25              	   r2=r2-r1
+0000815E 09 93 F3 00        	   r1=0xf3
+00008160 09 F5              	   mr=r2*r1
+00008161 1B D7 01 02        	   [_sanju]=r3
+00008163 09 93 00 01        	   r1=0x0100 	     
+00008165 19 D3 11 70        	   [P_INT_CLEAR]=r1 
+00008167 A8 90              	   pop r1,r5 from [sp]
+00008168 98 9A              	   reti
+                            	
+                            	_qing:
+00008169 40 92              	   r1=0
+0000816A 19 D3 05 02        	   [T_PinLv]=r1	
+0000816C 12 95 01 02        	  r2=[_sanju]
+0000816E 72 94              	   r2=50
+0000816F 01 25              	   r2=r2-r1
+00008170 09 93 F3 00        	   r1=0xf3
+00008172 09 F5              	   mr=r2*r1
+00008173 1B D7 01 02        	   [_sanju]=r3
+00008175 09 93 00 01        	   r1=0x0100 	     
+00008177 19 D3 11 70        	   [P_INT_CLEAR]=r1 
+00008179 A8 90              	   pop r1,r5 from [sp]
+0000817A 98 9A              	   reti
+                            	
+                            	
+                            	
+                            	
+                            	
+                            	
+                            	
+                            	
+0 error(s), 0 warning(s).
+

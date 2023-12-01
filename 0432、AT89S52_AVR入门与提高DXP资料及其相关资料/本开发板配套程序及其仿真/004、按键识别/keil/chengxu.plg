@@ -1,0 +1,202 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+E:\产品最新整理\汇诚科技产品最新整理\S52_M16两用开发板\本开发板配套程序及其仿真\四、按键识别\keil\chengxu.uv2
+Project File Date:  12/15/2005
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(30): warning C206: 'delay10ms': missing function-prototype
+CHENGXU.C(49): error C202: 'temp': undefined identifier
+CHENGXU.C(50): error C202: 'temp': undefined identifier
+CHENGXU.C(52): error C202: 'i': undefined identifier
+CHENGXU.C(54): error C202: 'a': undefined identifier
+CHENGXU.C(55): error C202: 'b': undefined identifier
+CHENGXU.C(56): error C202: 'a': undefined identifier
+CHENGXU.C(59): error C202: 'i': undefined identifier
+CHENGXU.C(61): error C202: 'a': undefined identifier
+CHENGXU.C(62): error C202: 'b': undefined identifier
+CHENGXU.C(63): error C202: 'a': undefined identifier
+CHENGXU.C(79): error C231: 'delay10ms': redefinition
+CHENGXU.C(83): error C231: 'delay10ms': redefinition
+CHENGXU.C(95): error C237: 'main': function already has a body
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(30): warning C206: 'delay10ms': missing function-prototype
+CHENGXU.C(47): error C202: 'temp': undefined identifier
+CHENGXU.C(51): error C202: 'a': undefined identifier
+CHENGXU.C(52): error C202: 'b': undefined identifier
+CHENGXU.C(53): error C202: 'a': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(30): warning C206: 'delay10ms': missing function-prototype
+CHENGXU.C(47): error C202: 'temp': undefined identifier
+CHENGXU.C(51): error C202: 'a': undefined identifier
+CHENGXU.C(52): error C202: 'b': undefined identifier
+CHENGXU.C(53): error C202: 'a': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(31): warning C206: 'delay10ms': missing function-prototype
+CHENGXU.C(48): error C202: 'temp': undefined identifier
+CHENGXU.C(52): error C202: 'temp': undefined identifier
+CHENGXU.C(53): error C202: 'temp': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(31): warning C206: 'delay10ms': missing function-prototype
+CHENGXU.C(48): error C202: 'temp': undefined identifier
+CHENGXU.C(52): error C202: 'temp': undefined identifier
+CHENGXU.C(53): error C202: 'temp': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(32): warning C206: 'delay10ms': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY?CHENGXU
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+    ADDRESS: 0035H
+Program Size: data=13.0 xdata=0 code=97
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY?CHENGXU
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+    ADDRESS: 0035H
+Program Size: data=13.0 xdata=0 code=97
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY?CHENGXU
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+    ADDRESS: 0035H
+Program Size: data=13.0 xdata=0 code=97
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY?CHENGXU
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+    ADDRESS: 0035H
+Program Size: data=13.0 xdata=0 code=97
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling chengxu.c...
+CHENGXU.C(32): warning C206: 'delay10ms': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY?CHENGXU
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DELAY10MS
+    MODULE:  chengxu.obj (CHENGXU)
+    ADDRESS: 0035H
+Program Size: data=13.0 xdata=0 code=97
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling chengxu.c...
+CHENGXU.C(19): error C141: syntax error near '{'
+CHENGXU.C(21): error C141: syntax error near 'for'
+CHENGXU.C(21): error C141: syntax error near '=', expected ')'
+CHENGXU.C(21): error C129: missing ';' before '>'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(19): error C141: syntax error near '{'
+CHENGXU.C(21): error C141: syntax error near 'for'
+CHENGXU.C(21): error C141: syntax error near '=', expected ')'
+CHENGXU.C(21): error C129: missing ';' before '>'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(19): error C141: syntax error near '{'
+CHENGXU.C(21): error C141: syntax error near 'for'
+CHENGXU.C(21): error C141: syntax error near '=', expected ')'
+CHENGXU.C(21): error C129: missing ';' before '>'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling chengxu.c...
+linking...
+Program Size: data=13.0 xdata=0 code=93
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).

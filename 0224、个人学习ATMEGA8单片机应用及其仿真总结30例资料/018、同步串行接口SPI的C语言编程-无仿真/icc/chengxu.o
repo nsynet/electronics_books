@@ -1,0 +1,230 @@
+XL
+H 3 areas 11 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+S div8u Ref0000
+A text size 148 flags 0
+dbfile D:\MYDOCU~1\AVR单片机应用系统开发经典实例\018、同步串行接口SPI的C语言编程-无仿真\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 17 4
+dbline 18 4
+dbline 19 6
+dbline 19 6
+dbline 19 C
+dbline 19 C
+dbline 19 C
+dbline 19 C
+dbline 19 10
+dbline 19 16
+dbline 18 16
+dbline 18 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 20 2C
+dbline 20 2C
+dbline 21 2E
+dbline 22 32
+dbline 22 32
+dbline 23 34
+dbline 24 4E
+dbline 25 54
+dbline 26 56
+dbline 21 56
+dbline 21 58
+dbline FFFFFFFE 5C
+dbline 0 60
+dbfunc e DelayNOP 62 fV
+dbsym r i 10 c
+dbline FFFFFFFF 62
+dbline 2C 62
+dbline 2C 62
+dbline 2D 64
+dbline 2D 64
+dbline 2D 66
+dbline 2C 66
+dbline 2C 68
+dbline FFFFFFFE 6C
+dbline 0 6C
+dbfunc e Convert 6E fV
+dbsym r i 16 c
+dbsym r p 14 pc
+dbline FFFFFFFF 76
+dbline 33 76
+dbline 33 76
+dbline 34 7C
+dbline 35 88
+dbline 36 9E
+dbline FFFFFFFE B8
+dbline 0 BC
+dbfunc e Write_Byte BE fV
+dbsym r clear 14 c
+dbsym r Data 12 c
+dbsym r Address 10 c
+dbline FFFFFFFF C2
+dbline 3D C2
+dbline 3E C2
+dbline 3F C4
+dbline 40 C6
+dbline 40 C6
+dbline 40 C6
+dbline 40 C6
+dbline 41 CA
+dbline 42 CC
+dbline 43 CE
+dbline 44 D0
+dbline 44 D0
+dbline 44 D0
+dbline 44 D0
+dbline 45 D4
+dbline 46 D6
+dbline 47 D8
+dbline FFFFFFFE DE
+dbline 0 E2
+dbfunc e Read_Byte E4 fc
+dbsym r Data 14 c
+dbsym r clear 16 c
+dbsym r Address 10 c
+dbline FFFFFFFF E8
+dbline 4E E8
+dbline 50 E8
+dbline 51 EA
+dbline 52 EC
+dbline 52 EC
+dbline 52 EC
+dbline 52 EC
+dbline 53 F0
+dbline 54 F2
+dbline 55 F4
+dbline 56 F6
+dbline 56 F6
+dbline 56 F6
+dbline 56 F6
+dbline 57 FA
+dbline 58 FC
+dbline 59 FE
+dbline 5A 104
+dbline FFFFFFFE 106
+dbline 0 10A
+dbfunc e Init_IO 10C fV
+dbline FFFFFFFF 10C
+dbline 60 10C
+dbline 60 10C
+dbline 61 110
+dbline 62 112
+dbline 63 114
+dbline 64 116
+dbline 65 11A
+dbline FFFFFFFE 11C
+dbline 0 11C
+dbfunc e main 11E fV
+dbsym r value 14 c
+dbline FFFFFFFF 11E
+dbline 6B 11E
+dbline 6D 11E
+dbline 6E 120
+dbline 6F 124
+dbline 71 12C
+dbline 72 12C
+dbline 73 130
+dbline 74 136
+dbline 75 13E
+dbline 76 144
+dbline 70 144
+dbline FFFFFFFE 146
+dbline 0 146
+S _main Def011E
+S _DelayMs Def0000
+S _Display Def0026
+S _DelayNOP Def0062
+S _Convert Def006E
+S _Write_Byte Def00BE
+S _Read_Byte Def00E4
+S _Init_IO Def010C
+A data size E flags 20
+dbfile D:\MYDOCU~1\AVR单片机应用系统开发经典实例\018、同步串行接口SPI的C语言编程-无仿真\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[4:4]c
+S _Table Def0000
+S _Data Def000A
+A idata size E flags 0
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 0E 94 00 00 58 01 4F EE 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 02 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 20 94 2B BA 01 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 10 E0 D6 DF 44 0F 63 95 64 30 58 F3 0E 94
+R 00 00 00 00
+T 5E 00 00 00 08 95
+R 00 00 00 00 12 02 05 00
+T 62 00 02 C0 00 00 0A 95 00 23 E1 F7 08 95
+R 00 00 00 00
+T 6E 00 0E 94 00 00 62 2F A8 01 22 24 FA 01 20 82
+R 00 00 00 00 12 04 01 00
+T 7C 00 14 E6 06 2F 0E 94 00 00 FA 01 01 83 FA 01
+R 00 00 00 00 12 08 06 00
+T 8A 00 21 80 84 E6 82 9D 06 2F 00 19 1A E0 0E 94
+R 00 00 00 00
+T 98 00 00 00 FA 01 02 83 FA 01 21 80 84 E6 82 9D
+R 00 00 00 00 12 02 06 00
+T A6 00 26 2E 20 18 FA 01 32 80 8A E0 83 9D 20 18
+R 00 00 00 00
+T B4 00 FA 01 23 82 0E 94 00 00 08 95
+R 00 00 00 00 12 08 04 00
+T BE 00 0E 94 00 00 C4 9A 0F B9 77 9B FE CF 4E B1
+R 00 00 00 00 12 04 00 00
+T CC 00 4F B1 2F B9 77 9B FE CF 4E B1 4F B1 88 B3
+R 00 00 00 00
+T DA 00 8F 7E 88 BB 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T E4 00 0E 94 00 00 C4 9A 0F B9 77 9B FE CF 6E B1
+R 00 00 00 00 12 04 01 00
+T F2 00 6F B1 0F B9 77 9B FE CF 6E B1 4F B1 88 B3
+R 00 00 00 00
+T 00 01 8F 7E 88 BB 04 2F 0E 94 00 00 08 95
+R 00 00 00 00 12 0A 04 00
+T 0C 01 8F EF 8A BB 8B BB 84 BB 85 BB 8F EB 84 BB
+R 00 00 00 00
+T 1A 01 85 BB 08 95
+R 00 00 00 00
+T 1E 01 F6 DF 8C E5 8D B9 20 EF 00 E8 CA DF 0C C0
+R 00 00 00 00
+T 2C 01 01 E0 DA DF 02 E0 D8 DF 40 2F 24 2F 00 E0
+R 00 00 00 00 20 0E 01 00 0A 00
+T 3A 01 10 E0 98 DF 00 E0
+R 00 00 00 00 40 02 01 00 0A 00 20 06 01 00 0A 00
+T 40 01 10 E0 71 DF F3 CF 08 95
+R 00 00 00 00 40 02 01 00 0A 00

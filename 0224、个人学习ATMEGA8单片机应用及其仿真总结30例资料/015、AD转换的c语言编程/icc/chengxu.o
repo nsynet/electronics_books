@@ -1,0 +1,182 @@
+XL
+H 3 areas 11 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+S empy16s Ref0000
+A text size 12A flags 0
+dbfile D:\整理\个人总结的M8程序\015、AD转换的c语言编程\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 c
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline E 4
+dbline F 4
+dbline 10 6
+dbline 10 6
+dbline 10 A
+dbline 10 A
+dbline 10 A
+dbline 10 A
+dbline 10 C
+dbline 10 10
+dbline F 10
+dbline F 14
+dbline FFFFFFFE 1A
+dbline 0 1E
+dbfunc e Display 20 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 26
+dbline 17 26
+dbline 17 26
+dbline 18 28
+dbline 19 2C
+dbline 19 2C
+dbline 1A 2E
+dbline 1B 48
+dbline 1B 4C
+dbline 1B 4C
+dbline 1B 52
+dbline 1C 52
+dbline 1D 58
+dbline 1E 5A
+dbline 18 5A
+dbline 18 5C
+dbline FFFFFFFE 60
+dbline 0 64
+dbfunc e ADC_Convert 66 fi
+dbsym r temp1 16 i
+dbsym r temp2 14 i
+dbline FFFFFFFF 6A
+dbline 24 6A
+dbline 25 6A
+dbline 26 6E
+dbline 27 72
+dbline 28 7C
+dbline 29 90
+dbline FFFFFFFE 90
+dbline 0 94
+dbfunc e Process 96 fV
+dbsym r p 14 pc
+dbsym r i 16 i
+dbline FFFFFFFF 9E
+dbline 2F 9E
+dbline 2F 9E
+dbline 30 AC
+dbline 31 B8
+dbline 32 C4
+dbline 33 D0
+dbline 34 DC
+dbline 35 E8
+dbline FFFFFFFE EC
+dbline 0 F0
+dbfunc e Init_IO F2 fV
+dbline FFFFFFFF F2
+dbline 3B F2
+dbline 3C F2
+dbline 3D F6
+dbline 3E F8
+dbline 3F FC
+dbline 40 FE
+dbline 41 100
+dbline FFFFFFFE 102
+dbline 0 102
+dbfunc e main 104 fV
+dbsym r i 14 i
+dbline FFFFFFFF 104
+dbline 47 104
+dbline 48 104
+dbline 49 106
+dbline 4B 10A
+dbline 4C 10E
+dbline 4E 116
+dbline 4F 116
+dbline 50 11A
+dbline 51 120
+dbline 52 126
+dbline 4D 126
+dbline FFFFFFFE 128
+dbline 0 128
+S _main Def0104
+S _DelayMs Def0000
+S _Display Def0020
+S _Process Def0096
+S _ADC_Convert Def0066
+S _Init_IO Def00F2
+A data size E flags 20
+dbfile D:\整理\个人总结的M8程序\015、AD转换的c语言编程\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[4:4]c
+S _Table Def0000
+S _Data Def000A
+A idata size E flags 0
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 07 C0 4A EF 01 C0 4A 95 44 23
+R 00 00 00 00 12 04 00 00
+T 0E 00 E9 F7 01 50 10 40 00 30 01 07 B1 F7 0E 94
+R 00 00 00 00
+T 1C 00 00 00 08 95
+R 00 00 00 00 12 02 05 00
+T 20 00 0E 94 00 00 58 01 41 E0 66 27 18 C0 48 BB
+R 00 00 00 00 12 04 02 00
+T 2E 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 3C 00 90 E0 E8 0F F9 1F 20 80 20 94 22 BA 66 23
+R 00 00 00 00 40 02 01 00 00 00
+T 4A 00 19 F4 88 B3 8F 77 88 BB 01 E0 10 E0 D4 DF
+R 00 00 00 00
+T 58 00 44 0F 63 95 64 30 30 F3 0E 94 00 00 08 95
+R 00 00 00 00 12 0C 07 00
+T 66 00 0E 94 00 00 64 B1 77 27 45 B1 55 27 1A 01
+R 00 00 00 00 12 04 01 00
+T 74 00 32 2C 22 24 26 0E 37 1E 01 E3 10 E0 91 01
+R 00 00 00 00
+T 82 00 0E 94 00 00 2A E0 30 E0 0E 94 00 00 A8 01
+R 00 00 00 00 12 04 08 00 12 0C 04 00
+T 90 00 0E 94 00 00 08 95
+R 00 00 00 00 12 04 06 00
+T 96 00 0E 94 00 00 A9 01 B8 01 28 EE 33 E0 8B 01
+R 00 00 00 00 12 04 01 00
+T A4 00 0E 94 00 00 FA 01 00 83 28 EE 33 E0 8B 01
+R 00 00 00 00 12 04 04 00
+T B2 00 0E 94 00 00 B8 01 24 E6 30 E0 0E 94 00 00
+R 00 00 00 00 12 04 03 00 12 0E 04 00
+T C0 00 FA 01 01 83 24 E6 30 E0 8B 01 0E 94 00 00
+R 00 00 00 00 12 0E 03 00
+T CE 00 B8 01 2A E0 30 E0 0E 94 00 00 FA 01 02 83
+R 00 00 00 00 12 0A 04 00
+T DC 00 2A E0 30 E0 8B 01 0E 94 00 00 B8 01 FA 01
+R 00 00 00 00 12 0A 03 00
+T EA 00 63 83 0E 94 00 00 08 95
+R 00 00 00 00 12 06 06 00
+T F2 00 22 24 24 BA 25 BA 8F EF 87 BB 88 BB 81 BB
+R 00 00 00 00
+T 00 01 82 BB 08 95
+R 00 00 00 00
+T 04 01 F6 DF 22 24 27 B8 86 EE 86 B9 0C E2 11 E0
+R 00 00 00 00
+T 12 01 76 DF 08 C0 A7 DF A8 01 20 E0 30 E0 BB DF
+R 00 00 00 00 20 0A 01 00 0A 00 40 0C 01 00 0A 00
+T 20 01 00 E0 10 E0 7D DF F7 CF 08 95
+R 00 00 00 00 20 02 01 00 0A 00 40 04 01 00 0A 00

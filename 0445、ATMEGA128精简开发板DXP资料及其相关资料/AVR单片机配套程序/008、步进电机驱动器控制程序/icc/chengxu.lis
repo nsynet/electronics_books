@@ -1,0 +1,139 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile C:\DOCUME~1\Administrator\桌面\001、闪烁灯设计\icc\chengxu.c
+ 0000                   .dbfunc e int_io _int_io fV
+                        .even
+ 0000           _int_io::
+ 0000                   .dbline -1
+ 0000                   .dbline 13
+ 0000           ; #include<iom128v.h>
+ 0000           ; #include <macros.h>
+ 0000           ; /**********************************************************************
+ 0000           ;                                 函数数据类型说明                                                              
+ 0000           ; **********************************************************************/
+ 0000           ; #define uint unsigned int
+ 0000           ; #define uchar unsigned char
+ 0000           ; 
+ 0000           ; /**********************************************************************
+ 0000           ;                               初始化I/0口                                                             
+ 0000           ; **********************************************************************/
+ 0000           ; void int_io()
+ 0000           ; {
+ 0000                   .dbline 14
+ 0000           ;    DDRD  =0xff;  
+ 0000 8FEF              ldi R24,255
+ 0002 81BB              out 0x11,R24
+ 0004                   .dbline -2
+ 0004           L1:
+ 0004                   .dbline 0 ; func end
+ 0004 0895              ret
+ 0006                   .dbend
+ 0006                   .dbfunc e Delay_us _Delay_us fV
+ 0006           ;              i -> R20,R21
+ 0006           ;              j -> R22,R23
+ 0006           ;          Timer -> R16,R17
+                        .even
+ 0006           _Delay_us::
+ 0006 0E940000          xcall push_gset2
+ 000A                   .dbline -1
+ 000A                   .dbline 21
+ 000A           ; }
+ 000A           ; 
+ 000A           ; /**********************************************************************
+ 000A           ;                                 MS级延时函数程序，参数Timer 延时时间                                                                  
+ 000A           ; **********************************************************************/
+ 000A           ; void Delay_us(int Timer)
+ 000A           ; {
+ 000A                   .dbline 23
+ 000A           ;    int i,j;
+ 000A           ;    for( i = Timer; i > 0; i--)
+ 000A A801              movw R20,R16
+ 000C 0CC0              xjmp L6
+ 000E           L3:
+ 000E                   .dbline 24
+ 000E           ;    for( j = 11   ; j > 0; j--)
+ 000E 6BE0              ldi R22,11
+ 0010 70E0              ldi R23,0
+ 0012           L7:
+ 0012                   .dbline 25
+ 0012 0000              nop
+ 0014           L8:
+ 0014                   .dbline 24
+ 0014 6150              subi R22,1
+ 0016 7040              sbci R23,0
+ 0018                   .dbline 24
+ 0018 2224              clr R2
+ 001A 3324              clr R3
+ 001C 2616              cp R2,R22
+ 001E 3706              cpc R3,R23
+ 0020 C4F3              brlt L7
+ 0022           L4:
+ 0022                   .dbline 23
+ 0022 4150              subi R20,1
+ 0024 5040              sbci R21,0
+ 0026           L6:
+ 0026                   .dbline 23
+ 0026 2224              clr R2
+ 0028 3324              clr R3
+ 002A 2416              cp R2,R20
+ 002C 3506              cpc R3,R21
+ 002E 7CF3              brlt L3
+ 0030                   .dbline -2
+ 0030           L2:
+ 0030 0E940000          xcall pop_gset2
+ 0034                   .dbline 0 ; func end
+ 0034 0895              ret
+ 0036                   .dbsym r i 20 I
+ 0036                   .dbsym r j 22 I
+ 0036                   .dbsym r Timer 16 I
+ 0036                   .dbend
+ 0036                   .dbfunc e main _main fV
+                        .even
+ 0036           _main::
+ 0036                   .dbline -1
+ 0036                   .dbline 32
+ 0036           ;    NOP();
+ 0036           ; }
+ 0036           ; 
+ 0036           ; /**********************************************************************
+ 0036           ;                                  主函数                                                       
+ 0036           ; **********************************************************************/
+ 0036           ; void main()
+ 0036           ; {
+ 0036                   .dbline 33
+ 0036           ;     int_io();
+ 0036 E4DF              xcall _int_io
+ 0038                   .dbline 34
+ 0038           ;    PORTD|=(1<<4);
+ 0038 949A              sbi 0x12,4
+ 003A                   .dbline 35
+ 003A           ;    PORTD|=(1<<5);
+ 003A 959A              sbi 0x12,5
+ 003C                   .dbline 36
+ 003C           ;    PORTD&=~(1<<6);
+ 003C 9698              cbi 0x12,6
+ 003E 08C0              xjmp L13
+ 0040           L12:
+ 0040                   .dbline 38
+ 0040                   .dbline 39
+ 0040 00E1              ldi R16,10000
+ 0042 17E2              ldi R17,39
+ 0044 E0DF              xcall _Delay_us
+ 0046                   .dbline 40
+ 0046 9798              cbi 0x12,7
+ 0048                   .dbline 41
+ 0048 00E1              ldi R16,10000
+ 004A 17E2              ldi R17,39
+ 004C DCDF              xcall _Delay_us
+ 004E                   .dbline 42
+ 004E 979A              sbi 0x12,7
+ 0050                   .dbline 44
+ 0050           L13:
+ 0050                   .dbline 37
+ 0050 F7CF              xjmp L12
+ 0052           X0:
+ 0052                   .dbline -2
+ 0052           L11:
+ 0052                   .dbline 0 ; func end
+ 0052 0895              ret
+ 0054                   .dbend

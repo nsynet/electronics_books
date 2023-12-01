@@ -1,0 +1,389 @@
+Wednesday, July 09, 16:45:36, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             807D         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8099         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         8098         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         8009         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_WISH1_BIN_SA                                  8009         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_WISH1_BIN_EA                                  800B         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_ALA1_BIN_SA                                   800D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_ALA1_BIN_EA                                   800F         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_ALAINS_BIN_SA                                 8011         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_ALAINS_BIN_EA                                 8013         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_DECK1_BIN_SA                                  8015         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_DECK1_BIN_EA                                  8017         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_GREEN1_BIN_SA                                 8019         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_GREEN1_BIN_EA                                 801B         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_HK1_BIN_SA                                    801D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_HK1_BIN_EA                                    801F         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_LA1_BIN_SA                                    8021         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_LA1_BIN_EA                                    8023         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_PP1_BIN_SA                                    8025         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_PP1_BIN_EA                                    8027         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_S31_BIN_SA                                    8029         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_S31_BIN_EA                                    802B         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_TW1_BIN_SA                                    802D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_TW1_BIN_EA                                    802F         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_WINE1_BIN_SA                                  8031         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_WINE1_BIN_EA                                  8033         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_1231_BIN_SA                                   8035         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_RES_1231_BIN_EA                                   8037         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+T_SACM_MS01_SongTable                              8039         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+T_SACM_MS01_DrumTable                              8045         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+T_SACM_MS01_DrumSampleRate                         8046         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+_Key                                               BF           "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\main.obj"
+_SongIndex                                         C0           "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\main.obj"
+_VolumeIndex                                       C1           "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\main.obj"
+_main                                              933A         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\main.obj"
+_Mode                                              B6           "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\main.obj"
+_System_Initial                                    954D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\System.obj"
+F_System_Initial                                   954D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\System.obj"
+_System_ServiceLoop                                9558         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\System.obj"
+F_System_ServiceLoop                               9558         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\System.obj"
+F_SP_RampUpDAC1                                    9095         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_RampDnDAC1                                    90B9         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_RampUpDAC2                                    90CB         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_RampDnDAC2                                    90EF         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_RampUpDAC1                                     9095         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_RampDnDAC1                                     90B9         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_RampUpDAC2                                     90CB         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_RampDnDAC2                                     90EF         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_InitQueue                                      9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_InitQueue_A2000                                9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_InitQueue_S530                                 9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_InitQueue_S480                                 9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_InitQueue_S240                                 9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_InitQueue_MS01                                 9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_InitQueue_DVR                                  9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_InitQueue                                     9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_InitQueue_A2000                               9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_InitQueue_S530                                9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_InitQueue_S480                                9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_InitQueue_S240                                9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_InitQueue_MS01                                9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_InitQueue_DVR                                 9108         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue                                     9115         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_A2000                               9115         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_S530                                9115         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_S480                                9115         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_S240                                9115         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_MS01                                9115         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_DVR                                 9115         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_NIC                                 9127         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_NIC_A2000                           9127         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_NIC_S530                            9127         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_NIC_S480                            9127         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_NIC_S240                            9127         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_NIC_MS01                            9127         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_ReadQueue_NIC_DVR                             9127         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_WriteQueue                                    9130         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_WriteQueue_A2000                              9130         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_WriteQueue_S530                               9130         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_WriteQueue_S480                               9130         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_WriteQueue_S240                               9130         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_WriteQueue_MS01                               9130         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_WriteQueue_DVR                                9130         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_TestQueue                                     913E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_TestQueue_A2000                               913E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_TestQueue_S530                                913E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_TestQueue_S480                                913E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_TestQueue_S240                                913E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_TestQueue_MS01                                913E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_TestQueue_DVR                                 913E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_SP_GetResource                                    9156         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_RampUpDAC1                                       9095         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_RampDnDAC1                                       90B9         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_RampUpDAC2                                       90CB         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_RampDnDAC2                                       90EF         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_STD_RampUpDAC1                                    9095         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_STD_RampDnDAC1                                    90B9         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_STD_RampUpDAC2                                    90CB         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+_STD_RampDnDAC2                                    90EF         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_A1600_Init_                              916D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_A2000_Init_                              918A         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_S530_Init_                               9200         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_S480_Init_                               921D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_S240_Init_                               9239         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_S200_Init_                               9255         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_MS01_Init_                               926B         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_PlayMode0_                                    927E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_PlayMode1_                                    928E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_PlayMode2_                                    929F         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_PlayMode3_                                    92B0         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_DVR_Init_                                92D9         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_DVR_Rec_Init_                            9300         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_DVR_Play_Init_                           9305         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_A3200_Init_                              91A6         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_SetTimerSrc                           91AF         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_SetIntSrc                             91B7         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_SendDecodedData                       91C2         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SACM_2Ch_A3200_Init_                          91C7         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_Ch1_SetTimerSrc                       91D4         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_Ch1_SetIntSrc                         91DC         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_Ch1_SendDecodedData                   91E7         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_Ch2_SetTimerSrc                       91EA         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_Ch2_SetIntSrc                         91F2         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SACM_A3200_Ch2_SendDecodedData                   91FD         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_IRQ2_ON                                       92C1         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_IRQ2_OFF                                      92CA         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_Send_DAC1                                     92D3         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_Send_DAC2                                     92D6         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_GetADC                                        930D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_SP_SwitchChannel                                 931A         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+F_Key_Scan_Initial                                 942F         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+F_Key_Scan_ServiceLoop                             943A         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+F_Key_Scan_ServiceLoop_2                           9460         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+F_Key_DebounceCnt_Down                             94A0         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+_SP_GetCh                                          94A7         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+F_SP_GetCh                                         94A7         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+R_KeyStrobe                                        B5           "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+_SP_Export                                         94D8         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+_SP_Import                                         94CD         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+_SP_Init_IOB                                       94BD         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+_SP_Init_IOA                                       94AD         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+R_InterruptStatus                                  C2           "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\spce.obj"
+F_USER_InitAdpcmData_Ch0                           94F1         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"
+_USER_InitAdpcmData_Ch0                            94E7         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"
+F_USER_InitAdpcmData_Ch1                           950C         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"
+_USER_InitAdpcmData_Ch1                            9502         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"
+F_USER_MS01_GetAdpcmData_Ch0                       951D         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"
+F_USER_MS01_GetAdpcmData_Ch1                       9535         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"
+F_SACM_MS01_SongEvent                              94E2         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"
+_BREAK                                             8063         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_FIQ                                               805A         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_IRQ0                                              8063         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_IRQ1                                              8063         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_IRQ2                                              8066         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_IRQ3                                              806F         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_IRQ4                                              8072         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_IRQ5                                              807A         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_IRQ6                                              807A         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+_IRQ7                                              807A         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+__RES_WISH1_BIN_sa                                 D6A5         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\WISH1_BIN.res"
+__RES_WISH1_BIN_ea                                 DAE8         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\WISH1_BIN.res"
+__RES_ALA1_BIN_sa                                  BEAD         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\ALA1_BIN.res"
+__RES_ALA1_BIN_ea                                  C64E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\ALA1_BIN.res"
+__RES_ALAINS_BIN_sa                                E339         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\ALAINS_BIN.res"
+__RES_ALAINS_BIN_ea                                E414         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\ALAINS_BIN.res"
+__RES_DECK1_BIN_sa                                 DAE8         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\DECK1_BIN.res"
+__RES_DECK1_BIN_ea                                 DDFD         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\DECK1_BIN.res"
+__RES_GREEN1_BIN_sa                                C64E         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\GREEN1_BIN.res"
+__RES_GREEN1_BIN_ea                                CDA4         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\GREEN1_BIN.res"
+__RES_HK1_BIN_sa                                   CDA4         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\HK1_BIN.res"
+__RES_HK1_BIN_ea                                   D253         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\HK1_BIN.res"
+__RES_LA1_BIN_sa                                   957C         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\LA1_BIN.res"
+__RES_LA1_BIN_ea                                   A8D4         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\LA1_BIN.res"
+__RES_PP1_BIN_sa                                   D253         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\PP1_BIN.res"
+__RES_PP1_BIN_ea                                   D6A5         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\PP1_BIN.res"
+__RES_S31_BIN_sa                                   B639         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\S31_BIN.res"
+__RES_S31_BIN_ea                                   BEAD         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\S31_BIN.res"
+__RES_TW1_BIN_sa                                   DDFD         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\TW1_BIN.res"
+__RES_TW1_BIN_ea                                   E0FA         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\TW1_BIN.res"
+__RES_WINE1_BIN_sa                                 A8D4         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\WINE1_BIN.res"
+__RES_WINE1_BIN_ea                                 B639         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\WINE1_BIN.res"
+__RES_1231_BIN_sa                                  E0FA         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\1231_BIN.res"
+__RES_1231_BIN_ea                                  E339         "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\1231_BIN.res"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            807D                 8099         1D     *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"              *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8059         51     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\main.obj"                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          933A                 942E         F5     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          9578 (BF)            957A (C1)    3      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           B6                   B6           1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\System.obj"                *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          954D                 956F         23     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9095                 9339         2A5    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           7E                   B1           34     *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"                *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          942F                 94E1         B3     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           B2                   B5           4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\spce.obj"                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          957B (C2)            957B (C2)    1      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"             *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          94E2                 954C         6B     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          9570 (B7)            9573 (BA)    4      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          805A                 807C         23     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\WISH1_BIN.res"             *
+*    __sn_section_RES_WISH1_BIN(DATA)              D6A5                 DAE7         443    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\ALA1_BIN.res"              *
+*    __sn_section_RES_ALA1_BIN(DATA)               BEAD                 C64D         7A1    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\ALAINS_BIN.res"            *
+*    __sn_section_RES_ALAINS_BIN(DATA)             E339                 E413         DB     *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\DECK1_BIN.res"             *
+*    __sn_section_RES_DECK1_BIN(DATA)              DAE8                 DDFC         315    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\GREEN1_BIN.res"            *
+*    __sn_section_RES_GREEN1_BIN(DATA)             C64E                 CDA3         756    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\HK1_BIN.res"               *
+*    __sn_section_RES_HK1_BIN(DATA)                CDA4                 D252         4AF    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\LA1_BIN.res"               *
+*    __sn_section_RES_LA1_BIN(DATA)                957C                 A8D3         1358   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\PP1_BIN.res"               *
+*    __sn_section_RES_PP1_BIN(DATA)                D253                 D6A4         452    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\S31_BIN.res"               *
+*    __sn_section_RES_S31_BIN(DATA)                B639                 BEAC         874    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\TW1_BIN.res"               *
+*    __sn_section_RES_TW1_BIN(DATA)                DDFD                 E0F9         2FD    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\WINE1_BIN.res"             *
+*    __sn_section_RES_WINE1_BIN(DATA)              A8D4                 B638         D65    *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\1231_BIN.res"              *
+*    __sn_section_RES_1231_BIN(DATA)               E0FA                 E338         23F    *
+* "D:\Sunplus\SPCE\Library\RELEAS~2\RELEAS~1\V32e\SPCE06~2\ms01\Release\MS01_V~1"           *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          809A                 9094         FFB    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          9574 (BB)            9577 (BE)    4      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    OVERLAP_MS01_SRAM_BLOCK(OSRAM)                0                    3E           3F     *
+*    OVERLAP_MS01_RAM_BLOCK(ORAM)                  3F                   7D           3F     *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   3F           1                     *
+* "Ram"                             800                  C3           73D                   *
+* "First Bank Rom"                  7C00                 6414         17EC                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\MS01.S37
+Disk  Mapping Filename : .\Debug\MS01.map
+Symbol  Table FileName : .\Debug\MS01.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

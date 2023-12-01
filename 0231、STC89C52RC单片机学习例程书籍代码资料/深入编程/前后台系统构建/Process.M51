@@ -1,0 +1,278 @@
+BL51 BANKED LINKER/LOCATER V5.03                                                        03/16/2011  16:25:02  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.03, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE STARTUP.obj, main.obj, Process.obj TO Process RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  main.obj (MAIN)
+  Process.obj (PROCESS)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ICALL)
+
+
+LINK MAP OF MODULE:  Process (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0019H     UNIT         ?DT?PROCESS
+            DATA    0021H     000AH     UNIT         ?DT?MAIN
+            DATA    002BH     0009H     UNIT         _DATA_GROUP_
+            IDATA   0034H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0055H     UNIT         ?PR?_PROC_SENDDATA?MAIN
+            CODE    00E4H     004DH     UNIT         ?PR?PROCPERFORM?PROCESS
+            CODE    0131H     0038H     UNIT         ?PR?_PROC_SETDATA?MAIN
+            CODE    0169H     0033H     UNIT         ?C?LIB_CODE
+            CODE    019CH     002EH     UNIT         ?PR?_SETPROCISALIVE?PROCESS
+            CODE    01CAH     0021H     UNIT         ?C_INITSEG
+            CODE    01EBH     0015H     UNIT         ?PR?_SETCURPROCISALIVE?PROCESS
+            CODE    0200H     000DH     UNIT         ?PR?UARTINIT?MAIN
+            CODE    020DH     0008H     UNIT         ?PR?_UARTSENDBYTE?MAIN
+            CODE    0215H     0008H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   Process (?C_STARTUP)
+
+
+SEGMENT                                  DATA_GROUP 
+  +--> CALLED SEGMENT                  START    LENGTH
+------------------------------------------------------
+?C_C51STARTUP                          -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                          -----    -----
+  +--> ?PR?UARTINIT?MAIN
+  +--> ?PR?PROCPERFORM?PROCESS
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:25:02  PAGE 2
+
+
+
+?C_INITSEG                             -----    -----
+  +--> ?PR?_PROC_SETDATA?MAIN
+  +--> ?PR?_PROC_SENDDATA?MAIN
+
+?PR?_PROC_SETDATA?MAIN                 -----    -----
+  +--> ?PR?_SETCURPROCISALIVE?PROCESS
+  +--> ?PR?_SETPROCISALIVE?PROCESS
+
+?PR?_SETPROCISALIVE?PROCESS            002EH    0006H
+
+?PR?_PROC_SENDDATA?MAIN                002BH    0003H
+  +--> ?PR?_UARTSENDBYTE?MAIN
+  +--> ?PR?_SETCURPROCISALIVE?PROCESS
+  +--> ?PR?_SETPROCISALIVE?PROCESS
+
+
+
+SYMBOL TABLE OF MODULE:  Process (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0003H         SEGMENT       ?C_C51STARTUP
+  I:0034H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0006H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0000H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0003H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         92
+  C:0003H         LINE#         99
+  C:0005H         LINE#         100
+  C:0006H         LINE#         101
+  C:0007H         LINE#         102
+  C:0009H         LINE#         151
+  C:000CH         LINE#         155
+  -------         ENDMOD        ?C_STARTUP
+
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:25:02  PAGE 3
+
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:008FH         PUBLIC        _PROC_SendData
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  B:0098H.1       PUBLIC        TI
+  C:0131H         PUBLIC        _PROC_SetData
+  D:00CBH         PUBLIC        RCAP2H
+  D:00CAH         PUBLIC        RCAP2L
+  C:0215H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:020DH         SYMBOL        _UARTSendByte
+  C:0200H         SYMBOL        UARTInit
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          UARTINIT
+  C:0200H         LINE#         16
+  C:0200H         LINE#         17
+  C:0200H         LINE#         18
+  C:0203H         LINE#         19
+  C:0206H         LINE#         20
+  C:0209H         LINE#         21
+  C:020CH         LINE#         22
+  -------         ENDPROC       UARTINIT
+  -------         PROC          _UARTSENDBYTE
+  D:0007H         SYMBOL        byte
+  C:020DH         LINE#         29
+  C:020DH         LINE#         30
+  C:020DH         LINE#         31
+  C:020FH         LINE#         32
+  C:0212H         LINE#         33
+  C:0214H         LINE#         34
+  -------         ENDPROC       _UARTSENDBYTE
+  -------         PROC          _PROC_SETDATA
+  D:0006H         SYMBOL        Wp
+  D:0004H         SYMBOL        Lp
+  -------         DO            
+  D:0021H         SYMBOL        cnt
+  D:0022H         SYMBOL        buf
+  D:002AH         SYMBOL        i
+  -------         ENDDO         
+  C:0131H         LINE#         42
+  C:0131H         LINE#         43
+  C:0131H         LINE#         47
+  C:0131H         LINE#         48
+  C:0131H         LINE#         50
+  C:0134H         LINE#         51
+  C:0134H         LINE#         52
+  C:0140H         LINE#         54
+  C:0147H         LINE#         56
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:25:02  PAGE 4
+
+
+  C:0150H         LINE#         57
+  C:0150H         LINE#         58
+  C:0153H         LINE#         59
+  C:0153H         LINE#         61
+  C:0158H         LINE#         66
+  -------         ENDPROC       _PROC_SETDATA
+  -------         PROC          _PROC_SENDDATA
+  D:0006H         SYMBOL        Wp
+  D:0004H         SYMBOL        Lp
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:002BH         SYMBOL        pbuf
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:008FH         LINE#         77
+  C:008FH         LINE#         78
+  C:008FH         LINE#         81
+  C:009AH         LINE#         83
+  C:009EH         LINE#         85
+  C:00A5H         LINE#         86
+  C:00A5H         LINE#         87
+  C:00B7H         LINE#         88
+  C:00BAH         LINE#         90
+  C:00BCH         LINE#         91
+  C:00C6H         LINE#         93
+  C:00C8H         LINE#         94
+  C:00D2H         LINE#         96
+  C:00D7H         LINE#         101
+  -------         ENDPROC       _PROC_SENDDATA
+  -------         PROC          MAIN
+  C:0215H         LINE#         111
+  C:0215H         LINE#         112
+  C:0215H         LINE#         113
+  C:0218H         LINE#         115
+  C:0218H         LINE#         116
+  C:0218H         LINE#         118
+  C:021BH         LINE#         120
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        PROCESS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:01EBH         PUBLIC        _SetCurProcIsAlive
+  D:0008H         SYMBOL        g_StProcTbl
+  C:019CH         PUBLIC        _SetProcIsAlive
+  D:0020H         SYMBOL        g_ucCurProc
+  C:00E4H         PUBLIC        ProcPerform
+  -------         PROC          _SETPROCISALIVE
+  D:0007H         SYMBOL        unProc
+  D:0005H         SYMBOL        bAlive
+  D:0002H         SYMBOL        Wp
+  D:0032H         SYMBOL        Lp
+  C:019CH         LINE#         78
+  C:019CH         LINE#         79
+  C:019CH         LINE#         80
+  C:01AFH         LINE#         81
+  C:01BCH         LINE#         82
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:25:02  PAGE 5
+
+
+  C:01C9H         LINE#         83
+  -------         ENDPROC       _SETPROCISALIVE
+  -------         PROC          _SETCURPROCISALIVE
+  D:0007H         SYMBOL        bAlive
+  C:01EBH         LINE#         90
+  C:01EBH         LINE#         91
+  C:01EBH         LINE#         92
+  C:01FFH         LINE#         93
+  -------         ENDPROC       _SETCURPROCISALIVE
+  -------         PROC          PROCPERFORM
+  C:00E4H         LINE#         100
+  C:00E4H         LINE#         101
+  C:00E4H         LINE#         112
+  C:00FDH         LINE#         113
+  C:00FDH         LINE#         114
+  C:0109H         LINE#         115
+  C:0109H         LINE#         116
+  C:012CH         LINE#         121
+  C:012CH         LINE#         129
+  C:0130H         LINE#         149
+  -------         ENDPROC       PROCPERFORM
+  -------         ENDMOD        PROCESS
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0169H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?ICALL
+  C:0196H         PUBLIC        ?C?ICALL
+  C:019AH         PUBLIC        ?C?ICALL2
+  -------         ENDMOD        ?C?ICALL
+
+Program Size: data=53.0 xdata=0 code=541
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

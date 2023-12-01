@@ -1,0 +1,121 @@
+Wednesday, July 09, 16:42:31, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8071         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          808D         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         808C         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\Resource.obj"
+_main                                              808E         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\TimeBase_Main.obj"
+_g_uiOutput                                        0            "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_BREAK                                             8009         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_FIQ                                               8010         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_IRQ0                                              8017         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_IRQ1                                              801E         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_IRQ2                                              8025         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_IRQ3                                              802C         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_IRQ4                                              8033         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_IRQ5                                              803A         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_IRQ6                                              8063         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+_IRQ7                                              806A         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8071                 808D         1D     *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\TimeBase_Main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          808E                 80B7         2A     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj" *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8070         68     *
+*    IRAM                                          80B8 (0)             80B8 (0)     1      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "D:\SunPlus\SPCE\Library\SPCE06~1\Debug\SPCE_R~1"                                         *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          80B9                 80E1         29     *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  1            7FF                   *
+* "First Bank Rom"                  7C00                 E2           7B1E                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\Capter6_2_TimeBase.S37
+Disk  Mapping Filename : .\Debug\Capter6_2_TimeBase.map
+Symbol  Table FileName : .\Debug\Capter6_2_TimeBase.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

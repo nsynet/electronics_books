@@ -1,0 +1,414 @@
+C51 COMPILER V7.06   NETINTERFACE                                                          03/16/2011 16:18:38 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE NETINTERFACE
+OBJECT MODULE PLACED IN .\Output\NETInterface.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE NETInterface.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\NETInterface.obj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "Board.h" 
+   7          #include "Global.h"
+   8          #include "NETDefine.h" 
+   9          #include "NETHardware.h"
+  10          #include "NETInterface.h"
+  11          
+  12          
+  13          /****************************************************************************************************
+  14          *
+  15          *                                      变量区
+  16          * 
+  17          *****************************************************************************************************/
+  18          static  DATA UINT8   Enc28j60Bank =0;
+  19          static IDATA UINT16  NextPacketPtr=0;
+  20          /****************************************************************************************************
+  21          *
+  22          *                                      函数区
+  23          * 
+  24          *****************************************************************************************************/
+  25          /*
+  26                                                                         函数声明
+  27          */
+  28          
+  29          /******************************************************
+  30          *函数名称: SPISend
+  31          *输    入: 单个字节 d
+  32          *输    出: 无
+  33          *说    明: SPI发送单个字节
+  34          *******************************************************/
+  35          static void SPISend(UINT8 d)
+  36          {
+  37   1        UINT8 i;
+  38   1      
+  39   1        for(i=0;i<8;i++)
+  40   1        {
+  41   2              SCLK=0;
+  42   2           MOSI = d & 0x80;
+  43   2              SCLK=1;
+  44   2              d <<=1;
+  45   2        }
+  46   1      
+  47   1        SCLK=0;
+  48   1      
+  49   1      }
+  50          /******************************************************
+  51          *函数名称: SPIRecv
+  52          *输    入: 无
+  53          *输    出: 单个字节
+  54          *说    明: SPI 接收单个字节
+  55          *******************************************************/
+C51 COMPILER V7.06   NETINTERFACE                                                          03/16/2011 16:18:38 PAGE 2   
+
+  56          static UINT8 SPIRecv(void)
+  57          {
+  58   1        UINT8 i,d;
+  59   1      
+  60   1        SCLK=0;
+  61   1        d=0;
+  62   1      
+  63   1        for(i=0;i<8;i++)
+  64   1        {     
+  65   2              SCLK=1;
+  66   2              d <<=1;
+  67   2          d |= MISO; 
+  68   2              SCLK=0; 
+  69   2        }
+  70   1      
+  71   1        return d;
+  72   1      }
+  73          
+  74          
+  75          /******************************************************
+  76          *函数名称: NETCiWriteOp
+  77          *输    入: op 操作码,addr 地址, dat 数据
+  78          *输    出:无
+  79          *说    明: 网络 写控制寄存器
+  80          *******************************************************/
+  81          void NETCiWriteOp(UINT8 op,UINT8 addr,UINT8 dat)
+  82          {
+  83   1              CS=0;                                     //选通ENC28J60
+  84   1      
+  85   1              SPISend(op | (addr & ADDR_MASK));   //SPI指令集：写控制寄存器
+  86   1              SPISend(dat);                           //SPI 发送数据
+  87   1      
+  88   1              CS=1;                                     //禁止ENC28J60
+  89   1      }
+  90          /******************************************************
+  91          *函数名称: NETCiReadOp
+  92          *输    入: op 操作码,addr 地址
+  93          *输    出: 数据
+  94          *说    明: 网络 读控制寄存器
+  95          *******************************************************/
+  96          UINT8 NETCiReadOp (UINT8 op,UINT8 addr)
+  97          {
+  98   1              UINT8 d;
+  99   1         
+ 100   1              CS=0;                                     //选通ENC28J60
+ 101   1      
+ 102   1              SPISend(op | (addr & ADDR_MASK));   //SPI指令：读控制寄存器
+ 103   1              
+ 104   1              d=SPIRecv();                            //读数据
+ 105   1      
+ 106   1              if(addr & 0x80)                         //若addr最高位为1
+ 107   1              {
+ 108   2                      d=SPIRecv();                        //读数据
+ 109   2              }
+ 110   1      
+ 111   1              CS=1;                                     //禁止ENC28J60
+ 112   1      
+ 113   1              return d;                                //返回读取到的数据
+ 114   1      }
+ 115          
+ 116          /******************************************************
+ 117          *函数名称: NETCiReadBuffer
+C51 COMPILER V7.06   NETINTERFACE                                                          03/16/2011 16:18:38 PAGE 3   
+
+ 118          *输    入: len 长度 , buf 接收的数据
+ 119          *输    出: 无
+ 120          *说    明: 网络 读取缓冲区
+ 121          *******************************************************/
+ 122          void NETCiReadBuffer(UINT16 len, UINT8 *buf)
+ 123          {
+ 124   1              CS=0;                                  //选通ENC28J60
+ 125   1              
+ 126   1              SPISend(ENC28J60_READ_BUF_MEM);  //SPI指令集：读缓冲区
+ 127   1      
+ 128   1              while(len--)
+ 129   1              {
+ 130   2                       *buf++ = SPIRecv();              //连续接收数据
+ 131   2              }
+ 132   1              
+ 133   1          *buf='\0';                           
+ 134   1              CS=1;                                 //禁止ENC28J60
+ 135   1      }
+ 136          
+ 137          /******************************************************
+ 138          *函数名称: NETCiWriteBuffer
+ 139          *输    入: len 长度 ,buf 要发送的数据
+ 140          *输    出: 无
+ 141          *说    明: 网络 写缓冲区
+ 142          *******************************************************/
+ 143          void NETCiWriteBuffer(UINT16 len,UINT8 *buf)
+ 144          {
+ 145   1              CS=0;                                        //选通ENC28J60
+ 146   1              
+ 147   1              SPISend(ENC28J60_WRITE_BUF_MEM);       //SPI指令集：写缓冲区
+ 148   1      
+ 149   1              while(len--)
+ 150   1              {
+ 151   2                      SPISend(*buf++);                     //连续写入数据
+ 152   2              }
+ 153   1                      
+ 154   1              CS=1;                                      //禁止ENC28J60
+ 155   1      }
+ 156          
+ 157          /******************************************************
+ 158          *函数名称: NETCiSetBank
+ 159          *输    入: addr 地址
+ 160          *输    出: 无
+ 161          *说    明: 设置存储区
+ 162          *******************************************************/
+ 163          void NETCiSetBank(UINT8 addr)
+ 164          {
+ 165   1          if((addr & BANK_MASK) != Enc28j60Bank) // 检查是否有效的存储区
+ 166   1          {
+ 167   2           //清零ECON寄存器的BSEL1和BSEL0
+ 168   2               NETCiWriteOp(ENC28J60_BIT_FIELD_CLR,ECON1, (ECON1_BSEL1|ECON1_BSEL0)); 
+ 169   2           //设置ECON寄存器值为(addr & BANK_MASK)>>5
+ 170   2               NETCiWriteOp(ENC28J60_BIT_FIELD_SET, ECON1, (addr & BANK_MASK)>>5);    
+ 171   2           //获取当前BANK存储区
+ 172   2           Enc28j60Bank = (addr & BANK_MASK);
+ 173   2          }
+ 174   1      }
+ 175                  
+ 176          /******************************************************
+ 177          *函数名称:NETCiRead
+ 178          *输    入:addr 地址
+ 179          *输    出:一字节数据
+C51 COMPILER V7.06   NETINTERFACE                                                          03/16/2011 16:18:38 PAGE 4   
+
+ 180          *说    明:从某一个地址读取1字节数据
+ 181          ******************************************************/     
+ 182          UINT8 NETCiRead(UINT8 addr)
+ 183          {
+ 184   1      
+ 185   1              NETCiSetBank(addr);
+ 186   1      
+ 187   1              return NETCiReadOp(ENC28J60_READ_CTRL_REG, addr);
+ 188   1      
+ 189   1      }                
+ 190          /******************************************************
+ 191          *函数名称: NETCiClkOut
+ 192          *输    入: clk值
+ 193          *输    出: 无
+ 194          *说    明: 设置CLKOUT
+ 195          *******************************************************/
+ 196          void NETCiClkOut(UINT8 clk)
+ 197          {
+ 198   1          NETCiWrite(ECOCON,clk&0x07); //设置CLKOUT
+ 199   1      }
+ 200          
+ 201          /******************************************************
+ 202          *函数名称: NETCiWrite
+ 203          *输    入: addr 地址 ，dat 要写入的数据
+ 204          *输    出: 无
+ 205          *说    明: 设置寄存器
+ 206          *******************************************************/
+ 207          void NETCiWrite(UINT8 addr,
+ 208                             UINT8 dat)
+ 209          {
+ 210   1              NETCiSetBank(addr);         //选择存储区
+ 211   1              NETCiWriteOp(ENC28J60_WRITE_CTRL_REG, addr, dat);//设置控制寄存器
+ 212   1      }
+ 213          /******************************************************
+ 214          *函数名称: NETCiPhyWrite
+ 215          *输    入: addr 地址, dat 16位数据
+ 216          *输    出: 无
+ 217          *说    明: 设置PHY
+ 218          *******************************************************/
+ 219          void NETCiPhyWrite(UINT8  addr, UINT16 dat)
+ 220          {
+ 221   1              NETCiWrite(MIREGADR, addr); //写MIREAGDR值为dat
+ 222   1              NETCiWrite(MIWRL, dat);      //写MIWRL值为dat(即低8位)
+ 223   1              NETCiWrite(MIWRH, dat>>8);  //写MIWRH值为dat>>8(即高8位)
+ 224   1              while(NETCiRead(MISTAT) & MISTAT_BUSY) //检测MISTAT寄存器的BUSY位
+ 225   1              {
+ 226   2                    DelayNus(15);//延时15us（微妙）
+ 227   2              }
+ 228   1      }
+ 229          /******************************************************
+ 230          *函数名称: NETCiInit
+ 231          *输    入: mac 地址
+ 232          *输    出: 无
+ 233          *说    明: 网络设备初始化
+ 234          *******************************************************/
+ 235          void NETCiInit(UINT8 *mac)
+ 236          {
+ 237   1              NETHwInit();    //网络低层IO初始化
+ 238   1      
+ 239   1              NETCiWriteOp(ENC28J60_SOFT_RESET, 0, ENC28J60_SOFT_RESET);//ENC28J60软复位
+ 240   1              DelayNms(50);//延时50ms
+ 241   1              while(!(NETCiRead(ESTAT) & ESTAT_CLKRDY));//检测是否就绪
+C51 COMPILER V7.06   NETINTERFACE                                                          03/16/2011 16:18:38 PAGE 5   
+
+ 242   1      
+ 243   1              NextPacketPtr = RXSTART_INIT;
+ 244   1              NETCiWrite(ERXSTL, RXSTART_INIT&0xFF);   //设置接收缓冲区起始地址低字节
+ 245   1              NETCiWrite(ERXSTH, RXSTART_INIT>>8);     //设置接收缓冲区起始地址高字节
+ 246   1              NETCiWrite(ERXRDPTL, RXSTART_INIT&0xFF);//设置接收缓冲区读指针低字节
+ 247   1              NETCiWrite(ERXRDPTH, RXSTART_INIT>>8);   //设置接收缓冲器读指针高字节
+ 248   1              NETCiWrite(ERXNDL, RXSTOP_INIT&0xFF);    //设置接收缓冲器结束地址低字节
+ 249   1              NETCiWrite(ERXNDH, RXSTOP_INIT>>8);       //设置接收缓冲区结束地址高字节
+ 250   1      
+ 251   1              NETCiWrite(ETXSTL, TXSTART_INIT&0xFF);   //设置发送缓冲区起始地址低字节
+ 252   1              NETCiWrite(ETXSTH, TXSTART_INIT>>8);     //设置发送缓冲区起始地址高字节   
+ 253   1          NETCiWrite(ETXNDL, TXSTOP_INIT&0xFF);   //设置发送缓冲区结束地址低字节
+ 254   1              NETCiWrite(ETXNDH, TXSTOP_INIT>>8);      //设置发送缓冲区结束地址高字节  
+ 255   1      
+ 256   1           //设置接收发送过滤器ERXFCON使能单播过滤器、CRC、格式匹配过滤
+ 257   1              NETCiWrite(ERXFCON, ERXFCON_UCEN|ERXFCON_CRCEN|ERXFCON_PMEN);
+ 258   1      
+ 259   1              NETCiWrite(EPMM0, 0x3f);//设置格式匹配屏蔽字节0寄存器，屏蔽低6位
+ 260   1              NETCiWrite(EPMM1, 0x30);//设置格式匹配屏蔽字节1寄存器，屏蔽高2位
+ 261   1              NETCiWrite(EPMCSL, 0xf9);//设置格式匹配校验和低字节
+ 262   1              NETCiWrite(EPMCSH, 0xf7);//设置格式匹配校验和高字节     
+ 263   1      
+ 264   1           //设置MAC控制寄存器1使能MAC允许接收、暂停控制帧发送允许、暂停控制帧接收允许
+ 265   1              NETCiWrite(MACON1, MACON1_MARXEN|MACON1_TXPAUS|MACON1_RXPAUS);
+ 266   1      
+ 267   1              NETCiWrite(MACON2, 0x00); //不设置MAC控制寄存器2
+ 268   1      
+ 269   1          //设置MAC控制寄存器3使能帧校验长度、发送CRC、自动填充和配置CRC
+ 270   1          NETCiWriteOp(ENC28J60_BIT_FIELD_SET,MACON3,MACON3_PADCFG0|MACON3_TXCRCEN |MACON3_FRMLNEN);
+ 271   1          
+ 272   1              NETCiWrite(MAIPGL, 0x12);//配置非背对背包间间隔寄存器的低字节
+ 273   1              NETCiWrite(MAIPGH, 0x0C);//配置非背对背包间间隔寄存器的高字节
+ 274   1              NETCiWrite(MABBIPG,0x12);//配置背对背包间间隔寄存器
+ 275   1              NETCiWrite(MAMXFLL, MAX_FRAME_LEN&0xFF);//最大帧长度低字节      
+ 276   1              NETCiWrite(MAMXFLH, MAX_FRAME_LEN>>8);  //最大帧长度高字节
+ 277   1      
+ 278   1          NETCiWrite(MAADR5, mac[0]); //设置MAC地址字节5
+ 279   1          NETCiWrite(MAADR4, mac[1]); //设置MAC地址字节4
+ 280   1          NETCiWrite(MAADR3, mac[2]); //设置MAC地址字节3
+ 281   1          NETCiWrite(MAADR2, mac[3]); //设置MAC地址字节2
+ 282   1          NETCiWrite(MAADR1, mac[4]); //设置MAC地址字节1
+ 283   1          NETCiWrite(MAADR0, mac[5]); //设置MAC地址字节0
+ 284   1      
+ 285   1      //设置PHY控制寄存器2发送的数据仅通过双绞线的接口发出
+ 286   1              NETCiPhyWrite(PHCON2, PHCON2_HDLDIS);
+ 287   1      
+ 288   1          //选择BANK为以太网控制寄存器1
+ 289   1              NETCiSetBank(ECON1);
+ 290   1      
+ 291   1           //设置中断使能
+ 292   1              NETCiWriteOp(ENC28J60_BIT_FIELD_SET, EIE, EIE_INTIE|EIE_PKTIE);
+ 293   1           //设置以太网控制寄存器1接收使能
+ 294   1              NETCiWriteOp(ENC28J60_BIT_FIELD_SET, ECON1, ECON1_RXEN);
+ 295   1      
+ 296   1      }
+ 297          /******************************************************
+ 298          *函数名称: NETCiPacketSend
+ 299          *输    入: packet 数据包缓冲区；len 数据长度
+ 300          *输    出: 无
+ 301          *说    明: 网络设备发送数据
+ 302          *******************************************************/
+ 303          void NETCiPacketSend(UINT8 *packet,UINT16 len)
+C51 COMPILER V7.06   NETINTERFACE                                                          03/16/2011 16:18:38 PAGE 6   
+
+ 304          {
+ 305   1          
+ 306   1              NETCiWrite(EWRPTL, TXSTART_INIT&0xFF);        //设置发送缓冲区起始地址低字节
+ 307   1              NETCiWrite(EWRPTH, TXSTART_INIT>>8);          //设置发送缓冲区起始地址高字节
+ 308   1              NETCiWrite(ETXNDL, (TXSTART_INIT+len)&0xFF);//设置发送缓冲区结束地址低字节
+ 309   1              NETCiWrite(ETXNDH, (TXSTART_INIT+len)>>8);  //设置发送缓冲区结束地址高字节
+ 310   1      
+ 311   1              NETCiWriteOp(ENC28J60_WRITE_BUF_MEM, 0, 0x00);//清空发送缓冲区
+ 312   1      
+ 313   1              NETCiWriteBuffer(len, packet); //发送数据
+ 314   1              NETCiWriteOp(ENC28J60_BIT_FIELD_SET, ECON1, ECON1_TXRTS);//发送逻辑复位
+ 315   1            
+ 316   1              if( (NETCiRead(EIR) & EIR_TXERIF) )//检测发送是否结束
+ 317   1              {
+ 318   2               NETCiWriteOp(ENC28J60_BIT_FIELD_CLR, ECON1, ECON1_TXRTS); //发送逻辑复位
+ 319   2              
+ 320   2          }
+ 321   1      }
+ 322          /******************************************************
+ 323          *函数名称: NETCiPacketReceive
+ 324          *输    入: packet 数据包缓冲区；len 数据长度
+ 325          *输    出: 长度
+ 326          *说    明: 网络设备接收数据
+ 327          *******************************************************/
+ 328          UINT16 NETCiPacketReceive(UINT8 *packet,UINT16 maxlen)
+ 329          {
+ 330   1              UINT16 rxstat;
+ 331   1              UINT16 len;
+ 332   1      
+ 333   1              if( NETCiRead(EPKTCNT) ==0 )//读取以太网数据包长度
+ 334   1              {
+ 335   2                      return(0);
+ 336   2          }
+ 337   1          
+ 338   1      
+ 339   1      NETCiWrite(ERDPTL, (NextPacketPtr));     //写缓冲区读指针低字节
+ 340   1      NETCiWrite(ERDPTH, (NextPacketPtr)>>8); //写缓冲区读指针高字节
+ 341   1      //保存读缓冲区读指针低字节
+ 342   1      NextPacketPtr= NETCiReadOp(ENC28J60_READ_BUF_MEM, 0);
+ 343   1      //保存读缓冲区读指针高字节
+ 344   1      NextPacketPtr|=NETCiReadOp(ENC28J60_READ_BUF_MEM,0)<<8;
+ 345   1      
+ 346   1              len  = NETCiReadOp(ENC28J60_READ_BUF_MEM, 0);     //读缓冲区读指针低字节
+ 347   1              len |= NETCiReadOp(ENC28J60_READ_BUF_MEM, 0)<<8; //读缓冲区读指针高字节
+ 348   1      len -=4; //移除CRC校验
+ 349   1      
+ 350   1      //读缓冲区读指针低字节
+ 351   1              rxstat  = NETCiReadOp(ENC28J60_READ_BUF_MEM, 0); 
+ 352   1           //读缓冲区读指针高字节
+ 353   1              rxstat |= (UINT16)(NETCiReadOp(ENC28J60_READ_BUF_MEM, 0)<<8); 
+ 354   1      
+ 355   1          if (len>maxlen-1) //检测是否符合最大长度
+ 356   1          {
+ 357   2              len=maxlen-1;
+ 358   2      }
+ 359   1      
+ 360   1          if ((rxstat & 0x80)==0)//检测是否接收完毕
+ 361   1          {
+ 362   2              len=0;// 清零len
+ 363   2          }
+ 364   1          else
+ 365   1          {
+C51 COMPILER V7.06   NETINTERFACE                                                          03/16/2011 16:18:38 PAGE 7   
+
+ 366   2               
+ 367   2              NETCiReadBuffer(len, packet); //接收数据
+ 368   2              
+ 369   2          }
+ 370   1      
+ 371   1              NETCiWrite(ERXRDPTL, (NextPacketPtr));     //写接收缓冲区读指针低字节
+ 372   1              NETCiWrite(ERXRDPTH, (NextPacketPtr)>>8); //写接收缓冲区读指针高字节
+ 373   1      
+ 374   1          //清空以太网控制寄存器2中的数据包递减位
+ 375   1              NETCiWriteOp(ENC28J60_BIT_FIELD_SET, ECON2, ECON2_PKTDEC);
+ 376   1              
+ 377   1              return(len);//返回接收数据的长度
+ 378   1      }
+ 379          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    942    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1      22
+   IDATA SIZE       =      2    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

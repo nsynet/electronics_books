@@ -1,0 +1,153 @@
+C51 COMPILER V8.05a   AJKZ                                                                 03/18/2009 21:37:32 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE AJKZ
+OBJECT MODULE PLACED IN ajkz.OBJ
+COMPILER INVOKED BY: D:\Program Files\C51\BIN\C51.EXE ajkz.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          ////////////////////////汇诚科技////////////////////
+   2          //////////////////http://www.ourhc.cn///////////////
+   3          ///////////////////步进电机按键实现正反转调试程序/////////////
+   4          
+   5          #include<reg52.h> 
+   6          #define ZERO 0XC0; 
+   7          #define ONE  0XF9;
+   8          #define TWO  0XA4;
+   9          #define THREE 0XB0;
+  10          #define FOUR  0X99;
+  11          #define FIVE  0X92;
+  12          #define SIX   0X82;
+  13          #define SEVEN 0XF8;
+  14          #define EIGHT 0X80;
+  15          #define NINE  0x90
+  16          #define unint unsigned int
+  17           
+  18          code unsigned char runz[8]={ 0x03,0x0b,0x09,0x0d,0x0c,0x0e,0x06,0x07}; //正转动数组
+  19          code unsigned char runf[8]={ 0x07,0x06,0x0e,0x0c,0x0d,0x09,0x0b,0x03}; //反转动数组
+  20          
+  21          unsigned char a,b,s,i,j,k,z;
+  22          
+  23          int y=5;//定义转动速度，数值越大电机转速越慢反之则快
+  24          
+  25          sbit P2_0=P2^0;//正转按键
+  26          sbit P2_1=P2^1;//反转按键
+  27          sbit P2_2=P2^2;//加速按键
+  28          sbit P2_3=P2^3;//减速按键
+  29          
+  30          void delay(i)//延时函数
+  31            {
+  32   1            for(j=0;j<i;j++)
+  33   1            for(k=0;k<250;k++);
+  34   1        }
+  35          
+  36          
+  37          void frun()// 反转运行
+  38           {
+  39   1           for(z=0;z<8;z++)
+  40   1              {
+  41   2                  P1=runf[z];
+  42   2                  delay(y);
+  43   2               }
+  44   1      }
+  45          void zrun()// 正转运行
+  46          {
+  47   1      
+  48   1         for(z=0;z<8;z++)
+  49   1             { 
+  50   2               P1=runz[z];
+  51   2               delay(y);
+  52   2             }
+  53   1      }
+  54          void anjian()
+  55          {
+C51 COMPILER V8.05a   AJKZ                                                                 03/18/2009 21:37:32 PAGE 2   
+
+  56   1            if(P2_2==0)
+  57   1            {
+  58   2                delay(2);
+  59   2                while(!P2_2);
+  60   2                a++;
+  61   2                if(a>=9)a=9;
+  62   2            }
+  63   1             if(P2_3==0)
+  64   1            {
+  65   2                delay(2);
+  66   2                while(!P2_3);
+  67   2                a--;
+  68   2                if(a<=0)a=0;
+  69   2             }
+  70   1      }
+  71          
+  72          /*void timer0( ) interrupt 1 //定时器0工作方式1
+  73          {
+  74          anjian();
+  75          TH0=(65536-2)/256;        //重装计数初值
+  76          TL0=(65536-2)%256;        //重装计数初值
+  77          } */
+  78          main()
+  79          {
+  80   1      a=5;
+  81   1      b=2;
+  82   1      /*TMOD=0X01;                      //定时器中断0
+  83   1      
+  84   1      TH0=(65536-2)/256;        //定时时间高八位初值
+  85   1      TL0=(65536-2)%256;        //定时时间低八位初值
+  86   1      EA=1;                             //开CPU中断
+  87   1      ET0=1;                            //开T/C0中断
+  88   1      TR0=1; */
+  89   1      
+  90   1         while(1)
+  91   1          { 
+  92   2               if(P2_0==0)
+  93   2            {
+  94   3                while(!P2_0);                                                                                                                                                          +
+  95   3      
+  96   3                b=0;
+  97   3            }
+  98   2             if(P2_1==0)
+  99   2            {
+ 100   3                while(!P2_1);
+ 101   3                b=1;
+ 102   3             }
+ 103   2               anjian();  
+ 104   2                 switch(b)
+ 105   2              {
+ 106   3              case 0: frun();break;
+ 107   3              case 1: zrun(); break;
+ 108   3              default:break;  
+ 109   3              } 
+ 110   2                      switch(a)
+ 111   2              {
+ 112   3              case 0:y=100; P3=ZERO;break;
+ 113   3              case 1:y=75; P3=ONE;    break;
+ 114   3              case 2:y=60; P3=TWO;    break;
+ 115   3              case 3:y=45; P3=THREE;break;
+ 116   3              case 4:y=35; P3=FOUR; break;
+ 117   3              case 5:y=25; P3=FIVE; break;
+C51 COMPILER V8.05a   AJKZ                                                                 03/18/2009 21:37:32 PAGE 3   
+
+ 118   3              case 6:y=20; P3=SIX;    break;
+ 119   3              case 7:y=15; P3=SEVEN;break;
+ 120   3              case 8:y=10; P3=EIGHT; break;
+ 121   3              case 9:y=5; P3=NINE; break;
+ 122   3              default:break;  
+ 123   3              }
+ 124   2            
+ 125   2         }
+ 126   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    332    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

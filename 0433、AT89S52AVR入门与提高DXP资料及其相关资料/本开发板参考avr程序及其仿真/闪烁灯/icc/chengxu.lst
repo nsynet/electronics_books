@@ -1,0 +1,90 @@
+__start:
+__text_start:
+    002A E5CF      LDI	R28,0x5F
+    002B E0D4      LDI	R29,4
+    002C BFCD      OUT	0x3D,R28
+    002D BFDE      OUT	0x3E,R29
+    002E 51C0      SUBI	R28,0x10
+    002F 40D0      SBCI	R29,0
+    0030 EA0A      LDI	R16,0xAA
+    0031 8308      STD	Y+0,R16
+    0032 2400      CLR	R0
+    0033 E6E0      LDI	R30,0x60
+    0034 E0F0      LDI	R31,0
+    0035 E010      LDI	R17,0
+    0036 36E0      CPI	R30,0x60
+    0037 07F1      CPC	R31,R17
+    0038 F011      BEQ	0x003B
+    0039 9201      ST	R0,Z+
+    003A CFFB      RJMP	0x0036
+    003B 8300      STD	Z+0,R16
+    003C E5E4      LDI	R30,0x54
+    003D E0F0      LDI	R31,0
+    003E E6A0      LDI	R26,0x60
+    003F E0B0      LDI	R27,0
+    0040 E010      LDI	R17,0
+    0041 35E4      CPI	R30,0x54
+    0042 07F1      CPC	R31,R17
+    0043 F021      BEQ	0x0048
+    0044 95C8      LPM
+    0045 9631      ADIW	R30,1
+    0046 920D      ST	R0,X+
+    0047 CFF9      RJMP	0x0041
+    0048 940E004B  CALL	_main
+_exit:
+    004A CFFF      RJMP	_exit
+FILE: D:\Proteus仿真实例\ATMEGA16\个人总结AVR\闪烁灯\chengxu.c
+(0001) #include <iom16v.h>
+(0002) int main( void )
+(0003) {
+(0004) unsigned char i, j, k,led=0;
+_main:
+  led                  --> R18
+  i                    --> R20
+  k                    --> R16
+  j                    --> R22
+    004B 2722      CLR	R18
+(0005) DDRB=0xFF; /* all outputs */
+    004C EF8F      LDI	R24,0xFF
+    004D BB87      OUT	0x17,R24
+    004E C01A      RJMP	0x0069
+(0006) while (1)
+(0007) {
+(0008) if(led)
+    004F 2322      TST	R18
+    0050 F011      BEQ	0x0053
+(0009) PORTB|=0X01; /* |使最后一位为1 */
+    0051 9AC0      SBI	0x18,0
+    0052 C003      RJMP	0x0056
+(0010) else
+(0011) PORTB&=0XFE; /*&最后一位为0 */
+    0053 B388      IN	R24,0x18
+    0054 7F8E      ANDI	R24,0xFE
+    0055 BB88      OUT	0x18,R24
+(0012) led=!led;
+    0056 2322      TST	R18
+    0057 F419      BNE	0x005B
+    0058 E041      LDI	R20,1
+    0059 E050      LDI	R21,0
+    005A C002      RJMP	0x005D
+    005B 2744      CLR	R20
+    005C 2755      CLR	R21
+    005D 2F24      MOV	R18,R20
+(0013) //延时
+(0014) for (i=0; i<255; i++)
+    005E 2744      CLR	R20
+    005F C007      RJMP	0x0067
+(0015) for(j=0; j<255;j++)
+    0060 2766      CLR	R22
+    0061 C002      RJMP	0x0064
+(0016) k++;
+FILE: <library>
+    0062 9503      INC	R16
+    0063 9563      INC	R22
+    0064 3F6F      CPI	R22,0xFF
+    0065 F3E0      BCS	0x0062
+    0066 9543      INC	R20
+    0067 3F4F      CPI	R20,0xFF
+    0068 F3B8      BCS	0x0060
+    0069 CFE5      RJMP	0x004F
+    006A 9508      RET

@@ -1,0 +1,207 @@
+C51 COMPILER V7.06   MAIN                                                                  03/19/2011 11:31:42 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c OPTIMIZE(SIZE) BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "global.h"
+   8          #include "74LS164.h"
+   9          #include "LCD1602.h"
+  10          
+  11          
+  12          #define TIMER0_INITIAL_VALUE 5000  //5ms定时
+  13          
+  14           
+  15          UINT8   TimeCount=0;                //定时计数
+  16          UINT8   Timer0IRQEvent=0;          //T/C0定时中断事件
+  17          UINT8   Timer1OverFlowCnt=0;       //T/C1计数溢出计数
+  18          UINT8   Time1SecEvent=0;            //定时1秒事件
+  19          UINT16  FreqCount=0;
+  20          
+  21          UINT8   LCDString[16];             //LCD字符串缓冲区
+  22          UINT8   LCDPrintfLength;           //LCD显示数据长度
+  23          
+  24          /*************************************************************
+  25          * 函数名称:TimerInit
+  26          * 输    入:无
+  27          * 输    出:无
+  28          * 说    明:T/C初始化
+  29          **************************************************************/
+  30          void TimerInit(void)               
+  31          {
+  32   1         TH1 = 0;
+  33   1         TL1 = 0; 
+  34   1         TH0 = (65536-TIMER0_INITIAL_VALUE)/256;
+  35   1         TL0 = (65536-TIMER0_INITIAL_VALUE)%256; //定时5MS
+  36   1         TMOD = 0x51;
+  37   1        
+  38   1      }
+  39          /*************************************************************
+  40          * 函数名称:Timer0Start
+  41          * 输    入:无
+  42          * 输    出:无
+  43          * 说    明:T/C0启动
+  44          **************************************************************/
+  45          void Timer0Start(void)
+  46          {
+  47   1           TR0 = 1;           
+  48   1               ET0 = 1;       
+  49   1      }
+  50          /*************************************************************
+  51          * 函数名称:Timer0Stop
+  52          * 输    入:无
+  53          * 输    出:无
+  54          * 说    明:T/C0停止
+  55          **************************************************************/
+C51 COMPILER V7.06   MAIN                                                                  03/19/2011 11:31:42 PAGE 2   
+
+  56          void Timer0Stop(void)
+  57          {
+  58   1           TR0 = 0;   
+  59   1           ET0 = 0;   
+  60   1      }
+  61          /*************************************************************
+  62          * 函数名称:Timer1Start
+  63          * 输    入:无
+  64          * 输    出:无
+  65          * 说    明:T/C1启动
+  66          **************************************************************/
+  67          void Timer1Start(void)
+  68          {
+  69   1      
+  70   1           TR1 = 1;           
+  71   1               ET1 = 1; 
+  72   1           TH1=TL1=0;         
+  73   1      }
+  74          /*************************************************************
+  75          * 函数名称:Timer1Stop
+  76          * 输    入:无
+  77          * 输    出:无
+  78          * 说    明:T/C1停止
+  79          **************************************************************/
+  80          void Timer1Stop(void)
+  81          {
+  82   1      
+  83   1           TR1 = 0;   
+  84   1               ET1 = 0; 
+  85   1      
+  86   1      }
+  87          /*************************************************************
+  88          * 函数名称:PortInit
+  89          * 输    入:无
+  90          * 输    出:无
+  91          * 说    明:I/O口初始化
+  92          **************************************************************/
+  93          void PortInit(void)
+  94          {
+  95   1               P0=P1=P2=P3=0xFF;
+  96   1      }
+  97          
+  98          /*************************************************************
+  99          * 函数名称:main
+ 100          * 输    入:无
+ 101          * 输    出:无
+ 102          * 说    明:函数主体
+ 103          **************************************************************/
+ 104          void main(void)
+ 105          {
+ 106   1              PortInit();
+ 107   1              TimerInit();
+ 108   1          Timer0Start();
+ 109   1          Timer1Start();
+ 110   1          LCD1602Init();
+ 111   1      
+ 112   1          EA=1;      //开启全局中断
+ 113   1      
+ 114   1              while(1)
+ 115   1          {
+ 116   2                      if(Timer0IRQEvent)  //T/C0中断事件
+ 117   2                      { 
+C51 COMPILER V7.06   MAIN                                                                  03/19/2011 11:31:42 PAGE 3   
+
+ 118   3                  Timer0IRQEvent=0;
+ 119   3                  TimeCount++;
+ 120   3        
+ 121   3                  if(TimeCount>=200)    //定时1S到达
+ 122   3                  {
+ 123   4                            TimeCount=0;      
+ 124   4      
+ 125   4                    Timer0Stop();    //停止T/C0
+ 126   4                    Timer1Stop();    //停止T/C1
+ 127   4      
+ 128   4                    FreqCount=((TH1<<8)|TL1)+Timer1OverFlowCnt*65536;//计算总计数值
+ 129   4                            Timer1OverFlowCnt=0;
+ 130   4      
+ 131   4                    itoa(FreqCount,LCDString,10);    //计数值变为字符串
+ 132   4                                LCD1602ClearScreen();          //LCD1602清屏                  
+ 133   4                    LCD1602PrintfString(2,0,"Now Frequency");//LCD1602打印字符串
+ 134   4                    LCDPrintfLength=LCD1602PrintfString(3,1,LCDString);//LCD1602打印字符串
+ 135   4                    LCD1602PrintfString(LCDPrintfLength+3,1,"HZ");//LCD1602打印字符串 
+ 136   4        
+ 137   4                    Timer0Start();//启动T/C0
+ 138   4                    Timer1Start();//启动T/C1  
+ 139   4                  }
+ 140   3                  
+ 141   3                              
+ 142   3              }
+ 143   2          }
+ 144   1      
+ 145   1      }
+ 146          /*************************************************************
+ 147          * 函数名称:Timer0IRQ
+ 148          * 输    入:无
+ 149          * 输    出:无
+ 150          * 说    明:T/C0中断服务函数
+ 151          **************************************************************/
+ 152          void Timer0IRQ(void) interrupt 1 
+ 153          {
+ 154   1              ET0     =  0;
+ 155   1      
+ 156   1              TH0 = (65536-TIMER0_INITIAL_VALUE)/256;
+ 157   1              TL0 = (65536-TIMER0_INITIAL_VALUE)%256; //定时1MS
+ 158   1      
+ 159   1              Timer0IRQEvent=1;
+ 160   1          
+ 161   1              ET0     =  1;
+ 162   1      
+ 163   1          P3_4=~P3_4;
+ 164   1      
+ 165   1      }
+ 166          /*************************************************************
+ 167          * 函数名称:Timer1IRQ
+ 168          * 输    入:无
+ 169          * 输    出:无
+ 170          * 说    明:T/C1中断服务函数
+ 171          **************************************************************/
+ 172          void Timer1IRQ(void) interrupt 3 
+ 173          {
+ 174   1          ET1=0;
+ 175   1          Timer1OverFlowCnt++; //计数溢出自加1
+ 176   1          ET1=1;
+ 177   1      }
+ 178          
+
+C51 COMPILER V7.06   MAIN                                                                  03/19/2011 11:31:42 PAGE 4   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    225    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     23    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

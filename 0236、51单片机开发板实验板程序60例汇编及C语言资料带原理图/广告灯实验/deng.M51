@@ -1,0 +1,98 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        09/19/2007  12:52:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE ggdeng.obj TO deng
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ggdeng.obj (GGDENG)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  deng (GGDENG)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?GGDENG
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0025H     UNIT         ?CO?GGDENG
+            CODE    0028H     0019H     UNIT         ?PR?MAIN?GGDENG
+            CODE    0041H     000DH     UNIT         ?PR?DELAY?GGDENG
+            CODE    004EH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   deng (GGDENG)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?GGDENG
+
+?PR?MAIN?GGDENG
+  +--> ?CO?GGDENG
+  +--> ?PR?DELAY?GGDENG
+
+
+
+SYMBOL TABLE OF MODULE:  deng (GGDENG)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        GGDENG
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:0003H         PUBLIC        table
+  C:0041H         PUBLIC        delay
+  C:0028H         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/19/2007  12:52:07  PAGE 2
+
+
+  D:0008H         PUBLIC        i
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        m
+  D:0006H         SYMBOL        n
+  D:0005H         SYMBOL        s
+  -------         ENDDO         
+  C:0041H         LINE#         27
+  C:0041H         LINE#         29
+  C:0041H         LINE#         33
+  C:0043H         LINE#         35
+  C:0045H         LINE#         37
+  C:004DH         LINE#         39
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  C:0028H         LINE#         43
+  C:0028H         LINE#         45
+  C:0028H         LINE#         47
+  C:0028H         LINE#         49
+  C:0028H         LINE#         51
+  C:0033H         LINE#         53
+  C:0033H         LINE#         55
+  C:0035H         LINE#         57
+  C:0037H         LINE#         59
+  C:003AH         LINE#         61
+  C:003CH         LINE#         65
+  C:003CH         LINE#         67
+  C:003FH         LINE#         69
+  C:003FH         LINE#         71
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        GGDENG
+
+Program Size: data=10.0 xdata=0 code=90
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

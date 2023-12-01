@@ -1,0 +1,158 @@
+XL
+H 3 areas 6 global symbols
+M chengxu.c
+S push_gset2 Ref0000
+S pop_gset2 Ref0000
+A text size 16E flags 0
+dbfile E:\Proteus\ATMEGA8\个人总结的M8程序\仿PLC控制输入输出\icc\chengxu.c
+dbfunc e Init_IO 0 fV
+dbline FFFFFFFF 0
+dbline 7 0
+dbline 9 0
+dbline A 4
+dbline C 6
+dbline D 8
+dbline F A
+dbline 10 E
+dbline FFFFFFFE 10
+dbline 0 10
+dbfunc e delay 12 fV
+dbsym r i 14 i
+dbsym r j 16 i
+dbsym r t 10 i
+dbline FFFFFFFF 14
+dbline 18 14
+dbline 1A 14
+dbline 1B 1A
+dbline 1C 1A
+dbline 1C 20
+dbline 1C 20
+dbline 1C 24
+dbline 1D 2A
+dbline 1D 2A
+dbline 1E 2A
+dbline 1F 2A
+dbline 1A 2A
+dbline 1A 2E
+dbline FFFFFFFE 34
+dbline 0 36
+dbfunc e main 38 fV
+dbline FFFFFFFF 38
+dbline 23 38
+dbline 24 38
+dbline 27 3C
+dbline 28 3C
+dbline 29 46
+dbline 2A 4A
+dbline 2B 54
+dbline 2C 58
+dbline 2D 62
+dbline 2E 66
+dbline 2F 70
+dbline 30 74
+dbline 31 7E
+dbline 32 82
+dbline 33 8C
+dbline 34 90
+dbline 35 94
+dbline 36 9E
+dbline 37 A2
+dbline 38 AC
+dbline 39 B0
+dbline 3A BA
+dbline 3B BE
+dbline 3C C8
+dbline 3D CC
+dbline 3E D6
+dbline 3F DA
+dbline 40 E4
+dbline 41 E8
+dbline 42 F2
+dbline 43 F6
+dbline 44 100
+dbline 45 104
+dbline 46 10E
+dbline 47 112
+dbline 48 11C
+dbline 49 120
+dbline 4A 12A
+dbline 4B 12E
+dbline 4C 138
+dbline 4D 13C
+dbline 4E 146
+dbline 4F 14A
+dbline 50 154
+dbline 51 158
+dbline 52 15A
+dbline 53 164
+dbline 54 168
+dbline 55 16A
+dbline 26 16A
+dbline FFFFFFFE 16C
+dbline 0 16C
+S _main Def0038
+S _delay Def0012
+S _Init_IO Def0000
+A data size 2 flags 20
+dbfile E:\Proteus\ATMEGA8\个人总结的M8程序\仿PLC控制输入输出\icc\chengxu.c
+dbsym e x 0 i
+S _x Def0000
+A idata size 2 flags 0
+T 00 00 C8 00
+R 00 00 02 00
+T 00 00 8F EF 87 BB 88 BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T 0E 00 22 BA 08 95
+R 00 00 00 00
+T 12 00 00 D0 44 27 55 27 0A C0 68 EE 73 E0 02 C0
+R 00 00 00 00 82 02 00 00
+T 20 00 61 50 70 40 60 30 67 07 D9 F7 4F 5F 5F 4F
+R 00 00 00 00
+T 2E 00 40 17 51 07 98 F3 00 D0 08 95
+R 00 00 00 00 82 08 01 00
+T 38 00 E3 DF 97 C0 00 91 00 00 10 91 01 00 E6 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 46 00 8F E0 85 BB 00 91 00 00 10 91 01 00 DF DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 54 00 87 E0 88 BB 00 91 00 00 10 91 01 00 D8 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 62 00 8B E0 88 BB 00 91 00 00 10 91 01 00 D1 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 70 00 8D E0 88 BB 00 91 00 00 10 91 01 00 CA DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 7E 00 8E E0 88 BB 00 91 00 00 10 91 01 00 C3 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 8C 00 8F E0 88 BB 87 E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 0C 01 00
+T 9A 00 01 00 BA DF 8B E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T A8 00 01 00 B3 DF 8D E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T B6 00 01 00 AC DF 8E E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T C4 00 01 00 A5 DF 8A E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T D2 00 01 00 9E DF 85 E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T E0 00 01 00 97 DF 8F E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T EE 00 01 00 90 DF 22 24 25 BA 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T FC 00 01 00 89 DF 8F E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 0A 01 01 00 82 DF 8A E0 88 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 18 01 01 00 7B DF 85 E0 88 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 26 01 01 00 74 DF 8F E0 88 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 34 01 01 00 6D DF 22 24 28 BA 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 42 01 01 00 66 DF 8F E0 88 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 50 01 01 00 5F DF 22 24 28 BA 25 BA 00 91 00 00
+R 00 00 00 00 00 02 01 00 00 0E 01 00
+T 5E 01 10 91 01 00 57 DF 8F E0 88 BB 85 BB 68 CF
+R 00 00 00 00 00 04 01 00
+T 6C 01 08 95
+R 00 00 00 00

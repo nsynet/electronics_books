@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"zlts.obj" 
+TO "zlts" 
+RAMSIZE(256) 

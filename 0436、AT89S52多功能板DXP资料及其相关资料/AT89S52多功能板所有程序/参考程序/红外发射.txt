@@ -1,0 +1,64 @@
+#include<reg52.h>
+ #define uchar unsigned char 
+ #define uint unsigned int 
+
+ sbit remoteout=P3^5;
+ sbit  txkey=P2^0;
+	 
+
+    uint i,j,n;
+ delay1ms(uint t)
+ {
+    for(i=0;i<t;i++)
+	 for(j=0;j<120;j++)
+	 ;
+	 }
+
+
+	 clearmen()
+	 {
+	   remoteout=0;
+	   IE=0x00;
+	   IP=0x01;
+	   TMOD=0x22;
+	   TH1=0x66;
+	   TL1=0xE6;
+	   EA=1;
+	   }
+
+	 keywork()
+	 {
+	   if(txkey==0)
+	   { 														  
+		   delay1ms(1);
+
+	     while(txkey==0 );
+		     														 
+			 ET1=1;TR1=1;
+		  delay1ms(1000);
+		  ET1=0;TR1=0;
+			  }
+	
+		 
+		  
+	  
+		}
+	main()
+	{
+	  clearmen();
+	 
+	   
+	   while(1)
+	   {
+		
+       
+	 keywork();
+		 }
+									        
+		  }
+	 void time_intt1(void) interrupt 3
+	 {
+	  	
+	      remoteout=~remoteout;
+
+		  }

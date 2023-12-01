@@ -1,0 +1,37 @@
+Version: 3.0
+Options: m37
+Obj: "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "E:\ele_competition\voice\DVR_FLASH\Debug\Resource.obj"
+Obj: "E:\ele_competition\voice\DVR_FLASH\Debug\main.obj"
+Obj: "E:\ele_competition\voice\DVR_FLASH\Debug\isr.obj"
+Obj: "E:\ele_competition\voice\DVR_FLASH\Debug\system.obj"
+Obj: "E:\ele_competition\voice\DVR_FLASH\Debug\key.obj"
+Obj: "E:\ele_competition\voice\DVR_FLASH\Debug\flash.obj"
+Obj: "E:\ele_competition\voice\DVR_FLASH\Debug\sram.obj"
+Obj: "E:\ele_competition\voice\DVR_FLASH\Debug\hardware.obj"
+Lib: "E:\ele_competition\voice\DVR_FLASH\.\Library\sacmv26e.lib"
+Output: ".\Debug\DVR_FLASH.S37"
+;Locate: TEXT in "isr.obj" at 8009 
+;Align: TEXT in "isr.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 9CDB  linkat 617 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "key.obj" at 60E 
+;Align: RAM in "key.obj" with 0 
+;Locate: OVERLAP_RAM_BLOCK in "DVR" of "sacmv26e.lib"  at 0 
+;Align: OVERLAP_RAM_BLOCK in "DVR" of "sacmv26e.lib"  with 0 
+;Locate: OVERLAP_SRAM_BLOCK in "DVR" of "sacmv26e.lib"  at 5D1 
+;Align: OVERLAP_SRAM_BLOCK in "DVR" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "DVR" of "sacmv26e.lib"  at 802F 
+;Align: CODE in "DVR" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "hardware.obj" at 98AE 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "main.obj" at 9A8D 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "key.obj" at 9C00 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "flash.obj" at 9C7E 
+;Align: CODE in "flash.obj" with 0 
+;Locate: CODE in "sram.obj" at 9CBA 
+;Align: CODE in "sram.obj" with 0 
+;Locate: CODE in "system.obj" at 9CCC 
+;Align: CODE in "system.obj" with 0 

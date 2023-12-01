@@ -1,0 +1,80 @@
+__start:
+__text_start:
+    002A E5CF      LDI	R28,0x5F
+    002B E0D4      LDI	R29,4
+    002C BFCD      OUT	0x3D,R28
+    002D BFDE      OUT	0x3E,R29
+    002E 51C0      SUBI	R28,0x10
+    002F 40D0      SBCI	R29,0
+    0030 EA0A      LDI	R16,0xAA
+    0031 8308      STD	Y+0,R16
+    0032 2400      CLR	R0
+    0033 E6E0      LDI	R30,0x60
+    0034 E0F0      LDI	R31,0
+    0035 E010      LDI	R17,0
+    0036 36E0      CPI	R30,0x60
+    0037 07F1      CPC	R31,R17
+    0038 F011      BEQ	0x003B
+    0039 9201      ST	R0,Z+
+    003A CFFB      RJMP	0x0036
+    003B 8300      STD	Z+0,R16
+    003C E5E4      LDI	R30,0x54
+    003D E0F0      LDI	R31,0
+    003E E6A0      LDI	R26,0x60
+    003F E0B0      LDI	R27,0
+    0040 E010      LDI	R17,0
+    0041 35E4      CPI	R30,0x54
+    0042 07F1      CPC	R31,R17
+    0043 F021      BEQ	0x0048
+    0044 95C8      LPM
+    0045 9631      ADIW	R30,1
+    0046 920D      ST	R0,X+
+    0047 CFF9      RJMP	0x0041
+    0048 940E004B  CALL	_main
+_exit:
+    004A CFFF      RJMP	_exit
+FILE: D:\整理\个人总结的M8程序\016、模拟比较器的设计应用\icc\chengxu.c
+(0001) #include <iom16v.h>
+(0002) /********************************************************************
+(0003)                 数据类型定义
+(0004) *********************************************************************/
+(0005) #define uchar unsigned char
+(0006) #define uint  unsigned int
+(0007) /**********************************************************************
+(0008) 				          主函数		
+(0009) **********************************************************************/
+(0010) void main(void)
+(0011) {uchar i;
+(0012)  DDRB=0xFF;                    //设置PB7输出输入
+_main:
+  i                    --> Y+1
+    004B EF8F      LDI	R24,0xFF
+    004C BB87      OUT	0x17,R24
+(0013)  PORTB=0xFF;
+    004D BB88      OUT	0x18,R24
+(0014)  DDRD=0x00;                    //设置PB7输出输入
+    004E 2422      CLR	R2
+    004F BA21      OUT	0x11,R2
+(0015)  PORTD=0x00;
+    0050 BA22      OUT	0x12,R2
+(0016)  ACSR=0x00;                    //模拟比较器使能
+    0051 B828      OUT	0x08,R2
+    0052 C00B      RJMP	0x005E
+(0017)  while(1)
+(0018)   {if((ACSR&0x20)==0x20)
+    0053 B188      IN	R24,0x08
+    0054 7280      ANDI	R24,0x20
+    0055 3280      CPI	R24,0x20
+    0056 F421      BNE	0x005B
+(0019)        PORTB=PORTB|0xf0;
+    0057 B388      IN	R24,0x18
+    0058 6F80      ORI	R24,0xF0
+    0059 BB88      OUT	0x18,R24
+    005A C003      RJMP	0x005E
+(0020)    else PORTB=PORTB&0x0f;}
+FILE: <library>
+    005B B388      IN	R24,0x18
+    005C 708F      ANDI	R24,0xF
+    005D BB88      OUT	0x18,R24
+    005E CFF4      RJMP	0x0053
+    005F 9508      RET

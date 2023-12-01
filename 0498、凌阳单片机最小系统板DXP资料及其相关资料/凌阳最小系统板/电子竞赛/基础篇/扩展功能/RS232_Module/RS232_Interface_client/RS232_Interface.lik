@@ -1,0 +1,16 @@
+Version: 3.0
+Options: m37
+Obj: "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\基础篇\扩展功能－新颜\RS232_Module_DogEn\RS232_Module\RS232_Interface_client\Debug\Resource.obj"
+Obj: "F:\电子竞赛\基础篇\扩展功能－新颜\RS232_Module_DogEn\RS232_Module\RS232_Interface_client\Debug\main.obj"
+Obj: "F:\电子竞赛\基础篇\扩展功能－新颜\RS232_Module_DogEn\RS232_Module\RS232_Interface_client\Debug\system.obj"
+Obj: "F:\电子竞赛\基础篇\扩展功能－新颜\RS232_Module_DogEn\RS232_Module\RS232_Interface_client\Debug\uart.obj"
+Output: ".\Debug\RS232_Interface.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: CODE in "main.obj" at 8026 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "uart.obj" at 8072 
+;Align: CODE in "uart.obj" with 0 
+;Locate: CODE in "system.obj" at 80BE 
+;Align: CODE in "system.obj" with 0 

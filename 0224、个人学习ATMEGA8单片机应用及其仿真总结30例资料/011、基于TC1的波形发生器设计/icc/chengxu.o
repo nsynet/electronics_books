@@ -1,0 +1,258 @@
+XL
+H 5 areas 13 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset3 Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset3 Ref0000
+S empy16s Ref0000
+A text size 1C6 flags 0
+dbfile E:\Proteus\AVR单片机应用系统开发经典实例\011、基于TC1的波形发生器设计---------------未成功\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 11 4
+dbline 12 4
+dbline 13 6
+dbline 13 6
+dbline 13 C
+dbline 13 C
+dbline 13 C
+dbline 13 C
+dbline 13 10
+dbline 13 16
+dbline 12 16
+dbline 12 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 1A 2C
+dbline 1A 2C
+dbline 1B 2E
+dbline 1C 32
+dbline 1C 32
+dbline 1D 34
+dbline 1E 4E
+dbline 1F 54
+dbline 20 56
+dbline 1B 56
+dbline 1B 58
+dbline FFFFFFFE 5C
+dbline 0 60
+dbfunc e Key_Process 62 fV
+dbsym l k 1 c
+dbsym l j 1 c
+dbsym l i 1 c
+dbsym r p 14 pc
+dbline FFFFFFFF 68
+dbline 26 68
+dbline 27 6A
+dbline 27 6A
+dbline 27 70
+dbline 27 76
+dbline 27 76
+dbline 28 7C
+dbline 28 7C
+dbline 28 82
+dbline 28 88
+dbline 28 88
+dbline 29 8E
+dbline 29 8E
+dbline 29 94
+dbline 29 9A
+dbline 29 9A
+dbline 2A 9E
+dbline 2B A6
+dbline 2B A6
+dbline 2C B2
+dbline 2C BA
+dbline 2D C0
+dbline 2D C6
+dbline 2E C6
+dbline 2F CE
+dbline 2F CE
+dbline 30 DA
+dbline 30 E2
+dbline 31 E8
+dbline 31 EE
+dbline 32 EE
+dbline 33 F6
+dbline 33 F6
+dbline 34 102
+dbline 34 10A
+dbline 35 110
+dbline 35 116
+dbline FFFFFFFE 116
+dbline 0 11A
+dbfunc e Set_Process 11C fV
+dbsym r i 14 i
+dbsym r j 14 i
+dbline FFFFFFFF 120
+dbline 39 120
+dbline 3A 120
+dbline 3B 154
+dbline 3C 160
+dbline 3D 168
+dbline FFFFFFFE 16E
+dbline 0 172
+dbfunc e Init_IO 174 fV
+dbline FFFFFFFF 174
+dbline 43 174
+dbline 43 174
+dbline 44 178
+dbline 45 17A
+dbline 46 17C
+dbline 47 17E
+dbline 48 182
+dbline 49 184
+dbline 4A 186
+dbline FFFFFFFE 188
+dbline 0 188
+dbfunc e Init_Timer1 18A fV
+dbline FFFFFFFF 18A
+dbline 50 18A
+dbline 50 18A
+dbline 51 190
+dbline 54 194
+dbline 55 196
+dbline FFFFFFFE 198
+dbline 0 198
+dbfunc e main 19A fV
+dbline FFFFFFFF 19A
+dbline 5B 19A
+dbline 5B 19A
+dbline 5C 19C
+dbline 5E 1A0
+dbline 5E 1A0
+dbline 5F 1A6
+dbline 60 1A8
+dbline 61 1AE
+dbline 5D 1AE
+dbline FFFFFFFE 1B0
+dbline 0 1B0
+dbfunc e Compare 1B2 fV
+dbline FFFFFFFF 1B8
+dbline 66 1B8
+dbline 66 1B8
+dbline FFFFFFFE 1BE
+dbline 0 1C4
+S _main Def019A
+S _DelayMs Def0000
+S _Compare Def01B2
+S _Display Def0026
+S _Init_Timer1 Def018A
+S _Key_Process Def0062
+S _Set_Process Def011C
+S _Init_IO Def0174
+A data size E flags 20
+dbfile E:\Proteus\AVR单片机应用系统开发经典实例\011、基于TC1的波形发生器设计---------------未成功\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[4:4]c
+S _Table Def0000
+S _Data Def000A
+A idata size E flags 0
+A vector size 1C flags C
+A bss size 3 flags 20
+dbfile E:\Proteus\AVR单片机应用系统开发经典实例\011、基于TC1的波形发生器设计---------------未成功\icc\chengxu.c
+dbsym e Key3_Flag 0 c
+dbsym e Key2_Flag 1 c
+dbsym e Key1_Flag 2 c
+S _Key1_Flag Def0002
+S _Key2_Flag Def0001
+S _Key3_Flag Def0000
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 01
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 01 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 20 94 2B BA 01 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 10 E0 D6 DF 44 0F 63 95 64 30 58 F3 0E 94
+R 00 00 00 00
+T 5E 00 00 00 08 95
+R 00 00 00 00 12 02 04 00
+T 62 00 0E 94 00 00 A8 01 06 C0 00 E0
+R 00 00 00 00 12 04 00 00 20 0A 01 00 0A 00
+T 6C 00 10 E0 DB DF 81 E0 80 93 02 00 B0 9B F8 CF
+R 00 00 00 00 40 02 01 00 0A 00 00 0A 04 00
+T 7A 00 06 C0 00 E0 10 E0 D2 DF 81 E0 80 93
+R 00 00 00 00 20 04 01 00 0A 00 40 06 01 00 0A 00
+T 86 00 01 00 B1 9B F8 CF 06 C0 00 E0
+R 00 00 00 00 00 02 04 00 20 0A 01 00 0A 00
+T 90 00 10 E0 C9 DF 81 E0 80 93 00 00 B2 9B F8 CF
+R 00 00 00 00 40 02 01 00 0A 00 00 0A 04 00
+T 9E 00 80 91 02 00 81 30 81 F4 CA 01 03 96 FC 01
+R 00 00 00 00 00 04 04 00
+T AC 00 80 81 8F 5F 80 83 FA 01 83 81 8A 30 19 F4
+R 00 00 00 00
+T BA 00 22 24 FA 01 23 82 22 24 20 92 02 00 80 91
+R 00 00 00 00 00 0C 04 00
+T C8 00 01 00 81 30 81 F4 CA 01 02 96 FC 01 80 81
+R 00 00 00 00 00 02 04 00
+T D6 00 8F 5F 80 83 FA 01 82 81 8A 30 19 F4 22 24
+R 00 00 00 00
+T E4 00 FA 01 22 82 22 24 20 92 01 00 80 91 00 00
+R 00 00 00 00 00 0A 04 00 00 0E 04 00
+T F2 00 81 30 81 F4 CA 01 01 96 FC 01 80 81 8F 5F
+R 00 00 00 00
+T 00 01 80 83 FA 01 81 81 8A 30 19 F4 22 24 FA 01
+R 00 00 00 00
+T 0E 01 21 82 22 24 20 92 00 00 0E 94 00 00 08 95
+R 00 00 00 00 00 08 04 00 12 0C 03 00
+T 1C 01 0E 94 00 00 20 90 0B 00 84 E6 82 9D 10 01
+R 00 00 00 00 12 04 00 00 00 08 01 00
+T 2A 01 20 91 0A 00 33 27 08 EE 13 E0 0E 94 00 00
+R 00 00 00 00 00 04 01 00 12 0E 05 00
+T 38 01 A8 01 42 0D 53 1D 20 90 0C 00 8A E0 82 9D
+R 00 00 00 00 00 0A 01 00
+T 46 01 40 0D 51 1D 20 90 0D 00 33 24 42 0D 53 1D
+R 00 00 00 00 00 08 01 00
+T 54 01 04 EF 11 E0 9A 01 0E 94 00 00 A8 01 1A 01
+R 00 00 00 00 12 0A 02 00
+T 62 01 23 2C 33 24 2B BC CA 01 90 70 8A BD 0E 94
+R 00 00 00 00
+T 70 01 00 00 08 95
+R 00 00 00 00 12 02 03 00
+T 74 01 8F EF 8A BB 8B BB 84 BB 85 BB 22 24 27 BA
+R 00 00 00 00
+T 82 01 28 BA 81 BB 82 BB 08 95
+R 00 00 00 00
+T 8A 01 89 B7 80 61 89 BF 8A E0 8E BD C3 DF 78 94
+R 00 00 00 00
+T 98 01 08 95
+R 00 00 00 00
+T 9A 01 EC DF F6 DF 07 C0 00 E0 10 E0 5E DF BA DF
+R 00 00 00 00 20 08 01 00 0A 00 40 0A 01 00 0A 00
+T A8 01 00 E0 10 E0 3C DF F8 CF 08 95
+R 00 00 00 00 20 02 01 00 0A 00 40 04 01 00 0A 00
+T 18 00 0C 94 D9 00
+R 00 00 03 00 10 04 00 00
+T B2 01 2A 92 2F B6 2A 92 22 B2 20 94 22 BA 29 90
+R 00 00 00 00
+T C0 01 2F BE 29 90 18 95
+R 00 00 00 00

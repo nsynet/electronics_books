@@ -1,0 +1,278 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        02/26/2008  09:19:54  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE 24xled.obj TO 24xled
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  24xled.obj (24XLED)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  24xled (24XLED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         _DATA_GROUP_
+                    000CH     0014H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0048H     UNIT         ?CO?24XLED
+            CODE    004BH     003EH     UNIT         ?PR?MAIN?24XLED
+            CODE    0089H     002CH     UNIT         ?PR?_SHOUT?24XLED
+            CODE    00B5H     001EH     UNIT         ?PR?_WRITE_BYTE?24XLED
+            CODE    00D3H     001AH     UNIT         ?PR?_FILL_BYTE?24XLED
+            CODE    00EDH     0016H     UNIT         ?PR?_DELAYMS?24XLED
+            CODE    0103H     0015H     UNIT         ?PR?SHIN?24XLED
+            CODE    0118H     0013H     UNIT         ?PR?_READ_RANDOM?24XLED
+            CODE    012BH     0011H     UNIT         ?PR?START?24XLED
+            CODE    013CH     000FH     UNIT         ?PR?STOP?24XLED
+            CODE    014BH     000FH     UNIT         ?PR?READ_CURRENT?24XLED
+            CODE    015AH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   24xled (24XLED)
+
+
+SEGMENT                            BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT           START    LENGTH     START    LENGTH
+-------------------------------------------------------------------
+?C_C51STARTUP                   -----    -----      -----    -----
+  +--> ?PR?MAIN?24XLED
+
+?PR?MAIN?24XLED                 -----    -----      0008H    0001H
+  +--> ?PR?_FILL_BYTE?24XLED
+  +--> ?CO?24XLED
+  +--> ?PR?_WRITE_BYTE?24XLED
+  +--> ?PR?_READ_RANDOM?24XLED
+  +--> ?PR?_DELAYMS?24XLED
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/26/2008  09:19:54  PAGE 2
+
+
+
+?PR?_FILL_BYTE?24XLED           -----    -----      0009H    0003H
+  +--> ?PR?_WRITE_BYTE?24XLED
+
+?PR?_WRITE_BYTE?24XLED          -----    -----      -----    -----
+  +--> ?PR?START?24XLED
+  +--> ?PR?_SHOUT?24XLED
+  +--> ?PR?STOP?24XLED
+  +--> ?PR?_DELAYMS?24XLED
+
+?PR?_SHOUT?24XLED               0020H.0  0000H.1    -----    -----
+
+?PR?_READ_RANDOM?24XLED         -----    -----      -----    -----
+  +--> ?PR?START?24XLED
+  +--> ?PR?_SHOUT?24XLED
+  +--> ?PR?READ_CURRENT?24XLED
+
+?PR?READ_CURRENT?24XLED         -----    -----      -----    -----
+  +--> ?PR?START?24XLED
+  +--> ?PR?_SHOUT?24XLED
+  +--> ?PR?SHIN?24XLED
+  +--> ?PR?STOP?24XLED
+
+
+
+SYMBOL TABLE OF MODULE:  24xled (24XLED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        24XLED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:014BH         PUBLIC        read_current
+  D:00A8H         PUBLIC        IE
+  C:0089H         PUBLIC        _shout
+  D:00B8H         PUBLIC        IP
+  C:00D3H         PUBLIC        _fill_byte
+  C:00B5H         PUBLIC        _write_byte
+  C:004BH         PUBLIC        main
+  C:012BH         PUBLIC        start
+  C:0103H         PUBLIC        shin
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:013CH         PUBLIC        stop
+  C:00EDH         PUBLIC        _delayms
+  B:00A0H.3       PUBLIC        SDA
+  B:00A0H.2       PUBLIC        SCL
+  C:0118H         PUBLIC        _read_random
+  D:00C8H         PUBLIC        T2CON
+  C:0003H         PUBLIC        display
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/26/2008  09:19:54  PAGE 3
+
+
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:004BH         LINE#         31
+  C:004BH         LINE#         32
+  C:004BH         LINE#         34
+  C:004DH         LINE#         35
+  C:004FH         LINE#         36
+  C:0056H         LINE#         37
+  C:0059H         LINE#         38
+  C:0059H         LINE#         39
+  C:0065H         LINE#         40
+  C:006EH         LINE#         41
+  C:0071H         LINE#         42
+  C:0071H         LINE#         43
+  C:0078H         LINE#         44
+  C:007FH         LINE#         45
+  C:0088H         LINE#         46
+  -------         ENDPROC       MAIN
+  -------         PROC          START
+  C:012BH         LINE#         48
+  C:012BH         LINE#         50
+  C:012BH         LINE#         51
+  C:012DH         LINE#         52
+  C:012FH         LINE#         53
+  C:0133H         LINE#         54
+  C:0135H         LINE#         55
+  C:0139H         LINE#         56
+  C:013BH         LINE#         57
+  -------         ENDPROC       START
+  -------         PROC          STOP
+  C:013CH         LINE#         59
+  C:013CH         LINE#         61
+  C:013CH         LINE#         62
+  C:013EH         LINE#         63
+  C:0142H         LINE#         64
+  C:0144H         LINE#         65
+  C:0148H         LINE#         66
+  C:014AH         LINE#         67
+  -------         ENDPROC       STOP
+  -------         PROC          SHIN
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0007H         SYMBOL        read_data
+  -------         ENDDO         
+  C:0103H         LINE#         69
+  C:0103H         LINE#         71
+  C:0103H         LINE#         73
+  C:0105H         LINE#         74
+  C:0105H         LINE#         75
+  C:0107H         LINE#         76
+  C:010BH         LINE#         77
+  C:0111H         LINE#         78
+  C:0113H         LINE#         79
+  C:0117H         LINE#         80
+  C:0117H         LINE#         81
+  -------         ENDPROC       SHIN
+  -------         PROC          _SHOUT
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/26/2008  09:19:54  PAGE 4
+
+
+  D:0007H         SYMBOL        write_data
+  -------         DO            
+  D:0006H         SYMBOL        i
+  B:0020H.0       SYMBOL        ack_bit
+  -------         ENDDO         
+  C:0089H         LINE#         83
+  C:0089H         LINE#         85
+  C:0089H         LINE#         88
+  C:008BH         LINE#         89
+  C:008BH         LINE#         90
+  C:008FH         LINE#         91
+  C:0090H         LINE#         92
+  C:0092H         LINE#         93
+  C:0096H         LINE#         94
+  C:0098H         LINE#         95
+  C:009CH         LINE#         96
+  C:00A0H         LINE#         97
+  C:00A2H         LINE#         98
+  C:00A6H         LINE#         99
+  C:00A8H         LINE#         100
+  C:00ACH         LINE#         101
+  C:00B0H         LINE#         102
+  C:00B2H         LINE#         103
+  C:00B4H         LINE#         104
+  -------         ENDPROC       _SHOUT
+  -------         PROC          _WRITE_BYTE
+  D:0004H         SYMBOL        addr
+  D:0005H         SYMBOL        write_data
+  C:00B5H         LINE#         106
+  C:00B7H         LINE#         108
+  C:00B7H         LINE#         109
+  C:00BAH         LINE#         110
+  C:00BFH         LINE#         111
+  C:00C4H         LINE#         112
+  C:00C9H         LINE#         113
+  C:00CCH         LINE#         114
+  -------         ENDPROC       _WRITE_BYTE
+  -------         PROC          _FILL_BYTE
+  D:0009H         SYMBOL        fill_size
+  D:000AH         SYMBOL        fill_data
+  -------         DO            
+  D:000BH         SYMBOL        i
+  -------         ENDDO         
+  C:00D3H         LINE#         117
+  C:00D7H         LINE#         119
+  C:00D7H         LINE#         121
+  C:00E1H         LINE#         122
+  C:00E1H         LINE#         123
+  C:00E8H         LINE#         124
+  C:00ECH         LINE#         125
+  -------         ENDPROC       _FILL_BYTE
+  -------         PROC          READ_CURRENT
+  -------         DO            
+  D:0007H         SYMBOL        read_data
+  -------         ENDDO         
+  C:014BH         LINE#         127
+  C:014BH         LINE#         129
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/26/2008  09:19:54  PAGE 5
+
+
+  C:014BH         LINE#         131
+  C:014EH         LINE#         132
+  C:0153H         LINE#         133
+  C:0156H         LINE#         134
+  C:0159H         LINE#         135
+  C:0159H         LINE#         136
+  -------         ENDPROC       READ_CURRENT
+  -------         PROC          _READ_RANDOM
+  D:0005H         SYMBOL        random_addr
+  C:0118H         LINE#         138
+  C:011AH         LINE#         140
+  C:011AH         LINE#         141
+  C:011DH         LINE#         142
+  C:0122H         LINE#         143
+  C:0127H         LINE#         144
+  C:012AH         LINE#         145
+  -------         ENDPROC       _READ_RANDOM
+  -------         PROC          _DELAYMS
+  D:0006H         SYMBOL        ms
+  -------         DO            
+  D:0005H         SYMBOL        k
+  -------         ENDDO         
+  C:00EDH         LINE#         147
+  C:00EDH         LINE#         149
+  C:00EDH         LINE#         151
+  C:00F7H         LINE#         152
+  C:00F7H         LINE#         153
+  C:0102H         LINE#         154
+  C:0102H         LINE#         155
+  -------         ENDPROC       _DELAYMS
+  -------         ENDMOD        24XLED
+
+Program Size: data=13.1 xdata=0 code=358
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

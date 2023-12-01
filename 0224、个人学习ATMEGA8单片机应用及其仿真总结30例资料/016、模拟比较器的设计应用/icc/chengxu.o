@@ -1,0 +1,29 @@
+XL
+H 1 areas 1 global symbols
+M chengxu.c
+A text size 2A flags 0
+dbfile D:\整理\个人总结的M8程序\016、模拟比较器的设计应用\icc\chengxu.c
+dbfunc e main 0 fV
+dbsym l i 1 c
+dbline FFFFFFFF 0
+dbline B 0
+dbline C 0
+dbline D 4
+dbline E 6
+dbline F A
+dbline 10 C
+dbline 12 10
+dbline 12 10
+dbline 13 18
+dbline 14 20
+dbline 14 26
+dbline 11 26
+dbline FFFFFFFE 28
+dbline 0 28
+S _main Def0000
+T 00 00 8F EF 87 BB 88 BB 22 24 21 BA 22 BA 28 B8
+R 00 00 00 00
+T 0E 00 0B C0 88 B1 80 72 80 32 21 F4 88 B3 80 6F
+R 00 00 00 00
+T 1C 00 88 BB 03 C0 88 B3 8F 70 88 BB F4 CF 08 95
+R 00 00 00 00

@@ -1,0 +1,68 @@
+A51 MACRO ASSEMBLER  LSD                                                                  07/12/2009 19:35:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN lsd.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lsd.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;项目名称：来回流水灯
+                       2     ;硬件环境：AT89S52
+                       3     ;硬件描述：P0口接八个LED
+                       4     ;功能描述：LED流水实验
+                       5     
+                       6     ;*******************************************************
+                       7     
+0000                   8               ORG 0000H
+0000 0130              9               AJMP START
+0030                  10               ORG 0030H
+                      11     
+0030 7580FF           12     START:    MOV P0,#0FFH
+0033 74FE             13               MOV A,#0FEH
+0035 F580             14     AAA:      MOV P0,A
+0037 12004D           15               LCALL DELAY
+003A 309303           16               JNB P1.3,BBB
+003D 23               17               RL A
+003E 0135             18               AJMP AAA  
+0040 747F             19     BBB:      MOV A,#7FH
+0042 F580             20     CCC:      MOV P0,A
+0044 12004D           21               LCALL DELAY
+0047 3090E6           22               JNB P1.0,START 
+004A 03               23               RR A
+004B 0142             24               AJMP CCC
+                      25     
+004D 7FFA             26     DELAY:    MOV R7,#250
+004F 7E64             27     DL1:      MOV R6,#100
+0051 7D0A             28     DL2:      MOV R5,#10
+0053 DDFE             29               DJNZ R5,$
+0055 DEFA             30               DJNZ R6,DL2
+0057 DFF6             31               DJNZ R7,DL1
+0059 22               32               RET                
+                      33          
+                      34               END
+                                       
+                             
+A51 MACRO ASSEMBLER  LSD                                                                  07/12/2009 19:35:14 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AAA. . . . . . . .  C ADDR   0035H   A   
+BBB. . . . . . . .  C ADDR   0040H   A   
+CCC. . . . . . . .  C ADDR   0042H   A   
+DELAY. . . . . . .  C ADDR   004DH   A   
+DL1. . . . . . . .  C ADDR   004FH   A   
+DL2. . . . . . . .  C ADDR   0051H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0030H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

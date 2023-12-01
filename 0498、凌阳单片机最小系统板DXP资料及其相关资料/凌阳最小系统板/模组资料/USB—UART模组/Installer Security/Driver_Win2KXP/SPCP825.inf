@@ -1,0 +1,78 @@
+;       SPCP825.INF - INF file for USB-to-Serial Device
+;       Copyright (C) 2003, Sunplus Technology Inc.
+;
+;       07/22/2003
+
+[Version]
+Signature="$CHICAGO$"
+Class=Ports
+ClassGUID={4D36E978-E325-11CE-BFC1-08002BE10318}
+provider=%Sunplus%
+DriverVer=07/22/2003,1.0.0.0
+CatalogFile=SPCP825.cat
+
+[SourceDisksNames]
+1=%Sunplus.Disk%,,,
+
+[SourceDisksFiles]
+SPCP825K.sys = 1
+
+[Manufacturer]
+%Sunplus%=Sunplus
+
+[Sunplus]
+%DeviceDesc%=ComPort, USB\VID_04FC&PID_0003
+%DeviceDesc%=ComPort, USB\VID_04FC&PID_0201
+
+[DestinationDirs]
+ComPort.NT.Copy=12
+
+[ComPort.NT]
+CopyFiles=ComPort.NT.Copy
+AddReg=ComPort.NT.AddReg
+
+[ComPort.NT.Copy]
+SPCP825K.sys
+
+[ComPort.NT.HW]
+AddReg=ComPort.NT.HW.AddReg
+
+[ComPort.NT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,SPCP825K.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[ComPort.NT.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+
+[ComPort.NT.Services]
+AddService = SPCP825K, 0x00000002, Serial_Service_Inst
+AddService = Serenum,,Serenum_Service_Inst
+
+[Serial_Service_Inst]
+DisplayName    = %Serial.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_SYSTEM_START (this driver may do detection)
+ErrorControl   = 1               ; SERVICE_ERROR_IGNORE
+ServiceBinary  = %12%\SPCP825K.sys
+AddReg		   = SPCP825K.AddReg	
+LoadOrderGroup = Base
+
+[Serenum_Service_Inst]
+DisplayName    = %Serenum.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\serenum.sys
+LoadOrderGroup = PNP Filter
+
+[SPCP825K.AddReg]
+HKR,"Parameters","MaximumTransferSize",0x10001,4096
+HKR,"Parameters","SSUsbEnable",0x10001,1
+
+[Strings]
+Sunplus = "Sunplus"
+Sunplus.Disk = "USB-Serial Cable Diskete"
+DeviceDesc = "Sunplus USB-to-Serial COMM Port"
+Serial.SVCDESC   = "Sunplus Serial port driver"
+Serenum.SVCDESC = "Serenum Filter Driver"

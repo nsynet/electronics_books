@@ -1,0 +1,80 @@
+XL
+H 1 areas 5 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size 90 flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\流水灯-1\icc\chengxu.c
+dbfunc e delay_us 0 fV
+dbsym r t 10 I
+dbline FFFFFFFF 0
+dbline 4 0
+dbline 6 0
+dbline 7 4
+dbline FFFFFFFE E
+dbline 0 E
+dbfunc e delay_ms 10 fV
+dbsym r t 14 i
+dbline FFFFFFFF 16
+dbline C 16
+dbline E 18
+dbline F 18
+dbline 10 1E
+dbline 11 22
+dbline D 22
+dbline FFFFFFFE 28
+dbline 0 2C
+dbfunc e main 2E fI
+dbline FFFFFFFF 2E
+dbline 15 2E
+dbline 16 2E
+dbline 17 32
+dbline 19 36
+dbline 1B 36
+dbline 1C 3A
+dbline 1D 40
+dbline 1E 44
+dbline 1F 4A
+dbline 20 4E
+dbline 21 54
+dbline 22 58
+dbline 23 5E
+dbline 24 62
+dbline 25 68
+dbline 26 6C
+dbline 27 72
+dbline 28 76
+dbline 29 7C
+dbline 2A 82
+dbline 2C 88
+dbline 2F 8C
+dbline 18 8C
+dbline FFFFFFFE 8E
+dbline 0 8E
+S _main Def002E
+S _delay_ms Def0010
+S _delay_us Def0000
+T 00 00 01 50 10 40 81 E0 90 E0 80 17 91 07 CC F3
+R 00 00 00 00
+T 0E 00 08 95
+R 00 00 00 00
+T 10 00 0E 94 00 00 A8 01 05 C0 06 E7 14 E0 F1 DF
+R 00 00 00 00 12 04 00 00
+T 1E 00 41 50 50 40 40 30 45 07 C1 F7 0E 94 00 00
+R 00 00 00 00 12 0E 01 00
+T 2C 00 08 95
+R 00 00 00 00
+T 2E 00 8F EF 8A BB 8B BB 2B C0 8E EF 8B BB 04 E6
+R 00 00 00 00
+T 3C 00 10 E0 E8 DF 8D EF 8B BB 04 E6 10 E0 E3 DF
+R 00 00 00 00
+T 4A 00 8B EF 8B BB 04 E6 10 E0 DE DF 87 EF 8B BB
+R 00 00 00 00
+T 58 00 04 E6 10 E0 D9 DF 8F EE 8B BB 04 E6 10 E0
+R 00 00 00 00
+T 66 00 D4 DF 8F ED 8B BB 04 E6 10 E0 CF DF 8F EB
+R 00 00 00 00
+T 74 00 8B BB 04 E6 10 E0 CA DF 8F E7 9F EF 8B BB
+R 00 00 00 00
+T 82 00 04 E6 10 E0 C4 DF 22 24 2B BA D4 CF 08 95
+R 00 00 00 00

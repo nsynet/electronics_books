@@ -1,0 +1,124 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile C:\DOCUME~1\Administrator\桌面\icc参考程序-延时方式\chengxu.c
+ 0000                   .dbfunc e delay _delay fV
+ 0000           ;              i -> R20,R21
+ 0000           ;              j -> R22,R23
+ 0000           ;             MS -> R16,R17
+                        .even
+ 0000           _delay::
+ 0000 0E940000          xcall push_gset2
+ 0004                   .dbline -1
+ 0004                   .dbline 16
+ 0004           ; ////////////////////////汇诚科技////////////////////
+ 0004           ; //////////////////http://www.ourhc.cn///////////////
+ 0004           ; ///////////////////步进电机调试程序/////////////////
+ 0004           ; #include <iom16v.h>
+ 0004           ; #include <macros.h>
+ 0004           ; /**********************************************************************
+ 0004           ;                                 函数数据类型说明                                                              
+ 0004           ; **********************************************************************/
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; 
+ 0004           ; /**********************************************************************
+ 0004           ;                                  延时函数                                                     
+ 0004           ; **********************************************************************/
+ 0004           ; void delay(uint MS)             
+ 0004           ; {
+ 0004                   .dbline 18
+ 0004           ;  uint i,j;
+ 0004           ;  for( i=0;i<MS;i++)
+ 0004 4427              clr R20
+ 0006 5527              clr R21
+ 0008 0BC0              xjmp L5
+ 000A           L2:
+ 000A                   .dbline 19
+ 000A 6627              clr R22
+ 000C 7727              clr R23
+ 000E 02C0              xjmp L9
+ 0010           L6:
+ 0010                   .dbline 19
+ 0010           L7:
+ 0010                   .dbline 19
+ 0010 6F5F              subi R22,255  ; offset = 1
+ 0012 7F4F              sbci R23,255
+ 0014           L9:
+ 0014                   .dbline 19
+ 0014 6035              cpi R22,80
+ 0016 E0E0              ldi R30,0
+ 0018 7E07              cpc R23,R30
+ 001A D0F3              brlo L6
+ 001C           L3:
+ 001C                   .dbline 18
+ 001C 4F5F              subi R20,255  ; offset = 1
+ 001E 5F4F              sbci R21,255
+ 0020           L5:
+ 0020                   .dbline 18
+ 0020 4017              cp R20,R16
+ 0022 5107              cpc R21,R17
+ 0024 90F3              brlo L2
+ 0026                   .dbline -2
+ 0026           L1:
+ 0026 0E940000          xcall pop_gset2
+ 002A                   .dbline 0 ; func end
+ 002A 0895              ret
+ 002C                   .dbsym r i 20 i
+ 002C                   .dbsym r j 22 i
+ 002C                   .dbsym r MS 16 i
+ 002C                   .dbend
+ 002C                   .dbfunc e main _main fV
+ 002C           ;              i -> R20,R21
+                        .even
+ 002C           _main::
+ 002C                   .dbline -1
+ 002C                   .dbline 25
+ 002C           ;  for(j=0;j<80;j++);   //1141是在8MHz晶振下，通过软件仿真反复实验得到的数值
+ 002C           ; }
+ 002C           ; /**********************************************************************
+ 002C           ;                               主函数                                                  
+ 002C           ; **********************************************************************/
+ 002C           ; void main()
+ 002C           ; {      uint i;
+ 002C                   .dbline 26
+ 002C           ;        i=10;//改变变量 i 的大小可以改变速度，i越大速度越慢
+ 002C 4AE0              ldi R20,10
+ 002E 50E0              ldi R21,0
+ 0030                   .dbline 27
+ 0030           ;      DDRB=0XFF;
+ 0030 8FEF              ldi R24,255
+ 0032 87BB              out 0x17,R24
+ 0034                   .dbline 29
+ 0034           ;        //PORTC=0XFF;
+ 0034           ;        PORTB|=BIT(0);//00000001  使能控制开
+ 0034 C09A              sbi 0x18,0
+ 0036                   .dbline 30
+ 0036           ;        PORTB|=BIT(1);//00000010  四拍工作方式
+ 0036 C19A              sbi 0x18,1
+ 0038                   .dbline 31
+ 0038           ;        PORTB|=BIT(2);//00000100  正方向旋转
+ 0038 C29A              sbi 0x18,2
+ 003A 06C0              xjmp L12
+ 003C           L11:
+ 003C                   .dbline 33
+ 003C                   .dbline 34
+ 003C C39A              sbi 0x18,3
+ 003E                   .dbline 35
+ 003E 8A01              movw R16,R20
+ 0040 DFDF              xcall _delay
+ 0042                   .dbline 36
+ 0042 C398              cbi 0x18,3
+ 0044                   .dbline 37
+ 0044 8A01              movw R16,R20
+ 0046 DCDF              xcall _delay
+ 0048                   .dbline 38
+ 0048           L12:
+ 0048                   .dbline 32
+ 0048 F9CF              xjmp L11
+ 004A           X0:
+ 004A                   .dbline -2
+ 004A           L10:
+ 004A                   .dbline 0 ; func end
+ 004A 0895              ret
+ 004C                   .dbsym r i 20 i
+ 004C                   .dbend

@@ -1,0 +1,141 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "E:\RCL-Test\Debug\Resource.obj"
+Obj: "E:\RCL-Test\Debug\main.obj"
+Obj: "E:\RCL-Test\Debug\sys.obj"
+Obj: "E:\RCL-Test\Debug\key.obj"
+Obj: "E:\RCL-Test\Debug\hardware.obj"
+Obj: "E:\RCL-Test\Debug\FIQ.obj"
+Obj: "E:\RCL-Test\Debug\DISPLAY.obj"
+Obj: "E:\RCL-Test\Debug\9_48k.res"
+Obj: "E:\RCL-Test\Debug\1_48k.res"
+Obj: "E:\RCL-Test\Debug\10_48k.res"
+Obj: "E:\RCL-Test\Debug\11_48k.res"
+Obj: "E:\RCL-Test\Debug\12_48k.res"
+Obj: "E:\RCL-Test\Debug\13_48k.res"
+Obj: "E:\RCL-Test\Debug\14_48k.res"
+Obj: "E:\RCL-Test\Debug\15_48k.res"
+Obj: "E:\RCL-Test\Debug\16_48k.res"
+Obj: "E:\RCL-Test\Debug\17_48k.res"
+Obj: "E:\RCL-Test\Debug\18_48k.res"
+Obj: "E:\RCL-Test\Debug\19_48k.res"
+Obj: "E:\RCL-Test\Debug\2_48k.res"
+Obj: "E:\RCL-Test\Debug\20_48k.res"
+Obj: "E:\RCL-Test\Debug\21_48k.res"
+Obj: "E:\RCL-Test\Debug\22_48k.res"
+Obj: "E:\RCL-Test\Debug\23_48k.res"
+Obj: "E:\RCL-Test\Debug\24_48k.res"
+Obj: "E:\RCL-Test\Debug\25_48k.res"
+Obj: "E:\RCL-Test\Debug\26_48k.res"
+Obj: "E:\RCL-Test\Debug\8_48k.res"
+Obj: "E:\RCL-Test\Debug\3_48k.res"
+Obj: "E:\RCL-Test\Debug\4_48k.res"
+Obj: "E:\RCL-Test\Debug\5_48k.res"
+Obj: "E:\RCL-Test\Debug\6_48k.res"
+Obj: "E:\RCL-Test\Debug\7_48k.res"
+Obj: "E:\RCL-Test\Debug\0_48k.res"
+Obj: "E:\RCL-Test\Debug\27_48k.res"
+Lib: "E:\RCL-Test\.\sacmv25.lib"
+Lib: "E:\RCL-Test\CMacro.lib"
+Output: ".\Debug\RCL.S37"
+;Locate: TEXT in "Resource.obj" at 8009 
+;Align: TEXT in "Resource.obj" with 0 
+;Locate: IRAM in "main.obj" at 96D7  linkat 1E6 
+;Align: IRAM in "main.obj" with 0 
+;Locate: RAM in "hardware.obj" at 1A4 
+;Align: RAM in "hardware.obj" with 0 
+;Locate: S480_Section in "s480" of "sacmv25.lib"  at 0 
+;Align: S480_Section in "s480" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_0_48K in "0_48k.res" at B53A 
+;Align: __sn_section_RES_0_48K in "0_48k.res" with 0 
+;Locate: __sn_section_RES_10_48K in "10_48k.res" at AD69 
+;Align: __sn_section_RES_10_48K in "10_48k.res" with 0 
+;Locate: __sn_section_RES_11_48K in "11_48k.res" at ACA0 
+;Align: __sn_section_RES_11_48K in "11_48k.res" with 0 
+;Locate: __sn_section_RES_12_48K in "12_48k.res" at AE20 
+;Align: __sn_section_RES_12_48K in "12_48k.res" with 0 
+;Locate: __sn_section_RES_13_48K in "13_48k.res" at B3AE 
+;Align: __sn_section_RES_13_48K in "13_48k.res" with 0 
+;Locate: __sn_section_RES_14_48K in "14_48k.res" at B159 
+;Align: __sn_section_RES_14_48K in "14_48k.res" with 0 
+;Locate: __sn_section_RES_15_48K in "15_48k.res" at B438 
+;Align: __sn_section_RES_15_48K in "15_48k.res" with 0 
+;Locate: __sn_section_RES_16_48K in "16_48k.res" at ABC5 
+;Align: __sn_section_RES_16_48K in "16_48k.res" with 0 
+;Locate: __sn_section_RES_17_48K in "17_48k.res" at AAE1 
+;Align: __sn_section_RES_17_48K in "17_48k.res" with 0 
+;Locate: __sn_section_RES_18_48K in "18_48k.res" at A8FE 
+;Align: __sn_section_RES_18_48K in "18_48k.res" with 0 
+;Locate: __sn_section_RES_19_48K in "19_48k.res" at A9F4 
+;Align: __sn_section_RES_19_48K in "19_48k.res" with 0 
+;Locate: __sn_section_RES_1_48K in "1_48k.res" at B324 
+;Align: __sn_section_RES_1_48K in "1_48k.res" with 0 
+;Locate: __sn_section_RES_20_48K in "20_48k.res" at A478 
+;Align: __sn_section_RES_20_48K in "20_48k.res" with 0 
+;Locate: __sn_section_RES_21_48K in "21_48k.res" at 9FC5 
+;Align: __sn_section_RES_21_48K in "21_48k.res" with 0 
+;Locate: __sn_section_RES_22_48K in "22_48k.res" at 9D5E 
+;Align: __sn_section_RES_22_48K in "22_48k.res" with 0 
+;Locate: __sn_section_RES_23_48K in "23_48k.res" at 9AF7 
+;Align: __sn_section_RES_23_48K in "23_48k.res" with 0 
+;Locate: __sn_section_RES_24_48K in "24_48k.res" at A223 
+;Align: __sn_section_RES_24_48K in "24_48k.res" with 0 
+;Locate: __sn_section_RES_25_48K in "25_48k.res" at A6CD 
+;Align: __sn_section_RES_25_48K in "25_48k.res" with 0 
+;Locate: __sn_section_RES_26_48K in "26_48k.res" at 96F2 
+;Align: __sn_section_RES_26_48K in "26_48k.res" with 0 
+;Locate: __sn_section_RES_27_48K in "27_48k.res" at AECE 
+;Align: __sn_section_RES_27_48K in "27_48k.res" with 0 
+;Locate: __sn_section_RES_2_48K in "2_48k.res" at B633 
+;Align: __sn_section_RES_2_48K in "2_48k.res" with 0 
+;Locate: __sn_section_RES_3_48K in "3_48k.res" at B1F5 
+;Align: __sn_section_RES_3_48K in "3_48k.res" with 0 
+;Locate: __sn_section_RES_4_48K in "4_48k.res" at B4B9 
+;Align: __sn_section_RES_4_48K in "4_48k.res" with 0 
+;Locate: __sn_section_RES_5_48K in "5_48k.res" at B0BD 
+;Align: __sn_section_RES_5_48K in "5_48k.res" with 0 
+;Locate: __sn_section_RES_6_48K in "6_48k.res" at B291 
+;Align: __sn_section_RES_6_48K in "6_48k.res" with 0 
+;Locate: __sn_section_RES_7_48K in "7_48k.res" at AF73 
+;Align: __sn_section_RES_7_48K in "7_48k.res" with 0 
+;Locate: __sn_section_RES_8_48K in "8_48k.res" at B5BB 
+;Align: __sn_section_RES_8_48K in "8_48k.res" with 0 
+;Locate: __sn_section_RES_9_48K in "9_48k.res" at B018 
+;Align: __sn_section_RES_9_48K in "9_48k.res" with 0 
+;Locate: CODE in "s480" of "sacmv25.lib"  at 8101 
+;Align: CODE in "s480" of "sacmv25.lib"  with 0 
+;Locate: CODE in "DISPLAY.obj" at 8AC8 
+;Align: CODE in "DISPLAY.obj" with 0 
+;Locate: CODE in "main.obj" at 8FFF 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "hardware.obj" at 91D6 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "divf2" of "CMacro.lib"  at 9303 
+;Align: CODE in "divf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "addf2" of "CMacro.lib"  at 93E7 
+;Align: CODE in "addf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "sys.obj" at 94B3 
+;Align: CODE in "sys.obj" with 0 
+;Locate: CODE in "cvi1f2" of "CMacro.lib"  at 9546 
+;Align: CODE in "cvi1f2" of "CMacro.lib"  with 0 
+;Locate: CODE in "divu1" of "CMacro.lib"  at 958C 
+;Align: CODE in "divu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "key.obj" at 95CA 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "cmpf2" of "CMacro.lib"  at 9605 
+;Align: CODE in "cmpf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvf2i1" of "CMacro.lib"  at 9633 
+;Align: CODE in "cvf2i1" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro.lib"  at 9659 
+;Align: CODE in "rshu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "lshiu2" of "CMacro.lib"  at 967F 
+;Align: CODE in "lshiu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvi2f2" of "CMacro.lib"  at 96A5 
+;Align: CODE in "cvi2f2" of "CMacro.lib"  with 0 
+;Locate: CODE in "modu1" of "CMacro.lib"  at 96BE 
+;Align: CODE in "modu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "subf2" of "CMacro.lib"  at 96CB 
+;Align: CODE in "subf2" of "CMacro.lib"  with 0 
+;Locate: DATA in "sys.obj" at B6AB 
+;Align: DATA in "sys.obj" with 0 

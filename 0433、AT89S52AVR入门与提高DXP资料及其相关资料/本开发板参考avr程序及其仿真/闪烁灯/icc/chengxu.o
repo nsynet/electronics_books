@@ -1,0 +1,41 @@
+XL
+H 1 areas 1 global symbols
+M chengxu.c
+A text size 40 flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\闪烁灯\chengxu.c
+dbfunc e main 0 fI
+dbsym r led 12 c
+dbsym r i 14 c
+dbsym r k 10 c
+dbsym r j 16 c
+dbline FFFFFFFF 0
+dbline 3 0
+dbline 4 0
+dbline 5 2
+dbline 7 8
+dbline 8 8
+dbline 9 C
+dbline B 10
+dbline C 16
+dbline E 26
+dbline F 2A
+dbline 10 2E
+dbline F 30
+dbline F 32
+dbline E 36
+dbline E 38
+dbline 11 3C
+dbline 6 3C
+dbline FFFFFFFE 3E
+dbline 0 3E
+S _main Def0000
+T 00 00 22 27 8F EF 87 BB 1A C0 22 23 11 F0 C0 9A
+R 00 00 00 00
+T 0E 00 03 C0 88 B3 8E 7F 88 BB 22 23 19 F4 41 E0
+R 00 00 00 00
+T 1C 00 50 E0 02 C0 44 27 55 27 24 2F 44 27 07 C0
+R 00 00 00 00
+T 2A 00 66 27 02 C0 03 95 63 95 6F 3F E0 F3 43 95
+R 00 00 00 00
+T 38 00 4F 3F B8 F3 E5 CF 08 95
+R 00 00 00 00

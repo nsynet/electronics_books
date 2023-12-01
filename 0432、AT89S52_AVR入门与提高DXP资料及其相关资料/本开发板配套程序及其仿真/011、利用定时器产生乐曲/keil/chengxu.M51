@@ -1,0 +1,211 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        07/07/2009  17:30:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE STARTUP.obj, chengxu.obj TO chengxu RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  chengxu.obj (CHENGXU)
+
+
+LINK MAP OF MODULE:  chengxu (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            DATA    000BH     0001H     UNIT         ?DT?CHENGXU
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0197H     UNIT         ?CO?CHENGXU
+            CODE    01A5H     0063H     UNIT         ?PR?_PLAY_SONG?CHENGXU
+            CODE    0208H     0020H     UNIT         ?PR?_DELAY_XMS?CHENGXU
+            CODE    0228H     000DH     UNIT         ?PR?TIME0_INIT?CHENGXU
+            CODE    0235H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0241H     000AH     UNIT         ?PR?MAIN?CHENGXU
+            CODE    024BH     0009H     UNIT         ?PR?TIME0_INT?CHENGXU
+
+
+
+OVERLAY MAP OF MODULE:   chengxu (?C_STARTUP)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?CHENGXU
+
+?PR?MAIN?CHENGXU               -----    -----
+  +--> ?PR?TIME0_INIT?CHENGXU
+  +--> ?PR?_PLAY_SONG?CHENGXU
+
+?PR?_PLAY_SONG?CHENGXU         0008H    0003H
+  +--> ?CO?CHENGXU
+  +--> ?PR?_DELAY_XMS?CHENGXU
+
+
+
+SYMBOL TABLE OF MODULE:  chengxu (?C_STARTUP)
+BL51 BANKED LINKER/LOCATER V6.00                                                      07/07/2009  17:30:19  PAGE 2
+
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0235H         SEGMENT       ?C_C51STARTUP
+  I:000CH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0238H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0235H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0235H         LINE#         133
+  C:0237H         LINE#         134
+  C:0238H         LINE#         135
+  C:0239H         LINE#         136
+  C:023BH         LINE#         185
+  C:023EH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        CHENGXU
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:0208H         PUBLIC        _Delay_xMs
+  D:000BH         PUBLIC        Count
+  D:00A8H         PUBLIC        IE
+  C:01A5H         PUBLIC        _Play_Song
+  D:00B8H         PUBLIC        IP
+  C:0241H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:0228H         PUBLIC        Time0_Init
+  C:000EH         PUBLIC        SONG
+  D:008CH         PUBLIC        TH0
+  C:024BH         PUBLIC        Time0_Int
+  D:008AH         PUBLIC        TL0
+  B:00B0H.7       PUBLIC        _Speak
+BL51 BANKED LINKER/LOCATER V6.00                                                      07/07/2009  17:30:19  PAGE 3
+
+
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIME0_INIT
+  C:0228H         LINE#         47
+  C:0228H         LINE#         48
+  C:0228H         LINE#         49
+  C:022BH         LINE#         50
+  C:022EH         LINE#         51
+  C:0231H         LINE#         52
+  C:0234H         LINE#         53
+  -------         ENDPROC       TIME0_INIT
+  -------         PROC          TIME0_INT
+  C:024BH         LINE#         55
+  C:024BH         LINE#         57
+  C:024EH         LINE#         58
+  C:0251H         LINE#         59
+  C:0253H         LINE#         60
+  -------         ENDPROC       TIME0_INT
+  -------         PROC          _DELAY_XMS
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0208H         LINE#         62
+  C:0208H         LINE#         63
+  C:0208H         LINE#         65
+  C:0212H         LINE#         66
+  C:0212H         LINE#         67
+  C:0220H         LINE#         68
+  C:0227H         LINE#         69
+  -------         ENDPROC       _DELAY_XMS
+  -------         PROC          _PLAY_SONG
+  D:0007H         SYMBOL        i
+  -------         DO            
+  D:0001H         SYMBOL        Temp1
+  D:0008H         SYMBOL        Temp2
+  D:0009H         SYMBOL        Addr
+  -------         ENDDO         
+  C:01A5H         LINE#         71
+  C:01A5H         LINE#         72
+  C:01A5H         LINE#         75
+  C:01A8H         LINE#         76
+  C:01B2H         LINE#         77
+  C:01B2H         LINE#         78
+  C:01B2H         LINE#         79
+  C:01C9H         LINE#         80
+  C:01CCH         LINE#         81
+  C:01CCH         LINE#         82
+  C:01D5H         LINE#         83
+  C:01D7H         LINE#         84
+  C:01DAH         LINE#         85
+  C:01DAH         LINE#         87
+  C:01DAH         LINE#         89
+  C:01DAH         LINE#         90
+  C:01F2H         LINE#         91
+BL51 BANKED LINKER/LOCATER V6.00                                                      07/07/2009  17:30:19  PAGE 4
+
+
+  C:01F4H         LINE#         92
+  C:01F4H         LINE#         93
+  C:01F4H         LINE#         94
+  C:01F6H         LINE#         95
+  C:01FDH         LINE#         96
+  C:0202H         LINE#         97
+  C:0202H         LINE#         98
+  C:0205H         LINE#         99
+  C:0207H         LINE#         100
+  C:0207H         LINE#         101
+  C:0207H         LINE#         102
+  C:0207H         LINE#         103
+  C:0207H         LINE#         104
+  -------         ENDPROC       _PLAY_SONG
+  -------         PROC          MAIN
+  C:0241H         LINE#         108
+  C:0241H         LINE#         109
+  C:0241H         LINE#         110
+  C:0244H         LINE#         111
+  C:0244H         LINE#         112
+  C:0244H         LINE#         113
+  C:0249H         LINE#         114
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        CHENGXU
+
+Program Size: data=13.0 xdata=0 code=588
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

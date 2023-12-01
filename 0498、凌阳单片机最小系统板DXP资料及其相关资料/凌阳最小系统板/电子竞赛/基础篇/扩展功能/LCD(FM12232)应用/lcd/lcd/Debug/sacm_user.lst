@@ -1,0 +1,101 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	//========================================================================================
+                            	// Progarm: SACM user.asm for A2000 V32
+                            	// By: Arthur Shieh
+                            	// Last modified date: 
+                            	//      2002/09/29: V32:First release for SACM v32  
+                            	//
+                            	// Functions:
+                            	//  F_USER_A2000_GetAWord
+                            	//  
+                            	// I/O APIs:
+                            	//  _USER_SetStartAddr
+                            	//
+                            	// Note:1. In the demo, it shows a way to fetch ROM data to demonstrate 
+                            	//         the manual mode operation. It fetchs data from T_SACM_A2000_SpeechTable
+                            	//         and feeds back to library for playback. 
+                            	//========================================================================================
+                            	
+                            	.public _USER_SetStartAddr
+                            	.public F_USER_A2000_GetAWord
+                            	
+00000336                    	.RAM  
+00000336 00 00              	.var R_Speech_Addr
+00000337 00 00              	.var R_Speech_Page
+                            	
+000096CF                    	.CODE
+                            	//--------------------------------------------------------------------
+                            	//-- Procedure: _USER_SetStartAddr
+                            	//-- Syntax: USER_SetStartAddr(int)
+                            	//-- Parameter: R1 = PlayIndex 
+                            	//-- Return: NONE
+                            	//-- Description: This API allows users to set the beginning address 
+                            	//                to fetch data. This address can be either a ROM address
+                            	//                or a external storage address. User would have to modify
+                            	//                the function body based on the application's need.    
+                            	//--------------------------------------------------------------------
+                            	_USER_SetStartAddr: 
+                            	    //-----------------------
+                            	    // defined by user
+                            	    //-----------------------
+000096CF 88 DA              		push BP to [sp];
+000096D0 08 0B 01 00        		BP = sp + 1;
+000096D2 90 D4              		push R1, R2 to [sp];
+000096D3 03 92              		r1 = [BP + 3];
+000096D4 04 94              		r2 = [BP + 4];
+000096D5 19 D3 36 03        		[R_Speech_Addr] = r1;
+000096D7 1A D5 37 03        		[R_Speech_Page] = r2;
+000096D9 90 90              		pop R1, R2 from [sp];	
+000096DA 88 98              		pop BP from [sp];
+                            	    //-----------------------
+                            		// end of user define area
+                            	    //-----------------------
+000096DB 90 9A              		RETF;	
+                            	
+                            			
+                            	
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_USER_A2000_GetAWord
+                            	//-- Parameter: NONE
+                            	//-- Return: R1 = Data
+                            	//-- Description: This function called by library to fetch data  
+                            	//                for playback. The Library needs a word data  
+                            	//                Uaser would have to compose the function body 
+                            	//                based on the storage type to fulfill this demand from 
+                            	//                library. 
+                            	//--------------------------------------------------------------------
+                            	F_USER_A2000_GetAWord: 
+                            	    //-----------------------
+                            	    // defined by user
+                            	    //-----------------------
+000096DC 11 93 36 03        			r1 = [R_Speech_Addr];
+000096DE 12 95 37 03        			r2 = [R_Speech_Page];
+                            			
+000096E0 5A 95              			r2 = r2 LSL 4;
+000096E1 5A 95              			r2 = r2 LSL 4;
+000096E2 4A 95              			r2 = r2 LSL 2;
+                            			
+000096E3 7F BC              			SR &= 0x03f; 					// Change Page
+000096E4 02 AD              	        SR |= R2; 						//
+                            	          
+000096E5 F1 96              	  		R3 = D:[R1 ++]; 				// Get data
+                            			
+000096E6 40 42              			cmp R1 , 0x0;
+000096E7 03 4E              			JNE ?_update_addr;
+000096E8 41 04              			R2 += 1;  
+000096E9 1A D5 37 03        			[R_Speech_Page] = R2;
+                            			
+                            			?_update_addr:
+000096EB 19 D3 36 03        			[R_Speech_Addr] = R1;
+                            			
+                            			?_return_data:
+000096ED 03 93              			R1 = R3;
+                            		//-----------------------
+                            		// end of user define area
+                            	    //-----------------------		  
+000096EE 90 9A              		  	RETF;
+                            		  
+                            	 .end 
+0 error(s), 0 warning(s).
+

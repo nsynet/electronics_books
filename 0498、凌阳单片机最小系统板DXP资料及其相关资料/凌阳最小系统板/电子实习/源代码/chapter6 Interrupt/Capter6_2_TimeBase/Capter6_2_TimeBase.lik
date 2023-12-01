@@ -1,0 +1,16 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\TimeBase_Main.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+Lib: "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Capter6_2_TimeBase\.\SPCE061V003.LIB"
+Output: ".\Debug\Capter6_2_TimeBase.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: IRAM in "ISR.obj" at 80B8  linkat 0 
+;Align: IRAM in "ISR.obj" with 0 
+;Locate: CODE in "TimeBase_Main.obj" at 808E 
+;Align: CODE in "TimeBase_Main.obj" with 0 
+;Locate: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  at 80B9 
+;Align: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  with 0 

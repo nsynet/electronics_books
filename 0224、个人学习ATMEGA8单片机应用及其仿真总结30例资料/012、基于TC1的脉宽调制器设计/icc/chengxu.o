@@ -1,0 +1,221 @@
+XL
+H 4 areas 11 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset3 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset3 Ref0000
+A text size 190 flags 0
+dbfile D:\MYDOCU~1\AVR单片机应用系统开发经典实例\012、基于TC1的脉宽调制器设计\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 14 4
+dbline 15 4
+dbline 16 6
+dbline 16 6
+dbline 16 C
+dbline 16 C
+dbline 16 C
+dbline 16 C
+dbline 16 10
+dbline 16 16
+dbline 15 16
+dbline 15 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 1D 2C
+dbline 1D 2C
+dbline 1E 2E
+dbline 1F 32
+dbline 1F 32
+dbline 20 34
+dbline 21 4E
+dbline 22 54
+dbline 23 56
+dbline 1E 56
+dbline 1E 58
+dbline FFFFFFFE 5C
+dbline 0 60
+dbfunc e Key_Process 62 fV
+dbline FFFFFFFF 62
+dbline 29 62
+dbline 29 64
+dbline 29 64
+dbline 29 6A
+dbline 29 70
+dbline 29 70
+dbline 2A 76
+dbline 2A 76
+dbline 2A 7C
+dbline 2A 82
+dbline 2A 82
+dbline 2B 86
+dbline 2C 8E
+dbline 2D 8E
+dbline 2E A0
+dbline 2F AC
+dbline 2F B2
+dbline 30 B2
+dbline 31 BA
+dbline 32 BA
+dbline 33 C0
+dbline 34 D2
+dbline 34 D8
+dbline FFFFFFFE D8
+dbline 0 D8
+dbfunc e Set_Process DA fV
+dbsym r i 14 i
+dbsym r p 14 pc
+dbline FFFFFFFF E0
+dbline 3A E0
+dbline 3B E0
+dbline 3C F4
+dbline 3D 110
+dbline 3E 12C
+dbline 3F 140
+dbline 40 148
+dbline 41 150
+dbline FFFFFFFE 156
+dbline 0 15A
+dbfunc e Init_IO 15C fV
+dbline FFFFFFFF 15C
+dbline 47 15C
+dbline 47 15C
+dbline 48 160
+dbline 49 162
+dbline 4A 164
+dbline 4B 166
+dbline 4C 16A
+dbline 4D 16C
+dbline 4E 16E
+dbline FFFFFFFE 170
+dbline 0 170
+dbfunc e main 172 fV
+dbsym l i 1 c
+dbline FFFFFFFF 172
+dbline 54 172
+dbline 55 172
+dbline 56 174
+dbline 57 178
+dbline 59 17E
+dbline 59 17E
+dbline 5A 180
+dbline 5B 186
+dbline 5C 18C
+dbline 58 18C
+dbline FFFFFFFE 18E
+dbline 0 18E
+S _main Def0172
+S _DelayMs Def0000
+S _Display Def0026
+S _Key_Process Def0062
+S _Set_Process Def00DA
+S _Init_IO Def015C
+A data size 12 flags 20
+dbfile D:\MYDOCU~1\AVR单片机应用系统开发经典实例\012、基于TC1的脉宽调制器设计\icc\chengxu.c
+dbsym e Table 0 A[12:12]c
+dbsym e Data1 C A[4:4]c
+dbsym e PWM 10 i
+S _Data1 Def000C
+S _Table Def0000
+S _PWM Def0010
+A idata size 12 flags 0
+A bss size 2 flags 20
+dbfile D:\MYDOCU~1\AVR单片机应用系统开发经典实例\012、基于TC1的脉宽调制器设计\icc\chengxu.c
+dbsym e Key2_Flag 0 c
+dbsym e Key1_Flag 1 c
+S _Key1_Flag Def0001
+S _Key2_Flag Def0000
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 79
+R 00 00 02 00
+T 0B 00 00
+R 00 00 02 00
+T 0C 00 00 00
+R 00 00 02 00
+T 0E 00 00 00
+R 00 00 02 00
+T 10 00 F4 01
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 04 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 01 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 20 94 2B BA 01 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 10 E0 D6 DF 44 0F 63 95 64 30 58 F3 0E 94
+R 00 00 00 00
+T 5E 00 00 00 08 95
+R 00 00 00 00 12 02 05 00
+T 62 00 06 C0 00 E0 10 E0 DE DF 81 E0 80 93
+R 00 00 00 00 20 04 01 00 0C 00 40 06 01 00 0C 00
+T 6E 00 01 00 B0 9B F8 CF 06 C0 00 E0
+R 00 00 00 00 00 02 03 00 20 0A 01 00 0C 00
+T 78 00 10 E0 D5 DF 81 E0 80 93 00 00 B1 9B F8 CF
+R 00 00 00 00 40 02 01 00 0C 00 00 0A 03 00
+T 86 00 80 91 01 00 81 30 91 F4 8C EF 93 E0 20 90
+R 00 00 00 00 00 04 03 00
+T 94 00 10 00 30 90 11 00 82 15 93 05 30 F0 C1 01
+R 00 00 00 00 00 02 01 00 00 06 01 00
+T A2 00 0A 96 90 93 11 00 80 93 10 00 22 24 20 92
+R 00 00 00 00 00 06 01 00 00 0A 01 00
+T B0 00 01 00 80 91 00 00 81 30 79 F4 81 E0 88 23
+R 00 00 00 00 00 02 03 00 00 06 03 00
+T BE 00 49 F0 80 91 10 00 90 91 11 00 0A 97 90 93
+R 00 00 00 00 00 06 01 00 00 0A 01 00
+T CC 00 11 00 80 93 10 00 22 24 20 92 00 00 08 95
+R 00 00 00 00 00 02 01 00 00 06 01 00 00 0C 03 00
+T DA 00 0E 94 00 00 A8 01 28 EE 33 E0 00 91 10 00
+R 00 00 00 00 12 04 00 00 00 0E 01 00
+T E8 00 10 91 11 00 0E 94 00 00 FA 01 00 83 28 EE
+R 00 00 00 00 00 04 01 00 12 08 03 00
+T F6 00 33 E0 00 91 10 00 10 91 11 00 0E 94 00 00
+R 00 00 00 00 00 06 01 00 00 0A 01 00 12 0E 02 00
+T 04 01 24 E6 30 E0 0E 94 00 00 FA 01 01 83 24 E6
+R 00 00 00 00 12 08 03 00
+T 12 01 30 E0 00 91 10 00 10 91 11 00 0E 94 00 00
+R 00 00 00 00 00 06 01 00 00 0A 01 00 12 0E 02 00
+T 20 01 2A E0 30 E0 0E 94 00 00 FA 01 02 83 2A E0
+R 00 00 00 00 12 08 03 00
+T 2E 01 30 E0 00 91 10 00 10 91 11 00 0E 94 00 00
+R 00 00 00 00 00 06 01 00 00 0A 01 00 12 0E 02 00
+T 3C 01 FA 01 03 83 40 91 10 00 50 91 11 00 1A 01
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 4A 01 23 2C 33 24 2B BC CA 01 90 70 8A BD 0E 94
+R 00 00 00 00
+T 58 01 00 00 08 95
+R 00 00 00 00 12 02 04 00
+T 5C 01 8F EF 8A BB 8B BB 84 BB 85 BB 22 24 27 BA
+R 00 00 00 00
+T 6A 01 28 BA 81 BB 82 BB 08 95
+R 00 00 00 00
+T 72 01 F4 DF 83 EC 8F BD 82 E0 8E BD 07 C0 71 DF
+R 00 00 00 00
+T 80 01 00 E0 10 E0 AA DF
+R 00 00 00 00 20 02 01 00 0C 00 40 04 01 00 0C 00
+T 86 01 00 E0 10 E0 4D DF F8 CF 08 95
+R 00 00 00 00 20 02 01 00 0C 00 40 04 01 00 0C 00

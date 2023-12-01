@@ -1,0 +1,76 @@
+C51 COMPILER V8.08   DD                                                                    12/27/2008 14:54:20 PAGE 1   
+
+
+C51 COMPILER V8.08, COMPILATION OF MODULE DD
+OBJECT MODULE PLACED IN dd.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE dd.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //#include "reg52.h"
+   2          //#define uchar unsigned char
+   3          //#define ulong unsigned long
+   4          //uchar code LED_seg[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xc6,0xa1,0x86,0x8e};
+   5          //unsigned char code LED_bit[]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+   6          
+   7          
+   8          
+   9          
+  10          #include <REG51.H>      
+  11          #define uint unsigned int       
+  12          #define uchar unsigned char
+  13          uchar code DIS_SEG7[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xc6,0xa1,0x86,0x8e};
+  14          uchar code DIS_BIT[8]={0xfe,0xfd,0xfb,0xf7,0xef,0xdf,0xbf,0x7f};
+  15          /****************************/
+  16          void delay(uint k)                      
+  17          {                                       
+  18   1      uint data i,j;                  
+  19   1      for(i=0;i<k;i++)                
+  20   1      {for(j=0;j<121;j++)             
+  21   2      {;}}                                    
+  22   1      }                                       
+  23          /***********************************/
+  24          void main(void)         
+  25          {       
+  26   1              uchar cnt;                              
+  27   1              while(1)                                
+  28   1              {                                       
+  29   2                for(cnt=0;cnt<8;cnt++)           
+  30   2                {P0=DIS_SEG7[cnt+1];
+  31   3                 P3=DIS_BIT[cnt];
+  32   3                 delay(1);}
+  33   2               }                              
+  34   1      }                                       
+  35          
+  36          
+  37          
+  38          
+  39          
+  40          
+  41          
+  42          
+  43          
+  44          
+  45          
+  46          
+  47          
+  48          
+  49          
+  50          
+  51          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     61    ----
+C51 COMPILER V8.08   DD                                                                    12/27/2008 14:54:20 PAGE 2   
+
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

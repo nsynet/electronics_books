@@ -1,0 +1,70 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\整理\个人总结的M8程序\016、模拟比较器的设计应用\icc\chengxu.c
+ 0000                   .dbfunc e main _main fV
+ 0000           ;              i -> <dead>
+                        .even
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000                   .dbline 11
+ 0000           ; #include <iom16v.h>
+ 0000           ; /********************************************************************
+ 0000           ;                 数据类型定义
+ 0000           ; *********************************************************************/
+ 0000           ; #define uchar unsigned char
+ 0000           ; #define uint  unsigned int
+ 0000           ; /**********************************************************************
+ 0000           ;                                         主函数                
+ 0000           ; **********************************************************************/
+ 0000           ; void main(void)
+ 0000           ; {uchar i;
+ 0000                   .dbline 12
+ 0000           ;  DDRB=0xFF;                    //设置PB7输出输入
+ 0000 8FEF              ldi R24,255
+ 0002 87BB              out 0x17,R24
+ 0004                   .dbline 13
+ 0004           ;  PORTB=0xFF;
+ 0004 88BB              out 0x18,R24
+ 0006                   .dbline 14
+ 0006           ;  DDRD=0x00;                    //设置PB7输出输入
+ 0006 2224              clr R2
+ 0008 21BA              out 0x11,R2
+ 000A                   .dbline 15
+ 000A           ;  PORTD=0x00;
+ 000A 22BA              out 0x12,R2
+ 000C                   .dbline 16
+ 000C           ;  ACSR=0x00;                    //模拟比较器使能
+ 000C 28B8              out 0x8,R2
+ 000E 0BC0              xjmp L3
+ 0010           L2:
+ 0010                   .dbline 18
+ 0010           ;  while(1)
+ 0010           ;   {if((ACSR&0x20)==0x20)
+ 0010                   .dbline 18
+ 0010 88B1              in R24,0x8
+ 0012 8072              andi R24,32
+ 0014 8032              cpi R24,32
+ 0016 21F4              brne L5
+ 0018                   .dbline 19
+ 0018           ;        PORTB=PORTB|0xf0;
+ 0018 88B3              in R24,0x18
+ 001A 806F              ori R24,240
+ 001C 88BB              out 0x18,R24
+ 001E 03C0              xjmp L6
+ 0020           L5:
+ 0020                   .dbline 20
+ 0020 88B3              in R24,0x18
+ 0022 8F70              andi R24,15
+ 0024 88BB              out 0x18,R24
+ 0026           L6:
+ 0026                   .dbline 20
+ 0026           L3:
+ 0026                   .dbline 17
+ 0026 F4CF              xjmp L2
+ 0028           X0:
+ 0028                   .dbline -2
+ 0028           L1:
+ 0028                   .dbline 0 ; func end
+ 0028 0895              ret
+ 002A                   .dbsym l i 1 c
+ 002A                   .dbend

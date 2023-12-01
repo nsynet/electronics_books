@@ -1,0 +1,123 @@
+__start:
+__text_start:
+    0013 E5CF      LDI	R28,0x5F
+    0014 E0D4      LDI	R29,4
+    0015 BFCD      OUT	0x3D,R28
+    0016 BFDE      OUT	0x3E,R29
+    0017 51C0      SUBI	R28,0x10
+    0018 40D0      SBCI	R29,0
+    0019 EA0A      LDI	R16,0xAA
+    001A 8308      STD	Y+0,R16
+    001B 2400      CLR	R0
+    001C E6E0      LDI	R30,0x60
+    001D E0F0      LDI	R31,0
+    001E E010      LDI	R17,0
+    001F 36E0      CPI	R30,0x60
+    0020 07F1      CPC	R31,R17
+    0021 F011      BEQ	0x0024
+    0022 9201      ST	R0,Z+
+    0023 CFFB      RJMP	0x001F
+    0024 8300      STD	Z+0,R16
+    0025 E2E6      LDI	R30,0x26
+    0026 E0F0      LDI	R31,0
+    0027 E6A0      LDI	R26,0x60
+    0028 E0B0      LDI	R27,0
+    0029 E010      LDI	R17,0
+    002A 32E6      CPI	R30,0x26
+    002B 07F1      CPC	R31,R17
+    002C F021      BEQ	0x0031
+    002D 95C8      LPM
+    002E 9631      ADIW	R30,1
+    002F 920D      ST	R0,X+
+    0030 CFF9      RJMP	0x002A
+    0031 D00A      RCALL	_main
+_exit:
+    0032 CFFF      RJMP	_exit
+FILE: D:\整理\个人总结的M8程序\022、IO口基本输出\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) #define uchar unsigned char 
+(0003) #define uint unsigned int
+(0004) //////////////////////////////初始化////////////////////////////////////
+(0005) void Init_IO(void)//初始化I/O
+(0006) {
+(0007) //设置B口为输出
+(0008) DDRB=0xFF;
+_Init_IO:
+    0033 EF8F      LDI	R24,0xFF
+    0034 BB87      OUT	0x17,R24
+(0009) PORTB=0xFF;
+    0035 BB88      OUT	0x18,R24
+(0010) //设置C口为输出
+(0011) DDRC=0xFF;
+    0036 BB84      OUT	0x14,R24
+(0012) PORTC=0xFF;
+    0037 BB85      OUT	0x15,R24
+(0013) //设置D口为输入
+(0014) DDRD=0X00;
+    0038 2422      CLR	R2
+    0039 BA21      OUT	0x11,R2
+(0015) PORTD=0xFF;
+    003A BB82      OUT	0x12,R24
+    003B 9508      RET
+(0016) }
+(0017) /////////////////////////////主函数/////////////////////////////////////
+(0018) void main(void)
+(0019) {
+(0020) Init_IO();  //初始化I/O
+_main:
+    003C DFF6      RCALL	_Init_IO
+    003D C020      RJMP	0x005E
+(0021) while(1)
+(0022) {
+(0023) 
+(0024) if((PIND&0X01)==0)//按键加计数标志
+    003E 9980      SBIC	0x10,0
+    003F C002      RJMP	0x0042
+(0025) {PORTB=0xfe;}
+    0040 EF8E      LDI	R24,0xFE
+    0041 BB88      OUT	0x18,R24
+(0026) if((PIND&0X02)==0)//按键加计数标志
+    0042 9981      SBIC	0x10,1
+    0043 C002      RJMP	0x0046
+(0027) {PORTB=0xfd;}
+    0044 EF8D      LDI	R24,0xFD
+    0045 BB88      OUT	0x18,R24
+(0028) if((PIND&0X04)==0)//按键加计数标志
+    0046 9982      SBIC	0x10,2
+    0047 C002      RJMP	0x004A
+(0029) {PORTB=0xfb;}
+    0048 EF8B      LDI	R24,0xFB
+    0049 BB88      OUT	0x18,R24
+(0030) if((PIND&0X08)==0)//按键加计数标志
+    004A 9983      SBIC	0x10,3
+    004B C002      RJMP	0x004E
+(0031) {PORTB=0xf7;}
+    004C EF87      LDI	R24,0xF7
+    004D BB88      OUT	0x18,R24
+(0032) if((PIND&0X10)==0)//按键加计数标志
+    004E 9984      SBIC	0x10,4
+    004F C002      RJMP	0x0052
+(0033) {PORTC=0xfe;}
+    0050 EF8E      LDI	R24,0xFE
+    0051 BB85      OUT	0x15,R24
+(0034) if((PIND&0X20)==0)//按键加计数标志
+    0052 9985      SBIC	0x10,5
+    0053 C002      RJMP	0x0056
+(0035) {PORTC=0xfd;}
+    0054 EF8D      LDI	R24,0xFD
+    0055 BB85      OUT	0x15,R24
+(0036) if((PIND&0X40)==0)//按键加计数标志
+    0056 9986      SBIC	0x10,6
+    0057 C002      RJMP	0x005A
+(0037) {PORTC=0xfb;}
+    0058 EF8B      LDI	R24,0xFB
+    0059 BB85      OUT	0x15,R24
+(0038) if((PIND&0X80)==0)//按键加计数标志
+    005A 9987      SBIC	0x10,7
+    005B C002      RJMP	0x005E
+(0039) {PORTC=0xf7;}
+FILE: <library>
+    005C EF87      LDI	R24,0xF7
+    005D BB85      OUT	0x15,R24
+    005E CFDF      RJMP	0x003E
+    005F 9508      RET

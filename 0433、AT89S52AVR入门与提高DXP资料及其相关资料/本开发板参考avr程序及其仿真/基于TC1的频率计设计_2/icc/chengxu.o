@@ -1,0 +1,260 @@
+XL
+H 4 areas 14 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset3 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset3 Ref0000
+S empy16s Ref0000
+A text size 1E2 flags 0
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的频率计设计_2\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 12 4
+dbline 13 4
+dbline 14 6
+dbline 14 6
+dbline 14 C
+dbline 14 C
+dbline 14 C
+dbline 14 C
+dbline 14 10
+dbline 14 16
+dbline 13 16
+dbline 13 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Pre_Display 26 fV
+dbsym r i 14 c
+dbline FFFFFFFF 2A
+dbline 18 2A
+dbline 19 2A
+dbline 1A 2E
+dbline 1A 2E
+dbline 1B 32
+dbline 1C 42
+dbline 1D 48
+dbline 19 48
+dbline 19 4A
+dbline FFFFFFFE 4E
+dbline 0 52
+dbfunc e Display 54 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 5A
+dbline 21 5A
+dbline 21 5A
+dbline 22 5C
+dbline 23 60
+dbline 23 60
+dbline 24 62
+dbline 25 7C
+dbline 26 82
+dbline 27 84
+dbline 22 84
+dbline 22 86
+dbline FFFFFFFE 8A
+dbline 0 8E
+dbfunc e HZ 90 fV
+dbsym r TEM 16 i
+dbsym r p 14 pc
+dbsym r i A i
+dbline FFFFFFFF 98
+dbline 2B 98
+dbline 2C 98
+dbline 2D A6
+dbline 2E B2
+dbline 2F BE
+dbline 30 C8
+dbline 31 D2
+dbline 32 DE
+dbline 33 E8
+dbline 34 F2
+dbline 35 FE
+dbline FFFFFFFE 108
+dbline 0 10C
+dbfunc e Init_IO 10E fV
+dbline FFFFFFFF 10E
+dbline 39 10E
+dbline 39 10E
+dbline 3A 112
+dbline 3B 114
+dbline 3C 116
+dbline 3D 118
+dbline 3E 11C
+dbline FFFFFFFE 11E
+dbline 0 11E
+dbfunc e Init_Timer1 120 fV
+dbline FFFFFFFF 120
+dbline 42 120
+dbline 43 120
+dbline 44 126
+dbline 45 12A
+dbline 46 12E
+dbline FFFFFFFE 134
+dbline 0 134
+dbfunc e main 136 fV
+dbsym r i 14 c
+dbline FFFFFFFF 136
+dbline 4A 136
+dbline 4B 136
+dbline 52 138
+dbline 54 13C
+dbline 56 13C
+dbline 56 13C
+dbline 57 142
+dbline 58 14E
+dbline 59 15A
+dbline 5A 176
+dbline 5B 186
+dbline 5B 190
+dbline 55 190
+dbline 5C 196
+dbline 5D 19E
+dbline 5D 19E
+dbline 5E 1A4
+dbline 5F 1B2
+dbline 60 1B6
+dbline 5F 1BC
+dbline 5F 1BE
+dbline 61 1C2
+dbline 61 1CE
+dbline 61 1D6
+dbline 61 1DE
+dbline 61 1DE
+dbline 53 1DE
+dbline FFFFFFFE 1E0
+dbline 0 1E0
+S _HZ Def0090
+S _main Def0136
+S _DelayMs Def0000
+S _Display Def0054
+S _Init_Timer1 Def0120
+S _Pre_Display Def0026
+S _Init_IO Def010E
+A data size 1B flags 20
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的频率计设计_2\icc\chengxu.c
+dbsym e Flag 0 c
+dbsym e Table 1 A[20:20]c
+dbsym e Data 15 A[4:4]c
+dbsym e CNT 19 i
+S _CNT Def0019
+S _Table Def0001
+S _Data Def0015
+S _Flag Def0000
+A idata size 1B flags 0
+A bss size 4 flags 20
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的频率计设计_2\icc\chengxu.c
+dbsym e CNT2 0 i
+dbsym e CNT1 2 i
+S _CNT1 Def0002
+S _CNT2 Def0000
+T 00 00 00
+R 00 00 02 00
+T 01 00 3F 06
+R 00 00 02 00
+T 03 00 5B 4F
+R 00 00 02 00
+T 05 00 66 6D
+R 00 00 02 00
+T 07 00 7D 07
+R 00 00 02 00
+T 09 00 7F 6F
+R 00 00 02 00
+T 0B 00 77 7C
+R 00 00 02 00
+T 0D 00 39 5E
+R 00 00 02 00
+T 0F 00 79 71
+R 00 00 02 00
+T 11 00 00 00 00 00
+R 00 00 02 00
+T 15 00 00 00
+R 00 00 02 00
+T 17 00 00 00
+R 00 00 02 00
+T 19 00 64 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 ED 57 E0 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 04 00
+T 26 00 0E 94 00 00 44 27 0E C0 22 24 25 BA 80 E0
+R 00 00 00 00 12 04 00 00 20 0E 01 00 01 00
+T 34 00 90 E0 E4 2F FF 27 E8 0F F9 1F 20 80 2B BA
+R 00 00 00 00 40 02 01 00 01 00
+T 42 00 04 E6 10 E0 DC DF 43 95 40 31 80 F3 0E 94
+R 00 00 00 00
+T 50 00 00 00 08 95
+R 00 00 00 00 12 02 04 00
+T 54 00 0E 94 00 00 58 01 41 E0 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 01 00
+T 62 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 01 00
+T 70 00 90 E0 E8 0F F9 1F 20 80 20 94 2B BA 02 E0
+R 00 00 00 00 40 02 01 00 01 00
+T 7E 00 10 E0 BF DF 44 0F 63 95 64 30 58 F3 0E 94
+R 00 00 00 00
+T 8C 00 00 00 08 95
+R 00 00 00 00 12 02 05 00
+T 90 00 0E 94 00 00 A9 01 58 01 08 EE 13 E0 95 01
+R 00 00 00 00 12 04 01 00
+T 9E 00 0E 94 00 00 FA 01 00 83 08 EE 13 E0 95 01
+R 00 00 00 00 12 04 03 00
+T AC 00 0E 94 00 00 B8 01 0A E0 10 E0 9B 01 0E 94
+R 00 00 00 00 12 04 02 00
+T BA 00 00 00 B8 01 95 01 0E 94 00 00 FA 01 01 83
+R 00 00 00 00 12 02 06 00 12 0A 03 00
+T C8 00 95 01 8B 01 0E 94 00 00 B8 01 0A E0 10 E0
+R 00 00 00 00 12 08 02 00
+T D6 00 9B 01 0E 94 00 00 B8 01 95 01 0E 94 00 00
+R 00 00 00 00 12 06 06 00 12 0E 03 00
+T E4 00 FA 01 02 83 95 01 8B 01 0E 94 00 00 B8 01
+R 00 00 00 00 12 0C 02 00
+T F2 00 0A E0 10 E0 9B 01 0E 94 00 00 B8 01 95 01
+R 00 00 00 00 12 0A 06 00
+T 00 01 0E 94 00 00 FA 01 03 83 0E 94 00 00 08 95
+R 00 00 00 00 12 04 03 00 12 0C 05 00
+T 0E 01 8F EF 8A BB 8B BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T 1C 01 22 BA 08 95
+R 00 00 00 00
+T 20 01 89 B7 80 62 89 BF 82 EC 8E BD 80 E2 88 BF
+R 00 00 00 00
+T 2E 01 8F B7 8F 77 8F BF 08 95
+R 00 00 00 00
+T 36 01 EB DF F3 DF 51 C0 88 B7 80 62 88 BF 26 B4
+R 00 00 00 00
+T 44 01 33 24 30 92 1A 00 20 92 19 00 26 B4 37 B4
+R 00 00 00 00 00 06 01 00 00 0A 01 00
+T 52 01 30 92 01 00 20 92 00 00 20 90 02 00 30 90
+R 00 00 00 00 00 04 03 00 00 08 03 00 00 0C 03 00
+T 60 01 03 00 40 90 00 00 50 90 01 00 42 18 53 08
+R 00 00 00 00 00 02 03 00 00 06 03 00 00 0A 03 00
+T 6E 01 50 92 1A 00 40 92 19 00 20 90 00 00 30 90
+R 00 00 00 00 00 04 01 00 00 08 01 00 00 0C 03 00
+T 7C 01 01 00 30 92 03 00 20 92 02 00 80 91
+R 00 00 00 00 00 02 03 00 00 06 03 00 00 0A 03 00
+T 88 01 00 00 8F 5F 80 93 00 00 28 B6 25 FC D3 CF
+R 00 00 00 00 00 02 01 00 00 08 01 00
+T 96 01 80 91 00 00 82 30 01 F5 22 24 20 92 00 00
+R 00 00 00 00 00 04 01 00 00 0E 01 00
+T A4 01 20 E0 30 E0 00 91
+R 00 00 00 00 20 02 01 00 15 00 40 04 01 00 15 00
+T AA 01 19 00 10 91 1A 00 6F DF 44 27 04 C0
+R 00 00 00 00 00 02 01 00 00 06 01 00
+T B6 01 00 E0 10 E0 4C DF 43 95 44 36 D0 F3 22 24
+R 00 00 00 00 20 02 01 00 15 00 40 04 01 00 15 00
+T C4 01 33 24 30 92 1A 00 20 92 19 00 30 92 03 00
+R 00 00 00 00 00 06 01 00 00 0A 01 00 00 0E 03 00
+T D2 01 20 92 02 00 30 92 01 00 20 92 00 00 D8 CF
+R 00 00 00 00 00 04 03 00 00 08 03 00 00 0C 03 00
+T E0 01 08 95
+R 00 00 00 00

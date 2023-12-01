@@ -1,0 +1,40 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRA~1\Sunplus\UNSPID~1.0\startupD.obj"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\Resource.obj"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\main.obj"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\system.obj"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\spce.obj"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\SP_lib.obj"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\sacmV32.obj"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\ISR.obj"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\pk3.res"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\pk2.res"
+Obj: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\pk1.res"
+Lib: "I:\1disktest\C_Code\chapter9 Audio\S240\.\sacmv32e.lib"
+Output: "I:\1disktest\C_Code\chapter9 Audio\S240\Debug\S240.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: IRAM in "main.obj" at 8E6E  linkat CA 
+;Align: IRAM in "main.obj" with 0 
+;Locate: RAM in "sacmV32.obj" at 92 
+;Align: RAM in "sacmV32.obj" with 0 
+;Locate: OVERLAP_S240_RAM_BLOCK in "s240" of "sacmv32e.lib"  at 1 
+;Align: OVERLAP_S240_RAM_BLOCK in "s240" of "sacmv32e.lib"  with 0 
+;Locate: __sn_section_RES_PK1 in "pk1.res" at 8E72 
+;Align: __sn_section_RES_PK1 in "pk1.res" with 0 
+;Locate: __sn_section_RES_PK2 in "pk2.res" at 8F26 
+;Align: __sn_section_RES_PK2 in "pk2.res" with 0 
+;Locate: __sn_section_RES_PK3 in "pk3.res" at 8FBB 
+;Align: __sn_section_RES_PK3 in "pk3.res" with 0 
+;Locate: CODE in "s240" of "sacmv32e.lib"  at 809D 
+;Align: CODE in "s240" of "sacmv32e.lib"  with 0 
+;Locate: CODE in "sacmV32.obj" at 89A7 
+;Align: CODE in "sacmV32.obj" with 0 
+;Locate: CODE in "main.obj" at 8C4C 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "SP_lib.obj" at 8D9F 
+;Align: CODE in "SP_lib.obj" with 0 
+;Locate: CODE in "system.obj" at 8E52 
+;Align: CODE in "system.obj" with 0 
+;Locate: __sn_init_table at 8000 

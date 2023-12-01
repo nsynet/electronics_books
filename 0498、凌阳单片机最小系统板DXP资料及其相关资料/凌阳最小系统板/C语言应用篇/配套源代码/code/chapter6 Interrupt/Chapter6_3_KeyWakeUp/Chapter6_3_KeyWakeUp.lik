@@ -1,0 +1,17 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRA~1\Sunplus\UNSPID~1.0\startupD.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\Resource.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\KeyWakeUp_Main.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+Lib: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\.\SPCE061V003.LIB"
+Output: "I:\1disktest\C_Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\Chapter6_3_KeyWakeUp.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: IRAM in "ISR.obj" at 8104  linkat 1 
+;Align: IRAM in "ISR.obj" with 0 
+;Locate: CODE in "KeyWakeUp_Main.obj" at 80CC 
+;Align: CODE in "KeyWakeUp_Main.obj" with 0 
+;Locate: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  at 8105 
+;Align: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  with 0 
+;Locate: __sn_init_table at 8000 

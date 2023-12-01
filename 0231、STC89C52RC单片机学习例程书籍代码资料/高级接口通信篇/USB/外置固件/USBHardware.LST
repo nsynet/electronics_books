@@ -1,0 +1,64 @@
+C51 COMPILER V7.06   USBHARDWARE                                                           03/21/2011 11:03:30 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE USBHARDWARE
+OBJECT MODULE PLACED IN USBHardware.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE USBHardware.c ROM(COMPACT) BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "global.h"
+   8          #include "USBHardware.h"
+   9          #include "USBInterface.h"
+  10          /***********************************************************************************
+  11          ** 函数名称 : USBHwInit
+  12          ** 功能描述 : USB 硬件初始化
+  13          ** 输    入     : 无
+  14          ** 输   出      : 无
+  15          ************************************************************************************/
+  16          void USBHwInit(void)
+  17          {
+  18   1              
+  19   1              IE0=0;
+  20   1              IT0=0;//置外部信号为低电平触发,IT1=1边沿触发
+  21   1              EX0=1;
+  22   1      }
+  23          
+  24          /*
+  25            ---------------------  USB 中断服务程序  ---------------------
+  26          */
+  27          
+  28          /***********************************************************************************
+  29          ** 函数名称 : UsbIRQ
+  30          ** 功能描述 : 中断服务程序
+  31          ** 输    入     : 无
+  32          ** 输   出      : 无
+  33          ************************************************************************************/
+  34          void UsbIRQ(void) interrupt 0
+  35          {
+  36   1               ENTER_CRITICAL();
+  37   1      
+  38   1               SYSPostCurMsg(RUN_USB_DISPOSE_DATA);
+  39   1      
+  40   1           EXIT_CRITICAL();   
+  41   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     72    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

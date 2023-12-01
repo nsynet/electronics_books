@@ -1,0 +1,1282 @@
+BL51 BANKED LINKER/LOCATER V5.03                                                        03/16/2011  16:18:39  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.03, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE .\Output\main.obj, .\Output\STARTUP.obj, .\Output\Global.obj, .\Output\NETApplication.obj, .\Ou
+>> tput\NETProtocol.obj, .\Output\NETInterface.obj, .\Output\NETHardware.obj TO .\Output\NET PRINT (.\NET.m51) RAMSIZE (
+>> 256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Output\main.obj (MAIN)
+  .\Output\STARTUP.obj (?C_STARTUP)
+  .\Output\Global.obj (GLOBAL)
+  .\Output\NETApplication.obj (NETAPPLICATION)
+  .\Output\NETProtocol.obj (NETPROTOCOL)
+  .\Output\NETInterface.obj (NETINTERFACE)
+  .\Output\NETHardware.obj (NETHARDWARE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CILDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CSTPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CSTOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULSHR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LSHL)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ICALL)
+
+
+LINK MAP OF MODULE:  .\Output\NET (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     001BH     UNIT         _DATA_GROUP_
+            DATA    0023H     0011H     UNIT         ?DT?NETPROTOCOL
+            DATA    0034H     0001H     UNIT         ?DT?GLOBAL
+            DATA    0035H     0001H     UNIT         ?DT?NETINTERFACE
+            IDATA   0036H     0002H     UNIT         ?ID?NETINTERFACE
+            IDATA   0038H     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     00FEH     UNIT         ?XD?NETAPPLICATION
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0167H     UNIT         ?PR?_NETPCCHECKSUM?NETPROTOCOL
+            CODE    016AH     0150H     UNIT         ?PR?_NETCIINIT?NETINTERFACE
+            CODE    02BAH     0111H     UNIT         ?PR?_NETPCMAKETCPHEAD?NETPROTOCOL
+            CODE    03CBH     010CH     UNIT         ?PR?NETAPDISPOSEDATA?NETAPPLICATION
+            CODE    04D7H     00D9H     UNIT         ?C?LIB_CODE
+            CODE    05B0H     00BEH     UNIT         ?PR?_NETPCMAKEUDPREPLY?NETPROTOCOL
+            CODE    066EH     00BBH     UNIT         ?PR?_NETCIPACKETRECEIVE?NETINTERFACE
+            CODE    0729H     00B1H     UNIT         ?PR?_NETPCMAKEARPANSWER?NETPROTOCOL
+            CODE    07DAH     0096H     UNIT         ?PR?_NETPCMAKETCPACK?NETPROTOCOL
+            CODE    0870H     008CH     UNIT         ?C_C51STARTUP
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 2
+
+
+            CODE    08FCH     0079H     UNIT         ?PR?_NETPCMAKETCPACKWITHDATA?NETPROTOCOL
+            CODE    0975H     006DH     UNIT         ?PR?_NETPCMAKETCPSYNACK?NETPROTOCOL
+            CODE    09E2H     0066H     UNIT         ?PR?MAIN?MAIN
+            CODE    0A48H     005CH     UNIT         ?PR?_NETCIPACKETSEND?NETINTERFACE
+            CODE    0AA4H     0051H     UNIT         ?PR?_NETPCETHISIPANDMYIP?NETPROTOCOL
+            CODE    0AF5H     0051H     UNIT         ?PR?_NETPCFILLIPHDRCHKSUM?NETPROTOCOL
+            CODE    0B46H     0051H     UNIT         ?PR?_NETPCMAKEECHOREPLY?NETPROTOCOL
+            CODE    0B97H     004EH     UNIT         ?PR?_NETPCINITLENINFO?NETPROTOCOL
+            CODE    0BE5H     0046H     UNIT         ?PR?_NETPCETHISARPANDMYIP?NETPROTOCOL
+            CODE    0C2BH     0044H     UNIT         ?PR?_NETPCMAKEIP?NETPROTOCOL
+            CODE    0C6FH     0043H     UNIT         ?PR?_NETPCINIT?NETPROTOCOL
+            CODE    0CB2H     0042H     UNIT         ?PR?_NETPCMAKEETH?NETPROTOCOL
+            CODE    0CF4H     003FH     UNIT         ?PR?_NETCIREADBUFFER?NETINTERFACE
+            CODE    0D33H     0034H     UNIT         ?PR?_NETCIWRITEBUFFER?NETINTERFACE
+            CODE    0D67H     002CH     UNIT         ?PR?_NETCIPHYWRITE?NETINTERFACE
+            CODE    0D93H     0028H     UNIT         ?C_INITSEG
+            CODE    0DBBH     0022H     UNIT         ?CO?MAIN
+            CODE    0DDDH     0021H     UNIT         ?PR?_NETCISETBANK?NETINTERFACE
+            CODE    0DFEH     001AH     UNIT         ?PR?_DELAYNMS?GLOBAL
+            CODE    0E18H     001AH     UNIT         ?PR?_NETCIWRITEOP?NETINTERFACE
+            CODE    0E32H     0018H     UNIT         ?PR?SPIRECV?NETINTERFACE
+            CODE    0E4AH     0017H     UNIT         ?PR?_NETCIREADOP?NETINTERFACE
+            CODE    0E61H     0015H     UNIT         ?PR?_SPISEND?NETINTERFACE
+            CODE    0E76H     0014H     UNIT         ?PR?NETPCGETTCPDATAPOINTER?NETPROTOCOL
+            CODE    0E8AH     0013H     UNIT         ?PR?_NETCIWRITE?NETINTERFACE
+            CODE    0E9DH     0010H     UNIT         ?PR?_DELAYNUS?GLOBAL
+            CODE    0EADH     000DH     UNIT         ?PR?_NETCIREAD?NETINTERFACE
+            CODE    0EBAH     0009H     UNIT         ?PR?_NETCICLKOUT?NETINTERFACE
+            CODE    0EC3H     0004H     UNIT         ?PR?SYSIDLE?GLOBAL
+            CODE    0EC7H     0004H     UNIT         ?PR?NETHWINIT?NETHARDWARE
+            CODE    0ECBH     0003H     UNIT         ?PR?_SYSPOSTCURMSG?GLOBAL
+            CODE    0ECEH     0003H     UNIT         ?PR?SYSRECVCURMSG?GLOBAL
+
+
+
+OVERLAY MAP OF MODULE:   .\Output\NET (MAIN)
+
+
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                                    -----    -----
+  +--> ?CO?MAIN
+  +--> ?PR?_NETCIINIT?NETINTERFACE
+  +--> ?PR?_NETCICLKOUT?NETINTERFACE
+  +--> ?PR?_DELAYNMS?GLOBAL
+  +--> ?PR?_NETCIPHYWRITE?NETINTERFACE
+  +--> ?PR?_NETPCINIT?NETPROTOCOL
+  +--> ?PR?_SYSPOSTCURMSG?GLOBAL
+  +--> ?PR?SYSRECVCURMSG?GLOBAL
+
+?CO?MAIN                                         -----    -----
+  +--> ?PR?SYSIDLE?GLOBAL
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 3
+
+
+  +--> ?PR?NETAPDISPOSEDATA?NETAPPLICATION
+
+?PR?NETAPDISPOSEDATA?NETAPPLICATION              0008H    0003H
+  +--> ?PR?_SYSPOSTCURMSG?GLOBAL
+  +--> ?PR?_NETCIPACKETRECEIVE?NETINTERFACE
+  +--> ?PR?_NETPCETHISARPANDMYIP?NETPROTOCOL
+  +--> ?PR?_NETPCMAKEARPANSWER?NETPROTOCOL
+  +--> ?PR?_NETPCETHISIPANDMYIP?NETPROTOCOL
+  +--> ?PR?_NETPCMAKEECHOREPLY?NETPROTOCOL
+  +--> ?PR?_NETPCMAKETCPSYNACK?NETPROTOCOL
+  +--> ?PR?_NETPCINITLENINFO?NETPROTOCOL
+  +--> ?PR?NETPCGETTCPDATAPOINTER?NETPROTOCOL
+  +--> ?PR?_NETPCMAKETCPACK?NETPROTOCOL
+  +--> ?PR?_NETPCMAKETCPACKWITHDATA?NETPROTOCOL
+  +--> ?PR?_NETPCMAKEUDPREPLY?NETPROTOCOL
+
+?PR?_NETCIPACKETRECEIVE?NETINTERFACE             000BH    0007H
+  +--> ?PR?_NETCIREAD?NETINTERFACE
+  +--> ?PR?_NETCIWRITE?NETINTERFACE
+  +--> ?PR?_NETCIREADOP?NETINTERFACE
+  +--> ?PR?_NETCIREADBUFFER?NETINTERFACE
+  +--> ?PR?_NETCIWRITEOP?NETINTERFACE
+
+?PR?_NETCIREAD?NETINTERFACE                      -----    -----
+  +--> ?PR?_NETCISETBANK?NETINTERFACE
+  +--> ?PR?_NETCIREADOP?NETINTERFACE
+
+?PR?_NETCISETBANK?NETINTERFACE                   -----    -----
+  +--> ?PR?_NETCIWRITEOP?NETINTERFACE
+
+?PR?_NETCIWRITEOP?NETINTERFACE                   -----    -----
+  +--> ?PR?_SPISEND?NETINTERFACE
+
+?PR?_NETCIREADOP?NETINTERFACE                    -----    -----
+  +--> ?PR?_SPISEND?NETINTERFACE
+  +--> ?PR?SPIRECV?NETINTERFACE
+
+?PR?_NETCIWRITE?NETINTERFACE                     001AH    0001H
+  +--> ?PR?_NETCISETBANK?NETINTERFACE
+  +--> ?PR?_NETCIWRITEOP?NETINTERFACE
+
+?PR?_NETCIREADBUFFER?NETINTERFACE                0012H    0003H
+  +--> ?PR?_SPISEND?NETINTERFACE
+  +--> ?PR?SPIRECV?NETINTERFACE
+
+?PR?_NETPCMAKEARPANSWER?NETPROTOCOL              000BH    0004H
+  +--> ?PR?_NETPCMAKEETH?NETPROTOCOL
+  +--> ?PR?_NETCIPACKETSEND?NETINTERFACE
+
+?PR?_NETPCMAKEETH?NETPROTOCOL                    0015H    0004H
+
+?PR?_NETCIPACKETSEND?NETINTERFACE                0015H    0005H
+  +--> ?PR?_NETCIWRITE?NETINTERFACE
+  +--> ?PR?_NETCIWRITEOP?NETINTERFACE
+  +--> ?PR?_NETCIWRITEBUFFER?NETINTERFACE
+  +--> ?PR?_NETCIREAD?NETINTERFACE
+
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 4
+
+
+?PR?_NETCIWRITEBUFFER?NETINTERFACE               001AH    0003H
+  +--> ?PR?_SPISEND?NETINTERFACE
+
+?PR?_NETPCMAKEECHOREPLY?NETPROTOCOL              000BH    0005H
+  +--> ?PR?_NETPCMAKEETH?NETPROTOCOL
+  +--> ?PR?_NETPCMAKEIP?NETPROTOCOL
+  +--> ?PR?_NETCIPACKETSEND?NETINTERFACE
+
+?PR?_NETPCMAKEIP?NETPROTOCOL                     0015H    0001H
+  +--> ?PR?_NETPCFILLIPHDRCHKSUM?NETPROTOCOL
+
+?PR?_NETPCFILLIPHDRCHKSUM?NETPROTOCOL            0016H    0003H
+  +--> ?PR?_NETPCCHECKSUM?NETPROTOCOL
+
+?PR?_NETPCCHECKSUM?NETPROTOCOL                   0019H    000AH
+
+?PR?_NETPCMAKETCPSYNACK?NETPROTOCOL              000BH    0003H
+  +--> ?PR?_NETPCMAKEETH?NETPROTOCOL
+  +--> ?PR?_NETPCMAKEIP?NETPROTOCOL
+  +--> ?PR?_NETPCMAKETCPHEAD?NETPROTOCOL
+  +--> ?PR?_NETPCCHECKSUM?NETPROTOCOL
+  +--> ?PR?_NETCIPACKETSEND?NETINTERFACE
+
+?PR?_NETPCMAKETCPHEAD?NETPROTOCOL                000EH    0009H
+
+?PR?_NETPCMAKETCPACK?NETPROTOCOL                 000BH    0003H
+  +--> ?PR?_NETPCMAKEETH?NETPROTOCOL
+  +--> ?PR?_NETPCMAKETCPHEAD?NETPROTOCOL
+  +--> ?PR?_NETPCMAKEIP?NETPROTOCOL
+  +--> ?PR?_NETPCCHECKSUM?NETPROTOCOL
+  +--> ?PR?_NETCIPACKETSEND?NETINTERFACE
+
+?PR?_NETPCMAKETCPACKWITHDATA?NETPROTOCOL         000BH    0005H
+  +--> ?PR?_NETPCFILLIPHDRCHKSUM?NETPROTOCOL
+  +--> ?PR?_NETPCCHECKSUM?NETPROTOCOL
+  +--> ?PR?_NETCIPACKETSEND?NETINTERFACE
+
+?PR?_NETPCMAKEUDPREPLY?NETPROTOCOL               000BH    000AH
+  +--> ?PR?_NETPCMAKEETH?NETPROTOCOL
+  +--> ?PR?_NETPCMAKEIP?NETPROTOCOL
+  +--> ?PR?_NETPCCHECKSUM?NETPROTOCOL
+  +--> ?PR?_NETCIPACKETSEND?NETINTERFACE
+
+?PR?_NETCIINIT?NETINTERFACE                      0008H    0003H
+  +--> ?PR?NETHWINIT?NETHARDWARE
+  +--> ?PR?_NETCIWRITEOP?NETINTERFACE
+  +--> ?PR?_DELAYNMS?GLOBAL
+  +--> ?PR?_NETCIREAD?NETINTERFACE
+  +--> ?PR?_NETCIWRITE?NETINTERFACE
+  +--> ?PR?_NETCIPHYWRITE?NETINTERFACE
+  +--> ?PR?_NETCISETBANK?NETINTERFACE
+
+?PR?_DELAYNMS?GLOBAL                             -----    -----
+  +--> ?PR?_DELAYNUS?GLOBAL
+
+?PR?_NETCIPHYWRITE?NETINTERFACE                  -----    -----
+  +--> ?PR?_NETCIWRITE?NETINTERFACE
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 5
+
+
+  +--> ?PR?_NETCIREAD?NETINTERFACE
+  +--> ?PR?_DELAYNUS?GLOBAL
+
+?PR?_NETCICLKOUT?NETINTERFACE                    -----    -----
+  +--> ?PR?_NETCIWRITE?NETINTERFACE
+
+?PR?_NETPCINIT?NETPROTOCOL                       0008H    0008H
+
+
+
+SYMBOL TABLE OF MODULE:  .\Output\NET (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  D:00A8H         PUBLIC        IE
+  C:0DC5H         SYMBOL        avTaskTbl
+  D:00B8H         PUBLIC        IP
+  C:09E2H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0DBBH         SYMBOL        acLocalMac
+  C:0DC1H         SYMBOL        acLocalIP
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:09E2H         LINE#         50
+  C:09E2H         LINE#         51
+  C:09E2H         LINE#         53
+  C:09E5H         LINE#         54
+  C:09E8H         LINE#         56
+  C:09F1H         LINE#         57
+  C:09F6H         LINE#         58
+  C:09FDH         LINE#         59
+  C:0A06H         LINE#         60
+  C:0A0DH         LINE#         61
+  C:0A25H         LINE#         63
+  C:0A2AH         LINE#         66
+  C:0A2AH         LINE#         67
+  C:0A2AH         LINE#         69
+  C:0A46H         LINE#         70
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C_STARTUP
+  C:0870H         SEGMENT       ?C_C51STARTUP
+  I:0038H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 6
+
+
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0873H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0000H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0870H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         92
+  C:0870H         LINE#         99
+  C:0872H         LINE#         100
+  C:0873H         LINE#         101
+  C:0874H         LINE#         102
+  C:0876H         LINE#         151
+  C:0879H         LINE#         155
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        GLOBAL
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:0EC3H         PUBLIC        SYSIdle
+  D:0090H         PUBLIC        P1
+  C:0DFEH         PUBLIC        _DelayNms
+  D:00A0H         PUBLIC        P2
+  D:0034H         SYMBOL        __ucSysMsg
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  C:0E9DH         PUBLIC        _DelayNus
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0ECBH         PUBLIC        _SYSPostCurMsg
+  D:00C8H         PUBLIC        T2CON
+  C:0ECEH         PUBLIC        SYSRecvCurMsg
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAYNUS
+  D:0006H         SYMBOL        t
+  C:0E9DH         LINE#         18
+  C:0E9DH         LINE#         19
+  C:0E9DH         LINE#         21
+  C:0E9DH         LINE#         22
+  C:0E9EH         LINE#         23
+  C:0EACH         LINE#         25
+  -------         ENDPROC       _DELAYNUS
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 7
+
+
+  -------         PROC          _DELAYNMS
+  D:0004H         SYMBOL        t
+  C:0DFEH         LINE#         32
+  C:0E02H         LINE#         33
+  C:0E02H         LINE#         35
+  C:0E02H         LINE#         36
+  C:0E09H         LINE#         38
+  C:0E17H         LINE#         39
+  -------         ENDPROC       _DELAYNMS
+  -------         PROC          SYSIDLE
+  C:0EC3H         LINE#         46
+  C:0EC3H         LINE#         47
+  C:0EC3H         LINE#         48
+  C:0EC6H         LINE#         49
+  -------         ENDPROC       SYSIDLE
+  -------         PROC          _SYSPOSTCURMSG
+  D:0007H         SYMBOL        msg
+  C:0ECBH         LINE#         56
+  C:0ECBH         LINE#         57
+  C:0ECBH         LINE#         58
+  C:0ECDH         LINE#         59
+  -------         ENDPROC       _SYSPOSTCURMSG
+  -------         PROC          SYSRECVCURMSG
+  C:0ECEH         LINE#         66
+  C:0ECEH         LINE#         67
+  C:0ECEH         LINE#         68
+  C:0ED0H         LINE#         69
+  -------         ENDPROC       SYSRECVCURMSG
+  -------         ENDMOD        GLOBAL
+
+  -------         MODULE        NETAPPLICATION
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  X:0000H         SYMBOL        Packet
+  D:00C8H         PUBLIC        T2CON
+  C:03CBH         PUBLIC        NETApDisposeData
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          NETAPDISPOSEDATA
+  -------         DO            
+  D:0008H         SYMBOL        usnetRecvLen
+  D:000AH         SYMBOL        ucdatP
+  -------         ENDDO         
+  C:03CBH         LINE#         32
+  C:03CBH         LINE#         33
+  C:03CBH         LINE#         34
+  C:03D0H         LINE#         35
+  C:03D2H         LINE#         37
+  C:03D7H         LINE#         40
+  C:03E8H         LINE#         42
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 8
+
+
+  C:03F1H         LINE#         43
+  C:03F1H         LINE#         45
+  C:03F1H         LINE#         48
+  C:0401H         LINE#         49
+  C:0401H         LINE#         50
+  C:040AH         LINE#         53
+  C:040AH         LINE#         56
+  C:041DH         LINE#         57
+  C:041DH         LINE#         59
+  C:041DH         LINE#         64
+  C:042BH         LINE#         66
+  C:042BH         LINE#         67
+  C:0438H         LINE#         69
+  C:0438H         LINE#         74
+  C:044CH         LINE#         76
+  C:044CH         LINE#         77
+  C:0453H         LINE#         78
+  C:0453H         LINE#         79
+  C:045CH         LINE#         81
+  C:045CH         LINE#         82
+  C:0463H         LINE#         83
+  C:0463H         LINE#         84
+  C:046CH         LINE#         86
+  C:0471H         LINE#         88
+  C:0475H         LINE#         89
+  C:0475H         LINE#         90
+  C:047CH         LINE#         91
+  C:047CH         LINE#         92
+  C:0487H         LINE#         94
+  C:0487H         LINE#         97
+  C:0487H         LINE#         99
+  C:0492H         LINE#         103
+  C:04A5H         LINE#         104
+  C:04A5H         LINE#         105
+  C:04A5H         LINE#         110
+  C:04B8H         LINE#         112
+  C:04B8H         LINE#         115
+  C:04D6H         LINE#         119
+  C:04D6H         LINE#         120
+  -------         ENDPROC       NETAPDISPOSEDATA
+  -------         ENDMOD        NETAPPLICATION
+
+  -------         MODULE        NETPROTOCOL
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  D:00A8H         PUBLIC        IE
+  C:0B46H         PUBLIC        _NETPcMakeEchoReply
+  C:0AF5H         PUBLIC        _NETPcFillIPHdrChkSum
+  C:0C6FH         PUBLIC        _NETPcInit
+  D:0023H         SYMBOL        acMACAddr
+  C:0003H         PUBLIC        _NETPcCheckSum
+  D:0029H         SYMBOL        usInfoDataLen
+  C:0729H         PUBLIC        _NETPcMakeArpAnswer
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 9
+
+
+  C:0C31H         PUBLIC        _NETPcMakeIP
+  C:0BE5H         PUBLIC        _NETPcEthIsArpAndMyIp
+  D:00B8H         PUBLIC        IP
+  C:02BAH         PUBLIC        _NETPcMakeTcpHead
+  C:0CB2H         PUBLIC        _NETPcMakeEth
+  C:0AA4H         PUBLIC        _NETPcEthIsIpAndMyIp
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:002BH         SYMBOL        ucSeqNum
+  C:07DAH         PUBLIC        _NETPcMakeTcpAck
+  C:05B0H         PUBLIC        _NETPcMakeUdpReply
+  D:002CH         SYMBOL        usInfoHdrLen
+  C:0B97H         PUBLIC        _NETPcInitLenInfo
+  C:0E76H         PUBLIC        NETPcGetTcpDataPointer
+  C:08FCH         PUBLIC        _NETPcMakeTcpAckWithData
+  D:002EH         SYMBOL        acIPAddr
+  D:00C8H         PUBLIC        T2CON
+  C:0975H         PUBLIC        _NETPcMakeTcpSynAck
+  D:0032H         SYMBOL        usTCPPort
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _NETPCCHECKSUM
+  D:0019H         SYMBOL        buf
+  D:001CH         SYMBOL        len
+  D:001EH         SYMBOL        type
+  -------         DO            
+  D:001FH         SYMBOL        sum
+  -------         ENDDO         
+  C:0003H         LINE#         35
+  C:000DH         LINE#         36
+  C:000DH         LINE#         37
+  C:0016H         LINE#         39
+  C:0016H         LINE#         40
+  C:0016H         LINE#         42
+  C:0016H         LINE#         44
+  C:001BH         LINE#         45
+  C:001BH         LINE#         46
+  C:0030H         LINE#         47
+  C:0051H         LINE#         48
+  C:0051H         LINE#         50
+  C:0056H         LINE#         51
+  C:0056H         LINE#         52
+  C:006BH         LINE#         53
+  C:008CH         LINE#         54
+  C:008CH         LINE#         56
+  C:0097H         LINE#         57
+  C:0097H         LINE#         58
+  C:00DFH         LINE#         59
+  C:00EAH         LINE#         60
+  C:00F6H         LINE#         61
+  C:00F8H         LINE#         63
+  C:00FEH         LINE#         64
+  C:00FEH         LINE#         65
+  C:0125H         LINE#         66
+  C:0125H         LINE#         68
+  C:0138H         LINE#         69
+  C:0138H         LINE#         70
+  C:015FH         LINE#         71
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 10
+
+
+  C:0161H         LINE#         73
+  C:0169H         LINE#         74
+  -------         ENDPROC       _NETPCCHECKSUM
+  -------         PROC          _NETPCINIT
+  D:0008H         SYMBOL        mymac
+  D:000BH         SYMBOL        myip
+  D:000EH         SYMBOL        port
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:0C6FH         LINE#         82
+  C:0C75H         LINE#         83
+  C:0C75H         LINE#         84
+  C:0C77H         LINE#         85
+  C:0C7DH         LINE#         87
+  C:0C7DH         LINE#         88
+  C:0C7DH         LINE#         90
+  C:0C92H         LINE#         92
+  C:0C93H         LINE#         93
+  C:0C96H         LINE#         95
+  C:0C98H         LINE#         97
+  C:0C98H         LINE#         98
+  C:0C98H         LINE#         99
+  C:0CADH         LINE#         101
+  C:0CAEH         LINE#         102
+  C:0CB1H         LINE#         103
+  -------         ENDPROC       _NETPCINIT
+  -------         PROC          _NETPCETHISARPANDMYIP
+  D:0001H         SYMBOL        buf
+  D:0004H         SYMBOL        len
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:0BE5H         LINE#         110
+  C:0BE5H         LINE#         111
+  C:0BE5H         LINE#         112
+  C:0BE7H         LINE#         114
+  C:0BF0H         LINE#         115
+  C:0BF0H         LINE#         116
+  C:0BF1H         LINE#         117
+  C:0BF1H         LINE#         119
+  C:0C04H         LINE#         121
+  C:0C04H         LINE#         122
+  C:0C07H         LINE#         123
+  C:0C07H         LINE#         124
+  C:0C0DH         LINE#         125
+  C:0C0DH         LINE#         126
+  C:0C22H         LINE#         127
+  C:0C22H         LINE#         128
+  C:0C25H         LINE#         129
+  C:0C25H         LINE#         131
+  C:0C26H         LINE#         132
+  C:0C28H         LINE#         134
+  C:0C2AH         LINE#         135
+  -------         ENDPROC       _NETPCETHISARPANDMYIP
+  -------         PROC          _NETPCETHISIPANDMYIP
+  D:0001H         SYMBOL        buf
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 11
+
+
+  D:0004H         SYMBOL        len
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:0AA4H         LINE#         142
+  C:0AA4H         LINE#         143
+  C:0AA4H         LINE#         144
+  C:0AA6H         LINE#         146
+  C:0AAFH         LINE#         147
+  C:0AAFH         LINE#         148
+  C:0AB0H         LINE#         149
+  C:0AB0H         LINE#         151
+  C:0AC1H         LINE#         153
+  C:0AC1H         LINE#         154
+  C:0AC4H         LINE#         155
+  C:0AC4H         LINE#         157
+  C:0ACEH         LINE#         158
+  C:0ACEH         LINE#         159
+  C:0AD1H         LINE#         160
+  C:0AD1H         LINE#         162
+  C:0AD7H         LINE#         163
+  C:0AD7H         LINE#         164
+  C:0AECH         LINE#         165
+  C:0AECH         LINE#         166
+  C:0AEFH         LINE#         167
+  C:0AEFH         LINE#         169
+  C:0AF0H         LINE#         170
+  C:0AF2H         LINE#         171
+  C:0AF4H         LINE#         172
+  -------         ENDPROC       _NETPCETHISIPANDMYIP
+  -------         PROC          _NETPCMAKEETH
+  D:0015H         SYMBOL        buf
+  -------         DO            
+  D:0018H         SYMBOL        i
+  -------         ENDDO         
+  C:0CB2H         LINE#         179
+  C:0CB8H         LINE#         180
+  C:0CB8H         LINE#         181
+  C:0CBBH         LINE#         182
+  C:0CBBH         LINE#         183
+  C:0CBBH         LINE#         184
+  C:0CD8H         LINE#         185
+  C:0CECH         LINE#         186
+  C:0CEEH         LINE#         187
+  C:0CF3H         LINE#         188
+  -------         ENDPROC       _NETPCMAKEETH
+  -------         PROC          _NETPCFILLIPHDRCHKSUM
+  D:0016H         SYMBOL        buf
+  -------         DO            
+  D:0004H         SYMBOL        ck
+  -------         ENDDO         
+  C:0AF5H         LINE#         195
+  C:0AFBH         LINE#         196
+  C:0AFBH         LINE#         199
+  C:0B02H         LINE#         200
+  C:0B09H         LINE#         201
+  C:0B11H         LINE#         202
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 12
+
+
+  C:0B18H         LINE#         203
+  C:0B20H         LINE#         205
+  C:0B32H         LINE#         207
+  C:0B3FH         LINE#         208
+  -------         ENDPROC       _NETPCFILLIPHDRCHKSUM
+  -------         PROC          L?0071
+  -------         ENDPROC       L?0071
+  -------         PROC          _NETPCMAKEIP
+  D:0001H         SYMBOL        buf
+  -------         DO            
+  D:0015H         SYMBOL        i
+  -------         ENDDO         
+  C:0C31H         LINE#         216
+  C:0C31H         LINE#         217
+  C:0C31H         LINE#         218
+  C:0C34H         LINE#         220
+  C:0C34H         LINE#         221
+  C:0C34H         LINE#         222
+  C:0C50H         LINE#         223
+  C:0C65H         LINE#         224
+  C:0C67H         LINE#         225
+  C:0C6CH         LINE#         227
+  -------         ENDPROC       _NETPCMAKEIP
+  -------         PROC          _NETPCMAKETCPHEAD
+  D:0001H         SYMBOL        buf
+  D:0011H         SYMBOL        rel_ack_num
+  D:0013H         SYMBOL        mss
+  D:0014H         SYMBOL        cp_seq
+  -------         DO            
+  D:0015H         SYMBOL        i
+  D:0016H         SYMBOL        tseq
+  -------         ENDDO         
+  C:02BAH         LINE#         238
+  C:02BEH         LINE#         239
+  C:02BEH         LINE#         240
+  C:02C1H         LINE#         243
+  C:02C1H         LINE#         244
+  C:02C1H         LINE#         245
+  C:02DDH         LINE#         246
+  C:02EBH         LINE#         247
+  C:02EDH         LINE#         248
+  C:02F2H         LINE#         250
+  C:02FAH         LINE#         251
+  C:0302H         LINE#         253
+  C:0305H         LINE#         255
+  C:0305H         LINE#         256
+  C:0305H         LINE#         257
+  C:031EH         LINE#         258
+  C:032CH         LINE#         259
+  C:033BH         LINE#         261
+  C:033FH         LINE#         262
+  C:033FH         LINE#         263
+  C:034BH         LINE#         264
+  C:034DH         LINE#         266
+  C:034DH         LINE#         267
+  C:035BH         LINE#         268
+  C:035BH         LINE#         269
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 13
+
+
+  C:0362H         LINE#         270
+  C:0365H         LINE#         271
+  C:0365H         LINE#         273
+  C:0369H         LINE#         274
+  C:0369H         LINE#         275
+  C:036FH         LINE#         276
+  C:0376H         LINE#         277
+  C:037EH         LINE#         278
+  C:0385H         LINE#         279
+  C:0389H         LINE#         280
+  C:0389H         LINE#         282
+  C:0390H         LINE#         283
+  C:0397H         LINE#         285
+  C:039BH         LINE#         286
+  C:039BH         LINE#         288
+  C:03A3H         LINE#         289
+  C:03ABH         LINE#         290
+  C:03B3H         LINE#         291
+  C:03BBH         LINE#         292
+  C:03C0H         LINE#         293
+  C:03C2H         LINE#         295
+  C:03C2H         LINE#         296
+  C:03CAH         LINE#         297
+  C:03CAH         LINE#         298
+  -------         ENDPROC       _NETPCMAKETCPHEAD
+  -------         PROC          _NETPCMAKEARPANSWER
+  D:000BH         SYMBOL        buf
+  -------         DO            
+  D:000EH         SYMBOL        i
+  -------         ENDDO         
+  C:0729H         LINE#         305
+  C:072FH         LINE#         306
+  C:072FH         LINE#         307
+  C:0732H         LINE#         309
+  C:0735H         LINE#         311
+  C:0742H         LINE#         312
+  C:074AH         LINE#         314
+  C:0751H         LINE#         315
+  C:0751H         LINE#         316
+  C:0773H         LINE#         317
+  C:0788H         LINE#         318
+  C:078AH         LINE#         319
+  C:078CH         LINE#         321
+  C:078FH         LINE#         323
+  C:078FH         LINE#         324
+  C:078FH         LINE#         325
+  C:07B1H         LINE#         326
+  C:07C6H         LINE#         327
+  C:07C8H         LINE#         328
+  C:07CDH         LINE#         330
+  -------         ENDPROC       _NETPCMAKEARPANSWER
+  -------         PROC          _NETPCMAKEECHOREPLY
+  D:000BH         SYMBOL        buf
+  D:000EH         SYMBOL        len
+  C:0B46H         LINE#         339
+  C:0B50H         LINE#         340
+  C:0B50H         LINE#         341
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 14
+
+
+  C:0B53H         LINE#         342
+  C:0B5CH         LINE#         344
+  C:0B69H         LINE#         346
+  C:0B74H         LINE#         347
+  C:0B74H         LINE#         348
+  C:0B82H         LINE#         349
+  C:0B82H         LINE#         351
+  C:0B90H         LINE#         353
+  -------         ENDPROC       _NETPCMAKEECHOREPLY
+  -------         PROC          _NETPCMAKEUDPREPLY
+  D:000BH         SYMBOL        buf
+  D:000EH         SYMBOL        sz
+  D:0011H         SYMBOL        datalen
+  D:0012H         SYMBOL        port
+  -------         DO            
+  D:0014H         SYMBOL        i
+  D:0004H         SYMBOL        ck
+  -------         ENDDO         
+  C:05B0H         LINE#         364
+  C:05B6H         LINE#         365
+  C:05B6H         LINE#         366
+  C:05B9H         LINE#         369
+  C:05BCH         LINE#         372
+  C:05C9H         LINE#         373
+  C:05CDH         LINE#         375
+  C:05D0H         LINE#         377
+  C:05DEH         LINE#         378
+  C:05E6H         LINE#         379
+  C:05EDH         LINE#         380
+  C:05F7H         LINE#         381
+  C:05FEH         LINE#         382
+  C:0605H         LINE#         384
+  C:060CH         LINE#         385
+  C:060CH         LINE#         386
+  C:0630H         LINE#         387
+  C:0632H         LINE#         388
+  C:0634H         LINE#         390
+  C:064FH         LINE#         391
+  C:065CH         LINE#         392
+  C:0663H         LINE#         394
+  -------         ENDPROC       _NETPCMAKEUDPREPLY
+  -------         PROC          _NETPCMAKETCPSYNACK
+  D:000BH         SYMBOL        buf
+  -------         DO            
+  D:0004H         SYMBOL        ck
+  -------         ENDDO         
+  C:0975H         LINE#         402
+  C:097BH         LINE#         403
+  C:097BH         LINE#         405
+  C:097EH         LINE#         407
+  C:098BH         LINE#         408
+  C:0993H         LINE#         409
+  C:0996H         LINE#         410
+  C:09A4H         LINE#         411
+  C:09B0H         LINE#         413
+  C:09C7H         LINE#         414
+  C:09D4H         LINE#         415
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 15
+
+
+  C:09DBH         LINE#         417
+  -------         ENDPROC       _NETPCMAKETCPSYNACK
+  -------         PROC          NETPCGETTCPDATAPOINTER
+  C:0E76H         LINE#         426
+  C:0E76H         LINE#         427
+  C:0E76H         LINE#         428
+  C:0E7CH         LINE#         429
+  C:0E7CH         LINE#         430
+  C:0E86H         LINE#         431
+  C:0E86H         LINE#         433
+  C:0E86H         LINE#         434
+  C:0E89H         LINE#         435
+  C:0E89H         LINE#         436
+  -------         ENDPROC       NETPCGETTCPDATAPOINTER
+  -------         PROC          _NETPCINITLENINFO
+  D:0001H         SYMBOL        buf
+  C:0B97H         LINE#         444
+  C:0B97H         LINE#         445
+  C:0B97H         LINE#         446
+  C:0BABH         LINE#         447
+  C:0BB5H         LINE#         448
+  C:0BC7H         LINE#         449
+  C:0BD4H         LINE#         451
+  C:0BDFH         LINE#         452
+  C:0BDFH         LINE#         453
+  C:0BE4H         LINE#         454
+  C:0BE4H         LINE#         455
+  -------         ENDPROC       _NETPCINITLENINFO
+  -------         PROC          _NETPCMAKETCPACK
+  D:000BH         SYMBOL        buf
+  D:0006H         SYMBOL        bfin
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:07DAH         LINE#         463
+  C:07E2H         LINE#         464
+  C:07E2H         LINE#         467
+  C:07E5H         LINE#         469
+  C:07F3H         LINE#         473
+  C:0805H         LINE#         475
+  C:0811H         LINE#         476
+  C:0811H         LINE#         477
+  C:0819H         LINE#         478
+  C:081BH         LINE#         480
+  C:081BH         LINE#         481
+  C:0828H         LINE#         482
+  C:0828H         LINE#         485
+  C:082CH         LINE#         487
+  C:0839H         LINE#         488
+  C:083BH         LINE#         490
+  C:083EH         LINE#         492
+  C:0855H         LINE#         494
+  C:0862H         LINE#         495
+  C:0869H         LINE#         497
+  -------         ENDPROC       _NETPCMAKETCPACK
+  -------         PROC          _NETPCMAKETCPACKWITHDATA
+  D:000BH         SYMBOL        buf
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 16
+
+
+  D:000EH         SYMBOL        dlen
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:08FCH         LINE#         505
+  C:0906H         LINE#         506
+  C:0906H         LINE#         509
+  C:090EH         LINE#         511
+  C:0919H         LINE#         513
+  C:091FH         LINE#         514
+  C:0926H         LINE#         516
+  C:0929H         LINE#         518
+  C:0936H         LINE#         519
+  C:093DH         LINE#         522
+  C:0955H         LINE#         524
+  C:0962H         LINE#         525
+  C:0969H         LINE#         527
+  -------         ENDPROC       _NETPCMAKETCPACKWITHDATA
+  -------         ENDMOD        NETPROTOCOL
+
+  -------         MODULE        NETINTERFACE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0E32H         SYMBOL        SPIRecv
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0E8DH         PUBLIC        _NETCiWrite
+  D:00E8H         PUBLIC        P4
+  C:016AH         PUBLIC        _NETCiInit
+  D:00A8H         PUBLIC        IE
+  B:0090H.4       PUBLIC        CS
+  D:00B8H         PUBLIC        IP
+  C:066EH         PUBLIC        _NETCiPacketReceive
+  C:0DDDH         PUBLIC        _NETCiSetBank
+  B:0090H.7       PUBLIC        SCLK
+  C:0E4AH         PUBLIC        _NETCiReadOp
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  I:0036H         SYMBOL        NextPacketPtr
+  C:0D67H         PUBLIC        _NETCiPhyWrite
+  B:0090H.6       PUBLIC        MISO
+  B:0090H.5       PUBLIC        MOSI
+  C:0E1CH         PUBLIC        _NETCiWriteOp
+  C:0EBAH         PUBLIC        _NETCiClkOut
+  D:0035H         SYMBOL        Enc28j60Bank
+  C:0CF4H         PUBLIC        _NETCiReadBuffer
+  C:0E61H         SYMBOL        _SPISend
+  C:0A48H         PUBLIC        _NETCiPacketSend
+  C:0D33H         PUBLIC        _NETCiWriteBuffer
+  D:00C8H         PUBLIC        T2CON
+  C:0EADH         PUBLIC        _NETCiRead
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _SPISEND
+  D:0007H         SYMBOL        d
+  -------         DO            
+  D:0006H         SYMBOL        i
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 17
+
+
+  -------         ENDDO         
+  C:0E61H         LINE#         35
+  C:0E61H         LINE#         36
+  C:0E61H         LINE#         39
+  C:0E63H         LINE#         40
+  C:0E63H         LINE#         41
+  C:0E65H         LINE#         42
+  C:0E69H         LINE#         43
+  C:0E6BH         LINE#         44
+  C:0E6FH         LINE#         45
+  C:0E73H         LINE#         47
+  C:0E75H         LINE#         49
+  -------         ENDPROC       _SPISEND
+  -------         PROC          SPIRECV
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0007H         SYMBOL        d
+  -------         ENDDO         
+  C:0E32H         LINE#         56
+  C:0E32H         LINE#         57
+  C:0E32H         LINE#         60
+  C:0E34H         LINE#         61
+  C:0E36H         LINE#         63
+  C:0E37H         LINE#         64
+  C:0E37H         LINE#         65
+  C:0E39H         LINE#         66
+  C:0E3DH         LINE#         67
+  C:0E43H         LINE#         68
+  C:0E45H         LINE#         69
+  C:0E49H         LINE#         71
+  C:0E49H         LINE#         72
+  -------         ENDPROC       SPIRECV
+  -------         PROC          L?0041
+  -------         ENDPROC       L?0041
+  -------         PROC          _NETCIWRITEOP
+  D:0006H         SYMBOL        op
+  D:0005H         SYMBOL        addr
+  D:0004H         SYMBOL        dat
+  C:0E1CH         LINE#         81
+  C:0E20H         LINE#         82
+  C:0E20H         LINE#         83
+  C:0E22H         LINE#         85
+  C:0E2AH         LINE#         86
+  C:0E2FH         LINE#         88
+  C:0E31H         LINE#         89
+  -------         ENDPROC       _NETCIWRITEOP
+  -------         PROC          _NETCIREADOP
+  D:0007H         SYMBOL        op
+  D:0005H         SYMBOL        addr
+  -------         DO            
+  D:0007H         SYMBOL        d
+  -------         ENDDO         
+  C:0E4AH         LINE#         96
+  C:0E4AH         LINE#         97
+  C:0E4AH         LINE#         100
+  C:0E4CH         LINE#         102
+  C:0E54H         LINE#         104
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 18
+
+
+  C:0E57H         LINE#         106
+  C:0E5BH         LINE#         107
+  C:0E5BH         LINE#         108
+  C:0E5EH         LINE#         109
+  C:0E5EH         LINE#         111
+  C:0E60H         LINE#         113
+  C:0E60H         LINE#         114
+  -------         ENDPROC       _NETCIREADOP
+  -------         PROC          _NETCIREADBUFFER
+  D:0004H         SYMBOL        len
+  D:0012H         SYMBOL        buf
+  C:0CF4H         LINE#         122
+  C:0CFEH         LINE#         123
+  C:0CFEH         LINE#         124
+  C:0D00H         LINE#         126
+  C:0D05H         LINE#         128
+  C:0D0FH         LINE#         129
+  C:0D0FH         LINE#         130
+  C:0D24H         LINE#         131
+  C:0D26H         LINE#         133
+  C:0D30H         LINE#         134
+  C:0D32H         LINE#         135
+  -------         ENDPROC       _NETCIREADBUFFER
+  -------         PROC          _NETCIWRITEBUFFER
+  D:0004H         SYMBOL        len
+  D:001AH         SYMBOL        buf
+  C:0D33H         LINE#         143
+  C:0D3DH         LINE#         144
+  C:0D3DH         LINE#         145
+  C:0D3FH         LINE#         147
+  C:0D43H         LINE#         149
+  C:0D4DH         LINE#         150
+  C:0D4DH         LINE#         151
+  C:0D62H         LINE#         152
+  C:0D64H         LINE#         154
+  C:0D66H         LINE#         155
+  -------         ENDPROC       _NETCIWRITEBUFFER
+  -------         PROC          _NETCISETBANK
+  D:0002H         SYMBOL        addr
+  C:0DDDH         LINE#         163
+  C:0DDFH         LINE#         164
+  C:0DDFH         LINE#         165
+  C:0DE6H         LINE#         166
+  C:0DE6H         LINE#         168
+  C:0DEBH         LINE#         170
+  C:0DF8H         LINE#         172
+  C:0DFDH         LINE#         173
+  C:0DFDH         LINE#         174
+  -------         ENDPROC       _NETCISETBANK
+  -------         PROC          _NETCIREAD
+  D:0001H         SYMBOL        addr
+  C:0EADH         LINE#         182
+  C:0EAFH         LINE#         183
+  C:0EAFH         LINE#         185
+  C:0EB2H         LINE#         187
+  C:0EB9H         LINE#         189
+  -------         ENDPROC       _NETCIREAD
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 19
+
+
+  -------         PROC          _NETCICLKOUT
+  D:0007H         SYMBOL        clk
+  C:0EBAH         LINE#         196
+  C:0EBAH         LINE#         197
+  C:0EBAH         LINE#         198
+  -------         ENDPROC       _NETCICLKOUT
+  -------         PROC          L?0042
+  -------         ENDPROC       L?0042
+  -------         PROC          _NETCIWRITE
+  D:0001H         SYMBOL        addr
+  D:001AH         SYMBOL        dat
+  C:0E8DH         LINE#         207
+  C:0E91H         LINE#         209
+  C:0E91H         LINE#         210
+  C:0E94H         LINE#         211
+  -------         ENDPROC       _NETCIWRITE
+  -------         PROC          _NETCIPHYWRITE
+  D:0005H         SYMBOL        addr
+  D:0082H         SYMBOL        dat
+  C:0D67H         LINE#         219
+  C:0D6DH         LINE#         220
+  C:0D6DH         LINE#         221
+  C:0D72H         LINE#         222
+  C:0D79H         LINE#         223
+  C:0D80H         LINE#         224
+  C:0D89H         LINE#         225
+  C:0D89H         LINE#         226
+  C:0D90H         LINE#         227
+  C:0D92H         LINE#         228
+  -------         ENDPROC       _NETCIPHYWRITE
+  -------         PROC          _NETCIINIT
+  D:0008H         SYMBOL        mac
+  C:016AH         LINE#         235
+  C:0170H         LINE#         236
+  C:0170H         LINE#         237
+  C:0173H         LINE#         239
+  C:017CH         LINE#         240
+  C:0183H         LINE#         241
+  C:018CH         LINE#         243
+  C:0192H         LINE#         244
+  C:0198H         LINE#         245
+  C:019FH         LINE#         246
+  C:01A6H         LINE#         247
+  C:01AAH         LINE#         248
+  C:01B1H         LINE#         249
+  C:01B8H         LINE#         251
+  C:01BFH         LINE#         252
+  C:01C6H         LINE#         253
+  C:01CDH         LINE#         254
+  C:01D4H         LINE#         257
+  C:01DBH         LINE#         259
+  C:01E2H         LINE#         260
+  C:01E9H         LINE#         261
+  C:01F0H         LINE#         262
+  C:01F7H         LINE#         265
+  C:01FEH         LINE#         267
+  C:0205H         LINE#         270
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 20
+
+
+  C:020EH         LINE#         272
+  C:0215H         LINE#         273
+  C:021CH         LINE#         274
+  C:0223H         LINE#         275
+  C:022AH         LINE#         276
+  C:0231H         LINE#         278
+  C:0240H         LINE#         279
+  C:0252H         LINE#         280
+  C:0264H         LINE#         281
+  C:0276H         LINE#         282
+  C:0288H         LINE#         283
+  C:029AH         LINE#         286
+  C:02A3H         LINE#         289
+  C:02A8H         LINE#         292
+  C:02B1H         LINE#         294
+  -------         ENDPROC       _NETCIINIT
+  -------         PROC          _NETCIPACKETSEND
+  D:0015H         SYMBOL        packet
+  D:0018H         SYMBOL        len
+  C:0A48H         LINE#         303
+  C:0A52H         LINE#         304
+  C:0A52H         LINE#         306
+  C:0A59H         LINE#         307
+  C:0A60H         LINE#         308
+  C:0A69H         LINE#         309
+  C:0A77H         LINE#         311
+  C:0A7FH         LINE#         313
+  C:0A8CH         LINE#         314
+  C:0A95H         LINE#         316
+  C:0A9EH         LINE#         317
+  C:0A9EH         LINE#         318
+  C:0AA3H         LINE#         320
+  C:0AA3H         LINE#         321
+  -------         ENDPROC       _NETCIPACKETSEND
+  -------         PROC          _NETCIPACKETRECEIVE
+  D:000BH         SYMBOL        packet
+  D:000EH         SYMBOL        maxlen
+  -------         DO            
+  D:0002H         SYMBOL        rxstat
+  D:0010H         SYMBOL        len
+  -------         ENDDO         
+  C:066EH         LINE#         328
+  C:0678H         LINE#         329
+  C:0678H         LINE#         333
+  C:0680H         LINE#         334
+  C:0680H         LINE#         335
+  C:0683H         LINE#         336
+  C:0683H         LINE#         339
+  C:068CH         LINE#         340
+  C:0694H         LINE#         342
+  C:06A0H         LINE#         344
+  C:06ACH         LINE#         346
+  C:06B6H         LINE#         347
+  C:06C0H         LINE#         348
+  C:06CCH         LINE#         351
+  C:06D5H         LINE#         353
+  C:06DEH         LINE#         355
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 21
+
+
+  C:06F1H         LINE#         356
+  C:06F1H         LINE#         357
+  C:06F5H         LINE#         358
+  C:06F5H         LINE#         360
+  C:06F9H         LINE#         361
+  C:06F9H         LINE#         362
+  C:06FEH         LINE#         363
+  C:0700H         LINE#         365
+  C:0700H         LINE#         367
+  C:070DH         LINE#         369
+  C:070DH         LINE#         371
+  C:0716H         LINE#         372
+  C:071BH         LINE#         375
+  C:0724H         LINE#         377
+  C:0728H         LINE#         378
+  -------         ENDPROC       _NETCIPACKETRECEIVE
+  -------         ENDMOD        NETINTERFACE
+
+  -------         MODULE        NETHARDWARE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0EC7H         PUBLIC        NETHwInit
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          NETHWINIT
+  C:0EC7H         LINE#         21
+  C:0EC7H         LINE#         22
+  C:0EC7H         LINE#         23
+  C:0ECAH         LINE#         25
+  -------         ENDPROC       NETHWINIT
+  -------         ENDMOD        NETHARDWARE
+
+  -------         MODULE        ?C?CLDPTR
+  C:04D7H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:04F0H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CILDOPTR
+  C:051DH         PUBLIC        ?C?CILDOPTR
+  -------         ENDMOD        ?C?CILDOPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:0550H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?CSTOPTR
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:18:39  PAGE 22
+
+
+  C:0562H         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
+
+  -------         MODULE        ?C?ULSHR
+  C:0584H         PUBLIC        ?C?ULSHR
+  -------         ENDMOD        ?C?ULSHR
+
+  -------         MODULE        ?C?LSHL
+  C:0597H         PUBLIC        ?C?LSHL
+  -------         ENDMOD        ?C?LSHL
+
+  -------         MODULE        ?C?ICALL
+  C:05AAH         PUBLIC        ?C?ICALL
+  C:05AEH         PUBLIC        ?C?ICALL2
+  -------         ENDMOD        ?C?ICALL
+
+Program Size: data=57.0 xdata=254 code=3793
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

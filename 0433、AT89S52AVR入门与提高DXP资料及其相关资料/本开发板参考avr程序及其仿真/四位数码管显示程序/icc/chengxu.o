@@ -1,0 +1,182 @@
+XL
+H 4 areas 13 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+A text size 152 flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\基于T_C1的频率计设计\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 14 4
+dbline 16 4
+dbline 17 6
+dbline 17 6
+dbline 17 C
+dbline 17 C
+dbline 17 C
+dbline 17 C
+dbline 17 10
+dbline 17 16
+dbline 16 16
+dbline 16 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Pre_Display 26 fV
+dbline FFFFFFFF 26
+dbline 1E 26
+dbline 20 26
+dbline 21 3E
+dbline 22 5E
+dbline 23 7E
+dbline 25 96
+dbline 26 9C
+dbline 27 B0
+dbline 28 B6
+dbline 29 BC
+dbline 2A D0
+dbline 2B D6
+dbline 2C DC
+dbline 2D F0
+dbline 2E F6
+dbline 2F FC
+dbline 30 110
+dbline FFFFFFFE 116
+dbline 0 116
+dbfunc e Init_IO 118 fV
+dbline FFFFFFFF 118
+dbline 46 118
+dbline 48 118
+dbline 49 11C
+dbline 4B 11E
+dbline 4C 120
+dbline 4E 122
+dbline 4F 126
+dbline FFFFFFFE 128
+dbline 0 128
+dbfunc e main 12A fV
+dbsym l i 1 c
+dbline FFFFFFFF 12A
+dbline 5B 12A
+dbline 5D 12A
+dbline 5E 12C
+dbline 5F 130
+dbline 60 134
+dbline 61 13A
+dbline 66 140
+dbline 67 140
+dbline 68 14C
+dbline 7A 14E
+dbline 65 14E
+dbline FFFFFFFE 150
+dbline 0 150
+S _main Def012A
+S _Pre_Display Def0026
+S _Init_IO Def0118
+S _DelayMS Def0000
+A data size 11 flags 20
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\基于T_C1的频率计设计\icc\chengxu.c
+dbsym e Flag 0 c
+dbsym e CNT 1 i
+dbsym e duan 3 A[10:10]c
+dbsym e wei D A[4:4]c
+S _duan Def0003
+S _CNT Def0001
+S _wei Def000D
+S _Flag Def0000
+A idata size 11 flags 0
+A bss size E flags 20
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\基于T_C1的频率计设计\icc\chengxu.c
+dbsym e date 0 i
+dbsym e v 2 i
+dbsym e c 4 i
+dbsym e x 6 i
+dbsym e z 8 i
+dbsym e CNT2 A i
+dbsym e CNT1 C i
+S _CNT1 Def000C
+S _CNT2 Def000A
+S _c Def0004
+S _v Def0002
+S _x Def0006
+S _z Def0008
+S _date Def0000
+T 00 00 00
+R 00 00 02 00
+T 01 00 64 00
+R 00 00 02 00
+T 03 00 C0 F9
+R 00 00 02 00
+T 05 00 A4 B0
+R 00 00 02 00
+T 07 00 99 92
+R 00 00 02 00
+T 09 00 82 F8
+R 00 00 02 00
+T 0B 00 80 90
+R 00 00 02 00
+T 0D 00 08 04
+R 00 00 02 00
+T 0F 00 02 01
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 ED 57 E0 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 28 EE 33 E0 00 91 00 00 10 91 01 00 0E 94
+R 00 00 00 00 00 08 03 00 00 0C 03 00
+T 34 00 00 00 10 93 09 00 00 93 08 00 28 EE 33 E0
+R 00 00 00 00 12 02 02 00 00 06 03 00 00 0A 03 00
+T 42 00 00 91 00 00 10 91 01 00 0E 94 00 00 24 E6
+R 00 00 00 00 00 04 03 00 00 08 03 00 12 0C 01 00
+T 50 00 30 E0 0E 94 00 00 10 93 07 00 00 93 06 00
+R 00 00 00 00 12 06 02 00 00 0A 03 00 00 0E 03 00
+T 5E 00 24 E6 30 E0 00 91 00 00 10 91 01 00 0E 94
+R 00 00 00 00 00 08 03 00 00 0C 03 00
+T 6C 00 00 00 2A E0 30 E0 0E 94 00 00 10 93 05 00
+R 00 00 00 00 12 02 01 00 12 0A 02 00 00 0E 03 00
+T 7A 00 00 93 04 00 2A E0 30 E0 00 91 00 00 10 91
+R 00 00 00 00 00 04 03 00 00 0C 03 00
+T 88 00 01 00 0E 94 00 00 10 93 03 00 00 93
+R 00 00 00 00 00 02 03 00 12 06 01 00 00 0A 03 00
+T 94 00 02 00 20 90 0D 00 25 BA
+R 00 00 00 00 00 02 03 00 00 06 01 00
+T 9C 00 80 E0 90 E0 E0 91
+R 00 00 00 00 20 02 01 00 03 00 40 04 01 00 03 00
+T A2 00 08 00 F0 91 09 00 E8 0F F9 1F 20 80 2B BA
+R 00 00 00 00 00 02 03 00 00 06 03 00
+T B0 00 03 E0 10 E0 A5 DF 20 90 0E 00 25 BA 80 E0
+R 00 00 00 00 00 0A 01 00 20 0E 01 00 03 00
+T BE 00 90 E0 E0 91 06 00 F0 91
+R 00 00 00 00 40 02 01 00 03 00 00 06 03 00
+T C6 00 07 00 E8 0F F9 1F 20 80 2B BA 03 E0 10 E0
+R 00 00 00 00 00 02 03 00
+T D4 00 95 DF 20 90 0F 00 25 BA 80 E0
+R 00 00 00 00 00 06 01 00 20 0A 01 00 03 00
+T DE 00 90 E0 E0 91 04 00 F0 91
+R 00 00 00 00 40 02 01 00 03 00 00 06 03 00
+T E6 00 05 00 E8 0F F9 1F 20 80 2B BA 03 E0 10 E0
+R 00 00 00 00 00 02 03 00
+T F4 00 85 DF 20 90 10 00 25 BA 80 E0
+R 00 00 00 00 00 06 01 00 20 0A 01 00 03 00
+T FE 00 90 E0 E0 91 02 00 F0 91
+R 00 00 00 00 40 02 01 00 03 00 00 06 03 00
+T 06 01 03 00 E8 0F F9 1F 20 80 2B BA 03 E0 10 E0
+R 00 00 00 00 00 02 03 00
+T 14 01 75 DF 08 95
+R 00 00 00 00
+T 18 01 8F EF 8A BB 8B BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T 26 01 22 BA 08 95
+R 00 00 00 00
+T 2A 01 F6 DF 22 24 2B BA 8F E0 85 BB 0C E2 11 E0
+R 00 00 00 00
+T 38 01 63 DF 22 24 25 BA 07 C0 89 E2 99 E0 90 93
+R 00 00 00 00
+T 46 01 01 00 80 93 00 00 6C DF F8 CF 08 95
+R 00 00 00 00 00 02 03 00 00 06 03 00

@@ -1,0 +1,354 @@
+__text_start:
+__start:
+    001C E5CF      LDI	R28,0x5F
+    001D E0D4      LDI	R29,4
+    001E BFCD      OUT	0x3D,R28
+    001F BFDE      OUT	0x3E,R29
+    0020 51C0      SUBI	R28,0x10
+    0021 40D0      SBCI	R29,0
+    0022 EA0A      LDI	R16,0xAA
+    0023 8308      STD	Y+0,R16
+    0024 2400      CLR	R0
+    0025 E7E1      LDI	R30,0x71
+    0026 E0F0      LDI	R31,0
+    0027 E010      LDI	R17,0
+    0028 37E1      CPI	R30,0x71
+    0029 07F1      CPC	R31,R17
+    002A F011      BEQ	0x002D
+    002B 9201      ST	R0,Z+
+    002C CFFB      RJMP	0x0028
+    002D 8300      STD	Z+0,R16
+    002E E2E6      LDI	R30,0x26
+    002F E0F0      LDI	R31,0
+    0030 E6A0      LDI	R26,0x60
+    0031 E0B0      LDI	R27,0
+    0032 E010      LDI	R17,0
+    0033 33E7      CPI	R30,0x37
+    0034 07F1      CPC	R31,R17
+    0035 F021      BEQ	0x003A
+    0036 95C8      LPM
+    0037 9631      ADIW	R30,1
+    0038 920D      ST	R0,X+
+    0039 CFF9      RJMP	0x0033
+    003A D055      RCALL	_main
+_exit:
+    003B CFFF      RJMP	_exit
+_DelayMS:
+  j                    --> R20
+  i                    --> R16
+    003C D0B6      RCALL	push_gset1
+FILE: D:\Proteus\ATMEGA8\数码管计数器设计\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) #define uchar unsigned char 
+(0003) #define uint unsigned int
+(0004) uchar Table[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};//数字0~9
+(0005) uchar Data[4]={0,0,0,0};//位控制
+(0006) uchar CNT=0;//计数初值
+(0007) uchar Timer[2]={0x00,0x00};//初始时间00:00
+(0008) 
+(0009) ////////////////////////////////////////////////////////////////////
+(0010) void DelayMS(uint i)//延时
+(0011)    {
+(0012)     uint j;
+(0013)     for(;i!=0;i--)
+    003D C00A      RJMP	0x0048
+(0014)         {
+(0015)           for(j=8000;j!=0;j--);
+    003E E440      LDI	R20,0x40
+    003F E15F      LDI	R21,0x1F
+    0040 C002      RJMP	0x0043
+    0041 5041      SUBI	R20,1
+    0042 4050      SBCI	R21,0
+    0043 3040      CPI	R20,0
+    0044 0745      CPC	R20,R21
+    0045 F7D9      BNE	0x0041
+    0046 5001      SUBI	R16,1
+    0047 4010      SBCI	R17,0
+    0048 3000      CPI	R16,0
+    0049 0701      CPC	R16,R17
+    004A F799      BNE	0x003E
+    004B D0AA      RCALL	pop_gset1
+    004C 9508      RET
+_Display:
+  sel                  --> R20
+  i                    --> R22
+  p                    --> R10
+    004D D0BF      RCALL	push_gset3
+    004E 0158      MOVW	R10,R16
+(0016)         }
+(0017)    }
+(0018) //////////////////////////////显示函数//////////////////////////////////////
+(0019) void Display(uchar *p)
+(0020) {
+(0021) uchar i,sel=0x01;
+    004F E041      LDI	R20,1
+(0022) for(i=0;i<4;i++)
+    0050 2766      CLR	R22
+    0051 C012      RJMP	0x0064
+(0023) {
+(0024) PORTC=sel;              //选通最右边的数码管
+    0052 BB45      OUT	0x15,R20
+(0025) PORTB=Table[p[i]];      //送数字码
+    0053 2FE6      MOV	R30,R22
+    0054 27FF      CLR	R31
+    0055 0DEA      ADD	R30,R10
+    0056 1DFB      ADC	R31,R11
+    0057 81E0      LDD	R30,Z+0
+    0058 27FF      CLR	R31
+    0059 E680      LDI	R24,0x60
+    005A E090      LDI	R25,0
+    005B 0FE8      ADD	R30,R24
+    005C 1FF9      ADC	R31,R25
+    005D 8020      LDD	R2,Z+0
+    005E BA28      OUT	0x18,R2
+(0026) DelayMS(1);             //显示延时
+    005F E001      LDI	R16,1
+    0060 E010      LDI	R17,0
+    0061 DFDA      RCALL	_DelayMS
+(0027) sel=sel<<1;             //移动显示位
+    0062 0F44      LSL	R20
+    0063 9563      INC	R22
+    0064 3064      CPI	R22,4
+    0065 F360      BCS	0x0052
+    0066 D08A      RCALL	pop_gset3
+    0067 9508      RET
+_Process:
+  p2                   --> R20
+  p1                   --> R22
+    0068 D0A1      RCALL	push_gset2
+    0069 01A9      MOVW	R20,R18
+    006A 01B8      MOVW	R22,R16
+(0028) }
+(0029) }
+(0030) ///////////////////////////////计数值处理函数///////////////////////////////////////
+(0031) //计数处理函数
+(0032) //参数p1：时间数组名
+(0033) //参数p2：显示数组名
+(0034) //功能：将计数值拆分为BCD码的10分，分；10秒，秒
+(0035) void Process(uchar *p1,uchar *p2)
+(0036) {
+(0037) p2[0]=p1[0]/10;
+    006B E01A      LDI	R17,0xA
+    006C 01FB      MOVW	R30,R22
+    006D 8100      LDD	R16,Z+0
+    006E D06A      RCALL	div8u
+    006F 01FA      MOVW	R30,R20
+    0070 8300      STD	Z+0,R16
+(0038) p2[1]=p1[0]-p2[0]*10;
+    0071 8020      LDD	R2,Z+0
+    0072 E08A      LDI	R24,0xA
+    0073 9D82      MUL	R24,R2
+    0074 01FB      MOVW	R30,R22
+    0075 8020      LDD	R2,Z+0
+    0076 1820      SUB	R2,R0
+    0077 01FA      MOVW	R30,R20
+    0078 8221      STD	Z+1,R2
+(0039) p2[2]=p1[1]/10;
+    0079 E01A      LDI	R17,0xA
+    007A 01FB      MOVW	R30,R22
+    007B 8101      LDD	R16,Z+1
+    007C D05C      RCALL	div8u
+    007D 01FA      MOVW	R30,R20
+    007E 8302      STD	Z+2,R16
+(0040) p2[3]=p1[1]-p2[2]*10;
+    007F 01FA      MOVW	R30,R20
+    0080 8022      LDD	R2,Z+2
+    0081 E08A      LDI	R24,0xA
+    0082 9D82      MUL	R24,R2
+    0083 01FB      MOVW	R30,R22
+    0084 8021      LDD	R2,Z+1
+    0085 1820      SUB	R2,R0
+    0086 01FA      MOVW	R30,R20
+    0087 8223      STD	Z+3,R2
+    0088 D066      RCALL	pop_gset2
+    0089 9508      RET
+(0041) }
+(0042) //////////////////////////////初始化////////////////////////////////////
+(0043) void Init_IO(void)//初始化I/O
+(0044) {
+(0045) //设置C口为输出
+(0046) DDRC=0xFF;
+_Init_IO:
+    008A EF8F      LDI	R24,0xFF
+    008B BB84      OUT	0x14,R24
+(0047) PORTC=0xFF;
+    008C BB85      OUT	0x15,R24
+(0048) //设置D口为输出
+(0049) DDRB=0XFF;
+    008D BB87      OUT	0x17,R24
+(0050) PORTB=0xFF;
+    008E BB88      OUT	0x18,R24
+    008F 9508      RET
+(0051) }
+(0052) /////////////////////////////主函数/////////////////////////////////////
+(0053) void main(void)
+(0054) {
+(0055) //uchar Load;
+(0056) Init_IO();  //初始化I/O
+_main:
+    0090 DFF9      RCALL	_Init_IO
+(0057) PORTC=0XFF; //点亮数码管
+    0091 EF8F      LDI	R24,0xFF
+    0092 BB85      OUT	0x15,R24
+(0058) PORTB=0X00; //点亮数码管
+    0093 2422      CLR	R2
+    0094 BA28      OUT	0x18,R2
+(0059) DelayMS(30);//延时
+    0095 E10E      LDI	R16,0x1E
+    0096 E010      LDI	R17,0
+    0097 DFA4      RCALL	_DelayMS
+(0060) PORTB=0xff; //关闭数码管
+    0098 EF8F      LDI	R24,0xFF
+    0099 BB88      OUT	0x18,R24
+(0061) TCCR0=0x04; //T/C0工作方式选择，系统时钟256分频
+    009A E084      LDI	R24,4
+    009B BF83      OUT	0x33,R24
+(0062) //(上一句可以改为)TCCR0 |= (1<<CS02);//T/C0工作于定时方式，系统时钟256分频
+(0063) TCNT0=0X06; //计数初始值
+    009C E086      LDI	R24,6
+    009D BF82      OUT	0x32,R24
+(0064) TIMSK=0x01;  //使能T0溢出中断
+    009E E081      LDI	R24,1
+    009F BF89      OUT	0x39,R24
+(0065) //(上一句可以改为)TIMSK |= (1<<TOIE0);  //使能T0溢出中断
+(0066) SREG=0x80;  //使能全局中断
+    00A0 E880      LDI	R24,0x80
+    00A1 BF8F      OUT	0x3F,R24
+    00A2 C008      RJMP	0x00AB
+(0067) //(上一句可以改为)SREG |= (1<<7);  //使能全局中断
+(0068) while(1)
+(0069) {
+(0070)  Process(Timer,Data);//计数初值处理
+    00A3 E62A      LDI	R18,0x6A
+    00A4 E030      LDI	R19,0
+    00A5 E60F      LDI	R16,0x6F
+    00A6 E010      LDI	R17,0
+    00A7 DFC0      RCALL	_Process
+(0071)  Display(Data);      //动态扫秒显示
+    00A8 E60A      LDI	R16,0x6A
+    00A9 E010      LDI	R17,0
+    00AA DFA2      RCALL	_Display
+    00AB CFF7      RJMP	0x00A3
+    00AC 9508      RET
+_Timer0:
+    00AD 922A      ST	R2,-Y
+    00AE 938A      ST	R24,-Y
+    00AF 939A      ST	R25,-Y
+    00B0 B62F      IN	R2,0x3F
+    00B1 922A      ST	R2,-Y
+(0072) }
+(0073) }
+(0074) //////////////////////////T/CO中断服务函数//////////////////////////////////////////
+(0075) #pragma interrupt_handler Timer0:10
+(0076) void Timer0(void)
+(0077) {
+(0078) CNT++;           //中断次数累加
+    00B2 9180006E  LDS	R24,0x6E
+    00B4 5F8F      SUBI	R24,0xFF
+    00B5 9380006E  STS	0x6E,R24
+(0079) if(CNT==125)     //计数到125次，计数复位
+    00B7 378D      CPI	R24,0x7D
+    00B8 F4C1      BNE	0x00D1
+(0080) {
+(0081) CNT=0;
+    00B9 2422      CLR	R2
+    00BA 9220006E  STS	0x6E,R2
+(0082) Timer[1]++;      //秒加1
+    00BC 91800070  LDS	R24,0x70
+    00BE 5F8F      SUBI	R24,0xFF
+    00BF 93800070  STS	0x70,R24
+(0083) if(Timer[1]==60)
+    00C1 338C      CPI	R24,0x3C
+    00C2 F439      BNE	0x00CA
+(0084) {
+(0085) Timer[1]=0;
+    00C3 92200070  STS	0x70,R2
+(0086) Timer[0]++;      //分进位
+    00C5 9180006F  LDS	R24,0x6F
+    00C7 5F8F      SUBI	R24,0xFF
+    00C8 9380006F  STS	0x6F,R24
+(0087) }
+(0088) if(Timer[0]==60)
+    00CA 9180006F  LDS	R24,0x6F
+    00CC 338C      CPI	R24,0x3C
+    00CD F419      BNE	0x00D1
+(0089) {
+(0090) Timer[0]=0;      //计数到最高位置位
+    00CE 2422      CLR	R2
+    00CF 9220006F  STS	0x6F,R2
+(0091) }
+(0092) }
+FILE: <library>
+    00D1 9029      LD	R2,Y+
+    00D2 BE2F      OUT	0x3F,R2
+    00D3 9199      LD	R25,Y+
+    00D4 9189      LD	R24,Y+
+    00D5 9029      LD	R2,Y+
+    00D6 9518      RETI
+mod8u:
+    00D7 9468      BSET	6
+    00D8 C001      RJMP	xdiv8u
+div8u:
+    00D9 94E8      BCLR	6
+xdiv8u:
+    00DA 932A      ST	R18,-Y
+    00DB 92FA      ST	R15,-Y
+    00DC 92EA      ST	R14,-Y
+    00DD 24FF      CLR	R15
+    00DE 24EE      CLR	R14
+    00DF E120      LDI	R18,0x10
+    00E0 0F00      LSL	R16
+    00E1 1CFF      ROL	R15
+    00E2 1CEE      ROL	R14
+    00E3 16E1      CP	R14,R17
+    00E4 F010      BCS	0x00E7
+    00E5 1AE1      SUB	R14,R17
+    00E6 9503      INC	R16
+    00E7 952A      DEC	R18
+    00E8 F7B9      BNE	0x00E0
+    00E9 F40E      BRTC	0x00EB
+    00EA 2D0E      MOV	R16,R14
+    00EB 90E9      LD	R14,Y+
+    00EC 90F9      LD	R15,Y+
+    00ED 9129      LD	R18,Y+
+    00EE 9508      RET
+pop_gset2:
+    00EF E0E2      LDI	R30,2
+    00F0 C006      RJMP	pop
+pop_gset3:
+    00F1 E0E4      LDI	R30,4
+    00F2 C004      RJMP	pop
+push_gset1:
+    00F3 935A      ST	R21,-Y
+    00F4 934A      ST	R20,-Y
+    00F5 9508      RET
+pop_gset1:
+    00F6 E0E1      LDI	R30,1
+pop:
+    00F7 9149      LD	R20,Y+
+    00F8 9159      LD	R21,Y+
+    00F9 FDE0      SBRC	R30,0
+    00FA 9508      RET
+    00FB 9169      LD	R22,Y+
+    00FC 9179      LD	R23,Y+
+    00FD FDE1      SBRC	R30,1
+    00FE 9508      RET
+    00FF 90A9      LD	R10,Y+
+    0100 90B9      LD	R11,Y+
+    0101 FDE2      SBRC	R30,2
+    0102 9508      RET
+    0103 90C9      LD	R12,Y+
+    0104 90D9      LD	R13,Y+
+    0105 FDE3      SBRC	R30,3
+    0106 9508      RET
+    0107 90E9      LD	R14,Y+
+    0108 90F9      LD	R15,Y+
+    0109 9508      RET
+push_gset2:
+    010A 937A      ST	R23,-Y
+    010B 936A      ST	R22,-Y
+    010C CFE6      RJMP	push_gset1
+push_gset3:
+    010D 92BA      ST	R11,-Y
+    010E 92AA      ST	R10,-Y
+    010F CFFA      RJMP	push_gset2

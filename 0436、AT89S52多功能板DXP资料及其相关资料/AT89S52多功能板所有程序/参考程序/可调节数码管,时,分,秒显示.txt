@@ -1,0 +1,122 @@
+#include <reg52.h> 
+sbit P2_0=P2^0;
+sbit P2_1=P2^1;
+sbit P2_2=P2^2;
+unsigned char code dispcode[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98}; 
+unsigned char dispbitcode[]={0x7f,0xbf, 0xdf, 0xef,0xf7,0xfb, 0xfd,0xfe	};
+                             
+
+                              
+unsigned char dispbuf[8]={0,0,16,0,0,16,0,0}; 
+unsigned char dispbitcnt; 
+unsigned char second; 
+unsigned char minite; 
+unsigned char hour; 
+unsigned int tcnt; 
+unsigned char mstcnt; 
+ unsigned char i,j; 
+ 
+void Delay(unsigned int tc)
+{while( tc != 0 )
+{unsigned int i;
+for(i=0; i<80; i++);
+tc--;}
+}
+ void main(void) 
+{ 
+TMOD=0x02; 
+  TH0=0x06; 
+  TL0=0x06; 
+  TR0=1; 
+  ET0=1; 
+  EA=1; 
+   while(1) 
+
+    { 
+	
+	 if(P2_0==0) 
+        {  for(i=5;i>0;i--) 
+          for(j=248;j>0;j--); 
+          if(P2_0==0) 
+            {  second++; 
+              if(second==60) 
+                { second=0; } 
+              dispbuf[0]=second%10; 
+              dispbuf[1]=second/10; 
+              while(P2_0==0); 
+            } 
+        } 
+      if(P2_1==0) 
+        {  for(i=5;i>0;i--) 
+          for(j=248;j>0;j--); 
+          if(P2_1==0) 
+            {  minite++; 
+              if(minite==60) 
+                {   minite=0; } 
+              dispbuf[3]=minite%10; 
+              dispbuf[4]=minite/10; 
+              while(P2_1==0); 
+            } 
+        } 
+      if(P2_2==0) 
+        {  for(i=5;i>0;i--) 
+          for(j=248;j>0;j--); 
+          if(P2_2==0) 
+            {  hour++; 
+              if(hour==24) 
+                {  hour=0; } 
+              dispbuf[6]=hour%10; 
+              dispbuf[7]=hour/10; 
+              while(P2_2==0); 
+            } 
+        } 
+    } 
+} 
+void t0(void) interrupt 1 using 0 
+{ 
+   	
+ 
+		
+
+  mstcnt++; 
+  if(mstcnt==8) 
+    { mstcnt=0; 
+      P0=dispcode[dispbuf[dispbitcnt]]; 
+      P1=dispbitcode[dispbitcnt]; 
+      dispbitcnt++; 
+	   if(dispbitcnt==3)
+	   {
+	   	P0=0xbf;
+		}
+		if(dispbitcnt==6)
+		{
+		P0=0xbf;
+		}
+      if(dispbitcnt==8) 
+        {  dispbitcnt=0; }
+		 
+    } 
+  tcnt++; 
+  if(tcnt==4000) 
+    {   tcnt=0; 
+      second++; 
+      if(second==60) 
+        {  second=0; 
+          minite++; 
+          if(minite==60) 
+            {  minite=0; 
+              hour++; 
+              if(hour==24) 
+                {   hour=0; } 
+            } 
+        } 
+      dispbuf[0]=second%10; 
+      dispbuf[1]=second/10; 
+      dispbuf[3]=minite%10; 
+      dispbuf[4]=minite/10; 
+      dispbuf[6]=hour%10; 
+      dispbuf[7]=hour/10; 
+    } 
+  
+  
+} 

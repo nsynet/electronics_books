@@ -1,0 +1,169 @@
+XL
+H 3 areas 10 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+S empy16s Ref0000
+A text size 11E flags 0
+dbfile D:\Proteus\ATMEGA16\Ad转换的c语言编程\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 c
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline E 4
+dbline F 4
+dbline 10 6
+dbline 10 6
+dbline 10 A
+dbline 10 A
+dbline 10 A
+dbline 10 A
+dbline 10 C
+dbline 10 10
+dbline F 10
+dbline F 14
+dbline FFFFFFFE 1A
+dbline 0 1E
+dbfunc e Display 20 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 26
+dbline 16 26
+dbline 16 26
+dbline 17 28
+dbline 18 2C
+dbline 18 2C
+dbline 19 2E
+dbline 1A 50
+dbline 1B 56
+dbline 1C 58
+dbline 17 58
+dbline 17 5A
+dbline FFFFFFFE 5E
+dbline 0 62
+dbfunc e ADC_Convert 64 fi
+dbsym r temp1 16 i
+dbsym r temp2 14 i
+dbline FFFFFFFF 68
+dbline 22 68
+dbline 23 68
+dbline 24 6C
+dbline 28 70
+dbline 29 7A
+dbline 2A 86
+dbline FFFFFFFE 86
+dbline 0 8A
+dbfunc e Process 8C fV
+dbsym r p 14 pc
+dbsym r i 16 i
+dbline FFFFFFFF 94
+dbline 30 94
+dbline 30 94
+dbline 31 A2
+dbline 32 AE
+dbline 33 BA
+dbline 34 C6
+dbline 35 D2
+dbline 36 DE
+dbline FFFFFFFE E2
+dbline 0 E6
+dbfunc e main E8 fV
+dbsym r i 14 i
+dbline FFFFFFFF E8
+dbline 3C E8
+dbline 3D E8
+dbline 3E EC
+dbline 3F EE
+dbline 40 F2
+dbline 41 F4
+dbline 42 F6
+dbline 43 F8
+dbline 44 FA
+dbline 45 FC
+dbline 46 FE
+dbline 47 102
+dbline 49 10A
+dbline 4A 10A
+dbline 4C 10E
+dbline 4D 114
+dbline 4E 11A
+dbline 48 11A
+dbline FFFFFFFE 11C
+dbline 0 11C
+S _main Def00E8
+S _DelayMs Def0000
+S _Display Def0020
+S _Process Def008C
+S _ADC_Convert Def0064
+A data size E flags 20
+dbfile D:\Proteus\ATMEGA16\Ad转换的c语言编程\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[4:4]c
+S _Table Def0000
+S _Data Def000A
+A idata size E flags 0
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 07 C0 4A EF 01 C0 4A 95 44 23
+R 00 00 00 00 12 04 00 00
+T 0E 00 E9 F7 01 50 10 40 00 30 01 07 B1 F7 0E 94
+R 00 00 00 00
+T 1C 00 00 00 08 95
+R 00 00 00 00 12 02 05 00
+T 20 00 0E 94 00 00 58 01 41 E0 66 27 17 C0 42 BB
+R 00 00 00 00 12 04 02 00
+T 2E 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 3C 00 90 E0 E8 0F F9 1F 20 80 33 24 8F EF 90 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 4A 00 82 19 93 09 88 BB 04 E1 10 E0 D5 DF 44 0F
+R 00 00 00 00
+T 58 00 63 95 64 30 38 F3 0E 94 00 00 08 95
+R 00 00 00 00 12 0A 07 00
+T 64 00 0E 94 00 00 64 B1 77 27 45 B1 55 27 1A 01
+R 00 00 00 00 12 04 01 00
+T 72 00 32 2C 22 24 26 0E 37 1E 04 E0 10 E0 91 01
+R 00 00 00 00
+T 80 00 0E 94 00 00 A8 01 0E 94 00 00 08 95
+R 00 00 00 00 12 04 08 00 12 0A 06 00
+T 8C 00 0E 94 00 00 A9 01 B8 01 28 EE 33 E0 8B 01
+R 00 00 00 00 12 04 01 00
+T 9A 00 0E 94 00 00 FA 01 00 83 28 EE 33 E0 8B 01
+R 00 00 00 00 12 04 04 00
+T A8 00 0E 94 00 00 B8 01 24 E6 30 E0 0E 94 00 00
+R 00 00 00 00 12 04 03 00 12 0E 04 00
+T B6 00 FA 01 01 83 24 E6 30 E0 8B 01 0E 94 00 00
+R 00 00 00 00 12 0E 03 00
+T C4 00 B8 01 2A E0 30 E0 0E 94 00 00 FA 01 02 83
+R 00 00 00 00 12 0A 04 00
+T D2 00 2A E0 30 E0 8B 01 0E 94 00 00 B8 01 FA 01
+R 00 00 00 00 12 0A 03 00
+T E0 00 63 83 0E 94 00 00 08 95
+R 00 00 00 00 12 06 06 00
+T E8 00 22 24 2A BA 2B BA 8F EF 87 BB 88 BB 81 BB
+R 00 00 00 00
+T F6 00 82 BB 28 BA 82 BB 27 B8 86 EE 86 B9 08 EB
+R 00 00 00 00
+T 04 01 1B E0 7C DF 08 C0 AC DF A8 01 20 E0 30 E0
+R 00 00 00 00 20 0C 01 00 0A 00 40 0E 01 00 0A 00
+T 12 01 BC DF 00 E0 10 E0 83 DF F7 CF 08 95
+R 00 00 00 00 20 04 01 00 0A 00 40 06 01 00 0A 00

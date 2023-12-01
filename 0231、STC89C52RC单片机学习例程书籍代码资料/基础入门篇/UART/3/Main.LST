@@ -1,0 +1,88 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:22:19 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"            //加载"stc.h"
+   7          /****************************************
+   8          *函数名称:UARTInit
+   9          *输    入:无
+  10          *输    出:无
+  11          *功    能:串口初始化
+  12          ******************************************/
+  13          void UARTInit(void)       //定义串口初始化函数
+  14          {
+  15   1          SCON =0x50;             //8位数据位
+  16   1              T2CON=0x34;             //由T/C2作为波特率发生器
+  17   1              RCAP2L=0xD9;            //波特率为9600的低8位
+  18   1              RCAP2H=0xFF;            //波特率为9600的高8位
+  19   1              ES=1;                     //允许串口中断                   
+  20   1              EA=1;                     //允许全局中断
+  21   1      }
+  22          /****************************************
+  23          *函数名称:UARTSendByte
+  24          *输    入:byte 要发送的字节
+  25          *输    出:无
+  26          *功    能:串口发送单个字节
+  27          ******************************************/
+  28          void UARTSendByte(unsigned char byte)
+  29          {
+  30   1              SBUF=byte;                //缓冲区装载要发送的字节
+  31   1              while(TI==0);            //等待发送完毕,TI会置1
+  32   1              TI=0;                      //清零TI
+  33   1      } 
+  34          /****************************************
+  35          *函数名称:main
+  36          *输    入:无
+  37          *输    出:无
+  38          *功    能:函数主体
+  39          ******************************************/
+  40          void main(void)              //主函数
+  41          {
+  42   1          UARTInit();              //串口初始化
+  43   1              while(1)                  //进入死循环
+  44   1              {;}                        //无操作
+  45   1      }
+  46          /****************************************
+  47          *函数名称:UartIRQ
+  48          *输    入:无
+  49          *输    出:无
+  50          *功    能:串口中断服务函数
+  51          ******************************************/
+  52          void UartIRQ(void) interrupt 4
+  53          {
+  54   1           unsigned char recv;      //声明变量recv
+  55   1      
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:22:19 PAGE 2   
+
+  56   1              if(RI)                      //检测RI是否置1
+  57   1              {
+  58   2                      RI=0;                    //清零RI
+  59   2                      recv=SBUF;              //读取接收到的数据
+  60   2                      UARTSendByte(recv);   //返发接收到的数据
+  61   2              }
+  62   1      }
+  63          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     52    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

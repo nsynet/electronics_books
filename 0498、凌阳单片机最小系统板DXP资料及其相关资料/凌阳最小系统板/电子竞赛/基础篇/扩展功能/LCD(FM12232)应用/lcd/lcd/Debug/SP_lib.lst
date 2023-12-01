@@ -1,0 +1,604 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	//========================================================================================
+                            	// Progarm: The asm file for sp_lib.asm in assembly view V1.2
+                            	// Arranged by: Arthur Shieh
+                            	// Last modified date: 
+                            	// 		2000/06/23: first version(Hardware.asm)
+                            	//		2000/07/20: V1.1 modified(Hardware.asm)
+                            	//      2002/09/29: V1.2 change hardware.asm to spcexxx.inc  
+                            	//
+                            	// Functions:
+                            	//  F_Key_Scan_Initial;
+                            	//  F_Key_Scan_ServiceLoop;
+                            	//  F_Key_DebounceCnt_Down;
+                            	//
+                            	//	call F_SP_GetCh;	
+                            	//  
+                            	//  I/O APIs:
+                            	//  SP_Import(Port Number,Data Buffer Pointer);
+                            	//  SP_Export(Port Number,value);
+                            	//  SP_Init_IOA(Dir,Data,Attrib);
+                            	//  SP_Init_IOB(Dir,Data,Attrib);	
+                            	//========================================================================================
+                            	
+                            	.include spce.inc
+                     <      	//========================================================================================
+                     <      	// Program: Standard function definition V1.0
+                     <      	// Arranged by: Arthur Shieh
+                     <      	// Platform:  SPCE500A/060A/061A, IDE 1.63, Windows 2000
+                     <      	//
+                     <      	// Date: 	2002/10/31 V1.0 : first version
+                     <      	//
+                     <      	// Note: 1)This inc file defines the ports available for user to use SPCE series.
+                     <      	//         The port setting constants is also included for users' convenience. 
+                     <      	//       2)Naming rule:
+                     <      	//         C : define constant 
+                     <      	//         P : define I/O port
+                     <      	//=======================================================================================
+                     <      	
+                     <      	//---------------------------------------------------------- 
+                     <      	//CPU Type definition : User needs to modified this according to the body used
+                     <      	//---------------------------------------------------------- 
+                     <      	.define SPCE500A 0
+                     <      	.define SPCE061A 1   // SPCE060A as well
+                     <      	
+                     <      	//.define BODY_TYPE SPCE500A	       // SPCE500A 
+                     <      	.define BODY_TYPE SPCE061A	       // SPCE061A 
+                     <      	//---------------------------------------------------------- 
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define Area for I/O									
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	//PortA,PortB contain some special functions
+                     <      	P_IOA_Data:			.VDEF  0x7000;		// Write Data into data register and read from IOA pad
+                     <      	P_IOA_Buffer:   	.VDEF  0x7001;		// Write Data into buffer register and read from buffer register
+                     <      	P_IOA_Dir:      	.VDEF  0x7002;     // Direction vector for IOA
+                     <      	P_IOA_Attrib:   	.VDEF  0x7003;     // Attribute vector for IOA
+                     <      	P_IOA_Latch:		.VDEF  0x7004;     // Latch PortA data for key change wake-up
+                     <      	
+                     <      	P_IOB_Data:         .VDEF  0x7005      // Write Data into the data register and read from IOB pad
+                     <      	P_IOB_Buffer:       .VDEF  0x7006      // Write Data into buffer register and read from buffer register
+                     <      	P_IOB_Dir:          .VDEF  0x7007      // Direction vector for IOB
+                     <      	P_IOB_Attrib:       .VDEF  0x7008  	// Attribute vector for IOB
+                     <      	
+                     <      	P_FeedBack:     	.VDEF  0x7009;     // Clock form external R,C
+                     <      	P_TimerA_Data:  	.VDEF  0x700A;     // Data port for TimerA 
+                     <      	P_TimerA_Ctrl:  	.VDEF  0x700B;     // Control Port for TimerA
+                     <      	P_TimerB_Data:  	.VDEF  0x700C;     // Data port for TimerB
+                     <      	P_TimerB_Ctrl:  	.VDEF  0x700D;     // Control Port for TimerB
+                     <      	P_TimeBase_Setup:  	.VDEF  0x700E;     // TimerBase Freq. Set
+                     <      	P_TimeBase_Clear:  	.VDEF  0x700F;   	// Reset Timerbase counter
+                     <      	P_INT_Ctrl:     	.VDEF  0x7010;     // for read INT flag(R)
+                     <      	P_INT_Clear:    	.VDEF  0x7011;     // Clear interrupt source
+                     <      	P_Watchdog_Clear:   .VDEF  0x7012;     // Watchdog Reset
+                     <      	P_SystemClock:      .VDEF  0x7013;     // Change system clock frequency(include go to standby mode)
+                     <      	
+                     <      	P_ADC: 	        	.VDEF  0x7014;     // Data Port for AD
+                     <      	P_ADC_Ctrl:    		.VDEF  0x7015;     // Control Port for AD control
+                     <      	P_ADC_Status:   	.VDEF  0x7015;     // AD Port Status
+                     <      	P_DAC2:         	.VDEF  0x7016;     // Data Port for DAC2
+                     <      	P_PWM:          	.VDEF  0x7016;     // Data Port for PWM
+                     <      	P_DAC1:	        	.VDEF  0x7017;     // Data Port for DAC1
+                     <      	P_DAC_Ctrl:	    	.VDEF  0x702A;		// Control Port for two DAC and audio output mode
+                     <      	
+                     <      	P_LVD_Ctrl:     	.VDEF  0x7019;     // Control Port for LVD
+                     <      	
+                     <      	P_SIO_Data:	    	.VDEF  0x701A;		// serial interface IO	
+                     <      	P_SIO_Addr_Low:  	.VDEF  0x701B;		// Address Port low
+                     <      	P_SIO_Addr_Mid:  	.VDEF  0x701C;		// Address Port middle
+                     <      	P_SIO_Addr_High:    .VDEF  0x701D;		// Address Port high
+                     <      	P_SIO_Ctrl:    	    .VDEF  0x701E;		// Control Port
+                     <      	P_SIO_Start:    	.VDEF  0x701F;		// Start port for serial interface
+                     <      	P_SIO_Stop:     	.VDEF  0x7020;		// Stop port for serial interface
+                     <      	
+                     <      	P_UART_Command1:    .VDEF 	0x7021;		// Command1 Port for UART
+                     <      	P_UART_Command2:    .VDEF 	0x7022;		// Command2 Port for UART
+                     <      	P_UART_Data: 	    .VDEF 	0x7023; 	// Data Port for UART
+                     <      	P_UART_BaudScalarLow:  .VDEF  	0x7024;		// Set Baud Rate scalar low
+                     <      	P_UART_BaudScalarHigh: .VDEF  	0x7025;		// Set Baud Rate scalar high
+                     <      	
+                     <      	//SPCE061A new ports
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	P_ADC_MUX_Ctrl:  	.VDEF  	0x702B		// Control Port
+                     <      	P_ADC_LINEIN_Data:  .VDEF  	0x702C		// Line in data
+                     <      	P_INT_Mask:         .VDEF   0x702D		//R/W INT enable/disable
+                     <      	P_Flash_Ctrl:       .VDEF   0x7555		//Internal flash access enable/disable
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define Area for constants									
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define for P_INT_Ctrl 
+                     <      	.DEFINE C_IRQ6_TMB2             0x0001;     //TMB2 IRQ6
+                     <      	.DEFINE C_IRQ6_TMB1             0x0002;		//TMB1 IRQ6
+                     <      	.DEFINE C_IRQ5_2Hz              0x0004;     //2Hz IRQ5
+                     <      	.DEFINE C_IRQ5_4Hz              0x0008;     //4Hz IRQ5
+                     <      	.DEFINE C_IRQ4_1KHz            	0x0010;     //1024Hz IRQ4
+                     <      	.DEFINE C_IRQ4_2KHz            	0x0020;     //2048 IRQ4
+                     <      	.DEFINE C_IRQ4_4KHz            	0x0040;     //4096 IRQ4
+                     <      	.DEFINE C_IRQ3_KEY         		0x0080;     //Key Change IRQ3
+                     <      	.DEFINE C_IRQ3_Ext1             0x0100;     //Ext1 IRQ3
+                     <      	.DEFINE C_IRQ3_Ext2             0x0200;     //Ext2 IRQ3
+                     <      	.DEFINE C_IRQ2_TMB            	0x0400;     //Timer B IRQ2
+                     <      	.DEFINE C_FIQ_TMB           	0x0800;     //Timer B FIQ
+                     <      	.DEFINE C_IRQ1_TMA            	0x1000;     //Timer A IRQ1
+                     <      	.DEFINE C_FIQ_TMA            	0x2000;     //Timer A FIQ
+                     <      	.DEFINE C_IRQ0_PWM              0x4000;     //PWM IRQ0
+                     <      	.DEFINE C_FIQ_PWM               0x8000;     //PWM FIQ
+                     <      	
+                     <      	// Define for P_TimerA_Ctrl, P_TimerB_Ctrl                               
+                     <      	.DEFINE	C_Timer_Fosc_2			0x0000;		// b0--b2: clock of source A
+                     <      	.DEFINE	C_Timer_Fosc_256		0x0001;		//
+                     <      	.DEFINE	C_Timer_32768Hz			0x0002;		//
+                     <      	.DEFINE	C_Timer_8192Hz			0x0003;		//
+                     <      	.DEFINE	C_Timer_4096Hz			0x0004;		//
+                     <      	.DEFINE	C_Timer_A1				0x0005;		//
+                     <      	.DEFINE C_Timer_A0				0x0006;		//
+                     <      	.DEFINE C_Timer_Ext1			0x0007;		//
+                     <      	
+                     <      	.DEFINE	C_Timer_2048Hz			0x0000;		//b3--b5: clock of source B
+                     <      	.DEFINE	C_Timer_1024Hz			0x0008;		//
+                     <      	.DEFINE	C_Timer_256Hz			0x0000;		//
+                     <      	.DEFINE	C_Timer_TMB1			0x0018;		//
+                     <      	.DEFINE	C_Timer_4Hz				0x0020;		//
+                     <      	.DEFINE	C_Timer_2Hz				0x0028;		//
+                     <      	.DEFINE	C_Timer_B1				0x0030;		//
+                     <      	.DEFINE	C_Timer_Ext2			0x0038;		//
+                     <      	
+                     <      	.DEFINE	C_PWMO_Off				0x0000;		//b6--b9: output pulse
+                     <      	.DEFINE C_PWMO_D1				0x0040;		//
+                     <      	.DEFINE C_PWMO_D2				0x0080;		//
+                     <      	.DEFINE C_PWMO_D3				0x00C0;		//
+                     <      	.DEFINE C_PWMO_D4				0x0100;		//
+                     <      	.DEFINE C_PWMO_D5				0x0140;		//
+                     <      	.DEFINE C_PWMO_D6				0x0180;		//
+                     <      	.DEFINE C_PWMO_D7				0x01C0;		//
+                     <      	.DEFINE C_PWMO_D8				0x0200;		//
+                     <      	.DEFINE C_PWMO_D9				0x0240;		//
+                     <      	.DEFINE C_PWMO_D10				0x0280;		//
+                     <      	.DEFINE C_PWMO_D11				0x02C0;		//
+                     <      	.DEFINE C_PWMO_D12				0x0300;		//
+                     <      	.DEFINE C_PWMO_D13				0x0340;		//
+                     <      	.DEFINE C_PWMO_D14				0x0380;		//
+                     <      	.DEFINE C_PWMO_Div_2			0x03C0;		// 
+                     <      	
+                     <      	
+                     <      	// Define for P_SystemClock
+                     <      	// SPCE 061 PLL
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_Fosc_49M				0x0080			// b7..b5
+                     <      	.DEFINE C_Fosc_41M				0x0060			//
+                     <      	.DEFINE C_Fosc_33M				0x0040			//
+                     <      	.DEFINE C_Fosc_20M				0x0020			// (default)
+                     <      	.DEFINE C_Fosc_24M				0x0000			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	.DEFINE C_Fosc					0x0000;		// b2..b0: frequency select 
+                     <      	.DEFINE C_Fosc_Div_2			0x0001;		//
+                     <      	.DEFINE C_Fosc_Div_4			0x0002;		//
+                     <      	.DEFINE C_Fosc_Div_8			0x0003;		// (default)
+                     <      	.DEFINE C_Fosc_Div_16			0x0004;		//
+                     <      	.DEFINE C_Fosc_Div_32			0x0005;		//
+                     <      	.DEFINE C_Fosc_Div_64			0x0006;		//
+                     <      	.DEFINE C_Sleep					0x0007;		//
+                     <      	
+                     <      	.DEFINE	C_32K_Work				0x0010;		// b4 = 1: at sleep mode,32.768k still work 
+                     <      	.DEFINE C_32K_Off				0x0000;		// b4 = 0: at sleep mode,32.768k off 
+                     <      	.DEFINE C_StrongMode			0x0008;		// b3 = 1: force strong mode
+                     <      	.DEFINE C_AutoWeakMode			0x0000;		// b3 = 0: auto weak mode(default) 
+                     <      	
+                     <      	.DEFINE	C_PLL_Freq_24M			0x0000		//b5..b7: PLL frequency select
+                     <      	.DEFINE	C_PLL_Freq_20M			0x0020		//
+                     <      	.DEFINE	C_PLL_Freq_32M			0x0040		//
+                     <      	.DEFINE	C_PLL_Freq_40M			0x0060		//
+                     <      	.DEFINE	C_PLL_Freq_49M			0x0080		//
+                     <      	
+                     <      	
+                     <      	// Define for P_ADC_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE	C_AD_Enable				0x0001;		//b0=1: enable A/D converter
+                     <      	.DEFINE C_AD_Disable			0x0000;		//b0=0: disable A/D converter
+                     <      	.DEFINE C_AD_Line_In			0x0002;		//b1=1: microphone disable
+                     <      	.DEFINE C_AD_MIC_In				0x0000;		//b1=0: microphone enable
+                     <      	.DEFINE C_AGC_Enable			0x0004;		//b2=1: enable AGC function
+                     <      	.DEFINE C_AGC_Disable			0x0000;		//b2=0: disable AGC function
+                     <      	.DEFINE C_AD_Sample	 			0x0004;		//b3=1: sample the analog signal(manual mode)
+                     <      	.DEFINE C_AD_Hold				0x0000;		//b3=0: hold(manual mode)
+                     <      	.DEFINE C_Auto_Mode	 			0x0010;		//b4=1: A/D auto mode
+                     <      	.DEFINE C_Manual_Mode	 		0x0000;		//b4=0: A/D manual mode
+                     <      	//b5: ADINI?
+                     <      	.DEFINE C_DAC_Current_2mA		0x0040;		//b6=1: DAC current = 2mA @ vdd=3V(new option)
+                     <      	.DEFINE C_DAC_Current_3mA		0x0000;		//b6=0: DAC current = 3mA @ vdd=3V(Default)
+                     <      	.DEFINE C_AD_Vref_VDD			0x0080;		//b7=1: Vref is VDD
+                     <      	.DEFINE C_AD_Vref_VRTPAD		0x0000;		//b7=0: Vref is from pin "VRTPAD"
+                     <      	.DEFINE C_AD_COMP				0x4000;		//b14=1: output voltage of DAC0<Analog input signal
+                     <      												//b14=0: output voltage of DAC0>Analog input signal
+                     <      	.DEFINE C_AD_RDY				0x8000;		//b15=1: A/D digital data ready; 0: not ready
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE	C_AD					0x0001 			//
+                     <      	.DEFINE C_DA					0x0000 			//
+                     <      	.DEFINE C_MIC					0x0000 			//
+                     <      	.DEFINE C_LINE					0x0002 			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	// Define for P_DAC_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE	C_DAC1_Direct			0x0000;		// b8 b7: DAC1 latch
+                     <      	.DEFINE C_DAC1_LatchA			0x0080;		// Latch data to DAC1 by TimerA 
+                     <      	.DEFINE C_DAC1_LatchB			0x0100;		// Latch data to DAC1 by TimerB
+                     <      	.DEFINE C_DAC1_LatchAB			0x0180;		// Latch data to DAC1 by TimerA or TimerB
+                     <      	
+                     <      	.DEFINE	C_DAC2_Direct			0x0000;		// b6 b5: DAC2 latch
+                     <      	.DEFINE C_DAC2_LatchA			0x0020;		// Latch data to DAC2 by TimerA
+                     <      	.DEFINE C_DAC2_LatchB			0x0040;		// Latch data to DAC2 by TimerB
+                     <      	.DEFINE C_DAC2_LatchAB			0x0060;		// Latch data to DAC2 by TimerA or TimerB
+                     <      	
+                     <      	.DEFINE	C_ADC_Direct			0x0000;		// b4 b3: ADC latch
+                     <      	.DEFINE C_ADC_LatchA			0x0008;		// Latch data to ADC by TimerA
+                     <      	.DEFINE C_ADC_LatchB			0x0010;		// Latch data to ADC by TimerB
+                     <      	.DEFINE C_ADC_LatchAB			0x0018;		// Latch data to ADC by TimerA or TimerB
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE C_PushPull				0x0000 			// b0, (default) 
+                     <      	.DEFINE C_DoubleEnd				0x0001 			// b0
+                     <      	.DEFINE	C_DAC_Mode				0x0000 			// b1, (default)
+                     <      	.DEFINE C_PWM_Mode				0x0002 			// b1
+                     <      	
+                     <      	.DEFINE	C_D1_Direct				0x0000 			// DAC1 latch
+                     <      	.DEFINE C_D1_LatchA				0x0008 			// 
+                     <      	.DEFINE C_D1_LatchB				0x0010 			//
+                     <      	.DEFINE C_D1_LatchAB			0x0018 			//
+                     <      	
+                     <      	.DEFINE	C_D2_Direct				0x0000 			// DAC2 latch
+                     <      	.DEFINE C_D2_LatchA				0x0020 			// 
+                     <      	.DEFINE C_D2_LatchB				0x0040 			//
+                     <      	.DEFINE C_D2_LatchAB			0x00C0 			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	// Define for P_LVD_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_LVD24V				0x0000;		// LVD = 2.4V; b1b0 
+                     <      	.DEFINE C_LVD28V				0x0001;		// LVD = 2.8V
+                     <      	.DEFINE C_LVD32V				0x0002;		// LVD = 3.2V
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE C_LVD26V				0x0000 			// LVD = 2.6V 
+                     <      	.DEFINE C_LVD30V				0x0001 			// LVD = 3.0V
+                     <      	.DEFINE C_LVD36V				0x0002 			// LVD = 3.6V
+                     <      	.DEFINE C_LVD40V				0x0003 			// LVD = 4.0V
+                     <      	.endif
+                     <      	
+                     <      	.DEFINE C_LVD_Result			0x8000;		// b15 = 1: below the selected LVD level
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	// SPCE061 flash operation instruction definition
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_EnableFlashAccess		0xAAAA;
+                     <      	.DEFINE C_EraseFlashPage  		0x5511;
+                     <      	.DEFINE C_ProgramFlash 	   		0x5533;
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	
+                     <      	//===============================================================
+                     <      	// Sunplus APIs for SPCE 061A
+                     <      	//===============================================================
+                     <      	//////////////////////////////////////////////////
+                     <      	// Note: This register will map to the P_INT_Ctrl
+                     <      	//	(0x7010), The SACMvxx.lib use this register to
+                     <      	//	combine with user's interrupt setting.
+                     <      	//  In SPCE061, it is not necessary since the 
+                     <      	//  P_INT_Mask(0x702D) already does this. It is for 
+                     <      	//  compatibility to keep it here. 
+                     <      	//////////////////////////////////////////////////
+                     <      	//.EXTERNAL	R_InterruptStatus 
+                     <      	
+                     <      	//========================================================================================        
+                     <      	// End of SPCE.inc
+                     <      	//========================================================================================
+                     <      	
+                     <      	
+                     <      	        
+                            	//---------------------------------------------------------- 
+                            	
+                            	// Key APIs
+                            	.PUBLIC	F_Key_Scan_Initial;
+                            	.PUBLIC F_Key_Scan_ServiceLoop;
+                            	.PUBLIC F_Key_Scan_ServiceLoop_2;
+                            	.PUBLIC F_Key_DebounceCnt_Down;
+                            	.PUBLIC _SP_GetCh;
+                            	.PUBLIC	F_SP_GetCh;
+                            	.PUBLIC R_KeyStrobe;
+                            	
+                            	// I/O API
+                            	.PUBLIC _SP_Export; 
+                            	.PUBLIC	_SP_Import;
+                            	.PUBLIC _SP_Init_IOB;
+                            	.PUBLIC _SP_Init_IOA;
+                            	//////////////////////////////////////////////////////////////////
+                            	// RAM Define Area								
+                            	//////////////////////////////////////////////////////////////////
+0000032F                    	.RAM
+0000032F 00 00              	.VAR	R_DebounceReg;						//for keyboard scan
+                            	.DEFINE C_DebounceCnt			0x0008;		
+                            	
+00000330 00 00              	.VAR	R_DebounceCnt;						//for keyboard scan
+00000331 00 00              	.VAR	R_KeyBuf;							//for keyboard scan
+00000332 00 00              	.VAR	R_KeyStrobe;						//for keyboard scan
+                            	
+000095F4                    	.CODE
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Initialization for F_Key_Scan_ServiceLoop
+                            	//////////////////////////////////////////////////////////////////     
+                            	F_Key_Scan_Initial:
+000095F4 40 92              			r1 = 0x0000;					//
+000095F5 19 D3 2F 03        			[R_DebounceReg] = r1;			//
+000095F7 19 D3 31 03        			[R_KeyBuf] = r1; 				//
+000095F9 19 D3 32 03        			[R_KeyStrobe] = r1;				//
+000095FB 48 92              			r1 = C_DebounceCnt;				//
+000095FC 19 D3 30 03        			[R_DebounceCnt] = r1;			//reset debounce counter
+000095FE 90 9A              			retf;
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Get Key code from key pad(8 x 1 key pad)
+                            	// Input: Port IOA b7-b0
+                            	// Output: R_KeyStrobe b7-b0
+                            	//          | 	  |     |     | 
+                            	// +Vcc --- x --- x ... x --- x ---   
+                            	//          |     |     |     |
+                            	//          IOA.7             IOA.0
+                            	// Note: 1)link F_DebounceCntDown is necessary 
+                            	// Destory register: r1, r2                                            
+                            	////////////////////////////////////////////////////////////////// 
+                            	F_Key_Scan_ServiceLoop:
+                            			
+000095FF 11 93 00 70        	     	r1 = [P_IOA_Data];			// get key data from IOA   
+                            	    	//r1 = [P_IOB_Data];			// get key data from IOB
+                            		    	
+00009601 09 B3 FF 00        	        r1 = r1 and 0xff;				//
+00009603 12 95 2F 03        	        r2 = [R_DebounceReg];			//
+00009605 19 D3 2F 03        	        [R_DebounceReg] = r1;			//
+00009607 12 45 2F 03        	        cmp r2,[R_DebounceReg];			//
+00009609 04 5E              	        je	L_KS_StableTwoSample;		//
+                            	        
+0000960A 48 92              	        r1 = C_DebounceCnt;				//debounce time setting
+0000960B 19 D3 30 03        	        [R_DebounceCnt] = r1;			//
+0000960D 90 9A              	        retf;							//
+                            	        
+                            	L_KS_StableTwoSample:
+0000960E 11 93 30 03        			r1 = [R_DebounceCnt];			//
+00009610 01 5E              			jz	L_KS_StableOverDebounce;	//
+00009611 90 9A              			retf;
+                            		
+                            	L_KS_StableOverDebounce:        
+00009612 19 D3 30 03        			[R_DebounceCnt] = r1;			//
+00009614 12 95 2F 03        			r2 = [R_DebounceReg];			//
+00009616 11 93 31 03        			r1 = [R_KeyBuf];				//
+00009618 1A D5 31 03        			[R_KeyBuf] = r2;				//
+0000961A 09 83 FF 00        			r1 = r1 xor 0x00ff;				//
+0000961C 11 B3 31 03        			r1 = r1 and [R_KeyBuf];			//
+0000961E 09 B3 FF 00        			r1 = r1 and 0x00ff;				//
+00009620 11 A3 32 03        			r1 = r1 or [R_KeyStrobe];		//
+00009622 19 D3 32 03        			[R_KeyStrobe] = r1;				//save stable key code to R_KeyStrobe
+00009624 90 9A              			retf;		
+                            		
+                            	//////////////////////////////////////////
+                            	// 
+                            	//////////////////////////////////////////
+                            	F_Key_Scan_ServiceLoop_2:
+                            		
+                            		
+00009625 11 93 01 70        			r1 = [P_IOA_Buffer];			// PortA.7 low(scan line +Vcc)
+00009627 09 B3 7F FF        			r1 &= 0xFF7F;		
+00009629 19 D3 01 70        			[P_IOA_Buffer] = r1;
+                            			
+0000962B 11 93 00 70        	     	r1 = [P_IOA_Data];			// get key data from IOA   
+                            	    	//r1 = [P_IOB_Data];			// get key data from IOB
+0000962D 4F B2              	    	r1 &= 0x000F;					//
+0000962E 01 95              		    r2 = r1; 						// key from +Vcc
+0000962F 0A 87 FF FF        	    	r3 = r2 xor 0xffff;				// Be a +Vcc mask
+                            	    
+                            	    	// delay here
+00009631 00 EE              		    nop;
+00009632 00 EE              	    	nop;
+00009633 00 EE              	    	nop;
+                            		    
+00009634 11 93 01 70        		 	r1 = [P_IOA_Buffer];			// PortA.7 high(scan line)
+00009636 09 A3 80 00        			r1 |= 0x0080;					//
+00009638 19 D3 01 70        			[P_IOA_Buffer] = r1;			//	
+                            			   
+0000963A 11 93 00 70        			r1 = [P_IOA_Data];				//
+                            			//r1 = [P_IOB_Data];			// get key data from IOB
+0000963C 4F B2              			r1 &= 0x000F;					//
+0000963D 02 83              			r1 ^= r2;						// possible bits by scan line
+0000963E 03 B3              			r1 &= r3;						// do +Vcc mask   
+                            			
+0000963F 59 93              			r1 = r1 lsl 4;					//
+00009640 02 A3              			r1 |= r2;						//
+                            	    	//r2 = r2 lsl 4;				//
+                            			//r1 |= r2;						//	    	
+                            			    
+00009641 09 B3 FF 00        	        r1 = r1 and 0xFF;				// mask bit[0..7]
+                            	        
+00009643 12 95 2F 03        	        r2 = [R_DebounceReg];			//
+00009645 19 D3 2F 03        	        [R_DebounceReg] = r1;			//
+00009647 12 45 2F 03        	        cmp r2,[R_DebounceReg];			//
+00009649 04 5E              	        je	L_KS_StableTwoSample_2;		//
+                            	        
+0000964A 48 92              	        r1 = C_DebounceCnt;				//debounce time setting
+0000964B 19 D3 30 03        	        [R_DebounceCnt] = r1;			//
+0000964D 90 9A              	        retf;							//
+                            	        
+                            	L_KS_StableTwoSample_2:
+0000964E 11 93 30 03        			r1 = [R_DebounceCnt];			//
+00009650 01 5E              			jz	L_KS_StableOverDebounce_2;	//
+00009651 90 9A              			retf;
+                            		
+                            	L_KS_StableOverDebounce_2:        
+00009652 19 D3 30 03        			[R_DebounceCnt] = r1;			//
+00009654 12 95 2F 03        			r2 = [R_DebounceReg];			//
+00009656 11 93 31 03        			r1 = [R_KeyBuf];				//
+00009658 1A D5 31 03        			[R_KeyBuf] = r2;				//
+0000965A 09 83 FF 00        			r1 = r1 xor 0x00ff;				//
+0000965C 11 B3 31 03        			r1 = r1 and [R_KeyBuf];			//
+0000965E 09 B3 FF 00        			r1 = r1 and 0x00ff;				//
+00009660 11 A3 32 03        			r1 = r1 or [R_KeyStrobe];		//
+00009662 19 D3 32 03        			[R_KeyStrobe] = r1;				//save stable key code to R_KeyStrobe
+00009664 90 9A              			retf;
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: debounce counter down count
+                            	//////////////////////////////////////////////////////////////////
+                            	F_Key_DebounceCnt_Down:
+00009665 11 93 30 03        			r1 = [R_DebounceCnt];			// Debounce subroutine for F_IO_Key_Scan:
+00009667 03 5E              			jz	L_DebounceCntZero;			// stop count if zero
+00009668 41 22              			r1 -= 0x0001;					//
+00009669 19 D3 30 03        			[R_DebounceCnt] = r1;			//
+                            	L_DebounceCntZero:						//
+0000966B 90 9A              			retf;  							//	
+                            	
+                            	
+                            	//****************************************************************
+                            	// Function: Get Keycode for I/O Port                                 
+                            	// Destory register: r1, r2                          
+                            	//****************************************************************
+                            	_SP_GetCh:					
+                            	F_SP_GetCh:
+                            			//push	BP,BP to [SP];
+                            	  		//BP = SP + 1;
+                            			  
+0000966C 11 93 32 03        			r1 = [R_KeyStrobe];				// Get Key code
+0000966E 40 94              	        r2 = 0x0000;					// Clear KeyStrobe for next key	
+0000966F 1A D5 32 03        	        [R_KeyStrobe] = r2;				//
+                            	        //pop		BP,BP from [SP];
+00009671 90 9A              	        retf;
+                            	
+                            	
+                            	////////////////////////////////////////////////////////////////// 
+                            	// I/O APIs
+                            	//////////////////////////////////////////////////////////////////   
+                            	//--------------------------------------------------------------------
+                            	//-- Procedure: _SP_Init_IOA
+                            	//-- Syntax   : SP_Init_IOA(Dir,Data,Attrib)
+                            	//-- Description: Initialize IOA setting
+                            	//-- Parameter:
+                            	//--	Dir     --> P_IOA_Dir,
+                            	//--    Data    --> P_IOA_Data,
+                            	//--    Attrib  --> P_IOA_Attrib
+                            	//-- Return:
+                            	//--	None
+                            	//-------------------------------------------------------------------- 
+                            	_SP_Init_IOA: .PROC
+00009672 88 DA              			PUSH BP,BP TO [SP];
+00009673 08 0B 01 00        	        BP = SP + 1;
+00009675 88 D2              			PUSH R1,R1 TO [SP];
+00009676 03 92              			R1 = [BP+3];						// Port direction
+00009677 19 D3 02 70        			[P_IOA_Dir] = R1;
+00009679 04 92              			R1 = [BP+4];
+0000967A 19 D3 00 70        			[P_IOA_Data] = R1;
+0000967C 05 92              			R1 = [BP+5];
+0000967D 19 D3 03 70        			[P_IOA_Attrib] = R1;
+                            			
+0000967F 88 90              			POP R1,R1 FROM [SP];
+00009680 88 98              	        POP BP,BP FROM [SP];
+00009681 90 9A              	        RETF;
+                            			.ENDP
+                            	
+                            	////////////////////////////////////////////////////////////////// 
+                            	// SP_Inti_IOB
+                            	//////////////////////////////////////////////////////////////////    
+                            	//--------------------------------------------------------------------
+                            	//-- Procedure: _SP_Init_IOB
+                            	//-- Syntax   : SP_Init_IOB(Dir,Data,Attrib)
+                            	//-- Description: Initialize IOB setting
+                            	//-- Parameter:
+                            	//--	Dir     --> P_IOB_Dir,
+                            	//--    Data    --> P_IOB_Data,
+                            	//--    Attrib  --> P_IOB_Attrib
+                            	//-- Return:
+                            	//--	None
+                            	//-------------------------------------------------------------------- 
+                            	_SP_Init_IOB: .PROC
+00009682 88 DA              			PUSH BP,BP TO [SP];
+00009683 08 0B 01 00        	        BP = SP + 1;
+00009685 88 D2              			PUSH R1,R1 TO [SP];
+00009686 03 92              			R1 = [BP+3];						// Port direction
+00009687 19 D3 07 70        			[P_IOB_Dir] = R1;
+00009689 04 92              			R1 = [BP+4];
+0000968A 19 D3 05 70        			[P_IOB_Data] = R1;
+0000968C 05 92              			R1 = [BP+5];
+0000968D 19 D3 08 70        			[P_IOB_Attrib] = R1;
+                            			
+0000968F 88 90              			POP R1,R1 FROM [SP];
+00009690 88 98              	        POP BP,BP FROM [SP];
+00009691 90 9A              	        RETF;
+                            			.ENDP
+                            	
+                            	//--------------------------------------------------------------------
+                            	//-- Procedure: _SP_Import
+                            	//-- Syntax   : SP_Import(Port Number,Data Buffer Pointer)
+                            	//-- Description: Import number from IO and save to a memory location
+                            	//-- Parameter:
+                            	//--	Port Number         --> P_IOB_Dir,
+                            	//--    Data Buffer Pointer --> P_IOB_Data,
+                            	//-- Return:
+                            	//--	None
+                            	//-------------------------------------------------------------------- 
+                            	
+                            	_SP_Import: .PROC
+00009692 88 DA              	        PUSH BP,BP TO [SP];
+00009693 08 0B 01 00        	        BP = SP + 1;
+00009695 90 D4              			PUSH R1,R2 TO [SP];
+00009696 03 92              			R1 = [BP+3]; 						// Port Number
+00009697 04 94              			R2 = [BP+4]; 						// Data Buffer Pointer
+00009698 C1 92              			R1 = [R1] ;
+00009699 C2 D2              			[R2] = R1 ;
+0000969A 90 90              			POP R1,R2 FROM [SP];
+0000969B 88 98              	        POP BP,BP FROM [SP];
+0000969C 90 9A              	        RETF;
+                            			.ENDP
+                            	//--------------------------------------------------------------------
+                            	//-- Procedure: _SP_Export
+                            	//-- Syntax   : SP_Export(Port Number,value)
+                            	//-- Description: Export value to I/O
+                            	//-- Parameter:
+                            	//--	Port Number         --> Port_IOA_Data,Port_IOB_Data
+                            	//--    value
+                            	//-- Return:
+                            	//--	None
+                            	//-------------------------------------------------------------------- 
+                            	_SP_Export: .PROC
+0000969D 88 DA              	        PUSH BP,BP TO [SP];
+0000969E 08 0B 01 00        	        BP = SP + 1;
+000096A0 90 D4              			PUSH R1,R2 TO [SP];
+000096A1 03 92              			R1 = [BP+3]; 						// Port Number
+000096A2 04 94              			R2 = [BP+4]; 						// Value
+000096A3 C1 D4              			[R1] = R2 ;
+000096A4 90 90              			POP R1,R2 FROM [SP];
+000096A5 88 98              	        POP BP,BP FROM [SP];
+000096A6 90 9A              	        RETF;        
+                            	 		.ENDP
+                            			 
+                            	
+                            	//========================================================================================        
+                            	// End of sp_lib.asm
+                            	//========================================================================================
+0 error(s), 0 warning(s).
+

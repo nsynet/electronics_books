@@ -1,0 +1,56 @@
+C51 COMPILER V8.05a   DDZZ                                                                 04/01/2009 15:29:02 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE DDZZ
+OBJECT MODULE PLACED IN ddzz.OBJ
+COMPILER INVOKED BY: D:\Program Files\C51\BIN\C51.EXE ddzz.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          ////////////////////////汇诚科技////////////////////
+   3          //////////////////http://www.ourhc.cn///////////////
+   4          ///////////////////步进电机调试程序/////////////
+   5          
+   6          #include<reg52.h>  
+   7          
+   8          /*****P1.0=A ;P1.1=B ;P1.2=A' ; P1.3=B'****/  
+   9          //////////////////////////////////////////////////////////////////////////////////////////////
+  10          /*******************************正转数组**************************************************/
+  11          //code unsigned char run[8]={0x0e,0x0c,0x0d,0x09,0x0b,0x03,0x07,0x06};  //两相四线八拍工作方式
+  12          /*******************************反转数组**************************************************/
+  13            code unsigned char run[8]={0x06,0x07,0x03,0x0b,0x09,0x0d,0x0c,0x0e};  //两相四线八拍工作方式
+  14          unsigned char s,i,j,k;
+  15          
+  16          void delay(i)//延时函数
+  17          {
+  18   1      for(j=0;j<i;j++)
+  19   1      for(k=0;k<250;k++);
+  20   1      }
+  21          main()
+  22          {
+  23   1      unsigned char z,y;
+  24   1      y=30;       //定义延时时间，时间越长电机转速越慢反之则快
+  25   1      while(1)
+  26   1      {
+  27   2      for(z=0;z<8;z++)  //改变数组的长度值需改变这个数字8，8为数组的长度。
+  28   2      {
+  29   3      P1=run[z];
+  30   3      delay(y);
+  31   3      }
+  32   2      }
+  33   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     55    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

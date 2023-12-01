@@ -1,0 +1,14 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter2 C Language\Key4mul4\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter2 C Language\Key4mul4\Debug\main.obj"
+Output: ".\Debug\Key4mul4.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: IRAM in "main.obj" at 8092  linkat 6 
+;Align: IRAM in "main.obj" with 0 
+;Locate: RAM in "main.obj" at 0 
+;Align: RAM in "main.obj" with 0 
+;Locate: CODE in "main.obj" at 8026 
+;Align: CODE in "main.obj" with 0 

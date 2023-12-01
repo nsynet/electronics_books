@@ -1,0 +1,430 @@
+;**************************************************************
+; 文件名称：
+;         keyBoard3.s43
+; 文件说明：
+;         使用LED和小键盘做一个计时程序,格式为HHMMSS，按FUN键
+;     后将选中其中的两位，再按“INC”对选中为进行加操作，按“DEC”
+;     进行减操作,按四次退出功能选择。
+;**************************************************************
+#include  "msp430x44x.h " 
+
+;***************************************************************
+;       RAM单元定义
+;***************************************************************
+hour	            equ	        201h	    ; 时
+min     	    equ	        202h	    ; 分
+second              equ     	203h        ; 秒		
+flag                equ         204h        ; 标志寄存器
+led_disp_data       equ         205h        ; led 显示缓冲
+led_disp_bit        equ         206h        ; led显示位选
+counter        	    equ     	207h        ; 显示计数
+dip                 equ         208h        ; 小数点 
+inc_dec_buffer      equ         209h        ; inc缓存;dec缓存
+fun_buffer          equ         20ah        ; fun缓存
+key_flag            equ         20bh        ; 键盘中断标志缓存
+fun_flag            equ         20ch        ; 功能键标志缓存
+second_flag         equ         200h        ; 0.5S标志
+;***************************************************************
+;           按键定义
+;***************************************************************
+key_inc                 equ         008h    ; P1.3
+key_dec                 equ         004h    ; P1.2
+key_fun                 equ         002h    ; P1.1
+;***************************************************************
+; 首先，对系统进行初始化。关看门狗、置端口的输入输出状态、以及中断情况态
+; 接着，对用到的ram区进行初始化、对标志位初始化。
+;***************************************************************
+                ORG     08000h              ; 程序起始位置
+;***************************************************************
+Reset          
+              	mov.w   #0600h,SP                       ; 初始化堆栈
+StopWDT       	mov.w   #WDTPW+WDTHOLD,&WDTCTL          ; 关看门狗              	         	              	
+Setup_P1        
+                bic.b   #key_inc+key_dec+key_fun,&P1DIR ; 设置P1DIR
+              	bis.b   #key_inc+key_dec+key_fun,&P1OUT ;             
+              	bis.b   #key_inc+key_dec+key_fun,&P1IES ; 接收从高到低的跳变
+              	bis.b   #key_inc+key_dec+key_fun,&P1IE  ; 使能中断  	                
+Setup_P3        
+              	mov.b   #0ffh,&P3DIR                    ; P3为输出模式
+              	mov.b   #00h,&P3OUT             	; 输出值为0                      
+              	mov.b   #0ffh,&P4DIR                    ; 设置P4为输出模式
+              	bis.b   #03h,&P4OUT                     ; P4.1,P4.0 为1
+Setup_BT
+                mov.b   #BTSSEL+BT_ADLY_500,&BTCTL       ; 中断间隔设置               
+                mov.b   #0a5h,&BTCTL                     ; 设置BTCTL
+              	bis.b   #BTIE,&IE2                       ; 使能Basic Timer 中断               	         
+Setup_TA
+              	mov.w   #TASSEL1+TACLR,&TACTL            ; led 刷新一位定时
+             	mov.w   #CCIE,&CCTL0
+              	mov.w   #3600,&CCR0                      ; 4.5ms            
+              	bis.w   #MC0,&TACTL                 	                      	              	                                
+clr_ram        
+                clr     R8                               ; R8 =0
+loop_clr        clr.b   second_flag(R8)                  ; 对从200H起始的单元设置其值为0
+                inc.b   R8                               ; R8=1
+                cmp.b   #0dh,R8                          ; 判断R8是否大于0x0d
+                jeq     clr_ram_over                     ; 
+                jmp     loop_clr                         ; 继续循环
+clr_ram_over    clr     R8                               ; 清零r8
+                eint	                                 ; 
+;***************************************************************
+;               主程序区        
+;***************************************************************
+mainloop		               
+                nop
+                nop                
+                bis.w     #LPM0,SR                       ; CPUOFF
+                nop
+                nop
+                bic.b     #key_inc+key_dec+key_fun,&P1IE ; 清除中断使能                           
+                call      #key_scan                      ; 调用key_scan
+ret_jmp         jmp       mainloop                       ;
+               
+key_scan        
+                push      R15                            ; 保存R15
+                call      #delay_10ms                    ; 去抖动和防止干扰
+                mov.b     &P1IN,R15                      ;
+                inv.b     R15
+                bit.b     #key_inc+key_dec+key_fun,R15   ; 判断有无按键按下           
+                jz        ret_scan 
+                                
+loop_key       
+                mov.b     &P1IN,R15                      ; 判断按键有无松开
+                inv.b     R15
+                bit.b     #key_inc+key_dec+key_fun,R15   ; 
+                jnz       loop_key                       ; 没有按键继续循环                
+                call      #keycodej3                     ; 判断键值
+               
+                
+ret_scan        clr.b     &P1IFG                         ; 清除标志
+                bis.b     #key_inc+key_dec+key_fun,&P1IE ; 开中断
+                 
+                jmp       ret_jmp                        ;
+      
+;***************************************************************
+;               PORT 1 INT 
+;***************************************************************
+PORT1_INT  
+            bic.w     #LPM0,0(SP)                         ; 退出LMP0
+            mov.b     &P1IFG,&key_flag                    ; 获取按键中断标识
+ret_int     clr.b     &P1IFG                              ; 清除P1IFG
+            reti                                          ;
+;***************************************************************
+;          延时10ms子程序 
+;***************************************************************
+delay_10ms
+            mov     #2666,R15                             ; R15 ＝ 2666
+loop_delay  dec     R15                                   ; R15=R15-1
+            jnz     loop_delay                            ; 
+            ret                                           ;
+;***************************************************************
+;         判断按键子程序 
+;***************************************************************
+keycodej3    
+test_inc    bit.b     #key_inc,&key_flag                 ; 是INC吗？
+            jz        test_dec                           ; 
+            call      #inc_fun                           ; 
+            jmp       ret_1                              ;
+test_dec    bit.b     #key_dec,&key_flag                 ; 是DEC吗？
+            jz        test_fun                           ;
+            call      #dec_fun                           ;
+            jmp       ret_1                              ;
+test_fun    bit.b     #key_fun,&key_flag                 ; 是FUN吗？
+            call      #fun_fun                           ;
+            jmp       ret_1                              ;
+            
+ret_1       
+            ret
+;****************************************************************
+;        inc按键子程序 
+;****************************************************************
+inc_fun     
+            bit.b     #1,&fun_flag                      ; 是否对FUN按下过？
+            jz        ret_inc                           ;
+            cmp.b     #1,&fun_buffer                    ; 是HOUR要增加吗？
+            jeq       inc_hour                          ; 
+
+            inc.b     &inc_dec_buffer                   ; 操作缓存＋1
+            dadc.b    &inc_dec_buffer                   ; 
+            cmp.b     #60h,&inc_dec_buffer              ; 是否要进位
+            jlo       inc_move                          ;
+            clr.b     &inc_dec_buffer                   ; 进位，清零操作缓存
+            jmp       inc_move                          ; 
+inc_hour                                                ;
+            inc.b     &inc_dec_buffer                   ;
+            dadc.b    &inc_dec_buffer                   ;
+            cmp.b     #23h,&hour                        ; 是否要清零小时
+            jlo       inc_move                          ;
+            clr.b     &inc_dec_buffer                   ;
+inc_move    mov.b     &fun_buffer,R15                   ;
+               
+            mov.b     &inc_dec_buffer,second_flag(R15)  ;
+ret_inc     ret
+;****************************************************************
+;          dec按键子程序 
+;****************************************************************
+dec_fun     
+            bit.b     #1,&fun_flag                     ; 是否FUN按下过？
+            jz        ret_dec                          ;  
+            cmp.b     #01h,&inc_dec_buffer             ; 大于等于1 吗？
+            jhs       loop_dec                         ; 如果大于等于跳转
+            cmp.b     #1,&fun_buffer                   ; 是对小时操作吗？
+            jeq       dec_hour                         ;
+            mov.b     #60h,&inc_dec_buffer             ; 变为60H，对分或者秒操作
+            jmp       loop_dec                         ; 
+dec_hour    mov.b     #24h,&inc_dec_buffer             ; 变为24H
+loop_dec    bit.b     #0fh,&inc_dec_buffer             ; 是小时吗？
+            jz        set_dec                          ;
+unset_dec   dec.b     &inc_dec_buffer                  ; 减去1
+            clrc                                       ;
+            dadd.b   #0,&inc_dec_buffer                ; 
+            jmp       dec_move                         ;
+set_dec     sub.b     #06,&inc_dec_buffer              ; 减去6
+            jmp       unset_dec                        ;  
+dec_move    mov.b     &fun_buffer,R15                  ; 
+            mov.b     &inc_dec_buffer,second_flag(R15) ; 保存
+                                       
+ret_dec     ret
+;****************************************************************
+;       fun按键子程序 
+;****************************************************************
+fun_fun     
+            inc.b    &fun_buffer                                ; fun_buffer 加1
+            cmp.b    #1,&fun_buffer                             ; 是1吗？ 小时增加
+            jeq      fun_star_hour                              ;
+            cmp.b    #2,&fun_buffer                             ; 是2 ？ 分增加
+            jeq      fun_min                                    ;
+            cmp.b    #3,&fun_buffer                             ; 是3 ？ 秒增加
+            jeq      fun_second                                 ;
+            cmp.b    #4,&fun_buffer                             ; 是4 ？ fun按了4次
+            jeq      fun_stop                                   ;
+
+fun_ret      ret
+;****************************************************************
+fun_star_hour     
+            bis.b     #1,&fun_flag                              ; 设置fun_flag标识
+            
+            mov.b     &hour,&inc_dec_buffer                     ; hour如操作缓存
+                    
+            jmp       fun_ret                                   ; 
+;****************************************************************
+fun_min                                                         ;
+            mov.b     &min,&inc_dec_buffer                      ; min进操作缓存
+            jmp       fun_ret                                   ;
+;****************************************************************
+fun_second                                                      ;
+            mov.b     &second,&inc_dec_buffer                   ; second进操作缓存
+            jmp       fun_ret                                   ;
+;****************************************************************
+fun_stop                                                        ;
+            clr.b     &fun_flag                                 ; 清除标识
+            clr.b     fun_buffer                                ;
+            jmp       fun_ret                                   ;
+                        
+;****************************************************************   
+;          led显示子程序   
+;****************************************************************	            
+led_chang                   
+                    br          led_take(R8)                     ;
+                    EVEN                                         ;
+led_take            
+                    dw          second_table_h                   ;
+                    dw          second_table_l                   ;
+                    dw          min_table_h                      ;
+                    dw          min_table_l                      ;
+                    dw          hour_table_h                     ;
+                    dw          hour_table_l                     ;
+                                                                 ;
+                                                                 ;
+second_table_h                                                   ;
+                    mov.b       &second,R14                      ; R14=秒数
+                    mov.b       #2fh,&led_disp_bit               ; 控制LED的右边第二个显示
+                    jmp         take_h                           ; 取高位
+second_table_l                                                   ;
+                    mov.b       &second,R14                      ;
+                    mov.b       #1fh,&led_disp_bit               ;
+                    mov.b       #00h,&dip                        ; 控制LED右边第一个显示
+                    jmp         take_l                           ; 取低位
+                                                                 ; 
+                                                                 ;
+min_table_h         mov.b       &min,R14                         ;
+                    mov.b       #3bh,&led_disp_bit               ; 控制LED的右边第四个显示
+                    jmp         take_h                           ; 取高位
+
+min_table_l         mov.b       &min,R14                         ;
+                    mov.b       #37h,&led_disp_bit               ; 控制LED右边第三个显示
+                    mov.b       #20h,&dip                        ; 取低位
+                    jmp         take_l                           ;
+
+hour_table_h        mov.b       &hour,R14                        ;
+                    mov.b       #3eh,&led_disp_bit               ; 控制LED右边第六个显示
+                    jmp         take_h                           ; 取高位
+                                                                 ;
+hour_table_l        mov.b       &hour,R14                        ;
+                    mov.b       #3dh,&led_disp_bit               ; 显示小时的低位
+                    mov.b       #20h,&dip                        ; 
+                    jmp         take_l                           ;
+                                                                 ;
+take_h              mov.b     	R14,R13                          ; 取高位
+	            rra.b     	R13                              ;
+            	    rra.b     	R13                              ;
+	            rra.b     	R13                              ;
+	            rra.b     	R13                              ;
+	            and.b     	#0fh,R13                         ;
+	            mov.b     	led_table(R13),&led_disp_data    ;
+	            
+	           ret         	           	                 ;
+take_l        	                                                 ; 取低位
+	           mov.b     	R14,R13                          ; 
+	           and.b     	#0fh,R13                         ;
+	           mov.b     	led_table(R13),&led_disp_data	 ;
+	           add.b       &dip,&led_disp_data               ;                
+	           ret                         	             
+;****************************************************************   
+;                     led显示子程序   
+;****************************************************************
+led_display                                                                   
+                    mov.b       &led_disp_data,&P3OUT   ; 设置显示数据
+                    bis.b       #02h,&P4OUT             ; 打开数据锁存                   
+                    bic.b       #02h,&P4OUT             ; 关闭数据锁存                  
+                     
+                    
+                    mov.b       &led_disp_bit,P3OUT
+                    bis.b       #01h,&P4OUT              ; 打开控制锁存
+                    bic.b       #01h,&P4OUT              ; 关闭控制锁存 
+                    ret                                                       
+;**************************************************************** 
+;                    TimerA_int   
+;****************************************************************
+Timera_int                 
+                      inc.b     R8                       ;
+                      inc.b     R8                       ;
+                      cmp.b     #0ch,R8                  ;
+                      jnz       Timer_int_end            ;
+                      clr.b     R8                       ;
+                                     
+Timer_int_end         push.b  &second                    ;
+                      push.b  &min                       ;
+                      push.b  &hour                      ;
+                      call    #led_blink                 ; 如果有键按下，LED闪烁       
+                      call    #led_chang                 ; 改变LED缓冲 
+                      call    #led_display               ; 显示数据到LED 
+                      pop.b   &hour                      ;
+                      pop.b   &min                       ;
+                      pop.b   &second                    ;
+                      reti                               ;
+;****************************************************************
+;         led_blink 
+;****************************************************************
+led_blink           cmp.b       #3,&fun_buffer  ;按下功能键三次，秒钟对应的LED闪烁
+                    jeq         second_blink
+                    cmp.b       #2,&fun_buffer  ;按下功能键两次，分钟对应的LED闪烁
+                    jeq         min_blink
+                    cmp.b       #1,&fun_buffer  ;按下功能键一次，小时对应的LED闪烁
+                    jeq         hour_blink      ;
+                    jmp         blink_ret       ;
+second_blink                                    ; 秒对应的LED闪烁
+                    bit.b       #1,&second_flag ; 
+                    jnz         s_ret           ;               
+                    mov.b       #0aah,&second   ;
+s_ret               jmp         blink_ret       ;
+min_blink                                       ; 分对应的两个LED闪烁    
+                    bit.b       #1,&second_flag ;
+                    jnz         m_ret           ;                
+                    mov.b       #0aah,&min      ;              
+m_ret               jmp         blink_ret       ;
+hour_blink                                      ; 小时对应的LED闪烁
+                    bit.b       #1,&second_flag ;
+                    jnz         blink_ret       ;                  
+                    mov.b       #0aah,&hour     ;
+                      
+blink_ret           ret                         ;                                                                             
+;****************************************************************
+;          BASIC TIMER int      
+;**************************************************************** 
+BASIC_INT   	      
+                      xor.b   #01h,&second_flag        ; 标识取反
+                      bit.b   #1,&second_flag          ; 是1吗？
+                      jz      clock_ret                ;  
+                      
+                      xor.b   #01h,&flag               ;        
+                      setc                             ;
+BASIC_END	          
+                      dadc.b   &second                 ; 
+                      cmp.b   #60h,&second             ; 与60H比较
+                      jlo     clock_end                ; 
+                      clr.b   &second                  ; 清零second
+                      dadc.b   &min                    ; 如果大于60H，分加1
+                      cmp.b   #60h,&min                ;
+                      jlo     clock_end                ; 如果分大于60H
+                      dadc.b   &hour                   ; 小时加1
+                      clr.b   &min                     ; 如果小时大于24H
+                      cmp.b   #24h,&hour               ; 
+                      jlo     clock_end                ; 小时边为0
+                      clr.b   &hour                    ;
+clock_end                                              
+                      
+clock_ret             reti                             ;
+            
+delay       	mov.b   #0ffh,R9                       ; 延迟
+ttt         	nop                                    ;
+            	nop                                    ;
+            	dec.b   R9                             ; R9--
+            	jnz     ttt                            ;
+            	ret                                    ;
+
+;****************************************************************
+;           led显示代码    
+;**************************************************************** 			
+led_table			
+              db      0d7h          ;0
+              db      14h           ;1
+              db      0cdh          ;2
+              db      5dh           ;3
+              db      1Eh           ;4
+              db      5bh           ;5
+              db      0dbh          ;6
+              db      15h           ;7
+              db      0dfh          ;8
+              db      05fh          ;9
+              db      00h           ;no,用于在熄灭LED
+              db      00h           ;no
+              
+;****************************************************************                 
+;          中断向量
+;****************************************************************             
+            RSEG    INTVEC             ; MSP430 RESET 向量        
+;****************************************************************           
+            DW      BASIC_INT               ;0FFE0h    
+            DW      Reset                   ;0FFE2h    
+            DW      Reset                   ;0FFE4h 
+            DW      Reset                   ;0FFE6h
+            DW      PORT1_INT	            ;0FFE8h
+            DW      Reset                   ;0FFEAh
+            DW      Timera_int              ;0FFECh 
+            DW      Reset                   ;0FFEEh
+            DW      Reset                   ;0FFF0h 
+            DW      Reset                   ;0FFF2h
+            DW      Reset                   ;0FFF4h 
+            DW      Reset                   ;0FFF6h
+            DW      Reset                   ;0FFF8h 
+            DW      Reset                   ;0FFFAh
+            DW      Reset                   ;0FFFCh 
+            DW      Reset                   ;0FFFEh            
+            END    
+              	   
+
+
+		
+		   
+			
+
+
+
+
+
+
+
+
+
+

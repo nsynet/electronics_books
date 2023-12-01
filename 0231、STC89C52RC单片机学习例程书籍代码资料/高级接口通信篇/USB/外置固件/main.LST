@@ -1,0 +1,85 @@
+C51 COMPILER V7.06   MAIN                                                                  03/21/2011 11:03:29 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c ROM(COMPACT) BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "global.h"
+   8          /*
+   9                  串口头文件
+  10          */
+  11          #include "UARTInterface.h"
+  12          /*
+  13                  USB头文件
+  14          */
+  15          #include "USBInterface.h"
+  16          #include "USBApplication.h"
+  17          
+  18          /****************************************************************************************************
+  19          *
+  20          *                                      变量区
+  21          * 
+  22          *****************************************************************************************************/
+  23          /*
+  24                    任务级函数
+  25          
+  26          说明:自行添加需要运行的任务
+  27          注意:认真检查MAX_TASKS的最大值和自己添加的任务
+  28          
+  29          */
+  30          static void (* CONST avTaskTbl[MAX_TASKS])(void)={ SYSIdle,              //    系统空闲 任务
+  31                                                                                                     NULL,                 //       空    任务
+  32                                                                                                     NULL,                 //       空    任务
+  33                                                                                                     NULL,                 //       空    任务
+  34                                                                                                     NULL,                 //       空    任务
+  35                                                                                                     NULL,                 //       空    任务
+  36                                                                                                     NULL,                 //       空    任务
+  37                                                                                                     USBApDisposeData      //USB 处理数据 任务
+  38          };                                                                          
+  39          /****************************************************************************************************
+  40          *
+  41          *                                      函数区
+  42          * 
+  43          *****************************************************************************************************/
+  44          void main(void)
+  45          {
+  46   1           P2=P3=0xFF;
+  47   1               UARTCiInit();
+  48   1           USBCiInit();
+  49   1               EXIT_CRITICAL();
+  50   1      
+  51   1               SYSPostCurMsg(SYS_IDLE);
+  52   1      
+  53   1               while(1)
+  54   1               {
+  55   2                      avTaskTbl[SYSRecvCurMsg()](); //总线捕获信息
+C51 COMPILER V7.06   MAIN                                                                  03/21/2011 11:03:29 PAGE 2   
+
+  56   2               }
+  57   1               
+  58   1               
+  59   1      
+  60   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     49    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,22 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+Obj: "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\Resource.obj"
+Obj: "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+Obj: "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"
+Obj: "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\main.obj"
+Output: ".\Debug\DA_ch.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 8270  linkat 5 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "key.obj" at 0 
+;Align: RAM in "key.obj" with 0 
+;Locate: CODE in "hardware.obj" at 8026 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "main.obj" at 8153 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "key.obj" at 81F2 
+;Align: CODE in "key.obj" with 0 
+;Locate: DATA in "main.obj" at 82A8 
+;Align: DATA in "main.obj" with 0 

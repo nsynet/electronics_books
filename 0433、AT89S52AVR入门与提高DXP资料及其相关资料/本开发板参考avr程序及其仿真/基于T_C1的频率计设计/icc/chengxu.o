@@ -1,0 +1,245 @@
+XL
+H 4 areas 13 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset3 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset3 Ref0000
+S empy16s Ref0000
+A text size 1D0 flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\基于T_C1的频率计设计\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 16 4
+dbline 17 4
+dbline 18 6
+dbline 18 6
+dbline 18 C
+dbline 18 C
+dbline 18 C
+dbline 18 C
+dbline 18 10
+dbline 18 16
+dbline 17 16
+dbline 17 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 1C 2C
+dbline 1C 2C
+dbline 1D 2E
+dbline 1E 32
+dbline 1E 32
+dbline 1F 38
+dbline 20 50
+dbline 21 56
+dbline 22 58
+dbline 1D 58
+dbline 1D 5A
+dbline FFFFFFFE 5E
+dbline 0 62
+dbfunc e HZ 64 fV
+dbsym r TEM 16 i
+dbsym r p 14 pc
+dbsym r i A i
+dbline FFFFFFFF 6C
+dbline 26 6C
+dbline 27 6C
+dbline 28 7A
+dbline 29 86
+dbline 2A 92
+dbline 2B 9C
+dbline 2C A6
+dbline 2D B2
+dbline 2E BC
+dbline 2F C6
+dbline 30 D2
+dbline FFFFFFFE DC
+dbline 0 E0
+dbfunc e Init_IO E2 fV
+dbline FFFFFFFF E2
+dbline 34 E2
+dbline 34 E2
+dbline 35 E6
+dbline 36 E8
+dbline 37 EA
+dbline 38 EC
+dbline 39 EE
+dbline 3A F0
+dbline 3B F4
+dbline FFFFFFFE F6
+dbline 0 F6
+dbfunc e Init_Timer1 F8 fV
+dbline FFFFFFFF F8
+dbline 3F F8
+dbline 3F F8
+dbline 40 FE
+dbline 41 102
+dbline 42 106
+dbline FFFFFFFE 10C
+dbline 0 10C
+dbfunc e main 10E fV
+dbsym r i 14 c
+dbline FFFFFFFF 10E
+dbline 46 10E
+dbline 47 10E
+dbline 48 110
+dbline 49 114
+dbline 4E 118
+dbline 50 11C
+dbline 52 11C
+dbline 52 11C
+dbline 53 122
+dbline 54 12E
+dbline 55 13A
+dbline 56 156
+dbline 57 166
+dbline 57 170
+dbline 51 170
+dbline 58 176
+dbline 59 17E
+dbline 59 17E
+dbline 5A 184
+dbline 5B 192
+dbline 5C 196
+dbline 5B 19C
+dbline 5B 19E
+dbline 5D 1A2
+dbline 5E 1A6
+dbline 5F 1B0
+dbline 5F 1BC
+dbline 5F 1C4
+dbline 5F 1CC
+dbline 5F 1CC
+dbline 4F 1CC
+dbline FFFFFFFE 1CE
+dbline 0 1CE
+S _HZ Def0064
+S _main Def010E
+S _DelayMs Def0000
+S _Display Def0026
+S _Init_Timer1 Def00F8
+S _Init_IO Def00E2
+A data size 1B flags 20
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\基于T_C1的频率计设计\icc\chengxu.c
+dbsym e Flag 0 c
+dbsym e Table 1 A[20:20]c
+dbsym e Data 15 A[4:4]c
+dbsym e CNT 19 i
+S _CNT Def0019
+S _Table Def0001
+S _Data Def0015
+S _Flag Def0000
+A idata size 1B flags 0
+A bss size 4 flags 20
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\基于T_C1的频率计设计\icc\chengxu.c
+dbsym e CNT2 0 i
+dbsym e CNT1 2 i
+S _CNT1 Def0002
+S _CNT2 Def0000
+T 00 00 00
+R 00 00 02 00
+T 01 00 3F 06
+R 00 00 02 00
+T 03 00 5B 4F
+R 00 00 02 00
+T 05 00 66 6D
+R 00 00 02 00
+T 07 00 7D 07
+R 00 00 02 00
+T 09 00 7F 6F
+R 00 00 02 00
+T 0B 00 77 7C
+R 00 00 02 00
+T 0D 00 39 5E
+R 00 00 02 00
+T 0F 00 79 71
+R 00 00 02 00
+T 11 00 00 00 00 00
+R 00 00 02 00
+T 15 00 00 00
+R 00 00 02 00
+T 17 00 00 00
+R 00 00 02 00
+T 19 00 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 ED 57 E0 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 04 00
+T 26 00 0E 94 00 00 58 01 48 E0 66 27 14 C0 24 2E
+R 00 00 00 00 12 04 01 00
+T 34 00 20 94 25 BA E6 2F FF 27 EA 0D FB 1D E0 81
+R 00 00 00 00
+T 42 00 FF 27 80 E0 90 E0 E8 0F F9 1F 20 80 2B BA
+R 00 00 00 00 20 04 01 00 01 00 40 06 01 00 01 00
+T 50 00 02 E0 10 E0 D5 DF 46 95 63 95 64 30 50 F3
+R 00 00 00 00
+T 5E 00 0E 94 00 00 08 95
+R 00 00 00 00 12 04 05 00
+T 64 00 0E 94 00 00 A9 01 58 01 08 EE 13 E0 95 01
+R 00 00 00 00 12 04 01 00
+T 72 00 0E 94 00 00 FA 01 00 83 08 EE 13 E0 95 01
+R 00 00 00 00 12 04 03 00
+T 80 00 0E 94 00 00 B8 01 0A E0 10 E0 9B 01 0E 94
+R 00 00 00 00 12 04 02 00
+T 8E 00 00 00 B8 01 95 01 0E 94 00 00 FA 01 01 83
+R 00 00 00 00 12 02 06 00 12 0A 03 00
+T 9C 00 95 01 8B 01 0E 94 00 00 B8 01 0A E0 10 E0
+R 00 00 00 00 12 08 02 00
+T AA 00 9B 01 0E 94 00 00 B8 01 95 01 0E 94 00 00
+R 00 00 00 00 12 06 06 00 12 0E 03 00
+T B8 00 FA 01 02 83 95 01 8B 01 0E 94 00 00 B8 01
+R 00 00 00 00 12 0C 02 00
+T C6 00 0A E0 10 E0 9B 01 0E 94 00 00 B8 01 95 01
+R 00 00 00 00 12 0A 06 00
+T D4 00 0E 94 00 00 FA 01 03 83 0E 94 00 00 08 95
+R 00 00 00 00 12 04 03 00 12 0C 05 00
+T E2 00 8F EF 8A BB 8B BB 87 BB 88 BB 84 BB 85 BB
+R 00 00 00 00
+T F0 00 22 24 21 BA 22 BA 08 95
+R 00 00 00 00
+T F8 00 89 B7 80 62 89 BF 82 EC 8E BD 80 E2 88 BF
+R 00 00 00 00
+T 06 01 8F B7 8F 77 8F BF 08 95
+R 00 00 00 00
+T 0E 01 E9 DF 8F EF 8B BB 80 EF 85 BB EF DF 58 C0
+R 00 00 00 00
+T 1C 01 88 B7 80 62 88 BF 26 B4 33 24 30 92 1A 00
+R 00 00 00 00 00 0E 01 00
+T 2A 01 20 92 19 00 26 B4 37 B4 30 92 01 00 20 92
+R 00 00 00 00 00 04 01 00 00 0C 03 00
+T 38 01 00 00 20 90 02 00 30 90 03 00 40 90
+R 00 00 00 00 00 02 03 00 00 06 03 00 00 0A 03 00
+T 44 01 00 00 50 90 01 00 42 18 53 08 50 92 1A 00
+R 00 00 00 00 00 02 03 00 00 06 03 00 00 0E 01 00
+T 52 01 40 92 19 00 20 90 00 00 30 90 01 00 30 92
+R 00 00 00 00 00 04 01 00 00 08 03 00 00 0C 03 00
+T 60 01 03 00 20 92 02 00 80 91 00 00 8F 5F 80 93
+R 00 00 00 00 00 02 03 00 00 06 03 00 00 0A 01 00
+T 6E 01 00 00 28 B6 25 FC D3 CF 80 91 00 00 82 30
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 7C 01 39 F5 22 24 20 92 00 00 20 E0
+R 00 00 00 00 00 08 01 00 20 0A 01 00 15 00
+T 86 01 30 E0 00 91 19 00 10 91
+R 00 00 00 00 40 02 01 00 15 00 00 06 01 00
+T 8E 01 1A 00 69 DF 44 27 04 C0 00 E0
+R 00 00 00 00 00 02 01 00 20 0A 01 00 15 00
+T 98 01 10 E0 45 DF 43 95 44 36 D0 F3 26 B4 28 BA
+R 00 00 00 00 40 02 01 00 15 00
+T A6 01 20 90 19 00 30 90 1A 00 2B BA 22 24 33 24
+R 00 00 00 00 00 04 01 00 00 08 01 00
+T B4 01 30 92 1A 00 20 92 19 00 30 92 03 00 20 92
+R 00 00 00 00 00 04 01 00 00 08 01 00 00 0C 03 00
+T C2 01 02 00 30 92 01 00 20 92 00 00 D1 CF 08 95
+R 00 00 00 00 00 02 03 00 00 06 03 00 00 0A 03 00

@@ -1,0 +1,30 @@
+//  工程名称：61-study.spj
+//  功能描述: 61板实现PC机通信
+//  涉及的库：	CMacro1016.lib
+//  调用函数：
+    #include"MYSPCE061A.h"   //自定义头文件
+	unsigned int number;	//定义全局变量
+	/*****************主函数**************/		
+   int main()
+   {
+   	//B端口操作设置，设置IOB7为输入引脚，IOB10为输出引脚
+   	P_IOB_Data	 = 0x0400;   //数据单
+   	P_IOB_Attrib = 0x0480;   //属性向量单元
+   	P_IOB_Dir	 = 0x0400;   //方向向量单元
+   	//系统时钟源的设定，Fosc=24.576MHz，CPU时钟：24.756MHz
+   	P_SystemClock= 0x0000;
+   	// 串口初始化
+   	P_UART_BaudScalarHigh= 0x05; 
+   	P_UART_BaudScalarLow = 0x00;//波特率设定为9600bit/s
+   	P_UART_Command1	=0x0000;  //UART复位 
+   	P_UART_Command2  = 0x00c0;  //允许接收、发送
+   	__asm("IRQ ON");
+   	while(1)
+   	{
+   	while((P_UART_Command2 & 0x0080)==0) P_Watchdog_Clear=0x0001;
+   	number=P_UART_Data;	        //接收数据
+   	while((P_UART_Command2 & 0x0040)==0) P_Watchdog_Clear=0x0001;
+    P_UART_Data=number;
+   	}
+   	return(0); //无返回值函数，也可不加，但编译时会提示警告，可不管！
+   }		

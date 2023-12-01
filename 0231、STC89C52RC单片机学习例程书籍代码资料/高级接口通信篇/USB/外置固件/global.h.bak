@@ -1,0 +1,124 @@
+#ifndef __GLOBAL_H__
+#define __GLOBAL_H__
+#include <intrins.h>
+#include "typedef.h"
+#include "uart.h"
+
+/*
+              ---      芯片选择      ---
+*/
+#ifndef __C51__
+#define __C51__
+#endif
+
+/*
+              ---      全局宏定义      ---
+*/
+
+#define MCLK          48000000UL //4Mhz 晶振
+#define CONST          code 
+#define NULL          (void *)0
+
+#define TRUE          0x01
+#define FALSE         0x00
+
+#define UNKNOWN_ERROR 0xFF
+#define NO_ERROR      0x00
+ 
+#define ENABLE        TRUE
+#define DISBALE       FALSE  
+
+#define NOP()         _nop_()
+//      全局调试总开关 
+#ifndef DEBUG
+#define DEBUG         (1)
+#endif
+//      全局显示调试信息开关
+
+#if      DEBUG
+#define  DEBUGMSG	   UARTCiPrintfString
+#define  DEBUGMSGEx    UARTCiPrintfVal
+#else
+#define  DEBUGMSG
+#endif
+
+
+#define  EN_USBDEBUG  1
+#define  EN_UARTDEBUG 1
+#define  EN_KEYDEBUG  1
+
+#if     (DEBUG && EN_USBDEBUG)
+#define USBMSG    UARTCiPrintfString
+#define USBMSGEx  UARTCiPrintfVal
+#else
+#define USBMSG /\
+/USBMSG
+#define USBMSGEx /\
+/USBMSGEx
+#endif
+
+#if     (DEBUG && EN_UARTDEBUG)
+#define UARTMSG    UARTCiPrintfString
+#define UARTMSGEx  UARTCiPrintfVal
+#else
+#define UARTMSG /\
+/UARTMSG
+#define UARTMSGEx/\
+/UARTMSGEx
+#endif
+
+#define ENTER_CRITICAL()			EA=0	//总中断关闭
+#define EXIT_CRITICAL()				EA=1	//开总中断
+
+//高低字节交换
+//即低字节放在前面,高字节放在后面
+#define SWAP16(x)  ((((UINT16)(x))<<8)|(((UINT16)(x))>>8))
+#define SWAP32(x)  ((((UINT32)SWAP16(x))<<16)|SWAP16((x)>>16))
+#define LSB(x)     ((UINT8)(x))
+#define MSB(x)     ((UINT8)(((UINT16)(x))>>8))    
+
+extern CONST INT8 HexTable[16];
+
+
+typedef struct
+{
+	  const void(*fun)(void);
+	  const INT8  *s;
+}FUNCTION_ARRAY;
+ /******************************************************************
+*函数名称:DelayNus
+*输    入:t 延时时间
+*输    出:无
+*说    明:微秒级延时
+*******************************************************************/
+extern void DelayNus(UINT16 t);
+/******************************************************************
+*函数名称:DelayNms
+*输    入:t 延时时间
+*输    出:无
+*说    明:毫秒级延时
+*******************************************************************/
+extern void DelayNms(UINT16 t);
+/******************************************************************
+*函数名称:DelayNms
+*输    入:t 延时时间
+*输    出:无
+*说    明:秒级延时
+*******************************************************************/
+extern void DelayNSec(UINT16 t)	;
+/*************************************************************
+* 函数名称:BufClr
+* 输    入:dest 缓冲区; size 缓冲区大小
+* 输    出:无
+* 说    明:清空缓冲区
+**************************************************************/
+extern BOOL BufClr(UINT8 * dest,UINT32 size);
+/*************************************************************
+* 函数名称:BufClr
+* 输    入:dest 缓冲区; size 缓冲区大小
+* 输    出:无
+* 说    明:清空缓冲区
+**************************************************************/
+extern BOOL BufCpy(UINT8 * dest,UINT8 * src,UINT32 size);
+
+#endif

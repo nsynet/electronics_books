@@ -1,0 +1,15 @@
+Warning[205] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 12 : Found directive in column 1. (endm)
+Warning[205] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 15 : Found directive in column 1. (endm)
+Warning[203] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 11 : Found opcode in column 1. (bcf)
+Warning[203] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 14 : Found opcode in column 1. (bsf)
+Message[302] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 29 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 31 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[224] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 33 : Use of this instruction is not recommended.
+Warning[203] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 11 : Found opcode in column 1. (bcf)
+Message[305] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 89 : Using default destination of 1 (file).
+Message[305] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 96 : Using default destination of 1 (file).
+Message[305] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 115 : Using default destination of 1 (file).
+Message[305] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 122 : Using default destination of 1 (file).
+Message[305] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 138 : Using default destination of 1 (file).
+Message[305] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 145 : Using default destination of 1 (file).
+Warning[205] E:\SIMULATE\PROTEUS\SOFT\DIGITALPOWER\MAIN.ASM 433 : Found directive in column 1. (END)

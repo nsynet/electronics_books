@@ -1,0 +1,72 @@
+XL
+H 1 areas 4 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size 86 flags 0
+dbfile D:\整理\个人总结的M8程序\004、流水灯设计\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline B 4
+dbline D 4
+dbline E 6
+dbline F 6
+dbline F C
+dbline F C
+dbline F 10
+dbline 10 16
+dbline D 16
+dbline D 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e main 26 fV
+dbline FFFFFFFF 26
+dbline 16 26
+dbline 17 26
+dbline 18 2A
+dbline 19 2C
+dbline 1C 30
+dbline 1E 30
+dbline 1F 34
+dbline 20 3A
+dbline 21 3E
+dbline 22 44
+dbline 23 48
+dbline 24 4E
+dbline 25 52
+dbline 26 58
+dbline 27 5C
+dbline 28 62
+dbline 29 66
+dbline 2A 6C
+dbline 2B 70
+dbline 2C 76
+dbline 2D 7C
+dbline 2E 82
+dbline 1B 82
+dbline FFFFFFFE 84
+dbline 0 84
+S _main Def0026
+S _DelayMS Def0000
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 01 00
+T 26 00 8F EF 87 BB 88 BB 88 BB 29 C0 8E EF 88 BB
+R 00 00 00 00
+T 34 00 04 E6 10 E0 E3 DF 8D EF 88 BB 04 E6 10 E0
+R 00 00 00 00
+T 42 00 DE DF 8B EF 88 BB 04 E6 10 E0 D9 DF 87 EF
+R 00 00 00 00
+T 50 00 88 BB 04 E6 10 E0 D4 DF 8F EE 88 BB 04 E6
+R 00 00 00 00
+T 5E 00 10 E0 CF DF 8F ED 88 BB 04 E6 10 E0 CA DF
+R 00 00 00 00
+T 6C 00 8F EB 88 BB 04 E6 10 E0 C5 DF 8F E7 9F EF
+R 00 00 00 00
+T 7A 00 88 BB 04 E6 10 E0 BF DF D6 CF 08 95
+R 00 00 00 00

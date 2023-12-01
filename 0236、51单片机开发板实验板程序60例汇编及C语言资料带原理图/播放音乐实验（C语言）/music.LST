@@ -1,0 +1,162 @@
+C51 COMPILER V8.02   MUSIC                                                                 09/17/2007 16:55:18 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE MUSIC
+OBJECT MODULE PLACED IN music.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE music.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <AT89X51.H> 
+   2          
+   3          unsigned char t5hz; 
+   4          
+   5          unsigned char t7hz; 
+   6          
+   7          unsigned int tcnt; 
+   8          
+   9          bit stop; 
+  10          
+  11          bit flag; 
+  12          
+  13          void main(void) 
+  14          
+  15          { 
+  16   1      
+  17   1        //unsigned char i,j; 
+  18   1      
+  19   1        TMOD=0x02; 
+  20   1      
+  21   1        TH0=0x06; 
+  22   1      
+  23   1        TL0=0x06; 
+  24   1      
+  25   1        ET0=1; 
+  26   1      
+  27   1        EA=1; 
+  28   1      
+  29   1        while(1) 
+  30   1      
+  31   1          { 
+  32   2      
+  33   2           // if(P3_7==0) 
+  34   2      
+  35   2              //{ 
+  36   2      
+  37   2                //for(i=10;i>0;i--) 
+  38   2      
+  39   2                //for(j=248;j>0;j--); 
+  40   2      
+  41   2                //if(P3_7==0) 
+  42   2      
+  43   2                  //{ 
+  44   2      
+  45   2                    t5hz=0; 
+  46   2      
+  47   2                    t7hz=0; 
+  48   2      
+  49   2                    tcnt=0; 
+  50   2      
+  51   2                    flag=0; 
+  52   2      
+  53   2                    stop=0; 
+  54   2      
+  55   2                    TR0=1; 
+C51 COMPILER V8.02   MUSIC                                                                 09/17/2007 16:55:18 PAGE 2   
+
+  56   2      
+  57   2                    while(stop==0); 
+  58   2      
+  59   2                 // } 
+  60   2      
+  61   2             // } 
+  62   2      
+  63   2          } 
+  64   1      
+  65   1      } 
+  66          
+  67          void t0(void) interrupt 1 using 0 
+  68          
+  69          { 
+  70   1      
+  71   1        tcnt++; 
+  72   1      
+  73   1        if(tcnt==2000) 
+  74   1      
+  75   1          { 
+  76   2      
+  77   2            tcnt=0; 
+  78   2      
+  79   2            if(flag==0) 
+  80   2      
+  81   2              { 
+  82   3      
+  83   3                flag=~flag; 
+  84   3      
+  85   3              } 
+  86   2      
+  87   2              else 
+  88   2      
+  89   2                { 
+  90   3      
+  91   3                  stop=1; 
+  92   3      
+  93   3                  TR0=0; 
+  94   3      
+  95   3                } 
+  96   2      
+  97   2          } 
+  98   1      
+  99   1        if(flag==0) 
+ 100   1      
+ 101   1          { 
+ 102   2      
+ 103   2            t7hz++; 
+ 104   2      
+ 105   2            if(t7hz==3) 
+ 106   2      
+ 107   2              { 
+ 108   3      
+ 109   3                t7hz=0; 
+ 110   3      
+ 111   3                P2_1=~P2_1; 
+ 112   3      
+ 113   3              } 
+ 114   2      
+ 115   2          } 
+ 116   1      
+ 117   1          else 
+C51 COMPILER V8.02   MUSIC                                                                 09/17/2007 16:55:18 PAGE 3   
+
+ 118   1      
+ 119   1            { 
+ 120   2      
+ 121   2              t5hz++; 
+ 122   2      
+ 123   2              if(t5hz==4) 
+ 124   2      
+ 125   2                { 
+ 126   3      
+ 127   3                  t5hz=0; 
+ 128   3      
+ 129   3                  P2_1=~P2_1; 
+ 130   3      
+ 131   3                } 
+ 132   2      
+ 133   2            } 
+ 134   1      
+ 135   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    104    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,230 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:19:49 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          
+   7          
+   8          #include "stc.h"
+   9          #include <intrins.h>
+  10          /***************************************************
+  11           *          大量宏定义，便于代码移植和阅读
+  12           ***************************************************/
+  13          #define NOP()             _nop_() 
+  14          #define HIGH               1
+  15          #define LOW                0
+  16          #define LS164_DATA(x)      {if((x))P0_4=1;else P0_4=0;}         
+  17          #define LS164_CLK(x)       {if((x))P0_5=1;else P0_5=0;} 
+  18          #define LCD1602_LINE1        0
+  19          #define LCD1602_LINE2        1
+  20          #define LCD1602_LINE1_HEAD   0x80
+  21          #define LCD1602_LINE2_HEAD   0xC0
+  22          #define LCD1602_DATA_MODE    0x38
+  23          #define LCD1602_OPEN_SCREEN  0x0C
+  24          #define LCD1602_DISP_ADDRESS 0x80
+  25          #define LCD1602_RS(x)      {if((x))P0_0=1;else P0_0=0;}//RS引脚控制
+  26          #define LCD1602_RW(x)      {if((x))P0_1=1;else P0_1=0;}//RW引脚控制
+  27          #define LCD1602_EN(x)      {if((x))P0_2=1;else P0_2=0;}//EN引脚控制
+  28          #define LCD1602_PORT         LS164Send                     //发送数据
+  29          
+  30          
+  31          /********************************************
+  32          *函数名称:DelayNus
+  33          *输    入:t 延时时间
+  34          *输    出:无
+  35          *说    明:微秒级延时
+  36          ********************************************/
+  37          void DelayNus(unsigned int t)
+  38          {
+  39   1              unsigned int d=0;
+  40   1      
+  41   1              d=t;
+  42   1      
+  43   1              do
+  44   1              {
+  45   2                      NOP();
+  46   2      
+  47   2              }while(--d >0); 
+  48   1      }
+  49          /********************************************
+  50          *函数名称:LS164Send
+  51          *输    入:byte 要发送的字节
+  52          *输    出:无
+  53          *说    明:74LS164发送数据
+  54          ********************************************/
+  55          void LS164Send(unsigned char byte)
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:19:49 PAGE 2   
+
+  56          {
+  57   1         unsigned char j;
+  58   1      
+  59   1         for(j=0;j<=7;j++)
+  60   1         {
+  61   2      
+  62   2           if(byte&(1<<(7-j)))
+  63   2           {
+  64   3                  LS164_DATA(HIGH);
+  65   3               }
+  66   2               else
+  67   2               {
+  68   3                  LS164_DATA(LOW);
+  69   3               }
+  70   2      
+  71   2           LS164_CLK(LOW); 
+  72   2           LS164_CLK(HIGH);
+  73   2             
+  74   2         }
+  75   1      
+  76   1      }
+  77          /********************************************
+  78          *函数名称:LCD1602WriteByte
+  79          *输    入:byte 要写入的字节
+  80          *输    出:无
+  81          *说    明:LCD1602 写字节
+  82          ********************************************/
+  83          void LCD1602WriteByte(unsigned char byte)
+  84          {
+  85   1           LCD1602_PORT(byte);
+  86   1           LCD1602_RS(HIGH);
+  87   1           LCD1602_RW(LOW);
+  88   1           LCD1602_EN(LOW);
+  89   1           DelayNus(50);
+  90   1           LCD1602_EN(HIGH);
+  91   1      }
+  92          /********************************************
+  93          *函数名称:LCD1602WriteCommand
+  94          *输    入:command 要写入的命令
+  95          *输    出:无
+  96          *说    明:LCD1602 写命令
+  97          ********************************************/
+  98          void LCD1602WriteCommand(unsigned char command)
+  99          {
+ 100   1           LCD1602_PORT(command);
+ 101   1           LCD1602_RS(LOW);
+ 102   1           LCD1602_RW(LOW);
+ 103   1           LCD1602_EN(LOW);
+ 104   1           DelayNus(50);
+ 105   1           LCD1602_EN(HIGH);
+ 106   1      }
+ 107          /********************************************
+ 108          *函数名称:LCD1602SetXY
+ 109          *输    入:x 横坐标 y 纵坐标
+ 110          *输    出:无
+ 111          *说    明:LCD1602 设置坐标
+ 112          ********************************************/
+ 113          void LCD1602SetXY(unsigned char x,unsigned char y)
+ 114          {
+ 115   1               unsigned char address;
+ 116   1      
+ 117   1           if(y == LCD1602_LINE1)
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:19:49 PAGE 3   
+
+ 118   1           {
+ 119   2              address=LCD1602_LINE1_HEAD+x;
+ 120   2           }
+ 121   1           else
+ 122   1           {
+ 123   2              address=LCD1602_LINE2_HEAD+x;
+ 124   2           }
+ 125   1      
+ 126   1               LCD1602WriteCommand(address);
+ 127   1      }
+ 128          /********************************************
+ 129          *函数名称:LCD1602PrintfString
+ 130          *输    入:x 横坐标 y 纵坐标 s字符串
+ 131          *输    出:无
+ 132          *说    明:LCD1602 打印字符串
+ 133          ********************************************/
+ 134          void LCD1602PrintfString(unsigned char x,
+ 135                                   unsigned char y,
+ 136                                   unsigned char *s)
+ 137          {
+ 138   1               LCD1602SetXY(x,y);
+ 139   1               
+ 140   1           while(s && *s)
+ 141   1           {
+ 142   2              LCD1602WriteByte(*s);
+ 143   2              s++;
+ 144   2              
+ 145   2           }
+ 146   1      }
+ 147          /********************************************
+ 148          *函数名称:LCD1602ClearScreen
+ 149          *输    入:无
+ 150          *输    出:无
+ 151          *说    明:LCD1602 清屏
+ 152          ********************************************/ 
+ 153          void LCD1602ClearScreen(void)
+ 154          {
+ 155   1               LCD1602WriteCommand(0x01);
+ 156   1           DelayNus(50);
+ 157   1      }
+ 158          /********************************************
+ 159          *函数名称:LCD1602Init
+ 160          *输    入:无
+ 161          *输    出:无
+ 162          *说    明:LCD1602 初始化
+ 163          ********************************************/
+ 164          void LCD1602Init(void)
+ 165          {
+ 166   1               LCD1602ClearScreen();
+ 167   1           LCD1602WriteCommand(LCD1602_DATA_MODE);//显示模式设置，设置16x2显示，5x7点阵，
+ 168   1                                                    //8位数据接口
+ 169   1           LCD1602WriteCommand(LCD1602_OPEN_SCREEN);//开显示
+ 170   1           LCD1602WriteCommand(LCD1602_DISP_ADDRESS); //起始显示地址
+ 171   1           LCD1602ClearScreen();
+ 172   1      }
+ 173          /********************************************
+ 174          *函数名称:PortInit
+ 175          *输    入:无
+ 176          *输    出:无
+ 177          *说    明:I/O口初始化
+ 178          ********************************************/
+ 179          void PortInit(void)
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:19:49 PAGE 4   
+
+ 180          {
+ 181   1               P0=P1=P2=P3=0xFF;
+ 182   1      }
+ 183          /********************************************
+ 184          *函数名称:main
+ 185          *输    入:无
+ 186          *输    出:无
+ 187          *说    明:函数主体
+ 188          ********************************************/
+ 189          void main(void)
+ 190          {
+ 191   1           PortInit();
+ 192   1           LCD1602Init();
+ 193   1           LCD1602PrintfString(0,LCD1602_LINE1,"0123456789");
+ 194   1               LCD1602PrintfString(0,LCD1602_LINE2,"ABCDEFGHIJ");     
+ 195   1      
+ 196   1           while(1)
+ 197   1           {
+ 198   2                      ;//空操作
+ 199   2           }
+ 200   1      }
+ 201          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    248    ----
+   CONSTANT SIZE    =     22    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,445 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:25:15 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          
+   8          /***************************************************
+   9           *          类型定义，方便代码移植
+  10           ***************************************************/
+  11          typedef unsigned char   UINT8;
+  12          typedef unsigned int    UINT16;
+  13          typedef unsigned long   UINT32; 
+  14              
+  15          typedef char            INT8;
+  16          typedef int             INT16;
+  17          typedef long            INT32;
+  18          typedef bit             BOOL;
+  19          
+  20          /***************************************************
+  21           *          大量宏定义，便于代码移植和阅读
+  22           ***************************************************/
+  23          //--------------------------------
+  24                                             //----头部----
+  25          #define DCMD_CTRL_HEAD1      0x10  //PC下传控制包头部1
+  26          #define DCMD_CTRL_HEAD2      0x01  //PC下传控制包头部2
+  27          
+  28                                             //----命令码----
+  29          #define DCMD_NULL            0x00  //命令码:空操作
+  30          #define DCMD_CTRL_BELL       0x01  //命令码:控制蜂鸣器
+  31          #define DCMD_CTRL_LED        0x02  //命令码:控制LED
+  32          #define DCMD_REQ_DATA        0x03  //命令码:请求数据
+  33          
+  34                                             //----数据----
+  35          #define DCTRL_BELL_ON        0x01  //蜂鸣器响
+  36          #define DCTRL_BELL_OFF       0x02  //蜂鸣器禁鸣
+  37          #define DCTRL_LED_ON         0x03  //LED亮
+  38          #define DCTRL_LED_OFF        0x04  //LED灭
+  39          
+  40          //--------------------------------
+  41                                             //----头部----
+  42          #define UCMD_CTRL_HEAD1      0x20  //MCU上传控制包头部1
+  43          #define UCMD_CTRL_HEAD2      0x01  //MCU上传控制包头部2
+  44          
+  45                                             //----命令码----
+  46          #define UCMD_NULL            0x00  //命令码:空操作
+  47          #define UCMD_REQ_DATA        0x01  //命令码:请求数据
+  48          
+  49          
+  50          #define CTRL_FRAME_LEN       0x04  //帧长度(不包含数据和校验值)
+  51          #define CRC16_LEN            0x02  //检验值长度
+  52          
+  53          #define EN_UART()            ES=1 //允许串口中断
+  54          #define NOT_EN_UART()        ES=0 //禁止串口中断
+  55          
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:25:15 PAGE 2   
+
+  56          #define BELL(x)             {if((x))P0_6=1 ;else P0_6=0;} //蜂鸣器控制宏函数
+  57          #define LED(x)              {if((x))P2=0x00;else P2=0xFF;}//LED控制宏函数    
+  58          
+  59          #define TRUE                1
+  60          #define FALSE               0
+  61          
+  62          #define HIGH                1
+  63          #define LOW                 0   
+  64          
+  65          #define ON                  1
+  66          #define OFF                 0
+  67          
+  68          #define NULL                (void *)0 
+  69          
+  70          /*使用结构体对数据包进行封装
+  71           *方便操作数据
+  72           */
+  73          typedef  struct _PKT_CRC
+  74          {
+  75             UINT8 m_ucHead1;       //首部1
+  76             UINT8 m_ucHead2;       //首部2
+  77             UINT8 m_ucOptCode;     //操作码
+  78             UINT8 m_ucDataLength;  //数据长度
+  79             UINT8 m_szDataBuf[16]; //数据
+  80          
+  81             UINT8 m_szCrc[2];      //CRC16为2个字节
+  82          
+  83          }PKT_CRC;
+  84          
+  85          /*使用共用体再一次对数据包进行封装
+  86           *操作数据更加方便
+  87           */
+  88          typedef union _PKT_CRC_EX
+  89          {
+  90              PKT_CRC r;
+  91              UINT8 p[32];
+  92          } PKT_CRC_EX;
+  93          
+  94          
+  95          PKT_CRC_EX    PktCrcEx; //定义数据包变量
+  96          
+  97          code UINT16 szCRC16Tbl[256] = {                                 
+  98              0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,/*注意本行的0x1021 */
+  99              0x8108, 0x9129, 0xa14a, 0xb16b, 0xc18c, 0xd1ad, 0xe1ce, 0xf1ef,
+ 100              0x1231, 0x0210, 0x3273, 0x2252, 0x52b5, 0x4294, 0x72f7, 0x62d6,
+ 101              0x9339, 0x8318, 0xb37b, 0xa35a, 0xd3bd, 0xc39c, 0xf3ff, 0xe3de,
+ 102              0x2462, 0x3443, 0x0420, 0x1401, 0x64e6, 0x74c7, 0x44a4, 0x5485,
+ 103              0xa56a, 0xb54b, 0x8528, 0x9509, 0xe5ee, 0xf5cf, 0xc5ac, 0xd58d,
+ 104              0x3653, 0x2672, 0x1611, 0x0630, 0x76d7, 0x66f6, 0x5695, 0x46b4,
+ 105              0xb75b, 0xa77a, 0x9719, 0x8738, 0xf7df, 0xe7fe, 0xd79d, 0xc7bc,
+ 106              0x48c4, 0x58e5, 0x6886, 0x78a7, 0x0840, 0x1861, 0x2802, 0x3823,
+ 107              0xc9cc, 0xd9ed, 0xe98e, 0xf9af, 0x8948, 0x9969, 0xa90a, 0xb92b,
+ 108              0x5af5, 0x4ad4, 0x7ab7, 0x6a96, 0x1a71, 0x0a50, 0x3a33, 0x2a12,
+ 109              0xdbfd, 0xcbdc, 0xfbbf, 0xeb9e, 0x9b79, 0x8b58, 0xbb3b, 0xab1a,
+ 110              0x6ca6, 0x7c87, 0x4ce4, 0x5cc5, 0x2c22, 0x3c03, 0x0c60, 0x1c41,
+ 111              0xedae, 0xfd8f, 0xcdec, 0xddcd, 0xad2a, 0xbd0b, 0x8d68, 0x9d49,
+ 112              0x7e97, 0x6eb6, 0x5ed5, 0x4ef4, 0x3e13, 0x2e32, 0x1e51, 0x0e70,
+ 113              0xff9f, 0xefbe, 0xdfdd, 0xcffc, 0xbf1b, 0xaf3a, 0x9f59, 0x8f78,
+ 114              0x9188, 0x81a9, 0xb1ca, 0xa1eb, 0xd10c, 0xc12d, 0xf14e, 0xe16f,
+ 115              0x1080, 0x00a1, 0x30c2, 0x20e3, 0x5004, 0x4025, 0x7046, 0x6067,
+ 116              0x83b9, 0x9398, 0xa3fb, 0xb3da, 0xc33d, 0xd31c, 0xe37f, 0xf35e,
+ 117              0x02b1, 0x1290, 0x22f3, 0x32d2, 0x4235, 0x5214, 0x6277, 0x7256,
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:25:15 PAGE 3   
+
+ 118              0xb5ea, 0xa5cb, 0x95a8, 0x8589, 0xf56e, 0xe54f, 0xd52c, 0xc50d,
+ 119              0x34e2, 0x24c3, 0x14a0, 0x0481, 0x7466, 0x6447, 0x5424, 0x4405,
+ 120              0xa7db, 0xb7fa, 0x8799, 0x97b8, 0xe75f, 0xf77e, 0xc71d, 0xd73c,
+ 121              0x26d3, 0x36f2, 0x0691, 0x16b0, 0x6657, 0x7676, 0x4615, 0x5634,
+ 122              0xd94c, 0xc96d, 0xf90e, 0xe92f, 0x99c8, 0x89e9, 0xb98a, 0xa9ab,
+ 123              0x5844, 0x4865, 0x7806, 0x6827, 0x18c0, 0x08e1, 0x3882, 0x28a3,
+ 124              0xcb7d, 0xdb5c, 0xeb3f, 0xfb1e, 0x8bf9, 0x9bd8, 0xabbb, 0xbb9a,
+ 125              0x4a75, 0x5a54, 0x6a37, 0x7a16, 0x0af1, 0x1ad0, 0x2ab3, 0x3a92,
+ 126              0xfd2e, 0xed0f, 0xdd6c, 0xcd4d, 0xbdaa, 0xad8b, 0x9de8, 0x8dc9,
+ 127              0x7c26, 0x6c07, 0x5c64, 0x4c45, 0x3ca2, 0x2c83, 0x1ce0, 0x0cc1,
+ 128              0xef1f, 0xff3e, 0xcf5d, 0xdf7c, 0xaf9b, 0xbfba, 0x8fd9, 0x9ff8,
+ 129              0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
+ 130          };
+ 131          
+ 132          BOOL  bLedOn=FALSE;    //定义是否点亮LED布尔变量
+ 133          BOOL  bBellOn=FALSE;   //定义是否蜂鸣器响布尔变量
+ 134          BOOL  bReqData=FALSE;  //定义是否请求数据布尔变量
+ 135          
+ 136          /****************************************************
+ 137          ** 函数名称: CRC16Check
+ 138          ** 输    入: buf 要校验的数据;
+ 139                       len 要校验的数据的长度 
+ 140          ** 输    出: 校验值
+ 141          ** 功能描述: CRC16循环冗余校验
+ 142          *****************************************************/
+ 143          UINT16 CRC16Check(UINT8 *buf, UINT8 len) 
+ 144          {
+ 145   1          UINT8  i, j;
+ 146   1          UINT16 uncrcReg = 0xffff;
+ 147   1          UINT16 uncur;
+ 148   1      
+ 149   1          for (i = 0; i < len; i++) 
+ 150   1          {
+ 151   2              uncur = buf[i] << 8;
+ 152   2      
+ 153   2              for (j = 0; j < 8; j++) 
+ 154   2              { 
+ 155   3                  if ((INT16)(uncrcReg ^ uncur) < 0)
+ 156   3                  {
+ 157   4                       uncrcReg = (uncrcReg << 1) ^ 0x1021;
+ 158   4                  }
+ 159   3                  else
+ 160   3                  {
+ 161   4                        uncrcReg <<= 1; 
+ 162   4                  } 
+ 163   3                     
+ 164   3                  uncur <<= 1;            
+ 165   3              }
+ 166   2          }
+ 167   1      
+ 168   1          return uncrcReg;
+ 169   1      } 
+ 170          
+ 171          /*************************************************************
+ 172          * 函数名称:BufCpy
+ 173          * 输    入:dest目标缓冲区; 
+ 174                     Src  源缓冲区
+ 175                     size 复制数据的大小
+ 176          * 输    出:无
+ 177          * 说    明:复制缓冲区
+ 178          
+ 179          **************************************************************/
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:25:15 PAGE 4   
+
+ 180          BOOL BufCpy(UINT8 * dest,UINT8 * src,UINT32 size)
+ 181          {
+ 182   1          if(NULL ==dest || NULL==src ||NULL==size)
+ 183   1          {
+ 184   2              return FALSE;
+ 185   2          }
+ 186   1          
+ 187   1              do
+ 188   1              {
+ 189   2                      *dest++ = *src++;
+ 190   2                      
+ 191   2              }while(--size!=0);
+ 192   1              
+ 193   1              return TRUE;
+ 194   1      }
+ 195          /****************************************************
+ 196          ** 函数名称: UartInit
+ 197          ** 输    入: 无
+ 198          ** 输    出: 无
+ 199          ** 功能描述: 串口初始化
+ 200          *****************************************************/                                                    
+             -                           
+ 201          void UartInit(void)
+ 202          {
+ 203   1              SCON=0x40;
+ 204   1              T2CON=0x34;
+ 205   1              RCAP2L=0xD9;
+ 206   1              RCAP2H=0xFF;
+ 207   1              REN=1;
+ 208   1          ES=1;
+ 209   1      }
+ 210          /****************************************************
+ 211          ** 函数名称: UARTSendByte
+ 212          ** 输    入: b 单个字节
+ 213          ** 输    出: 无
+ 214          ** 功能描述: 串口 发送单个字节
+ 215          *****************************************************/ 
+ 216          void UARTSendByte(UINT8 b)
+ 217          {
+ 218   1               SBUF=b;
+ 219   1               while(TI==0);
+ 220   1               TI=0;
+ 221   1      }
+ 222          /****************************************************
+ 223          ** 函数名称: UartSendNBytes
+ 224          ** 输    入: buf 数据缓冲区;
+ 225                       len 发送数据长度
+ 226          ** 输    出: 无
+ 227          ** 功能描述: 串口 发送多个字节
+ 228          *****************************************************/ 
+ 229          void UartSendNBytes(UINT8 *buf,UINT8 len)
+ 230          {
+ 231   1           while(len--)
+ 232   1           {
+ 233   2               UARTSendByte(*buf++);
+ 234   2           }
+ 235   1      }
+ 236          
+ 237          
+ 238           
+ 239          /****************************************************
+ 240          ** 函数名称: main
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:25:15 PAGE 5   
+
+ 241          ** 输    入: 无
+ 242          ** 输    出: 无
+ 243          ** 功能描述: 函数主题
+ 244          *****************************************************/
+ 245          void main(void)
+ 246          {
+ 247   1           UINT8 i=0;
+ 248   1               UINT16 uscrc=0;
+ 249   1      
+ 250   1               UartInit();//串口初始化
+ 251   1      
+ 252   1               EA=1;      //开总中断
+ 253   1               
+ 254   1           while(1)
+ 255   1           {
+ 256   2                if(bLedOn)  //是否点亮Led
+ 257   2                        {
+ 258   3                           LED(ON);  
+ 259   3                        }
+ 260   2                        else
+ 261   2                        {
+ 262   3                           LED(OFF); 
+ 263   3                        }
+ 264   2                        
+ 265   2                        
+ 266   2                        if(bBellOn)//是否响蜂鸣器
+ 267   2                        {
+ 268   3                           BELL(ON);
+ 269   3                        }
+ 270   2                        else
+ 271   2                        {
+ 272   3                           BELL(OFF);
+ 273   3                        }
+ 274   2                        
+ 275   2                        if(bReqData)//是否请求数据
+ 276   2                        {
+ 277   3                           bReqData=FALSE;
+ 278   3      
+ 279   3                               NOT_EN_UART(); //禁止串口中断
+ 280   3                               
+ 281   3                               PktCrcEx.r.m_ucHead1=UCMD_CTRL_HEAD1;//MCU上传数据帧头部1
+ 282   3                               PktCrcEx.r.m_ucHead2=UCMD_CTRL_HEAD2;//MCU上传数据帧头部2
+ 283   3                               PktCrcEx.r.m_ucOptCode=UCMD_REQ_DATA;//MCU上传数据帧命令码
+ 284   3                               
+ 285   3                               uscrc=CRC16Check(PktCrcEx.p,CTRL_FRAME_LEN+PktCrcEx.r.m_ucDataLength);//计算校验值
+ 286   3       
+ 287   3                   PktCrcEx.r.m_szCrc[0]=(UINT8) uscrc;    //校验值低字节
+ 288   3                   PktCrcEx.r.m_szCrc[1]=(UINT8)(uscrc>>8);//校验值高字节
+ 289   3      
+ 290   3                            /*
+ 291   3                                  这样做的原因是因为有时写数据长度不一样,
+ 292   3                              导致PktCrcEx.r.m_szCrc会出现为0的情况
+ 293   3                                      所以使用BufCpy将校验值复制到相应的位置
+ 294   3                                 */
+ 295   3      
+ 296   3                               BufCpy(&PktCrcEx.p[CTRL_FRAME_LEN+PktCrcEx.r.m_ucDataLength],
+ 297   3                                       PktCrcEx.r.m_szCrc,
+ 298   3                                               CRC16_LEN);
+ 299   3                               
+ 300   3                               UartSendNBytes(PktCrcEx.p,
+ 301   3                                              CTRL_FRAME_LEN+PktCrcEx.r.m_ucDataLength+CRC16_LEN);//发送数据
+ 302   3      
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:25:15 PAGE 6   
+
+ 303   3                               EN_UART();//允许串口中断
+ 304   3                                              
+ 305   3                        }
+ 306   2           }
+ 307   1      }
+ 308          /****************************************************
+ 309          ** 函数名称: UartIRQ
+ 310          ** 输    入: 无
+ 311          ** 输    出: 无
+ 312          ** 功能描述: 串口中断服务程序
+ 313          *****************************************************/
+ 314          void UartIRQ(void)interrupt 4
+ 315          {
+ 316   1           static UINT8  uccnt=0;
+ 317   1                      UINT8  uclen;
+ 318   1                              UINT16 uscrc;
+ 319   1           
+ 320   1           if(RI) //是否接收到数据
+ 321   1           {
+ 322   2              RI=0;
+ 323   2      
+ 324   2              PktCrcEx.p[uccnt++]=SBUF;//获取单个字节
+ 325   2      
+ 326   2              if(PktCrcEx.r.m_ucHead1 == DCMD_CTRL_HEAD1)//是否有效的数据帧头部1
+ 327   2              {
+ 328   3                 if(uccnt<CTRL_FRAME_LEN+PktCrcEx.r.m_ucDataLength+CRC16_LEN)//是否接收完所有数据
+ 329   3                 {
+ 330   4                    if(uccnt>=2 && PktCrcEx.r.m_ucHead2!=DCMD_CTRL_HEAD2)//是否有效的数据帧头部2
+ 331   4                    {
+ 332   5                       uccnt=0;
+ 333   5      
+ 334   5                       return;
+ 335   5                    }
+ 336   4                          
+ 337   4                 }
+ 338   3                 else
+ 339   3                 {
+ 340   4                            
+ 341   4                            uclen=CTRL_FRAME_LEN+PktCrcEx.r.m_ucDataLength;//获取数据帧有效长度(不包括校验值)
+ 342   4      
+ 343   4                                uscrc=CRC16Check(PktCrcEx.p,uclen);//计算校验值
+ 344   4      
+ 345   4                            /*
+ 346   4                                  这样做的原因是因为有时写数据长度不一样,
+ 347   4                              导致PktCrcEx.r.m_szCrc会出现为0的情况
+ 348   4                                      所以使用BufCpy将校验值复制到相应的位置
+ 349   4                                 */
+ 350   4                                BufCpy(PktCrcEx.r.m_szCrc,&PktCrcEx.p[uclen],CRC16_LEN);
+ 351   4      
+ 352   4                                if((UINT8)(uscrc>>8) !=PktCrcEx.r.m_szCrc[1]\
+ 353   4                                 ||(UINT8) uscrc     !=PktCrcEx.r.m_szCrc[0])//校验值是否匹配
+ 354   4                                {
+ 355   5                                    uccnt=0;
+ 356   5      
+ 357   5                                    return;  
+ 358   5                                }
+ 359   4      
+ 360   4                    switch(PktCrcEx.r.m_ucOptCode)//从命令码中获取相对应的操作
+ 361   4                    {
+ 362   5                      case DCMD_CTRL_BELL://控制蜂鸣器命令码
+ 363   5                      {
+ 364   6                                               if(DCTRL_BELL_ON==PktCrcEx.r.m_szDataBuf[0])//数据部分含控制码
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:25:15 PAGE 7   
+
+ 365   6                                               {
+ 366   7                                                  bBellOn=TRUE;
+ 367   7                                               }
+ 368   6                                               else
+ 369   6                                               {
+ 370   7                                                  bBellOn=FALSE;
+ 371   7                                               }
+ 372   6                      }
+ 373   5                      break;
+ 374   5      
+ 375   5                      case DCMD_CTRL_LED://控制LED命令码
+ 376   5                      {
+ 377   6      
+ 378   6                                               if(DCTRL_LED_ON==PktCrcEx.r.m_szDataBuf[0])//数据部分含控制码
+ 379   6                                               {
+ 380   7                                                  bLedOn=TRUE;
+ 381   7                                               }
+ 382   6                                               else
+ 383   6                                               {
+ 384   7                                                  bLedOn=FALSE;
+ 385   7                                               }
+ 386   6                      }
+ 387   5                      break;
+ 388   5      
+ 389   5                      case DCMD_REQ_DATA://请求数据命令码
+ 390   5                      {
+ 391   6                           bReqData=TRUE;
+ 392   6                      }
+ 393   5                      break;
+ 394   5      
+ 395   5                    }
+ 396   4      
+ 397   4                    uccnt=0; 
+ 398   4      
+ 399   4                    return;
+ 400   4                 }
+ 401   3      
+ 402   3              }
+ 403   2              else
+ 404   2              {
+ 405   3                  uccnt=0;
+ 406   3              }
+ 407   2      
+ 408   2           }
+ 409   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    600    ----
+   CONSTANT SIZE    =    512    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     33      25
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      3    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,72 @@
+Version: 3.0
+Options: m37
+Obj: "C:\Program Files\Sunplus\unSP IDE 2.0.0\startupD.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\InitIO.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\hardware.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\FIQ.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Resource.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\main.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Flash.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Bpwm.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\SetIOBit.obj"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\dcqzy_48k.res"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\fbf_48k.res"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\gjg_48k.res"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\qj_48k.res"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\ssmay_48k.res"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\yeah_48k.res"
+Obj: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\S12_24K.res"
+Lib: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\.\bsrv222SDL.lib"
+Lib: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\sacmv26e.lib"
+Output: "F:\NEW 光盘资料\凌阳最小系统板\电子实习\声控小车\音控小车\Debug\Guard_SD.S37"
+;Locate: TEXT in "BSRSDCON" of "bsrv222SDL.lib"  at 8009 
+;Align: TEXT in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: BSR_IRAM_EXCLUSIVE in "BSRSDCON" of "bsrv222SDL.lib"  at CD9D  linkat 47E 
+;Align: BSR_IRAM_EXCLUSIVE in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: IRAM in "hardware.obj" at CDA9  linkat 48A 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: BSR_RAM_BLOCK in "BSRSDCON" of "bsrv222SDL.lib"  at 39D 
+;Align: BSR_RAM_BLOCK in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: BSR_RAM_EXCLUSIVE in "BSRSDCON" of "bsrv222SDL.lib"  at 467 
+;Align: BSR_RAM_EXCLUSIVE in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: RAM in "FIQ.obj" at 47D 
+;Align: RAM in "FIQ.obj" with 0 
+;Locate: OVERLAP_RAM_BLOCK in "BSRSDCON" of "bsrv222SDL.lib"  at 1 
+;Align: OVERLAP_RAM_BLOCK in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: OVERLAP_SRAM_BLOCK in "A2000" of "sacmv26e.lib"  at 362 
+;Align: OVERLAP_SRAM_BLOCK in "A2000" of "sacmv26e.lib"  with 0 
+;Locate: __sn_section_RES_DCQZY_48K in "dcqzy_48k.res" at D49B 
+;Align: __sn_section_RES_DCQZY_48K in "dcqzy_48k.res" with 0 
+;Locate: __sn_section_RES_FBF_48K in "fbf_48k.res" at D909 
+;Align: __sn_section_RES_FBF_48K in "fbf_48k.res" with 0 
+;Locate: __sn_section_RES_GJG_48K in "gjg_48k.res" at D80A 
+;Align: __sn_section_RES_GJG_48K in "gjg_48k.res" with 0 
+;Locate: __sn_section_RES_QJ_48K in "qj_48k.res" at D9F6 
+;Align: __sn_section_RES_QJ_48K in "qj_48k.res" with 0 
+;Locate: __sn_section_RES_S12_24K in "S12_24K.res" at CE20 
+;Align: __sn_section_RES_S12_24K in "S12_24K.res" with 0 
+;Locate: __sn_section_RES_SSMAY_48K in "ssmay_48k.res" at D67B 
+;Align: __sn_section_RES_SSMAY_48K in "ssmay_48k.res" with 0 
+;Locate: __sn_section_RES_YEAH_48K in "yeah_48k.res" at DAC8 
+;Align: __sn_section_RES_YEAH_48K in "yeah_48k.res" with 0 
+;Locate: CODE in "SetIOBit.obj" at A6BC 
+;Align: CODE in "SetIOBit.obj" with 0 
+;Locate: CODE in "main.obj" at B6E8 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "S480" of "sacmv26e.lib"  at BE41 
+;Align: CODE in "S480" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "A2000" of "sacmv26e.lib"  at C54A 
+;Align: CODE in "A2000" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "hardware.obj" at CB3F 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "Flash.obj" at CD1E 
+;Align: CODE in "Flash.obj" with 0 
+;Locate: CODE in "InitIO.obj" at CD53 
+;Align: CODE in "InitIO.obj" with 0 
+;Locate: CODE in "Bpwm.obj" at CD84 
+;Align: CODE in "Bpwm.obj" with 0 
+;Locate: CODE in "FIQ.obj" at CD92 
+;Align: CODE in "FIQ.obj" with 0 
+;Locate: DATA in "SetIOBit.obj" at DB64 
+;Align: DATA in "SetIOBit.obj" with 0 
+;Locate: __sn_init_table at 8000 

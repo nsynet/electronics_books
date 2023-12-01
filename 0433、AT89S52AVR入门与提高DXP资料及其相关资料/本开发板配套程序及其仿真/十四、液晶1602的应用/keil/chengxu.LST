@@ -1,0 +1,146 @@
+C51 COMPILER V8.05a   CHENGXU                                                              07/31/2009 13:30:42 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE CHENGXU
+OBJECT MODULE PLACED IN chengxu.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE chengxu.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /********************************************************************
+   2                                      汇诚科技
+   3                                                    http://www.ourhc.cn
+   4          *********************************************************************/
+   5          #include<reg52.h>             
+   6          #include<math.h>                
+   7          #include<intrins.h>              
+   8          #define uchar unsigned char      
+   9          #define uint unsigned int
+  10          #define  data_IO P0
+  11          
+  12          sbit     rs=P1^0;       //指令和数据寄存器 “1是数据，” “0是指令”
+  13          sbit     rw=P1^1;//读写控制，“1读” “0写”
+  14          sbit      e=P1^2; //片选信号
+  15          
+  16          
+  17          char d[32]={'h', 't', 't', 'p',':', '/', '/', 'w',  'w', 'w', '.', 'o', 'u','r','h', 'c',
+  18          
+  19                      '.', 'c', 'n', ' ','Q','Q',':','1', '1', '5', '4', '5', 'l', '6', '1', '9'};
+  20                                                                                                                                                                                            
+  21          
+  22          
+  23          
+  24          void yanshi(uint n)///////////////延时函数///////////////////////////////////
+  25          {
+  26   1       uint i;
+  27   1        for(i=0;i<n;i++){};
+  28   1      }
+  29          
+  30          void delay(uint n)///////////////延时函数///////////////////////////////////
+  31          {
+  32   1       uint i,j;
+  33   1        for(i=0;i<1000;i++)
+  34   1         {for(j=0;j<n;j++){}}
+  35   1         
+  36   1      }
+  37          
+  38          void busy() ////////////////////判断是否忙////////////////////////////////////////
+  39          {data_IO=0xff;
+  40   1       rs=0; //写指令        ////////////////////
+  41   1       rw=1; //表示读状态    // 三个的状态表示 //
+  42   1       e=1;  //下降延//      // 判忙状态       //
+  43   1      
+  44   1      } 
+  45          void xiezl(uchar shuju) /////////////////////*写指令*/////////////////////////////
+  46          {
+  47   1       busy();/*yanshi(6500);*/
+  48   1       data_IO=shuju;
+  49   1       //rs=1;
+  50   1       rs=0; //写指令        ////////////////////
+  51   1       rw=0; //表示写状态    // 三个的状态表示 //
+  52   1       e=1;  //下降延//      // 写指令         //
+  53   1       e=0;  /////////       ////////////////////
+  54   1      
+  55   1      }
+C51 COMPILER V8.05a   CHENGXU                                                              07/31/2009 13:30:42 PAGE 2   
+
+  56          
+  57          void w_dat(uint n)//////////////////写数据//////////////////////////
+  58          {
+  59   1       busy(); /*yanshi(6500) ;*/
+  60   1        data_IO=n;
+  61   1         rs=0;
+  62   1         rs=1; //写数据       ////////////////////
+  63   1         rw=0; //表示写状态    // 三个的状态表示 //
+  64   1         e=1;  //下降延//      //写数据         //
+  65   1         e=0;  /////////       ////////////////////
+  66   1         //return;
+  67   1      }
+  68          
+  69          void xianshi(uchar js[]) //////////////////显示函数///////////////////////////////
+  70          {
+  71   1         uchar h,v;
+  72   1        xiezl(0x01); //清屏显示
+  73   1        yanshi(100) ;
+  74   1        xiezl(0x80); // DDRAM地址的设置
+  75   1       for(h=0;h<16;h++)
+  76   1         {w_dat(js[h]);  ///n表示有写几位数据
+  77   2         yanshi(10) ;
+  78   2         }
+  79   1         xiezl(0xc0);//换行
+  80   1       for(v=(16);v<32;v++)
+  81   1         {w_dat(js[v]);  ///n表示有写几位数据
+  82   2         yanshi(10) ;
+  83   2         }
+  84   1         }
+  85          
+  86          
+  87          void chushihua(void)///////////////////*液晶模块初始化*/
+  88           { uchar i;
+  89   1         //rs=1       ;
+  90   1         rs=0; //写指令
+  91   1         rw=0; //表示写状态
+  92   1         e=0;  //使能
+  93   1         for(i=0;i<3;i++)
+  94   1         {
+  95   2          xiezl(0x38);  //功能设置,8位,一行显示,5*7点阵
+  96   2          yanshi(1000);
+  97   2         }
+  98   1          xiezl(0x38); //两行显示
+  99   1          xiezl(0x0f); //显示开关控制位
+ 100   1          xiezl(0x18); //移位控制,光标和显示一起左移  
+ 101   1          xiezl(0x06); //设置输入模式
+ 102   1          xiezl(0x01); //清屏显示
+ 103   1          xiezl(0x80); // DDRAM地址的设置
+ 104   1      
+ 105   1          }
+ 106          
+ 107          
+ 108          void main(void)
+ 109          
+ 110          { 
+ 111   1      while(1)
+ 112   1      {
+ 113   2      
+ 114   2      chushihua();
+ 115   2      xianshi(d);//显示函数
+ 116   2       yanshi(40000);
+ 117   2              }
+C51 COMPILER V8.05a   CHENGXU                                                              07/31/2009 13:30:42 PAGE 3   
+
+ 118   1                        
+ 119   1               }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    256    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     32       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

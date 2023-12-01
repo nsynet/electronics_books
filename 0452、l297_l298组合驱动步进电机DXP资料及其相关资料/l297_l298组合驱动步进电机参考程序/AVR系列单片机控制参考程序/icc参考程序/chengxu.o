@@ -1,0 +1,56 @@
+XL
+H 1 areas 4 global symbols
+M chengxu.c
+S push_gset2 Ref0000
+S pop_gset2 Ref0000
+A text size 4C flags 0
+dbfile C:\DOCUME~1\Administrator\桌面\icc参考程序-延时方式\chengxu.c
+dbfunc e delay 0 fV
+dbsym r i 14 i
+dbsym r j 16 i
+dbsym r MS 10 i
+dbline FFFFFFFF 4
+dbline 10 4
+dbline 12 4
+dbline 13 A
+dbline 13 10
+dbline 13 10
+dbline 13 14
+dbline 12 1C
+dbline 12 20
+dbline FFFFFFFE 26
+dbline 0 2A
+dbfunc e main 2C fV
+dbsym r i 14 i
+dbline FFFFFFFF 2C
+dbline 19 2C
+dbline 1A 2C
+dbline 1B 30
+dbline 1D 34
+dbline 1E 36
+dbline 1F 38
+dbline 21 3C
+dbline 22 3C
+dbline 23 3E
+dbline 24 42
+dbline 25 44
+dbline 26 48
+dbline 20 48
+dbline FFFFFFFE 4A
+dbline 0 4A
+S _main Def002C
+S _delay Def0000
+T 00 00 0E 94 00 00 44 27 55 27 0B C0 66 27 77 27
+R 00 00 00 00 12 04 00 00
+T 0E 00 02 C0 6F 5F 7F 4F 60 35 E0 E0 7E 07 D0 F3
+R 00 00 00 00
+T 1C 00 4F 5F 5F 4F 40 17 51 07 90 F3 0E 94 00 00
+R 00 00 00 00 12 0E 01 00
+T 2A 00 08 95
+R 00 00 00 00
+T 2C 00 4A E0 50 E0 8F EF 87 BB C0 9A C1 9A C2 9A
+R 00 00 00 00
+T 3A 00 06 C0 C3 9A 8A 01 DF DF C3 98 8A 01 DC DF
+R 00 00 00 00
+T 48 00 F9 CF 08 95
+R 00 00 00 00

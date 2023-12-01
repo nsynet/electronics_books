@@ -1,0 +1,1008 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	//========================================================================================
+                            	// Progarm: Standard function definition
+                            	// Writen by: Andy
+                            	// Modifiyed: by Arthur Shieh
+                            	//
+                            	// Lastest modified date: 
+                            	// 		2000/06/23: first version
+                            	//		2000/07/15: modified
+                            	//		2000/07/24: modified					for sacmv25.lib
+                            	//		2001/10/03: Add more public about queue for sacmv25f.lib
+                            	// 		2001/11/05: Independent Queue for A2000/S480/MS01 Manual Mode - sacmv25h.lib
+                            	//		2001/11/06: Fix volume parameter problem - sacmv25i.lib
+                            	//      2002/05/26: Modified the length of C_QueueSize to 144 for DVR usage
+                            	//
+                            	// For: sacmV25n.lib
+                            	//
+                            	// Note: 
+                            	//  1. Don't change this file if possible.
+                            	//  2. Update hardware.inc with hardware.asm synchorously
+                            	//	3. Provide Open code for sacmVxx.lib
+                            	//
+                            	//========================================================================================
+                            	
+                            	.PUBLIC	F_SP_RampUpDAC1
+                            	.PUBLIC	F_SP_RampDnDAC1
+                            	.PUBLIC	F_SP_RampUpDAC2
+                            	.PUBLIC	F_SP_RampDnDAC2
+                            	.PUBLIC	_SP_RampUpDAC1 
+                            	.PUBLIC	_SP_RampDnDAC1 
+                            	.PUBLIC	_SP_RampUpDAC2 
+                            	.PUBLIC	_SP_RampDnDAC2 
+                            	
+                            	.PUBLIC	_SP_InitQueue
+                            	.PUBLIC	_SP_InitQueue_A2000
+                            	.PUBLIC	_SP_InitQueue_S480
+                            	.PUBLIC	_SP_InitQueue_S240
+                            	.PUBLIC	_SP_InitQueue_MS01
+                            	.PUBLIC	_SP_InitQueue_DVR
+                            	
+                            	.PUBLIC	F_SP_InitQueue
+                            	.PUBLIC	F_SP_InitQueue_A2000
+                            	.PUBLIC	F_SP_InitQueue_S480
+                            	.PUBLIC	F_SP_InitQueue_S240
+                            	.PUBLIC	F_SP_InitQueue_MS01
+                            	.PUBLIC	F_SP_InitQueue_DVR
+                            	
+                            	.PUBLIC	F_SP_ReadQueue
+                            	.PUBLIC F_SP_ReadQueue_A2000
+                            	.PUBLIC F_SP_ReadQueue_S480
+                            	.PUBLIC F_SP_ReadQueue_S240
+                            	.PUBLIC F_SP_ReadQueue_MS01
+                            	.PUBLIC F_SP_ReadQueue_DVR
+                            	
+                            	.PUBLIC	F_SP_ReadQueue_NIC			// Read Queue with no index change
+                            	.PUBLIC	F_SP_ReadQueue_NIC_A2000
+                            	.PUBLIC	F_SP_ReadQueue_NIC_S480
+                            	.PUBLIC	F_SP_ReadQueue_NIC_S240
+                            	.PUBLIC	F_SP_ReadQueue_NIC_MS01
+                            	.PUBLIC	F_SP_ReadQueue_NIC_DVR
+                            	
+                            	.PUBLIC	F_SP_WriteQueue
+                            	.PUBLIC F_SP_WriteQueue_A2000
+                            	.PUBLIC F_SP_WriteQueue_S480
+                            	.PUBLIC F_SP_WriteQueue_S240
+                            	.PUBLIC F_SP_WriteQueue_MS01
+                            	.PUBLIC F_SP_WriteQueue_DVR
+                            	
+                            	.PUBLIC F_SP_TestQueue
+                            	.PUBLIC F_SP_TestQueue_A2000
+                            	.PUBLIC F_SP_TestQueue_S480
+                            	.PUBLIC F_SP_TestQueue_S240
+                            	.PUBLIC F_SP_TestQueue_MS01
+                            	.PUBLIC F_SP_TestQueue_DVR
+                            	
+                            	.PUBLIC _SP_Export  
+                            	.PUBLIC	_SP_Import 
+                            	.PUBLIC _SP_Init_IOB 
+                            	.PUBLIC _SP_Init_IOA 
+                            	
+                            	.PUBLIC	_SP_GetResource	
+                            	.PUBLIC F_SP_GetResource
+                            	
+                            	.PUBLIC F_SP_SACM_A2000_Init_
+                            	.PUBLIC F_SP_SACM_S480_Init_
+                            	.PUBLIC F_SP_SACM_S240_Init_
+                            	
+                            	
+                            	.PUBLIC F_SP_SACM_MS01_Init_
+                            	.PUBLIC F_SP_PlayMode0_
+                            	.PUBLIC F_SP_PlayMode1_    
+                            	.PUBLIC F_SP_PlayMode2_  
+                            	.PUBLIC F_SP_PlayMode3_   
+                            	
+                            	.PUBLIC F_SP_SACM_DVR_Init_
+                            	.PUBLIC F_SP_SACM_DVR_Rec_Init_
+                            	.PUBLIC F_SP_SACM_DVR_Play_Init_
+                            	
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Definitions for I/O Port
+                            	//////////////////////////////////////////////////////////////////
+                            	.DEFINE	P_IOA_Data   		0x7000         // Write Data into data register and read from IOA pad
+                            	.DEFINE P_IOA_Buffer        0x7001         // Write Data into buffer register and read from buffer register
+                            	.DEFINE P_IOA_Dir           0x7002         // Direction vector for IOA
+                            	.DEFINE P_IOA_Attrib        0x7003         // Attribute vector for IOA
+                            	.DEFINE P_IOA_Latch         0x7004         // Latch PortA data for key change wake-up
+                            	
+                            	.DEFINE P_IOB_Data         	0x7005         // Write Data into the data register and read from IOB pad
+                            	.DEFINE P_IOB_Buffer        0x7006         // Write Data into buffer register and read from buffer register
+                            	.DEFINE P_IOB_Dir           0x7007         // Direction vector for IOB
+                            	.DEFINE P_IOB_Attrib        0x7008         // Attribute vector for IOB
+                            	
+                            	.DEFINE P_FeedBack          0x7009         // Clock form external R,C
+                            	.DEFINE P_TimerA_Data       0x700A         // Data port for TimerA 
+                            	.DEFINE P_TimerA_Ctrl       0x700B         // Control Port for TimerA
+                            	.DEFINE P_TimerB_Data       0x700C         // Data port for TimerB
+                            	.DEFINE P_TimerB_Ctrl       0x700D         // Control Port for TimerB
+                            	.DEFINE P_TimeBase_Setup    0x700E         // TimerBase Freq. Set
+                            	.DEFINE P_TimeBase_Clear	0x700F 		   // Reset Timerbase counter
+                            	.DEFINE P_INT_Ctrl          0x7010         // Control port for interrupt source
+                            	.DEFINE P_INT_Clear         0x7011         // Clear interrupt source
+                            	.DEFINE P_Watchdog_Clear    0x7012         // Watchdog Reset
+                            	.DEFINE P_SystemClock       0x7013         // Change system clock frequency(include go to standby mode)
+                            	
+                            	//... PA6442 New version MC52A (For EC-03)....
+                            	.DEFINE P_ADC 	        	0x7014         	// Data Port for AD
+                            	.DEFINE P_ADC_Ctrl          0x7015         	// Control Port for AD control
+                            	.DEFINE P_ADC_Status        0x7015         	// AD Port Status
+                            	.DEFINE P_DAC2              0x7016         	// Data Port for DAC2
+                            	.DEFINE P_PWM               0x7016         	// Data Port for PWM
+                            	.DEFINE P_DAC1	        	0x7017         	// Data Port for DAC1
+                            	.DEFINE P_DAC_Ctrl			0x702A 			// Control Port for two DAC and audio output mode
+                            	//............................................
+                            	
+                            	.DEFINE P_IR_Ctrl			0x7018 			// Control Port for IR
+                            	.DEFINE P_LVD_Ctrl          0x7019         	// Control Port for LVD
+                            	.DEFINE P_SIO_Data			0x701A 			// Data port for serial IO
+                            	.DEFINE P_SIO_Addr_Low		0x701B 			// Address Port low
+                            	.DEFINE P_SIO_Addr_Mid		0x701C 			// Address Port middle
+                            	.DEFINE P_SIO_Addr_High	 	0x701D 			// Address Port high
+                            	.DEFINE P_SIO_Ctrl			0x701E 			// Control Port
+                            	.DEFINE P_SIO_Start			0x701F 			// Start port for serial interface
+                            	.DEFINE P_SIO_Stop			0x7020 			// Stop port for serial interface
+                            	
+                            	.DEFINE P_UART_Command1		 0x7021 		// Command1 Port for UART
+                            	.DEFINE P_UART_Command2		 0x7022 		// Command2 Port for UART
+                            	.DEFINE P_UART_Data			 0x7023  		// Data Port for UART
+                            	.DEFINE	P_UART_BaudScalarLow 0x7024 		// Set Baud Rate scalar low
+                            	.DEFINE	P_UART_BaudScalarHigh 0x7025 		// Set Baud Rate scalar high
+                            	
+                            	
+                            	//... Definitions for P_INT_Ctrl ..............
+                            	.DEFINE C_IRQ6_TMB2             0x0001         	// Timer B IRQ6
+                            	.DEFINE C_IRQ6_TMB1             0x0002         	// Timer A IRQ6
+                            	.DEFINE C_IRQ5_2Hz              0x0004         	// 2Hz IRQ5
+                            	.DEFINE C_IRQ5_4Hz              0x0008         	// 4Hz IRQ5
+                            	.DEFINE C_IRQ4_1KHz             0x0010         	// 1024Hz IRQ4
+                            	.DEFINE C_IRQ4_2KHz             0x0020         	// 2048Hz IRQ4
+                            	.DEFINE C_IRQ4_4KHz             0x0040         	// 4096Hz IRQ4
+                            	.DEFINE C_IRQ3_KEY              0x0080         	// Key Change IRQ3
+                            	.DEFINE C_IRQ3_EXT1             0x0100         	// Ext1 IRQ3
+                            	.DEFINE C_IRQ3_EXT2             0x0200         	// Ext2 IRQ3
+                            	.DEFINE C_IRQ2_TMB              0x0400         	// Timer B IRQ2
+                            	.DEFINE C_FIQ_TMB               0x0800         	// Timer B FIQ
+                            	.DEFINE C_IRQ1_TMA              0x1000         	// Timer A IRQ1
+                            	.DEFINE C_FIQ_TMA               0x2000         	// Timer A FIQ
+                            	.DEFINE C_IRQ0_PWM              0x4000         	// PWM IRQ0
+                            	.DEFINE C_FIQ_PWM               0x8000         	// PWM FIQ
+                            	
+                            	// Definitions for P_TimerA/B_Ctrl ............                               
+                            	.DEFINE	C_Fosc_2				0x0000 			// 
+                            	.DEFINE	C_Fosc_256		    	0x0001 			//
+                            	.DEFINE	C_32768Hz				0x0002 			//
+                            	.DEFINE	C_8192Hz				0x0003 			//
+                            	.DEFINE	C_4096Hz				0x0004 			//
+                            	.DEFINE	C_A1					0x0005 			//
+                            	.DEFINE C_A0					0x0006 			//
+                            	.DEFINE C_Ext1					0x0007 			//
+                            	
+                            	.DEFINE	C_2048Hz				0x0000 			//
+                            	.DEFINE	C_1024Hz				0x0008 			//
+                            	.DEFINE	C_256Hz					0x0010 			//
+                            	.DEFINE	C_TMB1Hz				0x0018 			//
+                            	.DEFINE	C_4Hz					0x0020 			//
+                            	.DEFINE	C_2Hz					0x0028 			//
+                            	.DEFINE	C_B1					0x0030 			//
+                            	.DEFINE	C_Ext2					0x0038 			//
+                            	
+                            	.DEFINE	C_Off					0x0000 			//
+                            	.DEFINE C_D1					0x0040 			//
+                            	.DEFINE C_D2					0x0080 			//
+                            	.DEFINE C_D3					0x00C0 			//
+                            	.DEFINE C_D4					0x0100 			//
+                            	.DEFINE C_D5					0x0140 			//
+                            	.DEFINE C_D6					0x0180 			//
+                            	.DEFINE C_D7					0x01C0 			//
+                            	.DEFINE C_D8					0x0200 			//
+                            	.DEFINE C_D9					0x0240 			//
+                            	.DEFINE C_D10					0x0280 			//
+                            	.DEFINE C_D11					0x02C0 			//
+                            	.DEFINE C_D12					0x0300 			//
+                            	.DEFINE C_D13					0x0340 			//
+                            	.DEFINE C_D14					0x0380 			//
+                            	.DEFINE C_TA_Div_2				0x03C0 			// Timer A
+                            	.DEFINE C_TB_Div_2				0x03C0 			// Timer B
+                            	
+                            	//... Definition for P_SystemClock ............
+                            	.DEFINE C_Fosc					0x0000 			// b3..b0
+                            	.DEFINE C_Fosc_Div_2			0x0001 			//
+                            	.DEFINE C_Fosc_Div_4			0x0002 			//
+                            	.DEFINE C_Fosc_Div_8			0x0003 			// (default)
+                            	.DEFINE C_Fosc_Div_16			0x0004 			//
+                            	.DEFINE C_Fosc_Div_32			0x0005 			//
+                            	.DEFINE C_Fosc_Div_64			0x0006 			//
+                            	.DEFINE C_Sleep					0x0007 		 	//
+                            	
+                            	.DEFINE	C_32K_Work				0x0000 			// b4
+                            	.DEFINE C_32K_Off				0x0000 			// 
+                            	.DEFINE C_StrongMode			0x0000 			// b5
+                            	.DEFINE C_AutoMode				0x0000 			//
+                            	
+                            	//... Define for P_AD_Ctrl ....................
+                            	.DEFINE	C_AD					0x0001 			//
+                            	.DEFINE C_DA					0x0000 			//
+                            	.DEFINE C_MIC					0x0000 			//
+                            	.DEFINE C_LINE					0x0002 			//
+                            	
+                            	//... Define for P_DA_Ctrl ....................
+                            	.DEFINE C_PushPull				0x0000 			// b0, (default) 
+                            	.DEFINE C_DoubleEnd				0x0001 			// b0
+                            	.DEFINE	C_DAC_Mode				0x0000 			// b1, (default)
+                            	.DEFINE C_PWM_Mode				0x0002 			// b1
+                            	
+                            	.DEFINE	C_D1_Direct				0x0000 			// DAC1 latch
+                            	.DEFINE C_D1_LatchA				0x0008 			// 
+                            	.DEFINE C_D1_LatchB				0x0010 			//
+                            	.DEFINE C_D1_LatchAB			0x0018 			//
+                            	
+                            	.DEFINE	C_D2_Direct				0x0000 			// DAC2 latch
+                            	.DEFINE C_D2_LatchA				0x0020 			// 
+                            	.DEFINE C_D2_LatchB				0x0040 			//
+                            	.DEFINE C_D2_LatchAB			0x00C0 			//
+                            	
+                            	//... Define for P_LVD_Ctrl ...................
+                            	.DEFINE C_LVD24V				0x0000 			// LVD = 2.4V 
+                            	.DEFINE C_LVD28V				0x0001 			// LVD = 2.8V
+                            	.DEFINE C_LVD32V				0x0002 			// LVD = 3.2V
+                            	.DEFINE C_LVD36V				0x0003 			// LVD = 3.6V
+                            	
+                            	
+                            	
+                            	/////////////////////////////////////////////////////////////////
+                            	// Note: This register map to the P_INT_Ctrl(0x7010)
+                            	// 	User's interrupt setting have to combine with this register 
+                            	//	while co-work with SACM library.
+                            	//
+                            	//  See. following function for example:
+                            	//	F_SP_SACM_A2000_Init_:
+                            	//	F_SP_SACM_S480_Init_:
+                            	//	F_SP_SACM_S240_Init_:
+                            	//	F_SP_SACM_MS01_Init_:
+                            	//	F_SP_SACM_DVR_Init_: 
+                            	//////////////////////////////////////////////////
+0000064F                    	.IRAM
+                            	.PUBLIC	R_InterruptStatus 
+0000064F 00 00              	.VAR	R_InterruptStatus = 0 					// 
+                            	
+                            	//////////////////////////////////////////////////
+                            	
+                            	.define C_RampDelayTime 32
+                            	.define C_QueueSize 144
+                            			
+00000650 00 00              	.VAR 	R_Queue 
+00000651 00 00 00 00        	.DW		C_QueueSize-1	DUP(0) 
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00      
+000006E0 00 00              	.VAR	R_ReadIndex 
+000006E1 00 00              	.VAR	R_WriteIndex 
+                            	
+00009E5B                    	.CODE
+                            	
+                            					
+                            	
+                            	///////////////////////////////////////////
+                            	// Function: Initial Queue
+                            	// Destory: R1,R2
+                            	///////////////////////////////////////////	
+                            	_SP_InitQueue:	.PROC
+                            	_SP_InitQueue_A2000:
+                            	_SP_InitQueue_S480:
+                            	_SP_InitQueue_S240:
+                            	_SP_InitQueue_MS01:
+                            	_SP_InitQueue_DVR:
+                            	
+                            	F_SP_InitQueue_A2000:
+                            	F_SP_InitQueue_S480:
+                            	F_SP_InitQueue_S240:
+                            	F_SP_InitQueue_MS01:
+                            	F_SP_InitQueue_DVR:
+                            	F_SP_InitQueue:
+00009E5B 09 93 50 06        			R1 = R_Queue
+00009E5D 40 94              			R2 = 0 
+                            	L_ClearQueueLoop?:		
+00009E5E D1 D4              			[R1++] = R2
+00009E5F 09 43 E0 06        			cmp	R1, R_Queue+C_QueueSize
+00009E61 44 4E              			jne	L_ClearQueueLoop?
+                            				
+00009E62 40 92              			R1 = 0
+00009E63 19 D3 E0 06        			[R_ReadIndex] = R1
+00009E65 19 D3 E1 06        			[R_WriteIndex] = R1
+                            					
+00009E67 90 9A              			RETF
+                            			.ENDP
+                            			
+                            	///////////////////////////////////////////
+                            	// Function: Get a data form Queue
+                            	// Output:  R1: Data
+                            	//			R2: return value
+                            	// Destory: R1,R2
+                            	///////////////////////////////////////////	
+                            	F_SP_ReadQueue_A2000:
+                            	F_SP_ReadQueue_S480:
+                            	F_SP_ReadQueue_S240:
+                            	F_SP_ReadQueue_MS01:
+                            	F_SP_ReadQueue_DVR:
+                            	F_SP_ReadQueue:
+00009E68 12 95 E0 06        			R2 = [R_ReadIndex]
+00009E6A 12 45 E1 06        			cmp R2,[R_WriteIndex]
+00009E6C 0D 5E              			je	L_RQ_QueueEmpty
+                            	
+00009E6D 0A 05 50 06        			R2 += R_Queue				// get queue data address
+00009E6F C2 92              			R1 = [R2]
+                            			
+00009E70 12 95 E0 06        			R2 = [R_ReadIndex]
+00009E72 41 04              			R2 += 1
+00009E73 0A 45 90 00        			cmp	R2, C_QueueSize
+00009E75 01 4E              			jne	L_RQ_NotQueueBottom
+00009E76 40 94              			R2 = 0
+                            	L_RQ_NotQueueBottom:	
+00009E77 1A D5 E0 06        			[R_ReadIndex] = R2		
+                            			//r2 = 0x0000 						// get queue data
+00009E79 90 9A              			retf 
+                            	L_RQ_QueueEmpty:
+                            			//r2 = 0x8000 						// queue empty
+00009E7A 90 9A              			retf 
+                            	
+                            	///////////////////////////////////////////
+                            	// Function: Get a data from Queue but do 
+                            	//			not change queue index
+                            	// R1: output
+                            	// Destory: R1,R2
+                            	///////////////////////////////////////////
+                            	F_SP_ReadQueue_NIC:
+                            	F_SP_ReadQueue_NIC_A2000:
+                            	F_SP_ReadQueue_NIC_S480:
+                            	F_SP_ReadQueue_NIC_S240:
+                            	F_SP_ReadQueue_NIC_MS01:
+                            	F_SP_ReadQueue_NIC_DVR:
+00009E7B 12 95 E0 06        			R2 = [R_ReadIndex]
+00009E7D 12 45 E1 06        			cmp R2,[R_WriteIndex]
+00009E7F 03 5E              			je	L_RQ_QueueEmpty?
+                            	
+00009E80 0A 05 50 06        			R2 += R_Queue				// get queue data index
+00009E82 C2 92              			R1 = [R2]
+                            	L_RQ_QueueEmpty?:
+00009E83 90 9A              			RETF
+                            			
+                            	///////////////////////////////////////////
+                            	// Function: Put a data to Queue
+                            	// R1: Input
+                            	// Destory: R1,R2
+                            	///////////////////////////////////////////	
+                            	F_SP_WriteQueue_A2000:
+                            	F_SP_WriteQueue_S480:
+                            	F_SP_WriteQueue_S240:
+                            	F_SP_WriteQueue_MS01:
+                            	F_SP_WriteQueue_DVR:
+                            	F_SP_WriteQueue:
+00009E84 12 95 E1 06        			R2 = [R_WriteIndex] 			// put data to queue
+00009E86 0A 05 50 06        			R2 += R_Queue
+00009E88 C2 D2              			[R2] = R1
+                            	
+00009E89 12 95 E1 06        			R2 = [R_WriteIndex]
+00009E8B 41 04              			R2 += 1
+00009E8C 0A 45 90 00        			cmp	R2, C_QueueSize
+00009E8E 01 4E              			jne	L_WQ_NotQueueBottom
+00009E8F 40 94              			R2 = 0
+                            	L_WQ_NotQueueBottom:
+00009E90 1A D5 E1 06        			[R_WriteIndex] = R2
+00009E92 90 9A              			RETF
+                            	
+                            			
+                            	///////////////////////////////////////////
+                            	// Function: Test Queue Status
+                            	// o/p: R1
+                            	// Destory: R1
+                            	///////////////////////////////////////////	
+                            	F_SP_TestQueue_A2000:
+                            	F_SP_TestQueue_S480:
+                            	F_SP_TestQueue_S240:
+                            	F_SP_TestQueue_MS01:
+                            	F_SP_TestQueue_DVR:
+                            	F_SP_TestQueue:
+                            			//... Test Queue Empty ...
+00009E93 11 93 E0 06        			R1 = [R_ReadIndex] 
+00009E95 11 43 E1 06        			cmp R1,[R_WriteIndex] 
+00009E97 12 5E              			je	L_TQ_QueueEmpty 
+                            	
+                            			//... Test Queue Full ...
+00009E98 11 93 E0 06        			R1 = [R_ReadIndex] 				// For N Queue Full: 1.R=0 and W=N-1 2. R<>0 and W=R-1 
+00009E9A 05 4E              			jnz	L_TQ_JudgeCond2 
+00009E9B 11 93 E1 06        			R1 = [R_WriteIndex] 
+00009E9D 09 43 8F 00        			cmp	R1, C_QueueSize-1 			// Cond1
+00009E9F 08 5E              			je	L_TQ_QueueFull 			
+                            	L_TQ_JudgeCond2:		
+00009EA0 11 93 E0 06        			R1 = [R_ReadIndex] 
+00009EA2 41 22              			R1 -=1 
+00009EA3 11 43 E1 06        			cmp R1,[R_WriteIndex] 
+00009EA5 02 5E              			je	L_TQ_QueueFull 	
+                            	
+00009EA6 40 92              			r1 = 0 							// not Full, not empty
+00009EA7 90 9A              			retf 
+                            	L_TQ_QueueFull:
+00009EA8 41 92              			r1 = 1 							// full
+00009EA9 90 9A              			retf 
+                            	L_TQ_QueueEmpty:
+00009EAA 42 92              			r1 = 2 							// empty
+00009EAB 90 9A              			retf 
+                            	
+                            	
+                            	
+                            	
+                            	
+                            	///////////////////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_A2000_Initial() 
+                            	//			or F_SACM_A2000_Initial:
+                            	// Note: The following functions are the partial code of original
+                            	//			initial subroutine. (H/W setting part) 
+                            	//
+                            	//	Ex: F_SACM_A2000_Initial:
+                            	//			...
+                            	//			call F_SP_SACM_A2000_Init_	: S480/S240/MS01 is same
+                            	//			...
+                            	//			retf
+                            	////////////////////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_A2000_Init_:	
+00009EAC 40 92              			R1=0x0000;                      // 24MHz, Fcpu=Fosc
+00009EAD 19 D3 13 70        	        [P_SystemClock]=R1           	//  Frequency 20MHz
+00009EAF 70 92              	        R1 = 0x0030                     // TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009EB0 19 D3 0B 70        	        [P_TimerA_Ctrl] = R1			// Initial Timer A
+00009EB2 09 93 00 FD        	        R1 = 0xfd00                  	// 16K
+00009EB4 19 D3 0A 70        	        [P_TimerA_Data] = R1 
+00009EB6 09 93 A8 00        	        R1 = 0x00A8                     // Set the DAC Ctrl
+00009EB8 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+00009EBA 09 93 FF FF        	        R1 = 0xffff
+                            	        
+00009EBC 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+00009EBE 40 92              	        R1 =0x0000						// 
+                            	        
+                            	        
+00009EBF 11 93 4F 06        	        R1 = [R_InterruptStatus]		//
+00009EC1 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+                            	        //R1 |= C_IRQ4_1KHz
+00009EC3 19 D3 4F 06        	        [R_InterruptStatus] = R1		//
+00009EC5 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+                            	
+00009EC7 90 9A              			RETF
+                            	
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_S480_Initial() 
+                            	//			or F_SACM_S480_Initial:
+                            	//////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_S480_Init_:
+00009EC8 40 92              	        R1 = 0x0000						// 24MHz Fosc
+00009EC9 19 D3 13 70        	        [P_SystemClock]=R1          	// Initial System Clock
+00009ECB 70 92              	        R1=0x0030                       // TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009ECC 19 D3 0B 70        	        [P_TimerA_Ctrl]=R1				// Initial Timer A
+                            	        //R1 = 0xfd00                  	// 16K
+00009ECE 09 93 ED FC        	        R1 = 0xfced						// 15.625K
+00009ED0 19 D3 0A 70        	        [P_TimerA_Data]=R1
+00009ED2 09 93 A8 00        	        R1 = 0x00A8						// 
+00009ED4 19 D3 2A 70        	        [P_DAC_Ctrl] = R1				//
+                            	        
+00009ED6 09 93 FF FF        	        R1 = 0xffff
+00009ED8 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+00009EDA 11 93 4F 06        	        R1 = [R_InterruptStatus]		//
+00009EDC 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+                            	        //R1 |= C_IRQ4_1KHz				// Enable 1KHz IRQ4 for S480 decoder
+00009EDE 19 D3 4F 06        	        [R_InterruptStatus] = R1		//
+00009EE0 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+                            	        
+00009EE2 90 9A              	        RETF
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_S240_Initial() 
+                            	//			or F_SACM_S240_Initial:
+                            	//////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_S240_Init_:	
+00009EE3 60 92              			R1=0x0020;	
+00009EE4 19 D3 13 70        			[P_SystemClock]=R1
+00009EE6 09 93 A8 00        			R1 = 0x00A8;					// 
+00009EE8 19 D3 2A 70        			[P_DAC_Ctrl]= R1
+00009EEA 70 92              			R1 = 0x0030;               	// TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009EEB 19 D3 0B 70        	        [P_TimerA_Ctrl] = R1;
+00009EED 09 93 00 FE        			R1 = 0xfe00;                    // 24K
+00009EEF 19 D3 0A 70        	    	[P_TimerA_Data] = R1;		
+00009EF1 09 93 FF FF        	        R1 = 0xffff
+00009EF3 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+00009EF5 11 93 4F 06        	        R1 = [R_InterruptStatus]		//
+00009EF7 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+00009EF9 19 D3 4F 06        	        [R_InterruptStatus] = R1		//
+00009EFB 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+00009EFD 90 9A              	        RETF
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_MS01_Initial() 
+                            	//			or F_SACM_MS01_Initial:
+                            	//
+                            	//	Ex: F_SACM_MS01_Initial:
+                            	//			...
+                            	//			call F_SP_SACM_MS01_Init_
+                            	//			call F_SP_Play_Mode0/1/2/3	->0,1,2,3 depending on the para1
+                            	//			...
+                            	//			retf
+                            	//////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_MS01_Init_:	
+00009EFE 40 92              			R1 = 0x0000;                    // 24MHz, Fcpu=Fosc
+00009EFF 19 D3 13 70        	        [P_SystemClock] = R1;        	// Initial System Clock
+00009F01 70 92              	        R1 = 0x0030;                    // TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009F02 19 D3 0B 70        	        [P_TimerA_Ctrl] = R1			// Initial Timer A
+                            	        
+                            	        //R1 = 0x0003						// 8K
+00009F04 40 92              	        R1 = 0x0000						// Fosc/2
+00009F05 19 D3 0D 70        	        [P_TimerB_Ctrl] = R1;			// Initial Timer B -> 8192	
+                            	        
+                            	        //R1 = 0xFFFF        
+00009F07 09 93 00 FA        	        R1 = 0xFA00					// Any time for ADPCM channel 0,1
+00009F09 19 D3 0C 70        	        [P_TimerB_Data] = R1			// 8K sample rate
+                            	        
+00009F0B 09 93 FF FF        			R1 = 0xffff
+00009F0D 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+00009F0F 90 9A              	        RETF
+                            	
+                            	//........................................
+                            	F_SP_PlayMode0_:						// with F_SP_SACM_MS01_Initial
+00009F10 46 92              			R1 = 0x0006
+00009F11 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+00009F13 09 93 00 FE        	        R1 = 0xFE00
+00009F15 19 D3 0A 70        	        [P_TimerA_Data] = R1 			//
+00009F17 11 93 4F 06        	        R1 = [R_InterruptStatus] 		//
+00009F19 09 A3 10 84        	        R1 |= C_FIQ_PWM+C_IRQ2_TMB+C_IRQ4_1KHz
+00009F1B 19 D3 4F 06        	        [R_InterruptStatus] = R1 		//
+00009F1D 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+00009F1F 90 9A              	        RETF
+                            	
+                            	F_SP_PlayMode1_:						// with F_SP_SACM_MS01_Initial
+00009F20 09 93 A8 00        			R1 = 0x00A8
+00009F22 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+00009F24 09 93 00 FE        	        R1 = 0xFE00
+00009F26 19 D3 0A 70        	        [P_TimerA_Data] = R1 			//
+00009F28 11 93 4F 06        	        R1 = [R_InterruptStatus] 		//
+00009F2A 09 A3 10 24        	        R1 |= C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz
+00009F2C 19 D3 4F 06        	        [R_InterruptStatus] = R1 		//
+00009F2E 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+00009F30 90 9A              	        RETF
+                            	
+                            	
+                            	F_SP_PlayMode2_:	 						// with F_SP_SACM_MS01_Initial
+00009F31 09 93 A8 00        			R1 = 0x00A8
+00009F33 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+00009F35 09 93 9A FD        	        R1 = 0xFD9A
+00009F37 19 D3 0A 70        	        [P_TimerA_Data] = R1 				//
+00009F39 11 93 4F 06        	        R1 = [R_InterruptStatus] 			//
+00009F3B 09 A3 10 24        	        R1 |= C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz
+00009F3D 19 D3 4F 06        	        [R_InterruptStatus] = R1 			//
+00009F3F 19 D3 10 70        	        [P_INT_Ctrl] = R1					//
+00009F41 90 9A              	        RETF
+                            	
+                            	      
+                            	F_SP_PlayMode3_:								// with F_SP_SACM_MS01_Initial
+00009F42 09 93 A8 00        			R1 = 0x00A8
+00009F44 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+00009F46 09 93 00 FD        	        R1 = 0xFD00
+00009F48 19 D3 0A 70        	        [P_TimerA_Data] = R1 					//
+00009F4A 11 93 4F 06        	        R1 = [R_InterruptStatus] 				//
+00009F4C 09 A3 10 24        	        R1 |= C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz
+00009F4E 19 D3 4F 06        		    [R_InterruptStatus] = R1 				//
+00009F50 19 D3 10 70        	        [P_INT_Ctrl] = R1						//
+00009F52 90 9A              	        RETF
+                            	        
+                            	///////////////////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_MS01_Initial() 
+                            	//			or F_SACM_MS01_Initial:
+                            	//
+                            	//	Ex: F_SACM_DVR_Initial:
+                            	//			...
+                            	//			call F_SP_SACM_DVR_Init_
+                            	//			call F_SP_Play_Mode0/1/2/3	->0,1,2,3 depending on the para1
+                            	//			...
+                            	//			retf
+                            	//	Ex1:
+                            	//		F_SACM_DVR_Record: (or F_SACM_DVR_InitEncoder)
+                            	//			...
+                            	//			call F_SP_SACM_DVR_Rec_Init
+                            	//			...
+                            	//			retf
+                            	//	Ex2:
+                            	//		F_SACM_DVR_Play: (or F_SACM_DVR_InitDecoder)
+                            	//			...
+                            	//			call F_SP_SACM_DVR_Play_Init_
+                            	//			...
+                            	//			retf
+                            	///////////////////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_DVR_Init_:
+00009F53 40 92              	        r1 = 0x0000;                    // 24MHz, Fcpu=Fosc
+00009F54 19 D3 13 70        	        [P_SystemClock] = r1;           //  Frequency 20MHz
+00009F56 70 92              	        r1 = 0x0030;                    // TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009F57 19 D3 0B 70        	        [P_TimerA_Ctrl] = r1;
+00009F59 09 93 00 FA        	        r1 = 0xfa00;                    // 8K @ 24.576MHz
+                            	        //r1 = 0xfb1d;                  // 8K @ 20MHz
+00009F5B 19 D3 0A 70        	        [P_TimerA_Data] = r1;
+00009F5D 75 92              	        r1 = 0x0035;                    // ADINI should be open (107)
+00009F5E 19 D3 15 70        	        [P_ADC_Ctrl] = r1;
+00009F60 09 93 A8 00        	        r1 = 0x00A8;                    // Set the DA Ctrl
+00009F62 19 D3 2A 70        	        [P_DAC_Ctrl] = r1;
+                            	        
+00009F64 09 93 FF FF        	        r1 = 0xffff;
+00009F66 19 D3 11 70        	        [P_INT_Clear] = r1;          	// Clear interrupt occuiped events
+                            	        
+00009F68 11 93 4F 06        	        R1 = [R_InterruptStatus]		//
+00009F6A 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+00009F6C 19 D3 4F 06        	        [R_InterruptStatus] = R1		//
+00009F6E 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+                            	        
+00009F70 90 9A              	        RETF
+                            	
+                            	
+                            	
+                            	F_SP_SACM_DVR_Rec_Init_:					// call by SACM_DVR_Record / SACM_DVR_InitEncoder
+00009F71 75 92              			r1 = 0x0035;  					//mic input
+                            	        //r1 = 0x0037					//line_in input
+00009F72 19 D3 15 70        	        [P_ADC_Ctrl] = r1;       		//enable ADC
+                            	        
+00009F74 09 93 00 FE        	        R1=0xfe00;                     	//24K @ 24.576MHz
+00009F76 19 D3 0A 70        	        [P_TimerA_Data] = r1 
+00009F78 90 9A              			RETF
+                            	
+                            	F_SP_SACM_DVR_Play_Init_:
+00009F79 40 92              		    r1 = 0x0000						// call by SACM_DVR_Stop / SACM_DVR_Play
+00009F7A 19 D3 15 70        	        [P_ADC_Ctrl] = r1;       		// Disable ADC
+                            	        
+00009F7C 09 93 00 FD        	        r1 = 0xfd00;                	// 16K @ 24.576MHz
+00009F7E 19 D3 0A 70        	        [P_TimerA_Data] = r1;
+00009F80 90 9A              	        RETF
+                            	
+                            	
+                            	
+                            	
+                            	/////////////////////////////////////////////////////////////////////////////// 
+                            	// Function: Extra Functions provided by Sunplus
+                            	//	Type:	
+                            	//		1. DAC Ramp up/down
+                            	//		2. IO config/import/export
+                            	//		3. Get resource data
+                            	//
+                            	//
+                            	///////////////////////////////////////////////////////////////////////////////
+                            	
+                            	////////////////////////////////////////////////////////
+                            	// Function: Ramp Up/Down to avoid speaker "pow" noise
+                            	// Destory: R1,R2
+                            	////////////////////////////////////////////////////////
+                            	_SP_RampUpDAC1:	.PROC
+                            	F_SP_RampUpDAC1:
+00009F81 90 D4              			push r1,r2 to [sp] 
+00009F82 11 93 17 70        	        r1=[P_DAC1] 
+00009F84 09 B3 C0 FF        	        r1 &= ~0x003f 
+00009F86 09 43 00 80        	        cmp     r1,0x8000
+00009F88 0E 0E              	        jb     	L_RU_NormalUp
+00009F89 19 5E              	        je      L_RU_End
+                            	                
+                            	L_RU_DownLoop:
+00009F8A 40 F0 ED 9F        	        call    F_Delay         
+00009F8C 41 94              	        r2 = 0x0001 
+00009F8D 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+00009F8F 09 23 40 00        	        r1 -= 0x40 
+00009F91 19 D3 17 70        	        [P_DAC1] = r1 
+00009F93 09 43 00 80        	        cmp     r1,0x8000 
+00009F95 4C 4E              	        jne     L_RU_DownLoop   
+                            	L_RD_DownEnd:
+00009F96 0C EE              	        jmp     L_RU_End 
+                            	
+                            	L_RU_NormalUp:
+                            	L_RU_Loop:
+00009F97 40 F0 ED 9F        	        call    F_Delay 
+00009F99 41 94              	        r2 = 0x0001 
+00009F9A 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+00009F9C 09 03 40 00        	        r1 += 0x40 
+00009F9E 19 D3 17 70        	        [P_DAC1] = r1 
+00009FA0 09 43 00 80        	        cmp     r1, 0x8000 
+00009FA2 4C 4E              	        jne     L_RU_Loop 
+                            	L_RU_End:
+00009FA3 90 90              			pop     r1,r2 from [sp] 
+00009FA4 90 9A              	  		retf 
+                            	    	.ENDP
+                            	    
+                            	//............................................................
+                            	_SP_RampDnDAC1:	.PROC
+                            	F_SP_RampDnDAC1:
+00009FA5 90 D4              			push r1,r2 to [sp] 
+                            	  		//int off 
+00009FA6 11 93 17 70        	    	r1 = [P_DAC1] 
+00009FA8 09 B3 C0 FF        	     	r1 &= ~0x003F 
+00009FAA 0A 5E              	      	jz      L_RD_End 
+                            	L_RD_Loop:                
+00009FAB 40 F0 ED 9F        	        call    F_Delay         
+00009FAD 41 94              	        r2 = 0x0001 
+00009FAE 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+00009FB0 09 23 40 00        	        r1 -= 0x40 
+00009FB2 19 D3 17 70        	        [P_DAC1] = r1   
+00009FB4 4A 4E              	        jnz     L_RD_Loop 
+                            	L_RD_End:       
+                            			//int	fiq,irq
+00009FB5 90 90              	        pop     r1,r2 from [sp] 
+00009FB6 90 9A              	        retf 
+                            			.ENDP
+                            	
+                            	//..............................................................
+                            	_SP_RampUpDAC2:	.PROC
+                            	F_SP_RampUpDAC2:
+00009FB7 90 D4              			push r1,r2 to [sp] 
+00009FB8 11 93 16 70        	  		r1=[P_DAC2] 
+00009FBA 09 B3 C0 FF        	    	r1 &= ~0x003f 
+00009FBC 09 43 00 80        	     	cmp     r1,0x8000
+00009FBE 0E 0E              	      	jb     	L_RU_NormalUp_   
+00009FBF 5D 5E              	       	je      L_RU_End 
+                            	                
+                            	L_RU_DownLoop_:
+00009FC0 40 F0 ED 9F        	        call    F_Delay         
+00009FC2 41 94              	        r2 = 0x0001 
+00009FC3 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+00009FC5 09 23 40 00        	        r1 -= 0x40 
+00009FC7 19 D3 16 70        	        [P_DAC2] = r1 
+00009FC9 09 43 00 80        	        cmp     r1,0x8000 
+00009FCB 4C 4E              	        jne     L_RU_DownLoop_   
+                            	L_RD_DownEnd_:
+00009FCC 0C EE              	        jmp     L_RU_End_ 
+                            	
+                            	L_RU_NormalUp_:
+                            	L_RU_Loop_:
+00009FCD 40 F0 ED 9F        			call    F_Delay 
+00009FCF 41 94              	  		r2 = 0x0001 
+00009FD0 1A D5 12 70        	    	[P_Watchdog_Clear] = r2 
+00009FD2 09 03 40 00        	        r1 += 0x40 
+00009FD4 19 D3 16 70        	        [P_DAC2] = r1 
+00009FD6 09 43 00 80        	        cmp     r1, 0x8000 
+00009FD8 4C 4E              	        jne     L_RU_Loop_ 
+                            	L_RU_End_:
+00009FD9 90 90              	   		pop     r1,r2 from [sp] 
+00009FDA 90 9A              	     	retf 
+                            	      	.ENDP
+                            	//.............................................................
+                            	_SP_RampDnDAC2:	.PROC
+                            	F_SP_RampDnDAC2:
+                            			//int off 
+00009FDB 90 D4              			push r1,r2 to [sp] 
+                            	                
+00009FDC 11 93 16 70        	        r1 = [P_DAC2] 
+00009FDE 09 B3 C0 FF        	        r1 &= ~0x003F 
+00009FE0 0A 5E              	        jz      L_RD_End_ 
+                            	L_RD_Loop_:                
+00009FE1 40 F0 ED 9F        	        call    F_Delay         
+00009FE3 41 94              	        r2 = 0x0001 
+00009FE4 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+00009FE6 09 23 40 00        	        r1 -= 0x40 
+00009FE8 19 D3 16 70        	        [P_DAC2] = r1   
+00009FEA 4A 4E              	        jnz     L_RD_Loop_ 
+                            	L_RD_End_:       
+00009FEB 90 90              	        pop     r1,r2 from [sp] 
+00009FEC 90 9A              	        retf 
+                            			.ENDP
+                            	
+                            	//..................................................................				
+                            	F_Delay:
+00009FED 88 D2              	        push r1 to [sp] 
+00009FEE 60 92              	        r1 = C_RampDelayTime			// Ramp Up/Dn delay per step
+                            	L_D_Loop:
+00009FEF 41 22              	        r1 -= 1 
+00009FF0 42 4E              	        jnz     L_D_Loop  
+00009FF1 88 90              	        pop     r1 from [sp] 
+00009FF2 90 9A              	        RETF	 
+                            	
+                            	
+                            	
+                            	////////////////////////////////////////////////////////////////
+                            	// Function: I/O Port A configuration
+                            	// 	void SP_Inti_IOA(int Dir, int Data, int Attrib)
+                            	////////////////////////////////////////////////////////////////
+                            	_SP_Init_IOA: .PROC
+00009FF3 88 DA              			PUSH BP TO [SP] 
+00009FF4 08 0B 01 00        	        BP = SP + 1 
+00009FF6 88 D2              			PUSH R1 TO [SP] 
+00009FF7 03 92              			R1 = [BP+3] 						// Port direction
+00009FF8 19 D3 02 70        			[P_IOA_Dir] = R1 
+00009FFA 04 92              			R1 = [BP+4] 
+00009FFB 19 D3 00 70        			[P_IOA_Data] = R1 
+00009FFD 05 92              			R1 = [BP+5] 
+00009FFE 19 D3 03 70        			[P_IOA_Attrib] = R1 
+                            			
+0000A000 88 90              			POP R1 FROM [SP] 
+0000A001 88 98              	        POP BP FROM [SP] 
+0000A002 90 9A              	        RETF 
+                            			.ENDP
+                            	
+                            	////////////////////////////////////////////////////////////////// 
+                            	// Function: I/O Port B configuration
+                            	//  void SP_Inti_IOB(int Dir, int Data, int Attrib)
+                            	//////////////////////////////////////////////////////////////////    
+                            	_SP_Init_IOB: .PROC
+0000A003 88 DA              			PUSH BP TO [SP] 
+0000A004 08 0B 01 00        	        BP = SP + 1 
+0000A006 88 D2              			PUSH R1 TO [SP] 
+0000A007 03 92              			R1 = [BP+3] 						// Port direction
+0000A008 19 D3 07 70        			[P_IOB_Dir] = R1 
+0000A00A 04 92              			R1 = [BP+4] 
+0000A00B 19 D3 05 70        			[P_IOB_Data] = R1 
+0000A00D 05 92              			R1 = [BP+5] 
+0000A00E 19 D3 08 70        			[P_IOB_Attrib] = R1 
+                            			
+0000A010 88 90              			POP R1 FROM [SP] 
+0000A011 88 98              	        POP BP FROM [SP] 
+0000A012 90 9A              	        RETF 
+                            			.ENDP
+                            	
+                            	////////////////////////////////////////////////////////////////// 
+                            	// Function: Get data from port
+                            	// 	int SP_Import(unsigned int Port)
+                            	//////////////////////////////////////////////////////////////////  
+                            	_SP_Import: .PROC
+0000A013 88 DA              	        PUSH BP TO [SP] 
+0000A014 08 0B 01 00        	        BP = SP + 1 
+                            	        
+0000A016 03 92              			R1 = [BP+3]  						// Port Number
+0000A017 C1 92              			R1 = [R1]  
+                            					
+0000A018 88 98              	        POP BP FROM [SP] 
+0000A019 90 9A              	        RETF 
+                            			.ENDP
+                            	
+                            	_SP_Export: .PROC
+0000A01A 88 DA              	        PUSH BP,BP TO [SP] 
+0000A01B 08 0B 01 00        	        BP = SP + 1 
+0000A01D 90 D4              			PUSH R1,R2 TO [SP] 
+0000A01E 03 92              			R1 = [BP+3]  						// Port Number
+0000A01F 04 94              			R2 = [BP+4]  						// Value
+0000A020 C1 D4              			[R1] = R2  
+0000A021 90 90              			POP R1,R2 FROM [SP] 
+0000A022 88 98              	        POP BP,BP FROM [SP] 
+0000A023 90 9A              	        RETF         
+                            	 		.ENDP
+                            	
+                            	
+                            	////////////////////////////////////////////////////////////////// 
+                            	// Function: Get data from resource(ROM area)
+                            	// 	int SP_GetResource(int Addr, int Page)
+                            	//////////////////////////////////////////////////////////////////  
+                            	_SP_GetResource:	.PROC
+0000A024 88 DA              			push bp to [sp] 
+0000A025 08 0B 01 00        			bp = sp + 1 
+                            			
+0000A027 03 92              			r1 = [bp+3] 					// Address
+0000A028 04 94              			r2 = [bp+4] 					// Page
+                            			
+0000A029 5A 95              			r2 = r2 lsl 4 					// Prepare Page for SR
+0000A02A 5A 95              			r2 = r2 lsl 4 
+0000A02B 4A 95              			r2 = r2 lsl 2 
+                            			
+0000A02C 7F BC              			sr &= 0x03f 					// Change Page
+0000A02D 06 A5              	        r2 |=sr 						//
+0000A02E 02 9D              	        sr = r2 						//
+                            	  
+0000A02F E1 92              	  		r1 = D:[r1] 					// Get data
+                            	       
+0000A030 88 98              			pop	 bp from [sp] 
+0000A031 90 9A              			retf 
+                            			.ENDP 
+                            	//........................................
+                            	F_SP_GetResource:
+0000A032 5A 95              			r2 = r2 lsl 4 					// Prepare Page for SR
+0000A033 5A 95              			r2 = r2 lsl 4 
+0000A034 4A 95              			r2 = r2 lsl 2 
+                            			
+0000A035 7F BC              			sr &= 0x03f 					// Change Page
+0000A036 06 A5              	        r2 |=sr 						//
+0000A037 02 9D              	        sr = r2 						//
+                            	  
+0000A038 E1 92              	  		r1 = D:[r1] 					// Get data
+0000A039 90 9A              		  	retf
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Functions: Reserve old defintion
+                            	// Note: 	1. Some user who use old library may use the old name
+                            	//			2. Have to be put at the end of this file
+                            	//////////////////////////////////////////////////////////////////
+                            	.PUBLIC	F_RampUpDAC1 
+                            	.PUBLIC	F_RampDnDAC1 
+                            	.PUBLIC	F_RampUpDAC2 
+                            	.PUBLIC	F_RampDnDAC2 
+                            	.PUBLIC	_STD_RampUpDAC1 
+                            	.PUBLIC	_STD_RampDnDAC1 
+                            	.PUBLIC	_STD_RampUpDAC2 
+                            	.PUBLIC	_STD_RampDnDAC2 
+                            	
+                            	.DEFINE F_RampUpDAC1 F_SP_RampUpDAC1
+                            	.DEFINE F_RampDnDAC1 F_SP_RampDnDAC1
+                            	.DEFINE F_RampUpDAC2 F_SP_RampUpDAC2
+                            	.DEFINE F_RampDnDAC2 F_SP_RampDnDAC2
+                            	.DEFINE _STD_RampUpDAC1 _SP_RampUpDAC1
+                            	.DEFINE _STD_RampDnDAC1 _SP_RampDnDAC1
+                            	.DEFINE _STD_RampUpDAC2 _SP_RampUpDAC2
+                            	.DEFINE _STD_RampDnDAC2 _SP_RampDnDAC2
+                            	
+                            	
+                            	///////////////////////////////////////////////////////////////////
+                            	                
+                            	//========================================================================================        
+                            	// End of hardware.asm
+                            	//========================================================================================
+                            	
+                            	
+                            	
+                            	        
+                            	        
+                            	        
+0 error(s), 0 warning(s).
+

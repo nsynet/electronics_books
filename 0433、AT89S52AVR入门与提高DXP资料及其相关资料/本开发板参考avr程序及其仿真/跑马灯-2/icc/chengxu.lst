@@ -1,0 +1,207 @@
+__start:
+__text_start:
+    002A E5CF      LDI	R28,0x5F
+    002B E0D4      LDI	R29,4
+    002C BFCD      OUT	0x3D,R28
+    002D BFDE      OUT	0x3E,R29
+    002E 51C0      SUBI	R28,0x10
+    002F 40D0      SBCI	R29,0
+    0030 EA0A      LDI	R16,0xAA
+    0031 8308      STD	Y+0,R16
+    0032 2400      CLR	R0
+    0033 E6E0      LDI	R30,0x60
+    0034 E0F0      LDI	R31,0
+    0035 E010      LDI	R17,0
+    0036 36E0      CPI	R30,0x60
+    0037 07F1      CPC	R31,R17
+    0038 F011      BEQ	0x003B
+    0039 9201      ST	R0,Z+
+    003A CFFB      RJMP	0x0036
+    003B 8300      STD	Z+0,R16
+    003C E5E4      LDI	R30,0x54
+    003D E0F0      LDI	R31,0
+    003E E6A0      LDI	R26,0x60
+    003F E0B0      LDI	R27,0
+    0040 E010      LDI	R17,0
+    0041 35E4      CPI	R30,0x54
+    0042 07F1      CPC	R31,R17
+    0043 F021      BEQ	0x0048
+    0044 95C8      LPM
+    0045 9631      ADIW	R30,1
+    0046 920D      ST	R0,X+
+    0047 CFF9      RJMP	0x0041
+    0048 940E0071  CALL	_main
+_exit:
+    004A CFFF      RJMP	_exit
+_delayms:
+  j                    --> R20
+  i                    --> R16
+    004B 940E00A6  CALL	push_gset1
+FILE: D:\Proteus仿真实例\ATMEGA16\个人总结AVR\已完成good\跑马灯-2\icc\chengxu.c
+(0001) #include <iom16v.h>
+(0002) #define uchar unsigned char 
+(0003) #define uint unsigned int
+(0004) ////////////////////////////////////////////////////////////////////
+(0005) ////////////////////////////////////////////////////////////////////
+(0006) void delayms(uint i)//延时
+(0007) {
+(0008) uint j;
+(0009) for(;i!=0;i--)
+    004D C00A      RJMP	0x0058
+(0010) {
+(0011) for(j=8000;j!=0;j--);
+    004E E440      LDI	R20,0x40
+    004F E15F      LDI	R21,0x1F
+    0050 C002      RJMP	0x0053
+    0051 5041      SUBI	R20,1
+    0052 4050      SBCI	R21,0
+    0053 3040      CPI	R20,0
+    0054 0745      CPC	R20,R21
+    0055 F7D9      BNE	0x0051
+    0056 5001      SUBI	R16,1
+    0057 4010      SBCI	R17,0
+    0058 3000      CPI	R16,0
+    0059 0701      CPC	R16,R17
+    005A F799      BNE	0x004E
+    005B 940E00A9  CALL	pop_gset1
+    005D 9508      RET
+_delayus:
+  j                    --> R20
+  i                    --> R16
+    005E 940E00A6  CALL	push_gset1
+(0012) }
+(0013) }
+(0014) ////////////////////////////////////////////////////////////////////
+(0015) void delayus(uint i)//延时
+(0016) {
+(0017) uint j;
+(0018) for(;i!=0;i--)
+    0060 C00A      RJMP	0x006B
+(0019) {
+(0020) for(j=100;j!=0;j--);
+    0061 E644      LDI	R20,0x64
+    0062 E050      LDI	R21,0
+    0063 C002      RJMP	0x0066
+    0064 5041      SUBI	R20,1
+    0065 4050      SBCI	R21,0
+    0066 3040      CPI	R20,0
+    0067 0745      CPC	R20,R21
+    0068 F7D9      BNE	0x0064
+    0069 5001      SUBI	R16,1
+    006A 4010      SBCI	R17,0
+    006B 3000      CPI	R16,0
+    006C 0701      CPC	R16,R17
+    006D F799      BNE	0x0061
+    006E 940E00A9  CALL	pop_gset1
+    0070 9508      RET
+(0021) }
+(0022) }
+(0023) ////////////////////////////////////////////////////////////////////
+(0024) void main(void)
+(0025) {
+(0026)  DDRA=0XFF; 
+_main:
+  j                    --> R20
+  i                    --> R22
+    0071 EF8F      LDI	R24,0xFF
+    0072 BB8A      OUT	0x1A,R24
+    0073 C030      RJMP	0x00A4
+(0027) 
+(0028)  while(1)
+(0029)  {
+(0030) uint i,j;
+(0031)   for(i=0;i<4;i++)
+    0074 2766      CLR	R22
+    0075 2777      CLR	R23
+    0076 C007      RJMP	0x007E
+(0032)   {
+(0033)   PORTA=0xFF;  //我闪！拚命闪！
+    0077 EF8F      LDI	R24,0xFF
+    0078 BB8B      OUT	0x1B,R24
+(0034)    delayms(10);
+    0079 E00A      LDI	R16,0xA
+    007A E010      LDI	R17,0
+    007B DFCF      RCALL	_delayms
+    007C 5F6F      SUBI	R22,0xFF
+    007D 4F7F      SBCI	R23,0xFF
+    007E 3064      CPI	R22,4
+    007F E0E0      LDI	R30,0
+    0080 077E      CPC	R23,R30
+    0081 F3A8      BCS	0x0077
+(0035)   }
+(0036)   j=0x01;
+    0082 E041      LDI	R20,1
+    0083 E050      LDI	R21,0
+(0037)   for(i=0;i<8;i++)
+    0084 2766      CLR	R22
+    0085 2777      CLR	R23
+    0086 C008      RJMP	0x008F
+(0038)   {
+(0039)    j<<=1;   
+    0087 0F44      LSL	R20
+    0088 1F55      ROL	R21
+(0040)   PORTA=j;  //我左闪！
+    0089 BB4B      OUT	0x1B,R20
+(0041)    delayms(10);
+    008A E00A      LDI	R16,0xA
+    008B E010      LDI	R17,0
+    008C DFBE      RCALL	_delayms
+    008D 5F6F      SUBI	R22,0xFF
+    008E 4F7F      SBCI	R23,0xFF
+    008F 3068      CPI	R22,0x8
+    0090 E0E0      LDI	R30,0
+    0091 077E      CPC	R23,R30
+    0092 F3A0      BCS	0x0087
+(0042)   }
+(0043)   j=0x80;
+    0093 E840      LDI	R20,0x80
+    0094 E050      LDI	R21,0
+(0044)   for(i=0;i<8;i++)
+    0095 2766      CLR	R22
+    0096 2777      CLR	R23
+    0097 C008      RJMP	0x00A0
+(0045)   {
+(0046)    j>>=1;   
+    0098 9556      LSR	R21
+    0099 9547      ROR	R20
+(0047)    PORTA=j;  //我右闪！
+    009A BB4B      OUT	0x1B,R20
+(0048)    delayms(10);
+FILE: <library>
+    009B E00A      LDI	R16,0xA
+    009C E010      LDI	R17,0
+    009D DFAD      RCALL	_delayms
+    009E 5F6F      SUBI	R22,0xFF
+    009F 4F7F      SBCI	R23,0xFF
+    00A0 3068      CPI	R22,0x8
+    00A1 E0E0      LDI	R30,0
+    00A2 077E      CPC	R23,R30
+    00A3 F3A0      BCS	0x0098
+    00A4 CFCF      RJMP	0x0074
+    00A5 9508      RET
+push_gset1:
+    00A6 935A      ST	R21,-Y
+    00A7 934A      ST	R20,-Y
+    00A8 9508      RET
+pop_gset1:
+    00A9 E0E1      LDI	R30,1
+pop:
+    00AA 9149      LD	R20,Y+
+    00AB 9159      LD	R21,Y+
+    00AC FDE0      SBRC	R30,0
+    00AD 9508      RET
+    00AE 9169      LD	R22,Y+
+    00AF 9179      LD	R23,Y+
+    00B0 FDE1      SBRC	R30,1
+    00B1 9508      RET
+    00B2 90A9      LD	R10,Y+
+    00B3 90B9      LD	R11,Y+
+    00B4 FDE2      SBRC	R30,2
+    00B5 9508      RET
+    00B6 90C9      LD	R12,Y+
+    00B7 90D9      LD	R13,Y+
+    00B8 FDE3      SBRC	R30,3
+    00B9 9508      RET
+    00BA 90E9      LD	R14,Y+
+    00BB 90F9      LD	R15,Y+
+    00BC 9508      RET

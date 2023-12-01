@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>礦ision2 Build Log</h1>
+<h2>Project:</h2>
+E:\计划\开发\SmartM开发板\书籍光盘\书籍代码\深入接口篇\校验和\CheckSum.uv2
+Project File Date:  03/06/2010
+
+<h2>Output:</h2>
+Build target 'CheckSum'
+compiling Main.c...
+assembling STARTUP.A51...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_UARTCIPRINTFVAL?MAIN
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_CHECKSUM?MAIN
+    CALLER1: ?PR?UARTIRQ?MAIN
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_BUFCPY?MAIN
+    CALLER1: ?PR?UARTIRQ?MAIN
+    CALLER2: ?C_C51STARTUP
+Program Size: data=87.3 xdata=0 code=1578
+creating hex file from "CheckSum"...
+"CheckSum" - 0 Error(s), 3 Warning(s).
+Build target 'CheckSum'
+compiling Main.c...
+assembling STARTUP.A51...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_UARTCIPRINTFVAL?MAIN
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_CHECKSUM?MAIN
+    CALLER1: ?PR?UARTIRQ?MAIN
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_BUFCPY?MAIN
+    CALLER1: ?PR?UARTIRQ?MAIN
+    CALLER2: ?C_C51STARTUP
+Program Size: data=87.3 xdata=0 code=1578
+creating hex file from "CheckSum"...
+"CheckSum" - 0 Error(s), 3 Warning(s).

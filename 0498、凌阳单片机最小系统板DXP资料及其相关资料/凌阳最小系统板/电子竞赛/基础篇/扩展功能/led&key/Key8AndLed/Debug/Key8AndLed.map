@@ -1,0 +1,101 @@
+Friday, July 11, 12:23:36, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8009         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop                                          8025         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop2                                         8024         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\电子竞赛\竞赛光盘\基础篇\扩展功能－新颜\led&key\Key8AndLed\Debug\Resource.obj"
+_F_System_Initial                                  810D         "F:\电子竞赛\竞赛光盘\基础篇\扩展功能－新颜\led&key\Key8AndLed\Debug\system.obj"
+_F_LED_On                                          811A         "F:\电子竞赛\竞赛光盘\基础篇\扩展功能－新颜\led&key\Key8AndLed\Debug\system.obj"
+_F_GetKeyValue                                     8124         "F:\电子竞赛\竞赛光盘\基础篇\扩展功能－新颜\led&key\Key8AndLed\Debug\system.obj"
+_main                                              8026         "F:\电子竞赛\竞赛光盘\基础篇\扩展功能－新颜\led&key\Key8AndLed\Debug\main.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8009                 8025         1D     *
+* "F:\电子竞赛\竞赛光盘\基础篇\扩展功能－新颜\led&key\Key8AndLed\Debug\Resource.obj"        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\扩展功能－新颜\led&key\Key8AndLed\Debug\system.obj"          *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          810D                 8149         3D     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\扩展功能－新颜\led&key\Key8AndLed\Debug\main.obj"            *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8026                 810C         E7     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  0            800                   *
+* "First Bank Rom"                  7C00                 14A          7AB6                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\Key8AndLed.S37
+Disk  Mapping Filename : .\Debug\Key8AndLed.map
+Symbol  Table FileName : .\Debug\Key8AndLed.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

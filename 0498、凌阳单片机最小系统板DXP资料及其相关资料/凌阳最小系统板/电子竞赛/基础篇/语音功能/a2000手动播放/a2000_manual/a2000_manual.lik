@@ -1,0 +1,26 @@
+Version: 3.0
+Options: m37
+Obj: "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "E:\ele_competition\voice\a2000_manual\Debug\Resource.obj"
+Obj: "E:\ele_competition\voice\a2000_manual\Debug\main.obj"
+Obj: "E:\ele_competition\voice\a2000_manual\Debug\isr.obj"
+Obj: "E:\ele_competition\voice\a2000_manual\Debug\hardware.obj"
+Obj: "E:\ele_competition\voice\a2000_manual\Debug\A32_16K_a20.res"
+Lib: "E:\ele_competition\voice\a2000_manual\.\sacmv25.lib"
+Output: ".\Debug\a2000_manual.S37"
+;Locate: TEXT in "isr.obj" at 8009 
+;Align: TEXT in "isr.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 8E59  linkat 2F8 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "a2000" of "sacmv25.lib"  at 2F7 
+;Align: RAM in "a2000" of "sacmv25.lib"  with 0 
+;Locate: A2000_Section in "a2000" of "sacmv25.lib"  at 0 
+;Align: A2000_Section in "a2000" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_A32_16K_A20 in "A32_16K_a20.res" at 8E8F 
+;Align: __sn_section_RES_A32_16K_A20 in "A32_16K_a20.res" with 0 
+;Locate: CODE in "a2000" of "sacmv25.lib"  at 804A 
+;Align: CODE in "a2000" of "sacmv25.lib"  with 0 
+;Locate: CODE in "hardware.obj" at 8CBE 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "main.obj" at 8DEB 
+;Align: CODE in "main.obj" with 0 

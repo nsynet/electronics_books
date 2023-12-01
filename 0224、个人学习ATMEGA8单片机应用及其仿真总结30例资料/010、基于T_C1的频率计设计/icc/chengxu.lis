@@ -1,0 +1,505 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _Flag::
+ 0000                   .blkb 1
+                        .area idata
+ 0000 00                .byte 0
+                        .area data(ram, con, rel)
+ 0001                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 0001                   .dbsym e Flag _Flag c
+ 0001           _Table::
+ 0001                   .blkb 2
+                        .area idata
+ 0001 3F06              .byte 63,6
+                        .area data(ram, con, rel)
+ 0003                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 0003                   .blkb 2
+                        .area idata
+ 0003 5B4F              .byte 91,'O
+                        .area data(ram, con, rel)
+ 0005                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 0005                   .blkb 2
+                        .area idata
+ 0005 666D              .byte 'f,'m
+                        .area data(ram, con, rel)
+ 0007                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 0007                   .blkb 2
+                        .area idata
+ 0007 7D07              .byte 125,7
+                        .area data(ram, con, rel)
+ 0009                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 0009                   .blkb 2
+                        .area idata
+ 0009 7F6F              .byte 127,'o
+                        .area data(ram, con, rel)
+ 000B                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 000B                   .dbsym e Table _Table A[10:10]c
+ 000B           _Data::
+ 000B                   .blkb 2
+                        .area idata
+ 000B 0000              .byte 0,0
+                        .area data(ram, con, rel)
+ 000D                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 000D                   .blkb 2
+                        .area idata
+ 000D 0000              .byte 0,0
+                        .area data(ram, con, rel)
+ 000F                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 000F                   .dbsym e Data _Data A[4:4]c
+ 000F           _CNT::
+ 000F                   .blkb 2
+                        .area idata
+ 000F 6400              .word 100
+                        .area data(ram, con, rel)
+ 0011                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 0011                   .dbsym e CNT _CNT i
+                        .area text(rom, con, rel)
+ 0000                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 0000                   .dbfunc e DelayMs _DelayMs fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMs::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 27
+ 0004           ; #include <iom16v.h>
+ 0004           ; #include <macros.h>       
+ 0004           ; /********************************************************************
+ 0004           ;                 数据类型定义
+ 0004           ; *********************************************************************/   
+ 0004           ; #define uchar unsigned char
+ 0004           ; #define uint  unsigned int
+ 0004           ; 
+ 0004           ; #define CON 1000      
+ 0004           ; //频率常数定义
+ 0004           ; uchar Flag=0;         
+ 0004           ; //捕获次数定义
+ 0004           ; 
+ 0004           ; /********************************************************************
+ 0004           ;                 数码管段码定义0123456789
+ 0004           ; *********************************************************************/
+ 0004           ; uchar Table[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+ 0004           ;                  0x7f,0x6f};
+ 0004           ; uchar Data[4]={0,0,0,0};       //显示初始值：0 0 0 0
+ 0004           ; uint  CNT1;                    //第一次捕获值
+ 0004           ; uint  CNT2;                    //第二此捕获值
+ 0004           ; uint  CNT=100;                 //捕获差值 
+ 0004           ; /**********************************************************************
+ 0004           ;                                 MS级延时函数程序，参数i 延时时间                                              
+ 0004           ; **********************************************************************/      
+ 0004           ; void DelayMs(uint i)           //Ms级延时，参数i为延时时间
+ 0004           ; {uint j;
+ 0004                   .dbline 28
+ 0004           ;  for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 29
+ 0006                   .dbline 29
+ 0006 40E4              ldi R20,8000
+ 0008 5FE1              ldi R21,31
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 29
+ 000C                   .dbline 29
+ 000C                   .dbline 29
+ 000C           L7:
+ 000C                   .dbline 29
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 29
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 29
+ 0016           L3:
+ 0016                   .dbline 28
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 28
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e Display _Display fV
+ 0026           ;            sel -> R20
+ 0026           ;              i -> R22
+ 0026           ;              p -> R10,R11
+                        .even
+ 0026           _Display::
+ 0026 0E940000          xcall push_gset3
+ 002A 5801              movw R10,R16
+ 002C                   .dbline -1
+ 002C                   .dbline 36
+ 002C           ;   {for(j=8000;j!=0;j--) {;}}
+ 002C           ; }
+ 002C           ; /**********************************************************************
+ 002C           ;                                           显示函数            
+ 002C           ; 注意：使用开发板时sel=0xef;
+ 002C           ; **********************************************************************/
+ 002C           ; void Display(uchar *p)         //动态显示函数，参数p为待显示的数组名
+ 002C           ; {uchar i,sel=0x01;           
+ 002C                   .dbline 36
+ 002C 41E0              ldi R20,1
+ 002E                   .dbline 37
+ 002E           ;  for(i=0;i<4;i++)
+ 002E 6627              clr R22
+ 0030 13C0              xjmp L14
+ 0032           L11:
+ 0032                   .dbline 38
+ 0032                   .dbline 38
+ 0032 45BB              out 0x15,R20
+ 0034                   .dbline 39
+ 0034 E62F              mov R30,R22
+ 0036 FF27              clr R31
+ 0038 EA0D              add R30,R10
+ 003A FB1D              adc R31,R11
+ 003C E081              ldd R30,z+0
+ 003E FF27              clr R31
+ 0040 80E0              ldi R24,<_Table
+ 0042 90E0              ldi R25,>_Table
+ 0044 E80F              add R30,R24
+ 0046 F91F              adc R31,R25
+ 0048 2080              ldd R2,z+0
+ 004A 2094              com R2
+ 004C 2BBA              out 0x1b,R2
+ 004E                   .dbline 40
+ 004E 01E0              ldi R16,1
+ 0050 10E0              ldi R17,0
+ 0052 D6DF              xcall _DelayMs
+ 0054                   .dbline 41
+ 0054 440F              lsl R20
+ 0056                   .dbline 42
+ 0056           L12:
+ 0056                   .dbline 37
+ 0056 6395              inc R22
+ 0058           L14:
+ 0058                   .dbline 37
+ 0058 6430              cpi R22,4
+ 005A 58F3              brlo L11
+ 005C                   .dbline -2
+ 005C           L10:
+ 005C 0E940000          xcall pop_gset3
+ 0060                   .dbline 0 ; func end
+ 0060 0895              ret
+ 0062                   .dbsym r sel 20 c
+ 0062                   .dbsym r i 22 c
+ 0062                   .dbsym r p 10 pc
+ 0062                   .dbend
+ 0062                   .dbfunc e HZ _HZ fV
+ 0062           ;            TEM -> R22,R23
+ 0062           ;              p -> R20,R21
+ 0062           ;              i -> R10,R11
+                        .even
+ 0062           _HZ::
+ 0062 0E940000          xcall push_gset3
+ 0066 A901              movw R20,R18
+ 0068 5801              movw R10,R16
+ 006A                   .dbline -1
+ 006A                   .dbline 46
+ 006A           ;   {PORTC=sel;                  //选通最右边的数码管
+ 006A           ;    PORTA=~Table[p[i]];          //送字型码
+ 006A           ;    DelayMs(1);                 //显示延时    
+ 006A           ;    sel=sel<<1;                 //移位以显示前一位
+ 006A           ;   }
+ 006A           ; }
+ 006A           ; /**************************频率值处理函数********************************/
+ 006A           ; void HZ(uint i,uchar *p)
+ 006A           ; {
+ 006A                   .dbline 48
+ 006A           ;  uint TEM;
+ 006A           ;  p[0]=CON/i;
+ 006A 08EE              ldi R16,1000
+ 006C 13E0              ldi R17,3
+ 006E 9501              movw R18,R10
+ 0070 0E940000          xcall div16u
+ 0074 FA01              movw R30,R20
+ 0076 0083              std z+0,R16
+ 0078                   .dbline 49
+ 0078           ;  TEM=CON%i;
+ 0078 08EE              ldi R16,1000
+ 007A 13E0              ldi R17,3
+ 007C 9501              movw R18,R10
+ 007E 0E940000          xcall mod16u
+ 0082 B801              movw R22,R16
+ 0084                   .dbline 50
+ 0084           ;  TEM=TEM*10;
+ 0084 0AE0              ldi R16,10
+ 0086 10E0              ldi R17,0
+ 0088 9B01              movw R18,R22
+ 008A 0E940000          xcall empy16s
+ 008E B801              movw R22,R16
+ 0090                   .dbline 51
+ 0090           ;  p[1]=TEM/i;
+ 0090 9501              movw R18,R10
+ 0092 0E940000          xcall div16u
+ 0096 FA01              movw R30,R20
+ 0098 0183              std z+1,R16
+ 009A                   .dbline 52
+ 009A           ;  TEM=TEM%i;
+ 009A 9501              movw R18,R10
+ 009C 8B01              movw R16,R22
+ 009E 0E940000          xcall mod16u
+ 00A2 B801              movw R22,R16
+ 00A4                   .dbline 53
+ 00A4           ;  TEM=TEM*10;
+ 00A4 0AE0              ldi R16,10
+ 00A6 10E0              ldi R17,0
+ 00A8 9B01              movw R18,R22
+ 00AA 0E940000          xcall empy16s
+ 00AE B801              movw R22,R16
+ 00B0                   .dbline 54
+ 00B0           ;  p[2]=TEM/i;
+ 00B0 9501              movw R18,R10
+ 00B2 0E940000          xcall div16u
+ 00B6 FA01              movw R30,R20
+ 00B8 0283              std z+2,R16
+ 00BA                   .dbline 55
+ 00BA           ;  TEM=TEM%i;
+ 00BA 9501              movw R18,R10
+ 00BC 8B01              movw R16,R22
+ 00BE 0E940000          xcall mod16u
+ 00C2 B801              movw R22,R16
+ 00C4                   .dbline 56
+ 00C4           ;  TEM=TEM*10;
+ 00C4 0AE0              ldi R16,10
+ 00C6 10E0              ldi R17,0
+ 00C8 9B01              movw R18,R22
+ 00CA 0E940000          xcall empy16s
+ 00CE B801              movw R22,R16
+ 00D0                   .dbline 57
+ 00D0           ;  p[3]=TEM/i;
+ 00D0 9501              movw R18,R10
+ 00D2 0E940000          xcall div16u
+ 00D6 FA01              movw R30,R20
+ 00D8 0383              std z+3,R16
+ 00DA                   .dbline -2
+ 00DA           L15:
+ 00DA 0E940000          xcall pop_gset3
+ 00DE                   .dbline 0 ; func end
+ 00DE 0895              ret
+ 00E0                   .dbsym r TEM 22 i
+ 00E0                   .dbsym r p 20 pc
+ 00E0                   .dbsym r i 10 i
+ 00E0                   .dbend
+ 00E0                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 00E0           _Init_IO::
+ 00E0                   .dbline -1
+ 00E0                   .dbline 63
+ 00E0           ; }
+ 00E0           ; /**********************************************************************
+ 00E0           ;                                          初始化I/O                            
+ 00E0           ; **********************************************************************/
+ 00E0           ; void Init_IO(void)             //初始化I/O口
+ 00E0           ; {DDRA=0xff;                    //设置A口为推挽1输出
+ 00E0                   .dbline 63
+ 00E0 8FEF              ldi R24,255
+ 00E2 8ABB              out 0x1a,R24
+ 00E4                   .dbline 64
+ 00E4           ;  PORTA=0xff;
+ 00E4 8BBB              out 0x1b,R24
+ 00E6                   .dbline 65
+ 00E6           ;  DDRC=0xff;                    //设置C口为推挽1输出             
+ 00E6 84BB              out 0x14,R24
+ 00E8                   .dbline 66
+ 00E8           ;  PORTC=0xff;
+ 00E8 85BB              out 0x15,R24
+ 00EA                   .dbline 67
+ 00EA           ;  DDRD=0x00;                    //设置D口为带上拉电阻输入
+ 00EA 2224              clr R2
+ 00EC 21BA              out 0x11,R2
+ 00EE                   .dbline 68
+ 00EE           ;  PORTD=0x00;    
+ 00EE 22BA              out 0x12,R2
+ 00F0                   .dbline -2
+ 00F0           L16:
+ 00F0                   .dbline 0 ; func end
+ 00F0 0895              ret
+ 00F2                   .dbend
+ 00F2                   .dbfunc e Init_Timer1 _Init_Timer1 fV
+                        .even
+ 00F2           _Init_Timer1::
+ 00F2                   .dbline -1
+ 00F2                   .dbline 74
+ 00F2           ; }
+ 00F2           ; /**********************************************************************
+ 00F2           ;                                         初始化T/C1的输入捕获中断                      
+ 00F2           ; **********************************************************************/
+ 00F2           ; void Init_Timer1(void)         //初始化T/C1的输入捕获中断
+ 00F2           ; {
+ 00F2                   .dbline 75
+ 00F2           ;  TIMSK=TIMSK|0x20;             //输入捕获使能
+ 00F2 89B7              in R24,0x39
+ 00F4 8062              ori R24,32
+ 00F6 89BF              out 0x39,R24
+ 00F8                   .dbline 76
+ 00F8           ;  TCCR1B=0xC2;                  //输入捕获噪音使能，下降沿捕获，时钟8分频1uS计数一次。
+ 00F8 82EC              ldi R24,194
+ 00FA 8EBD              out 0x2e,R24
+ 00FC                   .dbline 77
+ 00FC           ;  ICR1H=0x00;
+ 00FC 2224              clr R2
+ 00FE 27BC              out 0x27,R2
+ 0100                   .dbline 78
+ 0100           ;  ICR1L=0x00;
+ 0100 26BC              out 0x26,R2
+ 0102                   .dbline 79
+ 0102           ;  TIFR=0x20;                    //清中断标志
+ 0102 80E2              ldi R24,32
+ 0104 88BF              out 0x38,R24
+ 0106                   .dbline 80
+ 0106           ;  SREG=SREG&0x7f;               //全局中断关
+ 0106 8FB7              in R24,0x3f
+ 0108 8F77              andi R24,127
+ 010A 8FBF              out 0x3f,R24
+ 010C                   .dbline -2
+ 010C           L17:
+ 010C                   .dbline 0 ; func end
+ 010C 0895              ret
+ 010E                   .dbend
+ 010E                   .dbfunc e main _main fV
+ 010E           ;              i -> R20
+                        .even
+ 010E           _main::
+ 010E                   .dbline -1
+ 010E                   .dbline 86
+ 010E           ;  } 
+ 010E           ; /**********************************************************************
+ 010E           ;                                         主函数                        
+ 010E           ; **********************************************************************/
+ 010E           ; void main(void)
+ 010E           ; {uchar i;
+ 010E                   .dbline 87
+ 010E           ;  Init_IO();                    //初始化I/O口
+ 010E E8DF              xcall _Init_IO
+ 0110                   .dbline 88
+ 0110           ;  Init_Timer1();                //T/C1初试化 
+ 0110 F0DF              xcall _Init_Timer1
+ 0112 41C0              xjmp L20
+ 0114           X2:
+ 0114                   .dbline 90
+ 0114           ;  while(1)
+ 0114           ;   {
+ 0114           L22:
+ 0114                   .dbline 92
+ 0114                   .dbline 93
+ 0114 88B7              in R24,0x38
+ 0116 8062              ori R24,32
+ 0118 88BF              out 0x38,R24
+ 011A                   .dbline 94
+ 011A 26B4              in R2,0x26
+ 011C 3324              clr R3
+ 011E 30920300          sts _CNT1+1,R3
+ 0122 20920200          sts _CNT1,R2
+ 0126                   .dbline 95
+ 0126 26B4              in R2,0x26
+ 0128 37B4              in R3,0x27
+ 012A 30920100          sts _CNT2+1,R3
+ 012E 20920000          sts _CNT2,R2
+ 0132                   .dbline 96
+ 0132 30921000          sts _CNT+1,R3
+ 0136 20920F00          sts _CNT,R2
+ 013A                   .dbline 97
+ 013A 80910000          lds R24,_Flag
+ 013E 8F5F              subi R24,255    ; addi 1
+ 0140 80930000          sts _Flag,R24
+ 0144                   .dbline 98
+ 0144           L23:
+ 0144                   .dbline 91
+ 0144           ; while(TIFR&0x20)             //捕获检测
+ 0144 28B6              in R2,0x38
+ 0146 25FC              sbrc R2,5
+ 0148 E5CF              rjmp L22
+ 014A                   .dbline 99
+ 014A           ;       {
+ 014A           ;         TIFR|=0x20;             //清除捕获标志
+ 014A           ;         CNT1=ICR1L;
+ 014A           ;         CNT2=(ICR1H<<8)+ICR1L; 
+ 014A           ;         CNT=CNT2;
+ 014A           ;         Flag++;
+ 014A           ;          }                //检测到第一次捕获
+ 014A           ;    if(Flag==1)                 //检测到第二此捕获
+ 014A 80910000          lds R24,_Flag
+ 014E 8130              cpi R24,1
+ 0150 11F5              brne L25
+ 0152                   .dbline 100
+ 0152           ;       {Flag=0;                 //清除捕获检测标志
+ 0152                   .dbline 100
+ 0152 2224              clr R2
+ 0154 20920000          sts _Flag,R2
+ 0158                   .dbline 101
+ 0158           ;          HZ(CNT,Data);           //数据处理
+ 0158 20E0              ldi R18,<_Data
+ 015A 30E0              ldi R19,>_Data
+ 015C 00910F00          lds R16,_CNT
+ 0160 10911000          lds R17,_CNT+1
+ 0164 7EDF              xcall _HZ
+ 0166                   .dbline 102
+ 0166           ;          for(i=0;i<100;i++)      //频率显示
+ 0166 4427              clr R20
+ 0168 04C0              xjmp L30
+ 016A           L27:
+ 016A                   .dbline 103
+ 016A 00E0              ldi R16,<_Data
+ 016C 10E0              ldi R17,>_Data
+ 016E 5BDF              xcall _Display
+ 0170           L28:
+ 0170                   .dbline 102
+ 0170 4395              inc R20
+ 0172           L30:
+ 0172                   .dbline 102
+ 0172 4436              cpi R20,100
+ 0174 D0F3              brlo L27
+ 0176                   .dbline 104
+ 0176           ;              Display(Data);
+ 0176           ;          CNT=0;CNT1=0;CNT2=0;
+ 0176 2224              clr R2
+ 0178 3324              clr R3
+ 017A 30921000          sts _CNT+1,R3
+ 017E 20920F00          sts _CNT,R2
+ 0182                   .dbline 104
+ 0182 30920300          sts _CNT1+1,R3
+ 0186 20920200          sts _CNT1,R2
+ 018A                   .dbline 104
+ 018A 30920100          sts _CNT2+1,R3
+ 018E 20920000          sts _CNT2,R2
+ 0192                   .dbline 105
+ 0192           ;          ICR1H=0x00;
+ 0192 27BC              out 0x27,R2
+ 0194                   .dbline 106
+ 0194           ;        ICR1L=0x00;
+ 0194 26BC              out 0x26,R2
+ 0196                   .dbline 107
+ 0196           ;          }
+ 0196           L25:
+ 0196                   .dbline 108
+ 0196           L20:
+ 0196                   .dbline 89
+ 0196 D6CF              xjmp L23
+ 0198           X3:
+ 0198                   .dbline -2
+ 0198           L18:
+ 0198                   .dbline 0 ; func end
+ 0198 0895              ret
+ 019A                   .dbsym r i 20 c
+ 019A                   .dbend
+                        .area bss(ram, con, rel)
+ 0000                   .dbfile E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+ 0000           _CNT2::
+ 0000                   .blkb 2
+ 0002                   .dbsym e CNT2 _CNT2 i
+ 0002           _CNT1::
+ 0002                   .blkb 2
+ 0004                   .dbsym e CNT1 _CNT1 i

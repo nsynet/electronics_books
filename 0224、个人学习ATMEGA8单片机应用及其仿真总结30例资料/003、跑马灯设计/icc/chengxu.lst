@@ -1,0 +1,241 @@
+__start:
+__text_start:
+    002A E5CF      LDI	R28,0x5F
+    002B E0D4      LDI	R29,4
+    002C BFCD      OUT	0x3D,R28
+    002D BFDE      OUT	0x3E,R29
+    002E 51C0      SUBI	R28,0x10
+    002F 40D0      SBCI	R29,0
+    0030 EA0A      LDI	R16,0xAA
+    0031 8308      STD	Y+0,R16
+    0032 2400      CLR	R0
+    0033 E6E0      LDI	R30,0x60
+    0034 E0F0      LDI	R31,0
+    0035 E010      LDI	R17,0
+    0036 36E0      CPI	R30,0x60
+    0037 07F1      CPC	R31,R17
+    0038 F011      BEQ	0x003B
+    0039 9201      ST	R0,Z+
+    003A CFFB      RJMP	0x0036
+    003B 8300      STD	Z+0,R16
+    003C E5E4      LDI	R30,0x54
+    003D E0F0      LDI	R31,0
+    003E E6A0      LDI	R26,0x60
+    003F E0B0      LDI	R27,0
+    0040 E010      LDI	R17,0
+    0041 35E4      CPI	R30,0x54
+    0042 07F1      CPC	R31,R17
+    0043 F021      BEQ	0x0048
+    0044 95C8      LPM
+    0045 9631      ADIW	R30,1
+    0046 920D      ST	R0,X+
+    0047 CFF9      RJMP	0x0041
+    0048 940E00A3  CALL	_main
+_exit:
+    004A CFFF      RJMP	_exit
+_DelayMS:
+  j                    --> R20
+  i                    --> R16
+    004B 940E00C1  CALL	push_gset1
+FILE: D:\整理\个人总结的M8程序\003、跑马灯设计\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) /**********************************************************************
+(0003) 				  函数数据类型说明							   	
+(0004) **********************************************************************/
+(0005) #define uchar unsigned char 
+(0006) #define uint unsigned int
+(0007) /**********************************************************************
+(0008) 				  MS级延时函数程序，参数i 延时时间								   	
+(0009) **********************************************************************/
+(0010) void DelayMS(uint i)
+(0011) {
+(0012) uint j;
+(0013) for(;i!=0;i--)
+    004D C00A      RJMP	0x0058
+(0014) {
+(0015) for(j=8000;j!=0;j--);
+    004E E440      LDI	R20,0x40
+    004F E15F      LDI	R21,0x1F
+    0050 C002      RJMP	0x0053
+    0051 5041      SUBI	R20,1
+    0052 4050      SBCI	R21,0
+    0053 3040      CPI	R20,0
+    0054 0745      CPC	R20,R21
+    0055 F7D9      BNE	0x0051
+    0056 5001      SUBI	R16,1
+    0057 4010      SBCI	R17,0
+    0058 3000      CPI	R16,0
+    0059 0701      CPC	R16,R17
+    005A F799      BNE	0x004E
+    005B 940E00C4  CALL	pop_gset1
+    005D 9508      RET
+_horse:
+  i                    --> R16
+    005E 940E00C1  CALL	push_gset1
+(0016) }
+(0017) }
+(0018) /**********************************************************************
+(0019) 				  跑马灯程序，通过跑过的步数进行判断来点亮相应的LED
+(0020) 				  低电平点亮LED								   	
+(0021) **********************************************************************/
+(0022) void horse(uchar i)
+(0023) {switch (i)
+    0060 2F40      MOV	R20,R16
+    0061 2755      CLR	R21
+    0062 3040      CPI	R20,0
+    0063 0745      CPC	R20,R21
+    0064 F109      BEQ	0x0086
+    0065 3041      CPI	R20,1
+    0066 E0E0      LDI	R30,0
+    0067 075E      CPC	R21,R30
+    0068 F101      BEQ	0x0089
+    0069 3042      CPI	R20,2
+    006A E0E0      LDI	R30,0
+    006B 075E      CPC	R21,R30
+    006C F0F9      BEQ	0x008C
+    006D 3043      CPI	R20,3
+    006E E0E0      LDI	R30,0
+    006F 075E      CPC	R21,R30
+    0070 F0F1      BEQ	0x008F
+    0071 3044      CPI	R20,4
+    0072 E0E0      LDI	R30,0
+    0073 075E      CPC	R21,R30
+    0074 F0E9      BEQ	0x0092
+    0075 3045      CPI	R20,5
+    0076 E0E0      LDI	R30,0
+    0077 075E      CPC	R21,R30
+    0078 F0E1      BEQ	0x0095
+    0079 3046      CPI	R20,6
+    007A E0E0      LDI	R30,0
+    007B 075E      CPC	R21,R30
+    007C F0D9      BEQ	0x0098
+    007D 3047      CPI	R20,7
+    007E E0E0      LDI	R30,0
+    007F 075E      CPC	R21,R30
+    0080 F0D1      BEQ	0x009B
+    0081 3048      CPI	R20,0x8
+    0082 E0E0      LDI	R30,0
+    0083 075E      CPC	R21,R30
+    0084 F0C9      BEQ	0x009E
+    0085 C01A      RJMP	0x00A0
+(0024) {
+(0025) case 0:PORTB=0X00;break;//0000 0000B 点亮LED1~LED8
+    0086 2422      CLR	R2
+    0087 BA28      OUT	0x18,R2
+    0088 C017      RJMP	0x00A0
+(0026) case 1:PORTB=0X01;break;//0000 0001B 点亮LED2~LED8
+    0089 E081      LDI	R24,1
+    008A BB88      OUT	0x18,R24
+    008B C014      RJMP	0x00A0
+(0027) case 2:PORTB=0X03;break;//0000 0011B 点亮LED3~LED8
+    008C E083      LDI	R24,3
+    008D BB88      OUT	0x18,R24
+    008E C011      RJMP	0x00A0
+(0028) case 3:PORTB=0X07;break;//0000 0111B 点亮LED4~LED8
+    008F E087      LDI	R24,7
+    0090 BB88      OUT	0x18,R24
+    0091 C00E      RJMP	0x00A0
+(0029) case 4:PORTB=0X0f;break;//0000 1111B 点亮LED5~LED8
+    0092 E08F      LDI	R24,0xF
+    0093 BB88      OUT	0x18,R24
+    0094 C00B      RJMP	0x00A0
+(0030) case 5:PORTB=0X1f;break;//0001 1111B 点亮LED6~LED8
+    0095 E18F      LDI	R24,0x1F
+    0096 BB88      OUT	0x18,R24
+    0097 C008      RJMP	0x00A0
+(0031) case 6:PORTB=0X3f;break;//0011 1111B 点亮LED7~LED8
+    0098 E38F      LDI	R24,0x3F
+    0099 BB88      OUT	0x18,R24
+    009A C005      RJMP	0x00A0
+(0032) case 7:PORTB=0X7f;break;//0111 1111B 点亮LED8
+    009B E78F      LDI	R24,0x7F
+    009C BB88      OUT	0x18,R24
+    009D C002      RJMP	0x00A0
+(0033) case 8:PORTB=0Xff;break;//1111 1111B 全熄灭
+    009E EF8F      LDI	R24,0xFF
+    009F BB88      OUT	0x18,R24
+(0034) default:break;
+    00A0 940E00C4  CALL	pop_gset1
+    00A2 9508      RET
+(0035) }
+(0036) }
+(0037) /**********************************************************************
+(0038) 				   主函数						   	
+(0039) **********************************************************************/
+(0040) void main(void)
+(0041) {
+(0042) uchar i;
+(0043) DDRB=0XFF;//端口设置，PB口设置为推挽1输出
+_main:
+  i                    --> R20
+    00A3 EF8F      LDI	R24,0xFF
+    00A4 BB87      OUT	0x17,R24
+(0044) PORTB=0XFF;
+    00A5 BB88      OUT	0x18,R24
+(0045) PORTB=0XFF;//PORTB初始化为1,灭掉所有的LED
+    00A6 BB88      OUT	0x18,R24
+(0046) DelayMS(10);
+    00A7 E00A      LDI	R16,0xA
+    00A8 E010      LDI	R17,0
+    00A9 DFA1      RCALL	_DelayMS
+    00AA C014      RJMP	0x00BF
+(0047) while(1)//程序无条件执行
+(0048) {
+(0049) for(i=0;i<9;i++)
+    00AB 2744      CLR	R20
+    00AC C006      RJMP	0x00B3
+(0050) {
+(0051) horse(i);
+    00AD 2F04      MOV	R16,R20
+    00AE DFAF      RCALL	_horse
+(0052) DelayMS(10);//延时时间约10MS
+    00AF E00A      LDI	R16,0xA
+    00B0 E010      LDI	R17,0
+    00B1 DF99      RCALL	_DelayMS
+    00B2 9543      INC	R20
+    00B3 3049      CPI	R20,0x9
+    00B4 F3C0      BCS	0x00AD
+(0053) }
+(0054) for(i=7;i!=0;i--)
+    00B5 E047      LDI	R20,7
+    00B6 C006      RJMP	0x00BD
+(0055) {
+(0056) horse(i);
+    00B7 2F04      MOV	R16,R20
+    00B8 DFA5      RCALL	_horse
+(0057) DelayMS(10);
+FILE: <library>
+    00B9 E00A      LDI	R16,0xA
+    00BA E010      LDI	R17,0
+    00BB DF8F      RCALL	_DelayMS
+    00BC 954A      DEC	R20
+    00BD 2344      TST	R20
+    00BE F7C1      BNE	0x00B7
+    00BF CFEB      RJMP	0x00AB
+    00C0 9508      RET
+push_gset1:
+    00C1 935A      ST	R21,-Y
+    00C2 934A      ST	R20,-Y
+    00C3 9508      RET
+pop_gset1:
+    00C4 E0E1      LDI	R30,1
+pop:
+    00C5 9149      LD	R20,Y+
+    00C6 9159      LD	R21,Y+
+    00C7 FDE0      SBRC	R30,0
+    00C8 9508      RET
+    00C9 9169      LD	R22,Y+
+    00CA 9179      LD	R23,Y+
+    00CB FDE1      SBRC	R30,1
+    00CC 9508      RET
+    00CD 90A9      LD	R10,Y+
+    00CE 90B9      LD	R11,Y+
+    00CF FDE2      SBRC	R30,2
+    00D0 9508      RET
+    00D1 90C9      LD	R12,Y+
+    00D2 90D9      LD	R13,Y+
+    00D3 FDE3      SBRC	R30,3
+    00D4 9508      RET
+    00D5 90E9      LD	R14,Y+
+    00D6 90F9      LD	R15,Y+
+    00D7 9508      RET

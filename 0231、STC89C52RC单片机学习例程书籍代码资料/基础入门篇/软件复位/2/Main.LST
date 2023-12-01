@@ -1,0 +1,48 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:23:04 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"           
+   7          
+   8          /********************************************
+   9          *函数名称:main
+  10          *输    入:无
+  11          *输    出:无
+  12          *说    明:函数主体
+  13          ********************************************/
+  14          void main(void)            
+  15          {
+  16   1         void(*reset)(void)=(void(*)(void))0;//函数指针reset指向地址0
+  17   1      
+  18   1         reset();//执行复位操作
+  19   1      
+  20   1         while(1)//程序不会执行到这里
+  21   1         {
+  22   2            ;
+  23   2         }    
+  24   1      }
+  25          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      9    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

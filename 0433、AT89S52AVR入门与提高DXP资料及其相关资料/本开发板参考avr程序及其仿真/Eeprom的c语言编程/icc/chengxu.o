@@ -1,0 +1,184 @@
+XL
+H 4 areas E global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+A text size 12C flags 0
+dbfile D:\Proteus\ATMEGA16\Eeprom的c语言编程\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 10 4
+dbline 11 4
+dbline 12 6
+dbline 12 6
+dbline 12 C
+dbline 12 C
+dbline 12 C
+dbline 12 C
+dbline 12 10
+dbline 12 16
+dbline 11 16
+dbline 11 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 18 2C
+dbline 18 2C
+dbline 19 2E
+dbline 1A 32
+dbline 1A 32
+dbline 1B 34
+dbline 1C 56
+dbline 1D 5C
+dbline 1E 5E
+dbline 19 5E
+dbline 19 60
+dbline FFFFFFFE 64
+dbline 0 68
+dbfunc e Init_IO 6A fV
+dbline FFFFFFFF 6A
+dbline 24 6A
+dbline 24 6A
+dbline 25 6E
+dbline 26 70
+dbline 27 72
+dbline FFFFFFFE 74
+dbline 0 74
+dbfunc e Write_EEPROM 76 fV
+dbsym r Address 16 i
+dbsym r Data 14 c
+dbline FFFFFFFF 7E
+dbline 2F 7E
+dbline 2F 7E
+dbline 2F 82
+dbline 30 88
+dbline 31 90
+dbline 32 96
+dbline 33 98
+dbline 34 9A
+dbline 35 9C
+dbline FFFFFFFE A2
+dbline 0 A6
+dbfunc e Read_EEPROM A8 fc
+dbsym r i 14 c
+dbsym r Address 14 i
+dbline FFFFFFFF AE
+dbline 3C AE
+dbline 3D AE
+dbline 3D B2
+dbline 3E B8
+dbline 3F C0
+dbline 40 C6
+dbline 41 C8
+dbline 42 CE
+dbline 43 D0
+dbline FFFFFFFE D2
+dbline 0 D6
+dbfunc e main D8 fV
+dbsym r i 14 c
+dbline FFFFFFFF D8
+dbline 49 D8
+dbline 4A D8
+dbline 4B DA
+dbline 4C DE
+dbline 4D E2
+dbline 4E E8
+dbline 4F EC
+dbline 50 F0
+dbline 4F FC
+dbline 4F FE
+dbline 51 102
+dbline 52 106
+dbline 51 11A
+dbline 51 11C
+dbline 54 122
+dbline 53 128
+dbline FFFFFFFE 12A
+dbline 0 12A
+S _Read_EEPROM Def00A8
+S _main Def00D8
+S _DelayMs Def0000
+S _Display Def0026
+S _Write_EEPROM Def0076
+S _Init_IO Def006A
+A data size 10 flags 20
+dbfile D:\Proteus\ATMEGA16\Eeprom的c语言编程\icc\chengxu.c
+dbsym e Table 0 A[16:16]c
+S _Table Def0000
+A idata size 10 flags 0
+A bss size 4 flags 20
+dbfile D:\Proteus\ATMEGA16\Eeprom的c语言编程\icc\chengxu.c
+dbsym e Read_Data 0 A[4:4]c
+S _Read_Data Def0000
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 77 7C
+R 00 00 02 00
+T 0C 00 39 5E
+R 00 00 02 00
+T 0E 00 79 71
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 17 C0 45 BB
+R 00 00 00 00 12 04 02 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 33 24 8F EF 90 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 82 19 93 09 8B BB 01 E0 10 E0 D2 DF 44 0F
+R 00 00 00 00
+T 5E 00 63 95 64 30 38 F3 0E 94 00 00 08 95
+R 00 00 00 00 12 0A 05 00
+T 6A 00 8F EF 8A BB 8B BB 84 BB 85 BB 08 95
+R 00 00 00 00
+T 76 00 0E 94 00 00 B9 01 40 2F E5 9B 03 C0 04 E0
+R 00 00 00 00 12 04 01 00
+T 84 00 10 E0 BC DF 1B 01 23 2C 33 24 2F BA CB 01
+R 00 00 00 00
+T 92 00 90 70 8E BB 4D BB E2 9A E1 9A 04 E0 10 E0
+R 00 00 00 00
+T A0 00 AF DF 0E 94 00 00 08 95
+R 00 00 00 00 12 06 04 00
+T A8 00 0E 94 00 00 A8 01 E0 9B 03 C0 04 E0 10 E0
+R 00 00 00 00 12 04 00 00
+T B6 00 A4 DF 1A 01 23 2C 33 24 2F BA CA 01 90 70
+R 00 00 00 00
+T C4 00 8E BB E0 9A 05 E0 10 E0 99 DF 4D B3 04 2F
+R 00 00 00 00
+T D2 00 0E 94 00 00 08 95
+R 00 00 00 00 12 04 03 00
+T D8 00 C8 DF 22 24 2B BA 8F EF 85 BB 0C E2 11 E0
+R 00 00 00 00
+T E6 00 8C DF 8F EF 85 BB 44 27 07 C0 24 2F 33 27
+R 00 00 00 00
+T F4 00 84 E0 84 9F 00 2D BD DF 43 95 44 30 B8 F3
+R 00 00 00 00
+T 02 01 44 27 0B C0 04 2F 11 27 CE DF 80 E0 90 E0
+R 00 00 00 00 20 0C 03 00 00 00 40 0E 03 00 00 00
+T 10 01 E4 2F FF 27 E8 0F F9 1F 00 83 43 95 44 30
+R 00 00 00 00
+T 1E 01 98 F3 03 C0 00 E0 10 E0 7F DF FC CF 08 95
+R 00 00 00 00 20 06 03 00 00 00 40 08 03 00 00 00

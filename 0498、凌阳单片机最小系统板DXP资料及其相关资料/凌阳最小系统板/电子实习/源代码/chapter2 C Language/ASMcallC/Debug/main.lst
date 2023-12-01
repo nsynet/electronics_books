@@ -1,0 +1,18 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	.EXTERNAL _ADD;
+00000000                    	.RAM
+00000000 00 00              	.VAR SUM
+0000803C                    	.CODE
+                            	.PUBLIC _main;
+                            	_main:
+0000803C 43 92              		R1 = 3;
+0000803D 88 D2              		PUSH R1 TO [SP]; 		//第3个参数入栈
+0000803E 42 92              		R1 = 2;
+0000803F 88 D2              		PUSH R1 TO [SP];		//第2个参数入栈
+00008040 40 F0 26 80        		CALL _ADD;
+00008042 19 D3 00 00        		[SUM]=R1;
+00008044 88 90              		POP R1 FROM [SP];		//弹出参数恢复SP指针
+                            	.END	
+0 error(s), 0 warning(s).
+

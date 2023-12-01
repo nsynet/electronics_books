@@ -1,0 +1,14 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\Chapter3 IO\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\Chapter3 IO\Debug\Key_and_LED.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\Chapter3 IO\Debug\ISR.obj"
+Lib: "F:\电子竞赛\C语言应用篇\Source Code\Chapter3 IO\.\SPCE061V003.LIB"
+Output: ".\Debug\IO.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: CODE in "Key_and_LED.obj" at 806C 
+;Align: CODE in "Key_and_LED.obj" with 0 
+;Locate: CODE in "Std061IO" of "SPCE061V003.LIB"  at 80DB 
+;Align: CODE in "Std061IO" of "SPCE061V003.LIB"  with 0 

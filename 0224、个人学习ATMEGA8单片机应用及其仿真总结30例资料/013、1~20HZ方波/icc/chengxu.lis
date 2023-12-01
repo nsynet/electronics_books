@@ -1,0 +1,235 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _CNT::
+ 0000                   .blkb 1
+                        .area idata
+ 0000 00                .byte 0
+                        .area data(ram, con, rel)
+ 0001                   .dbfile E:\Proteus\ATMEGA8\1~20HZ方波\icc\chengxu.c
+ 0001                   .dbsym e CNT _CNT c
+ 0001           _CNT1::
+ 0001                   .blkb 1
+                        .area idata
+ 0001 00                .byte 0
+                        .area data(ram, con, rel)
+ 0002                   .dbfile E:\Proteus\ATMEGA8\1~20HZ方波\icc\chengxu.c
+ 0002                   .dbsym e CNT1 _CNT1 c
+ 0002           _CNT2::
+ 0002                   .blkb 1
+                        .area idata
+ 0002 00                .byte 0
+                        .area data(ram, con, rel)
+ 0003                   .dbfile E:\Proteus\ATMEGA8\1~20HZ方波\icc\chengxu.c
+ 0003                   .dbsym e CNT2 _CNT2 c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile E:\Proteus\ATMEGA8\1~20HZ方波\icc\chengxu.c
+ 0000                   .dbfunc e DelayMS _DelayMS fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMS::
+ 0000 00D0              rcall push_gset1
+ 0002                   .dbline -1
+ 0002                   .dbline 34
+ 0002           ; #include <iom8v.h>
+ 0002           ; #define uchar unsigned char 
+ 0002           ; #define uint unsigned int
+ 0002           ; //定义BIT 0-7 置1 
+ 0002           ; #define BIT0_POS (1<<0)   
+ 0002           ; #define BIT1_POS (1<<1) 
+ 0002           ; #define BIT2_POS (1<<2) 
+ 0002           ; #define BIT3_POS (1<<3) 
+ 0002           ; #define BIT4_POS (1<<4) 
+ 0002           ; #define BIT5_POS (1<<5) 
+ 0002           ; #define BIT6_POS (1<<6) 
+ 0002           ; #define BIT7_POS (1<<7) 
+ 0002           ; 
+ 0002           ; //定义BIT 0-7 清零 
+ 0002           ; #define BIT0_NEG ((unsigned char)(~(1<<0))) 
+ 0002           ; #define BIT1_NEG ((unsigned char)(~(1<<1))) 
+ 0002           ; #define BIT2_NEG ((unsigned char)(~(1<<2))) 
+ 0002           ; #define BIT3_NEG ((unsigned char)(~(1<<3))) 
+ 0002           ; #define BIT4_NEG ((unsigned char)(~(1<<4))) 
+ 0002           ; #define BIT5_NEG ((unsigned char)(~(1<<5))) 
+ 0002           ; #define BIT6_NEG ((unsigned char)(~(1<<6))) 
+ 0002           ; #define BIT7_NEG ((unsigned char)(~(1<<7))) 
+ 0002           ; 
+ 0002           ; //定义红色LED熄灭、亮、翻转 
+ 0002           ; #define LED_red_OFF PORTB&=BIT2_NEG 
+ 0002           ; #define LED_red_ON   PORTB|=BIT2_POS   
+ 0002           ; #define LED_red_OTN PORTB^=BIT2_POS 
+ 0002           ; 
+ 0002           ; uchar CNT=0;//计数初值
+ 0002           ; uchar CNT1=0;//判断值
+ 0002           ; uchar CNT2=0;//改变频率值
+ 0002           ; ////////////////////////////////////////////////////////////////////
+ 0002           ; void DelayMS(uint i)//延时
+ 0002           ;    {
+ 0002                   .dbline 36
+ 0002           ;     uint j;
+ 0002           ;     for(;i!=0;i--)
+ 0002 0AC0              rjmp L5
+ 0004           L2:
+ 0004                   .dbline 37
+ 0004           ;         {
+ 0004                   .dbline 38
+ 0004 40E4              ldi R20,8000
+ 0006 5FE1              ldi R21,31
+ 0008 02C0              rjmp L9
+ 000A           L6:
+ 000A                   .dbline 38
+ 000A           L7:
+ 000A                   .dbline 38
+ 000A 4150              subi R20,1
+ 000C 5040              sbci R21,0
+ 000E           L9:
+ 000E                   .dbline 38
+ 000E 4030              cpi R20,0
+ 0010 4507              cpc R20,R21
+ 0012 D9F7              brne L6
+ 0014           X0:
+ 0014                   .dbline 39
+ 0014           L3:
+ 0014                   .dbline 36
+ 0014 0150              subi R16,1
+ 0016 1040              sbci R17,0
+ 0018           L5:
+ 0018                   .dbline 36
+ 0018 0030              cpi R16,0
+ 001A 0107              cpc R16,R17
+ 001C 99F7              brne L2
+ 001E           X1:
+ 001E                   .dbline -2
+ 001E           L1:
+ 001E 00D0              rcall pop_gset1
+ 0020                   .dbline 0 ; func end
+ 0020 0895              ret
+ 0022                   .dbsym r j 20 i
+ 0022                   .dbsym r i 16 i
+ 0022                   .dbend
+ 0022                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 0022           _Init_IO::
+ 0022                   .dbline -1
+ 0022                   .dbline 43
+ 0022           ;           for(j=8000;j!=0;j--);
+ 0022           ;         }
+ 0022           ;    }
+ 0022           ; //////////////////////////////初始化////////////////////////////////////
+ 0022           ; void Init_IO(void)//初始化I/O
+ 0022           ; {
+ 0022                   .dbline 45
+ 0022           ; //设置C口为输出
+ 0022           ; DDRC=0xFF;
+ 0022 8FEF              ldi R24,255
+ 0024 84BB              out 0x14,R24
+ 0026                   .dbline 46
+ 0026           ; PORTC=0xFF;
+ 0026 85BB              out 0x15,R24
+ 0028                   .dbline 48
+ 0028           ; //设置B口为输出
+ 0028           ; DDRB=0XFF;
+ 0028 87BB              out 0x17,R24
+ 002A                   .dbline 49
+ 002A           ; PORTB=0xFF;
+ 002A 88BB              out 0x18,R24
+ 002C                   .dbline -2
+ 002C           L10:
+ 002C                   .dbline 0 ; func end
+ 002C 0895              ret
+ 002E                   .dbend
+ 002E                   .dbfunc e main _main fV
+                        .even
+ 002E           _main::
+ 002E                   .dbline -1
+ 002E                   .dbline 53
+ 002E           ; }
+ 002E           ; /////////////////////////////主函数/////////////////////////////////////
+ 002E           ; void main(void)
+ 002E           ; {
+ 002E                   .dbline 55
+ 002E           ; //uchar Load;
+ 002E           ; Init_IO();  //初始化I/O
+ 002E F9DF              rcall _Init_IO
+ 0030                   .dbline 56
+ 0030           ; TCCR0=0x04; //T/C0工作方式选择，系统时钟256分频
+ 0030 84E0              ldi R24,4
+ 0032 83BF              out 0x33,R24
+ 0034                   .dbline 58
+ 0034           ; //(上一句可以改为)TCCR0 |= (1<<CS02);//T/C0工作于定时方式，系统时钟256分频
+ 0034           ; TCNT0=0X06; //计数初始值
+ 0034 86E0              ldi R24,6
+ 0036 82BF              out 0x32,R24
+ 0038                   .dbline 59
+ 0038           ; TIMSK=0x01;  //使能T0溢出中断
+ 0038 81E0              ldi R24,1
+ 003A 89BF              out 0x39,R24
+ 003C                   .dbline 61
+ 003C           ; //(上一句可以改为)TIMSK |= (1<<TOIE0);  //使能T0溢出中断
+ 003C           ; SREG=0x80;  //使能全局中断
+ 003C 80E8              ldi R24,128
+ 003E 8FBF              out 0x3f,R24
+ 0040           L12:
+ 0040                   .dbline 64
+ 0040                   .dbline 66
+ 0040           L13:
+ 0040                   .dbline 63
+ 0040 FFCF              rjmp L12
+ 0042           X2:
+ 0042                   .dbline -2
+ 0042           L11:
+ 0042                   .dbline 0 ; func end
+ 0042 0895              ret
+ 0044                   .dbend
+                        .area vector(rom, abs)
+                        .org 18
+ 0012 22C0              rjmp _Timer0
+                        .area text(rom, con, rel)
+ 0044                   .dbfile E:\Proteus\ATMEGA8\1~20HZ方波\icc\chengxu.c
+ 0044                   .dbfunc e Timer0 _Timer0 fV
+                        .even
+ 0044           _Timer0::
+ 0044 2A92              st -y,R2
+ 0046 8A93              st -y,R24
+ 0048 9A93              st -y,R25
+ 004A 2FB6              in R2,0x3f
+ 004C 2A92              st -y,R2
+ 004E                   .dbline -1
+ 004E                   .dbline 71
+ 004E                   .dbline 72
+ 004E 80910000          lds R24,_CNT
+ 0052 8F5F              subi R24,255    ; addi 1
+ 0054 80930000          sts _CNT,R24
+ 0058                   .dbline 73
+ 0058 80910200          lds R24,_CNT2
+ 005C 8F5F              subi R24,255    ; addi 1
+ 005E 80930200          sts _CNT2,R24
+ 0062                   .dbline 74
+ 0062 80910000          lds R24,_CNT
+ 0066 8430              cpi R24,4
+ 0068 61F4              brne L16
+ 006A                   .dbline 75
+ 006A                   .dbline 76
+ 006A 2224              clr R2
+ 006C 20920000          sts _CNT,R2
+ 0070                   .dbline 77
+ 0070 80910100          lds R24,_CNT1
+ 0074 8F5F              subi R24,255    ; addi 1
+ 0076 80930100          sts _CNT1,R24
+ 007A                   .dbline 78
+ 007A 84E0              ldi R24,4
+ 007C 28B2              in R2,0x18
+ 007E 2826              eor R2,R24
+ 0080 28BA              out 0x18,R2
+ 0082                   .dbline 80
+ 0082           L16:
+ 0082                   .dbline -2
+ 0082           L15:
+ 0082 2990              ld R2,y+
+ 0084 2FBE              out 0x3f,R2
+ 0086 9991              ld R25,y+
+ 0088 8991              ld R24,y+
+ 008A 2990              ld R2,y+
+ 008C                   .dbline 0 ; func end
+ 008C 1895              reti
+ 008E                   .dbend

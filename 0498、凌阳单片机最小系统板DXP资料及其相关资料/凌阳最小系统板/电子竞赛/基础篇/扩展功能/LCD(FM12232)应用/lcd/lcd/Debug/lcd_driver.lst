@@ -1,0 +1,662 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	//program:
+                            	////
+                            	.include spce.inc;
+                     <      	//========================================================================================
+                     <      	// Program: Standard function definition V1.0
+                     <      	// Arranged by: Arthur Shieh
+                     <      	// Platform:  SPCE500A/060A/061A, IDE 1.63, Windows 2000
+                     <      	//
+                     <      	// Date: 	2002/10/31 V1.0 : first version
+                     <      	//
+                     <      	// Note: 1)This inc file defines the ports available for user to use SPCE series.
+                     <      	//         The port setting constants is also included for users' convenience. 
+                     <      	//       2)Naming rule:
+                     <      	//         C : define constant 
+                     <      	//         P : define I/O port
+                     <      	//=======================================================================================
+                     <      	
+                     <      	//---------------------------------------------------------- 
+                     <      	//CPU Type definition : User needs to modified this according to the body used
+                     <      	//---------------------------------------------------------- 
+                     <      	.define SPCE500A 0
+                     <      	.define SPCE061A 1   // SPCE060A as well
+                     <      	
+                     <      	//.define BODY_TYPE SPCE500A	       // SPCE500A 
+                     <      	.define BODY_TYPE SPCE061A	       // SPCE061A 
+                     <      	//---------------------------------------------------------- 
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define Area for I/O									
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	//PortA,PortB contain some special functions
+                     <      	P_IOA_Data:			.VDEF  0x7000;		// Write Data into data register and read from IOA pad
+                     <      	P_IOA_Buffer:   	.VDEF  0x7001;		// Write Data into buffer register and read from buffer register
+                     <      	P_IOA_Dir:      	.VDEF  0x7002;     // Direction vector for IOA
+                     <      	P_IOA_Attrib:   	.VDEF  0x7003;     // Attribute vector for IOA
+                     <      	P_IOA_Latch:		.VDEF  0x7004;     // Latch PortA data for key change wake-up
+                     <      	
+                     <      	P_IOB_Data:         .VDEF  0x7005      // Write Data into the data register and read from IOB pad
+                     <      	P_IOB_Buffer:       .VDEF  0x7006      // Write Data into buffer register and read from buffer register
+                     <      	P_IOB_Dir:          .VDEF  0x7007      // Direction vector for IOB
+                     <      	P_IOB_Attrib:       .VDEF  0x7008  	// Attribute vector for IOB
+                     <      	
+                     <      	P_FeedBack:     	.VDEF  0x7009;     // Clock form external R,C
+                     <      	P_TimerA_Data:  	.VDEF  0x700A;     // Data port for TimerA 
+                     <      	P_TimerA_Ctrl:  	.VDEF  0x700B;     // Control Port for TimerA
+                     <      	P_TimerB_Data:  	.VDEF  0x700C;     // Data port for TimerB
+                     <      	P_TimerB_Ctrl:  	.VDEF  0x700D;     // Control Port for TimerB
+                     <      	P_TimeBase_Setup:  	.VDEF  0x700E;     // TimerBase Freq. Set
+                     <      	P_TimeBase_Clear:  	.VDEF  0x700F;   	// Reset Timerbase counter
+                     <      	P_INT_Ctrl:     	.VDEF  0x7010;     // for read INT flag(R)
+                     <      	P_INT_Clear:    	.VDEF  0x7011;     // Clear interrupt source
+                     <      	P_Watchdog_Clear:   .VDEF  0x7012;     // Watchdog Reset
+                     <      	P_SystemClock:      .VDEF  0x7013;     // Change system clock frequency(include go to standby mode)
+                     <      	
+                     <      	P_ADC: 	        	.VDEF  0x7014;     // Data Port for AD
+                     <      	P_ADC_Ctrl:    		.VDEF  0x7015;     // Control Port for AD control
+                     <      	P_ADC_Status:   	.VDEF  0x7015;     // AD Port Status
+                     <      	P_DAC2:         	.VDEF  0x7016;     // Data Port for DAC2
+                     <      	P_PWM:          	.VDEF  0x7016;     // Data Port for PWM
+                     <      	P_DAC1:	        	.VDEF  0x7017;     // Data Port for DAC1
+                     <      	P_DAC_Ctrl:	    	.VDEF  0x702A;		// Control Port for two DAC and audio output mode
+                     <      	
+                     <      	P_LVD_Ctrl:     	.VDEF  0x7019;     // Control Port for LVD
+                     <      	
+                     <      	P_SIO_Data:	    	.VDEF  0x701A;		// serial interface IO	
+                     <      	P_SIO_Addr_Low:  	.VDEF  0x701B;		// Address Port low
+                     <      	P_SIO_Addr_Mid:  	.VDEF  0x701C;		// Address Port middle
+                     <      	P_SIO_Addr_High:    .VDEF  0x701D;		// Address Port high
+                     <      	P_SIO_Ctrl:    	    .VDEF  0x701E;		// Control Port
+                     <      	P_SIO_Start:    	.VDEF  0x701F;		// Start port for serial interface
+                     <      	P_SIO_Stop:     	.VDEF  0x7020;		// Stop port for serial interface
+                     <      	
+                     <      	P_UART_Command1:    .VDEF 	0x7021;		// Command1 Port for UART
+                     <      	P_UART_Command2:    .VDEF 	0x7022;		// Command2 Port for UART
+                     <      	P_UART_Data: 	    .VDEF 	0x7023; 	// Data Port for UART
+                     <      	P_UART_BaudScalarLow:  .VDEF  	0x7024;		// Set Baud Rate scalar low
+                     <      	P_UART_BaudScalarHigh: .VDEF  	0x7025;		// Set Baud Rate scalar high
+                     <      	
+                     <      	//SPCE061A new ports
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	P_ADC_MUX_Ctrl:  	.VDEF  	0x702B		// Control Port
+                     <      	P_ADC_LINEIN_Data:  .VDEF  	0x702C		// Line in data
+                     <      	P_INT_Mask:         .VDEF   0x702D		//R/W INT enable/disable
+                     <      	P_Flash_Ctrl:       .VDEF   0x7555		//Internal flash access enable/disable
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define Area for constants									
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define for P_INT_Ctrl 
+                     <      	.DEFINE C_IRQ6_TMB2             0x0001;     //TMB2 IRQ6
+                     <      	.DEFINE C_IRQ6_TMB1             0x0002;		//TMB1 IRQ6
+                     <      	.DEFINE C_IRQ5_2Hz              0x0004;     //2Hz IRQ5
+                     <      	.DEFINE C_IRQ5_4Hz              0x0008;     //4Hz IRQ5
+                     <      	.DEFINE C_IRQ4_1KHz            	0x0010;     //1024Hz IRQ4
+                     <      	.DEFINE C_IRQ4_2KHz            	0x0020;     //2048 IRQ4
+                     <      	.DEFINE C_IRQ4_4KHz            	0x0040;     //4096 IRQ4
+                     <      	.DEFINE C_IRQ3_KEY         		0x0080;     //Key Change IRQ3
+                     <      	.DEFINE C_IRQ3_Ext1             0x0100;     //Ext1 IRQ3
+                     <      	.DEFINE C_IRQ3_Ext2             0x0200;     //Ext2 IRQ3
+                     <      	.DEFINE C_IRQ2_TMB            	0x0400;     //Timer B IRQ2
+                     <      	.DEFINE C_FIQ_TMB           	0x0800;     //Timer B FIQ
+                     <      	.DEFINE C_IRQ1_TMA            	0x1000;     //Timer A IRQ1
+                     <      	.DEFINE C_FIQ_TMA            	0x2000;     //Timer A FIQ
+                     <      	.DEFINE C_IRQ0_PWM              0x4000;     //PWM IRQ0
+                     <      	.DEFINE C_FIQ_PWM               0x8000;     //PWM FIQ
+                     <      	
+                     <      	// Define for P_TimerA_Ctrl, P_TimerB_Ctrl                               
+                     <      	.DEFINE	C_Timer_Fosc_2			0x0000;		// b0--b2: clock of source A
+                     <      	.DEFINE	C_Timer_Fosc_256		0x0001;		//
+                     <      	.DEFINE	C_Timer_32768Hz			0x0002;		//
+                     <      	.DEFINE	C_Timer_8192Hz			0x0003;		//
+                     <      	.DEFINE	C_Timer_4096Hz			0x0004;		//
+                     <      	.DEFINE	C_Timer_A1				0x0005;		//
+                     <      	.DEFINE C_Timer_A0				0x0006;		//
+                     <      	.DEFINE C_Timer_Ext1			0x0007;		//
+                     <      	
+                     <      	.DEFINE	C_Timer_2048Hz			0x0000;		//b3--b5: clock of source B
+                     <      	.DEFINE	C_Timer_1024Hz			0x0008;		//
+                     <      	.DEFINE	C_Timer_256Hz			0x0000;		//
+                     <      	.DEFINE	C_Timer_TMB1			0x0018;		//
+                     <      	.DEFINE	C_Timer_4Hz				0x0020;		//
+                     <      	.DEFINE	C_Timer_2Hz				0x0028;		//
+                     <      	.DEFINE	C_Timer_B1				0x0030;		//
+                     <      	.DEFINE	C_Timer_Ext2			0x0038;		//
+                     <      	
+                     <      	.DEFINE	C_PWMO_Off				0x0000;		//b6--b9: output pulse
+                     <      	.DEFINE C_PWMO_D1				0x0040;		//
+                     <      	.DEFINE C_PWMO_D2				0x0080;		//
+                     <      	.DEFINE C_PWMO_D3				0x00C0;		//
+                     <      	.DEFINE C_PWMO_D4				0x0100;		//
+                     <      	.DEFINE C_PWMO_D5				0x0140;		//
+                     <      	.DEFINE C_PWMO_D6				0x0180;		//
+                     <      	.DEFINE C_PWMO_D7				0x01C0;		//
+                     <      	.DEFINE C_PWMO_D8				0x0200;		//
+                     <      	.DEFINE C_PWMO_D9				0x0240;		//
+                     <      	.DEFINE C_PWMO_D10				0x0280;		//
+                     <      	.DEFINE C_PWMO_D11				0x02C0;		//
+                     <      	.DEFINE C_PWMO_D12				0x0300;		//
+                     <      	.DEFINE C_PWMO_D13				0x0340;		//
+                     <      	.DEFINE C_PWMO_D14				0x0380;		//
+                     <      	.DEFINE C_PWMO_Div_2			0x03C0;		// 
+                     <      	
+                     <      	
+                     <      	// Define for P_SystemClock
+                     <      	// SPCE 061 PLL
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_Fosc_49M				0x0080			// b7..b5
+                     <      	.DEFINE C_Fosc_41M				0x0060			//
+                     <      	.DEFINE C_Fosc_33M				0x0040			//
+                     <      	.DEFINE C_Fosc_20M				0x0020			// (default)
+                     <      	.DEFINE C_Fosc_24M				0x0000			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	.DEFINE C_Fosc					0x0000;		// b2..b0: frequency select 
+                     <      	.DEFINE C_Fosc_Div_2			0x0001;		//
+                     <      	.DEFINE C_Fosc_Div_4			0x0002;		//
+                     <      	.DEFINE C_Fosc_Div_8			0x0003;		// (default)
+                     <      	.DEFINE C_Fosc_Div_16			0x0004;		//
+                     <      	.DEFINE C_Fosc_Div_32			0x0005;		//
+                     <      	.DEFINE C_Fosc_Div_64			0x0006;		//
+                     <      	.DEFINE C_Sleep					0x0007;		//
+                     <      	
+                     <      	.DEFINE	C_32K_Work				0x0010;		// b4 = 1: at sleep mode,32.768k still work 
+                     <      	.DEFINE C_32K_Off				0x0000;		// b4 = 0: at sleep mode,32.768k off 
+                     <      	.DEFINE C_StrongMode			0x0008;		// b3 = 1: force strong mode
+                     <      	.DEFINE C_AutoWeakMode			0x0000;		// b3 = 0: auto weak mode(default) 
+                     <      	
+                     <      	.DEFINE	C_PLL_Freq_24M			0x0000		//b5..b7: PLL frequency select
+                     <      	.DEFINE	C_PLL_Freq_20M			0x0020		//
+                     <      	.DEFINE	C_PLL_Freq_32M			0x0040		//
+                     <      	.DEFINE	C_PLL_Freq_40M			0x0060		//
+                     <      	.DEFINE	C_PLL_Freq_49M			0x0080		//
+                     <      	
+                     <      	
+                     <      	// Define for P_ADC_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE	C_AD_Enable				0x0001;		//b0=1: enable A/D converter
+                     <      	.DEFINE C_AD_Disable			0x0000;		//b0=0: disable A/D converter
+                     <      	.DEFINE C_AD_Line_In			0x0002;		//b1=1: microphone disable
+                     <      	.DEFINE C_AD_MIC_In				0x0000;		//b1=0: microphone enable
+                     <      	.DEFINE C_AGC_Enable			0x0004;		//b2=1: enable AGC function
+                     <      	.DEFINE C_AGC_Disable			0x0000;		//b2=0: disable AGC function
+                     <      	.DEFINE C_AD_Sample	 			0x0004;		//b3=1: sample the analog signal(manual mode)
+                     <      	.DEFINE C_AD_Hold				0x0000;		//b3=0: hold(manual mode)
+                     <      	.DEFINE C_Auto_Mode	 			0x0010;		//b4=1: A/D auto mode
+                     <      	.DEFINE C_Manual_Mode	 		0x0000;		//b4=0: A/D manual mode
+                     <      	//b5: ADINI?
+                     <      	.DEFINE C_DAC_Current_2mA		0x0040;		//b6=1: DAC current = 2mA @ vdd=3V(new option)
+                     <      	.DEFINE C_DAC_Current_3mA		0x0000;		//b6=0: DAC current = 3mA @ vdd=3V(Default)
+                     <      	.DEFINE C_AD_Vref_VDD			0x0080;		//b7=1: Vref is VDD
+                     <      	.DEFINE C_AD_Vref_VRTPAD		0x0000;		//b7=0: Vref is from pin "VRTPAD"
+                     <      	.DEFINE C_AD_COMP				0x4000;		//b14=1: output voltage of DAC0<Analog input signal
+                     <      												//b14=0: output voltage of DAC0>Analog input signal
+                     <      	.DEFINE C_AD_RDY				0x8000;		//b15=1: A/D digital data ready; 0: not ready
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE	C_AD					0x0001 			//
+                     <      	.DEFINE C_DA					0x0000 			//
+                     <      	.DEFINE C_MIC					0x0000 			//
+                     <      	.DEFINE C_LINE					0x0002 			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	// Define for P_DAC_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE	C_DAC1_Direct			0x0000;		// b8 b7: DAC1 latch
+                     <      	.DEFINE C_DAC1_LatchA			0x0080;		// Latch data to DAC1 by TimerA 
+                     <      	.DEFINE C_DAC1_LatchB			0x0100;		// Latch data to DAC1 by TimerB
+                     <      	.DEFINE C_DAC1_LatchAB			0x0180;		// Latch data to DAC1 by TimerA or TimerB
+                     <      	
+                     <      	.DEFINE	C_DAC2_Direct			0x0000;		// b6 b5: DAC2 latch
+                     <      	.DEFINE C_DAC2_LatchA			0x0020;		// Latch data to DAC2 by TimerA
+                     <      	.DEFINE C_DAC2_LatchB			0x0040;		// Latch data to DAC2 by TimerB
+                     <      	.DEFINE C_DAC2_LatchAB			0x0060;		// Latch data to DAC2 by TimerA or TimerB
+                     <      	
+                     <      	.DEFINE	C_ADC_Direct			0x0000;		// b4 b3: ADC latch
+                     <      	.DEFINE C_ADC_LatchA			0x0008;		// Latch data to ADC by TimerA
+                     <      	.DEFINE C_ADC_LatchB			0x0010;		// Latch data to ADC by TimerB
+                     <      	.DEFINE C_ADC_LatchAB			0x0018;		// Latch data to ADC by TimerA or TimerB
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE C_PushPull				0x0000 			// b0, (default) 
+                     <      	.DEFINE C_DoubleEnd				0x0001 			// b0
+                     <      	.DEFINE	C_DAC_Mode				0x0000 			// b1, (default)
+                     <      	.DEFINE C_PWM_Mode				0x0002 			// b1
+                     <      	
+                     <      	.DEFINE	C_D1_Direct				0x0000 			// DAC1 latch
+                     <      	.DEFINE C_D1_LatchA				0x0008 			// 
+                     <      	.DEFINE C_D1_LatchB				0x0010 			//
+                     <      	.DEFINE C_D1_LatchAB			0x0018 			//
+                     <      	
+                     <      	.DEFINE	C_D2_Direct				0x0000 			// DAC2 latch
+                     <      	.DEFINE C_D2_LatchA				0x0020 			// 
+                     <      	.DEFINE C_D2_LatchB				0x0040 			//
+                     <      	.DEFINE C_D2_LatchAB			0x00C0 			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	// Define for P_LVD_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_LVD24V				0x0000;		// LVD = 2.4V; b1b0 
+                     <      	.DEFINE C_LVD28V				0x0001;		// LVD = 2.8V
+                     <      	.DEFINE C_LVD32V				0x0002;		// LVD = 3.2V
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE C_LVD26V				0x0000 			// LVD = 2.6V 
+                     <      	.DEFINE C_LVD30V				0x0001 			// LVD = 3.0V
+                     <      	.DEFINE C_LVD36V				0x0002 			// LVD = 3.6V
+                     <      	.DEFINE C_LVD40V				0x0003 			// LVD = 4.0V
+                     <      	.endif
+                     <      	
+                     <      	.DEFINE C_LVD_Result			0x8000;		// b15 = 1: below the selected LVD level
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	// SPCE061 flash operation instruction definition
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_EnableFlashAccess		0xAAAA;
+                     <      	.DEFINE C_EraseFlashPage  		0x5511;
+                     <      	.DEFINE C_ProgramFlash 	   		0x5533;
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	
+                     <      	//===============================================================
+                     <      	// Sunplus APIs for SPCE 061A
+                     <      	//===============================================================
+                     <      	//////////////////////////////////////////////////
+                     <      	// Note: This register will map to the P_INT_Ctrl
+                     <      	//	(0x7010), The SACMvxx.lib use this register to
+                     <      	//	combine with user's interrupt setting.
+                     <      	//  In SPCE061, it is not necessary since the 
+                     <      	//  P_INT_Mask(0x702D) already does this. It is for 
+                     <      	//  compatibility to keep it here. 
+                     <      	//////////////////////////////////////////////////
+                     <      	//.EXTERNAL	R_InterruptStatus 
+                     <      	
+                     <      	//========================================================================================        
+                     <      	// End of SPCE.inc
+                     <      	//========================================================================================
+                     <      	
+                     <      	
+                     <      	        
+                            	.include sp_lib.inc;
+                     <      	//========================================================================================
+                     <      	// Progarm: The head file for sp_lib.asm V1.0
+                     <      	// Wrote by: Arthur Shieh
+                     <      	// Last modified date: 
+                     <      	// 		2002/10/03 V1.0: first version
+                     <      	//========================================================================================
+                     <      	
+                     <      	.EXTERNAL  F_Key_Scan_Initial;
+                     <      	.EXTERNAL  F_Key_Scan_ServiceLoop;			// 1 scan line +Vcc
+                     <      	.EXTERNAL  F_Key_Scan_ServiceLoop_2;		// 2 scan line +Vcc / IOA
+                     <      	.EXTERNAL  F_Key_DebounceCnt_Down;
+                     <      	.EXTERNAL  F_SP_GetCh;
+                            	.define P_INT_Ctrl_New    0x702d
+                            	
+                            	
+000094AA                    	.code
+                            	
+                            	 ////////////////////////////
+                            	.public _LCD_INIT
+                            	_LCD_INIT:   .proc
+000094AA 40 F1              	        INT off;        
+000094AB 40 F0 CC 94        	        call Init_IOA_high8bit_output;          
+000094AD 09 93 E2 00        	        r1 = 0x00e2;        //turn off waiting
+                            	       // [LCDcommand] = r1;
+000094AF 40 F0 40 95        	        call Write_command_E1;
+000094B1 40 F0 65 95        	        call Write_command_E2;
+000094B3 09 93 A4 00        	        r1 = 0x00a4;
+                            	       // [LCDcommand] = r1;  //set 1/32 pwm
+000094B5 40 F0 40 95        	        call Write_command_E1;
+000094B7 40 F0 65 95        	        call Write_command_E2;
+000094B9 09 93 A9 00        	        r1 = 0x00a9;          //正向排序
+                            	       // [LCDcommand] = r1;
+000094BB 40 F0 40 95        	        call Write_command_E1;
+000094BD 40 F0 65 95        	        call Write_command_E2;
+000094BF 09 93 C0 00        	        r1 = 0x00c0;          //正向排序
+                            	       // [LCDcommand] = r1;
+000094C1 40 F0 40 95        	        call Write_command_E1;
+000094C3 40 F0 65 95        	        call Write_command_E2;
+000094C5 09 93 AF 00        	        r1 = 0x00af;          //display
+                            	       // [LCDcommand] = r1;
+000094C7 40 F0 40 95        	        call Write_command_E1;        
+000094C9 40 F0 65 95        	        call Write_command_E2;
+                            	        //call Clear_screen;           
+000094CB 90 9A              	    retf;
+                            	                   
+                            	   .endp                                                            
+                            		   
+                            	        
+                            	        
+                            	////////////////////////////////////////
+                            	    
+                            	.public  Init_IOA_high8bit_output
+                            	Init_IOA_high8bit_output: .PROC
+                            	//Init_IOA_output:
+000094CC 11 93 02 70        		r1 = [P_IOA_Dir]
+000094CE 09 A3 FF FF        	    r1 |= 0xffff
+000094D0 19 D3 02 70        	    [P_IOA_Dir] = r1;
+000094D2 11 93 03 70        	    r1 =  [P_IOA_Attrib]
+000094D4 09 A3 FF FF        	    r1 |= 0xffff
+000094D6 19 D3 03 70        	    [P_IOA_Attrib] = r1;
+000094D8 11 93 00 70        	    r1 = [P_IOA_Data]
+000094DA 09 A3 FF FB        	    r1 |= 0xfbff                    //LCD is writing
+000094DC 19 D3 00 70        	    [P_IOA_Data] = r1;				//
+000094DE 90 9A              			retf
+                            		.endp
+                            	
+                            	//////////////////////////////////////
+                            	//Init_IOA_high8bit_output
+                            	.public Init_IOA_low8bit_output
+                            	Init_IOA_low8bit_output:  .proc
+                            	//Init_IOA_low8bit_output:  
+000094DF 11 93 02 70        		r1 = [P_IOA_Dir]
+000094E1 09 A3 FF 00        	    r1 |= 0x00ff
+000094E3 19 D3 02 70        	    [P_IOA_Dir] = r1;
+000094E5 11 93 03 70        	    r1 =  [P_IOA_Attrib]
+000094E7 09 A3 FF 00        	    r1 |= 0x00ff
+000094E9 19 D3 03 70        	    [P_IOA_Attrib] = r1;
+000094EB 11 93 00 70        	    r1 = [P_IOA_Data]
+000094ED 09 A3 FF 00        	    r1 |= 0x00ff
+000094EF 19 D3 00 70        	    [P_IOA_Data] = r1;
+000094F1 90 9A              	    retf
+                            	 .endp;
+                            	///////////////////////////////////////
+                            	//Init_IOA_low8bit_Input 
+                            	.public Init_IOA_low8bit_Input
+                            	Init_IOA_low8bit_Input: .proc
+000094F2 11 93 00 70        			 r1 = [P_IOA_Data]
+000094F4 09 B3 00 FF        	        r1 &= 0xff00
+000094F6 19 D3 00 70        	        [P_IOA_Data] = r1;   
+000094F8 11 93 02 70        	        r1 = [P_IOA_Dir]
+000094FA 09 B3 00 FF        	        r1 &= 0xff00
+000094FC 19 D3 02 70        	        [P_IOA_Dir] = r1;
+000094FE 11 93 03 70        	        r1 = [P_IOA_Attrib]
+00009500 09 B3 00 FF        	        r1 &= 0xff00
+00009502 19 D3 03 70        	        [P_IOA_Attrib] = r1;          
+00009504 90 9A              	        retf
+                            	.endp
+                            	
+                            	////////////////////////////////////
+                            	//Read_status_command
+                            	.public Read_status_command
+                            	Read_status_command: .proc
+                            	//Read_status_command:
+00009505 40 F0 F2 94        	      call Init_IOA_low8bit_Input;
+                            	      
+00009507 11 93 00 70        	       R1 = [P_IOA_Data]   //R/W = 1    A0 = 0  
+00009509 09 A3 00 04        	       R1 |= 0x0400  
+0000950B 09 B3 FF 07        	       R1 &= 0x07ff
+0000950D 19 D3 00 70        	       [P_IOA_Data] = R1;
+0000950F 90 9A              	       retf
+                            	 .endp;
+                            	 
+                            	 ////////////////////////////////
+                            	 //Write_status_command
+                            	 .public Write_status_command
+                            	Write_status_command: .proc
+                            	//Write_status_command:
+00009510 11 93 00 70        	       R1 = [P_IOA_Data]    //R/W = 0    A0 = 0  
+00009512 09 B3 FF 03        	       R1 &= 0x03ff   
+00009514 19 D3 00 70        	       [P_IOA_Data] = R1;
+00009516 40 F0 DF 94        		   call  Init_IOA_low8bit_output;      
+00009518 90 9A              	       retf
+                            	.endp   
+                            	
+                            	/////////////////////////////////
+                            	.public Write_data_status
+                            	Write_data_status:   .proc    
+00009519 11 93 00 70        	    r1 = [P_IOA_Data]
+0000951B 09 A3 00 08        	    R1 |= 0x0800
+0000951D 09 B3 FF 0B        	    r1 &= 0x0bff
+0000951F 19 D3 00 70        	    [P_IOA_Data] = R1;
+00009521 40 F0 DF 94        	    call  Init_IOA_low8bit_output;
+00009523 90 9A              	    retf
+                            	.endp 
+                            	
+                            	/////////////////////////////////
+                            	.public E1_status_high
+                            	E1_status_high:
+00009524 11 93 00 70        	    R1 = [P_IOA_Data]              //E1 = 1;
+00009526 09 A3 00 01        	    r1 |= 0x0100
+00009528 19 D3 00 70        	    [P_IOA_Data] = R1;
+0000952A 90 9A              	    retf
+                            	    
+                            	/////////////////////////////////
+                            	.public E1_status_low
+                            	E1_status_low:
+0000952B 11 93 00 70        	    R1 = [P_IOA_Data]              //E1 = 0;
+0000952D 09 B3 FF FE        	    r1 &= 0xfeff
+0000952F 19 D3 00 70        	    [P_IOA_Data] = R1;
+00009531 90 9A              	    retf
+                            	/////////////////////////////////
+                            	.public E2_status_high
+                            	E2_status_high:
+00009532 11 93 00 70        		R1 = [P_IOA_Data]            //E2 = 1;
+00009534 09 A3 00 02        	    r1 |= 0x0200
+00009536 19 D3 00 70        	    [P_IOA_Data] = R1;
+00009538 90 9A              	    retf
+                            	/////////////////////////////////
+                            	.public E2_status_low
+                            	E2_status_low:
+00009539 11 93 00 70        		R1 = [P_IOA_Data]             //E2 = 0;
+0000953B 09 B3 FF FD        	    r1 &= 0xfdff
+0000953D 19 D3 00 70        	    [P_IOA_Data] = R1;
+0000953F 90 9A              	    retf  
+                            	//////////////////////////////////// 
+                            	//Write_command_E1:
+                            	.public Write_command_E1
+                            	.public _Write_command_E1
+                            	Write_command_E1:
+                            	_Write_command_E1:  .proc
+00009540 88 D2              	     push r1 to [sp]
+00009541 40 F0 10 95        	     call Write_status_command	
+                            	Pr01:	
+00009543 11 93 00 70        	    R1 = [P_IOA_Data]             //DB0-7 = high
+00009545 09 A3 FF 00        		R1 |= 0x00FF   
+00009547 19 D3 00 70        		[P_IOA_Data] = R1;
+                            	
+00009549 40 F0 24 95        	    call E1_status_high;
+0000954B 40 F0 2B 95        	    call E1_status_low;   
+                            	    
+0000954D 40 F0 05 95        	    call Read_status_command;       
+0000954F 40 F0 24 95        		call E1_status_high;    
+00009551 12 95 00 70        	     R2 = [P_IOA_Data] 
+00009553 0A B5 80 00        	     r2 &= 0x0080;
+00009555 53 4E              	     jnz Pr01;   
+                            	    
+                            	
+00009556 40 F0 10 95        	    call Write_status_command
+                            	    
+                            	  
+00009558 88 90              	    pop r1 from [sp]
+                            	            
+00009559 12 95 00 70        	    R2 = [P_IOA_Data]
+0000955B 0A B5 00 FF        	    r2 &= 0xff00
+0000955D 02 A3              	    r1 |= r2;
+0000955E 19 D3 00 70        	    [P_IOA_Data] = R1; //write command
+                            	     
+00009560 40 F0 24 95        	    call E1_status_high;    
+00009562 40 F0 2B 95        	    call E1_status_low;  
+                            	   
+00009564 90 9A              	    retf
+                            	   .endp
+                            	   
+                            	 //////////////////////////////////////////// 
+                            	//Write_command_E2:
+                            	.public Write_command_E2
+                            	.public _Write_command_E2
+                            	_Write_command_E2: 
+                            	Write_command_E2: .proc 
+00009565 88 D2              	    push r1 to [sp]
+00009566 40 F0 10 95        		call Write_status_command	
+                            	Pr02:	
+00009568 11 93 00 70        	    R1 = [P_IOA_Data]             //DB0-7 = high
+0000956A 09 A3 FF 00        		R1 |= 0x00FF	 
+0000956C 19 D3 00 70        		[P_IOA_Data] = R1;
+                            		
+0000956E 40 F0 32 95        		call E2_status_high 
+00009570 40 F0 39 95        	    call E2_status_low
+                            	   
+                            	    
+00009572 40 F0 05 95        	    call Read_status_command;
+                            	    
+00009574 40 F0 32 95        	   	call E2_status_high 
+                            	    
+00009576 12 95 00 70        	    r2 = [P_IOA_Data]            //read DB0-7
+                            	    
+00009578 0A B5 80 00        	    r2 &= 0x0080;
+0000957A 53 4E              	    jnz Pr02;
+                            	    
+0000957B 40 F0 10 95        	    call Write_status_command    
+0000957D 40 F0 32 95        	    call E2_status_high 
+                            	    
+0000957F 88 90              	   pop r1 from [sp]          //write command    
+                            	    
+00009580 12 95 00 70        	    R2 = [P_IOA_Data]
+00009582 0A B5 00 FF        	    r2 &= 0xff00
+00009584 02 A3              	    r1 |= r2;
+00009585 19 D3 00 70        	    [P_IOA_Data] = R1;
+                            	     
+00009587 40 F0 32 95        	    call E2_status_high 
+00009589 40 F0 39 95        	    call E2_status_low
+                            	   
+0000958B 90 9A              	    retf
+                            	   .endp
+                            	   
+                            	 /////////////////////////////////////////
+                            	  .public  Write_display_data_function_E1; 
+                            	  .public  _Write_display_data_function_E1
+                            	  _Write_display_data_function_E1:
+                            	  Write_display_data_function_E1: .proc   
+0000958C 88 D2              	    push r1 to [sp]
+0000958D 40 F0 10 95        	    call Write_status_command
+                            	Pr11:	
+0000958F 11 93 00 70        	    R1 = [P_IOA_Data]             //DB0-7 = high
+00009591 09 A3 FF 00        		R1 |= 0x00FF  
+00009593 19 D3 00 70        		[P_IOA_Data] = R1;
+                            		
+00009595 40 F0 24 95        		call E1_status_high;    
+00009597 40 F0 2B 95        	    call E1_status_low;  
+                            	    
+00009599 40 F0 05 95        	    call  Read_status_command;
+                            	    
+0000959B 40 F0 24 95        	   	call E1_status_high;    
+                            	    
+                            	    
+0000959D 12 95 00 70        	    r2 = [P_IOA_Data]              //read DB0-7
+0000959F 0A B5 80 00        	    r2 &= 0x0080;
+000095A1 53 4E              	    jnz Pr11;
+                            	    
+000095A2 40 F0 19 95        	    call Write_data_status
+                            	    
+000095A4 88 90              	    pop r1 from [sp]
+                            	    //r1 = [r1]
+                            	   // r1 = [LCDdisplay_data]           //write command
+000095A5 12 95 00 70        	    R2 = [P_IOA_Data]
+000095A7 0A B5 00 FF        	    r2 &= 0xff00
+000095A9 02 A3              	    r1 |= r2;
+000095AA 19 D3 00 70        	    [P_IOA_Data] = R1;
+                            	    
+                            	     
+000095AC 40 F0 24 95        	    call E1_status_high;    
+000095AE 40 F0 2B 95        	    call E1_status_low;  
+                            	    //pop bp from [sp]
+000095B0 90 9A              	    retf
+                            	   .endp
+                            	   
+                            	   
+                            	     
+                            	  /////////////////////////
+                            	.public  Write_display_data_function_E2;
+                            	.public  _Write_display_data_function_E2
+                            	 _Write_display_data_function_E2:
+                            	Write_display_data_function_E2: .proc
+000095B1 88 D2              	    push r1 to [sp]
+000095B2 40 F0 10 95        		call Write_status_command
+                            	Pr12:		
+000095B4 11 93 00 70        		R1 = [P_IOA_Data]             //DB0-7 = high
+000095B6 09 A3 FF 00        		R1 |= 0x00FF
+000095B8 19 D3 00 70        		[P_IOA_Data] = R1;
+                            	
+000095BA 40 F0 32 95        		call E2_status_high 
+000095BC 40 F0 39 95        	    call E2_status_low	
+                            	    
+000095BE 40 F0 05 95        	     call  Read_status_command;
+                            	     
+000095C0 40 F0 32 95        	    call E2_status_high 
+                            	   
+                            	    
+000095C2 12 95 00 70        	     R2 = [P_IOA_Data]
+000095C4 0A B5 80 00        	     r2 &= 0x0080;
+000095C6 53 4E              	     jnz Pr12;
+                            	    
+000095C7 40 F0 19 95        	    call Write_data_status
+                            	    
+000095C9 40 F0 32 95        	    call E2_status_high  
+000095CB 88 90              	    pop r1 from [sp]    //write command
+                            	    //r1 = [r1]
+000095CC 12 95 00 70        	    R2 = [P_IOA_Data]
+000095CE 0A B5 00 FF        	    r2 &= 0xff00
+000095D0 02 A3              	    r1 |= r2;
+000095D1 19 D3 00 70        	    [P_IOA_Data] = R1;
+                            	    
+                            	     
+000095D3 40 F0 32 95        	   call E2_status_high 
+000095D5 40 F0 39 95        	    call E2_status_low
+                            	   //  pop bp from [sp]
+000095D7 90 9A              	    retf
+                            	   .endp
+                            	 
+                            	//////////////////////////
+                            	.public _SP_INT
+                            	_SP_INT:    .proc
+000095D8 90 D4              	push r1,r2 to [sp]
+                            	   
+000095D9 41 92              	   R1 = 0x0001
+000095DA 19 D3 12 70        	   [P_Watchdog_Clear] = R1
+                            	  // R1 = 0x0015;
+                            	  // [P_TimerA_Ctrl] = R1;
+                            	   //r1 = 0xffff-370; 
+                            	   //[P_TimerA_Data] = r1   
+000095DC 40 92              	   R1 = 0x0000
+000095DD 19 D3 0E 70        	   [P_TimeBase_Setup] = R1
+000095DF 42 92              	   R1 = 0x0002
+000095E0 12 95 2D 70        	   R2 = [P_INT_Ctrl_New]    //irq6 tmb1
+000095E2 02 A3              	   R1 |= R2
+000095E3 19 D3 2D 70        	   [P_INT_Ctrl_New] = R1;
+000095E5 09 93 80 00        	    r1 = 0x0080
+000095E7 19 D3 13 70        	    [P_SystemClock] = r1;
+000095E9 49 F1              	   irq on
+000095EA 90 90              	   pop r1,r2 from [sp]
+000095EB 90 9A              	   retf
+                            	.endp
+                            	///////////////////////
+                            	.public _SP_INT_ON
+                            	_SP_INT_ON:    .proc
+000095EC 09 93 00 10        	   R1 = 0x1000
+000095EE 12 95 2D 70        	   R2 = [P_INT_Ctrl_New]    //irq6 tmb1
+000095F0 02 A3              	   R1 |= R2
+000095F1 19 D3 2D 70        	   [P_INT_Ctrl_New] = R1;
+000095F3 90 9A              	   retf
+                            	   .endp
+0 error(s), 0 warning(s).
+

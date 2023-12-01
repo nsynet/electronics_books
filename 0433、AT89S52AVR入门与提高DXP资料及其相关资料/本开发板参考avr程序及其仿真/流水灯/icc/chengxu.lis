@@ -1,0 +1,164 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\流水灯\icc\chengxu.c
+ 0000                   .dbfunc e delay_us _delay_us fV
+ 0000           ;              t -> R16,R17
+                        .even
+ 0000           _delay_us::
+ 0000                   .dbline -1
+ 0000                   .dbline 4
+ 0000           ; #include <iom16v.h>
+ 0000           ; ///////////////////延时 us//////////////////
+ 0000           ; void delay_us(int t)
+ 0000           ; {
+ 0000           L2:
+ 0000                   .dbline 6
+ 0000           ; do
+ 0000           ;    t--;
+ 0000 0150              subi R16,1
+ 0002 1040              sbci R17,0
+ 0004           L3:
+ 0004                   .dbline 7
+ 0004           ; while(t>1);
+ 0004 81E0              ldi R24,1
+ 0006 90E0              ldi R25,0
+ 0008 8017              cp R24,R16
+ 000A 9107              cpc R25,R17
+ 000C CCF3              brlt L2
+ 000E                   .dbline -2
+ 000E           L1:
+ 000E                   .dbline 0 ; func end
+ 000E 0895              ret
+ 0010                   .dbsym r t 16 I
+ 0010                   .dbend
+ 0010                   .dbfunc e delay_ms _delay_ms fV
+ 0010           ;              t -> R20,R21
+                        .even
+ 0010           _delay_ms::
+ 0010 0E940000          xcall push_gset1
+ 0014 A801              movw R20,R16
+ 0016                   .dbline -1
+ 0016                   .dbline 12
+ 0016           ; }
+ 0016           ; 
+ 0016           ; ///////////////////延时  ms/////////////////
+ 0016           ; void delay_ms(unsigned int t)
+ 0016           ; {
+ 0016 05C0              xjmp L7
+ 0018           L6:
+ 0018                   .dbline 14
+ 0018                   .dbline 15
+ 0018 06E7              ldi R16,1142
+ 001A 14E0              ldi R17,4
+ 001C F1DF              xcall _delay_us
+ 001E                   .dbline 16
+ 001E 4150              subi R20,1
+ 0020 5040              sbci R21,0
+ 0022                   .dbline 17
+ 0022           L7:
+ 0022                   .dbline 13
+ 0022           ; while(t!=0)
+ 0022 4030              cpi R20,0
+ 0024 4507              cpc R20,R21
+ 0026 C1F7              brne L6
+ 0028           X0:
+ 0028                   .dbline -2
+ 0028           L5:
+ 0028 0E940000          xcall pop_gset1
+ 002C                   .dbline 0 ; func end
+ 002C 0895              ret
+ 002E                   .dbsym r t 20 i
+ 002E                   .dbend
+ 002E                   .dbfunc e main _main fI
+                        .even
+ 002E           _main::
+ 002E                   .dbline -1
+ 002E                   .dbline 21
+ 002E           ; {
+ 002E           ; delay_us(1142);
+ 002E           ; t--;
+ 002E           ; }
+ 002E           ; }
+ 002E           ; ///////////////////主程序/////////////////////
+ 002E           ; int main(void)
+ 002E           ; {
+ 002E                   .dbline 22
+ 002E           ;   DDRB=0xFF;  /* all outputs */
+ 002E 8FEF              ldi R24,255
+ 0030 87BB              out 0x17,R24
+ 0032                   .dbline 23
+ 0032           ;   PORTB=0XFF;
+ 0032 88BB              out 0x18,R24
+ 0034 2BC0              xjmp L11
+ 0036           L10:
+ 0036                   .dbline 25
+ 0036                   .dbline 27
+ 0036 8EEF              ldi R24,254
+ 0038 88BB              out 0x18,R24
+ 003A                   .dbline 28
+ 003A 04E6              ldi R16,100
+ 003C 10E0              ldi R17,0
+ 003E E8DF              xcall _delay_ms
+ 0040                   .dbline 29
+ 0040 8DEF              ldi R24,253
+ 0042 88BB              out 0x18,R24
+ 0044                   .dbline 30
+ 0044 04E6              ldi R16,100
+ 0046 10E0              ldi R17,0
+ 0048 E3DF              xcall _delay_ms
+ 004A                   .dbline 31
+ 004A 8BEF              ldi R24,251
+ 004C 88BB              out 0x18,R24
+ 004E                   .dbline 32
+ 004E 04E6              ldi R16,100
+ 0050 10E0              ldi R17,0
+ 0052 DEDF              xcall _delay_ms
+ 0054                   .dbline 33
+ 0054 87EF              ldi R24,247
+ 0056 88BB              out 0x18,R24
+ 0058                   .dbline 34
+ 0058 04E6              ldi R16,100
+ 005A 10E0              ldi R17,0
+ 005C D9DF              xcall _delay_ms
+ 005E                   .dbline 35
+ 005E 8FEE              ldi R24,239
+ 0060 88BB              out 0x18,R24
+ 0062                   .dbline 36
+ 0062 04E6              ldi R16,100
+ 0064 10E0              ldi R17,0
+ 0066 D4DF              xcall _delay_ms
+ 0068                   .dbline 37
+ 0068 8FED              ldi R24,223
+ 006A 88BB              out 0x18,R24
+ 006C                   .dbline 38
+ 006C 04E6              ldi R16,100
+ 006E 10E0              ldi R17,0
+ 0070 CFDF              xcall _delay_ms
+ 0072                   .dbline 39
+ 0072 8FEB              ldi R24,191
+ 0074 88BB              out 0x18,R24
+ 0076                   .dbline 40
+ 0076 04E6              ldi R16,100
+ 0078 10E0              ldi R17,0
+ 007A CADF              xcall _delay_ms
+ 007C                   .dbline 41
+ 007C 8FE7              ldi R24,-129
+ 007E 9FEF              ldi R25,-1
+ 0080 88BB              out 0x18,R24
+ 0082                   .dbline 42
+ 0082 04E6              ldi R16,100
+ 0084 10E0              ldi R17,0
+ 0086 C4DF              xcall _delay_ms
+ 0088                   .dbline 44
+ 0088 2224              clr R2
+ 008A 28BA              out 0x18,R2
+ 008C                   .dbline 47
+ 008C           L11:
+ 008C                   .dbline 24
+ 008C D4CF              xjmp L10
+ 008E           X1:
+ 008E                   .dbline -2
+ 008E           L9:
+ 008E                   .dbline 0 ; func end
+ 008E 0895              ret
+ 0090                   .dbend

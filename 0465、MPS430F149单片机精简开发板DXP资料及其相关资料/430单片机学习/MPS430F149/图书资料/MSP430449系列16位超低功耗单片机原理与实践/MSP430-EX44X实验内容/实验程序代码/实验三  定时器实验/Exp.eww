@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\BT\BT.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\BT\BT_A.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\TimerA\TimerA.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\TimerA\TimerA_A.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\WDT\WatchDog.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\WDT\WDT_A.ewp</path>
+  </project>
+</workspace>
+
+

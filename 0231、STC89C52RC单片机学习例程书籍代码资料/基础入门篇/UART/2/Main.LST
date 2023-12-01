@@ -1,0 +1,76 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:22:10 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"            //加载"stc.h"
+   7          /****************************************
+   8          *函数名称:UARTInit
+   9          *输    入:无
+  10          *输    出:无
+  11          *功    能:串口初始化
+  12          ******************************************/
+  13          void UARTInit(void)        
+  14          {
+  15   1          SCON =0x50;              //8位数据位，允许接收
+  16   1          T2CON=0x34;              //由T/C2作为波特率发生器
+  17   1          RCAP2L=0xD9;             //波特率为9600的低8位
+  18   1          RCAP2H=0xFF;             //波特率为9600的高8位
+  19   1      }
+  20          /****************************************
+  21          *函数名称:UARTSendByte
+  22          *输    入:byte 要发送的字节
+  23          *输    出:无
+  24          *功    能:串口发送单个字节
+  25          ******************************************/
+  26          void UARTSendByte(unsigned char byte)
+  27          {
+  28   1           SBUF=byte;               //缓冲区装载要发送的字节
+  29   1           while(TI==0);            //等待发送完毕,TI标志位会置1
+  30   1           TI=0;                     //清零发送中断标志位
+  31   1      } 
+  32          /****************************************
+  33          *函数名称:main
+  34          *输    入:无
+  35          *输    出:无
+  36          *功    能:函数主体
+  37          ******************************************/
+  38          void main(void)          
+  39          {
+  40   1          unsigned char recv;       //声明变量recv
+  41   1          UARTInit();                 //串口初始化
+  42   1          while(1)                    //进入死循环
+  43   1          {
+  44   2             if(RI)                      //检测RI标志位置1
+  45   2             {
+  46   3                RI=0;                     //清零RI标志位
+  47   3                recv=SBUF;               //读取接收到的数据
+  48   3                UARTSendByte(recv);    //返回接收到的数据
+  49   3             }
+  50   2          }
+  51   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     38    ----
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:22:10 PAGE 2   
+
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

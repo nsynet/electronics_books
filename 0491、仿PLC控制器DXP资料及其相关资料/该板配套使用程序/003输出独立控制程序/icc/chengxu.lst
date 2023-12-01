@@ -1,0 +1,409 @@
+__text_start:
+__start:
+    0013 E5CF      LDI	R28,0x5F
+    0014 E0D4      LDI	R29,4
+    0015 BFCD      OUT	0x3D,R28
+    0016 BFDE      OUT	0x3E,R29
+    0017 51C0      SUBI	R28,0x10
+    0018 40D0      SBCI	R29,0
+    0019 EA0A      LDI	R16,0xAA
+    001A 8308      STD	Y+0,R16
+    001B 2400      CLR	R0
+    001C E6E0      LDI	R30,0x60
+    001D E0F0      LDI	R31,0
+    001E E010      LDI	R17,0
+    001F 36E8      CPI	R30,0x68
+    0020 07F1      CPC	R31,R17
+    0021 F011      BEQ	0x0024
+    0022 9201      ST	R0,Z+
+    0023 CFFB      RJMP	0x001F
+    0024 8300      STD	Z+0,R16
+    0025 E2E6      LDI	R30,0x26
+    0026 E0F0      LDI	R31,0
+    0027 E6A0      LDI	R26,0x60
+    0028 E0B0      LDI	R27,0
+    0029 E010      LDI	R17,0
+    002A 32E6      CPI	R30,0x26
+    002B 07F1      CPC	R31,R17
+    002C F021      BEQ	0x0031
+    002D 95C8      LPM
+    002E 9631      ADIW	R30,1
+    002F 920D      ST	R0,X+
+    0030 CFF9      RJMP	0x002A
+    0031 D05C      RCALL	_main
+_exit:
+    0032 CFFF      RJMP	_exit
+_DelayMS:
+  j                    --> R20
+  i                    --> R16
+    0033 D0CF      RCALL	push_gset1
+FILE: F:\NEW光~1\八路输入输出继电器控制板\该板配套使用程序\003输出独立控制程序\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) #include <macros.h> 
+(0003) /**********************************************************************
+(0004) 				  函数数据类型说明							   	
+(0005) **********************************************************************/
+(0006) #define uchar unsigned char 
+(0007) #define uint unsigned int
+(0008) uchar KEY_PC0;
+(0009) uchar KEY_PC1;
+(0010) uchar KEY_PC2;
+(0011) uchar KEY_PC3;
+(0012) uchar KEY_PB0;
+(0013) uchar KEY_PB1;
+(0014) uchar KEY_PB2;
+(0015) uchar KEY_PB3;
+(0016) //定义BIT 0-7 置1 
+(0017) #define BIT0_POS (1<<0)   
+(0018) #define BIT1_POS (1<<1) 
+(0019) #define BIT2_POS (1<<2) 
+(0020) #define BIT3_POS (1<<3) 
+(0021) //定义BIT 0-7 清零 
+(0022) #define BIT0_NEG ((unsigned char)(~(1<<0))) 
+(0023) #define BIT1_NEG ((unsigned char)(~(1<<1))) 
+(0024) #define BIT2_NEG ((unsigned char)(~(1<<2))) 
+(0025) #define BIT3_NEG ((unsigned char)(~(1<<3))) 
+(0026) 
+(0027) //定义继电器闭合、断开、翻转 
+(0028) #define PB0_OFF PORTB&=BIT0_NEG 
+(0029) #define PB0_ON  PORTB|=BIT0_POS   
+(0030) #define PB0_OTN PORTB^=BIT0_POS 
+(0031) //定义继电器闭合、断开、翻转 
+(0032) #define PB1_OFF PORTB&=BIT1_NEG 
+(0033) #define PB1_ON  PORTB|=BIT1_POS   
+(0034) #define PB1_OTN PORTB^=BIT1_POS 
+(0035) //定义继电器闭合、断开、翻转 
+(0036) #define PB2_OFF PORTB&=BIT2_NEG 
+(0037) #define PB2_ON  PORTB|=BIT2_POS   
+(0038) #define PB2_OTN PORTB^=BIT2_POS 
+(0039) //定义继电器闭合、断开、翻转 
+(0040) #define PB3_OFF PORTB&=BIT3_NEG 
+(0041) #define PB3_ON  PORTB|=BIT3_POS   
+(0042) #define PB3_OTN PORTB^=BIT3_POS 
+(0043) 
+(0044) //定义继电器闭合、断开、翻转 
+(0045) #define PC0_OFF PORTC&=BIT0_NEG 
+(0046) #define PC0_ON  PORTC|=BIT0_POS   
+(0047) #define PC0_OTN PORTC^=BIT0_POS 
+(0048) //定义继电器闭合、断开、翻转 
+(0049) #define PC1_OFF PORTC&=BIT1_NEG 
+(0050) #define PC1_ON  PORTC|=BIT1_POS   
+(0051) #define PC1_OTN PORTC^=BIT1_POS 
+(0052) //定义继电器闭合、断开、翻转 
+(0053) #define PC2_OFF PORTC&=BIT2_NEG 
+(0054) #define PC2_ON  PORTC|=BIT2_POS   
+(0055) #define PC2_OTN PORTC^=BIT2_POS 
+(0056) //定义继电器闭合、断开、翻转 
+(0057) #define PC3_OFF PORTC&=BIT3_NEG 
+(0058) #define PC3_ON  PORTC|=BIT3_POS   
+(0059) #define PC3_OTN PORTC^=BIT3_POS 
+(0060) 
+(0061) /**********************************************************************
+(0062) 				  MS级延时函数程序，参数i 延时时间								   	
+(0063) **********************************************************************/
+(0064) void DelayMS(uint i)
+(0065) {
+(0066) uint j;
+(0067) for(;i!=0;i--)
+    0034 C00A      RJMP	0x003F
+(0068) {
+(0069) for(j=1000;j!=0;j--);
+    0035 EE48      LDI	R20,0xE8
+    0036 E053      LDI	R21,3
+    0037 C002      RJMP	0x003A
+    0038 5041      SUBI	R20,1
+    0039 4050      SBCI	R21,0
+    003A 3040      CPI	R20,0
+    003B 0745      CPC	R20,R21
+    003C F7D9      BNE	0x0038
+    003D 5001      SUBI	R16,1
+    003E 4010      SBCI	R17,0
+    003F 3000      CPI	R16,0
+    0040 0701      CPC	R16,R17
+    0041 F799      BNE	0x0035
+    0042 D0C3      RCALL	pop_gset1
+    0043 9508      RET
+(0070) }
+(0071) }
+(0072) /**********************************************************************
+(0073) 								看门狗初始化					   	
+(0074) **********************************************************************/
+(0075) void WDT_init(void)
+(0076) {
+(0077)  WDR();//WDT 复位 
+_WDT_init:
+    0044 95A8      WDR
+(0078)  WDTCR = 0x0F;//使能看门狗
+    0045 E08F      LDI	R24,0xF
+    0046 BD81      OUT	0x21,R24
+    0047 9508      RET
+(0079) }
+(0080) /**********************************************************************/
+(0081) void init_eatdog(void)
+(0082) {
+(0083)  CLI(); //禁止所有中断
+_init_eatdog:
+    0048 94F8      BCLR	7
+(0084)  WDT_init();
+    0049 DFFA      RCALL	_WDT_init
+(0085)  SEI();//开全局中断
+    004A 9478      BSET	7
+    004B 9508      RET
+(0086) }
+(0087) 
+(0088) /**********************************************************************
+(0089) 								看门狗关闭(喂狗)				   	
+(0090) **********************************************************************/
+(0091) void WDT_off(void)
+(0092) {
+(0093)  WDR();//WDT 复位
+_WDT_off:
+    004C 95A8      WDR
+(0094)  WDTCR |= (1<<WDTOE) | (1<<WDE); //置位 WDTOE 和 WDE
+    004D B581      IN	R24,0x21
+    004E 6188      ORI	R24,0x18
+    004F BD81      OUT	0x21,R24
+(0095)  WDTCR = 0x00;//关闭WDT 
+    0050 2422      CLR	R2
+    0051 BC21      OUT	0x21,R2
+    0052 9508      RET
+(0096) }
+(0097) /**********************************************************************
+(0098) 				          按键扫描函数		   	
+(0099) **********************************************************************/
+(0100) 
+(0101) void get_key(void)//按键扫描函数
+(0102) 
+(0103) {
+_get_key:
+    0053 C003      RJMP	0x0057
+(0104) while((PIND&0X01)==0)//按下PD0,PC0闭合
+(0105) {KEY_PC0=1;}
+    0054 E081      LDI	R24,1
+    0055 93800067  STS	_KEY_PC0,R24
+    0057 9B80      SBIS	0x10,0
+    0058 CFFB      RJMP	0x0054
+    0059 C003      RJMP	0x005D
+(0106) while((PIND&0X02)==0)//按下PD1,PC1闭合
+(0107) {KEY_PC1=1;}
+    005A E081      LDI	R24,1
+    005B 93800066  STS	_KEY_PC1,R24
+    005D 9B81      SBIS	0x10,1
+    005E CFFB      RJMP	0x005A
+    005F C003      RJMP	0x0063
+(0108) while((PIND&0X04)==0)//按下PD2,PC2闭合
+(0109) {KEY_PC2=1;}
+    0060 E081      LDI	R24,1
+    0061 93800065  STS	_KEY_PC2,R24
+    0063 9B82      SBIS	0x10,2
+    0064 CFFB      RJMP	0x0060
+    0065 C003      RJMP	0x0069
+(0110) while((PIND&0X08)==0)//按下PD3,PC3闭合
+(0111) {KEY_PC3=1;}
+    0066 E081      LDI	R24,1
+    0067 93800064  STS	_KEY_PC3,R24
+    0069 9B83      SBIS	0x10,3
+    006A CFFB      RJMP	0x0066
+    006B C003      RJMP	0x006F
+(0112) while((PIND&0X10)==0)//按下PD4,PB0闭合
+(0113) {KEY_PB0=1;}
+    006C E081      LDI	R24,1
+    006D 93800063  STS	_KEY_PB0,R24
+    006F 9B84      SBIS	0x10,4
+    0070 CFFB      RJMP	0x006C
+    0071 C003      RJMP	0x0075
+(0114) while((PIND&0X20)==0)//按下PD5,PB1闭合
+(0115) {KEY_PB1=1;}
+    0072 E081      LDI	R24,1
+    0073 93800062  STS	_KEY_PB1,R24
+    0075 9B85      SBIS	0x10,5
+    0076 CFFB      RJMP	0x0072
+    0077 C003      RJMP	0x007B
+(0116) while((PIND&0X40)==0)//按下PD6,PB2闭合
+(0117) {KEY_PB2=1;}
+    0078 E081      LDI	R24,1
+    0079 93800061  STS	_KEY_PB2,R24
+    007B 9B86      SBIS	0x10,6
+    007C CFFB      RJMP	0x0078
+    007D C003      RJMP	0x0081
+(0118) while((PIND&0X80)==0)//按下PD7,PB3闭合
+(0119) {KEY_PB3=1;}
+    007E E081      LDI	R24,1
+    007F 93800060  STS	_KEY_PB3,R24
+    0081 9B87      SBIS	0x10,7
+    0082 CFFB      RJMP	0x007E
+    0083 9508      RET
+(0120) }
+(0121) /**********************************************************************
+(0122) 				   初始化					   	
+(0123) **********************************************************************/
+(0124) void Init_IO(void)//初始化I/O
+(0125) {
+(0126) //设置B口为输出
+(0127) DDRB=0x3F;
+_Init_IO:
+    0084 E38F      LDI	R24,0x3F
+    0085 BB87      OUT	0x17,R24
+(0128) PORTB=0x3F;
+    0086 BB88      OUT	0x18,R24
+(0129) //设置C口为输出
+(0130) DDRC=0xFF;
+    0087 EF8F      LDI	R24,0xFF
+    0088 BB84      OUT	0x14,R24
+(0131) PORTC=0xFF;
+    0089 BB85      OUT	0x15,R24
+(0132) //设置D口为输入
+(0133) DDRD=0X00;
+    008A 2422      CLR	R2
+    008B BA21      OUT	0x11,R2
+(0134) PORTD=0x00;
+    008C BA22      OUT	0x12,R2
+    008D 9508      RET
+(0135) }
+(0136) 
+(0137) /**********************************************************************
+(0138) 				  主函数				   	
+(0139) **********************************************************************/
+(0140) void main(void)
+(0141) {
+(0142) Init_IO();  //初始化I/O
+_main:
+    008E DFF5      RCALL	_Init_IO
+    008F C071      RJMP	0x0101
+(0143) while(1)
+(0144) {
+(0145) get_key();
+    0090 DFC2      RCALL	_get_key
+(0146) if(KEY_PC0==1){PC0_OTN;DelayMS(3);KEY_PC0=0;}
+    0091 91800067  LDS	R24,_KEY_PC0
+    0093 3081      CPI	R24,1
+    0094 F451      BNE	0x009F
+    0095 E081      LDI	R24,1
+    0096 B225      IN	R2,0x15
+    0097 2628      EOR	R2,R24
+    0098 BA25      OUT	0x15,R2
+    0099 E003      LDI	R16,3
+    009A E010      LDI	R17,0
+    009B DF97      RCALL	_DelayMS
+    009C 2422      CLR	R2
+    009D 92200067  STS	_KEY_PC0,R2
+(0147) if(KEY_PC1==1){PC1_OTN;DelayMS(3);KEY_PC1=0;}
+    009F 91800066  LDS	R24,_KEY_PC1
+    00A1 3081      CPI	R24,1
+    00A2 F451      BNE	0x00AD
+    00A3 E082      LDI	R24,2
+    00A4 B225      IN	R2,0x15
+    00A5 2628      EOR	R2,R24
+    00A6 BA25      OUT	0x15,R2
+    00A7 E003      LDI	R16,3
+    00A8 E010      LDI	R17,0
+    00A9 DF89      RCALL	_DelayMS
+    00AA 2422      CLR	R2
+    00AB 92200066  STS	_KEY_PC1,R2
+(0148) if(KEY_PC2==1){PC2_OTN;DelayMS(3);KEY_PC2=0;}
+    00AD 91800065  LDS	R24,_KEY_PC2
+    00AF 3081      CPI	R24,1
+    00B0 F451      BNE	0x00BB
+    00B1 E084      LDI	R24,4
+    00B2 B225      IN	R2,0x15
+    00B3 2628      EOR	R2,R24
+    00B4 BA25      OUT	0x15,R2
+    00B5 E003      LDI	R16,3
+    00B6 E010      LDI	R17,0
+    00B7 DF7B      RCALL	_DelayMS
+    00B8 2422      CLR	R2
+    00B9 92200065  STS	_KEY_PC2,R2
+(0149) if(KEY_PC3==1){PC3_OTN;DelayMS(3);KEY_PC3=0;}
+    00BB 91800064  LDS	R24,_KEY_PC3
+    00BD 3081      CPI	R24,1
+    00BE F451      BNE	0x00C9
+    00BF E088      LDI	R24,0x8
+    00C0 B225      IN	R2,0x15
+    00C1 2628      EOR	R2,R24
+    00C2 BA25      OUT	0x15,R2
+    00C3 E003      LDI	R16,3
+    00C4 E010      LDI	R17,0
+    00C5 DF6D      RCALL	_DelayMS
+    00C6 2422      CLR	R2
+    00C7 92200064  STS	_KEY_PC3,R2
+(0150) if(KEY_PB0==1){PB0_OTN;DelayMS(3);KEY_PB0=0;}
+    00C9 91800063  LDS	R24,_KEY_PB0
+    00CB 3081      CPI	R24,1
+    00CC F451      BNE	0x00D7
+    00CD E081      LDI	R24,1
+    00CE B228      IN	R2,0x18
+    00CF 2628      EOR	R2,R24
+    00D0 BA28      OUT	0x18,R2
+    00D1 E003      LDI	R16,3
+    00D2 E010      LDI	R17,0
+    00D3 DF5F      RCALL	_DelayMS
+    00D4 2422      CLR	R2
+    00D5 92200063  STS	_KEY_PB0,R2
+(0151) if(KEY_PB1==1){PB1_OTN;DelayMS(3);KEY_PB1=0;}
+    00D7 91800062  LDS	R24,_KEY_PB1
+    00D9 3081      CPI	R24,1
+    00DA F451      BNE	0x00E5
+    00DB E082      LDI	R24,2
+    00DC B228      IN	R2,0x18
+    00DD 2628      EOR	R2,R24
+    00DE BA28      OUT	0x18,R2
+    00DF E003      LDI	R16,3
+    00E0 E010      LDI	R17,0
+    00E1 DF51      RCALL	_DelayMS
+    00E2 2422      CLR	R2
+    00E3 92200062  STS	_KEY_PB1,R2
+(0152) if(KEY_PB2==1){PB2_OTN;DelayMS(3);KEY_PB2=0;}
+    00E5 91800061  LDS	R24,_KEY_PB2
+    00E7 3081      CPI	R24,1
+    00E8 F451      BNE	0x00F3
+    00E9 E084      LDI	R24,4
+    00EA B228      IN	R2,0x18
+    00EB 2628      EOR	R2,R24
+    00EC BA28      OUT	0x18,R2
+    00ED E003      LDI	R16,3
+    00EE E010      LDI	R17,0
+    00EF DF43      RCALL	_DelayMS
+    00F0 2422      CLR	R2
+    00F1 92200061  STS	_KEY_PB2,R2
+(0153) if(KEY_PB3==1){PB3_OTN;DelayMS(3);KEY_PB3=0;}
+FILE: <library>
+    00F3 91800060  LDS	R24,_KEY_PB3
+    00F5 3081      CPI	R24,1
+    00F6 F451      BNE	0x0101
+    00F7 E088      LDI	R24,0x8
+    00F8 B228      IN	R2,0x18
+    00F9 2628      EOR	R2,R24
+    00FA BA28      OUT	0x18,R2
+    00FB E003      LDI	R16,3
+    00FC E010      LDI	R17,0
+    00FD DF35      RCALL	_DelayMS
+    00FE 2422      CLR	R2
+    00FF 92200060  STS	_KEY_PB3,R2
+    0101 CF8E      RJMP	0x0090
+    0102 9508      RET
+push_gset1:
+    0103 935A      ST	R21,-Y
+    0104 934A      ST	R20,-Y
+    0105 9508      RET
+pop_gset1:
+    0106 E0E1      LDI	R30,1
+pop:
+    0107 9149      LD	R20,Y+
+    0108 9159      LD	R21,Y+
+    0109 FDE0      SBRC	R30,0
+    010A 9508      RET
+    010B 9169      LD	R22,Y+
+    010C 9179      LD	R23,Y+
+    010D FDE1      SBRC	R30,1
+    010E 9508      RET
+    010F 90A9      LD	R10,Y+
+    0110 90B9      LD	R11,Y+
+    0111 FDE2      SBRC	R30,2
+    0112 9508      RET
+    0113 90C9      LD	R12,Y+
+    0114 90D9      LD	R13,Y+
+    0115 FDE3      SBRC	R30,3
+    0116 9508      RET
+    0117 90E9      LD	R14,Y+
+    0118 90F9      LD	R15,Y+
+    0119 9508      RET

@@ -1,0 +1,92 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter2 C Language\pointer\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter2 C Language\pointer\Debug\pointer.obj"
+Lib: "F:\电子竞赛\C语言应用篇\Source Code\chapter2 C Language\pointer\.\clib100.lib"
+Lib: "E:\Program Files\Sunplus\unSPIDE180\IDE180\CMacro.lib"
+Output: ".\Debug\pointer.S37"
+;Locate: TEXT in "printf" of "clib100.lib"  at 8009 
+;Align: TEXT in "printf" of "clib100.lib"  with 0 
+;Locate: IRAM in "impure" of "clib100.lib"  at ABC6  linkat 4 
+;Align: IRAM in "impure" of "clib100.lib"  with 0 
+;Locate: RAM in "common" of "CMacro.lib"  at 0 
+;Align: RAM in "common" of "CMacro.lib"  with 0 
+;Locate: CODE in "printf" of "clib100.lib"  at 8135 
+;Align: CODE in "printf" of "clib100.lib"  with 0 
+;Locate: CODE in "dtoa" of "clib100.lib"  at 8B06 
+;Align: CODE in "dtoa" of "clib100.lib"  with 0 
+;Locate: CODE in "mprec" of "clib100.lib"  at 94B8 
+;Align: CODE in "mprec" of "clib100.lib"  with 0 
+;Locate: CODE in "fphook" of "clib100.lib"  at 9D59 
+;Align: CODE in "fphook" of "clib100.lib"  with 0 
+;Locate: CODE in "ecvtbuf" of "clib100.lib"  at A09E 
+;Align: CODE in "ecvtbuf" of "clib100.lib"  with 0 
+;Locate: CODE in "pointer.obj" at A343 
+;Align: CODE in "pointer.obj" with 0 
+;Locate: CODE in "divf2" of "CMacro.lib"  at A454 
+;Align: CODE in "divf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "mulf2" of "CMacro.lib"  at A538 
+;Align: CODE in "mulf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "addf2" of "CMacro.lib"  at A608 
+;Align: CODE in "addf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "divu2" of "CMacro.lib"  at A6D4 
+;Align: CODE in "divu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "write" of "clib100.lib"  at A778 
+;Align: CODE in "write" of "clib100.lib"  with 0 
+;Locate: CODE in "efgcvt" of "clib100.lib"  at A7DA 
+;Align: CODE in "efgcvt" of "clib100.lib"  with 0 
+;Locate: CODE in "divi2" of "CMacro.lib"  at A82D 
+;Align: CODE in "divi2" of "CMacro.lib"  with 0 
+;Locate: CODE in "divu1" of "CMacro.lib"  at A87A 
+;Align: CODE in "divu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "malloc" of "clib100.lib"  at A8B8 
+;Align: CODE in "malloc" of "clib100.lib"  with 0 
+;Locate: CODE in "divi1" of "CMacro.lib"  at A8F0 
+;Align: CODE in "divi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvi1f2" of "CMacro.lib"  at A927 
+;Align: CODE in "cvi1f2" of "CMacro.lib"  with 0 
+;Locate: CODE in "mulu2" of "CMacro.lib"  at A95B 
+;Align: CODE in "mulu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cmpf2" of "CMacro.lib"  at A98F 
+;Align: CODE in "cmpf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "calloc" of "clib100.lib"  at A9BD 
+;Align: CODE in "calloc" of "clib100.lib"  with 0 
+;Locate: CODE in "cvf2i2" of "CMacro.lib"  at A9EB 
+;Align: CODE in "cvf2i2" of "CMacro.lib"  with 0 
+;Locate: CODE in "modi1" of "CMacro.lib"  at AA19 
+;Align: CODE in "modi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "lshiu2" of "CMacro.lib"  at AA41 
+;Align: CODE in "lshiu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvf2i1" of "CMacro.lib"  at AA67 
+;Align: CODE in "cvf2i1" of "CMacro.lib"  with 0 
+;Locate: CODE in "mulu1" of "CMacro.lib"  at AA8D 
+;Align: CODE in "mulu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro.lib"  at AAB3 
+;Align: CODE in "rshu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshi2" of "CMacro.lib"  at AAD9 
+;Align: CODE in "rshi2" of "CMacro.lib"  with 0 
+;Locate: CODE in "realloc" of "clib100.lib"  at AAFF 
+;Align: CODE in "realloc" of "clib100.lib"  with 0 
+;Locate: CODE in "cvi2f2" of "CMacro.lib"  at AB1D 
+;Align: CODE in "cvi2f2" of "CMacro.lib"  with 0 
+;Locate: CODE in "lshiu1" of "CMacro.lib"  at AB34 
+;Align: CODE in "lshiu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "muli2" of "CMacro.lib"  at AB49 
+;Align: CODE in "muli2" of "CMacro.lib"  with 0 
+;Locate: CODE in "modu2" of "CMacro.lib"  at AB5B 
+;Align: CODE in "modu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "blockcopy" of "CMacro.lib"  at AB6C 
+;Align: CODE in "blockcopy" of "CMacro.lib"  with 0 
+;Locate: CODE in "TOUPPER" of "clib100.lib"  at AB7B 
+;Align: CODE in "TOUPPER" of "clib100.lib"  with 0 
+;Locate: CODE in "STRCPY" of "clib100.lib"  at AB88 
+;Align: CODE in "STRCPY" of "clib100.lib"  with 0 
+;Locate: CODE in "STRCMP" of "clib100.lib"  at AB95 
+;Align: CODE in "STRCMP" of "clib100.lib"  with 0 
+;Locate: CODE in "negf2" of "CMacro.lib"  at ABA2 
+;Align: CODE in "negf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "STRLEN" of "clib100.lib"  at ABAE 
+;Align: CODE in "STRLEN" of "clib100.lib"  with 0 
+;Locate: CODE in "subf2" of "CMacro.lib"  at ABBA 
+;Align: CODE in "subf2" of "CMacro.lib"  with 0 

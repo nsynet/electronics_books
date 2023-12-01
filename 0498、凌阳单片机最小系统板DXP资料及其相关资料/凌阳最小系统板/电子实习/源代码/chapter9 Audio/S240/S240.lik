@@ -1,0 +1,39 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\main.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\system.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\spce.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\SP_lib.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\sacmV32.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\ISR.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\pk3.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\pk2.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\Debug\pk1.res"
+Lib: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\S240\.\sacmv32e.lib"
+Output: ".\Debug\S240.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: IRAM in "spce.obj" at 8E6E  linkat CB 
+;Align: IRAM in "spce.obj" with 0 
+;Locate: RAM in "sacmV32.obj" at 91 
+;Align: RAM in "sacmV32.obj" with 0 
+;Locate: OVERLAP_S240_RAM_BLOCK in "s240" of "sacmv32e.lib"  at 0 
+;Align: OVERLAP_S240_RAM_BLOCK in "s240" of "sacmv32e.lib"  with 0 
+;Locate: __sn_section_RES_PK1 in "pk1.res" at 8E70 
+;Align: __sn_section_RES_PK1 in "pk1.res" with 0 
+;Locate: __sn_section_RES_PK2 in "pk2.res" at 8F24 
+;Align: __sn_section_RES_PK2 in "pk2.res" with 0 
+;Locate: __sn_section_RES_PK3 in "pk3.res" at 8FB9 
+;Align: __sn_section_RES_PK3 in "pk3.res" with 0 
+;Locate: CODE in "s240" of "sacmv32e.lib"  at 809D 
+;Align: CODE in "s240" of "sacmv32e.lib"  with 0 
+;Locate: CODE in "sacmV32.obj" at 89A7 
+;Align: CODE in "sacmV32.obj" with 0 
+;Locate: CODE in "main.obj" at 8C4C 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "SP_lib.obj" at 8D9F 
+;Align: CODE in "SP_lib.obj" with 0 
+;Locate: CODE in "system.obj" at 8E52 
+;Align: CODE in "system.obj" with 0 

@@ -1,0 +1,18 @@
+<html>
+<body>
+<pre>
+<h1>礦ision2 Build Log</h1>
+<h2>Project:</h2>
+E:\计划\开发\SmartM开发板\书籍光盘\书籍代码\实战篇\51按键计数器\计数器.uv2
+Project File Date:  02/01/2010
+
+<h2>Output:</h2>
+Build target '计数器'
+assembling STARTUP.A51...
+compiling Main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIMER0STOP?MAIN
+Program Size: data=23.0 xdata=0 code=921
+creating hex file from "计数器"...
+"计数器" - 0 Error(s), 1 Warning(s).

@@ -1,0 +1,21 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+C:\Documents and Settings\Administrator\桌面\新建文件夹 (7)\遥控解码通过电脑串口显示\IRCOM.uv2
+Project File Date:  07/08/2008
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling ircom.c...
+linking...
+Program Size: data=25.0 xdata=0 code=244
+creating hex file from "IRCOM"...
+"IRCOM" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling ircom.c...
+linking...
+Program Size: data=25.0 xdata=0 code=244
+creating hex file from "IRCOM"...
+"IRCOM" - 0 Error(s), 0 Warning(s).

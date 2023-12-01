@@ -1,0 +1,251 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile F:\NEW光~1\八路输入输出继电器控制板\基本输入输出控制\icc\chengxu.c
+ 0000                   .dbfunc e DelayMS _DelayMS fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMS::
+ 0000 00D0              rcall push_gset1
+ 0002                   .dbline -1
+ 0002                   .dbline 12
+ 0002           ; #include <iom8v.h>
+ 0002           ; #include <macros.h> 
+ 0002           ; /**********************************************************************
+ 0002           ;                                 函数数据类型说明                                                              
+ 0002           ; **********************************************************************/
+ 0002           ; #define uchar unsigned char 
+ 0002           ; #define uint unsigned int
+ 0002           ; /**********************************************************************
+ 0002           ;                                 MS级延时函数程序，参数i 延时时间                                                                      
+ 0002           ; **********************************************************************/
+ 0002           ; void DelayMS(uint i)
+ 0002           ; {
+ 0002                   .dbline 14
+ 0002           ; uint j;
+ 0002           ; for(;i!=0;i--)
+ 0002 0AC0              rjmp L5
+ 0004           L2:
+ 0004                   .dbline 15
+ 0004           ; {
+ 0004                   .dbline 16
+ 0004 48EE              ldi R20,1000
+ 0006 53E0              ldi R21,3
+ 0008 02C0              rjmp L9
+ 000A           L6:
+ 000A                   .dbline 16
+ 000A           L7:
+ 000A                   .dbline 16
+ 000A 4150              subi R20,1
+ 000C 5040              sbci R21,0
+ 000E           L9:
+ 000E                   .dbline 16
+ 000E 4030              cpi R20,0
+ 0010 4507              cpc R20,R21
+ 0012 D9F7              brne L6
+ 0014           X0:
+ 0014                   .dbline 17
+ 0014           L3:
+ 0014                   .dbline 14
+ 0014 0150              subi R16,1
+ 0016 1040              sbci R17,0
+ 0018           L5:
+ 0018                   .dbline 14
+ 0018 0030              cpi R16,0
+ 001A 0107              cpc R16,R17
+ 001C 99F7              brne L2
+ 001E           X1:
+ 001E                   .dbline -2
+ 001E           L1:
+ 001E 00D0              rcall pop_gset1
+ 0020                   .dbline 0 ; func end
+ 0020 0895              ret
+ 0022                   .dbsym r j 20 i
+ 0022                   .dbsym r i 16 i
+ 0022                   .dbend
+ 0022                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 0022           _Init_IO::
+ 0022                   .dbline -1
+ 0022                   .dbline 23
+ 0022           ; for(j=1000;j!=0;j--);
+ 0022           ; }
+ 0022           ; }
+ 0022           ; /**********************************************************************
+ 0022           ;                                  初始化                                               
+ 0022           ; **********************************************************************/
+ 0022           ; void Init_IO(void)//初始化I/O
+ 0022           ; {
+ 0022                   .dbline 25
+ 0022           ; //设置B口为输出
+ 0022           ; DDRB=0x3F;
+ 0022 8FE3              ldi R24,63
+ 0024 87BB              out 0x17,R24
+ 0026                   .dbline 26
+ 0026           ; PORTB=0x3F;
+ 0026 88BB              out 0x18,R24
+ 0028                   .dbline 28
+ 0028           ; //设置C口为输出
+ 0028           ; DDRC=0xFF;
+ 0028 8FEF              ldi R24,255
+ 002A 84BB              out 0x14,R24
+ 002C                   .dbline 29
+ 002C           ; PORTC=0xFF;
+ 002C 85BB              out 0x15,R24
+ 002E                   .dbline 31
+ 002E           ; //设置D口为输入
+ 002E           ; DDRD=0X00;
+ 002E 2224              clr R2
+ 0030 21BA              out 0x11,R2
+ 0032                   .dbline 32
+ 0032           ; PORTD=0x00;
+ 0032 22BA              out 0x12,R2
+ 0034                   .dbline -2
+ 0034           L10:
+ 0034                   .dbline 0 ; func end
+ 0034 0895              ret
+ 0036                   .dbend
+ 0036                   .dbfunc e main _main fV
+                        .even
+ 0036           _main::
+ 0036                   .dbline -1
+ 0036                   .dbline 38
+ 0036           ; }
+ 0036           ; /**********************************************************************
+ 0036           ;                                 主函数                                        
+ 0036           ; **********************************************************************/
+ 0036           ; void main(void)
+ 0036           ; {
+ 0036                   .dbline 39
+ 0036           ; Init_IO();  //初始化I/O
+ 0036 F5DF              rcall _Init_IO
+ 0038 31C0              rjmp L13
+ 003A           L12:
+ 003A                   .dbline 41
+ 003A           ; while(1)
+ 003A           ; {
+ 003A                   .dbline 42
+ 003A           ; WDR();//WDT 复位 
+ 003A A895              wdr
+ 003C                   .dbline 43
+ 003C           ; if((PIND&0X01)==0)//按下PD0,PC0闭合
+ 003C 8099              sbic 0x10,0
+ 003E 04C0              rjmp L15
+ 0040                   .dbline 44
+ 0040           ; {PORTC=0xFE;PORTB=0xFF;}
+ 0040                   .dbline 44
+ 0040 8EEF              ldi R24,254
+ 0042 85BB              out 0x15,R24
+ 0044                   .dbline 44
+ 0044 8FEF              ldi R24,255
+ 0046 88BB              out 0x18,R24
+ 0048                   .dbline 44
+ 0048           L15:
+ 0048                   .dbline 45
+ 0048           ; if((PIND&0X02)==0)//按下PD1,PC1闭合
+ 0048 8199              sbic 0x10,1
+ 004A 04C0              rjmp L17
+ 004C                   .dbline 46
+ 004C           ; {PORTC=0xFD;PORTB=0xFF;}
+ 004C                   .dbline 46
+ 004C 8DEF              ldi R24,253
+ 004E 85BB              out 0x15,R24
+ 0050                   .dbline 46
+ 0050 8FEF              ldi R24,255
+ 0052 88BB              out 0x18,R24
+ 0054                   .dbline 46
+ 0054           L17:
+ 0054                   .dbline 47
+ 0054           ; if((PIND&0X04)==0)//按下PD2,PC2闭合
+ 0054 8299              sbic 0x10,2
+ 0056 04C0              rjmp L19
+ 0058                   .dbline 48
+ 0058           ; {PORTC=0xFB;PORTB=0xFF;}
+ 0058                   .dbline 48
+ 0058 8BEF              ldi R24,251
+ 005A 85BB              out 0x15,R24
+ 005C                   .dbline 48
+ 005C 8FEF              ldi R24,255
+ 005E 88BB              out 0x18,R24
+ 0060                   .dbline 48
+ 0060           L19:
+ 0060                   .dbline 49
+ 0060           ; if((PIND&0X08)==0)//按下PD3,PC3闭合
+ 0060 8399              sbic 0x10,3
+ 0062 04C0              rjmp L21
+ 0064                   .dbline 50
+ 0064           ; {PORTC=0xF7;PORTB=0xFF;}
+ 0064                   .dbline 50
+ 0064 87EF              ldi R24,247
+ 0066 85BB              out 0x15,R24
+ 0068                   .dbline 50
+ 0068 8FEF              ldi R24,255
+ 006A 88BB              out 0x18,R24
+ 006C                   .dbline 50
+ 006C           L21:
+ 006C                   .dbline 51
+ 006C           ; if((PIND&0X10)==0)//按下PD4,PB0闭合
+ 006C 8499              sbic 0x10,4
+ 006E 04C0              rjmp L23
+ 0070                   .dbline 52
+ 0070           ; {PORTB=0xFE;PORTC=0xFF;}
+ 0070                   .dbline 52
+ 0070 8EEF              ldi R24,254
+ 0072 88BB              out 0x18,R24
+ 0074                   .dbline 52
+ 0074 8FEF              ldi R24,255
+ 0076 85BB              out 0x15,R24
+ 0078                   .dbline 52
+ 0078           L23:
+ 0078                   .dbline 53
+ 0078           ; if((PIND&0X20)==0)//按下PD5,PB1闭合
+ 0078 8599              sbic 0x10,5
+ 007A 04C0              rjmp L25
+ 007C                   .dbline 54
+ 007C           ; {PORTB=0xFD;PORTC=0xFF;}
+ 007C                   .dbline 54
+ 007C 8DEF              ldi R24,253
+ 007E 88BB              out 0x18,R24
+ 0080                   .dbline 54
+ 0080 8FEF              ldi R24,255
+ 0082 85BB              out 0x15,R24
+ 0084                   .dbline 54
+ 0084           L25:
+ 0084                   .dbline 55
+ 0084           ; if((PIND&0X40)==0)//按下PD6,PB2闭合
+ 0084 8699              sbic 0x10,6
+ 0086 04C0              rjmp L27
+ 0088                   .dbline 56
+ 0088           ; {PORTB=0xFB;PORTC=0xFF;}
+ 0088                   .dbline 56
+ 0088 8BEF              ldi R24,251
+ 008A 88BB              out 0x18,R24
+ 008C                   .dbline 56
+ 008C 8FEF              ldi R24,255
+ 008E 85BB              out 0x15,R24
+ 0090                   .dbline 56
+ 0090           L27:
+ 0090                   .dbline 57
+ 0090           ; if((PIND&0X80)==0)//按下PD7,PB3闭合
+ 0090 8799              sbic 0x10,7
+ 0092 04C0              rjmp L29
+ 0094                   .dbline 58
+ 0094           ; {PORTB=0xF7;PORTC=0xFF;}
+ 0094                   .dbline 58
+ 0094 87EF              ldi R24,247
+ 0096 88BB              out 0x18,R24
+ 0098                   .dbline 58
+ 0098 8FEF              ldi R24,255
+ 009A 85BB              out 0x15,R24
+ 009C                   .dbline 58
+ 009C           L29:
+ 009C                   .dbline 59
+ 009C           L13:
+ 009C                   .dbline 40
+ 009C CECF              rjmp L12
+ 009E           X2:
+ 009E                   .dbline -2
+ 009E           L11:
+ 009E                   .dbline 0 ; func end
+ 009E 0895              ret
+ 00A0                   .dbend

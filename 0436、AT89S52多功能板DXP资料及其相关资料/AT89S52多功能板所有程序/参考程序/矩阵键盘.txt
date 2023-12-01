@@ -1,0 +1,205 @@
+  #include<reg52.h>
+ #define uchar unsigned char 
+ #define uint unsigned int 
+  sbit P3_7=P3^7;
+ sbit P1_4=P1^4;
+  sbit P1_5=P1^5;
+  sbit P1_6=P1^6;
+   sbit P1_7=P1^7; 
+unsigned char code table[]={0x3f,0x06,0x5b,0x4f, 
+                            0x66,0x6d,0x7d,0x07, 
+                            0x7f,0x6f,0x77,0x7c, 
+                            0x39,0x5e,0x79,0x71}; 
+unsigned char temp; 
+unsigned char key; 
+unsigned char i,j; 
+unsigned char STH0; 
+unsigned char STL0; 
+unsigned int code tab[]={64021,64103,64260,64400, 
+                          64524,64580,64684,64777, 
+                          64820,64898,64968,65030, 
+                          65058,65110,65157,65178 }; 
+  
+void main(void) 
+{  TMOD=0x01; 
+  ET0=1; 
+  EA=1; 
+   while(1) 
+    { P1=0xff; 
+      P1_4=0; 
+      temp=P1; 
+      temp=temp & 0x0f; 
+      if (temp!=0x0f) 
+        {  for(i=50;i>0;i--) 
+          for(j=200;j>0;j--); 
+          temp=P1; 
+          temp=temp & 0x0f; 
+          if (temp!=0x0f) 
+            { temp=P1; 
+              temp=temp & 0x0f;              
+              switch(temp) 
+                {  case 0x0e: 
+                    key=0; 
+                    break; 
+                  case 0x0d: 
+                    key=1; 
+                    break; 
+                  case 0x0b: 
+                    key=2; 
+                    break; 
+                  case 0x07: 
+                    key=3; 
+                    break; 
+                } 
+              temp=P1; 
+              P3_7=~P3_7; 
+              P0=table[key]; 
+              STH0=tab[key]/256; 
+              STL0=tab[key]%256; 
+              TR0=1; 
+              temp=temp & 0x0f;              
+              while(temp!=0x0f) 
+                { temp=P1; 
+                  temp=temp & 0x0f;              
+                } 
+              TR0=0; 
+            } 
+        } 
+      P1=0xff; 
+      P1_5=0; 
+      temp=P1; 
+      temp=temp & 0x0f; 
+      if (temp!=0x0f) 
+        { for(i=50;i>0;i--) 
+          for(j=200;j>0;j--); 
+          temp=P1; 
+          temp=temp & 0x0f; 
+          if (temp!=0x0f) 
+            { 
+              temp=P1; 
+              temp=temp & 0x0f;              
+              switch(temp) 
+                {   case 0x0e: 
+                    key=4; 
+                    break; 
+                  case 0x0d: 
+                    key=5; 
+                    break; 
+                  case 0x0b: 
+                    key=6; 
+                    break; 
+                  case 0x07: 
+                    key=7; 
+                    break; 
+                } 
+              temp=P1; 
+              P3_7=~P3_7; 
+              P0=table[key]; 
+              STH0=tab[key]/256; 
+              STL0=tab[key]%256; 
+              TR0=1; 
+              temp=temp & 0x0f;              
+              while(temp!=0x0f) 
+                { temp=P1; 
+                  temp=temp & 0x0f;              
+                } 
+              TR0=0; 
+            } 
+        } 
+      P1=0xff; 
+      P1_6=0; 
+      temp=P1; 
+      temp=temp & 0x0f; 
+      if (temp!=0x0f) 
+        { for(i=50;i>0;i--) 
+          for(j=200;j>0;j--); 
+          temp=P1; 
+          temp=temp & 0x0f; 
+          if (temp!=0x0f) 
+            {  temp=P1; 
+              temp=temp & 0x0f;              
+              switch(temp) 
+                {   case 0x0e: 
+                    key=8; 
+                    break; 
+                  case 0x0d: 
+                    key=9; 
+                    break; 
+                  case 0x0b: 
+                    key=10; 
+                    break; 
+                  case 0x07: 
+                    key=11; 
+                    break; 
+                } 
+              temp=P1; 
+              P3_7=~P3_7; 
+              P0=table[key]; 
+              STH0=tab[key]/256; 
+              STL0=tab[key]%256; 
+              TR0=1; 
+              temp=temp & 0x0f;              
+              while(temp!=0x0f) 
+                { temp=P1; 
+                  temp=temp & 0x0f;              
+                } 
+              TR0=0; 
+            } 
+        } 
+      P1=0xff; 
+      P1_7=0; 
+      temp=P1; 
+      temp=temp & 0x0f; 
+      if (temp!=0x0f) 
+        { for(i=50;i>0;i--) 
+          for(j=200;j>0;j--); 
+          temp=P1; 
+          temp=temp & 0x0f; 
+          if (temp!=0x0f) 
+            { 
+              temp=P1; 
+              temp=temp & 0x0f;              
+              switch(temp) 
+                {  case 0x0e: 
+                    key=12; 
+                    break; 
+                  case 0x0d: 
+                    key=13; 
+                    break; 
+                  case 0x0b: 
+                    key=14; 
+                    break; 
+                  case 0x07: 
+                    key=15; 
+                    break; 
+                } 
+              temp=P1; 
+              P3_7=~P3_7; 
+              P0=table[key]; 
+              STH0=tab[key]/256; 
+              STL0=tab[key]%256; 
+              TR0=1; 
+              temp=temp & 0x0f;              
+              while(temp!=0x0f) 
+                {  temp=P1; 
+                  temp=temp & 0x0f;              
+                } 
+              TR0=0; 
+            } 
+        }      
+    } 
+} 
+  
+void t0(void) interrupt 1 using 0 
+{  TH0=STH0; 
+  TL0=STL0; 
+  P3_7=~P3_7; 
+} 
+
+
+
+
+
+
+
+

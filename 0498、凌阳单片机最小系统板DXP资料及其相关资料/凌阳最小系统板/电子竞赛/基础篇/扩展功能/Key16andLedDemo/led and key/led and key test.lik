@@ -1,0 +1,36 @@
+Version: 3.0
+Options: m37
+Obj: "D:\PROGRA~1\Sunplus\UNSPID~1\IDE180\startupD.obj"
+Obj: "F:\功能扩展\Key16angLedDemo\led and key\Debug\Resource.obj"
+Obj: "F:\功能扩展\Key16angLedDemo\led and key\Debug\key.obj"
+Obj: "F:\功能扩展\Key16angLedDemo\led and key\Debug\key1.obj"
+Obj: "F:\功能扩展\Key16angLedDemo\led and key\Debug\main.obj"
+Obj: "F:\功能扩展\Key16angLedDemo\led and key\Debug\irq5.obj"
+Obj: "F:\功能扩展\Key16angLedDemo\led and key\Debug\single.obj"
+Obj: "F:\功能扩展\Key16angLedDemo\led and key\Debug\hardware.obj"
+Lib: "D:\PROGRA~1\Sunplus\UNSPID~1\IDE180\CMacro.lib"
+Output: ".\Debug\led and key test.S37"
+;Locate: TEXT in "irq5.obj" at 8009 
+;Align: TEXT in "irq5.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 8392  linkat C 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "common" of "CMacro.lib"  at 0 
+;Align: RAM in "common" of "CMacro.lib"  with 0 
+;Locate: CODE in "main.obj" at 8037 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "hardware.obj" at 81B2 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "divu1" of "CMacro.lib"  at 82DF 
+;Align: CODE in "divu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "single.obj" at 831D 
+;Align: CODE in "single.obj" with 0 
+;Locate: CODE in "key.obj" at 8349 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "key1.obj" at 8360 
+;Align: CODE in "key1.obj" with 0 
+;Locate: CODE in "irq5.obj" at 8374 
+;Align: CODE in "irq5.obj" with 0 
+;Locate: CODE in "modu1" of "CMacro.lib"  at 8385 
+;Align: CODE in "modu1" of "CMacro.lib"  with 0 
+;Locate: DATA in "single.obj" at 83C9 
+;Align: DATA in "single.obj" with 0 

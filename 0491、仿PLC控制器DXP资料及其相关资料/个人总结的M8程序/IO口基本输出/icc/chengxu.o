@@ -1,0 +1,55 @@
+XL
+H 1 areas 2 global symbols
+M chengxu.c
+A text size 40 flags 0
+dbfile D:\Proteus\ATMEGA8\个人总结的M8程序\IO口基本输出\icc\chengxu.c
+dbfunc e Init_IO 0 fV
+dbline FFFFFFFF 0
+dbline 6 0
+dbline 8 0
+dbline 9 4
+dbline B 6
+dbline C 8
+dbline E A
+dbline F E
+dbline FFFFFFFE 10
+dbline 0 10
+dbfunc e main 12 fV
+dbline FFFFFFFF 12
+dbline 13 12
+dbline 14 12
+dbline 16 16
+dbline 18 16
+dbline 18 16
+dbline 18 1A
+dbline 17 1A
+dbline 1A 20
+dbline 1A 20
+dbline 1A 24
+dbline 19 24
+dbline 1C 2A
+dbline 1C 2A
+dbline 1C 2E
+dbline 1B 2E
+dbline 1E 34
+dbline 1E 34
+dbline 1E 38
+dbline 1D 38
+dbline 1F 3C
+dbline 15 3C
+dbline FFFFFFFE 3E
+dbline 0 3E
+S _main Def0012
+S _Init_IO Def0000
+T 00 00 8F EF 87 BB 88 BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T 0E 00 22 BA 08 95
+R 00 00 00 00
+T 12 00 F6 DF 13 C0 85 E5 88 BB 82 9B FC CF 02 C0
+R 00 00 00 00
+T 20 00 8A EA 88 BB 84 9B FC CF 02 C0 8F E0 88 BB
+R 00 00 00 00
+T 2E 00 85 9B FC CF 02 C0 80 EF 88 BB 86 9B FC CF
+R 00 00 00 00
+T 3C 00 EE CF 08 95
+R 00 00 00 00

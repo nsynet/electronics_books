@@ -1,0 +1,117 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile F:\产品最新整理\汇诚科技产品最新整理\ATMEGA8最小系统\仿真程序\icc\chengxu.c
+ 0000                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 0000           _Init_IO::
+ 0000                   .dbline -1
+ 0000                   .dbline 6
+ 0000           ; #include <iom8v.h>
+ 0000           ; #define uchar unsigned char 
+ 0000           ; #define uint unsigned int
+ 0000           ; //////////////////////////////初始化////////////////////////////////////
+ 0000           ; void Init_IO(void)//初始化I/O
+ 0000           ; {
+ 0000                   .dbline 8
+ 0000           ; //设置B口为输入
+ 0000           ; DDRB=0xFF;
+ 0000 8FEF              ldi R24,255
+ 0002 87BB              out 0x17,R24
+ 0004                   .dbline 9
+ 0004           ; PORTB=0xFF;
+ 0004 88BB              out 0x18,R24
+ 0006                   .dbline 11
+ 0006           ; //设置C口为输出
+ 0006           ; DDRC=0xFF;
+ 0006 84BB              out 0x14,R24
+ 0008                   .dbline 12
+ 0008           ; PORTC=0xFF;
+ 0008 85BB              out 0x15,R24
+ 000A                   .dbline 14
+ 000A           ; //设置D口为输出
+ 000A           ; DDRD=0X00;
+ 000A 2224              clr R2
+ 000C 21BA              out 0x11,R2
+ 000E                   .dbline 15
+ 000E           ; PORTD=0xff;
+ 000E 82BB              out 0x12,R24
+ 0010                   .dbline -2
+ 0010           L1:
+ 0010                   .dbline 0 ; func end
+ 0010 0895              ret
+ 0012                   .dbend
+ 0012                   .dbfunc e main _main fV
+                        .even
+ 0012           _main::
+ 0012                   .dbline -1
+ 0012                   .dbline 19
+ 0012           ; }
+ 0012           ; /////////////////////////////主函数/////////////////////////////////////
+ 0012           ; void main(void)
+ 0012           ; {
+ 0012                   .dbline 20
+ 0012           ; Init_IO();  //初始化I/O
+ 0012 F6DF              rcall _Init_IO
+ 0014 13C0              rjmp L4
+ 0016           X0:
+ 0016                   .dbline 22
+ 0016           ; while(1)
+ 0016           ; {
+ 0016           L6:
+ 0016                   .dbline 24
+ 0016                   .dbline 24
+ 0016 85E5              ldi R24,85
+ 0018 88BB              out 0x18,R24
+ 001A                   .dbline 24
+ 001A           L7:
+ 001A                   .dbline 23
+ 001A           ; while((PIND&0X04)==0)//按键加计数标志
+ 001A 829B              sbis 0x10,2
+ 001C FCCF              rjmp L6
+ 001E 02C0              rjmp L10
+ 0020           L9:
+ 0020                   .dbline 26
+ 0020                   .dbline 26
+ 0020 8AEA              ldi R24,170
+ 0022 88BB              out 0x18,R24
+ 0024                   .dbline 26
+ 0024           L10:
+ 0024                   .dbline 25
+ 0024           ; {PORTB=0x55;}
+ 0024           ; while((PIND&0X08)==0)//按键减计数标志
+ 0024 839B              sbis 0x10,3
+ 0026 FCCF              rjmp L9
+ 0028 02C0              rjmp L13
+ 002A           L12:
+ 002A                   .dbline 28
+ 002A                   .dbline 28
+ 002A 8FE0              ldi R24,15
+ 002C 88BB              out 0x18,R24
+ 002E                   .dbline 28
+ 002E           L13:
+ 002E                   .dbline 27
+ 002E           ; {PORTB=0xaa;}
+ 002E           ; while((PIND&0X10)==0)//按键加计数标志
+ 002E 849B              sbis 0x10,4
+ 0030 FCCF              rjmp L12
+ 0032 02C0              rjmp L16
+ 0034           L15:
+ 0034                   .dbline 30
+ 0034                   .dbline 30
+ 0034 80EF              ldi R24,240
+ 0036 88BB              out 0x18,R24
+ 0038                   .dbline 30
+ 0038           L16:
+ 0038                   .dbline 29
+ 0038 859B              sbis 0x10,5
+ 003A FCCF              rjmp L15
+ 003C                   .dbline 31
+ 003C           L4:
+ 003C                   .dbline 21
+ 003C EECF              rjmp L7
+ 003E           X1:
+ 003E                   .dbline -2
+ 003E           L2:
+ 003E                   .dbline 0 ; func end
+ 003E 0895              ret
+ 0040                   .dbend

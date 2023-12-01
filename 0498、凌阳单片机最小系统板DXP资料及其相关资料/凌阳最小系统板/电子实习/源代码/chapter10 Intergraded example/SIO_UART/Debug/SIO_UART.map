@@ -1,0 +1,447 @@
+Wednesday, July 09, 16:38:31, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             807D         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8099         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         8098         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Resource.obj"
+_BREAK                                             804A         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_FIQ                                               8041         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_IRQ0                                              804D         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_IRQ1                                              8050         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_IRQ2                                              8053         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_IRQ3                                              8056         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_IRQ4                                              8059         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_IRQ5                                              805C         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_IRQ6                                              805F         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+_IRQ7                                              8062         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+KeyBuf                                             647          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\key.obj"
+keysum                                             648          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\key.obj"
+F_Key_Scan_ServiceLoop                             A60D         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\key.obj"
+F_Key_DebounceCnt_Down                             A633         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\key.obj"
+_F_Key_Scan                                        A40F         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\key.obj"
+_main                                              9919         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Modify_Index                                      997E         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_DVR_Stop                                          9A69         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Send_QueueData_to_Sflash                          9A79         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Play_Initial                                      9AA8         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Fill_A_Word_To_Queue                              9ADF         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_According_to_Keycode                              9B0B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_According_to_SubStatus                            9CC8         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Keycode                                           60E          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Ret                                               60F          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_i                                                 610          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Segment                                           611          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_internal_addr                                     612          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_BaseType                                          613          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_SubStatus                                         614          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Addr                                              615          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Addr0                                             617          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Addr1                                             619          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Tem                                               61B          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+_Buffer                                            61D          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+R_SpeechType                                       64E          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+_System_Initial                                    A4C8         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+F_System_Initial                                   A4C8         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+_System_ServiceLoop                                A4D1         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+F_System_ServiceLoop                               A4D1         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+_SP_INT_128Hz                                      A4F1         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+_Open_Interrupt                                    A4F9         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+_Close_Interrupt                                   A4FB         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+_SP_InitWriteSRAM                                  A549         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+F_SP_InitWriteSRAM                                 A549         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+F_SP_InitReadSRAM                                  A54C         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+_SP_InitReadSRAM                                   A54C         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+F_SP_WriteSRAM                                     A54F         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+F_SP_ReadSRAM                                      A552         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+_SP_ReadSRAM                                       A555         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+_SP_WriteSRAM                                      A558         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+_SP_SIOSendAByte                                   A03A         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_SP_SIOReadAByte                                   A05A         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_SP_SIOSendAWord                                   A080         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_SP_SIOReadAWord                                   A0C2         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_SP_SIOPageErase                                   A0F4         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_SP_SIOMassErase                                   A117         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_Delay100uS                                        A146         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_DelayPT                                           A14D         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_SP_WriteHeader                                    A154         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+_SP_CheckHeader                                    A17F         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+F_SP_RampUpDAC1                                    9F81         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    9FA5         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    9FB7         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    9FDB         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_RampUpDAC1                                     9F81         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_RampDnDAC1                                     9FA5         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_RampUpDAC2                                     9FB7         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_RampDnDAC2                                     9FDB         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_InitQueue                                      9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_InitQueue_A2000                                9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_InitQueue_S480                                 9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_InitQueue_S240                                 9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_InitQueue_MS01                                 9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_InitQueue_DVR                                  9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_InitQueue                                     9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_InitQueue_A2000                               9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_InitQueue_S480                                9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_InitQueue_S240                                9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_InitQueue_MS01                                9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_InitQueue_DVR                                 9E5B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue                                     9E68         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_A2000                               9E68         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_S480                                9E68         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_S240                                9E68         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_MS01                                9E68         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_DVR                                 9E68         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_NIC                                 9E7B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_A2000                           9E7B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_S480                            9E7B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_S240                            9E7B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_MS01                            9E7B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_ReadQueue_NIC_DVR                             9E7B         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_WriteQueue                                    9E84         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_WriteQueue_A2000                              9E84         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_WriteQueue_S480                               9E84         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_WriteQueue_S240                               9E84         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_WriteQueue_MS01                               9E84         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_WriteQueue_DVR                                9E84         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_TestQueue                                     9E93         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_TestQueue_A2000                               9E93         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_TestQueue_S480                                9E93         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_TestQueue_S240                                9E93         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_TestQueue_MS01                                9E93         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_TestQueue_DVR                                 9E93         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_Export                                         A01A         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_Import                                         A013         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_Init_IOB                                       A003         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_Init_IOA                                       9FF3         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_GetResource                                    A024         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_GetResource                                   A032         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_SACM_A2000_Init_                              9EAC         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_SACM_S480_Init_                               9EC8         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_SACM_S240_Init_                               9EE3         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_SACM_MS01_Init_                               9EFE         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_PlayMode0_                                    9F10         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_PlayMode1_                                    9F20         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_PlayMode2_                                    9F31         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_PlayMode3_                                    9F42         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_SACM_DVR_Init_                                9F53         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_SACM_DVR_Rec_Init_                            9F71         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_SP_SACM_DVR_Play_Init_                           9F79         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+R_InterruptStatus                                  64F          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_RampUpDAC1                                       9F81         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_RampDnDAC1                                       9FA5         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_RampUpDAC2                                       9FB7         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+F_RampDnDAC2                                       9FDB         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_STD_RampUpDAC1                                    9F81         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_STD_RampDnDAC1                                    9FA5         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_STD_RampUpDAC2                                    9FB7         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_STD_RampDnDAC2                                    9FDB         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+_SP_PageErase                                      8009         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\FlashROM.obj"
+F_PageErase                                        8011         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\FlashROM.obj"
+_SP_WriteWord                                      801E         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\FlashROM.obj"
+F_WriteWord                                        8027         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\FlashROM.obj"
+_SP_ReadWord                                       8034         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\FlashROM.obj"
+F_ReadWord                                         803C         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\FlashROM.obj"
+_SP_UART_Init                                      A39F         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UartAPI.obj"
+_SP_UartSentByte                                   A3C0         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UartAPI.obj"
+_SP_UartReadByte                                   A3D2         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UartAPI.obj"
+_UART_Download                                     A3DF         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UartAPI.obj"
+_P_Flash_Ctrl                                      6EE          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\EmbedFlashROM.obj"
+_EmbedFlashROM_PageErase                           A46D         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\EmbedFlashROM.obj"
+_EmbedFlashROM_WriteWord                           A489         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\EmbedFlashROM.obj"
+_EmbedFlashROM_ReadWord                            A4AA         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\EmbedFlashROM.obj"
+_P_UART_Command1                                   6E9          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+_P_UART_Command2                                   6EA          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+_P_UART_Data                                       6EB          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+_P_UART_BaudScalarLow                              6EC          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+_P_UART_BaudScalarHigh                             6ED          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+_UART_Init                                         A2F8         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+_UartSendByte                                      A326         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+_UartReadByte                                      A350         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+_P_SIO_Data                                        6E2          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_P_SIO_Addr_Low                                    6E3          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_P_SIO_Addr_Mid                                    6E4          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_P_SIO_Addr_High                                   6E5          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_P_SIO_Ctrl                                        6E6          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_P_SIO_Start                                       6E7          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_P_SIO_Stop                                        6E8          "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_Wait_FreeFlag                                     A1B4         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_SIOSendAByte                                      A1D8         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_SIOReadAByte                                      A243         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+_SIOMassErase                                      A2AB         "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            807D                 8099         1D     *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"*
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8041                 8064         24     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\key.obj"*
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A40F                 A46C         5E     *
+*    DATA                                          A5FD                 A639         3D     *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           647                  64D          7      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9919                 9E5A         542    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8065                 807C         18     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           60E                  646          39     *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A4C8                 A4FC         35     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           64E                  64E          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A549                 A55B         13     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A03A                 A1B3         17A    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9E5B                 A039         1DF    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          A55C (64F)           A5EE (6E1)   93     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\FlashROM.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8040         38     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UartAPI.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A39F                 A40E         70     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\EmbedFlashROM.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A46D                 A4C7         5B     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          A5FB (6EE)           A5FB (6EE)   1      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A2F8                 A39E         A7     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          A5F6 (6E9)           A5FA (6ED)   5      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A1B4                 A2F7         144    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          A5EF (6E2)           A5F5 (6E8)   7      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "D:\WORKING\UNSP\LIBMAK~1\RELEASE\DVR"                                                    *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          809A                 9918         187F   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          A5FC (6EF)           A5FC (6EF)   1      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    OVERLAP_SRAM_BLOCK(ORAM)                      5D1                  60D          3D     *
+*    OVERLAP_RAM_BLOCK(ORAM)                       0                    5D0          5D1    *
+* "lshiu2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A4FD                 A522         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "rshu2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A523                 A548         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  6F0          110                   *
+* "First Bank Rom"                  7C00                 263A         55C6                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\SIO_UART.S37
+Disk  Mapping Filename : .\Debug\SIO_UART.map
+Symbol  Table FileName : .\Debug\SIO_UART.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

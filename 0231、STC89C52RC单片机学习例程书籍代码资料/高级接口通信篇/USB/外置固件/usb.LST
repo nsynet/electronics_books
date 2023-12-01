@@ -1,0 +1,1069 @@
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE USB
+OBJECT MODULE PLACED IN usb.OBJ
+COMPILER INVOKED BY: C:\Program Files\Keil\C51\BIN\C51.EXE usb.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /************************************************************************
+   2          *作    者:温子祺 邮箱:k125008301@126.com
+   3          *文    件:usb.c
+   4          *说    明:代码优化,描述符架构更改为结构体形式
+   5          *修改日期:2009/12/06
+   6          --------------------------------------------------------------
+   7          *说    明:代码优化,修正少许BUG
+   8          *修改日期:2009/12/05
+   9          --------------------------------------------------------------
+  10          *说    明:能够正常发送数据和接收数据
+  11          *修改日期:2009/12/02
+  12          --------------------------------------------------------------
+  13          *创建日期:2009/11/30
+  14          *说    明:基本USB可以枚举成功
+  15          --------------------------------------------------------------
+  16          AVR是小端模式  USB小端模式 51 大端模式
+  17          
+  18          所以要注意高低字节的问题
+  19          *************************************************************************/
+  20          #include "stc.h"
+  21          #include "global.h"
+  22          #include "usb.h"
+  23          /****************************************************************************************************
+  24          *
+  25          *                                      变量区
+  26          * 
+  27          *****************************************************************************************************/
+  28          CONST USB_DEVICE_DESCRIPTOR USBDevDescriptor={
+  29          //设备描述符
+  30                  sizeof(USB_DEVICE_DESCRIPTOR),                                  //设备描述符长度，= 12H
+  31                  USB_DEVICE_DESCRIPTOR_TYPE,                                             //设备描述符类型，= 01H
+  32                  0x00,0x01,                                                                              //协议版本，= 1.10
+  33                  USB_CLASS_CODE_TEST_CLASS_DEVICE,                               //测试设备类型， = 0DCH 
+  34                  0, 0,                                                                                   //设备子类，设备协议
+  35                  EP0_PACKET_SIZE,                                                                //端点0最大数据包大小，= 10H
+*** ERROR C202 IN LINE 35 OF USB.C: 'EP0_PACKET_SIZE': undefined identifier
+  36                  0x72,0x04,                                                                              //PHILIPS公司的设备ID   
+  37                  0x02,0x00,                                                                              //设备制造商定的产品ID
+  38                  0x00,0x00,                                                                              //设备系列号
+  39                  0x01,0x02,0x03,                                                                 //索引
+  40                  1                                                                                               //可能的配置数
+  41          };
+  42          
+  43          CONST USB_DESCRIPTOR USBDescriptor ={
+  44          //配置描述符
+  45          {
+  46                  sizeof(USB_CONFIGURATION_DESCRIPTOR),                   //配置描述符长度，= 09H
+  47                  USB_CONFIGURATION_DESCRIPTOR_TYPE,                              //配置描述符类型，= 02H
+  48                  CONFIG_DESCRIPTOR_LENGTH,0x00,                                  //描述符总长度， = 002EH
+  49                  1,                                                                                              //只支持1个接口
+  50                  1,                                                                                              //配置值
+  51                  0,                                                                                              //字符串描述符指针(无)
+  52                  0x60,                                                                                   //自供电,支持远程唤醒
+  53                  0x32                                                                                    //最大功耗(100mA)       
+  54          },
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 2   
+
+  55          //HID类接口描述符
+  56          {
+  57            sizeof(USB_INTERFACE_DESCRIPTOR),                                //接口描述符长度，= 09H
+  58            USB_INTERFACE_DESCRIPTOR_TYPE,                   //接口描述符类型
+  59            0x00,                                            //识别码
+  60            0x00,                                            //代替数值
+  61            0x02,                                            //支持的端点数
+  62            USB_DEVICE_CLASS_HUMAN_INTERFACE,                //类别码,HID设备
+  63            HID_SUBCLASS_NONE,                               //子类别码
+  64            HID_PROTOCOL_NONE,                               //协议码
+  65            0x00                                             //索引
+  66          },
+  67          //HID描述符结构
+  68          {
+  69                  sizeof(USB_HID_DESCRIPTOR),                                             //描述符长度， = 09H
+  70                  0x21,                                                                                   //描述符类型， = 21H
+  71                  0x00, 0x01,                                                                             //HID规范版本号， = 0100H
+  72                  0x00,                                                                                   //国家代码      
+  73                  0x01,                                                                                   //所支持的其他类描述符个数，1个
+  74                  0x22,                                                                                   //从属描述符类型，22H 表示报告描述符
+  75                  0x34, 0x00                                                                              //从属描述符长度，0034H
+  76          },
+  77          
+  78          {
+  79          // 逻辑端点 2 输入      
+  80           {
+  81                  sizeof(USB_ENDPOINT_DESCRIPTOR),                                // 端点描述符长度,= 07H           
+  82                  USB_ENDPOINT_DESCRIPTOR_TYPE,                                   // 端点描述符类型,= 05H  
+  83                  0x82,                                                                                   // 端点2 IN                                       
+  84                  USB_ENDPOINT_TYPE_INTERRUPT,                                    // 中断传输,= 03H               
+  85                  EP2_PACKET_SIZE,0x00,                                                   // 端点最大包的大小,= 0040H  
+*** ERROR C202 IN LINE 85 OF USB.C: 'EP2_PACKET_SIZE': undefined identifier
+  86                  10                                                                                              // 批量传输时该值无效   
+  87           },
+  88          // 逻辑端点 2 输出
+  89           {      
+  90                  sizeof(USB_ENDPOINT_DESCRIPTOR),                                // 端点描述符长度,= 07H       
+  91                  USB_ENDPOINT_DESCRIPTOR_TYPE,                                   // 端点描述符类型,= 05H           
+  92                  0x2,                                                                                    // 端点2 OUT                              
+  93                  USB_ENDPOINT_TYPE_INTERRUPT,                                    // 中断传输,= 03H                          
+  94                  EP2_PACKET_SIZE,0x00,                                                   // 端点最大包的大小,= 0040H        
+*** ERROR C202 IN LINE 94 OF USB.C: 'EP2_PACKET_SIZE': undefined identifier
+  95                  10                                                                                              // 批量传输时该值无效
+  96           }
+  97          }
+  98          };
+  99          CONST UINT8 acUSBHidReportDescriptor[52] = 
+ 100          {
+ 101                  0x06,0xA0,0xFF,      //用法页(FFA0h, vendor defined)
+ 102                  0x09, 0x01,          //用法(vendor defined)
+ 103                  0xA1, 0x01,          //集合(Application)
+ 104                  0x09, 0x02 ,         //用法(vendor defined)
+ 105                  0xA1, 0x00,          //集合(Physical)
+ 106                  0x06,0xA1,0xFF,      //用法页(vendor defined)
+ 107                  //输入报告
+ 108                  0x09, 0x03 ,         //用法(vendor defined)
+ 109                  0x09, 0x04,          //用法(vendor defined)
+ 110                  0x15, 0x80,          //逻辑最小值(0x80 or -128)
+ 111                  0x25, 0x7F,          //逻辑最大值(0x7F or 127)
+ 112                  0x35, 0x00,          //物理最小值(0)
+ 113                  0x45, 0xFF,          //物理最大值(255)
+ 114                  0x75, 0x08,          //报告长度Report size (8位)
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 3   
+
+ 115                  0x95, 0x40,          //报告数值(64 fields)
+ 116                  0x81, 0x02,          //输入(data, variable, absolute)
+ 117                  //输出报告
+ 118                  0x09, 0x05,          //用法(vendor defined)
+ 119                  0x09, 0x06,          //用法(vendor defined)
+ 120                  0x15, 0x80,          //逻辑最小值(0x80 or -128)
+ 121                  0x25, 0x7F,          //逻辑最大值(0x7F or 127)
+ 122                  0x35, 0x00,          //物理最小值(0)
+ 123                  0x45, 0xFF,          //物理最大值(255)
+ 124                  0x75, 0x08,          //报告长度(8位)
+ 125                  0x95, 0x40,          //报告数值(64 fields)
+ 126                  0x91, 0x02,          //输出(data, variable, absolute)
+ 127                  0xC0,                //集合结束(Physical)
+ 128                  0xC0                 //集合结束(Application)    
+ 129          };
+ 130          //定义USB 标准设备请求 结构体
+ 131          CONST FUNCTION_ARRAY StandardDeviceRequest[16]={
+ 132                                                                  {USBPcGetStatus,       "[00H]USB 标准设备请求:获取状态\r\n  "},
+ 133                                                                  {USBPcClearFeature,    "[01H]USB 标准设备请求:清除特性\r\n  "},
+ 134                                                                  {NULL,                 "NULL                                "},
+ 135                                                                  {USBPcSetFeature,      "[03H]USB 标准设备请求:设置特性\r\n  "},
+ 136                                                                  {NULL,                 "NULL                                "},
+ 137                                                                  {USBPcSetAddress,      "[05H]USB 标准设备请求:设置地址\r\n  "},
+ 138                                                                  {USBPcGetDescriptor,   "[06H]USB 标准设备请求:获取描述符\r\n"},
+ 139                                                                  {USBPcSetDescriptor,   "[07H]USB 标准设备请求:设置描述符\r\n"},
+ 140                                                                  {USBPcGetConfiguration,"[08H]USB 标准设备请求:获取配置\r\n  "},
+ 141                                                                  {USBPcSetConfiguration,"[09H]USB 标准设备请求:设置配置\r\n  "},
+ 142                                                                  {USBPcGetInterface,    "[0AH]USB 标准设备请求:获取接口\r\n  "},
+ 143                                                                  {USBPcSetInterface,    "[0BH]USB 标准设备请求:设置接口\r\n  "},
+ 144                                                                  {NULL,                 "NULL                                "},
+ 145                                                                  {NULL,                 "NULL                                "},
+ 146                                                                  {NULL,                 "NULL                                "},
+ 147                                                                  {NULL,                 "NULL                                "}
+ 148          };
+ 149          //定义USB HID类请求 结构体
+ 150          CONST FUNCTION_ARRAY HidClassRequest[16]={
+ 151                                                                  {USBPcGetReport,           "[00H]USB HID类请求:获取报告\r\n     "},             
+ 152                                                                  {USBPcGetIdle,         "[01H]USB HID类请求:获取空闲状态\r\n "},                         
+ 153                                                                  {USBPcGetProtocol,     "[02H]USB HID类请求:获取协议\r\n     "},                 
+ 154                                                                  {NULL,                 "NULL                                "},
+ 155                                                                  {NULL,                 "NULL                                "},
+ 156                                                                  {NULL,                 "NULL                                "},
+ 157                                                                  {NULL,                 "NULL                                "},
+ 158                                                                  {NULL,                 "NULL                                "},
+ 159                                                                  {NULL,                 "NULL                                "},
+ 160                                                                  {USBPcSetReport,           "[08H]USB HID类请求:设置报告\r\n     "},                     
+ 161                                                                  {USBPcSetIdle,         "[09H]USB HID类请求:设置空闲状态\r\n "},                         
+ 162                                                                  {USBPcSetProtocol,     "[0AH]USB HID类请求:设置协议\r\n     "},                 
+ 163                                                                  {NULL,                 "NULL                                "},
+ 164                                                                  {NULL,                 "NULL                                "},
+ 165                                                                  {NULL,                 "NULL                                "},
+ 166                                                                  {NULL,                 "NULL                                "}
+ 167          };                                                      
+ 168          //语言描述符
+ 169          UINT8  CONST acUSBLanguageDesCriptor[4]={0x04,0x03,0x09,0x04};  
+ 170          //字符串描述符  
+ 171          UINT8  CONST acUSBSerialDesriptor[18]  ={0x12,0x03,'C',0,'H',0,'3',0,'7',0,'2',0,'U',0,'S',0,'B',0};            
+ 172          
+ 173          //字符串描述符所用的语言种类 
+ 174          CONST UINT8 acUSBLanguageID[4]={0x04,0x03,0x09,0x04};                   
+ 175          
+ 176          //设备序列号                                                                            
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 4   
+
+ 177          CONST UINT8 acUSBDeviceSerialNumber[22]=
+ 178          {22,0x03,'2',0,'0',0,'0',0,'7',0,'-',0,'0',0,'3',0,'-',0,'2',0,'3',0};
+ 179          
+ 180          //厂商字符串
+ 181          CONST UINT8 acUSBManufacturerString[80]=
+ 182          {
+ 183           80,0x03,0x16,0x7F,0x0B,0x7A,0x0F,0x5C,0x5B,0x72,0xBA,0x4E,0x84,0x76,
+ 184           'U',0,'S',0,'B',0,0xbE,0x8b,0x07,0x59,' ',0,0x20,0x00,'k',0,'1',0,'2',0,
+ 185           '5',0,'0',0,'0',0,'8',0,'3',0,'0',0,'1',0,'@',0,'1',0,'2',0,'6',0,'.',0,'c',0,
+ 186           'o',0,'m',0
+ 187          };
+ 188          
+ 189          //产品字符串
+ 190          CONST UINT8 acUSBProducterString[80]=
+ 191          {
+ 192           80,0x03,0x16,0x7F,0x0B,0x7A,0x0F,0x5C,0x5B,0x72,0xBA,0x4E,0x84,0x76,
+ 193           'U',0,'S',0,'B',0,0xbE,0x8b,0x07,0x59,' ',0,0x20,0x00,'k',0,'1',0,'2',0,
+ 194           '5',0,'0',0,'0',0,'8',0,'3',0,'0',0,'1',0,'@',0,'1',0,'2',0,'6',0,'.',0,'c',0,
+ 195           'o',0,'m',0
+ 196           };
+ 197          
+ 198          
+ 199          USB_CTRL_PACKET  USBCtrlPacket={0};
+ 200          USB_FLAGS        USBFlags={0};
+ 201          
+ 202          UINT8 ucUSBAddress=0    ;                         //暂存USB主机发来的地址
+ 203          
+ 204          idata UINT8 USBMainBuf[EP2_PACKET_SIZE]={0};
+*** ERROR C202 IN LINE 204 OF USB.C: 'EP2_PACKET_SIZE': undefined identifier
+*** ERROR C136 IN LINE 204 OF USB.C: invalid dimension size: [0]
+ 205          
+ 206          /****************************************************************************************************
+ 207          *
+ 208          *                                      函数区
+ 209          * 
+ 210          *****************************************************************************************************/
+ 211          
+ 212          /**********************************************************************************
+ 213          ** 函数名称     : WriteDatToUsb
+ 214          ** 功能描述     : 向CH372写数据
+ 215          ** 输           入      : UINT8 dat
+ 216          ** 输           出      : 无
+ 217          ************************************************************************************/
+ 218          static 
+ 219          void WriteDatToUsb(UINT8 dat)
+ 220          {
+ 221   1          USB_CS=0;
+*** ERROR C202 IN LINE 221 OF USB.C: 'USB_CS': undefined identifier
+ 222   1              USB_DATA_OUTPUT=0xff;//拉高引脚
+*** ERROR C202 IN LINE 222 OF USB.C: 'USB_DATA_OUTPUT': undefined identifier
+ 223   1              USB_A0=USB_DAT_MODE;
+*** ERROR C202 IN LINE 223 OF USB.C: 'USB_A0': undefined identifier
+ 224   1              USB_WR=0;
+*** ERROR C202 IN LINE 224 OF USB.C: 'USB_WR': undefined identifier
+ 225   1              DelayNus(20);
+ 226   1              USB_DATA_OUTPUT=dat;
+*** ERROR C202 IN LINE 226 OF USB.C: 'USB_DATA_OUTPUT': undefined identifier
+ 227   1              DelayNus(20);
+ 228   1              USB_CS=1;
+*** ERROR C202 IN LINE 228 OF USB.C: 'USB_CS': undefined identifier
+ 229   1              USB_DATA_OUTPUT=0xff;//拉高引脚,防止引脚短路
+*** ERROR C202 IN LINE 229 OF USB.C: 'USB_DATA_OUTPUT': undefined identifier
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 5   
+
+ 230   1              USB_WR=1;
+*** ERROR C202 IN LINE 230 OF USB.C: 'USB_WR': undefined identifier
+ 231   1      }
+ 232          /***********************************************************************************
+ 233          ** 函数名称     : WriteCmdToUsb
+ 234          ** 功能描述     : 向CH372写命令
+ 235          ** 输           入      :        UINT8 cmd
+ 236          ** 输           出      :    无
+ 237          ************************************************************************************/
+ 238          static 
+ 239          void WriteCmdToUsb(UINT8 cmd)
+ 240          {
+ 241   1          USB_CS=0;
+*** ERROR C202 IN LINE 241 OF USB.C: 'USB_CS': undefined identifier
+ 242   1              USB_DATA_OUTPUT=0xff;//拉高引脚
+*** ERROR C202 IN LINE 242 OF USB.C: 'USB_DATA_OUTPUT': undefined identifier
+ 243   1              USB_A0=USB_CMD_MODE;
+*** ERROR C202 IN LINE 243 OF USB.C: 'USB_A0': undefined identifier
+ 244   1              USB_WR=0;
+*** ERROR C202 IN LINE 244 OF USB.C: 'USB_WR': undefined identifier
+ 245   1              DelayNus(20);
+ 246   1              USB_DATA_OUTPUT=cmd;
+*** ERROR C202 IN LINE 246 OF USB.C: 'USB_DATA_OUTPUT': undefined identifier
+ 247   1              DelayNus(20);
+ 248   1              USB_CS=1;
+*** ERROR C202 IN LINE 248 OF USB.C: 'USB_CS': undefined identifier
+ 249   1              USB_DATA_OUTPUT=0xff;//拉高引脚,防止引脚短路
+*** ERROR C202 IN LINE 249 OF USB.C: 'USB_DATA_OUTPUT': undefined identifier
+ 250   1              USB_WR=1;
+*** ERROR C202 IN LINE 250 OF USB.C: 'USB_WR': undefined identifier
+ 251   1      }
+ 252          /***********************************************************************************
+ 253          ** 函数名称     : ReadDatFromUsb
+ 254          ** 功能描述     : 读取USB数据
+ 255          ** 输           入      :        无
+ 256          ** 输           出      :    无
+ 257          ************************************************************************************/
+ 258          static 
+ 259          UINT8 ReadDatFromUsb(void)
+ 260          {       
+ 261   1              UINT8 dat;
+ 262   1              USB_CS=0;
+*** ERROR C202 IN LINE 262 OF USB.C: 'USB_CS': undefined identifier
+ 263   1              USB_DATA_INPUT=0xff;//拉高引脚
+*** ERROR C202 IN LINE 263 OF USB.C: 'USB_DATA_INPUT': undefined identifier
+ 264   1              USB_A0=USB_DAT_MODE;
+*** ERROR C202 IN LINE 264 OF USB.C: 'USB_A0': undefined identifier
+ 265   1              USB_RD=0;
+*** ERROR C202 IN LINE 265 OF USB.C: 'USB_RD': undefined identifier
+ 266   1              DelayNus(20);      //20*0.25us=5us
+ 267   1              dat=USB_DATA_INPUT;
+*** ERROR C202 IN LINE 267 OF USB.C: 'USB_DATA_INPUT': undefined identifier
+ 268   1              DelayNus(20);      //20*0.25us=5us
+ 269   1              USB_CS=1;
+*** ERROR C202 IN LINE 269 OF USB.C: 'USB_CS': undefined identifier
+ 270   1              USB_RD=1;
+*** ERROR C202 IN LINE 270 OF USB.C: 'USB_RD': undefined identifier
+ 271   1              USB_DATA_INPUT=0xff;//拉高引脚,防止引脚短路
+*** ERROR C202 IN LINE 271 OF USB.C: 'USB_DATA_INPUT': undefined identifier
+ 272   1      
+ 273   1              return dat;
+ 274   1      }
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 6   
+
+ 275          /***********************************************************************************
+ 276          ** 函数名称     : USBCiWriteSingleCmd
+ 277          ** 功能描述     : USB 写入单个命令
+ 278          ** 输           入      : 无
+ 279          ** 输           出      : 无
+ 280          ************************************************************************************/
+ 281          void USBCiWriteSingleCmd(UINT8 cmd)
+ 282          {
+ 283   1               WriteCmdToUsb(cmd);
+ 284   1      }
+ 285          /***********************************************************************************
+ 286          ** 函数名称     : USBCiWriteSingleData
+ 287          ** 功能描述     : USB 写入单个数据
+ 288          ** 输           入      : 无
+ 289          ** 输           出      : 无
+ 290          ************************************************************************************/
+ 291          void USBCiWriteSingleData(UINT8 dat)
+ 292          {
+ 293   1               WriteDatToUsb(dat);
+ 294   1      }
+ 295          /***********************************************************************************
+ 296          ** 函数名称     : USBCiReadSingleData
+ 297          ** 功能描述     : USB 读取单个数据
+ 298          ** 输           入      : 无
+ 299          ** 输           出      : 无
+ 300          ************************************************************************************/
+ 301          UINT8 USBCiReadSingleData(void)
+ 302          {
+ 303   1               return ReadDatFromUsb();
+ 304   1      }
+ 305          /***********************************************************************************
+ 306          ** 函数名称     : USBCiReadPortData
+ 307          ** 功能描述     : 连续读取USB数据
+ 308          ** 输           入      :        无
+ 309          ** 输           出      :    无
+ 310          ************************************************************************************/
+ 311          UINT8 USBCiReadPortData(UINT8 *buf)
+ 312          {
+ 313   1               UINT8 i,len;
+ 314   1               
+ 315   1               USBCiWriteSingleCmd(CMD_RD_USB_DATA);
+*** ERROR C202 IN LINE 315 OF USB.C: 'CMD_RD_USB_DATA': undefined identifier
+ 316   1               
+ 317   1               len=USBCiReadSingleData();
+ 318   1               
+ 319   1               for(i=0; i<len; i++)
+ 320   1               {
+ 321   2                      *buf=USBCiReadSingleData();
+ 322   2                                
+ 323   2                       buf++;
+ 324   2               }
+ 325   1               
+ 326   1               return len;
+ 327   1      }
+ 328          /***********************************************************************************
+ 329          ** 函数名称     : USBCiWriteCmd
+ 330          ** 功能描述     : USB 写命令
+ 331          ** 输           入      : 无
+ 332          ** 输           出      : 无
+ 333          ************************************************************************************/
+ 334          void USBCiWritePortData(UINT8 *buf, UINT8 len)
+ 335          {
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 7   
+
+ 336   1               if(buf == NULL || len ==0 )return;
+ 337   1               
+ 338   1               USBCiWriteSingleData(len);                             //发送的长度为len
+ 339   1               
+ 340   1               while(len--)
+ 341   1               {
+ 342   2                      USBCiWriteSingleData(*buf);                     //逐个数据发送
+ 343   2      
+ 344   2                      buf++;
+ 345   2               }
+ 346   1      }
+ 347          /***********************************************************************************
+ 348          ** 函数名称     : USBCiEP0Send
+ 349          ** 功能描述     : 向端点0写连续的数据
+ 350          ** 输           入      : buf 要发送数据的缓冲区
+ 351                            len 要发送数据的长度
+ 352          ** 输           出      : 无
+ 353          ************************************************************************************/
+ 354          void USBCiEP0Send(UINT8 *buf,UINT8 len)
+ 355          {
+ 356   1              USBCiWriteSingleCmd (CMD_WR_USB_DATA3); //向端点0发送数据       
+*** ERROR C202 IN LINE 356 OF USB.C: 'CMD_WR_USB_DATA3': undefined identifier
+ 357   1              USBCiWritePortData  (buf ,len);
+ 358   1      }
+ 359          /***********************************************************************************
+ 360          ** 函数名称     : USBCiEP2Send
+ 361          ** 功能描述     : 向端点2写连续的数据
+ 362          ** 输           入      : buf 要发送数据的缓冲区
+ 363                            len 要发送数据的长度
+ 364          ** 输           出      : 无
+ 365          ************************************************************************************/
+ 366          void USBCiEP2Send(UINT8 *buf,UINT8 len)
+ 367          {
+ 368   1              USBCiWriteSingleCmd (CMD_WR_USB_DATA7); //向端点2发送数据
+*** ERROR C202 IN LINE 368 OF USB.C: 'CMD_WR_USB_DATA7': undefined identifier
+ 369   1              USBCiWritePortData  (buf,len);
+ 370   1      }
+ 371          /***********************************************************************************
+ 372          ** 函数名称     : USBCiInit
+ 373          ** 功能描述     : USB初始化
+ 374          ** 输           入      :        无
+ 375          ** 输           出      :    无
+ 376          ************************************************************************************/
+ 377          void USBCiInit(void)
+ 378          {
+ 379   1          UINT8 i=0;
+ 380   1          
+ 381   1              USBCiWriteSingleCmd(0x01);
+ 382   1      
+ 383   1              i=USBCiReadSingleData();
+ 384   1      
+ 385   1              USBCiWriteSingleCmd (CMD_SET_USB_MODE);
+*** ERROR C202 IN LINE 385 OF USB.C: 'CMD_SET_USB_MODE': undefined identifier
+ 386   1              USBCiWriteSingleData(CMD_OUTSIDE_FIRMWARE);   //外置固件模式
+*** ERROR C202 IN LINE 386 OF USB.C: 'CMD_OUTSIDE_FIRMWARE': undefined identifier
+ 387   1      
+ 388   1              for (i=100;i!=0;i--)                                      //等待操作成功,通常需要等待10uS-20uS
+ 389   1              {
+ 390   2                      if(CMD_RET_SUCCESS==USBCiReadSingleData());
+*** ERROR C202 IN LINE 390 OF USB.C: 'CMD_RET_SUCCESS': undefined identifier
+ 391   2                      {
+ 392   3                              break;
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 8   
+
+ 393   3                      }
+ 394   2              
+ 395   2              }       //if ( i==0 ) CH372/CH375存在硬件错误;
+ 396   1      
+ 397   1              IE1=0;
+ 398   1              IT1=0;//置外部信号为低电平触发,IT1=1边沿触发
+ 399   1              EX1=1;
+ 400   1      }
+ 401          
+ 402          /*
+ 403            ---------------------  USB 协议层函数  ---------------------
+ 404          */
+ 405          /***********************************************************************************
+ 406          ** 函数名称 : USBPcCtrlSend
+ 407          ** 功能描述 : 控制端点数据上传
+ 408          ** 输    入     : 无
+ 409          ** 输   出      : 无
+ 410          ************************************************************************************/
+ 411          void USBPcCtrlSend(UINT8 *buf,UINT8 len)
+ 412          {
+ 413   1               USBCiEP0Send(buf,len);
+ 414   1      }
+ 415          /***********************************************************************************
+ 416          ** 函数名称 : USBPcHold
+ 417          ** 功能描述 : 保持当前状态
+ 418          ** 输    入     : 无
+ 419          ** 输   出      : 无
+ 420          ************************************************************************************/
+ 421          void USBPcHold(void)
+ 422          {
+ 423   1               USBCiWriteSingleCmd (CMD_WR_USB_DATA3);        //发出写端点0的命令
+*** ERROR C202 IN LINE 423 OF USB.C: 'CMD_WR_USB_DATA3': undefined identifier
+ 424   1               USBCiWriteSingleData(0);                               //上传0长度数据，这是一个状态阶段
+ 425   1      }
+ 426          /***********************************************************************************
+ 427          ** 函数名称 : USBEP0DesriptorCopy
+ 428          ** 功能描述 : 复制描述符以便上传
+ 429          ** 输    入     : 无
+ 430          ** 输   出      : 无
+ 431          ************************************************************************************/
+ 432          void USBEP0DesriptorCopy(void)
+ 433          {
+ 434   1              BufCpy(USBCtrlPacket.mucBuf,
+ 435   1                         USBCtrlPacket.mpucTxd+USBCtrlPacket.musTxCount,
+ 436   1                         EP0_PACKET_SIZE                      
+ 437   1                        );
+*** ERROR C202 IN LINE 437 OF USB.C: 'EP0_PACKET_SIZE': undefined identifier
+ 438   1      }
+ 439          /***********************************************************************************
+ 440          ** 函数名称 : USBEP0Up
+ 441          ** 功能描述 : 端点0数据上传
+ 442          ** 输    入     : 无
+ 443          ** 输   出      : 无
+ 444          ************************************************************************************/
+ 445          void USBEP0Up(void)
+ 446          {
+ 447   1              UINT8 len;
+ 448   1              
+ 449   1              //USBMSGEx("USBCtrlPacket.musTxLength:= ",USBCtrlPacket.musTxLength,10);
+ 450   1              
+ 451   1              if(USBCtrlPacket.musTxLength)
+ 452   1              {                                                                //长度不为0传输具体长度的数据
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 9   
+
+ 453   2                      if(USBCtrlPacket.musTxLength<=EP0_PACKET_SIZE)
+*** ERROR C202 IN LINE 453 OF USB.C: 'EP0_PACKET_SIZE': undefined identifier
+ 454   2                      {
+ 455   3                              len=USBCtrlPacket.musTxLength;   //长度小于8则长输要求的长度
+ 456   3                              USBCtrlPacket.musTxLength=0;
+ 457   3                              USBCtrlPacket.musTxCount+=len;
+ 458   3                      }
+ 459   2                      else
+ 460   2                      {
+ 461   3                              len=EP0_PACKET_SIZE;
+*** ERROR C202 IN LINE 461 OF USB.C: 'EP0_PACKET_SIZE': undefined identifier
+ 462   3                              USBCtrlPacket.musTxLength-=EP0_PACKET_SIZE;     //长度大于8则传输8个，切总长度减8
+*** ERROR C202 IN LINE 462 OF USB.C: 'EP0_PACKET_SIZE': undefined identifier
+ 463   3                  USBCtrlPacket.musTxCount +=EP0_PACKET_SIZE;
+*** ERROR C202 IN LINE 463 OF USB.C: 'EP0_PACKET_SIZE': undefined identifier
+ 464   3                      }       
+ 465   2                                                             
+ 466   2                      USBPcCtrlSend(USBCtrlPacket.mucBuf,len);//这个buf可以重用       
+ 467   2              }
+ 468   1              else
+ 469   1              {
+ 470   2                      USBPcHold();
+ 471   2              }
+ 472   1      }
+ 473          /*
+ 474                -----------------             usb标准设备请求服务程序                 -----------------
+ 475          */
+ 476          /*****************************************************************************************
+ 477          ** 函数名称: USBPcGetDescriptor                         
+ 478          ** 功能描述: 获得描述符 
+ 479          ** 输    入: 无
+ 480          ** 输    出: 无                                                 
+ 481          ******************************************************************************************/
+ 482          void USBPcGetDescriptor(void)
+ 483          {
+ 484   1                      //USBMSGEx("USBCtrlPacket.r.musReuestValue:=",USBCtrlPacket.r.musReuestValue,16);
+ 485   1      
+ 486   1                      switch(MSB(USBCtrlPacket.r.musReuestValue))
+ 487   1                      {
+ 488   2                              case 0x01://设备描述符上传
+ 489   2                                       {
+ 490   3                          USBMSG("-->获得设备描述符\r\n");
+ 491   3      
+ 492   3                                              USBCtrlPacket.mpucTxd=(UINT8 *)&USBDevDescriptor;
+ 493   3                                              USBCtrlPacket.musTxLength=USBCtrlPacket.musTxLength <=USBDevDescriptor.bLength? \
+ 494   3                                                    USBCtrlPacket.musTxLength  :USBDevDescriptor.bLength;                                     
+ 495   3                                       }
+ 496   2                                      break;
+ 497   2      
+ 498   2                              case 0x02://配置描述符上传
+ 499   2                                       {
+ 500   3                          USBMSG("-->获得配置描述符\r\n");
+ 501   3      
+ 502   3                                              USBCtrlPacket.mpucTxd=(UINT8 *)&USBDescriptor.ConfigDescr;
+ 503   3                                              //由于配置描述符比较小,其实只用US就已经足够了BDescriptor.ConfigDescr.wTotalLength0
+ 504   3                                              USBCtrlPacket.musTxLength=USBCtrlPacket.musTxLength <=(USBDescriptor.ConfigDescr.wTotalLength1<<8)|US
+             -BDescriptor.ConfigDescr.wTotalLength0? \
+ 505   3                                                    USBCtrlPacket.musTxLength  :(USBDescriptor.ConfigDescr.wTota
+             -lLength1<<8)|USBDescriptor.ConfigDescr.wTotalLength0;
+ 506   3      
+ 507   3                                      
+ 508   3                                       }      
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 10  
+
+ 509   2                                       break;
+ 510   2      
+ 511   2                              case 0x03://字符串描述符
+ 512   2                                       {
+ 513   3                                              switch(LSB(USBCtrlPacket.r.musReuestValue))
+ 514   3                                              {
+ 515   4                                                      case 0x00://获得语言ID
+ 516   4                                                              {
+ 517   5                                                                      USBMSG("-->获得语言ID\r\n");
+ 518   5                                                                      
+ 519   5                                                                      USBCtrlPacket.mpucTxd=acUSBLanguageDesCriptor;
+ 520   5                                                          USBCtrlPacket.musTxLength=USBCtrlPacket.musTxLength <=acUSBLanguageDesCriptor[0]? \
+ 521   5                                                                USBCtrlPacket.musTxLength  :acUSBLanguageDesCrip
+             -tor[0];                                                                
+ 522   5                                                                                                          
+ 523   5                                                              }
+ 524   4                                                              break ;
+ 525   4                                                              
+ 526   4                                                      case 0x01 ://获得厂商字符串
+ 527   4                                                              {
+ 528   5                                                                      USBMSG("-->获得厂商字符串\r\n");
+ 529   5                                                                      
+ 530   5                                                                      USBCtrlPacket.mpucTxd = acUSBManufacturerString;
+ 531   5                                                          USBCtrlPacket.musTxLength=USBCtrlPacket.musTxLength <=acUSBManufacturerString[0]? \
+ 532   5                                                                USBCtrlPacket.musTxLength  :acUSBManufacturerStr
+             -ing[0];                                                                                                
+ 533   5                                                              }
+ 534   4      
+ 535   4                                                              break ;
+ 536   4                                                              
+ 537   4                                                      case 0x02 ://获取产品字符串
+ 538   4                                                              {
+ 539   5                                                                      USBMSG("-->获得产品字符串\r\n");
+ 540   5                                                                      
+ 541   5                                                                      USBCtrlPacket.mpucTxd = acUSBProducterString;                                                           
+ 542   5                                                          USBCtrlPacket.musTxLength=USBCtrlPacket.musTxLength <=acUSBProducterString[0]? \
+ 543   5                                                                USBCtrlPacket.musTxLength  :acUSBProducterString
+             -[0];                                                                                
+ 544   5                                                              }
+ 545   4                                                              break ;
+ 546   4                                                              
+ 547   4                                                      case 0x03 ://获取设备序列号
+ 548   4                                                              {
+ 549   5                                                                      USBMSG("-->获取设备序列号\r\n");        
+ 550   5                                                                      
+ 551   5                                                                      USBCtrlPacket.mpucTxd = acUSBDeviceSerialNumber;                                                                
+ 552   5                                                          USBCtrlPacket.musTxLength=USBCtrlPacket.musTxLength <=acUSBDeviceSerialNumber[0]? \
+ 553   5                                                                USBCtrlPacket.musTxLength  :acUSBDeviceSerialNum
+             -ber[0];                                                                                                                        
+ 554   5                                                              }
+ 555   4                                                              break ;
+ 556   4                                                              
+ 557   4                                                      default :
+ 558   4                                                              break ;
+ 559   4                                              }
+ 560   3                                      }
+ 561   2                                      break  ;
+ 562   2      
+ 563   2                              case 0x21://HID描述符
+ 564   2                                      {
+ 565   3                                              USBMSG("-->获取HID描述符\r\n"); 
+ 566   3                                              //HID描述符在acUSBConDescriptor数组中地址偏移为18
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 11  
+
+ 567   3                                              USBCtrlPacket.mpucTxd=(UINT8 *)&USBDescriptor.HidDesr;                                  
+ 568   3                                      }
+ 569   2                                      break;
+ 570   2      
+ 571   2                              case 0x22://报告描述符
+ 572   2                                      {
+ 573   3                                              USBCtrlPacket.mpucTxd=acUSBHidReportDescriptor;
+ 574   3                                              USBCtrlPacket.musTxLength=USBCtrlPacket.musTxLength <=sizeof(acUSBHidReportDescriptor)?\
+ 575   3                                                    USBCtrlPacket.musTxLength  :sizeof(acUSBHidReportDescriptor)
+             -;
+ 576   3      
+ 577   3                                          USBMSG("-->获取HID报告描述符\r\n");
+ 578   3                                              USBMSG("\r\n\r\n-->     USB设备枚举成功     <--  \r\n\r\n");
+ 579   3              
+ 580   3                                              USBFlags.bits.mbEnumed=TRUE;
+ 581   3      
+ 582   3      
+ 583   3                                      }
+ 584   2                                      break;
+ 585   2      
+ 586   2                              case 0x23://物理描述符
+ 587   2                                      break;
+ 588   2      
+ 589   2                              default :
+ 590   2                                      break;
+ 591   2                      }       
+ 592   1              
+ 593   1                      USBEP0DesriptorCopy();
+ 594   1      }
+ 595          /*****************************************************************************************
+ 596          ** 函数名称: USBPcGetConfiguration                              
+ 597          ** 功能描述: 获得配置
+ 598          ** 输    入: 无
+ 599          ** 输    出: 无                                                 
+ 600          ******************************************************************************************/
+ 601          void USBPcGetConfiguration(void)
+ 602          {
+ 603   1               USBCtrlPacket.r.mucReuestType=USBFlags.bits.mbConfig ? 1:0;
+ 604   1      }
+ 605          /*****************************************************************************************
+ 606          ** 函数名称: USBPcClearFeature                          
+ 607          ** 功能描述: 清除特性
+ 608          ** 输    入: 无
+ 609          ** 输    出: 无                                                 
+ 610          ******************************************************************************************/
+ 611          void USBPcClearFeature(void)
+ 612          {
+ 613   1              if((USBCtrlPacket.r.mucReuestType&0x1F)==0X02)
+ 614   1              {                               
+ 615   2                      switch(LSB(USBCtrlPacket.r.musReuestIndex))
+ 616   2                      {
+ 617   3                              case 0x82:
+ 618   3                                      USBCiWriteSingleCmd (CMD_SET_ENDP7);                            //清除端点2上传
+*** ERROR C202 IN LINE 618 OF USB.C: 'CMD_SET_ENDP7': undefined identifier
+ 619   3                                      USBCiWriteSingleData(0x8E);                                     //发命令清除端点
+ 620   3                                      break;
+ 621   3                              case 0x02:
+ 622   3                                      USBCiWriteSingleCmd (CMD_SET_ENDP6);
+*** ERROR C202 IN LINE 622 OF USB.C: 'CMD_SET_ENDP6': undefined identifier
+ 623   3                                      USBCiWriteSingleData(0x80);                                                     //清除端点2下传
+ 624   3                                      break;
+ 625   3                              case 0x81:
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 12  
+
+ 626   3                                      USBCiWriteSingleCmd (CMD_SET_ENDP5);                            //清除端点1上传
+*** ERROR C202 IN LINE 626 OF USB.C: 'CMD_SET_ENDP5': undefined identifier
+ 627   3                                      USBCiWriteSingleData(0x8E);
+ 628   3                                      break;
+ 629   3                              case 0x01:
+ 630   3                                      USBCiWriteSingleCmd (CMD_SET_ENDP4);                            //清除端点1下传
+*** ERROR C202 IN LINE 630 OF USB.C: 'CMD_SET_ENDP4': undefined identifier
+ 631   3                                      USBCiWriteSingleData(0x80);
+ 632   3                                      break;
+ 633   3                              default:
+ 634   3                                      break;
+ 635   3                      }
+ 636   2              }
+ 637   1              else
+ 638   1              {
+ 639   2                      USBPcHold();//发送空包,表示保持当前状态
+ 640   2              }
+ 641   1      }
+ 642          /*****************************************************************************************
+ 643          ** 函数名称: USBPcGetInterface                          
+ 644          ** 功能描述: 获得接口
+ 645          ** 输    入: 无
+ 646          ** 输    出: 无                                                 
+ 647          ******************************************************************************************/
+ 648          void USBPcGetInterface(void)
+ 649          {
+ 650   1           USBCtrlPacket.r.mucReuestType =0x01;
+ 651   1               USBCtrlPacket.r.mucReuestCode =0x00;    
+ 652   1      }
+ 653          /*****************************************************************************************
+ 654          ** 函数名称: USBPcGetStatus                             
+ 655          ** 功能描述: 获得状态
+ 656          ** 输    入: 无
+ 657          ** 输    出: 无                                                 
+ 658          ******************************************************************************************/
+ 659          void USBPcGetStatus(void)
+ 660          {
+ 661   1           USBCtrlPacket.r.mucReuestType =0x00;
+ 662   1               USBCtrlPacket.r.mucReuestCode =0x00;           
+ 663   1      }
+ 664          /*****************************************************************************************
+ 665          ** 函数名称: USBPcSetConfiguration                              
+ 666          ** 功能描述: 设置配置
+ 667          ** 输    入: 无
+ 668          ** 输    出: 无                                                 
+ 669          ******************************************************************************************/
+ 670          void USBPcSetConfiguration(void)
+ 671          {
+ 672   1              USBFlags.bits.mbConfig = FALSE;
+ 673   1      
+ 674   1              USBFlags.bits.mbConfig = LSB(USBCtrlPacket.r.musReuestValue)? TRUE:FALSE;
+ 675   1      }
+ 676          /*****************************************************************************************
+ 677          ** 函数名称: USBPcSetAddress                            
+ 678          ** 功能描述: 设置地址
+ 679          ** 输    入: 无
+ 680          ** 输    出: 无                                                 
+ 681          ******************************************************************************************/
+ 682          void USBPcSetAddress(void)
+ 683          {
+ 684   1              ucUSBAddress=LSB(USBCtrlPacket.r.musReuestValue);//暂存USB主机发来的地址
+ 685   1      }
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 13  
+
+ 686          /*****************************************************************************************
+ 687          ** 函数名称: USBPcSetDescriptor                         
+ 688          ** 功能描述: 设置描述符
+ 689          ** 输    入: 无
+ 690          ** 输    出: 无                                                 
+ 691          ******************************************************************************************/
+ 692          void USBPcSetDescriptor(void)
+ 693          {
+ 694   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 695   1              USBCtrlPacket.musTxLength = 0 ;
+ 696   1      }
+ 697          /*****************************************************************************************
+ 698          ** 函数名称: USBPcSetFeature                            
+ 699          ** 功能描述: 设置特性
+ 700          ** 输    入: 无
+ 701          ** 输    出: 无                                                 
+ 702          ******************************************************************************************/
+ 703          void USBPcSetFeature(void)
+ 704          {
+ 705   1      
+ 706   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 707   1              USBCtrlPacket.musTxLength = 0 ;
+ 708   1      }
+ 709          /*****************************************************************************************
+ 710          ** 函数名称: USBPcSetInterface                          
+ 711          ** 功能描述: 设置接口
+ 712          ** 输    入: 无
+ 713          ** 输    出: 无                                                 
+ 714          ******************************************************************************************/
+ 715          void USBPcSetInterface(void)
+ 716          {
+ 717   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 718   1              USBCtrlPacket.musTxLength = 0 ;
+ 719   1      }
+ 720          /*****************************************************************************************
+ 721          ** 函数名称: USBPcGetReport                             
+ 722          ** 功能描述: 获取报告
+ 723          ** 输    入: 无
+ 724          ** 输    出: 无                                                 
+ 725          ******************************************************************************************/
+ 726          void USBPcGetReport(void) 
+ 727          {
+ 728   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 729   1              USBCtrlPacket.musTxLength = 0 ; 
+ 730   1      }
+ 731          /*****************************************************************************************
+ 732          ** 函数名称: USBPcGetIdle                               
+ 733          ** 功能描述: 获取空闲状态
+ 734          ** 输    入: 无
+ 735          ** 输    出: 无                                                 
+ 736          ******************************************************************************************/
+ 737          void USBPcGetIdle(void)
+ 738          {
+ 739   1      
+ 740   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 741   1              USBCtrlPacket.musTxLength = 0 ; 
+ 742   1      }
+ 743          /*****************************************************************************************
+ 744          ** 函数名称: USBPcGetProtocol                           
+ 745          ** 功能描述: 获取协议
+ 746          ** 输    入: 无
+ 747          ** 输    出: 无                                                 
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 14  
+
+ 748          ******************************************************************************************/
+ 749          void USBPcGetProtocol(void)
+ 750          {
+ 751   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 752   1              USBCtrlPacket.musTxLength = 0 ;
+ 753   1      }
+ 754          /*****************************************************************************************
+ 755          ** 函数名称: USBPcSetProtocol                           
+ 756          ** 功能描述: 设置协议
+ 757          ** 输    入: 无
+ 758          ** 输    出: 无                                                 
+ 759          ******************************************************************************************/
+ 760          void USBPcSetProtocol(void)
+ 761          {
+ 762   1               //ucUSBProtocol = LSB(USBCtrlPacket.r.musReuestValue);
+ 763   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 764   1              USBCtrlPacket.musTxLength = 0 ;
+ 765   1      }
+ 766          /*****************************************************************************************
+ 767          ** 函数名称: USBPcSetReport                             
+ 768          ** 功能描述: 设置报告
+ 769          ** 输    入: 无
+ 770          ** 输    出: 无                                                 
+ 771          ******************************************************************************************/
+ 772          void USBPcSetReport(void)
+ 773          {
+ 774   1              /*UINT8 i ;
+ 775   1              i = 0x1 ;
+ 776   1      
+ 777   1              USBCtrlPacket.mpucTxd=&i ; //由于i为临时变量,容易出现野指针
+ 778   1               USBCtrlPacket.musTxLength    = 1 ;*/
+ 779   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 780   1              USBCtrlPacket.musTxLength = 0 ;
+ 781   1      }
+ 782          /*****************************************************************************************
+ 783          ** 函数名称: USBPcSetIdle                               
+ 784          ** 功能描述: 设置空闲状态
+ 785          ** 输    入: 无
+ 786          ** 输    出: 无                                                 
+ 787          ******************************************************************************************/
+ 788          void USBPcSetIdle(void)
+ 789          {
+ 790   1              //ucUSBIdle = USBCtrlPacket.r.musReuestValue ;
+ 791   1          USBCtrlPacket.mpucTxd     = NULL ;
+ 792   1              USBCtrlPacket.musTxLength = 0 ;
+ 793   1      }
+ 794          /*
+ 795            ---------------------  USB 中断服务程序  ---------------------
+ 796          */
+ 797          
+ 798          /***********************************************************************************
+ 799          ** 函数名称 : UsbIRQ
+ 800          ** 功能描述 : 中断服务程序
+ 801          ** 输    入     : 无
+ 802          ** 输   出      : 无
+ 803          ************************************************************************************/
+ 804          void UsbIRQ(void) interrupt 2
+ 805          {
+ 806   1              UINT8 ucintStatus;
+ 807   1              UINT8 ucrecvLen,i;
+ 808   1      
+ 809   1              USBCiWriteSingleCmd(CMD_GET_STATUS);                                                            //获取中断状态并取消中断请求 
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 15  
+
+*** ERROR C202 IN LINE 809 OF USB.C: 'CMD_GET_STATUS': undefined identifier
+ 810   1              ucintStatus =USBCiReadSingleData();                                                             //获取中断状态,清中断标志,对应于INT0中断 
+ 811   1              
+ 812   1              switch(ucintStatus)                                                                                                     //分析中断状态
+ 813   1              {  
+ 814   2                      case USB_INT_EP2_OUT: 
+*** ERROR C202 IN LINE 814 OF USB.C: 'USB_INT_EP2_OUT': undefined identifier
+ 815   2                               {
+ 816   3                                      //这里一定要读取,否则会导致CH37x系列USB卡死
+ 817   3                                        ucrecvLen=USBCiReadPortData(USBMainBuf);
+ 818   3                                        //USBMSG("\r\nCH37x USB 端点2收到数据\r\n");
+ 819   3                                        USBMSG("CH37x USB接收到数据如下:\r\n");
+ 820   3                                        for(i=0;i<ucrecvLen;i++)USBMSGEx("",USBMainBuf[i],16);
+ 821   3                                        USBMSG("\r\n");
+ 822   3                                        USBMSG("CH37x USB向PC机发送数据---->\r\n");                    
+ 823   3                                        USBMSG("\r\n");
+ 824   3                                        USBCiEP2Send(USBMainBuf,64);
+ 825   3      
+ 826   3                               } 
+ 827   2                               break;
+ 828   2      
+ 829   2                      case USB_INT_EP2_IN:                                                                                //批量端点上传成功,未处理
+*** ERROR C202 IN LINE 829 OF USB.C: 'USB_INT_EP2_IN': undefined identifier
+ 830   2                               {
+ 831   3                                      USBMSG("\r\nCH37x USB 发送数据成功\r\n");
+ 832   3                                      USBCiWriteSingleCmd (CMD_UNLOCK_USB);                                   //释放缓冲区
+*** ERROR C202 IN LINE 832 OF USB.C: 'CMD_UNLOCK_USB': undefined identifier
+ 833   3                               }
+ 834   2                               break;
+ 835   2      
+ 836   2                      case USB_INT_EP0_SETUP:                                                 //控制端点建立成功，当收到命令的时候，执行该中
+             -断
+*** ERROR C202 IN LINE 836 OF USB.C: 'USB_INT_EP0_SETUP': undefined identifier
+ 837   2                               {
+ 838   3      
+ 839   3                                ucrecvLen=USBCiReadPortData((UINT8 *)&USBCtrlPacket.r);   //获取建立请求包的内容
+ 840   3                                
+ 841   3                                //USB为小端模式 51为大端模式 需要切换
+ 842   3                                USBCtrlPacket.r.musReuestValue =SWAP16(USBCtrlPacket.r.musReuestValue);
+ 843   3                                USBCtrlPacket.r.musReuestIndex =SWAP16(USBCtrlPacket.r.musReuestIndex);
+ 844   3                                USBCtrlPacket.r.musReuestLength=SWAP16(USBCtrlPacket.r.musReuestLength);
+ 845   3              
+ 846   3                                USBCtrlPacket.mpucTxd = NULL;       //重新定位发送指针,防止野指针
+ 847   3      
+ 848   3                    USBCtrlPacket.musTxLength=USBCtrlPacket.r.musReuestLength;
+ 849   3                                USBCtrlPacket.musTxCount =0;
+ 850   3                      
+ 851   3                               /*********类请求命令***********/
+ 852   3                                if(USBCtrlPacket.r.mucReuestType &0x20)              //类请求，未处理
+ 853   3                                {          
+ 854   4                                      USBMSG(HidClassRequest[USBCtrlPacket.r.mucReuestType & 0x1F].s);        
+ 855   4                                      (*HidClassRequest[USBCtrlPacket.r.mucReuestType & 0x1F].fun)();
+ 856   4                                }
+ 857   3                               /*  标准的请求命令*/
+ 858   3                                if(!(USBCtrlPacket.r.mucReuestType&0x60))                                                                             
+ 859   3                                {                                             
+ 860   4                      //检查当前标准请求是否获取描述符
+ 861   4                      USBFlags.bits.mbDescriptor=DEF_USB_GET_DESCR   == USBCtrlPacket.r.mucReuestCode?TRUE:FALSE
+             -;
+*** ERROR C202 IN LINE 861 OF USB.C: 'DEF_USB_GET_DESCR': undefined identifier
+ 862   4                      //检查当前标准请求是否获取地址
+ 863   4                                  USBFlags.bits.mbAdrress   =DEF_USB_SET_ADDRESS == USBCtrlPacket.r.mucReuestCode?TRUE:FALSE;
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 16  
+
+*** ERROR C202 IN LINE 863 OF USB.C: 'DEF_USB_SET_ADDRESS': undefined identifier
+ 864   4      
+ 865   4                                      USBMSG(StandardDeviceRequest[USBCtrlPacket.r.mucReuestCode].s); 
+ 866   4                                      (*StandardDeviceRequest[USBCtrlPacket.r.mucReuestCode].fun)();
+ 867   4                                }
+ 868   3      
+ 869   3                                USBEP0Up();     //数据上传
+ 870   3                              }
+ 871   2                              break;
+ 872   2      
+ 873   2                      case USB_INT_EP0_IN:                                                    //控制端点上传成功      
+*** ERROR C202 IN LINE 873 OF USB.C: 'USB_INT_EP0_IN': undefined identifier
+ 874   2                          {
+ 875   3                                              //当发送完描述符时,会从 USB_INT_EP0_IN 转到 USB_INT_EP0_SETUP的,
+ 876   3                                              //即发送完当前规定长度的描述符,才会出现USB_INT_EP0_SETUP中断,
+ 877   3                                              //否则一直为USB_INT_EP0_IN
+ 878   3      /* 流程演示
+ 879   3      
+ 880   3      [06H]USB 标准设备请求:获取描述符
+ 881   3      -->获得产品字符串
+ 882   3      USB_INT_EP0_IN
+ 883   3      USB_INT_EP0_IN
+ 884   3      USB_INT_EP0_IN
+ 885   3      USB_INT_EP0_IN
+ 886   3      USB_INT_EP0_IN
+ 887   3      USB_INT_EP0_IN
+ 888   3      USB_INT_EP0_IN
+ 889   3      USB_INT_EP0_IN
+ 890   3      USB_INT_EP0_IN
+ 891   3      USB_INT_EP0_IN
+ 892   3      USB_INT_EP0_IN
+ 893   3      USB_INT_EP0_SETUP
+ 894   3      [06H]USB 标准设备请求:获取描述符
+ 895   3      -->获得语言ID
+ 896   3      USB_INT_EP0_IN
+ 897   3      USB_INT_EP0_SETUP
+ 898   3      [06H]USB 标准设备请求:获取描述符
+ 899   3      -->获得产品字符串
+ 900   3      USB_INT_EP0_IN
+ 901   3      USB_INT_EP0_IN
+ 902   3      USB_INT_EP0_IN
+ 903   3      USB_INT_EP0_IN
+ 904   3      USB_INT_EP0_IN
+ 905   3      USB_INT_EP0_IN
+ 906   3      USB_INT_EP0_IN
+ 907   3      USB_INT_EP0_IN
+ 908   3      USB_INT_EP0_IN
+ 909   3      USB_INT_EP0_IN
+ 910   3      USB_INT_EP0_IN
+ 911   3      USB_INT_EP0_SETUP
+ 912   3      [06H]USB 标准设备请求:获取描述符
+ 913   3      .....
+ 914   3      .....
+ 915   3      */                      
+ 916   3                                      if(USBFlags.bits.mbDescriptor)          //描述符上传
+ 917   3                                      {                                                               
+ 918   4                                              USBEP0DesriptorCopy();                          //复制描述符
+ 919   4                                              USBEP0Up();                                                                                                                     
+ 920   4                                      }
+ 921   3                                      //设置USB地址
+ 922   3                                      else if(USBFlags.bits.mbAdrress)   //设置地址
+ 923   3                                      {
+C51 COMPILER V7.06   USB                                                                   12/06/2009 12:50:48 PAGE 17  
+
+ 924   4                                              USBCiWriteSingleCmd (CMD_SET_USB_ADDR);
+*** ERROR C202 IN LINE 924 OF USB.C: 'CMD_SET_USB_ADDR': undefined identifier
+ 925   4                                              USBCiWriteSingleData(ucUSBAddress);                             //设置USB地址,设置下次事务的USB地址
+ 926   4                                      }
+ 927   3                                      else
+ 928   3                                      {
+ 929   4                                              USBPcHold();  //发送空包,保持状态 
+ 930   4                                      }
+ 931   3                                      //释放缓冲区
+ 932   3                                      USBCiWriteSingleCmd(CMD_UNLOCK_USB);                            //释放缓冲区
+*** ERROR C202 IN LINE 932 OF USB.C: 'CMD_UNLOCK_USB': undefined identifier
+ 933   3                              }
+ 934   2                              break;
+ 935   2      
+ 936   2                      case USB_INT_EP0_OUT:                                                                           //控制端点下传成功
+*** ERROR C202 IN LINE 936 OF USB.C: 'USB_INT_EP0_OUT': undefined identifier
+ 937   2                               {
+ 938   3                                      //这里一定要读取,否则会导致CH37x系列USB卡死
+ 939   3                                      ucrecvLen=USBCiReadPortData(USBCtrlPacket.mucBuf);  
+ 940   3                               }
+ 941   2                               break;
+ 942   2      
+ 943   2                      default:
+ 944   2                                {
+ 945   3                                      //这里一定要有,需要总线复位,否则USB卡住不动
+ 946   3                                      if(ucintStatus&USB_INT_BUS_RESET1)                                //总线复位
+*** ERROR C202 IN LINE 946 OF USB.C: 'USB_INT_BUS_RESET1': undefined identifier
+ 947   3                                      {                       
+ 948   4                          BufClr((UINT8 *)&USBCtrlPacket,sizeof(USBCtrlPacket));      //清空数据缓冲区                                
+ 949   4                                              USBFlags.musFlags=0;                          //标志位集合全部清零    
+ 950   4                                              USBFlags.bits.mbReset=TRUE;                   //标志位集合中的复位标志位置1
+ 951   4                                              USBMSG("CH37x USB 复位\r\n");
+ 952   4                                      }
+ 953   3      
+ 954   3                                      USBCiWriteSingleCmd (CMD_UNLOCK_USB);                           //释放缓冲区
+*** ERROR C202 IN LINE 954 OF USB.C: 'CMD_UNLOCK_USB': undefined identifier
+ 955   3                               }
+ 956   2                               break;
+ 957   2      
+ 958   2               }
+ 959   1      }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  58 ERROR(S)

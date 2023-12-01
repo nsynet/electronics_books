@@ -1,0 +1,236 @@
+XL
+H 4 areas 15 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S empy16s Ref0000
+A text size 1C2 flags 0
+dbfile D:\整理\个人总结的M8程序\020、模拟采集串口发送程序\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 10 4
+dbline 11 4
+dbline 12 6
+dbline 12 6
+dbline 12 C
+dbline 12 C
+dbline 12 C
+dbline 12 C
+dbline 12 10
+dbline 12 16
+dbline 11 16
+dbline 11 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Pre_Display 26 fV
+dbline FFFFFFFF 26
+dbline 18 26
+dbline 1B 26
+dbline 1C 3E
+dbline 1D 5E
+dbline 1E 7E
+dbline 20 96
+dbline 21 9C
+dbline 22 B0
+dbline 23 B6
+dbline 24 BC
+dbline 25 D0
+dbline 26 D6
+dbline 27 DC
+dbline 28 F0
+dbline 29 F6
+dbline 2A FC
+dbline 2B 110
+dbline FFFFFFFE 116
+dbline 0 116
+dbfunc e ADC_Convert 118 fi
+dbsym r temp1 16 i
+dbsym r temp2 14 i
+dbline FFFFFFFF 11C
+dbline 31 11C
+dbline 32 11C
+dbline 33 120
+dbline 34 124
+dbline 35 12E
+dbline 36 142
+dbline FFFFFFFE 142
+dbline 0 146
+dbfunc e Init_IO 148 fV
+dbline FFFFFFFF 148
+dbline 3C 148
+dbline 3D 148
+dbline 3E 14C
+dbline 3F 14E
+dbline 40 152
+dbline 41 154
+dbline 42 156
+dbline FFFFFFFE 158
+dbline 0 158
+dbfunc e Uart_Init 15A fV
+dbline FFFFFFFF 15A
+dbline 48 15A
+dbline 49 15A
+dbline 4A 15E
+dbline 4B 160
+dbline 4C 164
+dbline 4D 168
+dbline 4E 16A
+dbline FFFFFFFE 16E
+dbline 0 16E
+dbfunc e Putchar 170 fV
+dbsym r c 10 c
+dbline FFFFFFFF 170
+dbline 54 170
+dbline 55 170
+dbline 55 170
+dbline 56 174
+dbline FFFFFFFE 176
+dbline 0 176
+dbfunc e main 178 fV
+dbsym r i 14 i
+dbsym r TXD 16 i
+dbline FFFFFFFF 178
+dbline 5C 178
+dbline 5E 178
+dbline 5F 17A
+dbline 60 17C
+dbline 62 180
+dbline 63 184
+dbline 65 18C
+dbline 67 18C
+dbline 68 190
+dbline 69 198
+dbline 6A 1A2
+dbline 6A 1AA
+dbline 6B 1AE
+dbline 6B 1B4
+dbline 6C 1B8
+dbline 6D 1BC
+dbline 6F 1BE
+dbline 64 1BE
+dbline FFFFFFFE 1C0
+dbline 0 1C0
+S _main Def0178
+S _DelayMs Def0000
+S _Putchar Def0170
+S _ADC_Convert Def0118
+S _Pre_Display Def0026
+S _Init_IO Def0148
+S _Uart_Init Def015A
+A data size E flags 20
+dbfile D:\整理\个人总结的M8程序\020、模拟采集串口发送程序\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e wei A A[4:4]c
+S _Table Def0000
+S _wei Def000A
+A idata size E flags 0
+A bss size A flags 20
+dbfile D:\整理\个人总结的M8程序\020、模拟采集串口发送程序\icc\chengxu.c
+dbsym e date 0 i
+dbsym e v 2 i
+dbsym e c 4 i
+dbsym e x 6 i
+dbsym e z 8 i
+S _c Def0004
+S _v Def0002
+S _x Def0006
+S _z Def0008
+S _date Def0000
+T 00 00 C0 F9
+R 00 00 02 00
+T 02 00 A4 B0
+R 00 00 02 00
+T 04 00 99 92
+R 00 00 02 00
+T 06 00 82 F8
+R 00 00 02 00
+T 08 00 80 90
+R 00 00 02 00
+T 0A 00 E0 D0
+R 00 00 02 00
+T 0C 00 B0 70
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 04 00
+T 26 00 28 EE 33 E0 00 91 00 00 10 91 01 00 0E 94
+R 00 00 00 00 00 08 03 00 00 0C 03 00
+T 34 00 00 00 10 93 09 00 00 93 08 00 28 EE 33 E0
+R 00 00 00 00 12 02 03 00 00 06 03 00 00 0A 03 00
+T 42 00 00 91 00 00 10 91 01 00 0E 94 00 00 24 E6
+R 00 00 00 00 00 04 03 00 00 08 03 00 12 0C 02 00
+T 50 00 30 E0 0E 94 00 00 10 93 07 00 00 93 06 00
+R 00 00 00 00 12 06 03 00 00 0A 03 00 00 0E 03 00
+T 5E 00 24 E6 30 E0 00 91 00 00 10 91 01 00 0E 94
+R 00 00 00 00 00 08 03 00 00 0C 03 00
+T 6C 00 00 00 2A E0 30 E0 0E 94 00 00 10 93 05 00
+R 00 00 00 00 12 02 02 00 12 0A 03 00 00 0E 03 00
+T 7A 00 00 93 04 00 2A E0 30 E0 00 91 00 00 10 91
+R 00 00 00 00 00 04 03 00 00 0C 03 00
+T 88 00 01 00 0E 94 00 00 10 93 03 00 00 93
+R 00 00 00 00 00 02 03 00 12 06 02 00 00 0A 03 00
+T 94 00 02 00 20 90 0A 00 22 BA
+R 00 00 00 00 00 02 03 00 00 06 01 00
+T 9C 00 80 E0 90 E0 E0 91
+R 00 00 00 00 20 02 01 00 00 00 40 04 01 00 00 00
+T A2 00 08 00 F0 91 09 00 E8 0F F9 1F 20 80 28 BA
+R 00 00 00 00 00 02 03 00 00 06 03 00
+T B0 00 01 E0 10 E0 A5 DF 20 90 0B 00 22 BA 80 E0
+R 00 00 00 00 00 0A 01 00 20 0E 01 00 00 00
+T BE 00 90 E0 E0 91 06 00 F0 91
+R 00 00 00 00 40 02 01 00 00 00 00 06 03 00
+T C6 00 07 00 E8 0F F9 1F 20 80 28 BA 01 E0 10 E0
+R 00 00 00 00 00 02 03 00
+T D4 00 95 DF 20 90 0C 00 22 BA 80 E0
+R 00 00 00 00 00 06 01 00 20 0A 01 00 00 00
+T DE 00 90 E0 E0 91 04 00 F0 91
+R 00 00 00 00 40 02 01 00 00 00 00 06 03 00
+T E6 00 05 00 E8 0F F9 1F 20 80 28 BA 01 E0 10 E0
+R 00 00 00 00 00 02 03 00
+T F4 00 85 DF 20 90 0D 00 22 BA 80 E0
+R 00 00 00 00 00 06 01 00 20 0A 01 00 00 00
+T FE 00 90 E0 E0 91 02 00 F0 91
+R 00 00 00 00 40 02 01 00 00 00 00 06 03 00
+T 06 01 03 00 E8 0F F9 1F 20 80 28 BA 01 E0 10 E0
+R 00 00 00 00 00 02 03 00
+T 14 01 75 DF 08 95
+R 00 00 00 00
+T 18 01 0E 94 00 00 64 B1 77 27 45 B1 55 27 1A 01
+R 00 00 00 00 12 04 01 00
+T 26 01 32 2C 22 24 26 0E 37 1E 01 E3 10 E0 91 01
+R 00 00 00 00
+T 34 01 0E 94 00 00 2A E0 30 E0 0E 94 00 00 A8 01
+R 00 00 00 00 12 04 06 00 12 0C 03 00
+T 42 01 0E 94 00 00 08 95
+R 00 00 00 00 12 04 05 00
+T 48 01 22 24 24 BA 25 BA 8F EF 87 BB 88 BB 81 BB
+R 00 00 00 00
+T 56 01 82 BB 08 95
+R 00 00 00 00
+T 5A 01 22 24 2A B8 2B B8 86 E8 80 BD 83 E3 89 B9
+R 00 00 00 00
+T 68 01 20 BC 88 E1 8A B9 08 95
+R 00 00 00 00
+T 70 01 5D 9B FE CF 0C B9 08 95
+R 00 00 00 00
+T 78 01 E7 DF EF DF 22 24 27 B8 86 EE 86 B9 01 E0
+R 00 00 00 00
+T 86 01 10 E0 3B DF 19 C0 C5 DF A8 01 50 93 01 00
+R 00 00 00 00 00 0E 03 00
+T 94 01 40 93 00 00 23 E1 30 E0 0E 94 00 00 B8 01
+R 00 00 00 00 00 04 03 00 12 0C 03 00
+T A2 01 0F 3F E0 E0 1E 07 10 F0 6F EF 70 E0 60 30
+R 00 00 00 00
+T B0 01 67 07 11 F4 66 27 77 27 06 2F DA DF 34 DF
+R 00 00 00 00
+T BE 01 E6 CF 08 95
+R 00 00 00 00

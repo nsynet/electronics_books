@@ -1,0 +1,214 @@
+C51 COMPILER V8.02   SMG18B20                                                              09/27/2007 20:48:08 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE SMG18B20
+OBJECT MODULE PLACED IN SMG18b20.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE SMG18b20.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          //DS18B20的读写程序,数据脚P2.7                     //
+   3          //温度传感器18B20汇编程序,采用器件默认的12位转化   //
+   4          //最大转化时间750微秒,显示温度-55到+125度,显示精度 //
+   5          //为0.1度，显示采用4位LED共阳显示测温值            //
+   6          //P0口为段码输入,P34~P37为位选                       //
+   7          /***************************************************/
+   8          
+   9          #include "reg51.h"
+  10          #include "intrins.h"                            //_nop_();延时函数用
+  11          #define  Disdata P0                             //段码输出口
+  12          #define  discan  P3                             //扫描口
+  13          #define  uchar unsigned char
+  14          #define  uint  unsigned int
+  15          sbit     DQ=P2^7;                               //温度输入口
+  16          sbit     DIN=P0^7;                              //LED小数点控制
+  17          uint     h; 
+  18          uint     temp;
+  19          //
+  20          //
+  21          //**************温度小数部分用查表法***********//
+  22          uchar code ditab[16]=
+  23          {0x00,0x01,0x01,0x02,0x03,0x03,0x04,0x04,0x05,0x06,0x06,0x07,0x08,0x08,0x09,0x09};
+  24          //
+  25          uchar code dis_7[12]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0xff,0xbf};
+  26          //共阳LED段码表        "0"  "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9" "不亮" "-"              
+  27          uchar code scan_con[4]={0x7f,0xbf,0xdf,0xef};    //列扫描控制字
+  28          uchar data temp_data[2]={0x00,0x00};             //读出温度暂放
+  29          uchar data display[5]={0x00,0x00,0x00,0x00,0x00};     //显示单元数据，共4个数据和一个运算暂用
+  30          
+  31          //
+  32          //
+  33          //
+  34          /*****************11us延时函数*************************/
+  35          //
+  36          void delay(uint t)
+  37          {
+  38   1        for (;t>0;t--);
+  39   1      }
+  40          //
+  41          
+  42          /****************显示扫描函数***************************/
+  43          scan()
+  44          {
+  45   1        char k;
+  46   1           for(k=0;k<4;k++)                     //4位LED扫描控制
+  47   1      {
+  48   2        Disdata=dis_7[display[k]];          //数据显示
+  49   2        if (k==1){DIN=0;}                   //小数点显示
+  50   2        discan=scan_con[k];                 //位选
+  51   2        delay(300);
+  52   2      }
+  53   1      }
+  54          //
+  55          //
+C51 COMPILER V8.02   SMG18B20                                                              09/27/2007 20:48:08 PAGE 2   
+
+  56          /****************DS18B20复位函数************************/
+  57          ow_reset(void)
+  58          {
+  59   1      char presence=1;
+  60   1      while(presence)
+  61   1      {
+  62   2        while(presence)
+  63   2         {
+  64   3          DQ=1;_nop_();_nop_();//从高拉倒低
+  65   3      DQ=0;                                       
+  66   3      delay(50);           //550 us
+  67   3      DQ=1;                                        
+  68   3      delay(6);            //66 us
+  69   3      presence=DQ;         //presence=0 复位成功,继续下一步
+  70   3         } 
+  71   2         delay(45);            //延时500 us
+  72   2         presence=~DQ;         
+  73   2      }
+  74   1      DQ=1;                   //拉高电平
+  75   1      }
+  76          //
+  77          //
+  78          /****************DS18B20写命令函数************************/
+  79          //向1-WIRE 总线上写1个字节
+  80          void write_byte(uchar val)
+  81          { 
+  82   1        uchar i;
+  83   1        for(i=8;i>0;i--)
+  84   1        {
+  85   2         DQ=1;_nop_();_nop_();                  //从高拉倒低
+  86   2         DQ=0;_nop_();_nop_();_nop_();_nop_();  //5 us
+  87   2         DQ=val&0x01;                           //最低位移出
+  88   2         delay(6);                              //66 us
+  89   2         val=val/2;                             //右移1位
+  90   2         }
+  91   1         DQ=1;
+  92   1         delay(1);
+  93   1      }
+  94          //
+  95          /****************DS18B20读1字节函数************************/
+  96          //从总线上取1个字节
+  97          uchar read_byte(void)
+  98          {
+  99   1      uchar i;
+ 100   1      uchar value=0;
+ 101   1      for(i=8;i>0;i--)
+ 102   1      {
+ 103   2        DQ=1;_nop_();_nop_();
+ 104   2        value>>=1;
+ 105   2        DQ=0;_nop_();_nop_();_nop_();_nop_();         //4 us
+ 106   2        DQ=1;_nop_();_nop_();_nop_();_nop_();         //4 us
+ 107   2        if(DQ)value|=0x80;
+ 108   2        delay(6);                                     //66 us
+ 109   2      }
+ 110   1      DQ=1;
+ 111   1      return(value);
+ 112   1      }
+ 113          //
+ 114          /****************读出温度函数************************/
+ 115          //
+ 116          read_temp()
+ 117          {
+C51 COMPILER V8.02   SMG18B20                                                              09/27/2007 20:48:08 PAGE 3   
+
+ 118   1        ow_reset();                  //总线复位
+ 119   1        delay(200);
+ 120   1        write_byte(0xcc);            //发命令
+ 121   1        write_byte(0x44);            //发转换命令
+ 122   1        ow_reset(); 
+ 123   1        delay(1);
+ 124   1        write_byte(0xcc);            //发命令
+ 125   1        write_byte(0xbe);
+ 126   1        temp_data[0]=read_byte();    //读温度值的第字节
+ 127   1        temp_data[1]=read_byte();    //读温度值的高字节
+ 128   1        temp=temp_data[1];
+ 129   1        temp<<=8;                                               
+ 130   1        temp=temp|temp_data[0];      // 两字节合成一个整型变量。
+ 131   1        return temp;                 //返回温度值
+ 132   1      }
+ 133          //
+ 134          /****************温度数据处理函数************************/
+ 135          
+ 136          //二进制高字节的低半字节和低字节的高半字节组成一字节,这个
+ 137          //字节的二进制转换为十进制后,就是温度值的百、十、个位值,而剩
+ 138          //下的低字节的低半字节转化成十进制后,就是温度值的小数部分
+ 139          
+ 140          /********************************************************/
+ 141          work_temp(uint tem)
+ 142          {
+ 143   1      uchar n=0;
+ 144   1      if(tem>6348)                        // 温度值正负判断
+ 145   1           {tem=65536-tem;n=1;}            // 负温度求补码,标志位置1
+ 146   1            display[4]=tem&0x0f;           // 取小数部分的值
+ 147   1        display[0]=ditab[display[4]];  // 存入小数部分显示值
+ 148   1            display[4]=tem>>4;             // 取中间八位,即整数部分的值
+ 149   1        display[3]=display[4]/100;     // 取百位数据暂存
+ 150   1        display[1]=display[4]%100;     // 取后两位数据暂存
+ 151   1        display[2]=display[1]/10;      // 取十位数据暂存
+ 152   1        display[1]=display[1]%10;  
+ 153   1      /******************符号位显示判断**************************/
+ 154   1        if(!display[3]) 
+ 155   1        {
+ 156   2          display[3]=0x0a;           //最高位为0时不显示
+ 157   2          if(!display[2])
+ 158   2      {
+ 159   3         display[2]=0x0a;        //次高位为0时不显示
+ 160   3      }
+ 161   2        }
+ 162   1        if(n){display[3]=0x0b;}      //负温度时最高位显示"-"
+ 163   1      }
+ 164          //
+ 165          //
+ 166          /****************主函数************************/
+ 167          main()
+ 168          {
+ 169   1        Disdata=0xff;                 //初始化端口
+ 170   1        discan=0xff;
+ 171   1        for(h=0;h<4;h++)              //开机显示"0000"
+ 172   1            {display[h]=0;} 
+ 173   1        ow_reset();                   //开机先转换一次
+ 174   1        write_byte(0xcc);             //Skip ROM
+ 175   1        write_byte(0x44);             //发转换命令
+ 176   1        for(h=0;h<100;h++)            //开机显示"0000"
+ 177   1            {scan();}
+ 178   1        while(1)
+ 179   1        {
+C51 COMPILER V8.02   SMG18B20                                                              09/27/2007 20:48:08 PAGE 4   
+
+ 180   2      work_temp(read_temp());     //处理温度数据
+ 181   2      scan();                     //显示温度值
+ 182   2        }
+ 183   1      }
+ 184          //
+ 185          //***********************结束**************************//
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    438    ----
+   CONSTANT SIZE    =     32    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

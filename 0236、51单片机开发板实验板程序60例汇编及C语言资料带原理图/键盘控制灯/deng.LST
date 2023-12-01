@@ -1,0 +1,101 @@
+A51 MACRO ASSEMBLER  DENG                                                                 09/12/2007 21:48:43 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN deng.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE deng.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2                 
+0000                   3                ORG 0000H
+0000 0130              4                AJMP START
+0030                   5                ORG 0030H
+                       6       
+0030 7580FF            7     START:     MOV P0,#0FFH
+0033 7590FF            8                MOV P1,#0FFH
+                       9     
+0036 30900B           10     AAA:       JNB P1.0,SHOW1
+0039 309117           11                JNB P1.1,SHOW2
+003C 309223           12                JNB P1.2,SHOW3
+003F 30932F           13                JNB P1.3,SHOW4
+0042 0136             14                AJMP AAA
+                      15     
+0044 74FE             16     SHOW1:     MOV A,#0FEH
+0046 F580             17     BBB:       MOV P0,A
+0048 120080           18                LCALL DELAY
+004B 3087E2           19                JNB P0.7,START         
+004E 23               20                RL A
+004F 120046           21                LCALL BBB
+0052 22               22                RET
+                      23                
+0053 747F             24     SHOW2:     MOV A,#7FH
+0055 F580             25     DDD:       MOV P0,A
+0057 120080           26                LCALL DELAY
+005A 3080D3           27                JNB P0.0,START
+005D 03               28                RR A
+005E 120055           29                LCALL DDD
+0061 22               30                RET
+                      31     
+0062 74F0             32     SHOW3:     MOV A,#0F0H
+0064 F580             33     EEE:       MOV P0,A
+0066 120089           34                LCALL DELAY1
+0069 3087C4           35                JNB P0.7,START
+006C F4               36                CPL A
+006D 120064           37                LCALL EEE
+0070 22               38                RET
+                      39     
+0071 7433             40     SHOW4:     MOV A,#33H
+0073 F580             41     FFF:       MOV P0,A
+0075 120089           42                LCALL DELAY1
+0078 3080B5           43                JNB P0.0,START
+007B F4               44                CPL A
+007C 120073           45                LCALL FFF
+007F 22               46                RET
+                      47     
+0080 7FFA             48     DELAY:     MOV R7,#250
+0082 7EC8             49     DL1:       MOV R6,#200
+0084 DEFE             50                DJNZ R6,$
+0086 DFFA             51                DJNZ R7,DL1
+0088 22               52                RET
+                      53     
+0089 7D0A             54     DELAY1:    MOV R5,#10
+008B 120080           55     DL2:       LCALL DELAY
+008E DDFB             56                DJNZ R5,DL2
+0090 22               57                RET
+                      58     
+A51 MACRO ASSEMBLER  DENG                                                                 09/12/2007 21:48:43 PAGE     2
+
+                      59                END           
+                             
+A51 MACRO ASSEMBLER  DENG                                                                 09/12/2007 21:48:43 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AAA. . . . . . . .  C ADDR   0036H   A   
+BBB. . . . . . . .  C ADDR   0046H   A   
+DDD. . . . . . . .  C ADDR   0055H   A   
+DELAY. . . . . . .  C ADDR   0080H   A   
+DELAY1 . . . . . .  C ADDR   0089H   A   
+DL1. . . . . . . .  C ADDR   0082H   A   
+DL2. . . . . . . .  C ADDR   008BH   A   
+EEE. . . . . . . .  C ADDR   0064H   A   
+FFF. . . . . . . .  C ADDR   0073H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+SHOW1. . . . . . .  C ADDR   0044H   A   
+SHOW2. . . . . . .  C ADDR   0053H   A   
+SHOW3. . . . . . .  C ADDR   0062H   A   
+SHOW4. . . . . . .  C ADDR   0071H   A   
+START. . . . . . .  C ADDR   0030H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

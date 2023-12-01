@@ -1,0 +1,167 @@
+__start:
+__text_start:
+    002E E5CF      LDI	R28,0x5F
+    002F E0D4      LDI	R29,4
+    0030 BFCD      OUT	0x3D,R28
+    0031 BFDE      OUT	0x3E,R29
+    0032 51C0      SUBI	R28,0x10
+    0033 40D0      SBCI	R29,0
+    0034 EA0A      LDI	R16,0xAA
+    0035 8308      STD	Y+0,R16
+    0036 2400      CLR	R0
+    0037 E6E8      LDI	R30,0x68
+    0038 E0F0      LDI	R31,0
+    0039 E010      LDI	R17,0
+    003A 36E8      CPI	R30,0x68
+    003B 07F1      CPC	R31,R17
+    003C F011      BEQ	0x003F
+    003D 9201      ST	R0,Z+
+    003E CFFB      RJMP	0x003A
+    003F 8300      STD	Z+0,R16
+    0040 E5E4      LDI	R30,0x54
+    0041 E0F0      LDI	R31,0
+    0042 E6A0      LDI	R26,0x60
+    0043 E0B0      LDI	R27,0
+    0044 E010      LDI	R17,0
+    0045 35EC      CPI	R30,0x5C
+    0046 07F1      CPC	R31,R17
+    0047 F021      BEQ	0x004C
+    0048 95C8      LPM
+    0049 9631      ADIW	R30,1
+    004A 920D      ST	R0,X+
+    004B CFF9      RJMP	0x0045
+    004C 940E0069  CALL	_main
+_exit:
+    004E CFFF      RJMP	_exit
+FILE: D:\Proteus\ATMEGA16\个人总结AVR\AVR控制步进电机程序\L298N步进电机正转程序\chengxu.c
+(0001) ////////////////////////汇诚科技////////////////////
+(0002) //////////////////http://www.ourhc.cn///////////////
+(0003) ///////////////////步进电机正转调试程序/////////////
+(0004) #include <iom16v.h>
+(0005) #include <macros.h>
+(0006) 
+(0007) /*------宏定义------*/
+(0008) #define uchar unsigned char
+(0009) #define uint unsigned int
+(0010) uchar run[8]={0x0e,0x0c,0x0d,0x09,0x0b,0x03,0x07,0x06};  //两相四线八拍工作方式数组
+(0011) /*******************************************************************
+(0012)                              端口初始化
+(0013) *******************************************************************/
+(0014) void port_init(void)
+(0015) {
+(0016)  PORTB = 0xFF;
+_port_init:
+    004F EF8F      LDI	R24,0xFF
+    0050 BB88      OUT	0x18,R24
+(0017)  DDRB  = 0xFF;
+    0051 BB87      OUT	0x17,R24
+    0052 9508      RET
+_delay:
+  j                    --> R20
+  k                    --> R22
+  i                    --> R16
+    0053 940E009B  CALL	push_gset2
+(0018)  }
+(0019) /*******************************************************************
+(0020)                              延时函数
+(0021) *******************************************************************/
+(0022) void delay(uint i)//延时函数
+(0023) {
+(0024) uint j,k;
+(0025) for(j=0;j<i;j++)
+    0055 2744      CLR	R20
+    0056 2755      CLR	R21
+    0057 C00B      RJMP	0x0063
+(0026) for(k=0;k<1000;k++);
+    0058 2766      CLR	R22
+    0059 2777      CLR	R23
+    005A C002      RJMP	0x005D
+    005B 5F6F      SUBI	R22,0xFF
+    005C 4F7F      SBCI	R23,0xFF
+    005D 3E68      CPI	R22,0xE8
+    005E E0E3      LDI	R30,3
+    005F 077E      CPC	R23,R30
+    0060 F3D0      BCS	0x005B
+    0061 5F4F      SUBI	R20,0xFF
+    0062 4F5F      SBCI	R21,0xFF
+    0063 1740      CP	R20,R16
+    0064 0751      CPC	R21,R17
+    0065 F390      BCS	0x0058
+    0066 940E0081  CALL	pop_gset2
+    0068 9508      RET
+(0027) }
+(0028) /*******************************************************************
+(0029)                              主函数
+(0030) *******************************************************************/
+(0031) main()
+(0032) {
+(0033) uint z,y;
+(0034) y=40;	    //定义延时时间，时间越长电机转速越慢反之则快
+_main:
+  y                    --> R20
+  z                    --> R22
+    0069 E248      LDI	R20,0x28
+    006A E050      LDI	R21,0
+(0035) port_init();
+    006B DFE3      RCALL	_port_init
+    006C C012      RJMP	0x007F
+(0036) while(1)
+(0037) {
+(0038) for(z=0;z<8;z++)  //改变数组的长度值需改变这个数字8，8为数组的长度。
+    006D 2766      CLR	R22
+    006E 2777      CLR	R23
+    006F C00B      RJMP	0x007B
+(0039) {
+(0040) PORTB=run[z];
+    0070 E680      LDI	R24,0x60
+    0071 E090      LDI	R25,0
+    0072 01FB      MOVW	R30,R22
+    0073 0FE8      ADD	R30,R24
+    0074 1FF9      ADC	R31,R25
+    0075 8020      LDD	R2,Z+0
+    0076 BA28      OUT	0x18,R2
+(0041) delay(y);
+FILE: <library>
+    0077 018A      MOVW	R16,R20
+    0078 DFDA      RCALL	_delay
+    0079 5F6F      SUBI	R22,0xFF
+    007A 4F7F      SBCI	R23,0xFF
+    007B 3068      CPI	R22,0x8
+    007C E0E0      LDI	R30,0
+    007D 077E      CPC	R23,R30
+    007E F388      BCS	0x0070
+    007F CFED      RJMP	0x006D
+    0080 9508      RET
+pop_gset2:
+    0081 E0E2      LDI	R30,2
+    0082 940C0088  JMP	pop
+push_gset1:
+    0084 935A      ST	R21,-Y
+    0085 934A      ST	R20,-Y
+    0086 9508      RET
+pop_gset1:
+    0087 E0E1      LDI	R30,1
+pop:
+    0088 9149      LD	R20,Y+
+    0089 9159      LD	R21,Y+
+    008A FDE0      SBRC	R30,0
+    008B 9508      RET
+    008C 9169      LD	R22,Y+
+    008D 9179      LD	R23,Y+
+    008E FDE1      SBRC	R30,1
+    008F 9508      RET
+    0090 90A9      LD	R10,Y+
+    0091 90B9      LD	R11,Y+
+    0092 FDE2      SBRC	R30,2
+    0093 9508      RET
+    0094 90C9      LD	R12,Y+
+    0095 90D9      LD	R13,Y+
+    0096 FDE3      SBRC	R30,3
+    0097 9508      RET
+    0098 90E9      LD	R14,Y+
+    0099 90F9      LD	R15,Y+
+    009A 9508      RET
+push_gset2:
+    009B 937A      ST	R23,-Y
+    009C 936A      ST	R22,-Y
+    009D 940C0084  JMP	push_gset1

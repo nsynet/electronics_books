@@ -1,0 +1,27 @@
+#include <reg52.h>
+void delay(int i);
+
+int main(void)
+{
+ while (1)
+ {
+  int i;
+  for(i=0;i<8;i++)
+  {
+   P0=(1<<i);//正向流水灯
+   delay(10000);
+  }
+  for(i=0;i<8;i++)
+  {
+   P0=(1<<(7-i));//反向流水灯
+   delay(10000);
+  }
+ }
+}
+
+void delay(int i)
+{
+ int j="0";
+ for(j=0;j<i;j++)
+  ;
+}

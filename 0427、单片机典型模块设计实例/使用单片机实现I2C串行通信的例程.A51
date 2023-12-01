@@ -1,0 +1,64 @@
+;定义端口
+SCL EQU P1.0;
+SDA EQU P1.1;
+;开始信号的传递
+START: 	CLR 	SCL;
+SETB 	SDA;
+ACALL 	DELAY;
+SETB 	SCL;
+ACALL 	DELAY;
+CLR 	SDA;
+ACALL 	DELAY;
+CLR 	SCL;
+RET;
+
+;停止信号的传递
+STOP: 	CLR 	SCL;
+CLR 	SDA;
+ACALL 	DELAY;
+SETB 	SCL;
+ACALL 	DELAY;
+SETB 	SDA;
+ACALL 	DELAY;
+RET;
+
+;发送一个字节
+SEND: 	MOV 	R0, 	#08H;
+SEND0: 	RLC 	A;
+MOV 	C SDA ;
+SETB 	SCL;
+ACALL 	DELAY;
+CLR 	SCL;
+DJNZ 	R0,	SEND0;
+SETB 	SDA;
+RET;
+
+;接收一个字节
+REV: 	MOV 	R0, 	#08H;
+REV0: 	SETB 	SCL;
+MOV 	C SDA;
+RLC 	A;
+CLR 	SCL;
+DJNZ 	R7, 	REV0;
+RET;
+
+;接收一个应答位
+ACKC: 	SETB 	SCL;
+ACALL 	DELAY;
+MOV C, 	SDA;
+CLR 	SCL;
+RET;
+
+;发送一个应答位
+ACKS:	SETB 	SCL;
+ACALL 	DELAY;
+MOV 	C SDA;
+CLR 	SCL;
+RET;
+
+;延时程序
+DELAY: 	NOP;
+NOP;
+NOP;
+RET; 
+

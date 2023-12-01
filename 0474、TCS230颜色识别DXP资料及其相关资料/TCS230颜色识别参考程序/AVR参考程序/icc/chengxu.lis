@@ -1,0 +1,451 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _duan::
+ 0000                   .blkb 2
+                        .area idata
+ 0000 0001              .byte 0,1
+                        .area data(ram, con, rel)
+ 0002                   .blkb 2
+                        .area idata
+ 0002 0203              .byte 2,3
+                        .area data(ram, con, rel)
+ 0004                   .blkb 2
+                        .area idata
+ 0004 0405              .byte 4,5
+                        .area data(ram, con, rel)
+ 0006                   .blkb 2
+                        .area idata
+ 0006 0607              .byte 6,7
+                        .area data(ram, con, rel)
+ 0008                   .blkb 2
+                        .area idata
+ 0008 0809              .byte 8,9
+                        .area data(ram, con, rel)
+ 000A                   .dbfile D:\Proteus\ATMEGA8\TCA230颜色识别\icc\chengxu.c
+ 000A                   .dbsym e duan _duan A[10:10]c
+ 000A           _wei::
+ 000A                   .blkb 2
+                        .area idata
+ 000A 0804              .byte 8,4
+                        .area data(ram, con, rel)
+ 000C                   .dbfile D:\Proteus\ATMEGA8\TCA230颜色识别\icc\chengxu.c
+ 000C                   .blkb 2
+                        .area idata
+ 000C 0201              .byte 2,1
+                        .area data(ram, con, rel)
+ 000E                   .dbfile D:\Proteus\ATMEGA8\TCA230颜色识别\icc\chengxu.c
+ 000E                   .dbsym e wei _wei A[4:4]c
+ 000E           _CNT::
+ 000E                   .blkb 1
+                        .area idata
+ 000E 00                .byte 0
+                        .area data(ram, con, rel)
+ 000F                   .dbfile D:\Proteus\ATMEGA8\TCA230颜色识别\icc\chengxu.c
+ 000F                   .dbsym e CNT _CNT c
+ 000F           _lck::
+ 000F                   .blkb 2
+                        .area idata
+ 000F 0000              .word 0
+                        .area data(ram, con, rel)
+ 0011                   .dbfile D:\Proteus\ATMEGA8\TCA230颜色识别\icc\chengxu.c
+ 0011                   .dbsym e lck _lck i
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\Proteus\ATMEGA8\TCA230颜色识别\icc\chengxu.c
+ 0000                   .dbfunc e delay _delay fV
+ 0000           ;              i -> R20
+ 0000           ;              j -> R22
+ 0000           ;              t -> R16
+                        .even
+ 0000           _delay::
+ 0000 00D0              rcall push_gset2
+ 0002                   .dbline -1
+ 0002                   .dbline 17
+ 0002           ; #include <iom8v.h>
+ 0002           ; #define uchar unsigned char 
+ 0002           ; #define uint unsigned int
+ 0002           ; uchar duan[10]={0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09};    //所需的段的位码
+ 0002           ; //uchar wei[4]={0XFE,0XFD,0XFB,0XF7};                                 //位的控制端    (开发板)
+ 0002           ; uchar wei[4]={0X08,0X04,0X02,0X01};                                 //位的控制端      (仿真)
+ 0002           ; uint z,x,c,v, date;   //定义数据类型
+ 0002           ; uchar CNT=0;//计数初值
+ 0002           ; uint lck=0;
+ 0002           ; uint Load;
+ 0002           ; /******************************************************************
+ 0002           ; 
+ 0002           ; 延时函数
+ 0002           ; 
+ 0002           ; ******************************************************************/
+ 0002           ; void delay(uchar t)
+ 0002           ; {
+ 0002                   .dbline 19
+ 0002           ;   uchar i,j;
+ 0002           ;    for(i=0;i<t;i++)
+ 0002 4427              clr R20
+ 0004 07C0              rjmp L5
+ 0006           L2:
+ 0006                   .dbline 20
+ 0006           ;    {
+ 0006                   .dbline 21
+ 0006 6DE0              ldi R22,13
+ 0008 01C0              rjmp L9
+ 000A           L6:
+ 000A                   .dbline 21
+ 000A           L7:
+ 000A                   .dbline 21
+ 000A 6A95              dec R22
+ 000C           L9:
+ 000C                   .dbline 21
+ 000C 2224              clr R2
+ 000E 2616              cp R2,R22
+ 0010 E0F3              brlo L6
+ 0012                   .dbline 22
+ 0012                   .dbline 22
+ 0012                   .dbline 23
+ 0012                   .dbline 24
+ 0012           L3:
+ 0012                   .dbline 19
+ 0012 4395              inc R20
+ 0014           L5:
+ 0014                   .dbline 19
+ 0014 4017              cp R20,R16
+ 0016 B8F3              brlo L2
+ 0018                   .dbline -2
+ 0018           L1:
+ 0018 00D0              rcall pop_gset2
+ 001A                   .dbline 0 ; func end
+ 001A 0895              ret
+ 001C                   .dbsym r i 20 c
+ 001C                   .dbsym r j 22 c
+ 001C                   .dbsym r t 16 c
+ 001C                   .dbend
+ 001C                   .dbfunc e xianshi _xianshi fV
+                        .even
+ 001C           _xianshi::
+ 001C                   .dbline -1
+ 001C                   .dbline 31
+ 001C           ;        for(j=13;j>0;j--);
+ 001C           ;        { ;
+ 001C           ;        }
+ 001C           ;    }
+ 001C           ; }
+ 001C           ; 
+ 001C           ; /**********************************************************************
+ 001C           ;                 数码管动态扫描
+ 001C           ; *********************************************************************/
+ 001C           ; void xianshi()
+ 001C           ;  { 
+ 001C                   .dbline 33
+ 001C           ;  /*****************数据转换*****************************/ 
+ 001C           ;   z=date/1000;                         //求千位
+ 001C 28EE              ldi R18,1000
+ 001E 33E0              ldi R19,3
+ 0020 00910200          lds R16,_date
+ 0024 10910300          lds R17,_date+1
+ 0028 00D0              rcall div16u
+ 002A 10930B00          sts _z+1,R17
+ 002E 00930A00          sts _z,R16
+ 0032                   .dbline 34
+ 0032           ;   x=date%1000/100;             //求百位
+ 0032 28EE              ldi R18,1000
+ 0034 33E0              ldi R19,3
+ 0036 00910200          lds R16,_date
+ 003A 10910300          lds R17,_date+1
+ 003E 00D0              rcall mod16u
+ 0040 24E6              ldi R18,100
+ 0042 30E0              ldi R19,0
+ 0044 00D0              rcall div16u
+ 0046 10930900          sts _x+1,R17
+ 004A 00930800          sts _x,R16
+ 004E                   .dbline 35
+ 004E           ;   c=date%100/10;               //求十位
+ 004E 24E6              ldi R18,100
+ 0050 30E0              ldi R19,0
+ 0052 00910200          lds R16,_date
+ 0056 10910300          lds R17,_date+1
+ 005A 00D0              rcall mod16u
+ 005C 2AE0              ldi R18,10
+ 005E 30E0              ldi R19,0
+ 0060 00D0              rcall div16u
+ 0062 10930700          sts _c+1,R17
+ 0066 00930600          sts _c,R16
+ 006A                   .dbline 36
+ 006A           ;   v=date%10;                   //求个位
+ 006A 2AE0              ldi R18,10
+ 006C 30E0              ldi R19,0
+ 006E 00910200          lds R16,_date
+ 0072 10910300          lds R17,_date+1
+ 0076 00D0              rcall mod16u
+ 0078 10930500          sts _v+1,R17
+ 007C 00930400          sts _v,R16
+ 0080                   .dbline 38
+ 0080           ; 
+ 0080           ;       PORTC=wei[0];
+ 0080 20900A00          lds R2,_wei
+ 0084 25BA              out 0x15,R2
+ 0086                   .dbline 39
+ 0086           ;         PORTB=duan[z];
+ 0086 80E0              ldi R24,<_duan
+ 0088 90E0              ldi R25,>_duan
+ 008A E0910A00          lds R30,_z
+ 008E F0910B00          lds R31,_z+1
+ 0092 E80F              add R30,R24
+ 0094 F91F              adc R31,R25
+ 0096 2080              ldd R2,z+0
+ 0098 28BA              out 0x18,R2
+ 009A                   .dbline 40
+ 009A           ;         delay(50);  
+ 009A 02E3              ldi R16,50
+ 009C B1DF              rcall _delay
+ 009E                   .dbline 41
+ 009E           ;         PORTC=wei[1];
+ 009E 20900B00          lds R2,_wei+1
+ 00A2 25BA              out 0x15,R2
+ 00A4                   .dbline 42
+ 00A4           ;       PORTB=duan[x];
+ 00A4 80E0              ldi R24,<_duan
+ 00A6 90E0              ldi R25,>_duan
+ 00A8 E0910800          lds R30,_x
+ 00AC F0910900          lds R31,_x+1
+ 00B0 E80F              add R30,R24
+ 00B2 F91F              adc R31,R25
+ 00B4 2080              ldd R2,z+0
+ 00B6 28BA              out 0x18,R2
+ 00B8                   .dbline 43
+ 00B8           ;         delay(50);  
+ 00B8 02E3              ldi R16,50
+ 00BA A2DF              rcall _delay
+ 00BC                   .dbline 44
+ 00BC           ;         PORTC=wei[2];
+ 00BC 20900C00          lds R2,_wei+2
+ 00C0 25BA              out 0x15,R2
+ 00C2                   .dbline 45
+ 00C2           ;       PORTB=duan[c];
+ 00C2 80E0              ldi R24,<_duan
+ 00C4 90E0              ldi R25,>_duan
+ 00C6 E0910600          lds R30,_c
+ 00CA F0910700          lds R31,_c+1
+ 00CE E80F              add R30,R24
+ 00D0 F91F              adc R31,R25
+ 00D2 2080              ldd R2,z+0
+ 00D4 28BA              out 0x18,R2
+ 00D6                   .dbline 46
+ 00D6           ;         delay(50);  
+ 00D6 02E3              ldi R16,50
+ 00D8 93DF              rcall _delay
+ 00DA                   .dbline 47
+ 00DA           ;       PORTC=wei[3];
+ 00DA 20900D00          lds R2,_wei+3
+ 00DE 25BA              out 0x15,R2
+ 00E0                   .dbline 48
+ 00E0           ;       PORTB=duan[v];
+ 00E0 80E0              ldi R24,<_duan
+ 00E2 90E0              ldi R25,>_duan
+ 00E4 E0910400          lds R30,_v
+ 00E8 F0910500          lds R31,_v+1
+ 00EC E80F              add R30,R24
+ 00EE F91F              adc R31,R25
+ 00F0 2080              ldd R2,z+0
+ 00F2 28BA              out 0x18,R2
+ 00F4                   .dbline 49
+ 00F4           ;         delay(50);  
+ 00F4 02E3              ldi R16,50
+ 00F6 84DF              rcall _delay
+ 00F8                   .dbline -2
+ 00F8           L10:
+ 00F8                   .dbline 0 ; func end
+ 00F8 0895              ret
+ 00FA                   .dbend
+ 00FA                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 00FA           _Init_IO::
+ 00FA                   .dbline -1
+ 00FA                   .dbline 56
+ 00FA           ;                                      
+ 00FA           ; 
+ 00FA           ;  }
+ 00FA           ; 
+ 00FA           ; //////////////////////////////初始化////////////////////////////////////
+ 00FA           ; void Init_IO(void)//初始化I/O
+ 00FA           ; {
+ 00FA                   .dbline 58
+ 00FA           ; //设置B口为输入
+ 00FA           ; DDRB=0xFF;
+ 00FA 8FEF              ldi R24,255
+ 00FC 87BB              out 0x17,R24
+ 00FE                   .dbline 59
+ 00FE           ; PORTB=0xFF;
+ 00FE 88BB              out 0x18,R24
+ 0100                   .dbline 61
+ 0100           ; //设置C口为输出
+ 0100           ; DDRC=0xFF;
+ 0100 84BB              out 0x14,R24
+ 0102                   .dbline 62
+ 0102           ; PORTC=0xFF;
+ 0102 85BB              out 0x15,R24
+ 0104                   .dbline 64
+ 0104           ; //设置D口为输出
+ 0104           ; DDRD=0X00;
+ 0104 2224              clr R2
+ 0106 21BA              out 0x11,R2
+ 0108                   .dbline 65
+ 0108           ; PORTD=0x00;
+ 0108 22BA              out 0x12,R2
+ 010A                   .dbline -2
+ 010A           L14:
+ 010A                   .dbline 0 ; func end
+ 010A 0895              ret
+ 010C                   .dbend
+ 010C                   .dbfunc e main _main fV
+                        .even
+ 010C           _main::
+ 010C                   .dbline -1
+ 010C                   .dbline 69
+ 010C           ; }
+ 010C           ; /////////////////////////////主函数/////////////////////////////////////
+ 010C           ; void main(void)
+ 010C           ; {
+ 010C                   .dbline 71
+ 010C           ; 
+ 010C           ; Init_IO();  //初始化I/O
+ 010C F6DF              rcall _Init_IO
+ 010E                   .dbline 72
+ 010E           ; PORTC=0XFF; //点亮数码管
+ 010E 8FEF              ldi R24,255
+ 0110 85BB              out 0x15,R24
+ 0112                   .dbline 73
+ 0112           ; PORTB=0X00; //点亮数码管
+ 0112 2224              clr R2
+ 0114 28BA              out 0x18,R2
+ 0116                   .dbline 74
+ 0116           ; delay(30);//延时
+ 0116 0EE1              ldi R16,30
+ 0118 73DF              rcall _delay
+ 011A                   .dbline 75
+ 011A           ; PORTB=0xff; //关闭数码管
+ 011A 8FEF              ldi R24,255
+ 011C 88BB              out 0x18,R24
+ 011E                   .dbline 77
+ 011E           ; 
+ 011E           ; TCCR0=0x02; //T/C0工作方式选择，8分频
+ 011E 82E0              ldi R24,2
+ 0120 83BF              out 0x33,R24
+ 0122                   .dbline 80
+ 0122           ; //TCNT0=0x00; //计数初始值9c
+ 0122           ; 
+ 0122           ; TCCR1B=0x07; //T/C0工作方式选择，上升沿触发
+ 0122 87E0              ldi R24,7
+ 0124 8EBD              out 0x2e,R24
+ 0126                   .dbline 81
+ 0126           ; TCNT1H=0X00;
+ 0126 2224              clr R2
+ 0128 2DBC              out 0x2d,R2
+ 012A                   .dbline 82
+ 012A           ; TCNT1L=0X00;
+ 012A 2CBC              out 0x2c,R2
+ 012C                   .dbline 83
+ 012C           ; TIMSK=0x01;  //使能T0溢出中断
+ 012C 81E0              ldi R24,1
+ 012E 89BF              out 0x39,R24
+ 0130                   .dbline 84
+ 0130           ; SREG=0x80;  //使能全局中断
+ 0130 80E8              ldi R24,128
+ 0132 8FBF              out 0x3f,R24
+ 0134 09C0              rjmp L17
+ 0136           L16:
+ 0136                   .dbline 86
+ 0136                   .dbline 87
+ 0136 20900000          lds R2,_Load
+ 013A 30900100          lds R3,_Load+1
+ 013E 30920300          sts _date+1,R3
+ 0142 20920200          sts _date,R2
+ 0146                   .dbline 89
+ 0146 6ADF              rcall _xianshi
+ 0148                   .dbline 90
+ 0148           L17:
+ 0148                   .dbline 85
+ 0148 F6CF              rjmp L16
+ 014A           X0:
+ 014A                   .dbline -2
+ 014A           L15:
+ 014A                   .dbline 0 ; func end
+ 014A 0895              ret
+ 014C                   .dbend
+                        .area vector(rom, abs)
+                        .org 18
+ 0012 A6C0              rjmp _Timer0
+                        .area text(rom, con, rel)
+ 014C                   .dbfile D:\Proteus\ATMEGA8\TCA230颜色识别\icc\chengxu.c
+ 014C                   .dbfunc e Timer0 _Timer0 fV
+                        .even
+ 014C           _Timer0::
+ 014C 2A92              st -y,R2
+ 014E 3A92              st -y,R3
+ 0150 8A93              st -y,R24
+ 0152 9A93              st -y,R25
+ 0154 EA93              st -y,R30
+ 0156 2FB6              in R2,0x3f
+ 0158 2A92              st -y,R2
+ 015A                   .dbline -1
+ 015A                   .dbline 95
+ 015A                   .dbline 96
+ 015A 80EA              ldi R24,160
+ 015C 82BF              out 0x32,R24
+ 015E                   .dbline 97
+ 015E 80910F00          lds R24,_lck
+ 0162 90911000          lds R25,_lck+1
+ 0166 0196              adiw R24,1
+ 0168 90931000          sts _lck+1,R25
+ 016C 80930F00          sts _lck,R24
+ 0170                   .dbline 98
+ 0170 883E              cpi R24,232
+ 0172 E3E0              ldi R30,3
+ 0174 9E07              cpc R25,R30
+ 0176 71F4              brne L20
+ 0178                   .dbline 99
+ 0178                   .dbline 100
+ 0178 2CB4              in R2,0x2c
+ 017A 3DB4              in R3,0x2d
+ 017C 30920100          sts _Load+1,R3
+ 0180 20920000          sts _Load,R2
+ 0184                   .dbline 101
+ 0184 2224              clr R2
+ 0186 3324              clr R3
+ 0188 30921000          sts _lck+1,R3
+ 018C 20920F00          sts _lck,R2
+ 0190                   .dbline 102
+ 0190 3DBC              out 0x2d,R3
+ 0192 2CBC              out 0x2c,R2
+ 0194                   .dbline 104
+ 0194           L20:
+ 0194                   .dbline -2
+ 0194           L19:
+ 0194 2990              ld R2,y+
+ 0196 2FBE              out 0x3f,R2
+ 0198 E991              ld R30,y+
+ 019A 9991              ld R25,y+
+ 019C 8991              ld R24,y+
+ 019E 3990              ld R3,y+
+ 01A0 2990              ld R2,y+
+ 01A2                   .dbline 0 ; func end
+ 01A2 1895              reti
+ 01A4                   .dbend
+                        .area bss(ram, con, rel)
+ 0000                   .dbfile D:\Proteus\ATMEGA8\TCA230颜色识别\icc\chengxu.c
+ 0000           _Load::
+ 0000                   .blkb 2
+ 0002                   .dbsym e Load _Load i
+ 0002           _date::
+ 0002                   .blkb 2
+ 0004                   .dbsym e date _date i
+ 0004           _v::
+ 0004                   .blkb 2
+ 0006                   .dbsym e v _v i
+ 0006           _c::
+ 0006                   .blkb 2
+ 0008                   .dbsym e c _c i
+ 0008           _x::
+ 0008                   .blkb 2
+ 000A                   .dbsym e x _x i
+ 000A           _z::
+ 000A                   .blkb 2
+ 000C                   .dbsym e z _z i

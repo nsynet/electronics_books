@@ -1,0 +1,63 @@
+Sunplus u'nSP Assembler - Ver. 1.10.0
+              Listing File Has Been Relocated
+                            	.PUBLIC _InitIO
+                            	.PUBLIC _ShowRes
+                            	.PUBLIC _ClearWatchDog
+                            	.PUBLIC _F_Delay
+                            	.DEFINE Port_IOA_Attrib 		0x7003
+                            	.DEFINE Port_IOA_Dir 			0x7002
+                            	.DEFINE Port_IOA_Data 			0x7000
+                            	
+                            	.DEFINE Port_IOB_Attrib 		0x7008
+                            	.DEFINE Port_IOB_Dir 			0x7007
+                            	.DEFINE Port_IOB_Data 			0x7005
+                            	
+0000BF6C                    	.CODE
+                            	
+                            	_ClearWatchDog: .proc
+0000BF6C 88 D2              	 push R1 to [SP]
+0000BF6D 41 92              	 R1 = 0x0001
+0000BF6E 19 D3 12 70        	 [0x7012] = R1
+0000BF70 88 90              	 pop R1 from [SP]
+0000BF71 90 9A              	 retf
+                            	.endp
+                            	
+                            	_ShowRes: .proc
+0000BF72 A8 DA              		push R1, R5 to [SP]
+0000BF73 08 0B 05 00        		R5 = SP + 5
+0000BF75 03 98              		R4 = [R5+3]				
+0000BF76 1C D9 05 70        		[0x7005] = R4
+0000BF78 A8 90              		pop R1, R5 from [SP]
+0000BF79 90 9A              		retf
+                            	.endp
+                            	
+                            	_InitIO: .proc
+0000BF7A 09 93 FF FF        		R1=0xffff
+                            	//	[Port_IOB_Attrib] = R1		//B口设置为同向输出
+                            	//	[Port_IOB_Dir] = R1			
+0000BF7C 40 92              		R1 = 0
+                            	//	[Port_IOB_Data] = R1        //B口置低电平
+                            	//	R1=0xffff
+                            	//	[Port_IOA_Attrib] = R1		//A口设置为同向输出
+                            	//	[Port_IOA_Dir] = R1			
+                            	//	R1 = 0xffff
+                            	//	[Port_IOA_Data] = R1        //A口置高电平
+0000BF7D 90 9A              		retf
+                            	.endp
+                            	
+                            	_F_Delay: .proc
+0000BF7E A0 D8              	push R1,R4 to [SP]
+0000BF7F 09 93 00 04        	r1=0x0400;
+                            	loop1:
+0000BF81 0A 95 36 09        	r2=0x0936;
+                            	loop2:
+0000BF83 41 24              	r2-=1;
+0000BF84 42 4E              	jnz loop2;
+0000BF85 41 22              	r1-=1;
+0000BF86 46 4E              	jnz loop1;
+0000BF87 A0 90              	pop	R1,R4 from [SP];
+0000BF88 90 9A              		retf
+                            	.endp
+                            	.END
+0 error(s), 0 warning(s).
+

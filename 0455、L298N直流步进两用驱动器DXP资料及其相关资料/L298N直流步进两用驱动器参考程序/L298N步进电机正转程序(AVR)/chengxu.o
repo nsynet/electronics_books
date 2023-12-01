@@ -1,0 +1,82 @@
+XL
+H 3 areas 6 global symbols
+M chengxu.c
+S push_gset2 Ref0000
+S pop_gset2 Ref0000
+A text size 64 flags 0
+dbfile D:\Proteus\ATMEGA16\个人总结AVR\AVR控制步进电机程序\L298N步进电机正转程序\chengxu.c
+dbfunc e port_init 0 fV
+dbline FFFFFFFF 0
+dbline F 0
+dbline 10 0
+dbline 11 4
+dbline FFFFFFFE 6
+dbline 0 6
+dbfunc e delay 8 fV
+dbsym r j 14 i
+dbsym r k 16 i
+dbsym r i 10 i
+dbline FFFFFFFF C
+dbline 17 C
+dbline 19 C
+dbline 1A 12
+dbline 1A 18
+dbline 1A 18
+dbline 1A 1C
+dbline 19 24
+dbline 19 28
+dbline FFFFFFFE 2E
+dbline 0 32
+dbfunc e main 34 fI
+dbsym r y 14 i
+dbsym r z 16 i
+dbline FFFFFFFF 34
+dbline 20 34
+dbline 22 34
+dbline 23 38
+dbline 25 3C
+dbline 26 3C
+dbline 27 42
+dbline 28 42
+dbline 29 50
+dbline 2A 54
+dbline 26 54
+dbline 26 58
+dbline 2B 60
+dbline 24 60
+dbline FFFFFFFE 62
+dbline 0 62
+S _main Def0034
+S _port_init Def0000
+S _delay Def0008
+A data size 8 flags 20
+dbfile D:\Proteus\ATMEGA16\个人总结AVR\AVR控制步进电机程序\L298N步进电机正转程序\chengxu.c
+dbsym e run 0 A[8:8]c
+S _run Def0000
+A idata size 8 flags 0
+T 00 00 0E 0C
+R 00 00 02 00
+T 02 00 0D 09
+R 00 00 02 00
+T 04 00 0B 03
+R 00 00 02 00
+T 06 00 07 06
+R 00 00 02 00
+T 00 00 8F EF 88 BB 87 BB 08 95
+R 00 00 00 00
+T 08 00 0E 94 00 00 44 27 55 27 0B C0 66 27 77 27
+R 00 00 00 00 12 04 00 00
+T 16 00 02 C0 6F 5F 7F 4F 68 3E E3 E0 7E 07 D0 F3
+R 00 00 00 00
+T 24 00 4F 5F 5F 4F 40 17 51 07 90 F3 0E 94 00 00
+R 00 00 00 00 12 0E 01 00
+T 32 00 08 95
+R 00 00 00 00
+T 34 00 48 E2 50 E0 E3 DF 12 C0 66 27 77 27 0B C0
+R 00 00 00 00
+T 42 00 80 E0 90 E0 FB 01 E8 0F F9 1F 20 80 28 BA
+R 00 00 00 00 20 02 01 00 00 00 40 04 01 00 00 00
+T 50 00 8A 01 DA DF 6F 5F 7F 4F 68 30 E0 E0 7E 07
+R 00 00 00 00
+T 5E 00 88 F3 ED CF 08 95
+R 00 00 00 00

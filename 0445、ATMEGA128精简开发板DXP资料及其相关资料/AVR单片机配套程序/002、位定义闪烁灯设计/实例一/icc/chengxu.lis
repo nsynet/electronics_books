@@ -1,0 +1,152 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile F:\NEW光~1\MEGA12~1\AVR单片机配套程序\002、位定义闪烁灯设计\实例一\icc\chengxu.c
+ 0000                   .dbfunc e DelayMS _DelayMS fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMS::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 43
+ 0004           ; #include <iom128.h>
+ 0004           ; /**********************************************************************
+ 0004           ;                                 函数数据类型说明                                                              
+ 0004           ; **********************************************************************/
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; 
+ 0004           ; //定义BIT 0-7 置1 
+ 0004           ; #define BIT0_POS (1<<0)   
+ 0004           ; #define BIT1_POS (1<<1) 
+ 0004           ; #define BIT2_POS (1<<2) 
+ 0004           ; #define BIT3_POS (1<<3) 
+ 0004           ; #define BIT4_POS (1<<4) 
+ 0004           ; #define BIT5_POS (1<<5) 
+ 0004           ; #define BIT6_POS (1<<6) 
+ 0004           ; #define BIT7_POS (1<<7) 
+ 0004           ; 
+ 0004           ; //定义BIT 0-7 清零 
+ 0004           ; #define BIT0_NEG ((unsigned char)(~(1<<0))) 
+ 0004           ; #define BIT1_NEG ((unsigned char)(~(1<<1))) 
+ 0004           ; #define BIT2_NEG ((unsigned char)(~(1<<2))) 
+ 0004           ; #define BIT3_NEG ((unsigned char)(~(1<<3))) 
+ 0004           ; #define BIT4_NEG ((unsigned char)(~(1<<4))) 
+ 0004           ; #define BIT5_NEG ((unsigned char)(~(1<<5))) 
+ 0004           ; #define BIT6_NEG ((unsigned char)(~(1<<6))) 
+ 0004           ; #define BIT7_NEG ((unsigned char)(~(1<<7))) 
+ 0004           ; 
+ 0004           ; //定义红色LED熄灭、亮、翻转 
+ 0004           ; #define LED_red_OFF PORTD&=BIT0_NEG 
+ 0004           ; #define LED_red_ON   PORTD|=BIT0_POS   
+ 0004           ; #define LED_red_OTN PORTD^=BIT0_POS 
+ 0004           ; 
+ 0004           ; //定义绿色LED熄灭、亮、翻转 
+ 0004           ; #define LED_green_OFF PORTD&=BIT1_NEG 
+ 0004           ; #define LED_green_ON PORTD|=BIT1_POS 
+ 0004           ; #define LED_green_OTN PORTD^=BIT1_POS 
+ 0004           ; 
+ 0004           ; 
+ 0004           ; /**********************************************************************
+ 0004           ;                                 MS级延时函数程序，参数i 延时时间                                                                      
+ 0004           ; **********************************************************************/
+ 0004           ; void DelayMS(uint i)
+ 0004           ; {
+ 0004                   .dbline 45
+ 0004           ; uint j;
+ 0004           ; for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 46
+ 0006           ; {
+ 0006                   .dbline 47
+ 0006 40E4              ldi R20,8000
+ 0008 5FE1              ldi R21,31
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 47
+ 000C           L7:
+ 000C                   .dbline 47
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 47
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 48
+ 0016           L3:
+ 0016                   .dbline 45
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 45
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e main _main fV
+                        .even
+ 0026           _main::
+ 0026                   .dbline -1
+ 0026                   .dbline 54
+ 0026           ; for(j=8000;j!=0;j--);
+ 0026           ; }
+ 0026           ; }
+ 0026           ; /**********************************************************************
+ 0026           ;                                  主函数                                                       
+ 0026           ; **********************************************************************/
+ 0026           ; void main(void)
+ 0026           ; {
+ 0026                   .dbline 55
+ 0026           ;  DDRD=0XFF;//端口设置，PA口设置为推挽1输出
+ 0026 8FEF              ldi R24,255
+ 0028 81BB              out 0x11,R24
+ 002A                   .dbline 56
+ 002A           ;  PORTD=0XFF;
+ 002A 82BB              out 0x12,R24
+ 002C 11C0              xjmp L12
+ 002E           L11:
+ 002E                   .dbline 58
+ 002E                   .dbline 59
+ 002E 909A              sbi 0x12,0
+ 0030                   .dbline 60
+ 0030 919A              sbi 0x12,1
+ 0032                   .dbline 61
+ 0032 04E6              ldi R16,100
+ 0034 10E0              ldi R17,0
+ 0036 E4DF              xcall _DelayMS
+ 0038                   .dbline 62
+ 0038 8EEF              ldi R24,-2
+ 003A 9FEF              ldi R25,-1
+ 003C 22B2              in R2,0x12
+ 003E 2822              and R2,R24
+ 0040 22BA              out 0x12,R2
+ 0042                   .dbline 63
+ 0042 8DEF              ldi R24,253
+ 0044 22B2              in R2,0x12
+ 0046 2822              and R2,R24
+ 0048 22BA              out 0x12,R2
+ 004A                   .dbline 64
+ 004A 04E6              ldi R16,100
+ 004C 10E0              ldi R17,0
+ 004E D8DF              xcall _DelayMS
+ 0050                   .dbline 65
+ 0050           L12:
+ 0050                   .dbline 57
+ 0050 EECF              xjmp L11
+ 0052           X2:
+ 0052                   .dbline -2
+ 0052           L10:
+ 0052                   .dbline 0 ; func end
+ 0052 0895              ret
+ 0054                   .dbend

@@ -1,0 +1,305 @@
+//	工程名称：	1602.spj
+//	功能描述：	语音电子时钟的制作
+//	涉及的库：	CMacro1016.lib
+//	组成文件：	main.c
+//				LCD1602_Driver.asm
+//				LCD1602_User.h/
+//	硬件连接：	IOA8-IOA15 ---- D0-D7（1602液晶）
+//				IOB12 ---- EP(1602液晶)       实时时钟时钟线引脚  IOB11    CLK
+//				IOB14 ---- RS（1602液晶）     实时时钟数据线引脚  IOB15    IO
+//				IOB13 ---- R/w（1602液晶）    实时时钟复位线引脚  IOB10    RST
+/*.PUBLIC T_SACM_A2000_SpeechTable
+T_SACM_A2000_SpeechTable:*/
+
+#include<SPCE061A.h>
+#include<consist.h>
+#include<a2000.h>
+#include<DS1302.h>    //DS1302时钟驱动
+#include<1602.h>      //1602液晶显示驱动
+#define	uchar unsigned char  
+char d[32]={'D', 'a', 't', 'a', ':', ' ','0', '0', '-', '0',  '0', '-', '0', '0', ' ',' ', 	
+
+       	    'T', 'i', 'm', 'e', ':', ' ','0', '0', ':', '0',  '0', ':', '0', '0', ' ',' ', };
+unsigned char time_date[12]={0};   //存储语音段
+unsigned char now_time_date[8]={0x00,0x19,0x14,0x31,0x07,0x05,0x09,0x00};//秒，分，时，日,月，星期，年,禁止写
+
+
+//=========================语音播放========================
+void exchange(SYSTEMTIME *Time) //存储语音播放段
+{
+	
+	time_date[0] = Time->Year/10;	
+	time_date[1] = Time->Year%10;
+
+	time_date[2] = Time->Month/10;
+	time_date[3] = Time->Month%10;
+
+	time_date[4] = Time->Day/10;
+	time_date[5] = Time->Day%10;
+	
+	time_date[6] = Time->Hour/10;
+	time_date[7] = Time->Hour%10;
+
+	time_date[8] = Time->Minute/10;
+	time_date[9] = Time->Minute%10;
+
+	time_date[10] = Time->Second/10;
+	time_date[11] = Time->Second%10;
+	
+	*P_Watchdog_Clear = 0x0001;		//清看门狗
+
+}
+
+__asm(".external F_FIQ_Service_SACM_A2000");       //在线汇编声明为外部汇编函数
+
+void FIQ(void)__attribute__((ISR));                //中断函数
+void FIQ(void)
+{
+	//判断中断源
+	if(*P_INT_Ctrl&0x2000)           //定时器A中断
+	{
+		*P_INT_Clear=C_FIQ_TMA;
+		__asm("call F_FIQ_Service_SACM_A2000");     //在线汇编调用汇编API函数
+	}
+	else if(*P_INT_Ctrl&0x8000)      //定时器B中断
+	   *P_INT_Clear=C_FIQ_TMB;  
+	else                             //PWM中断
+ 	   *P_INT_Clear=C_FIQ_PWM;        
+       
+}
+
+//*********************************************************//
+void PlayRespond(unsigned int Result)      
+{  
+	SACM_A2000_Initial(1);
+    SACM_A2000_Play(Result,3,3);
+    while((SACM_A2000_Status()&0x0001) != 0)
+     { 
+	  *P_Watchdog_Clear = 0x0001;		//清看门狗
+	  SACM_A2000_ServiceLoop(); 
+      }
+    SACM_A2000_Stop();
+   
+}
+//*********************************************************//
+//input: 年-----16进制
+//*********************************************************//
+void PlaySpeakYear()   	//*************20xx年
+{  
+   PlayRespond(2+C_T00);       
+   PlayRespond(0+C_T00);
+   PlayRespond(time_date[0]+C_T00);
+   PlayRespond(time_date[1]+C_T00);
+   PlayRespond(C_YEAR);
+}
+//input:月------16进制
+//*********************************************************//
+void PlaySpeakMonth()   //*************月
+{ 
+	if(time_date[2]==0)  PlayRespond(time_date[3]+C_T00);
+	else if((time_date[2]==1)&&(time_date[3]==0))  PlayRespond(C_T10);
+	else if((time_date[2]==1)&&(time_date[3]==1))  PlayRespond(C_T11);
+	else if((time_date[2]==1)&&(time_date[3]==2))  PlayRespond(C_T12);
+    PlayRespond(C_MONTH);       
+}
+//input:日 ------16进制
+//*********************************************************//
+void PlaySpeakDay()    	//*************日
+{ 	
+	 int DayTemp=(time_date[4]*10)+(time_date[5]);
+	 if((DayTemp/10)> 1)   PlayRespond(DayTemp/10+C_T00);		//十位>1报 
+     if((DayTemp/10)>0)    PlayRespond(C_T10);   				//报十,十位为1不报1 
+     if((DayTemp%10)!= 0)  PlayRespond(DayTemp%10+C_T00);
+     PlayRespond(C_DAY);
+}
+//input: 时------16进制
+//*********************************************************//    
+void PlaySpeakHour()     //*************时
+{	 
+	 int DayTemp=(time_date[6]*10)+(time_date[7]);	                
+	 if(DayTemp>=1 && DayTemp<=7) 
+	   	{ PlayRespond(C_LINGCHEN);      		 				//1—7 凌晨
+		  if(DayTemp==2)  PlayRespond(C_S02);    				//两
+		  else  PlayRespond(DayTemp+C_T00);   
+	     }
+	     
+	  else if(DayTemp>=8 && DayTemp<=12) 
+		  {   PlayRespond(C_NOON);     							//8--12 上午
+			  switch(DayTemp)
+			  { case 10:PlayRespond(C_T10); break;  			//十点
+			    case 11:PlayRespond(C_T11); break;  			//十一点
+			    case 12:PlayRespond(C_T12); break;  			//十二点
+			    default: PlayRespond(DayTemp+C_T00);break;
+		      }
+           }	           
+	 else if(DayTemp>=13 && DayTemp<=19) 
+		 { PlayRespond(C_AFTERNOON);       						//13--19 下午1--7
+		   if(DayTemp==14)  PlayRespond(C_S02);  				//两
+		   else  PlayRespond(DayTemp-12+C_T00); 
+	     }
+	   
+	 else if(DayTemp>=20 && DayTemp<=24) 
+	      {   PlayRespond(C_NIGHT);     						//20--24 晚上8--12
+		    switch(DayTemp)
+			{  case 22:PlayRespond(C_T10); break;   			//十点
+			   case 23:PlayRespond(C_T11); break;  				//十一点
+			   case 24:PlayRespond(C_T12); break;   			//十二点
+			   default: PlayRespond(DayTemp-12+C_T00);break;
+		    }
+	      }
+	 PlayRespond(C_DIAN);      									//点
+}
+//input: 分 ------16进制
+//*********************************************************//
+void PlaySpeakMinute()      	//*************分
+{      
+	   int MinTemp=(time_date[8]*10)+(time_date[9]);
+       if(MinTemp==0)  PlayRespond(C_ZHENG);     			   //正点
+       else  
+       {   if((MinTemp/10)>1)   PlayRespond(MinTemp/10+C_T00); //分的十位
+           if((MinTemp/10) >0)  PlayRespond(C_T10);     	   //分的十位大于1报,为1不报1
+           if((MinTemp%10)!=0)  PlayRespond(MinTemp%10+C_T00); //分的个位不为0则报    
+           PlayRespond(C_MIN);     //分
+        }       
+} 
+//input:秒------16进制
+//*********************************************************//
+void PlaySpeakSecond()    //*************秒
+{ 	
+	int SecondTemp=(time_date[10]*10)+(time_date[11]);
+	if(SecondTemp == 0)     PlayRespond(SecondTemp + C_T00);   //0秒
+	if((SecondTemp/10)>1)   PlayRespond(SecondTemp/10+C_T00);  //秒的十位大于1报，为1只报十 
+    if((SecondTemp/10)> 0)  PlayRespond(C_T10);    
+    if((SecondTemp%10)!= 0) PlayRespond(SecondTemp%10+C_T00);
+    PlayRespond(C_SECOND);
+}
+//========================================================
+//	语法格式：	void Delay(unsigned int uiTime)
+//	实现功能：	延时，在调用Delay(1)时,延时时间小于1us
+//	参数：		uiTime
+//	返回值：	无
+//========================================================
+
+void Delay(unsigned int uiTime)
+{
+	while(uiTime > 0)
+	{
+		uiTime -= 1;
+	}
+}
+
+//========================================================
+//	语法格式：	void PowerOn(void)
+//	实现功能：	开机画面
+//	参数：		无
+//	返回值：	无
+//========================================================
+void PowerOn(void)
+{	
+	int i;
+    uchar h,v;
+	LCD1602_Initial();			//调用初始化程序，包括进行端口初始化和LCD初始化
+	Write_Command(0x0080);		//设置当前DDRAM地址为0x00
+	for(h=0;h<16;h++)
+    {
+   	   Write_Data(d[h]);  
+    }
+    
+	Write_Command(0x00c0);		//在第二行显示
+	
+	for(v=(16);v<32;v++)
+    {
+    	Write_Data(d[v]);  ///n表示有写几位数据
+     }
+	for(i=0;i<20;i++)
+	{
+		Delay(65535);						//延时
+		*P_Watchdog_Clear = 0x0001;			//清看门狗
+	}
+	Write_Command(0x0001);
+}
+
+void Print(unsigned char *str0,unsigned char *str1)               //  输出当前所取得的时间
+{   
+	uchar h,v;
+	
+	Write_Command(0x0080);		//设置当前DDRAM地址为0x00，显示Data:
+	for(h=0;h<5;h++)
+    {
+   	   Write_Data(d[h]);  
+    }
+    
+	Write_Command(0x00c0);		//在第二行显示,显示Time：            
+	
+	for(v=(16);v<21;v++)
+    {
+    	Write_Data(d[v]);  ///n表示有写几位数据
+     }
+     
+   	*P_Watchdog_Clear = 0x0001;			//清看门狗
+	
+	Write_Command(0x0086);		//设置当前DDRAM地址为0x86，显示日期
+	
+	
+	while(*str0!='\0')
+	{
+		Write_Data(*str0);
+		str0++;
+	}
+	
+	Write_Command(0x00C6);		//设置当前DDRAM地址为0xc6，显示时间
+	
+	while(*str1!='\0')
+	{
+		Write_Data(*str1);
+		str1++;
+	}
+	
+	Write_Command(0x00ce);		//在第二行显示,最后显示为空字符
+	
+	for(v=(30);v<32;v++)
+    {
+    	Write_Data(d[v]);  ///n表示有写几位数据
+     }
+}
+int main(void)
+{   
+	SYSTEMTIME CurrentTime;  //定义CurrentTime为结构体类型
+	
+	*P_SystemClock = 0x0000;			//初始化，调整系统时钟24.576MHz/1，强振模式
+	*P_IOB_Attrib = 0xfffe;				//初始化IOB1~IOB15为同相低电平输出口，最低位为带上拉电阻的输入引脚
+	*P_IOB_Dir = 0xfffe;
+	*P_IOB_Data = 0x0001;
+	
+	PowerOn();							//开机界面：Data:  Time:
+	
+	LCD1602_Initial();					//调用初始化程序，包括进行端口初始化和LCD初始化
+    Initial_DS1302();
+    set_ds1302(0x80,now_time_date,8);   //设置初始时间，日期，年月
+   	*P_Watchdog_Clear = 0x0001;		    //清看门狗
+	while(1)
+	{
+	   	DS1302_GetTime(&CurrentTime);  //读取ds1302内部数据，并存储变量（结构体中定义的变量）
+		DateToStr(&CurrentTime);       //将日期存储于DateString[]数组中（结构体中定义的数组）
+		TimeToStr(&CurrentTime);       //将时间存储于TimeString[]数组中（结构体中定义的数组）
+       	 
+       	Print(CurrentTime.DateString,CurrentTime.TimeString);		               //输出时间
+       	
+       	if(GET_BIT(*P_IOB_Data,0)==0)           //为零表示播放当前时间 
+       	{
+       	    exchange(&CurrentTime);             //存储语音播放段
+       	    PlaySpeakYear();                   	//播放年
+            PlaySpeakMonth();                   //播放月
+        	PlaySpeakDay();                   	//播放日
+        	  	 PlayRespond(C_BELL);         						//报时声  
+                 PlayRespond(C_NOW);          						//现在时刻
+        	PlaySpeakHour();                    //播放时
+        	PlaySpeakMinute();                  //播放分
+        	PlaySpeakSecond();                  //播放秒
+      
+            *P_IOB_Data=GET_BIT(*P_IOB_Data,0);  // 按键松开后输入为高电平
+       	}
+       	    
+		*P_Watchdog_Clear = 0x0001;		//清看门狗
+	}
+}

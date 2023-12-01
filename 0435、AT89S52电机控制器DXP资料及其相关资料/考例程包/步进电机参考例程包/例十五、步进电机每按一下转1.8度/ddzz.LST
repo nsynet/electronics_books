@@ -1,0 +1,88 @@
+C51 COMPILER V8.05a   DDZZ                                                                 03/09/2009 11:52:36 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE DDZZ
+OBJECT MODULE PLACED IN ddzz.OBJ
+COMPILER INVOKED BY: D:\Program Files\C51\BIN\C51.EXE ddzz.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          ////////////////////////汇诚科技////////////////////
+   3          //////////////////http://www.ourhc.cn///////////////
+   4          ///////////////////步进电机正转调试程序/////////////
+   5          
+   6          #include<reg52.h>  
+   7          /*****************************************************************/
+   8          /*设程序的后四位1111对应位为ABCD,0000为abcd那么步进电机就可以细分进行下列组合
+   9          
+  10          Abcd》aBcd》abCd》abcD 对应的数组为 0x08,0x04,0x02,0x01
+  11          
+  12          ABcd》aBCd》abCD》AbcD 对应的数组为 0x0C,0x06,0x03,0x09
+  13          
+  14          ABcd》aBcd》aBCd》abCd》abCD》abcD》AbcD》AbcD 对应的数组为 0x0C,0x04,0x06,0x02,0x03,0x01,0x09，0x08
+  15          
+  16          只要按照ABCD的顺序通电，可以产品多种组合。
+  17          
+  18          /*****************************************************************/ 
+  19          code unsigned char run[8]={ 0x03,0x0b,0x09,0x0d,0x0c,0x0e,0x06,0x07}; 
+  20          unsigned char a,s,i,j,k;
+  21          sbit ANJIAN=P2^0;
+  22          void delay(i)//延时函数
+  23          {
+  24   1      for(j=0;j<i;j++)
+  25   1      for(k=0;k<250;k++);
+  26   1      }
+  27          main()
+  28          {
+  29   1      unsigned char z,y;
+  30   1      y=10;       //定义延时时间，时间越长电机转速越慢反之则快
+  31   1      a=0;
+  32   1      while(1)
+  33   1      {
+  34   2      if(ANJIAN==0)
+  35   2      {
+  36   3       a++;
+  37   3      while(!ANJIAN);
+  38   3      //delay(y);
+  39   3      
+  40   3      switch(a)
+  41   3              {
+  42   4              case 1:P1=run[0];delay(y);break;//P1=run[1];delay(y);break;
+  43   4              case 2:P1=run[2];delay(y);break;//P1=run[3];delay(y);break;
+  44   4              case 3:P1=run[4];delay(y);break;//P1=run[5];delay(y);break;
+  45   4              case 4:P1=run[6];delay(y);break;//P1=run[7];delay(y);break;
+  46   4              case 5:P1=run[0];delay(y);break;//P1=run[1];delay(y);break;
+  47   4              case 6:P1=run[2];delay(y);break;//P1=run[3];delay(y);break;
+  48   4              case 7:P1=run[4];delay(y);break;//P1=run[5];delay(y);break;
+  49   4              case 8:P1=run[2];delay(y);break;//P1=run[3];delay(y);break;
+  50   4              case 9:P1=run[0];delay(y);break;//P1=run[1];delay(y);break;
+  51   4              case 10:P1=run[6];delay(y);break;//P1=run[7];delay(y);break;
+  52   4              case 11:P1=run[4];delay(y);break;//P1=run[5];delay(y);break;
+  53   4              case 12:P1=run[2];delay(y);break;//P1=run[3];delay(y);break;
+  54   4              case 13:P1=run[0];delay(y);break;//P1=run[1];delay(y);break;
+  55   4              case 14:a=0;break;
+C51 COMPILER V8.05a   DDZZ                                                                 03/09/2009 11:52:36 PAGE 2   
+
+  56   4      
+  57   4              default:break;  
+  58   4              }
+  59   3      
+  60   3      } 
+  61   2      }
+  62   1       }
+*** WARNING C280 IN LINE 29 OF DDZZ.C: 'z': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    162    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

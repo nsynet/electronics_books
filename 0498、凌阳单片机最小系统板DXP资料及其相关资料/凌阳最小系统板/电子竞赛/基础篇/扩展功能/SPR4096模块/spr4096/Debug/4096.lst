@@ -1,0 +1,652 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	
+                            	
+                            	.DEFINE C_SIOCLOCK           	0x0010;     // CPUCLOCK/8
+                            	.define	B_Busy					0x80
+                            	
+                            	.const C_Program_Time			=60			//60us
+                            	.const C_SectorErase_Time		=400		//60us*400=24ms
+                            	.const C_MassErase_Time			=1166		//60us*1166=70ms
+                            	
+                            	.include SPCE061.INC	
+                     <      	//========================================================================================
+                     <      	// Progarm: The file be included by modules
+                     <      	// Arranged by: Lanin Lin
+                     <      	// Date: 	2002/11/20: first version
+                     <      	//
+                     <      	//========================================================================================
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Definitions for I/O Port
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	.DEFINE	P_IOA_Data   	    	0x7000         // Write Data into data register and read from IOA pad
+                     <      	.DEFINE P_IOA_Buffer       	 	0x7001         // Write Data into buffer register and read from buffer register
+                     <      	.DEFINE P_IOA_Dir           	0x7002         // Direction vector for IOA
+                     <      	.DEFINE P_IOA_Attrib        	0x7003         // Attribute vector for IOA
+                     <      	.DEFINE P_IOA_Latch         	0x7004         // Latch PortA data for key change wake-up
+                     <      	//............................................
+                     <      	.DEFINE P_IOB_Data         		0x7005         // Write Data into the data register and read from IOB pad
+                     <      	.DEFINE P_IOB_Buffer        	0x7006         // Write Data into buffer register and read from buffer register
+                     <      	.DEFINE P_IOB_Dir           	0x7007         // Direction vector for IOB
+                     <      	.DEFINE P_IOB_Attrib        	0x7008         // Attribute vector for IOB
+                     <      	//............................................
+                     <      	.DEFINE P_FeedBack          	0x7009         // Clock form external R,C
+                     <      	.DEFINE P_TimerA_Data       	0x700A         // Data port for TimerA 
+                     <      	.DEFINE P_TimerA_Ctrl       	0x700B         // Control Port for TimerA
+                     <      	.DEFINE P_TimerB_Data       	0x700C         // Data port for TimerB
+                     <      	.DEFINE P_TimerB_Ctrl       	0x700D         // Control Port for TimerB
+                     <      	.DEFINE P_TimeBase_Setup    	0x700E         // TimerBase Freq. Set
+                     <      	.DEFINE P_TimeBase_Clear		0x700F 		   // Reset Timerbase counter
+                     <      	.DEFINE P_INT_Ctrl          	0x7010         // Control port for interrupt source
+                     <      	.DEFINE P_INT_Clear         	0x7011         // Clear interrupt source
+                     <      	.DEFINE P_INT_Mask          	0x702D         // interrupt source imformation
+                     <      	.DEFINE P_Watchdog_Clear    	0x7012         // Watchdog Reset
+                     <      	.DEFINE P_SystemClock       	0x7013         // Change system clock frequency(include go to standby mode)
+                     <      	//... PA6442 New version MC52A (For EC-03)....
+                     <      	.DEFINE P_ADC 	        		0x7014         	// Data Port for AD
+                     <      	.DEFINE P_ADC_Ctrl          	0x7015         	// Control Port for AD control
+                     <      	.DEFINE P_ADC_MUX_Ctrl      	0x702B         	// Control Port for AD control
+                     <      	.DEFINE P_ADC_LINEIN_Data   	0x702C         	// AD Line In Data
+                     <      	.DEFINE P_DAC2              	0x7016         	// Data Port for DAC2
+                     <      	.DEFINE P_DAC1	        		0x7017         	// Data Port for DAC1
+                     <      	.DEFINE P_DAC_Ctrl				0x702A 			// Control Port for two DAC and audio output mode
+                     <      	//............................................
+                     <      	.DEFINE P_LVD_Ctrl          	0x7019         	// Control Port for LVD
+                     <      	//............................................
+                     <      	.DEFINE P_SIO_Data				0x701A 			// Data port for serial IO
+                     <      	.DEFINE P_SIO_Addr_Low			0x701B 			// Address Port low
+                     <      	.DEFINE P_SIO_Addr_Mid			0x701C 			// Address Port middle
+                     <      	.DEFINE P_SIO_Addr_High	 		0x701D 			// Address Port high
+                     <      	.DEFINE P_SIO_Ctrl				0x701E 			// Control Port
+                     <      	.DEFINE P_SIO_Start				0x701F 			// Start port for serial interface
+                     <      	.DEFINE P_SIO_Stop				0x7020 			// Stop port for serial interface
+                     <      	//............................................
+                     <      	.DEFINE P_UART_Command1		 	0x7021 		// Command1 Port for UART
+                     <      	.DEFINE P_UART_Command2		 	0x7022 		// Command2 Port for UART
+                     <      	.DEFINE P_UART_Data			 	0x7023  		// Data Port for UART
+                     <      	.DEFINE	P_UART_BaudScalarLow 	0x7024 		// Set Baud Rate scalar low
+                     <      	.DEFINE	P_UART_BaudScalarHigh 	0x7025 		// Set Baud Rate scalar high
+                     <      	//========================================================================================        
+                     <      	// End of hardware061.inc
+                     <      	//========================================================================================
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	//----------------TimerA TimerB TimeBase----------------------------//
+                     <      		.define		C_SourceA_Fosc2				0x0000;			//
+                     <      		.define		C_SourceA_Fosc256		   	0x0001;			//
+                     <      		.define		C_SourceA_32768Hz			0x0002;			//
+                     <      		.define		C_SourceA_8192Hz			0x0003;			//
+                     <      		.define		C_SourceA_4096Hz			0x0004;			//
+                     <      		.define		C_SourceA_1					0x0005;			//
+                     <      		.define 	C_SourceA_0					0x0006;			//
+                     <      		.define 	C_SourceA_Ext1				0x0007;			//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      		.define		C_SourceB_2048Hz			0x0000 			//
+                     <      		.define		C_SourceB_1024Hz			0x0008 			//
+                     <      		.define		C_SourceB_256Hz				0x0010 			//
+                     <      		.define		C_SourceB_TMB1				0x0018 			//
+                     <      		.define		C_SourceB_4Hz				0x0020 			//
+                     <      		.define		C_SourceB_2Hz				0x0028 			//
+                     <      		.define		C_SourceB_1					0x0030 			//
+                     <      		.define		C_SourceB_Ext2				0x0038 			//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      		.define		C_SourceC_Fosc2				0x0000 			//
+                     <      		.define		C_SourceC_Fosc256		    0x0001 			//
+                     <      		.define		C_SourceC_32768Hz			0x0002 			//
+                     <      		.define		C_SourceC_8192Hz			0x0003 			//
+                     <      		.define		C_SourceC_4096Hz			0x0004 			//
+                     <      		.define		C_SourceC_1					0x0005 			//
+                     <      		.define 	C_SourceC_0					0x0006 			//
+                     <      		.define 	C_SourceC_Ext1				0x0007 			//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      		.define		C_DutyOff					0x0000 			//
+                     <      		.define 	C_Duty1						0x0040 			//
+                     <      		.define 	C_Duty2						0x0080 			//
+                     <      		.define 	C_Duty3						0x00C0 			//
+                     <      		.define 	C_Duty4						0x0100 			//
+                     <      		.define 	C_Duty5						0x0140 			//
+                     <      		.define 	C_Duty6						0x0180 			//
+                     <      		.define 	C_Duty7						0x01C0 			//
+                     <      		.define 	C_Duty8						0x0200 			//
+                     <      		.define 	C_Duty9						0x0240 			//
+                     <      		.define 	C_Duty10					0x0280 			//
+                     <      		.define 	C_Duty11					0x02C0 			//
+                     <      		.define 	C_Duty12					0x0300 			//
+                     <      		.define 	C_Duty13					0x0340 			//
+                     <      		.define 	C_Duty14					0x0380 			//
+                     <      		.define 	C_Duty_Div_2				0x03C0 			// Timer A&B
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//	TimeBase Setting
+                     <      		.define 	C_TMB1_8Hz					0x0000 			//
+                     <      		.define 	C_TMB1_16Hz					0x0001 			//
+                     <      		.define 	C_TMB1_32Hz					0x0002 			//
+                     <      		.define 	C_TMB1_64Hz					0x0003 			//
+                     <      		.define 	C_TMB2_128Hz				0x0000 			//
+                     <      		.define 	C_TMB2_256Hz				0x0004 			//
+                     <      		.define 	C_TMB2_512Hz				0x0008 			//
+                     <      		.define 	C_TMB2_1024Hz				0x000C 			//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//  FeedBack Setting
+                     <      		.define		C_FBKEN3		0x08	//Enable	IOB3 and IOB5 FeedBack2
+                     <      		.define		C_FBKEN2		0x04	//Enable	IOB2 and IOB4 FeedBack1
+                     <      		.define		C_IRTxEN		0x01	//Enable	IOB8 and IOB10 IRTx / Tx
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//	INT 
+                     <      		.define 	C_IRQ6_TMB2             0x0001         	// Timer B IRQ6
+                     <      		.define 	C_IRQ6_TMB1             0x0002         	// Timer A IRQ6
+                     <      		.define 	C_IRQ5_2Hz              0x0004         	// 2Hz IRQ5
+                     <      		.define 	C_IRQ5_4Hz              0x0008         	// 4Hz IRQ5
+                     <      		.define 	C_IRQ4_1KHz             0x0010         	// 1024Hz IRQ4
+                     <      		.define 	C_IRQ4_2KHz             0x0020         	// 2048Hz IRQ4
+                     <      		.define 	C_IRQ4_4KHz             0x0040         	// 4096Hz IRQ4
+                     <      		.define 	C_IRQ3_KEY              0x0080         	// Key Change IRQ3
+                     <      		.define 	C_IRQ3_EXT1             0x0100         	// Ext1 IRQ3
+                     <      		.define 	C_IRQ3_EXT2             0x0200         	// Ext2 IRQ3
+                     <      		.define 	C_IRQ2_TMB              0x0400         	// Timer B IRQ2
+                     <      		.define 	C_FIQ_TMB               0x0800         	// Timer B FIQ
+                     <      		.define 	C_IRQ1_TMA              0x1000         	// Timer A IRQ1
+                     <      		.define 	C_FIQ_TMA               0x2000         	// Timer A FIQ
+                     <      		.define 	C_IRQ0_PWM              0x4000         	// PWM IRQ0
+                     <      		.define 	C_FIQ_PWM               0x8000         	// PWM FIQ
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//... Definition for P_SystemClock ............
+                     <      	//B2..B0
+                     <      		.define 	C_Fosc					0x0000 			// 
+                     <      		.define 	C_Fosc_Div_2			0x0001 			//
+                     <      		.define 	C_Fosc_Div_4			0x0002 			//
+                     <      		.define 	C_Fosc_Div_8			0x0003 			// (default)
+                     <      		.define 	C_Fosc_Div_16			0x0004 			//
+                     <      		.define 	C_Fosc_Div_32			0x0005 			//
+                     <      		.define 	C_Fosc_Div_64			0x0006 			//
+                     <      		.define 	C_Sleep					0x0007 		 	//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//B4
+                     <      		.define		C_32K_Work				0x0010 			// (default)
+                     <      		.define 	C_32K_Off				0x0000 			// 
+                     <      	//B3
+                     <      		.define 	C_StrongMode			0x0008 			// 
+                     <      		.define 	C_AutoMode				0x0000 			// (default)
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//B7..B5
+                     <      		.define 	C_Fosc_24M				0x0000 			// (default)
+                     <      		.define 	C_Fosc_20M				0x0020 			//
+                     <      		.define 	C_Fosc_32M				0x0040 			//
+                     <      		.define 	C_Fosc_40M				0x0060 			//
+                     <      		.define 	C_Fosc_49M				0x0080 			//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//... Define for P_ADC_Ctrl ....................
+                     <      		.define		C_ADCE					0x0001 			//B1	//Enable ADC
+                     <      		.define		C_ADCN					0x0000			//B1	//Disable ADC&MIC
+                     <      		.define 	C_MIC_DIS				0x0002 			//B2	//No Mic
+                     <      		.define 	C_MIC_ENB				0x0000 			//B2	//Have MIC
+                     <      		.define 	C_AGCE					0x0004 			//B3	//Have AGC
+                     <      		.define 	C_AGCN					0x0000 			//B3	//No AGC
+                     <      		.define 	C_DAC_OUT2mA			0x0040 			//B6	//DAC current 2mA
+                     <      		.define 	C_DAC_OUT3mA			0x0000 			//B6	//DAC currect 3mA
+                     <      		.define 	C_VEXTREF_ENB			0x0080 			//B7	//Have Ext REF Voltage
+                     <      		.define 	C_VEXTREF_DIS			0x0000 			//B7	//No Ext REF Voltag
+                     <      		.define 	C_V2VREFB_DIS			0x0100 			//B8	//No 2V Voltag2
+                     <      		.define 	C_V2VREFB_ENB			0x0000 			//B8	//Have 2V Voltag2
+                     <      	//B15	-->	RDY
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//... Define for P_ADC_MUX_Ctrl ....................
+                     <      	//B2..B0
+                     <      		.define		C_ADC_CH_MICin			0x0000 			//
+                     <      		.define		C_ADC_CH1				0x0001 			//IOA0
+                     <      		.define		C_ADC_CH2				0x0002 			//IOA1
+                     <      		.define		C_ADC_CH3				0x0003 			//IOA2
+                     <      		.define		C_ADC_CH4				0x0004 			//IOA3
+                     <      		.define		C_ADC_CH5				0x0005 			//IOA4
+                     <      		.define		C_ADC_CH6				0x0006 			//IOA5
+                     <      		.define		C_ADC_CH7				0x0007 			//IOA6
+                     <      	//B15	-->	RDY
+                     <      	//B14	--> Fail B
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//... Define for P_DAC_Ctrl ....................
+                     <      	//B8..B7
+                     <      		.define	C_DA1_Direct				0x0000 			// DAC1 latch
+                     <      		.define C_DA1_LatchA				0x0080 			// 
+                     <      		.define C_DA1_LatchB				0x0100 			//
+                     <      		.define C_DA1_LatchAB				0x0180 			//
+                     <      	//B6..B5  
+                     <      		.define	C_DA2_Direct				0x0000 			// DAC2 latch
+                     <      		.define C_DA2_LatchA				0x0020 			// 
+                     <      		.define C_DA2_LatchB				0x0040 			//
+                     <      		.define C_DA2_LatchAB				0x0060 			//
+                     <      	//B4..B3
+                     <      		.define C_AD_Direct					0x0000 			// A/D MIC_IN latch 
+                     <      		.define C_AD_LatchA					0x0008 			//
+                     <      		.define	C_AD_LatchB					0x0010 			//
+                     <      		.define C_AD_LatchAB				0x0018 			//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//... Define for P_LVD_Ctrl ...................
+                     <      		.define 	C_LVD24V				0x0000 			// LVD = 2.4V 	(default)
+                     <      		.define 	C_LVD28V				0x0001 			// LVD = 2.8V
+                     <      		.define 	C_LVD32V				0x0002 			// LVD = 3.2V
+                     <      	//B15	Result of LVD
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//... Define for P_SIO_Ctrl ....................
+                     <      	//B1..B0
+                     <      		.define 	C_SIO_Addr8				0x0002 			// Address  = 8 
+                     <      		.define 	C_SIO_Addr16			0x0000 			// Address  = 16 	(default)
+                     <      		.define 	C_SIO_Addr24			0x0003 			// Address  = 24
+                     <      	//B4..B3
+                     <      		.define 	C_SIO_Clk_Div_16		0x0000 			// CPU CLK/16 		(default)
+                     <      		.define 	C_SIO_Clk_Div_4			0x0008 			// CPU CLK/4
+                     <      		.define 	C_SIO_Clk_Div_8			0x0010 			// CPU CLK/8
+                     <      		.define 	C_SIO_Clk_Div_32		0x0018			// CPU CLK/32
+                     <      	//B5
+                     <      		.define		C_SIO_RW_Dis			0x0020			//	Read /Write control bit applied disable
+                     <      		.define		C_SIO_RW_ENB			0x0000			//	Read /Write control bit applied 
+                     <      	//B6
+                     <      		.define		C_SIO_RD				0x0000			//	SIO Read 
+                     <      		.define		C_SIO_WR				0x0040			//	SIO Write 
+                     <      	//B7
+                     <      		.define		C_SIO_ENB				0x0080			//	Enable SIO Configuration 
+                     <      		.define		C_SIO_Dis				0x0000			//	Disable SIO	
+                     <      		
+                     <      		
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//	Set_UART_Command1(unsigned int);
+                     <      	//B2
+                     <      		.define		C_UART_Parity_ENB			0x0004			//Enable UART	Parity Enable 
+                     <      	//B3
+                     <      		.define		C_UART_Parity_Odd			0x0000			//Enable UART	Parity Odd 
+                     <      		.define		C_UART_Parity_Even			0x0008			//Enable UART	Parity Even 
+                     <      	//B5
+                     <      		.define		C_UART_Reset				0x0020			//UART	Internal Reset
+                     <      	//B6
+                     <      		.define		C_UART_Tx_IRQ_ENB			0x0040			//UART	TX IRQ	Enable
+                     <      	//B7
+                     <      		.define		C_UART_Rx_IRQ_ENB			0x0080			//UART	RX IRQ	Enable
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//	Set_UART_Command2
+                     <      	//B6
+                     <      		.define		C_UART_Tx_Pin_ENB			0x0040			//UART	TX Pin Enable
+                     <      	//B7
+                     <      		.define		C_UART_Rx_Pin_ENB			0x0080			//UART	RX Pin Enable
+                     <      	// 	Get_UART_Command2
+                     <      	//B3
+                     <      		.define		C_UART_Parity_Error			0x0008			//UART	Parity Error 
+                     <      	//B4
+                     <      		.define		C_UART_OverRun_Error		0x0010			//UART	Over Run Error 
+                     <      	//B5
+                     <      		.define		C_UART_Frame_Error			0x0020			//UART	Frame Error
+                     <      	//B6
+                     <      		.define		C_UART_Tx_RDY				0x0040			//UART	TX Ready
+                     <      	//B7
+                     <      		.define		C_UART_Rx_RDY				0x0080			//UART	RX Ready
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//	Set Baud Rate
+                     <      		.define		C_BaudRate_2400				0x1400			//UART	2400
+                     <      		.define		C_BaudRate_4800				0x0A00			//UART	4800
+                     <      		.define		C_BaudRate_9600				0x0500			//UART	9600
+                     <      		.define		C_BaudRate_19200			0x0280			//UART	19200
+                     <      		.define		C_BaudRate_38400			0x0140			//UART	38400
+                     <      		.define		C_BaudRate_48000			0x0100			//UART	48000
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	//-----------------------------------------------------------------------------------//
+                     <      	
+                     <      	
+0000817E                    	.CODE
+                            	.PUBLIC		_SP_SIOInitial;
+                            	_SP_SIOInitial:	.PROC
+                            	
+                            			 	//系统时钟设定
+0000817E 09 93 98 00        			 	r1 = 0x0098;    		 		//Fosc=49mHz 
+00008180 19 D3 13 70        			 	[P_SystemClock] = r1;
+                            		 	
+00008182 11 93 07 70        				r1 = [P_IOB_Dir];
+00008184 41 A2              				r1 |= 1;						//set bit0 output for sck
+00008185 19 D3 07 70        				[P_IOB_Dir] = r1;
+                            				
+00008187 11 93 08 70        				r1 = [P_IOB_Attrib];
+00008189 41 A2              				r1 |= 1;						//buffer output
+0000818A 19 D3 08 70        				[P_IOB_Attrib] = r1;
+                            				
+0000818C 11 93 06 70        				r1 = [P_IOB_Buffer];
+0000818E 41 A2              				r1 |= 1;						//output high
+0000818F 19 D3 05 70        				[P_IOB_Data] = r1;
+00008191 90 9A              			 	retf
+                            	.ENDP
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Send A Byte to Serial Flash
+                            	// Syntax: SP_SIOSendAByte(AddressLow,AddressHigh,  data)
+                            	// c level public
+                            	// Used register: r1,r2,r3
+                            	//////////////////////////////////////////////////////////////////
+                            	.public _SP_SIOSendAByte;
+                            	_SP_SIOSendAByte: .PROC
+                            	F_SIOSendAByte:
+00008192 88 DA              		    PUSH BP,BP TO [SP];
+00008193 08 0B 01 00        		    BP = SP + 1;
+00008195 03 92              			R1 = [BP+3];
+00008196 19 D3 1B 70        		    [P_SIO_Addr_Low]=r1;        // input SFLASH low address
+00008198 79 93              		    r1=r1 lsr 4;         		// right shift 8
+00008199 79 93              		    r1=r1 lsr 4;
+0000819A 19 D3 1C 70        		    [P_SIO_Addr_Mid]=r1; 		// input SFLASH mid address
+0000819C 04 92              		    R1 = [BP+4];                // Port direction
+0000819D 47 B2              		    r1=r1&0x0007;  				// input SFLASH hi address
+0000819E 19 D3 1D 70        		    [P_SIO_Addr_High]=r1;
+000081A0 09 93 D3 00        	        r1=0x00C3+C_SIOCLOCK;
+000081A2 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;        	// clk=CPUclk/8, 24 bit address  ;write
+000081A4 19 D3 1F 70        	        [P_SIO_Start]=r1;       	// enable write mode
+000081A6 05 92              	        R1 = [BP+5];
+000081A7 19 D3 1A 70        	        [P_SIO_Data]=r1;        	// state to transmit data
+                            	L_WaitSIOSendReady:
+000081A9 11 93 1F 70        	        r1=[P_SIO_Start];
+000081AB 09 C3 80 00        	        test    r1,0x0080
+000081AD 45 4E              	        jnz     L_WaitSIOSendReady
+000081AE 19 D3 20 70        	        [P_SIO_Stop]=r1;            //disable write mode
+000081B0 40 F0 93 82        	        call  F_Delay_Program_Time
+000081B2 88 98              	        POP BP,BP FROM [SP];
+000081B3 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Read A Byte to Serial Flash
+                            	// Syntax: SP_SIOReadAByte(AddressLow, AddressHigh)
+                            	// c level public
+                            	// Used register: r1,r2,r3
+                            	// Return register: r1
+                            	//////////////////////////////////////////////////////////////////         
+                            	
+                            	.public _SP_SIOReadAByte;
+                            	_SP_SIOReadAByte: .PROC
+                            	F_SIOReadAByte:
+000081B4 88 DA              	                PUSH BP,BP TO [SP];
+000081B5 08 0B 01 00        	        BP = SP + 1;
+000081B7 03 92              	        R1 = [BP+3];
+000081B8 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1; 		// input SFLASH low address
+000081BA 79 93              	        r1=r1 lsr 4;
+000081BB 79 93              	        r1=r1 lsr 4;
+000081BC 19 D3 1C 70        	        [P_SIO_Addr_Mid]=r1; 		// input SFLASH mid address
+000081BE 04 92              	        R1 = [BP+4];                // Port direction
+000081BF 47 B2              	        r1=r1&0x0007;  				// input SFLASH hi address
+000081C0 19 D3 1D 70        	        [P_SIO_Addr_High]=r1;
+000081C2 09 93 93 00        	        r1=0x0083+C_SIOCLOCK;
+000081C4 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;            // clk=CPUclk/16, 24 bit address  ;read
+000081C6 19 D3 1F 70        	        [P_SIO_Start]=r1;           // enable read mode
+000081C8 12 95 1A 70        	        r2=[P_SIO_Data];            // Clear SFLASH buffer
+                            	L_WaitSIOReadReady1:
+000081CA 11 93 1F 70        	        r1=[P_SIO_Start];
+000081CC 09 C3 80 00        	        test    r1,0x0080
+000081CE 45 4E              	        jnz     L_WaitSIOReadReady1
+000081CF 11 93 1A 70        	        r1=[P_SIO_Data];          	// Read exact Data
+                            	L_WaitSIOReadReady2:                // Wait read stop
+000081D1 12 95 1F 70        	        r2=[P_SIO_Start];
+000081D3 0A C5 80 00        	        test    r2,0x0080
+000081D5 45 4E              	        jnz     L_WaitSIOReadReady2
+000081D6 1A D5 20 70        	        [P_SIO_Stop]=r2;            // disable read mode
+000081D8 88 98              	        POP BP,BP FROM [SP];
+000081D9 90 9A              	        retf;
+                            	        .ENDP;
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Send A Word to Serial Flash
+                            	// Syntax: SP_SIOSendAData(AddressLow,AddressHigh,  data) Address must be even
+                            	// c level public
+                            	// Used register: r1,r2,r3
+                            	//////////////////////////////////////////////////////////////////
+                            	.public _SP_SIOSendAWord;
+                            	_SP_SIOSendAWord: .PROC
+                            	F_SIOSendAWord:
+000081DA 88 DA              	        PUSH BP,BP TO [SP];
+000081DB 08 0B 01 00        	        BP = SP + 1;
+000081DD 09 93 D3 00        	        r1=0x00C3+C_SIOCLOCK;
+000081DF 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;            // clk=CPUclk/8, 24 bit address  ;write
+000081E1 03 92              	        R1 = [BP+3];
+000081E2 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1;  		// input Sflash low address
+000081E4 79 93              	        r1=r1 lsr 4;          		// right shift 8
+000081E5 79 93              	        r1=r1 lsr 4;
+000081E6 19 D3 1C 70        	        [P_SIO_Addr_Mid]=r1;  		// input SFLASH mid address
+000081E8 04 92              	        R1 = [BP+4];                // Port direction
+000081E9 47 B2              	        r1=r1&0x0007;  				// input SFLASH hi address
+000081EA 19 D3 1D 70        	        [P_SIO_Addr_High]=r1;
+                            	        
+000081EC 19 D3 1F 70        	        [P_SIO_Start]=r1;           // enable write mode
+000081EE 05 92              	        R1 = [BP+5];
+000081EF 19 D3 1A 70        	        [P_SIO_Data]=r1;            //start to transmit low byte
+                            	L_WaitSIOSendReadyLB:
+000081F1 11 93 1F 70        	        r1=[P_SIO_Start];
+000081F3 09 C3 80 00        	        test    r1,0x0080
+000081F5 45 4E              	        jnz     L_WaitSIOSendReadyLB
+                            	      
+000081F6 19 D3 20 70        	        [P_SIO_Stop]=r1;            // disable write mode
+000081F8 40 F0 93 82        	        call  F_Delay_Program_Time 
+                            	
+000081FA 03 92              	         R1 = [BP+3];
+000081FB 41 02              	         r1+=1;
+000081FC 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1; 		// input SFLASH low address
+                            	             
+000081FE 19 D3 1F 70        	        [P_SIO_Start]=r1;           //enable write mode
+00008200 05 92              	        r1=[BP+5]; 
+00008201 79 93              	        r1=r1 lsr 4;         		// right shift 8
+00008202 79 93              	        r1=r1 lsr 4;
+00008203 19 D3 1A 70        	        [P_SIO_Data]=r1;            //start to transmit high byte
+                            	L_WaitSIOSendReadyHB:
+00008205 11 93 1F 70        	        r1=[P_SIO_Start];
+00008207 09 C3 80 00        	        test    r1,0x0080
+00008209 45 4E              	        jnz     L_WaitSIOSendReadyHB
+0000820A 19 D3 20 70        	        [P_SIO_Stop]=r1;            //disable write mode
+0000820C 40 F0 93 82        			call  F_Delay_Program_Time 
+0000820E 88 98              			POP BP,BP FROM [SP];
+0000820F 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: Read A Word from Serial Flash
+                            	// Syntax: SP_SIOReadAWord(AddressLow, AddressHigh)
+                            	// c level public
+                            	// Used register: r1,r2,r3,r4
+                            	// Return register: r1
+                            	//////////////////////////////////////////////////////////////////         
+                            	
+                            	.public _SP_SIOReadAWord;
+                            	_SP_SIOReadAWord: .PROC
+                            	F_SIOReadAWord:
+00008210 88 DA              	        PUSH BP,BP TO [SP];
+00008211 08 0B 01 00        	        BP = SP + 1;
+00008213 0C 99 FF 00        	        r4=0x00FF;
+00008215 03 92              	        R1 = [BP+3];
+00008216 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1; 		// input SFLASH low address
+00008218 79 93              	        r1=r1 lsr 4;
+00008219 79 93              	        r1=r1 lsr 4;
+0000821A 19 D3 1C 70        	        [P_SIO_Addr_Mid]=r1; 		// input SFLASH mid address
+0000821C 04 92              	        R1 = [BP+4];                // Port direction
+0000821D 47 B2              	        r1=r1&0x0007;  				// input SFLASH hi address
+0000821E 19 D3 1D 70        	        [P_SIO_Addr_High]=r1;
+00008220 09 93 83 00        	        r1=0x0083;  				// C_SIOCLOCK 0x0010
+00008222 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;           	// clk=CPUclk/16, 24 bit address  ;read
+00008224 19 D3 1F 70        	        [P_SIO_Start]=r1;       	// enable read mode
+00008226 12 95 1A 70        	        r2=[P_SIO_Data];          	// Clear SFLASH buffer
+                            	L_WaitSIOReadReady1LB:
+00008228 11 93 1F 70        	        r1=[P_SIO_Start];
+0000822A 09 C3 80 00        	        test    r1,0x0080
+0000822C 45 4E              	        jnz     L_WaitSIOReadReady1LB
+                            	        
+0000822D 14 B5 1A 70        	        r2=r4&[P_SIO_Data];          // Read exact Low Byte
+                            	L_WaitSIOReadReady2LB:               // Wait read stop
+0000822F 11 93 1F 70        	        r1=[P_SIO_Start];
+00008231 09 C3 80 00        	        test    r1,0x0080
+00008233 45 4E              	        jnz     L_WaitSIOReadReady2LB
+                            	        
+00008234 14 B7 1A 70        	        r3=r4&[P_SIO_Data];          // Read exact High Byte
+                            	
+                            	L_WaitSIOReadReady2HB:               // Wait read stop
+00008236 11 93 1F 70        	        r1=[P_SIO_Start];
+00008238 09 C3 80 00        	        test    r1,0x0080
+0000823A 45 4E              	        jnz     L_WaitSIOReadReady2HB
+                            	       
+0000823B 19 D3 20 70        	        [P_SIO_Stop]=r1;             // disable read mode
+                            	 
+0000823D 5B 97              	        r3=r3 lsl 4;     			 //shift left 8
+0000823E 5B 93              	        r1=r3 lsl 4;
+0000823F 02 A3              	        r1|=r2;         			 //return data
+00008240 88 98              	        POP BP,BP FROM [SP];
+00008241 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	
+                            	
+                            	///////////////////////////////////////////////////////////////
+                            	//Function : Mass Erase for S_Flash
+                            	// Syntax: SIOMassErase()
+                            	// Used register: r1,r2
+                            	///////////////////////////////////////////////////////////////
+                            	
+                            	.public _SP_SIOMassErase;
+                            	_SP_SIOMassErase: .PROC
+                            	F_SIOMassErase:
+00008242 90 D4              	        push r1,r2 to [sp];
+00008243 09 93 D0 00        	        r1=0x00C0+C_SIOCLOCK;
+00008245 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;            // clk=CPUclk/8, 16 bit address  ;write
+00008247 40 94              	        r2=0x0000;
+00008248 1A D5 1B 70        	        [P_SIO_Addr_Low]=r2; 		// input SFLASH low address
+0000824A 0A 95 C0 00        	        r2=0x00C0;
+0000824C 1A D5 1C 70        	        [P_SIO_Addr_Mid]=r2; 		// input SFLASH mid address
+0000824E 0A 95 C0 00        	        r2=0x00C0;
+00008250 1A D5 1D 70        	       [P_SIO_Addr_High]=r2; 
+00008252 19 D3 1F 70        	        [P_SIO_Start]=r1;           // enable write mode
+00008254 40 92              	        r1=0;                       // A7~A0 = 0
+00008255 19 D3 1A 70        	        [P_SIO_Data]=r1;            // state to transmit data
+                            	
+                            	L_WaitSIOSendReadyMass:
+00008257 11 93 1F 70        	        r1=[P_SIO_Start];
+00008259 09 C3 80 00        	        test    r1,0x0080
+0000825B 45 4E              	        jnz     L_WaitSIOSendReadyMass
+0000825C 19 D3 20 70        			[P_SIO_Stop]=r1;
+0000825E 40 F0 85 82        	        call    F_Delay_MassErase_Time
+00008260 90 90              	        pop r1,r2 from [sp];
+00008261 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	///////////////////////////////////////////////////////////////
+                            	//Function : Sector Erase for S_Flash (Page Size 1K)
+                            	// Syntax: SP_SIOSectorErase(Sector)
+                            	// Used register: r1,r2
+                            	///////////////////////////////////////////////////////////////
+                            	.public _SP_SIOSectorErase;
+                            	_SP_SIOSectorErase: .PROC
+                            	SP_SIOSectorErase:
+00008262 88 DA              	        PUSH BP,BP TO [SP];
+00008263 08 0B 01 00        	        BP = SP + 1;
+                            	 
+00008265 03 92              	        R1 = [BP+3];
+00008266 09 B3 FF 00        	        r1=r1&0x00ff;
+00008268 51 93              	        r1=r1 lsl 3;
+00008269 09 A3 00 80        	        r1=r1|0x8000;
+0000826B 19 D3 1B 70        	        [P_SIO_Addr_Low]=r1; 	// input SFLASH low address ;for A15 and A10
+0000826D 79 93              	        r1=r1 lsr 4;
+0000826E 79 93              	        r1=r1 lsr 4;
+0000826F 19 D3 1C 70        	        [P_SIO_Addr_Mid]=r1; 	// input SFLASH mid address ;for A16
+00008271 09 93 D0 00        	        r1=0x00C0+C_SIOCLOCK;
+00008273 19 D3 1E 70        	        [P_SIO_Ctrl]=r1;        // clk=CPUclk/8, 16 bit address  ;write
+00008275 19 D3 1F 70        	        [P_SIO_Start]=r1;       // enable write mode
+00008277 40 92              	        r1=0;                   // A7~A0 = 0
+00008278 19 D3 1A 70        	        [P_SIO_Data]=r1;        // state to transmit data
+                            	
+                            	L_WaitSIOSendReadyPage1:
+0000827A 11 93 1F 70        	        r1=[P_SIO_Start];
+0000827C 09 C3 80 00        	        test    r1,0x0080
+0000827E 45 4E              	        jnz     L_WaitSIOSendReadyPage1
+0000827F 19 D3 20 70        	        [P_SIO_Stop]=r1;        
+00008281 40 F0 8C 82        	        call    F_Delay_SectorErase_Time
+00008283 88 98              	        POP BP,BP FROM [SP];
+00008284 90 9A              	        retf;
+                            	        .ENDP;
+                            	
+                            	
+                            	
+                            	//=======================================================================================
+                            	//FunctionName:F_Delay_MassErase_Time
+                            	//Description:
+                            	//Author:
+                            	//Date:
+                            	//Destroy:
+                            	//Input:
+                            	//Return:
+                            	//========================================================================================
+                            	.public F_Delay_MassErase_Time;
+                            	F_Delay_MassErase_Time:
+00008285 0A 95 8E 04        			r2=C_MassErase_Time;		
+                            	?L_Wait_MassErase_Time_Over:							       
+00008287 40 F0 93 82        			call	F_Delay_Program_Time;
+00008289 41 24              			r2-=1;						
+0000828A 44 4E              			jnz ?L_Wait_MassErase_Time_Over;		
+0000828B 90 9A              			retf;						
+                            	//=======================================================================================
+                            	//FunctionName:F_Delay_SectorErase_Time
+                            	//Description:
+                            	//Author:
+                            	//Date:
+                            	//Destroy:
+                            	//Input:
+                            	//Return:
+                            	//========================================================================================
+                            	.public F_Delay_SectorErase_Time;
+                            	F_Delay_SectorErase_Time:
+0000828C 0A 95 90 01        			r2=C_SectorErase_Time;				//6	
+                            	?L_Wait_SectorErase_Time_Over:							       
+0000828E 40 F0 93 82        			call	F_Delay_Program_Time;
+00008290 41 24              			r2-=1;								//3					
+00008291 44 4E              			jnz ?L_Wait_SectorErase_Time_Over;	//5	
+00008292 90 9A              			retf;						
+                            	//=======================================================================================
+                            	//FunctionName:F_Delay_Program_Time
+                            	//Description:
+                            	//Author:
+                            	//Date:
+                            	//Destroy:
+                            	//Input:
+                            	//Return:
+                            	//========================================================================================
+                            	.public F_Delay_Program_Time;
+                            	F_Delay_Program_Time:
+00008293 7C 92              			r1=C_Program_Time;			//6
+                            	?L_Wait_Program_Time_Over:							//52cycle,1us @ 49Mhz       
+00008294 00 EE              			nop;						//4
+00008295 00 EE              			nop;						//4
+00008296 00 EE              			nop;						//4
+00008297 00 EE              			nop;						//4
+00008298 00 EE              			nop;						//4
+00008299 00 EE              			nop;						//4
+0000829A 00 EE              			nop;						//4
+0000829B 00 EE              			nop;						//4
+0000829C 00 EE              			nop;						//4
+0000829D 00 EE              			nop;						//4
+0000829E 00 EE              			nop;						//4
+0000829F 00 EE              			nop;						//4
+000082A0 00 EE              			nop;						//4
+000082A1 41 22              			r1-=1;						//3
+000082A2 4F 4E              			jnz ?L_Wait_Program_Time_Over;		//5
+000082A3 90 9A              			retf;						//12
+0 error(s), 0 warning(s).
+
+
+

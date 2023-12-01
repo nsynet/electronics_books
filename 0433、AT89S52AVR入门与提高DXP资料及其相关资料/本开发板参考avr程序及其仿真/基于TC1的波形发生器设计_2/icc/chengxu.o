@@ -1,0 +1,266 @@
+XL
+H 5 areas 13 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset3 Ref0000
+S div16u Ref0000
+S pop_gset1 Ref0000
+S pop_gset3 Ref0000
+S empy16s Ref0000
+A text size 1E6 flags 0
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的波形发生器设计_2\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline B 4
+dbline C 4
+dbline D 6
+dbline D 6
+dbline D C
+dbline D C
+dbline D C
+dbline D C
+dbline D 10
+dbline D 16
+dbline C 16
+dbline C 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 11 2C
+dbline 11 2C
+dbline 12 2E
+dbline 13 32
+dbline 13 32
+dbline 14 34
+dbline 15 56
+dbline 16 5C
+dbline 17 5E
+dbline 12 5E
+dbline 12 60
+dbline FFFFFFFE 64
+dbline 0 68
+dbfunc e Key_Process 6A fV
+dbsym l k 1 c
+dbsym l j 1 c
+dbsym l i 1 c
+dbsym r p 14 pc
+dbline FFFFFFFF 70
+dbline 1B 70
+dbline 1C 72
+dbline 1C 72
+dbline 1C 78
+dbline 1C 7E
+dbline 1C 7E
+dbline 1D 84
+dbline 1D 84
+dbline 1D 8A
+dbline 1D 90
+dbline 1D 90
+dbline 1E 96
+dbline 1E 96
+dbline 1E 9C
+dbline 1E A2
+dbline 1E A2
+dbline 1F A6
+dbline 20 AE
+dbline 20 AE
+dbline 21 BA
+dbline 21 C2
+dbline 22 C8
+dbline 22 CE
+dbline 23 CE
+dbline 24 D6
+dbline 24 D6
+dbline 25 E2
+dbline 25 EA
+dbline 26 F0
+dbline 26 F6
+dbline 27 F6
+dbline 28 FE
+dbline 28 FE
+dbline 29 10A
+dbline 29 112
+dbline 2A 118
+dbline 2A 11E
+dbline FFFFFFFE 11E
+dbline 0 122
+dbfunc e Set_Process 124 fV
+dbsym r i 14 i
+dbsym r j 14 i
+dbline FFFFFFFF 128
+dbline 2E 128
+dbline 2F 128
+dbline 30 15C
+dbline 31 168
+dbline 32 170
+dbline FFFFFFFE 176
+dbline 0 17A
+dbfunc e Init_IO 17C fV
+dbline FFFFFFFF 17C
+dbline 36 17C
+dbline 36 17C
+dbline 37 180
+dbline 38 182
+dbline 39 184
+dbline 3A 186
+dbline 3B 18A
+dbline 3C 18C
+dbline 3D 18E
+dbline FFFFFFFE 190
+dbline 0 190
+dbfunc e Init_Timer1 192 fV
+dbline FFFFFFFF 192
+dbline 41 192
+dbline 41 192
+dbline 42 198
+dbline 43 19C
+dbline 44 1A0
+dbline 45 1A2
+dbline 46 1A4
+dbline FFFFFFFE 1A6
+dbline 0 1A6
+dbfunc e main 1A8 fV
+dbline FFFFFFFF 1A8
+dbline 4A 1A8
+dbline 4A 1A8
+dbline 4B 1AA
+dbline 4C 1AE
+dbline 4D 1B2
+dbline 4E 1B4
+dbline 4F 1BA
+dbline 51 1C0
+dbline 51 1C0
+dbline 52 1C6
+dbline 53 1C8
+dbline 54 1CE
+dbline 50 1CE
+dbline FFFFFFFE 1D0
+dbline 0 1D0
+dbfunc e Compare 1D2 fV
+dbline FFFFFFFF 1D8
+dbline 59 1D8
+dbline 59 1D8
+dbline FFFFFFFE 1DE
+dbline 0 1E4
+S _main Def01A8
+S _DelayMs Def0000
+S _Compare Def01D2
+S _Display Def0026
+S _Init_Timer1 Def0192
+S _Key_Process Def006A
+S _Set_Process Def0124
+S _Init_IO Def017C
+A data size E flags 20
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的波形发生器设计_2\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[4:4]c
+S _Table Def0000
+S _Data Def000A
+A idata size E flags 0
+A vector size 1C flags C
+A bss size 3 flags 20
+dbfile E:\Proteus\ATMEGA16\个人总结的M16程序\基于TC1的波形发生器设计_2\icc\chengxu.c
+dbsym e Key3_Flag 0 c
+dbsym e Key2_Flag 1 c
+dbsym e Key1_Flag 2 c
+S _Key1_Flag Def0002
+S _Key2_Flag Def0001
+S _Key3_Flag Def0000
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 01
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 17 C0 45 BB
+R 00 00 00 00 12 04 01 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 33 24 8F EF 90 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 82 19 93 09 8B BB 01 E0 10 E0 D2 DF 44 0F
+R 00 00 00 00
+T 5E 00 63 95 64 30 38 F3 0E 94 00 00 08 95
+R 00 00 00 00 12 0A 04 00
+T 6A 00 0E 94 00 00 A8 01 06 C0 00 E0
+R 00 00 00 00 12 04 00 00 20 0A 01 00 0A 00
+T 74 00 10 E0 D7 DF 81 E0 80 93 02 00 B0 9B F8 CF
+R 00 00 00 00 40 02 01 00 0A 00 00 0A 04 00
+T 82 00 06 C0 00 E0 10 E0 CE DF 81 E0 80 93
+R 00 00 00 00 20 04 01 00 0A 00 40 06 01 00 0A 00
+T 8E 00 01 00 B1 9B F8 CF 06 C0 00 E0
+R 00 00 00 00 00 02 04 00 20 0A 01 00 0A 00
+T 98 00 10 E0 C5 DF 81 E0 80 93 00 00 B2 9B F8 CF
+R 00 00 00 00 40 02 01 00 0A 00 00 0A 04 00
+T A6 00 80 91 02 00 81 30 81 F4 CA 01 03 96 FC 01
+R 00 00 00 00 00 04 04 00
+T B4 00 80 81 8F 5F 80 83 FA 01 83 81 8A 30 19 F4
+R 00 00 00 00
+T C2 00 22 24 FA 01 23 82 22 24 20 92 02 00 80 91
+R 00 00 00 00 00 0C 04 00
+T D0 00 01 00 81 30 81 F4 CA 01 02 96 FC 01 80 81
+R 00 00 00 00 00 02 04 00
+T DE 00 8F 5F 80 83 FA 01 82 81 8A 30 19 F4 22 24
+R 00 00 00 00
+T EC 00 FA 01 22 82 22 24 20 92 01 00 80 91 00 00
+R 00 00 00 00 00 0A 04 00 00 0E 04 00
+T FA 00 81 30 81 F4 CA 01 01 96 FC 01 80 81 8F 5F
+R 00 00 00 00
+T 08 01 80 83 FA 01 81 81 8A 30 19 F4 22 24 FA 01
+R 00 00 00 00
+T 16 01 21 82 22 24 20 92 00 00 0E 94 00 00 08 95
+R 00 00 00 00 00 08 04 00 12 0C 03 00
+T 24 01 0E 94 00 00 20 90 0B 00 84 E6 82 9D 10 01
+R 00 00 00 00 12 04 00 00 00 08 01 00
+T 32 01 20 91 0A 00 33 27 08 EE 13 E0 0E 94 00 00
+R 00 00 00 00 00 04 01 00 12 0E 05 00
+T 40 01 A8 01 42 0D 53 1D 20 90 0C 00 8A E0 82 9D
+R 00 00 00 00 00 0A 01 00
+T 4E 01 40 0D 51 1D 20 90 0D 00 33 24 42 0D 53 1D
+R 00 00 00 00 00 08 01 00
+T 5C 01 04 EF 11 E0 9A 01 0E 94 00 00 A8 01 1A 01
+R 00 00 00 00 12 0A 02 00
+T 6A 01 23 2C 33 24 2B BC CA 01 90 70 8A BD 0E 94
+R 00 00 00 00
+T 78 01 00 00 08 95
+R 00 00 00 00 12 02 03 00
+T 7C 01 8F EF 8A BB 8B BB 84 BB 85 BB 22 24 27 BA
+R 00 00 00 00
+T 8A 01 28 BA 81 BB 82 BB 08 95
+R 00 00 00 00
+T 92 01 89 B7 80 61 89 BF 8A E0 8E BD 22 24 2D BC
+R 00 00 00 00
+T A0 01 2C BC C0 DF 78 94 08 95
+R 00 00 00 00
+T A8 01 E9 DF 8F EF 8B BB 22 24 25 BA EF DF 0E E1
+R 00 00 00 00
+T B6 01 10 E0 23 DF 8F EF 85 BB 07 C0 00 E0 10 E0
+R 00 00 00 00 20 0C 01 00 0A 00 40 0E 01 00 0A 00
+T C4 01 52 DF AE DF 00 E0 10 E0 2C DF F8 CF 08 95
+R 00 00 00 00 20 06 01 00 0A 00 40 08 01 00 0A 00
+T 18 00 0C 94 E9 00
+R 00 00 03 00 10 04 00 00
+T D2 01 2A 92 2F B6 2A 92 22 B2 20 94 22 BA 29 90
+R 00 00 00 00
+T E0 01 2F BE 29 90 18 95
+R 00 00 00 00

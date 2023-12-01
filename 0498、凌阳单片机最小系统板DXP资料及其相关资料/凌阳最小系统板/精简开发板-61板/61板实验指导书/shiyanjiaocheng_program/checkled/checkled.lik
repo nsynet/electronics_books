@@ -1,0 +1,17 @@
+Version: 3.0
+Options: m37
+Obj: "C:\Program Files\Sunplus\unSPIDE184\unSPIDE\startupD.obj"
+Obj: "D:\program\shiyanjiaocheng_program\checkled\Debug\Resource.obj"
+Obj: "D:\program\shiyanjiaocheng_program\checkled\Debug\main.obj"
+Lib: "C:\Program Files\Sunplus\unSPIDE184\unSPIDE\CMacro.lib"
+Output: "D:\program\shiyanjiaocheng_program\checkled\Debug\checkled.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: IRAM in "main.obj" at 820A  linkat 0 
+;Align: IRAM in "main.obj" with 0 
+;Locate: CODE in "main.obj" at 8026 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "lshiu1" of "CMacro.lib"  at 81E0 
+;Align: CODE in "lshiu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshu1" of "CMacro.lib"  at 81F5 
+;Align: CODE in "rshu1" of "CMacro.lib"  with 0 

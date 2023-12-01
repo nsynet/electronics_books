@@ -1,0 +1,260 @@
+  #include<reg52.h>
+ #define uchar unsigned char 
+ #define uint unsigned int 
+  sbit P3_7=P3^7;
+  sbit P1_4=P1^4;
+  sbit P1_5=P1^5;
+  sbit P1_6=P1^6;
+  sbit P1_7=P1^7; 
+ 
+ unsigned char code dispcode[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x98};
+unsigned char code dispbitcode[]={0xfe,0xfd,0xfb,0xf7}; 
+unsigned char dispbuf[8]={0,0,0,0}; 
+unsigned char dispbitcount; 
+unsigned char temp; 
+unsigned char i,j; 
+unsigned char key; 
+unsigned char keypos; 
+bit alarmflag; 
+  
+void change(unsigned char *p,unsigned char count) 
+{   while(count>0) 
+    {  *(p+count)=*(p+count-1); 
+      count--; 
+    } 
+} 
+ void main(void) 
+{TMOD=0x01; 
+  TH0=(65536-4000) / 256; 
+  TL0=(65536-4000) % 256; 
+  TR0=1; 
+  ET0=1; 
+  EA=1; 
+   while(1) 
+    { P1=0xff; 
+      P1_4=0; 
+      temp=P1; 
+      temp=temp & 0x0f; 
+      if (temp!=0x0f) 
+        {  for(i=100;i>0;i--) 
+          for(j=200;j>0;j--); 
+          temp=P1; 
+          temp=temp & 0x0f; 
+          if (temp!=0x0f) 
+            {  temp=P1; 
+              temp=temp & 0x0f;              
+              switch(temp) 
+                {  case 0x0e: 
+                    key=7; 
+                    break; 
+                  case 0x0d: 
+                    key=8; 
+                    break; 
+                  case 0x0b: 
+                    key=9; 
+                    break; 
+                  case 0x07: 
+                    key=10; 
+                    break; 
+                } 
+              if ((key>=0) && (key<10)) 
+              {  keypos++; 
+                if(keypos<5) 
+                  {  change(dispbuf,keypos); 
+                    dispbuf[0]=key; 
+                  } 
+                  else 
+                    {  keypos=5; 
+                      alarmflag=1; 
+                    } 
+              } 
+              temp=P1; 
+              P3_7=~P3_7; 
+              temp=temp & 0x0f;              
+              while(temp!=0x0f) 
+                { temp=P1; 
+                  temp=temp & 0x0f;              
+                } 
+              alarmflag=0; 
+            } 
+        } 
+  
+      P1=0xff; 
+      P1_5=0; 
+      temp=P1; 
+      temp=temp & 0x0f; 
+      if (temp!=0x0f) 
+        { for(i=100;i>0;i--) 
+          for(j=200;j>0;j--); 
+          temp=P1; 
+          temp=temp & 0x0f; 
+          if (temp!=0x0f) 
+            { temp=P1; 
+              temp=temp & 0x0f;              
+              switch(temp) 
+                {  case 0x0e: 
+                    key=4; 
+                    break; 
+                  case 0x0d: 
+                    key=5; 
+                    break; 
+                  case 0x0b: 
+                    key=6; 
+                    break; 
+                  case 0x07: 
+                    key=11; 
+                    break; 
+                } 
+              if ((key>=0) && (key<10)) 
+              {  keypos++; 
+                if(keypos<5) 
+                  {  change(dispbuf,keypos); 
+                    dispbuf[0]=key; 
+                  } 
+                  else 
+                    {  keypos=5; 
+                      alarmflag=1; 
+                    } 
+              } 
+              temp=P1; 
+              P3_7=~P3_7; 
+              temp=temp & 0x0f;              
+              while(temp!=0x0f) 
+                { temp=P1; 
+                  temp=temp & 0x0f;              
+                } 
+              alarmflag=0; 
+            } 
+        } 
+      P1=0xff; 
+      P1_6=0; 
+      temp=P1; 
+      temp=temp & 0x0f; 
+      if (temp!=0x0f) 
+        { for(i=100;i>0;i--) 
+          for(j=200;j>0;j--); 
+          temp=P1; 
+          temp=temp & 0x0f; 
+          if (temp!=0x0f) 
+            { temp=P1; 
+              temp=temp & 0x0f;              
+              switch(temp) 
+                {  case 0x0e: 
+                    key=1; 
+                    break; 
+                  case 0x0d: 
+                    key=2; 
+                    break; 
+                  case 0x0b: 
+                    key=3; 
+                    break; 
+                  case 0x07: 
+                    key=12; 
+                    break; 
+                } 
+              if ((key>=0) && (key<10)) 
+              { 
+                keypos++; 
+                if(keypos<5) 
+                  { 
+                    change(dispbuf,keypos); 
+                    dispbuf[0]=key; 
+                  } 
+                  else 
+                    { 
+                      keypos=5; 
+                      alarmflag=1; 
+                    } 
+              } 
+              temp=P1; 
+              P3_7=~P3_7; 
+              temp=temp & 0x0f;              
+              while(temp!=0x0f) 
+                { 
+                  temp=P1; 
+                  temp=temp & 0x0f;               
+                } 
+              alarmflag=0; 
+            } 
+        } 
+  
+      P1=0xff; 
+      P1_7=0; 
+      temp=P1; 
+      temp=temp & 0x0f; 
+      if (temp!=0x0f) 
+        { 
+          for(i=100;i>0;i--) 
+          for(j=200;j>0;j--); 
+          temp=P1; 
+          temp=temp & 0x0f; 
+          if (temp!=0x0f) 
+            {  temp=P1; 
+              temp=temp & 0x0f;              
+              switch(temp) 
+                {  case 0x0e: 
+                    key=0; 
+                    break; 
+                  case 0x0d: 
+                    key=13; 
+                    break; 
+                  case 0x0b: 
+                    key=14; 
+                    break; 
+                  case 0x07: 
+                    key=15; 
+                    break; 
+                } 
+              if ((key>=0) && (key<10)) 
+              {  keypos++; 
+                if(keypos<5) 
+                  {   change(dispbuf,keypos); 
+                    dispbuf[0]=key; 
+                  } 
+                  else 
+                    {   keypos=5; 
+                      alarmflag=1; 
+                    } 
+              } 
+              temp=P1; 
+              P3_7=~P3_7; 
+              temp=temp & 0x0f;              
+              while(temp!=0x0f) 
+                {  temp=P1; 
+                  temp=temp & 0x0f;              
+                } 
+              alarmflag=0; 
+            } 
+        } 
+  
+    } 
+} 
+  
+void t0(void) interrupt 1 using 0 
+{ TH0=(65536-4000) / 256; 
+  TL0=(65536-4000) % 256; 
+  P0=dispcode[dispbuf[dispbitcount]]; 
+  P2=dispbitcode[dispbitcount]; 
+  dispbitcount++; 
+  if (dispbitcount==4) 
+    {  dispbitcount=0; } 
+  if (alarmflag==1) 
+    {   P3_7=~P3_7; } 
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

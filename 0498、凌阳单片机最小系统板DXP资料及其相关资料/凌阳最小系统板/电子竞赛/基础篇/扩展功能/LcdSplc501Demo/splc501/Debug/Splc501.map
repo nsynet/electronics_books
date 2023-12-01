@@ -1,0 +1,438 @@
+Wednesday, July 09, 22:00:28, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             807A         "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8096         "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         8095         "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Resource.obj"
+F_SP_Send_PWM                                      C6AB         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Send_DAC1                                     C6AE         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Send_DAC2                                     C6B1         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  C6B4         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Send_Out                                      C6B4         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Get_ADC                                       C6B9         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             C6BC         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             C6BF         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             C6C2         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             C6C5         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                C6C8         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               C6CB         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             C6CE         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                C6D1         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                C6D4         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Write_INT_Status                              C6D7         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Read_INT_Status                               C6DA         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    C712         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    C736         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    C748         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    C76C         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_RampUpDAC1                                     C712         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_RampDnDAC1                                     C736         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_RampUpDAC2                                     C748         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_RampDnDAC2                                     C76C         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_Delay                                         C7D7         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_InitQueue                                     C784         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_ReadQueue                                     C791         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_WriteQueue                                    C7A3         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+F_SP_TestQueue                                     C7B1         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_Export                                         C708         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_Import                                         C6FD         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_Init_IOB                                       C6ED         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_Init_IOA                                       C6DD         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_SP_GetResource                                    C7C9         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+R_InterruptStatus                                  A3           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+R_FIQTemp                                          A4           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"
+_Init_sys                                          AEB4         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+F_zk_bank                                          AEBA         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_pixel                                             AECD         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+image                                              AF29         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_InitGraphic                                    B00E         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_ClearScreen                                    B01C         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetBMPMode                                     B030         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetLineStyle                                   B041         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetRectStyle                                   B051         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetCircleStyle                                 B054         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetEllipseStyle                                B057         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetCharMode                                    B05A         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_SetBMPMode                                     B05D         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_SetCharMode                                    B088         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_SetLineStyle                                   B08A         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_SetRectStyle                                   B0E4         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_SetCircleStyle                                 B0E6         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_SetEllipseStyle                                B0E8         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_PutBitmap                                      B155         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_F_image_bank                                      B191         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_LineTo                                         B269         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+DISPLAY_A_POINT                                    B433         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+get_a_point_address                                B51A         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_Rectangle                                      B55B         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_Circle                                         B74B         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_Ellipse                                        B76A         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_ellipse_process1                                  B8AE         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_ellipse_process2                                  B8DB         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_ellipse_process3                                  B8F7         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_ellipse_process4                                  B92A         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_offset                                            B966         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_sub                                               BA0F         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_a_square_b_square                                 BA49         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_PutChar                                        BA61         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_PutStr                                         BBC2         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetPixel                                       BC40         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_PutPixel                                       BC59         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetY                                           BC84         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetX                                           BC87         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetCharHeight                                  BC8A         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetCharWidth                                   BCA5         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_GetStrWidth                                    BD04         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_MoveDelta                                      BD6E         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_MoveTo                                         BD86         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_Bar                                            BD9A         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_ClearRect                                      BE7E         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_ClearEllipse                                   BF60         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_FG_ClearCircle                                    BFC1         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+_mode2                                             C020         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"
+bank                                               0            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+bank1                                              1            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+label1                                             2            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+pixel_page                                         2            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+pixel_column                                       3            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+pixel_bit                                          4            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_width_byte                                   2            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_high_bit                                     3            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_jumpoff_point_x                              4            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_jumpoff_point_y                              5            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_tab                                          6            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_page                                         7            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_bit                                          8            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_lcd_data                                     9            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_temp_data                                    A            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_temp_data1                                   D            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+image_tab_pointer                                  C            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_line_x0                                           E            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_line_x1                                           F            "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_line_y0                                           10           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_line_y1                                           11           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_line_x                                            12           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_line_y                                            13           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_lineparameter_a                                   14           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_lineparameter_b                                   15           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_lineparameter_a_temp                              16           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_lineparameter_b_temp                              17           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_x                           18           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_y                           19           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_high                                    1A           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_wide                                    1B           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectagle_shape                                    1C           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectagle_mode                                     1D           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_page                        1E           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_place                       1F           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_bit                         20           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_end_place                               21           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_end_page                                22           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_end_bit                                 23           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+rectangle_temp_bit                                 24           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+rectangle_temp_page                                25           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_bit_temp                    26           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectagle_high_temp                                28           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectagle_wide_temp                                29           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_temp_x                                  2A           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_wide_temp                               2B           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_rectangle_end_place_temp                          27           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_long_axes                                 2C           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_short_axes                                2D           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_x                                         2E           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_y                                         2F           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_origin_x                                  30           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_origin_y                                  31           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_a_square_mul_y_square_l                           32           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_a_square_mul_y_square_h                           33           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_b_square_mul_x_square_l                           34           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_b_square_mul_x_square_h                           35           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_a_square_mul_b_square_l                           36           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_a_square_mul_b_square_h                           37           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_a                                          38           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_b                                          39           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_a_squ_mul_b_squ_l                          3A           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_a_squ_mul_b_squ_h                          3B           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_sbc_l                                      3C           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_sbc_h                                      3D           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_c_l                                        3E           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_c_h                                        3F           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_d_l                                        40           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_d_h                                        41           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_x_temp                                    42           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_y_temp                                    43           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_in_a_l                              44           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_in_a_h                              45           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_in_b_l                              46           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_in_b_h                              47           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_in_c_l                              48           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_in_c_h                              49           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_out_l                               4A           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_out_h                               4B           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_sign                                              4C           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_first_l                     4D           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_first_h                     4E           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_second_l                    4F           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_second_h                    50           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_sign                        51           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_process_sign                                      52           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+charnum                                            53           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+charwide                                           54           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+charhigh                                           55           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+chartemp                                           57           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+str_tab                                            59           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+str_x                                              5A           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+str_y                                              5B           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+label2                                             5C           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+bp_temp                                            5C           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+R_GraphicMode_temp                                 5D           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+sign                                               5E           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+constant                                           58           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+label3                                             66           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_page_place_bit                                    75           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_page                                              76           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_page_place                                        77           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_point_shape                                       7F           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_x                                                 78           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_y                                                 79           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_x                                   7A           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_offset_y                                   7B           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_public_area_sign                                  7C           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_point_value                                       7D           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_point_value_temp                                  7E           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+label4                                             80           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+R_GraphicMode                                      A0           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_x0                                                A1           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_y0                                                A2           "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+tab_rectangle1                                     8049         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+tab_rectangle2                                     8052         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+TAB_pixel                                          805B         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"
+_Init_LCD_501                                      C321         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+_Set_LCD_Page_No                                   C415         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+F_Set_LCD_Page_No                                  C415         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+_Set_LCD_Column_Addr                               C43E         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+F_Set_LCD_Column_Addr                              C43E         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+_Fill_All_LCD_Value                                C474         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+F_Fill_All_LCD_Value                               C474         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+_Send_data                                         C4A3         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+F_Send_data                                        C4A3         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+_Read_Lcd_data                                     C4C0         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+F_Read_Lcd_data                                    C4C0         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+F_Display_point                                    C4EE         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+F_Init_IO                                          C509         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+_Init_IO                                           C509         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"
+tiny3                                              8097         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+large1                                             82CF         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+smallb1                                            8890         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+small1                                             8DDD         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+narrow1                                            92CB         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_b7                                                973B         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_b1                                                98FE         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_b2                                                9A81         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_b3                                                9BC4         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_b4                                                9D07         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_b5                                                9E4A         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_b6                                                9F8D         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_b8                                                A0D0         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_work1                                             A213         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_work2                                             A296         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart1                                            A319         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart2                                            A39C         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart3                                            A41F         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart4                                            A4A2         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart5                                            A525         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart6                                            A5A8         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart7                                            A62B         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart8                                            A6AE         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_heart9                                            A731         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_dance1                                            A7B4         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_dance2                                            A837         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_dance3                                            A8BA         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_dance4                                            A93D         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_dance5                                            A9C0         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_dance6                                            AA43         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_dance7                                            AAC6         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_dance8                                            AB49         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_m0                                                ABCC         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_m1                                                AC8F         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_m2                                                AD52         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_w1                                                AE15         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"
+_main                                              C533         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\main.obj"
+_Init_irq5                                         C7D8         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_F_Delay                                           C7DF         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_BREAK                                             800C         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_FIQ                                               8009         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_IRQ0                                              800F         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_IRQ1                                              8012         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_IRQ2                                              8015         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_IRQ3                                              8018         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_IRQ4                                              801B         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_IRQ5                                              8026         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_IRQ6                                              8038         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+_IRQ7                                              8046         "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            807A                 8096         1D     *
+* "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Resource.obj"                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\LcdSplc501Demo\splc501\Debug\hardware.obj"                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          C6AB                 C7D7         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          C7EA (A3)            C81F (D8)    36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501sys.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          AEB4                 C320         146D   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\LcdSplc501Demo\splc501\Debug\Splc501var.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8049                 8063         1B     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           0                    A2           A3     *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501Hardware.obj"                            *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          C321                 C532         212    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\LcdSplc501Demo\splc501\Debug\SPLC501DisplayTAB.obj"                          *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8097                 AEB3         2E1D   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\LcdSplc501Demo\splc501\Debug\main.obj"                                       *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          C533                 C6AA         178    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8064                 8079         16     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\LcdSplc501Demo\splc501\Debug\irq.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          C7D8                 C7E9         12     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8048         40     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  D9           727                   *
+* "First Bank Rom"                  7C00                 4820         33E0                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\splc501.S37
+Disk  Mapping Filename : .\Debug\splc501.map
+Symbol  Table FileName : .\Debug\splc501.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

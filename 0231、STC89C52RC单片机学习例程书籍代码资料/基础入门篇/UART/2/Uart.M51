@@ -1,0 +1,117 @@
+BL51 BANKED LINKER/LOCATER V5.03                                                        03/16/2011  16:22:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.03, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Main.obj TO Uart RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Main.obj (MAIN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  Uart (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0011H     UNIT         ?PR?MAIN?MAIN
+            CODE    0014H     000DH     UNIT         ?PR?UARTINIT?MAIN
+            CODE    0021H     000CH     UNIT         ?C_C51STARTUP
+            CODE    002DH     0008H     UNIT         ?PR?_UARTSENDBYTE?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   Uart (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?UARTINIT?MAIN
+  +--> ?PR?_UARTSENDBYTE?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  Uart (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:22:10  PAGE 2
+
+
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  D:00CBH         PUBLIC        RCAP2H
+  D:00CAH         PUBLIC        RCAP2L
+  C:0003H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:002DH         PUBLIC        _UARTSendByte
+  C:0014H         PUBLIC        UARTInit
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          UARTINIT
+  C:0014H         LINE#         13
+  C:0014H         LINE#         14
+  C:0014H         LINE#         15
+  C:0017H         LINE#         16
+  C:001AH         LINE#         17
+  C:001DH         LINE#         18
+  C:0020H         LINE#         19
+  -------         ENDPROC       UARTINIT
+  -------         PROC          _UARTSENDBYTE
+  D:0007H         SYMBOL        byte
+  C:002DH         LINE#         26
+  C:002DH         LINE#         27
+  C:002DH         LINE#         28
+  C:002FH         LINE#         29
+  C:0032H         LINE#         30
+  C:0034H         LINE#         31
+  -------         ENDPROC       _UARTSENDBYTE
+  -------         PROC          MAIN
+  -------         DO            
+  D:0006H         SYMBOL        recv
+  -------         ENDDO         
+  C:0003H         LINE#         38
+  C:0003H         LINE#         39
+  C:0003H         LINE#         41
+  C:0006H         LINE#         42
+  C:0006H         LINE#         43
+  C:0006H         LINE#         44
+  C:0009H         LINE#         45
+  C:0009H         LINE#         46
+  C:000BH         LINE#         47
+  C:000DH         LINE#         48
+  C:0012H         LINE#         49
+  C:0012H         LINE#         50
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+Program Size: data=9.0 xdata=0 code=53
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

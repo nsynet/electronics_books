@@ -1,0 +1,116 @@
+XL
+H 1 areas 5 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size EE flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\跑马灯\icc\chengxu.c
+dbfunc e delayms 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 6 4
+dbline 8 4
+dbline 9 6
+dbline A 6
+dbline A C
+dbline A C
+dbline A 10
+dbline B 16
+dbline 8 16
+dbline 8 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e horse 26 fV
+dbsym r i 10 c
+dbline FFFFFFFF 2A
+dbline F 2A
+dbline F 2A
+dbline 10 76
+dbline 11 76
+dbline 11 7A
+dbline 12 7C
+dbline 12 80
+dbline 13 82
+dbline 13 86
+dbline 14 88
+dbline 14 8C
+dbline 15 8E
+dbline 15 92
+dbline 16 94
+dbline 16 98
+dbline 17 9A
+dbline 17 9E
+dbline 18 A0
+dbline 18 A4
+dbline 19 A6
+dbline 19 AA
+dbline 1A AA
+dbline FFFFFFFE AA
+dbline 0 AE
+dbfunc e main B0 fV
+dbsym r i 14 c
+dbline FFFFFFFF B0
+dbline 1E B0
+dbline 20 B0
+dbline 21 B4
+dbline 22 B6
+dbline 23 BA
+dbline 25 C2
+dbline 26 C2
+dbline 27 C6
+dbline 28 C6
+dbline 29 CA
+dbline 2A D0
+dbline 26 D0
+dbline 26 D2
+dbline 2B D6
+dbline 2C DA
+dbline 2D DA
+dbline 2E DE
+dbline 2F E4
+dbline 2B E4
+dbline 2B E6
+dbline 30 EA
+dbline 24 EA
+dbline FFFFFFFE EC
+dbline 0 EC
+S _main Def00B0
+S _delayms Def0000
+S _horse Def0026
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 01 00
+T 26 00 0E 94 00 00 40 2F 55 27 40 30 45 07 09 F1
+R 00 00 00 00 12 04 00 00
+T 34 00 41 30 E0 E0 5E 07 01 F1 42 30 E0 E0 5E 07
+R 00 00 00 00
+T 42 00 F9 F0 43 30 E0 E0 5E 07 F1 F0 44 30 E0 E0
+R 00 00 00 00
+T 50 00 5E 07 E9 F0 45 30 E0 E0 5E 07 E1 F0 46 30
+R 00 00 00 00
+T 5E 00 E0 E0 5E 07 D9 F0 47 30 E0 E0 5E 07 D1 F0
+R 00 00 00 00
+T 6C 00 48 30 E0 E0 5E 07 C9 F0 1A C0 22 24 2B BA
+R 00 00 00 00
+T 7A 00 17 C0 81 E0 8B BB 14 C0 83 E0 8B BB 11 C0
+R 00 00 00 00
+T 88 00 87 E0 8B BB 0E C0 8F E0 8B BB 0B C0 8F E1
+R 00 00 00 00
+T 96 00 8B BB 08 C0 8F E3 8B BB 05 C0 8F E7 8B BB
+R 00 00 00 00
+T A4 00 02 C0 8F EF 8B BB 0E 94 00 00 08 95
+R 00 00 00 00 12 0A 01 00
+T B0 00 8F EF 8A BB 8B BB 22 24 2B BA 0A E0 10 E0
+R 00 00 00 00
+T BE 00 A0 DF 14 C0 44 27 06 C0 04 2F AE DF 0A E0
+R 00 00 00 00
+T CC 00 10 E0 98 DF 43 95 49 30 C0 F3 47 E0 06 C0
+R 00 00 00 00
+T DA 00 04 2F A4 DF 0A E0 10 E0 8E DF 4A 95 44 23
+R 00 00 00 00
+T E8 00 C1 F7 EB CF 08 95
+R 00 00 00 00

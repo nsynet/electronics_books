@@ -1,0 +1,65 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	
+                            	.define		P_IOA_DATA  	    0x7000
+                            	.define		P_IOA_DIR   	    0x7002 
+                            	.define		P_IOA_ATTRI			0x7003
+                            	.define		P_IOB_DATA  	    0x7005
+                            	.define		P_IOB_DIR   	    0x7007
+                            	.define		P_IOB_ATTRI			0x7008
+                            	
+                            	
+000001B7                    	.ram
+000001B7 00 00 00 00        	.var first,last,keyword;
+         00 00      
+                            	
+0000A85C                    	.code
+                            	.public _key_asm1
+                            	
+                            	_key_asm1:
+                            	    
+                            	/////////////////////////////////////
+                            	  
+                            	 
+0000A85C 4F 92              	  r1=0x000f;
+0000A85D 19 D3 02 70        			[P_IOA_DIR]=r1 ;
+                            	   
+0000A85F 40 92              	    r1=0x0000;
+0000A860 19 D3 03 70        			[P_IOA_ATTRI]=r1   ;        
+                            		
+0000A862 40 92              		r1=0x0000;
+0000A863 19 D3 00 70        			[P_IOA_DATA]=r1;
+0000A865 40 96              	   r3=0x0000;
+                            	Scan_loop1:		
+                            	
+0000A866 12 95 00 70        	  r2=[P_IOA_DATA];
+0000A868 4F 92              	  r1=0x000f;
+                            	 // test r1,r2;
+                            	  //jz Scan_loop1;
+                            	 Scan_loop2: 
+0000A869 02 43              	cmp r1,r2;
+0000A86A 0C 5E              		je reset;
+                            	
+0000A86B 41 06              	 	r3+=1;
+                            	  
+0000A86C 48 46              	  cmp r3,8;
+0000A86D 45 0E              	  jb  Scan_loop2;
+0000A86E 11 93 00 70        	   r1=[P_IOA_DATA];
+0000A870 19 D3 B8 01        	   [last]=r1;
+                            	   ////////////////////////////////
+0000A872 11 93 B8 01        	  r1=[last];
+0000A874 00 EE              		nop
+0000A875 00 EE              		nop
+0000A876 90 9A              	   retf;
+                            	   
+                            	reset: 
+0000A877 00 EE              	       nop;
+0000A878 00 EE              	       nop;
+                            	     
+0000A879 90 9A              	  	   retf;
+                            	   ///////////////////////////////
+                            	 
+                            	 aa_wait:
+0000A87A 41 EE              	   jmp aa_wait; 
+0 error(s), 0 warning(s).
+

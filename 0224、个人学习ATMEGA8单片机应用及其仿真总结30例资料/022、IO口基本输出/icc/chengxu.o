@@ -1,0 +1,75 @@
+XL
+H 1 areas 2 global symbols
+M chengxu.c
+A text size 5A flags 0
+dbfile D:\整理\个人总结的M8程序\022、IO口基本输出\icc\chengxu.c
+dbfunc e Init_IO 0 fV
+dbline FFFFFFFF 0
+dbline 6 0
+dbline 8 0
+dbline 9 4
+dbline B 6
+dbline C 8
+dbline E A
+dbline F E
+dbline FFFFFFFE 10
+dbline 0 10
+dbfunc e main 12 fV
+dbline FFFFFFFF 12
+dbline 13 12
+dbline 14 12
+dbline 16 16
+dbline 18 16
+dbline 19 1A
+dbline 19 1A
+dbline 19 1E
+dbline 1A 1E
+dbline 1B 22
+dbline 1B 22
+dbline 1B 26
+dbline 1C 26
+dbline 1D 2A
+dbline 1D 2A
+dbline 1D 2E
+dbline 1E 2E
+dbline 1F 32
+dbline 1F 32
+dbline 1F 36
+dbline 20 36
+dbline 21 3A
+dbline 21 3A
+dbline 21 3E
+dbline 22 3E
+dbline 23 42
+dbline 23 42
+dbline 23 46
+dbline 24 46
+dbline 25 4A
+dbline 25 4A
+dbline 25 4E
+dbline 26 4E
+dbline 27 52
+dbline 27 52
+dbline 27 56
+dbline 28 56
+dbline 15 56
+dbline FFFFFFFE 58
+dbline 0 58
+S _main Def0012
+S _Init_IO Def0000
+T 00 00 8F EF 87 BB 88 BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T 0E 00 82 BB 08 95
+R 00 00 00 00
+T 12 00 F6 DF 20 C0 80 99 02 C0 8E EF 88 BB 81 99
+R 00 00 00 00
+T 20 00 02 C0 8D EF 88 BB 82 99 02 C0 8B EF 88 BB
+R 00 00 00 00
+T 2E 00 83 99 02 C0 87 EF 88 BB 84 99 02 C0 8E EF
+R 00 00 00 00
+T 3C 00 85 BB 85 99 02 C0 8D EF 85 BB 86 99 02 C0
+R 00 00 00 00
+T 4A 00 8B EF 85 BB 87 99 02 C0 87 EF 85 BB DF CF
+R 00 00 00 00
+T 58 00 08 95
+R 00 00 00 00

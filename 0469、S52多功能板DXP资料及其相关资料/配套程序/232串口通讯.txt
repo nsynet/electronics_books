@@ -1,0 +1,75 @@
+#include "reg52.h" //包函8051 内部资源的定义
+#define uchar unsigned char
+#define uint unsigned int
+unsigned char dat; //用于存储单片机接收发送缓冲寄存器SBUF里面的内容
+
+void TXDD(uchar  *p,uchar n);
+void  RXDD(uchar *p,uchar n);
+void Delay(unsigned int tc) //延时程序
+{
+while( tc != 0 )
+{unsigned int i;
+for(i=0; i<100; i++);
+tc--;}
+}
+
+void TXDD(uchar *p,uchar n)
+     { 
+	    uchar data i;
+        for(i=n;i!=0;i--,p++)
+             {
+				  SBUF=*p;
+				  while(!TI);
+				  TI=0; 
+				 }
+
+      }	
+
+void RXDD(uchar  *p,uchar n)
+     {  
+	   uchar data i;
+       uint data j=60000;
+      
+      for(i=n;i!=0;i--,p++)
+             {    j=60000;
+				  while(!RI){j--;if(j==0)
+				 
+				  RI=0;
+				  *p=SBUF;
+				 }
+    
+      }
+		  
+	  }
+
+
+///////功能:串口初始化,波特率9600，方式1/////////
+void Init_Com(void)
+{
+TMOD = 0x20;        //             定时器方式选择寄存器
+PCON = 0x00;        //		电源控制寄存器
+SCON = 0x50;        //设置串行口
+TH1 = 0xFd;
+TL1 = 0xFd;
+TR1 = 1;
+}
+/////主程序功能:实现接收数据并把接收到的数据原样发送回去///////
+void main()
+{
+uchar x[4]={"1234"};
+Init_Com();          //串口初始化
+while(1)
+
+{
+{ 
+                     
+if ( RI )            //扫描判断是否接收到数据，																			
+dat = SBUF;          //接收数据SBUF赋与dat
+RI=0;                //RI 清零。
+SBUF = dat;          //在原样把数据发送回去
+
+TXDD(x,4);
+}
+
+}
+}

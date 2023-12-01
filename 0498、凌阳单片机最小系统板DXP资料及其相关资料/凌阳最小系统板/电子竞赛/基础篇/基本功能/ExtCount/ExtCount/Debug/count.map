@@ -1,0 +1,182 @@
+Thursday, July 10, 00:51:43, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8027         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop                                          8043         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop2                                         8042         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\Resource.obj"
+_g_ucIntFlag                                       36           "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\main.obj"
+_g_uisum                                           37           "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\main.obj"
+_main                                              8171         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\main.obj"
+_Init_IOB                                          81AF         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\sys.obj"
+_RunTime2Hz                                        81B9         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\sys.obj"
+_TmbCount                                          81BF         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\sys.obj"
+_IRQ5                                              8009         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\isr.obj"
+F_SP_Send_PWM                                      8044         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Send_DAC1                                     8047         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Send_DAC2                                     804A         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  804D         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Send_Out                                      804D         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Get_ADC                                       8052         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             8055         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             8058         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             805B         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             805E         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                8061         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               8064         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             8067         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                806A         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                806D         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Write_INT_Status                              8070         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Read_INT_Status                               8073         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    80AB         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    80CF         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    80E1         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    8105         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_RampUpDAC1                                     80AB         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_RampDnDAC1                                     80CF         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_RampUpDAC2                                     80E1         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_RampDnDAC2                                     8105         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_Delay                                         8170         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_InitQueue                                     811D         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_ReadQueue                                     812A         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_WriteQueue                                    813C         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+F_SP_TestQueue                                     814A         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_Export                                         80A1         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_Import                                         8096         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_Init_IOB                                       8086         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_Init_IOA                                       8076         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+_SP_GetResource                                    8162         "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+R_InterruptStatus                                  0            "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+R_FIQTemp                                          1            "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8027                 8043         1D     *
+* "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\Resource.obj"                             *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\main.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8171                 81AE         3E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          8211 (36)            8212 (37)    2      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\sys.obj"                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          81AF                 81C5         17     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\isr.obj"                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8026         1E     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\基础篇\基本功能－温\ExtCount\Debug\hardware.obj"                             *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8044                 8170         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          81DB (0)             8210 (35)    36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "rshu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          81C6                 81DA         15     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  38           7C8                   *
+* "First Bank Rom"                  7C00                 213          79ED                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\count.S37
+Disk  Mapping Filename : .\Debug\count.map
+Symbol  Table FileName : .\Debug\count.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

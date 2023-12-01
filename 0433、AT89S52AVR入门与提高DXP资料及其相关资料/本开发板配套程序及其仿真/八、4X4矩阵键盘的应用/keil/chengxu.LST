@@ -1,0 +1,106 @@
+C51 COMPILER V8.05a   CHENGXU                                                              07/06/2009 22:16:36 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE CHENGXU
+OBJECT MODULE PLACED IN chengxu.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE chengxu.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /********************************************************************
+   2                                      汇诚科技
+   3                                                    http://www.ourhc.cn
+   4          *********************************************************************/
+   5          #include<reg52.h>              //库文件
+   6          #define uchar unsigned char//宏定义无符号字符型
+   7          #define uint unsigned int  //宏定义无符号整型
+   8          /********************************************************************
+   9                                      初始定义
+  10          *********************************************************************/
+  11          unsigned char code seg7code[16]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xc6,0xa1,0x8
+             -6,0x8e };
+  12          unsigned char k;
+  13          /********************************************************************
+  14                                      延时函数
+  15          *********************************************************************/
+  16          void delay10ms(void) //延时程序
+  17          {
+  18   1              unsigned char i,j;
+  19   1              for(i=20;i>0;i--)
+  20   1              for(j=248;j>0;j--);
+  21   1      }
+  22          
+  23          /********************************************************************
+  24                                      键盘函数
+  25          *********************************************************************/        
+  26           void Getch ( ) //取键值函数
+  27          { 
+  28   1      unsigned char X,Y,Z;
+  29   1      P1=0x0f; //先对P3 置数 行扫描
+  30   1      if(P1!=0x0f) //判断是否有键按下
+  31   1              {
+  32   2              delay10ms(); //延时,软件去干扰
+  33   2              if(P1!=0x0f) //确认按键按下
+  34   2                      {
+  35   3                      X=P1; //保存行扫描时有键按下时状态
+  36   3                      P1=0xf0; //列扫描
+  37   3                      Y=P1;    //保存列扫描时有键按下时状态
+  38   3                      Z=X|Y; //取出键值
+  39   3      /*********************************************************************/
+  40   3      switch ( Z ) //判断键值（那一个键按下）
+  41   3                              {
+  42   4                                      case 0xee: k=0; break; //对键值赋值
+  43   4                                      case 0xed: k=1; break;
+  44   4                                      case 0xeb: k=2; break;
+  45   4                                      case 0xe7: k=3; break;
+  46   4                                      case 0xde: k=4; break;
+  47   4                                      case 0xdd: k=5; break;
+  48   4                                      case 0xdb: k=6; break;
+  49   4                                      case 0xd7: k=7; break;
+  50   4                                      case 0xbe: k=8; break;
+  51   4                                      case 0xbd: k=9; break;
+  52   4                                      case 0xbb: k=10;break;
+  53   4                                      case 0xb7: k=11;break;
+  54   4                                      case 0x7e: k=12;break;
+C51 COMPILER V8.05a   CHENGXU                                                              07/06/2009 22:16:36 PAGE 2   
+
+  55   4                                      case 0x7d: k=13;break;
+  56   4                                      case 0x7b: k=14;break;
+  57   4                                      case 0x77: k=15;break;
+  58   4                              }
+  59   3                       }
+  60   2              }
+  61   1      } 
+  62          /********************************************************************
+  63                                      主函数
+  64          *********************************************************************/
+  65          void main()
+  66          {
+  67   1      while(1)
+  68   1              {
+  69   2                      P1=0xff;
+  70   2                      Getch();                //调用取键值函数
+  71   2                      P0=seg7code[k]; //查表LED输出
+  72   2                      P2=0X0F;                //点亮数码管
+  73   2              }
+  74   1      }
+  75          
+  76                  
+  77          /********************************************************************
+  78                                        结束
+  79          *********************************************************************/
+  80           
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    180    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

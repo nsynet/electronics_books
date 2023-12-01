@@ -1,0 +1,12 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+Obj: "C:\Program Files\Sunplus\unSPIDE180\base_exa\basetime\Debug\Resource.obj"
+Obj: "C:\Program Files\Sunplus\unSPIDE180\base_exa\basetime\Debug\main.obj"
+Output: ".\Debug\basetime.S37"
+;Locate: TEXT in "main.obj" at 8009 
+;Align: TEXT in "main.obj" with 0 
+;Locate: RAM in "main.obj" at 0 
+;Align: RAM in "main.obj" with 0 
+;Locate: CODE in "main.obj" at 8041 
+;Align: CODE in "main.obj" with 0 

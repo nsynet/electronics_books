@@ -1,0 +1,49 @@
+[DisAssemblyWindow]
+NumStates=_ 1
+State 1=_ 1
+[Interrupts]
+Enabled=1
+[MemoryMap]
+Enabled=0
+TypeVolition=1
+UnspecRange=1
+ActionState=1
+[State Storage]
+Control Register=4492
+[Sequencer]
+Control Register=4492
+NextState0=4492
+NextState1=4492
+[Action Register]
+Break=7
+State Storage=7
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Breakpoints]
+Bp0=_ "Code" "{$PROJ_DIR$\main.c}.60.9@1" 0 0 0 0 "" 0 ""
+Bp1=_ "Code" "{$PROJ_DIR$\main.c}.39.3@1" 1 0 0 0 "" 0 ""
+Bp2=_ "Code" "{$PROJ_DIR$\main.c}.57.9@1" 1 0 0 0 "" 0 ""
+Count=3
+[FET]
+Extended Clock mode=-1
+Extended Clock Control Enable=0
+Advanced Extended Clock Control=0
+Emulation mode=0
+Free running=0
+Shutting Down=3
+[Memory Dump]
+Start address=
+Lenghth=
+Address info=0
+Format=0
+Dump registers=0
+PC=0
+SP=0
+SR=0
+all registers=0
+File name=

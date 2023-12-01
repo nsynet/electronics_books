@@ -1,0 +1,71 @@
+XL
+H 1 areas 5 global symbols
+M chengxu.c
+S push_gset2 Ref0000
+S pop_gset2 Ref0000
+A text size 56 flags 0
+dbfile C:\DOCUME~1\Administrator\桌面\数码管显示程序\icc\chengxu.c
+dbfunc e delay 0 fV
+dbsym r i 14 i
+dbsym r j 16 i
+dbsym r t 10 i
+dbline FFFFFFFF 2
+dbline E 2
+dbline 10 2
+dbline 11 8
+dbline 12 8
+dbline 12 E
+dbline 12 E
+dbline 12 12
+dbline 13 18
+dbline 13 18
+dbline 14 18
+dbline 15 18
+dbline 10 18
+dbline 10 1C
+dbline FFFFFFFE 22
+dbline 0 24
+dbfunc e Init_IO 26 fV
+dbline FFFFFFFF 26
+dbline 19 26
+dbline 1B 26
+dbline 1C 2A
+dbline 1E 2C
+dbline 1F 2E
+dbline 21 30
+dbline 22 34
+dbline FFFFFFFE 36
+dbline 0 36
+dbfunc e main 38 fV
+dbline FFFFFFFF 38
+dbline 28 38
+dbline 29 38
+dbline 2B 3C
+dbline 2D 3C
+dbline 30 40
+dbline 31 42
+dbline 32 48
+dbline 33 4C
+dbline 35 52
+dbline 2A 52
+dbline FFFFFFFE 54
+dbline 0 54
+S _main Def0038
+S _delay Def0000
+S _Init_IO Def0026
+T 00 00 00 D0 44 27 55 27 0A C0 60 E2 73 E0 02 C0
+R 00 00 00 00 82 02 00 00
+T 0E 00 61 50 70 40 60 30 67 07 D9 F7 4F 5F 5F 4F
+R 00 00 00 00
+T 1C 00 40 17 51 07 98 F3 00 D0 08 95
+R 00 00 00 00 82 08 01 00
+T 26 00 8F EF 87 BB 88 BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T 34 00 22 BA 08 95
+R 00 00 00 00
+T 38 00 F6 DF 0B C0 8F EF 85 BB 88 BB 0A E0 10 E0
+R 00 00 00 00
+T 46 00 DC DF 22 24 28 BA 0A E0 10 E0 D7 DF F4 CF
+R 00 00 00 00
+T 54 00 08 95
+R 00 00 00 00

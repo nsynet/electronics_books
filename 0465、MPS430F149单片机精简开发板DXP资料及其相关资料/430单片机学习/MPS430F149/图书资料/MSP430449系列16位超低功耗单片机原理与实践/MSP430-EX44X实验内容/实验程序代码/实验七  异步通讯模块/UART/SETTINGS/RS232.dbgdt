@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Project>
+  <Desktop>
+    <Static>
+      <Debug-Log/>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>238</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Disassembly>
+        
+        
+        
+      <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><MixedMode>1</MixedMode><CodeCovEnabled>0</CodeCovEnabled><CodeCovShow>0</CodeCovShow></Disassembly>
+      <Build>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>723</ColumnWidth1>
+        <ColumnWidth2>193</ColumnWidth2>
+        <ColumnWidth3>48</ColumnWidth3>
+      </Build>
+    <Watch><Format><struct_types/><watch_formats/></Format><Column0>100</Column0><Column1>100</Column1><Column2>100</Column2><Column3>100</Column3></Watch><Find-in-Files><ColumnWidth0>350</ColumnWidth0><ColumnWidth1>50</ColumnWidth1><ColumnWidth2>601</ColumnWidth2></Find-in-Files></Static>
+    <Windows>
+      
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-29307-922</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-28784-931</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-31711-3718</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-7288-925</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>&lt;ws></ExpandedNode><ExpandedNode>&lt;ws>/RS232</ExpandedNode><ExpandedNode>&lt;ws>/RS232/main.c</ExpandedNode><ExpandedNode>&lt;ws>/RS485</ExpandedNode><ExpandedNode>&lt;ws>/RS485/main_485.c</ExpandedNode><ExpandedNode>&lt;ws>/RS485_A</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd2><Tabs><Tab><Identity>TabID-21243-20211</Identity><TabName>Watch</TabName><Factory>Watch</Factory><Session><Expressions><Expression><Expression>key_Flag</Expression></Expression><Expression><Expression>tmp</Expression></Expression><Expression><Expression>key_val</Expression></Expression><Expression><Expression>uart_TBuf</Expression></Expression><Expression><Expression>P3IN</Expression></Expression><Expression><Expression>TXBUF0</Expression></Expression><Expression><Expression>led_Buf</Expression></Expression></Expressions><TabId>0</TabId><Column0>100</Column0><Column1>100</Column1><Column2>100</Column2><Column3>100</Column3></Session></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-6222-2521</Identity><TabName>Disassembly</TabName><Factory>Disassembly</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>E:\YH07O3\test\430&#x5B9e;&#x9A8C;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;\&#x5B9e;&#x9A8C;&#x4e03;\UART\sourceFile\main.c</Filename><XPos>0</XPos><YPos>13</YPos><SelStart>563</SelStart><SelEnd>563</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>E:\YH07O3\test\430&#x5B9e;&#x9A8C;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;\&#x5B9e;&#x9A8C;&#x4e03;\UART\sourceFile\main_485.c</Filename><XPos>0</XPos><YPos>24</YPos><SelStart>355</SelStart><SelEnd>355</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\YH07O3\test\430&#x5B9e;&#x9A8C;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;\&#x5B9e;&#x9A8C;&#x4e03;\UART\sourceFile\uart.c</Filename><XPos>0</XPos><YPos>66</YPos><SelStart>2883</SelStart><SelEnd>2900</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\YH07O3\test\430&#x5B9e;&#x9A8C;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;\&#x5B9e;&#x9A8C;&#x4e03;\UART\sourceFile\keyboard12.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>3057</SelStart><SelEnd>3057</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\YH07O3\test\430&#x5B9e;&#x9A8C;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;\&#x5B9e;&#x9A8C;&#x4e03;\UART\sourceFile\led.c</Filename><XPos>0</XPos><YPos>41</YPos><SelStart>1641</SelStart><SelEnd>1648</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003bece0><key>iaridepm1</key></Toolbar-003bece0></Sizes></Row0><Row1><Sizes><Toolbar-00fe95b8><key>debuggergui1</key></Toolbar-00fe95b8></Sizes></Row1><Row2><Sizes><Toolbar-00fe9788><key>430fet1</key></Toolbar-00fe9788></Sizes></Row2><Row3><Sizes/></Row3><Row4><Sizes/></Row4></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>422</Bottom><Right>329</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>209</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>289474</sizeHorzCY><sizeVertCX>323242</sizeVertCX><sizeVertCY>587258</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>422</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>209</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>289474</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>587258</sizeVertCY></Rect></Wnd2></Sizes></Row0><Row1><Sizes><Wnd3><Rect><Top>-2</Top><Left>196</Left><Bottom>422</Bottom><Right>396</Right><x>196</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>277008</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>587258</sizeVertCY></Rect></Wnd3></Sizes></Row1></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>207</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>209</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>289474</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>289474</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Project>
+
+

@@ -1,0 +1,55 @@
+XL
+H 1 areas 4 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size 54 flags 0
+dbfile D:\整理\个人总结的M8程序\002、位定义闪烁灯设计\实例一\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 2B 4
+dbline 2D 4
+dbline 2E 6
+dbline 2F 6
+dbline 2F C
+dbline 2F C
+dbline 2F 10
+dbline 30 16
+dbline 2D 16
+dbline 2D 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e main 26 fV
+dbline FFFFFFFF 26
+dbline 36 26
+dbline 37 26
+dbline 38 2A
+dbline 3A 2E
+dbline 3B 2E
+dbline 3C 30
+dbline 3D 32
+dbline 3E 38
+dbline 3F 42
+dbline 40 4A
+dbline 41 50
+dbline 39 50
+dbline FFFFFFFE 52
+dbline 0 52
+S _main Def0026
+S _DelayMS Def0000
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 01 00
+T 26 00 8F EF 87 BB 88 BB 11 C0 C0 9A C1 9A 04 E6
+R 00 00 00 00
+T 34 00 10 E0 E4 DF 8E EF 9F EF 28 B2 28 22 28 BA
+R 00 00 00 00
+T 42 00 8D EF 28 B2 28 22 28 BA 04 E6 10 E0 D8 DF
+R 00 00 00 00
+T 50 00 EE CF 08 95
+R 00 00 00 00

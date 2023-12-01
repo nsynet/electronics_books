@@ -1,0 +1,2326 @@
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,0,0,0
+DebugLine(instruction):224,1,0,0,0
+IncludeLine:(0,1,0,0)
+.include spce061a.inc
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\spce061a.inc
+DebugLine(instruction):192,1,0,0,0
+CommentLine:(1,1,0,1)
+// ========================================================================= //
+CommentLine:(1,2,0,1)
+// File Name   : SPCE061A.inc												 //	
+CommentLine:(1,3,0,1)
+// Description : SPCE061A register definitions								 //
+CommentLine:(1,4,0,1)
+// Processor   : SPCE061A													 //	
+CommentLine:(1,5,0,1)
+// Revision	   : v1.00, 2005-10-19											 //
+CommentLine:(1,6,0,1)
+// ========================================================================= //
+CommentLine:(1,7,0,1)
+
+CommentLine:(1,8,0,1)
+//***************************************************************************//
+CommentLine:(1,9,0,1)
+//	Register definitions													 //
+CommentLine:(1,10,0,1)
+//***************************************************************************//
+CommentLine:(1,11,0,1)
+
+CommentLine:(1,12,0,1)
+//	IO port control registers
+EquLine:(1,13,0,1)
+	.DEFINE		P_IOA_Data				0x7000
+EquLine:(1,14,0,1)
+	.DEFINE		P_IOA_Buffer			0x7001
+EquLine:(1,15,0,1)
+	.DEFINE		P_IOA_Dir				0x7002
+EquLine:(1,16,0,1)
+	.DEFINE		P_IOA_Attrib			0x7003
+EquLine:(1,17,0,1)
+	.DEFINE		P_IOA_Latch				0x7004
+CommentLine:(1,18,0,1)
+
+EquLine:(1,19,0,1)
+	.DEFINE		P_IOB_Data				0x7005
+EquLine:(1,20,0,1)
+	.DEFINE		P_IOB_Buffer			0x7006
+EquLine:(1,21,0,1)
+	.DEFINE		P_IOB_Dir				0x7007
+EquLine:(1,22,0,1)
+	.DEFINE		P_IOB_Attrib			0x7008
+CommentLine:(1,23,0,1)
+
+CommentLine:(1,24,0,1)
+//	Timer control registers
+EquLine:(1,25,0,1)
+	.DEFINE		P_TimerA_Data			0x700A
+EquLine:(1,26,0,1)
+	.DEFINE		P_TimerA_Ctrl			0x700B
+EquLine:(1,27,0,1)
+	.DEFINE		P_TimerB_Data			0x700C
+EquLine:(1,28,0,1)
+	.DEFINE		P_TimerB_Ctrl			0x700D
+CommentLine:(1,29,0,1)
+
+CommentLine:(1,30,0,1)
+//	Timebase control registers
+EquLine:(1,31,0,1)
+	.DEFINE		P_TimeBase_Setup		0x700E
+EquLine:(1,32,0,1)
+	.DEFINE		P_Timebase_Setup		0x700E		// Same as P_TimeBase_Setup
+EquLine:(1,33,0,1)
+	.DEFINE		P_TimeBase_Clear		0x700F
+EquLine:(1,34,0,1)
+	.DEFINE		P_Timebase_Clear		0x700F		// Same as P_TimeBase_Clear
+CommentLine:(1,35,0,1)
+
+CommentLine:(1,36,0,1)
+//	Interrupt control registers
+EquLine:(1,37,0,1)
+	.DEFINE		P_INT_Ctrl				0x7010
+EquLine:(1,38,0,1)
+	.DEFINE		P_INT_Clear				0x7011
+EquLine:(1,39,0,1)
+	.DEFINE		P_INT_Mask				0x702D
+EquLine:(1,40,0,1)
+	.DEFINE		P_INT_Ctrl_New			0x702D		// Same as P_INT_Mask
+CommentLine:(1,41,0,1)
+
+CommentLine:(1,42,0,1)
+//	Analog functions control registers
+EquLine:(1,43,0,1)
+	.DEFINE		P_ADC					0x7014
+EquLine:(1,44,0,1)
+	.DEFINE		P_ADC_Ctrl				0x7015
+EquLine:(1,45,0,1)
+	.DEFINE		P_ADC_MUX_Ctrl			0x702B
+EquLine:(1,46,0,1)
+	.DEFINE		P_ADC_MUX_Data			0x702C
+EquLine:(1,47,0,1)
+	.DEFINE		P_ADC_LINEIN_Data		0x702C		// Same as P_ADC_MUX_Data
+EquLine:(1,48,0,1)
+	.DEFINE		P_ADC_LineIn_Data		0x702C		// Same as P_ADC_MUX_Data
+CommentLine:(1,49,0,1)
+
+EquLine:(1,50,0,1)
+	.DEFINE		P_DAC_Ctrl				0x702A
+EquLine:(1,51,0,1)
+	.DEFINE		P_DAC1					0x7017
+EquLine:(1,52,0,1)
+	.DEFINE		P_DAC2					0x7016
+CommentLine:(1,53,0,1)
+
+CommentLine:(1,54,0,1)
+//	Serial	functions control registers
+EquLine:(1,55,0,1)
+	.DEFINE		P_SIO_Data				0x701A
+EquLine:(1,56,0,1)
+	.DEFINE		P_SIO_Addr_Low			0x701B
+EquLine:(1,57,0,1)
+	.DEFINE		P_SIO_Addr_Mid			0x701C
+EquLine:(1,58,0,1)
+	.DEFINE		P_SIO_Addr_High			0x701D
+EquLine:(1,59,0,1)
+	.DEFINE		P_SIO_Ctrl				0x701E
+EquLine:(1,60,0,1)
+	.DEFINE		P_SIO_Start				0x701F
+EquLine:(1,61,0,1)
+	.DEFINE		P_SIO_Stop				0x7020
+CommentLine:(1,62,0,1)
+
+EquLine:(1,63,0,1)
+	.DEFINE		P_UART_Command1			0x7021
+EquLine:(1,64,0,1)
+	.DEFINE		P_UART_Command2			0x7022
+EquLine:(1,65,0,1)
+	.DEFINE		P_UART_Data				0x7023
+EquLine:(1,66,0,1)
+	.DEFINE		P_UART_BaudScalarLow	0x7024
+EquLine:(1,67,0,1)
+	.DEFINE		P_UART_BaudScalarHigh	0x7025
+CommentLine:(1,68,0,1)
+
+CommentLine:(1,69,0,1)
+//	Other control registers
+EquLine:(1,70,0,1)
+	.DEFINE		P_Feedback				0x7009
+EquLine:(1,71,0,1)
+	.DEFINE		P_SystemClock			0x7013
+EquLine:(1,72,0,1)
+	.DEFINE		P_Watchdog_Clear		0x7012
+EquLine:(1,73,0,1)
+	.DEFINE		P_LVD_Ctrl				0x7019
+EquLine:(1,74,0,1)
+	.DEFINE		P_Flash_Ctrl			0x7555
+CommentLine:(1,75,0,1)
+
+CommentLine:(1,76,0,1)
+
+CommentLine:(1,77,0,1)
+//***************************************************************************//
+CommentLine:(1,78,0,1)
+//	Constant definitions													 //
+CommentLine:(1,79,0,1)
+//***************************************************************************//
+CommentLine:(1,80,0,1)
+//	Constants for interrupt
+EquLine:(1,81,0,1)
+	.DEFINE		C_FIQ_PWM				0x8000		// P_INT_Ctrl
+EquLine:(1,82,0,1)
+	.DEFINE		C_FIQ_TMA				0x2000		// P_INT_Ctrl
+EquLine:(1,83,0,1)
+	.DEFINE		C_FIQ_TMB				0x0800		// P_INT_Ctrl
+EquLine:(1,84,0,1)
+	.DEFINE		C_IRQ0_PWM				0x4000		// P_INT_Ctrl
+EquLine:(1,85,0,1)
+	.DEFINE		C_IRQ1_TMA				0x1000		// P_INT_Ctrl
+EquLine:(1,86,0,1)
+	.DEFINE		C_IRQ2_TMB				0x0400		// P_INT_Ctrl
+EquLine:(1,87,0,1)
+	.DEFINE		C_IRQ3_KEY				0x0080		// P_INT_Ctrl
+EquLine:(1,88,0,1)
+	.DEFINE		C_IRQ3_EXT1				0x0100		// P_INT_Ctrl
+EquLine:(1,89,0,1)
+	.DEFINE		C_IRQ3_EXT2				0x0200		// P_INT_Ctrl
+EquLine:(1,90,0,1)
+	.DEFINE		C_IRQ4_1KHz				0x0010		// P_INT_Ctrl
+EquLine:(1,91,0,1)
+	.DEFINE		C_IRQ4_2KHz				0x0020		// P_INT_Ctrl
+EquLine:(1,92,0,1)
+	.DEFINE		C_IRQ4_4KHz				0x0040		// P_INT_Ctrl
+EquLine:(1,93,0,1)
+	.DEFINE		C_IRQ5_2Hz				0x0004		// P_INT_Ctrl
+EquLine:(1,94,0,1)
+	.DEFINE		C_IRQ5_4Hz				0x0008		// P_INT_Ctrl
+EquLine:(1,95,0,1)
+	.DEFINE		C_IRQ6_TMB1				0x0002		// P_INT_Ctrl
+EquLine:(1,96,0,1)
+	.DEFINE		C_IRQ6_TMB2				0x0001		// P_INT_Ctrl
+CommentLine:(1,97,0,1)
+
+CommentLine:(1,98,0,1)
+//	Constants for TimerA & TimerB
+EquLine:(1,99,0,1)
+	.DEFINE		C_TMA1_FOSC_2			0x0000		// P_TimerA_Ctrl
+EquLine:(1,100,0,1)
+	.DEFINE		C_TMA1_FOSC_256			0x0001		// P_TimerA_Ctrl
+EquLine:(1,101,0,1)
+	.DEFINE		C_TMA1_32KHz			0x0002		// P_TimerA_Ctrl
+EquLine:(1,102,0,1)
+	.DEFINE		C_TMA1_8KHz				0x0003		// P_TimerA_Ctrl
+EquLine:(1,103,0,1)
+	.DEFINE		C_TMA1_4KHz				0x0004		// P_TimerA_Ctrl
+EquLine:(1,104,0,1)
+	.DEFINE		C_TMA1_1				0x0005		// P_TimerA_Ctrl
+EquLine:(1,105,0,1)
+	.DEFINE		C_TMA1_0				0x0006		// P_TimerA_Ctrl
+EquLine:(1,106,0,1)
+	.DEFINE		C_TMA1_EXT1				0x0007		// P_TimerA_Ctrl
+EquLine:(1,107,0,1)
+	.DEFINE		C_TMA2_2KHz				0x0000		// P_TimerA_Ctrl
+EquLine:(1,108,0,1)
+	.DEFINE		C_TMA2_1KHz				0x0008		// P_TimerA_Ctrl
+EquLine:(1,109,0,1)
+	.DEFINE		C_TMA2_256Hz			0x0010		// P_TimerA_Ctrl
+EquLine:(1,110,0,1)
+	.DEFINE		C_TMA2_TMB1				0x0018		// P_TimerA_Ctrl
+EquLine:(1,111,0,1)
+	.DEFINE		C_TMA2_4Hz				0x0020		// P_TimerA_Ctrl
+EquLine:(1,112,0,1)
+	.DEFINE		C_TMA2_2Hz				0x0028		// P_TimerA_Ctrl
+EquLine:(1,113,0,1)
+	.DEFINE		C_TMA2_1				0x0030		// P_TimerA_Ctrl
+EquLine:(1,114,0,1)
+	.DEFINE		C_TMA2_EXT2				0x0038		// P_TimerA_Ctrl
+EquLine:(1,115,0,1)
+	.DEFINE		C_TMA_PWM_OFF			0x0000		// P_TimerA_Ctrl
+EquLine:(1,116,0,1)
+	.DEFINE		C_TMA_PWM_D1			0x0040		// P_TimerA_Ctrl
+EquLine:(1,117,0,1)
+	.DEFINE		C_TMA_PWM_D2			0x0080		// P_TimerA_Ctrl
+EquLine:(1,118,0,1)
+	.DEFINE		C_TMA_PWM_D3			0x00C0		// P_TimerA_Ctrl
+EquLine:(1,119,0,1)
+	.DEFINE		C_TMA_PWM_D4			0x0100		// P_TimerA_Ctrl
+EquLine:(1,120,0,1)
+	.DEFINE		C_TMA_PWM_D5			0x0140		// P_TimerA_Ctrl
+EquLine:(1,121,0,1)
+	.DEFINE		C_TMA_PWM_D6			0x0180		// P_TimerA_Ctrl
+EquLine:(1,122,0,1)
+	.DEFINE		C_TMA_PWM_D7			0x01C0		// P_TimerA_Ctrl
+EquLine:(1,123,0,1)
+	.DEFINE		C_TMA_PWM_D8			0x0200		// P_TimerA_Ctrl
+EquLine:(1,124,0,1)
+	.DEFINE		C_TMA_PWM_D9			0x0240		// P_TimerA_Ctrl
+EquLine:(1,125,0,1)
+	.DEFINE		C_TMA_PWM_D10			0x0280		// P_TimerA_Ctrl
+EquLine:(1,126,0,1)
+	.DEFINE		C_TMA_PWM_D11			0x02C0		// P_TimerA_Ctrl
+EquLine:(1,127,0,1)
+	.DEFINE		C_TMA_PWM_D12			0x0300		// P_TimerA_Ctrl
+EquLine:(1,128,0,1)
+	.DEFINE		C_TMA_PWM_D13			0x0340		// P_TimerA_Ctrl
+EquLine:(1,129,0,1)
+	.DEFINE		C_TMA_PWM_D14			0x0380		// P_TimerA_Ctrl
+EquLine:(1,130,0,1)
+	.DEFINE		C_TMA_PWM_TA			0x03C0		// P_TimerA_Ctrl
+CommentLine:(1,131,0,1)
+									    
+EquLine:(1,132,0,1)
+	.DEFINE		C_TMB_FOSC_2			0x0000		// P_TimerB_Ctrl
+EquLine:(1,133,0,1)
+	.DEFINE		C_TMB_FOSC_256			0x0001		// P_TimerB_Ctrl
+EquLine:(1,134,0,1)
+	.DEFINE		C_TMB_32KHz				0x0002		// P_TimerB_Ctrl
+EquLine:(1,135,0,1)
+	.DEFINE		C_TMB_8KHz				0x0003		// P_TimerB_Ctrl
+EquLine:(1,136,0,1)
+	.DEFINE		C_TMB_4KHz				0x0004		// P_TimerB_Ctrl
+EquLine:(1,137,0,1)
+	.DEFINE		C_TMB_1					0x0005		// P_TimerB_Ctrl
+EquLine:(1,138,0,1)
+	.DEFINE		C_TMB_0					0x0006		// P_TimerB_Ctrl
+EquLine:(1,139,0,1)
+	.DEFINE		C_TMB_EXT1				0x0007		// P_TimerB_Ctrl
+EquLine:(1,140,0,1)
+	.DEFINE		C_TMB_PWM_OFF			0x0000		// P_TimerB_Ctrl
+EquLine:(1,141,0,1)
+	.DEFINE		C_TMB_PWM_D1			0x0040		// P_TimerB_Ctrl
+EquLine:(1,142,0,1)
+	.DEFINE		C_TMB_PWM_D2			0x0080		// P_TimerB_Ctrl
+EquLine:(1,143,0,1)
+	.DEFINE		C_TMB_PWM_D3			0x00C0		// P_TimerB_Ctrl
+EquLine:(1,144,0,1)
+	.DEFINE		C_TMB_PWM_D4			0x0100		// P_TimerB_Ctrl
+EquLine:(1,145,0,1)
+	.DEFINE		C_TMB_PWM_D5			0x0140		// P_TimerB_Ctrl
+EquLine:(1,146,0,1)
+	.DEFINE		C_TMB_PWM_D6			0x0180		// P_TimerB_Ctrl
+EquLine:(1,147,0,1)
+	.DEFINE		C_TMB_PWM_D7			0x01C0		// P_TimerB_Ctrl
+EquLine:(1,148,0,1)
+	.DEFINE		C_TMB_PWM_D8			0x0200		// P_TimerB_Ctrl
+EquLine:(1,149,0,1)
+	.DEFINE		C_TMB_PWM_D9			0x0240		// P_TimerB_Ctrl
+EquLine:(1,150,0,1)
+	.DEFINE		C_TMB_PWM_D10			0x0280		// P_TimerB_Ctrl
+EquLine:(1,151,0,1)
+	.DEFINE		C_TMB_PWM_D11			0x02C0		// P_TimerB_Ctrl
+EquLine:(1,152,0,1)
+	.DEFINE		C_TMB_PWM_D12			0x0300		// P_TimerB_Ctrl
+EquLine:(1,153,0,1)
+	.DEFINE		C_TMB_PWM_D13			0x0340		// P_TimerB_Ctrl
+EquLine:(1,154,0,1)
+	.DEFINE		C_TMB_PWM_D14			0x0380		// P_TimerB_Ctrl
+EquLine:(1,155,0,1)
+	.DEFINE		C_TMB_PWM_TB			0x03C0		// P_TimerB_Ctrl
+CommentLine:(1,156,0,1)
+
+CommentLine:(1,157,0,1)
+//	Constants for TimeBase
+EquLine:(1,158,0,1)
+	.DEFINE		C_TMB1_8Hz				0x0000		// P_Timebase_Setup
+EquLine:(1,159,0,1)
+	.DEFINE		C_TMB1_16Hz				0x0001		// P_Timebase_Setup
+EquLine:(1,160,0,1)
+	.DEFINE		C_TMB1_32Hz				0x0002		// P_Timebase_Setup
+EquLine:(1,161,0,1)
+	.DEFINE		C_TMB1_64Hz				0x0003		// P_Timebase_Setup
+EquLine:(1,162,0,1)
+	.DEFINE		C_TMB2_128Hz			0x0000		// P_Timebase_Setup
+EquLine:(1,163,0,1)
+	.DEFINE		C_TMB2_256Hz			0x0004		// P_Timebase_Setup
+EquLine:(1,164,0,1)
+	.DEFINE		C_TMB2_512Hz			0x0008		// P_Timebase_Setup
+EquLine:(1,165,0,1)
+	.DEFINE		C_TMB2_1024Hz			0x000c		// P_Timebase_Setup
+CommentLine:(1,166,0,1)
+
+CommentLine:(1,167,0,1)
+//	Constants for system clock
+EquLine:(1,168,0,1)
+	.DEFINE		C_Fosc_49M				0x0080		// P_SystemClock
+EquLine:(1,169,0,1)
+	.DEFINE		C_Fosc_40M				0x0060		// P_SystemClock
+EquLine:(1,170,0,1)
+	.DEFINE		C_Fosc_32M				0x0040		// P_SystemClock
+EquLine:(1,171,0,1)
+	.DEFINE		C_Fosc_24M				0x0000		// P_SystemClock
+EquLine:(1,172,0,1)
+	.DEFINE		C_Fosc_20M				0x0020		// P_SystemClock
+CommentLine:(1,173,0,1)
+									    
+EquLine:(1,174,0,1)
+	.DEFINE		C_Fosc					0x0000		// P_SystemClock
+EquLine:(1,175,0,1)
+	.DEFINE		C_Fosc_Div_2			0x0001		// P_SystemClock
+EquLine:(1,176,0,1)
+	.DEFINE		C_Fosc_Div_4			0x0002		// P_SystemClock
+EquLine:(1,177,0,1)
+	.DEFINE		C_Fosc_Div_8			0x0003		// P_SystemClock
+EquLine:(1,178,0,1)
+	.DEFINE		C_Fosc_Div_16			0x0004		// P_SystemClock
+EquLine:(1,179,0,1)
+	.DEFINE		C_Fosc_Div_32			0x0005		// P_SystemClock
+EquLine:(1,180,0,1)
+	.DEFINE		C_Fosc_Div_64			0x0006		// P_SystemClock
+EquLine:(1,181,0,1)
+	.DEFINE		C_Sleep					0x0007		// P_SystemClock
+CommentLine:(1,182,0,1)
+
+EquLine:(1,183,0,1)
+	.DEFINE		C_StrongMode			0x0008		// P_SystemClock
+EquLine:(1,184,0,1)
+	.DEFINE		C_AutoMode				0x0000		// P_SystemClock
+EquLine:(1,185,0,1)
+	.DEFINE		C_32K_Work				0x0010		// P_SystemClock
+EquLine:(1,186,0,1)
+	.DEFINE		C_32K_Off				0x0000		// P_SystemClock
+CommentLine:(1,187,0,1)
+
+CommentLine:(1,188,0,1)
+//	Constants for ADC & DAC
+EquLine:(1,189,0,1)
+	.DEFINE		C_ADC_EN				0x0001		// P_ADC_Ctrl
+EquLine:(1,190,0,1)
+	.DEFINE		C_ADC_DIS				0x0000		// P_ADC_Ctrl
+EquLine:(1,191,0,1)
+	.DEFINE		C_MIC_RDY				0x8000		// P_ADC_Ctrl
+EquLine:(1,192,0,1)
+	.DEFINE		C_MIC_EN				0x0000		// P_ADC_Ctrl
+EquLine:(1,193,0,1)
+	.DEFINE		C_MIC_DIS				0x0002		// P_ADC_Ctrl
+EquLine:(1,194,0,1)
+	.DEFINE		C_MIC_AGC_EN			0x0000		// P_ADC_Ctrl
+EquLine:(1,195,0,1)
+	.DEFINE		C_MIC_AGC_DIS			0x0000		// P_ADC_Ctrl
+EquLine:(1,196,0,1)
+	.DEFINE		C_VEXTREF_EN			0x0080		// P_ADC_Ctrl
+EquLine:(1,197,0,1)
+	.DEFINE		C_VEXTREF_DIS			0x0000		// P_ADC_Ctrl
+EquLine:(1,198,0,1)
+	.DEFINE		C_2V_EN					0x0100		// P_ADC_Ctrl
+EquLine:(1,199,0,1)
+	.DEFINE		C_2V_DIS				0x0000		// P_ADC_Ctrl
+EquLine:(1,200,0,1)
+	.DEFINE		C_DAC_3mA				0x0040		// P_ADC_Ctrl
+EquLine:(1,201,0,1)
+	.DEFINE		C_DAC_2mA				0x0000		// P_ADC_Ctrl
+CommentLine:(1,202,0,1)
+										
+EquLine:(1,203,0,1)
+	.DEFINE		C_ADC_MUX_MIC			0x0000		// P_ADC_MUX_Ctrl
+EquLine:(1,204,0,1)
+	.DEFINE		C_ADC_MUX_IOA0			0x0001		// P_ADC_MUX_Ctrl
+EquLine:(1,205,0,1)
+	.DEFINE		C_ADC_MUX_IOA1			0x0002		// P_ADC_MUX_Ctrl
+EquLine:(1,206,0,1)
+	.DEFINE		C_ADC_MUX_IOA2			0x0003		// P_ADC_MUX_Ctrl
+EquLine:(1,207,0,1)
+	.DEFINE		C_ADC_MUX_IOA3			0x0004		// P_ADC_MUX_Ctrl
+EquLine:(1,208,0,1)
+	.DEFINE		C_ADC_MUX_IOA4			0x0005		// P_ADC_MUX_Ctrl
+EquLine:(1,209,0,1)
+	.DEFINE		C_ADC_MUX_IOA5			0x0006		// P_ADC_MUX_Ctrl
+EquLine:(1,210,0,1)
+	.DEFINE		C_ADC_MUX_IOA6			0x0007		// P_ADC_MUX_Ctrl
+EquLine:(1,211,0,1)
+	.DEFINE		C_LINEIN_FAIL			0x4000		// P_ADC_MUX_Ctrl
+EquLine:(1,212,0,1)
+	.DEFINE		C_LINEIN_RDY			0x8000		// P_ADC_MUX_Ctrl
+CommentLine:(1,213,0,1)
+
+EquLine:(1,214,0,1)
+	.DEFINE		C_DAC1_DIRECT			0x0000		// P_DAC_Ctrl
+EquLine:(1,215,0,1)
+	.DEFINE		C_DAC1_LATCH_A			0x0080		// P_DAC_Ctrl
+EquLine:(1,216,0,1)
+	.DEFINE		C_DAC1_LATCH_B			0x0100		// P_DAC_Ctrl
+EquLine:(1,217,0,1)
+	.DEFINE		C_DAC1_LATCH_AB			0x0180		// P_DAC_Ctrl
+EquLine:(1,218,0,1)
+	.DEFINE		C_DAC2_DIRECT			0x0000		// P_DAC_Ctrl
+EquLine:(1,219,0,1)
+	.DEFINE		C_DAC2_LATCH_A			0x0020		// P_DAC_Ctrl
+EquLine:(1,220,0,1)
+	.DEFINE		C_DAC2_LATCH_B			0x0040		// P_DAC_Ctrl
+EquLine:(1,221,0,1)
+	.DEFINE		C_DAC2_LATCH_AB			0x0060		// P_DAC_Ctrl
+EquLine:(1,222,0,1)
+	.DEFINE		C_MIC_DIRECT			0x0000		// P_DAC_Ctrl
+EquLine:(1,223,0,1)
+	.DEFINE		C_MIC_LATCH_A			0x0008		// P_DAC_Ctrl
+EquLine:(1,224,0,1)
+	.DEFINE		C_MIC_LATCH_B			0x0010		// P_DAC_Ctrl
+EquLine:(1,225,0,1)
+	.DEFINE		C_MIC_LATCH_AB			0x0018		// P_DAC_Ctrl
+EquLine:(1,226,0,1)
+	.DEFINE		C_DAC_DIS				0x0002		// P_DAC_Ctrl
+CommentLine:(1,227,0,1)
+
+CommentLine:(1,228,0,1)
+//	Constants for SIO
+EquLine:(1,229,0,1)
+	.DEFINE		C_SIO_CONFIG			0x0080		// P_SIO_Ctrl
+EquLine:(1,230,0,1)
+	.DEFINE		C_SIO_READ				0x0000		// P_SIO_Ctrl
+EquLine:(1,231,0,1)
+	.DEFINE		C_SIO_WRITE				0x0040		// P_SIO_Ctrl
+EquLine:(1,232,0,1)
+	.DEFINE		C_SIO_CLOCK_32			0x0018		// P_SIO_Ctrl
+EquLine:(1,233,0,1)
+	.DEFINE		C_SIO_CLOCK_16			0x0000		// P_SIO_Ctrl
+EquLine:(1,234,0,1)
+	.DEFINE		C_SIO_CLOCK_8			0x0010		// P_SIO_Ctrl
+EquLine:(1,235,0,1)
+	.DEFINE		C_SIO_ADDR_24			0x0003		// P_SIO_Ctrl
+EquLine:(1,236,0,1)
+	.DEFINE		C_SIO_ADDR_16			0x0000		// P_SIO_Ctrl
+EquLine:(1,237,0,1)
+	.DEFINE		C_SIO_ADDR_8			0x0002		// P_SIO_Ctrl
+EquLine:(1,238,0,1)
+	.DEFINE		C_SIO_ADDR_NO			0x0001		// P_SIO_Ctrl
+CommentLine:(1,239,0,1)
+
+EquLine:(1,240,0,1)
+	.DEFINE		C_SIO_BUSY				0x0080		// P_SIO_Start
+CommentLine:(1,241,0,1)
+
+CommentLine:(1,242,0,1)
+//	Constants for UART
+EquLine:(1,243,0,1)
+	.DEFINE		C_UART_RX_INT			0x0080		// P_UART_Command1
+EquLine:(1,244,0,1)
+	.DEFINE		C_UART_TX_INT			0x0040		// P_UART_Command1	
+EquLine:(1,245,0,1)
+	.DEFINE		C_UART_RESET			0x0020		// P_UART_Command1	
+EquLine:(1,246,0,1)
+	.DEFINE		C_UART_PARITY_EVEN		0x0008		// P_UART_Command1	
+EquLine:(1,247,0,1)
+	.DEFINE		C_UART_PARITY_ODD		0x0000		// P_UART_Command1	
+EquLine:(1,248,0,1)
+	.DEFINE		C_UART_PARITY_EN		0x0004		// P_UART_Command1	
+EquLine:(1,249,0,1)
+	.DEFINE		C_UART_PARITY_DIS		0x0000		// P_UART_Command1	
+CommentLine:(1,250,0,1)
+
+EquLine:(1,251,0,1)
+	.DEFINE		C_UART_RX_RDY			0x0080		// P_UART_Command2
+EquLine:(1,252,0,1)
+	.DEFINE		C_UART_TX_RDY			0x0040		// P_UART_Command2
+EquLine:(1,253,0,1)
+	.DEFINE		C_UART_RX_EN			0x0080		// P_UART_Command2
+EquLine:(1,254,0,1)
+	.DEFINE		C_UART_TX_EN			0x0040		// P_UART_Command2
+EquLine:(1,255,0,1)
+	.DEFINE		C_UART_PE				0x0008		// P_UART_Command2
+EquLine:(1,256,0,1)
+	.DEFINE		C_UART_OE				0x0010		// P_UART_Command2
+EquLine:(1,257,0,1)
+	.DEFINE		C_UART_FE				0x0020		// P_UART_Command2
+CommentLine:(1,258,0,1)
+
+CommentLine:(1,259,0,1)
+//	Constants for Feedback
+EquLine:(1,260,0,1)
+	.DEFINE		C_FEEDBACK1_EN			0x0004		// P_Feedback
+EquLine:(1,261,0,1)
+	.DEFINE		C_FEEDBACK2_EN			0x0008		// P_Feedback
+EquLine:(1,262,0,1)
+	.DEFINE		C_IRTX_EN				0x0001		// P_Feedback
+CommentLine:(1,263,0,1)
+
+CommentLine:(1,264,0,1)
+//	Constants for LVD
+EquLine:(1,265,0,1)
+	.DEFINE		C_LVD33V				0x0002		// P_LVD_Ctrl
+EquLine:(1,266,0,1)
+	.DEFINE		C_LVD29V				0x0001		// P_LVD_Ctrl
+CommentLine:(1,267,0,1)
+
+CommentLine:(1,268,0,1)
+//	Other Constants
+EquLine:(1,269,0,1)
+	.DEFINE		C_WDTCLR				0x0001		// P_Watchdog_Clear
+CommentLine:(1,270,0,1)
+	
+CommentLine:(1,271,0,1)
+///////////////////////////////////////////////////////////////////
+CommentLine:(1,272,0,1)
+//	Old definitions for LVD @'hardware.inc'
+EquLine:(1,273,0,1)
+	.DEFINE		C_LVD24V				0x0000		// P_LVD_Ctrl
+EquLine:(1,274,0,1)
+	.DEFINE		C_LVD28V				0x0001		// P_LVD_Ctrl
+EquLine:(1,275,0,1)
+	.DEFINE		C_LVD32V				0x0002		// P_LVD_Ctrl
+EquLine:(1,276,0,1)
+	.DEFINE		C_LVD36V				0x0003		// P_LVD_Ctrl
+CommentLine:(1,277,0,1)
+
+CommentLine:(1,278,0,1)
+//	Old definitions for TimerA & TimerB @'hardware.inc'
+EquLine:(1,279,0,1)
+	.DEFINE		C_Fosc_2				0x0000		// P_TimerA_Ctrl
+EquLine:(1,280,0,1)
+	.DEFINE		C_Fosc_256		    	0x0001		// P_TimerA_Ctrl
+EquLine:(1,281,0,1)
+	.DEFINE		C_32768Hz				0x0002		// P_TimerA_Ctrl
+EquLine:(1,282,0,1)
+	.DEFINE		C_8192Hz				0x0003		// P_TimerA_Ctrl
+EquLine:(1,283,0,1)
+	.DEFINE		C_4096Hz				0x0004		// P_TimerA_Ctrl
+EquLine:(1,284,0,1)
+	.DEFINE		C_A1					0x0005		// P_TimerA_Ctrl
+EquLine:(1,285,0,1)
+	.DEFINE		C_A0					0x0006		// P_TimerA_Ctrl
+EquLine:(1,286,0,1)
+	.DEFINE		C_Ext1					0x0007		// P_TimerA_Ctrl
+CommentLine:(1,287,0,1)
+
+EquLine:(1,288,0,1)
+	.DEFINE		C_2048Hz				0x0000		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,289,0,1)
+	.DEFINE		C_1024Hz				0x0008		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,290,0,1)
+	.DEFINE		C_256Hz					0x0010		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,291,0,1)
+	.DEFINE		C_TMB1Hz				0x0018		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,292,0,1)
+	.DEFINE		C_4Hz					0x0020		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,293,0,1)
+	.DEFINE		C_2Hz					0x0028		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,294,0,1)
+	.DEFINE		C_B1					0x0030		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,295,0,1)
+	.DEFINE		C_Ext2					0x0038		// P_TimerA_Ctrl, P_TimerB_Ctrl
+CommentLine:(1,296,0,1)
+
+EquLine:(1,297,0,1)
+	.DEFINE		C_Off					0x0000		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,298,0,1)
+	.DEFINE		C_D1					0x0040		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,299,0,1)
+	.DEFINE		C_D2					0x0080		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,300,0,1)
+	.DEFINE		C_D3					0x00C0		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,301,0,1)
+	.DEFINE		C_D4					0x0100		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,302,0,1)
+	.DEFINE		C_D5					0x0140		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,303,0,1)
+	.DEFINE		C_D6					0x0180		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,304,0,1)
+	.DEFINE		C_D7					0x01C0		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,305,0,1)
+	.DEFINE		C_D8					0x0200		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,306,0,1)
+	.DEFINE		C_D9					0x0240		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,307,0,1)
+	.DEFINE		C_D10					0x0280		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,308,0,1)
+	.DEFINE		C_D11					0x02C0		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,309,0,1)
+	.DEFINE		C_D12					0x0300		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,310,0,1)
+	.DEFINE		C_D13					0x0340		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,311,0,1)
+	.DEFINE		C_D14					0x0380		// P_TimerA_Ctrl, P_TimerB_Ctrl
+EquLine:(1,312,0,1)
+	.DEFINE		C_TA_Div_2				0x03C0		// P_TimerA_Ctrl
+EquLine:(1,313,0,1)
+	.DEFINE		C_TB_Div_2				0x03C0		// P_TimerB_Ctrl
+CommentLine:(1,314,0,1)
+
+CommentLine:(1,315,0,1)
+//========================================================================================
+CommentLine:(1,316,0,1)
+// End of SPCE061A.inc
+CommentLine:(1,317,0,1)
+//========================================================================================
+EndOfFileLine:(1,317,0,1)
+
+DebugLine(instruction):224,1,0,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,0,0,0
+CommentLine:(0,2,0,0)
+
+EquLine:(0,3,0,0)
+.define ISP_CLOCK			C_Fosc_49M		// 49M
+CommentLine:(0,4,0,0)
+
+EquLine:(0,5,0,0)
+.define ISP_BAUDSCALAR_L	0xD5		// 57600(6M+PLL)
+EquLine:(0,6,0,0)
+.define ISP_BAUDSCALAR_H	0x00
+CommentLine:(0,7,0,0)
+
+PublicLine:(0,8,0,0)
+.public _ISP_START
+PublicLine:(0,9,0,0)
+.public _ISP_END
+CommentLine:(0,10,0,0)
+
+MacroDefStartLine:(0,11,0,0)
+M_Call: .macro FunName
+MacroDefBodyLine:(0,12,0,0)
+	call FunName - _ISP_START + 0xFC00
+MacroDefEndLine:(0,13,0,0)
+.endm
+CommentLine:(0,14,0,0)
+
+MacroDefStartLine:(0,15,0,0)
+M_Goto: .macro Label
+MacroDefBodyLine:(0,16,0,0)
+	PC = Label - _ISP_START + 0xFC00
+MacroDefEndLine:(0,17,0,0)
+.endm
+CommentLine:(0,18,0,0)
+
+CommentLine:(0,19,0,0)
+//.ORAM
+CommentLine:(0,20,0,0)
+//R_ERR:		.dw 	0					// 1-UART Verify failed; 2-Block Data CheckSum Error
+CommentLine:(0,21,0,0)
+//R_Block: 	.dw		256 dup (?)			// Block Data Buffer
+CommentLine:(0,22,0,0)
+//R_Sum:		.dd		0
+EquLine:(0,23,0,0)
+.define R_ERR 1
+EquLine:(0,24,0,0)
+.define R_Sum 10
+EquLine:(0,25,0,0)
+.define R_Block 0x100
+DebugLine(instruction):224,1,0,0,0
+DebugLine(instruction):192,1,0,0,0
+SectionLine:(0,26,0,0)
+.code
+CommentLine:(0,27,0,0)
+// ============================================================================
+InstructionLine:(0,28,0,0)
+_ISP_START:
+DebugLine(instruction):68,1,0,29,0
+InstructionLine:(0,29,0,0)
+	r1 = [P_IOA_Data]
+DebugLine(instruction):68,1,2,30,0
+InstructionLine:(0,30,0,0)
+	r1 &= 0x0003
+DebugLine(instruction):68,1,3,31,0
+InstructionLine:(0,31,0,0)
+	cmp r1, 0x0003
+DebugLine(instruction):68,1,4,32,0
+InstructionLine:(0,32,0,0)
+	je ?ISP_Start
+InstructionLine:(0,33,0,0)
+?ISP_EXIT:
+DebugLine(instruction):68,1,5,34,0
+InstructionLine:(0,34,0,0)
+	r1 = 0xfff4
+DebugLine(instruction):68,1,7,35,0
+InstructionLine:(0,35,0,0)
+	pc = [r1]
+CommentLine:(0,36,0,0)
+
+InstructionLine:(0,37,0,0)
+?ISP_Start:
+DebugLine(instruction):68,1,8,38,0
+InstructionLine:(0,38,0,0)
+	sp = 0x7ff
+DebugLine(instruction):68,1,10,39,0
+InstructionLine:(0,39,0,0)
+	r1 = ISP_CLOCK
+DebugLine(instruction):68,1,12,40,0
+InstructionLine:(0,40,0,0)
+	[P_SystemClock] = r1
+CommentLine:(0,41,0,0)
+	
+DebugLine(instruction):68,1,14,42,0
+InstructionLine:(0,42,0,0)
+	r1 = [P_IOB_Buffer]
+DebugLine(instruction):68,1,16,43,0
+InstructionLine:(0,43,0,0)
+	r1 |= 0x0400						// IOB8&9
+DebugLine(instruction):68,1,18,44,0
+InstructionLine:(0,44,0,0)
+	r1 &= ~0x0080
+DebugLine(instruction):68,1,20,45,0
+InstructionLine:(0,45,0,0)
+	[P_IOB_Buffer] = r1
+CommentLine:(0,46,0,0)
+	
+DebugLine(instruction):68,1,22,47,0
+InstructionLine:(0,47,0,0)
+	r1 = [P_IOB_Attrib]
+DebugLine(instruction):68,1,24,48,0
+InstructionLine:(0,48,0,0)
+	r1 |= 0x0480
+DebugLine(instruction):68,1,26,49,0
+InstructionLine:(0,49,0,0)
+	[P_IOB_Attrib] = r1
+CommentLine:(0,50,0,0)
+	
+DebugLine(instruction):68,1,28,51,0
+InstructionLine:(0,51,0,0)
+	r1 = [P_IOB_Dir]
+DebugLine(instruction):68,1,30,52,0
+InstructionLine:(0,52,0,0)
+	r1 |= 0x0400
+DebugLine(instruction):68,1,32,53,0
+InstructionLine:(0,53,0,0)
+	r1 &= ~0x0080
+DebugLine(instruction):68,1,34,54,0
+InstructionLine:(0,54,0,0)
+	[P_IOB_Dir] = r1
+CommentLine:(0,55,0,0)
+
+DebugLine(instruction):68,1,36,56,0
+InstructionLine:(0,56,0,0)
+	r1 = 0
+DebugLine(instruction):68,1,37,57,0
+InstructionLine:(0,57,0,0)
+	[R_ERR] = r1
+DebugLine(instruction):68,1,38,58,0
+InstructionLine:(0,58,0,0)
+	r1 = C_UART_PARITY_EVEN|C_UART_PARITY_EN
+DebugLine(instruction):68,1,39,59,0
+InstructionLine:(0,59,0,0)
+	[P_UART_Command1] = r1
+DebugLine(instruction):68,1,41,60,0
+InstructionLine:(0,60,0,0)
+	r1 = C_UART_RX_EN|C_UART_TX_EN
+DebugLine(instruction):68,1,43,61,0
+InstructionLine:(0,61,0,0)
+	[P_UART_Command2] = r1
+CommentLine:(0,62,0,0)
+	
+DebugLine(instruction):68,1,45,63,0
+InstructionLine:(0,63,0,0)
+	r1 = ISP_BAUDSCALAR_L
+DebugLine(instruction):68,1,47,64,0
+InstructionLine:(0,64,0,0)
+	[P_UART_BaudScalarLow] = r1
+DebugLine(instruction):68,1,49,65,0
+InstructionLine:(0,65,0,0)
+	r1 = ISP_BAUDSCALAR_H
+DebugLine(instruction):68,1,50,66,0
+InstructionLine:(0,66,0,0)
+	[P_UART_BaudScalarHigh] = r1
+DebugLine(instruction):68,1,52,67,0
+InstructionLine:(0,67,0,0)
+	r1 = [P_UART_Data]
+DebugLine(instruction):68,1,54,68,0
+InstructionLine:(0,68,0,0)
+	r1 = ('S'<<8) + 'I'
+DebugLine(instruction):224,1,56,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,56,0,0
+MacroRefStartLine:(0,69,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,56,12,1
+InstructionLine:(0,69,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,58,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,58,1,1
+MacroRefEndLine:(0,69,0,0)
+
+DebugLine(instruction):68,1,58,70,0
+InstructionLine:(0,70,0,0)
+	r1 = (' '<<8) + 'P'
+DebugLine(instruction):224,1,60,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,60,0,0
+MacroRefStartLine:(0,71,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,60,12,1
+InstructionLine:(0,71,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,62,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,62,1,1
+MacroRefEndLine:(0,71,0,0)
+
+DebugLine(instruction):68,1,62,72,0
+InstructionLine:(0,72,0,0)
+	r1 = ('e'<<8) + 'R'
+DebugLine(instruction):224,1,64,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,64,0,0
+MacroRefStartLine:(0,73,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,64,12,1
+InstructionLine:(0,73,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,66,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,66,1,1
+MacroRefEndLine:(0,73,0,0)
+
+DebugLine(instruction):68,1,66,74,0
+InstructionLine:(0,74,0,0)
+	r1 = ('d'<<8) + 'a'
+DebugLine(instruction):224,1,68,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,68,0,0
+MacroRefStartLine:(0,75,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,68,12,1
+InstructionLine:(0,75,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,70,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,70,1,1
+MacroRefEndLine:(0,75,0,0)
+
+DebugLine(instruction):68,1,70,76,0
+InstructionLine:(0,76,0,0)
+	r1 = (0x0d<<8) + 'y'
+DebugLine(instruction):224,1,72,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,72,0,0
+MacroRefStartLine:(0,77,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,72,12,1
+InstructionLine:(0,77,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,74,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,74,1,1
+MacroRefEndLine:(0,77,0,0)
+
+CommentLine:(0,78,0,0)
+
+InstructionLine:(0,79,0,0)
+?L_WaitCmd:	
+DebugLine(instruction):68,1,74,80,0
+InstructionLine:(0,80,0,0)
+	r2 = 0
+DebugLine(instruction):68,1,75,81,0
+InstructionLine:(0,81,0,0)
+	[R_ERR] = r2
+DebugLine(instruction):224,1,76,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,76,0,0
+MacroRefStartLine:(0,82,1,0)
+	M_Call ISP_UART_RecvWord
+DebugLine(instruction):68,1,76,12,1
+InstructionLine:(0,82,1,0)
+	call ISP_UART_RecvWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,78,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,78,1,1
+MacroRefEndLine:(0,82,0,0)
+
+DebugLine(instruction):68,1,78,83,0
+InstructionLine:(0,83,0,0)
+	r2 = [R_ERR]
+DebugLine(instruction):68,1,79,84,0
+InstructionLine:(0,84,0,0)
+	jnz ?L_WaitCmd
+DebugLine(instruction):68,1,80,85,0
+InstructionLine:(0,85,0,0)
+	cmp r1, 0x5245						// "ER"
+DebugLine(instruction):68,1,82,86,0
+InstructionLine:(0,86,0,0)
+	je ?Erase
+DebugLine(instruction):68,1,83,87,0
+InstructionLine:(0,87,0,0)
+	cmp r1, 0x454D						// "ME"
+DebugLine(instruction):68,1,85,88,0
+InstructionLine:(0,88,0,0)
+	je ?MassErase
+DebugLine(instruction):68,1,86,89,0
+InstructionLine:(0,89,0,0)
+	cmp r1, 0x4C44						// "DL"
+DebugLine(instruction):68,1,88,90,0
+InstructionLine:(0,90,0,0)
+	je ?Download
+DebugLine(instruction):68,1,89,91,0
+InstructionLine:(0,91,0,0)
+	cmp r1, 0x4656						// "VF"
+DebugLine(instruction):68,1,91,92,0
+InstructionLine:(0,92,0,0)
+	je ?Verify
+DebugLine(instruction):68,1,92,93,0
+InstructionLine:(0,93,0,0)
+	cmp r1, 0x4C55						// "UL"
+DebugLine(instruction):68,1,94,94,0
+InstructionLine:(0,94,0,0)
+	je ?Upload
+DebugLine(instruction):68,1,95,95,0
+InstructionLine:(0,95,0,0)
+	cmp r1, 0x4750						// "PG"
+DebugLine(instruction):68,1,97,96,0
+InstructionLine:(0,96,0,0)
+	je ?Program
+DebugLine(instruction):68,1,98,97,0
+InstructionLine:(0,97,0,0)
+	cmp r1, 0x5251						// "QR"
+DebugLine(instruction):68,1,100,98,0
+InstructionLine:(0,98,0,0)
+	je ?Query
+DebugLine(instruction):68,1,101,99,0
+InstructionLine:(0,99,0,0)
+	cmp r1, 0x5452						// "RT"
+DebugLine(instruction):68,1,103,100,0
+InstructionLine:(0,100,0,0)
+	je ?Reset
+DebugLine(instruction):68,1,104,101,0
+InstructionLine:(0,101,0,0)
+	jmp ?L_WaitCmd
+InstructionLine:(0,102,0,0)
+?Erase:
+DebugLine(instruction):224,1,105,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,105,0,0
+MacroRefStartLine:(0,103,1,0)
+	M_Call ISP_Erase
+DebugLine(instruction):68,1,105,12,1
+InstructionLine:(0,103,1,0)
+	call ISP_Erase - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,107,13,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,107,13,1
+MacroRefEndLine:(0,103,0,0)
+
+DebugLine(instruction):224,1,107,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,107,0,0
+MacroRefStartLine:(0,104,1,0)
+	M_Goto ?L_WaitCmd
+DebugLine(instruction):68,1,107,16,1
+InstructionLine:(0,104,1,0)
+	PC = ?L_WaitCmd - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,109,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,109,1,1
+MacroRefEndLine:(0,104,0,0)
+
+InstructionLine:(0,105,0,0)
+?MassErase:
+DebugLine(instruction):224,1,109,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,109,0,0
+MacroRefStartLine:(0,106,1,0)
+	M_Call ISP_MassErase
+DebugLine(instruction):68,1,109,12,1
+InstructionLine:(0,106,1,0)
+	call ISP_MassErase - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,111,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,111,1,1
+MacroRefEndLine:(0,106,0,0)
+
+DebugLine(instruction):224,1,111,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,111,0,0
+MacroRefStartLine:(0,107,1,0)
+	M_Goto ?L_WaitCmd
+DebugLine(instruction):68,1,111,16,1
+InstructionLine:(0,107,1,0)
+	PC = ?L_WaitCmd - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,113,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,113,1,1
+MacroRefEndLine:(0,107,0,0)
+
+InstructionLine:(0,108,0,0)
+?Download:
+DebugLine(instruction):224,1,113,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,113,0,0
+MacroRefStartLine:(0,109,1,0)
+	M_Call ISP_Download
+DebugLine(instruction):68,1,113,12,1
+InstructionLine:(0,109,1,0)
+	call ISP_Download - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,115,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,115,1,1
+MacroRefEndLine:(0,109,0,0)
+
+DebugLine(instruction):224,1,115,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,115,0,0
+MacroRefStartLine:(0,110,1,0)
+	M_Goto ?L_WaitCmd
+DebugLine(instruction):68,1,115,16,1
+InstructionLine:(0,110,1,0)
+	PC = ?L_WaitCmd - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,117,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,117,1,1
+MacroRefEndLine:(0,110,0,0)
+
+InstructionLine:(0,111,0,0)
+?Verify:
+DebugLine(instruction):224,1,117,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,117,0,0
+MacroRefStartLine:(0,112,1,0)
+	M_Call ISP_Verify
+DebugLine(instruction):68,1,117,12,1
+InstructionLine:(0,112,1,0)
+	call ISP_Verify - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,119,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,119,1,1
+MacroRefEndLine:(0,112,0,0)
+
+DebugLine(instruction):224,1,119,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,119,0,0
+MacroRefStartLine:(0,113,1,0)
+	M_Goto ?L_WaitCmd
+DebugLine(instruction):68,1,119,16,1
+InstructionLine:(0,113,1,0)
+	PC = ?L_WaitCmd - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,121,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,121,1,1
+MacroRefEndLine:(0,113,0,0)
+
+InstructionLine:(0,114,0,0)
+?Upload:
+DebugLine(instruction):224,1,121,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,121,0,0
+MacroRefStartLine:(0,115,1,0)
+	M_Call ISP_Upload
+DebugLine(instruction):68,1,121,12,1
+InstructionLine:(0,115,1,0)
+	call ISP_Upload - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,123,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,123,1,1
+MacroRefEndLine:(0,115,0,0)
+
+DebugLine(instruction):224,1,123,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,123,0,0
+MacroRefStartLine:(0,116,1,0)
+	M_Goto ?L_WaitCmd
+DebugLine(instruction):68,1,123,16,1
+InstructionLine:(0,116,1,0)
+	PC = ?L_WaitCmd - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,125,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,125,1,1
+MacroRefEndLine:(0,116,0,0)
+
+InstructionLine:(0,117,0,0)
+?Program:
+DebugLine(instruction):224,1,125,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,125,0,0
+MacroRefStartLine:(0,118,1,0)
+	M_Call ISP_Program
+DebugLine(instruction):68,1,125,12,1
+InstructionLine:(0,118,1,0)
+	call ISP_Program - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,127,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,127,1,1
+MacroRefEndLine:(0,118,0,0)
+
+DebugLine(instruction):224,1,127,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,127,0,0
+MacroRefStartLine:(0,119,1,0)
+	M_Goto ?L_WaitCmd
+DebugLine(instruction):68,1,127,16,1
+InstructionLine:(0,119,1,0)
+	PC = ?L_WaitCmd - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,129,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,129,1,1
+MacroRefEndLine:(0,119,0,0)
+
+InstructionLine:(0,120,0,0)
+?Query:
+DebugLine(instruction):224,1,129,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,129,0,0
+MacroRefStartLine:(0,121,1,0)
+	M_Call ISP_Query
+DebugLine(instruction):68,1,129,12,1
+InstructionLine:(0,121,1,0)
+	call ISP_Query - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,131,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,131,1,1
+MacroRefEndLine:(0,121,0,0)
+
+DebugLine(instruction):224,1,131,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,131,0,0
+MacroRefStartLine:(0,122,1,0)
+	M_Goto ?L_WaitCmd
+DebugLine(instruction):68,1,131,16,1
+InstructionLine:(0,122,1,0)
+	PC = ?L_WaitCmd - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,133,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,133,1,1
+MacroRefEndLine:(0,122,0,0)
+
+InstructionLine:(0,123,0,0)
+?Reset:
+DebugLine(instruction):224,1,133,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,133,0,0
+MacroRefStartLine:(0,124,1,0)
+	M_Goto ?ISP_EXIT
+DebugLine(instruction):68,1,133,16,1
+InstructionLine:(0,124,1,0)
+	PC = ?ISP_EXIT - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,135,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,135,1,1
+MacroRefEndLine:(0,124,0,0)
+
+DebugLine(instruction):68,1,135,125,0
+InstructionLine:(0,125,0,0)
+retf
+CommentLine:(0,126,0,0)
+
+CommentLine:(0,127,0,0)
+
+CommentLine:(0,128,0,0)
+// ============================================================================
+CommentLine:(0,129,0,0)
+// r1: Data
+InstructionLine:(0,130,0,0)
+ISP_UART_Send:
+InstructionLine:(0,131,0,0)
+?L:
+DebugLine(instruction):68,1,136,132,0
+InstructionLine:(0,132,0,0)
+	r2 = 0x01
+DebugLine(instruction):68,1,137,133,0
+InstructionLine:(0,133,0,0)
+	[P_Watchdog_Clear] = r2
+DebugLine(instruction):68,1,139,134,0
+InstructionLine:(0,134,0,0)
+	r2 = C_UART_TX_RDY
+DebugLine(instruction):68,1,141,135,0
+InstructionLine:(0,135,0,0)
+	test r2, [P_UART_Command2]
+DebugLine(instruction):68,1,143,136,0
+InstructionLine:(0,136,0,0)
+	jz ?L
+DebugLine(instruction):68,1,144,137,0
+InstructionLine:(0,137,0,0)
+	[P_UART_Data] = r1
+DebugLine(instruction):68,1,146,138,0
+InstructionLine:(0,138,0,0)
+retf
+CommentLine:(0,139,0,0)
+
+CommentLine:(0,140,0,0)
+// ============================================================================
+CommentLine:(0,141,0,0)
+// r1: Data
+InstructionLine:(0,142,0,0)
+ISP_UART_SendWord:
+DebugLine(instruction):68,1,147,143,0
+InstructionLine:(0,143,0,0)
+	push r1, r2 to [sp]
+DebugLine(instruction):224,1,148,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,148,0,0
+MacroRefStartLine:(0,144,1,0)
+	M_Call ISP_UART_Send
+DebugLine(instruction):68,1,148,12,1
+InstructionLine:(0,144,1,0)
+	call ISP_UART_Send - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,150,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,150,1,1
+MacroRefEndLine:(0,144,0,0)
+
+DebugLine(instruction):68,1,150,145,0
+InstructionLine:(0,145,0,0)
+	r1 = r1 lsr 4
+DebugLine(instruction):68,1,151,146,0
+InstructionLine:(0,146,0,0)
+	r1 = r1 lsr 4
+DebugLine(instruction):224,1,152,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,152,0,0
+MacroRefStartLine:(0,147,1,0)
+	M_Call ISP_UART_Send
+DebugLine(instruction):68,1,152,12,1
+InstructionLine:(0,147,1,0)
+	call ISP_UART_Send - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,154,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,154,1,1
+MacroRefEndLine:(0,147,0,0)
+
+DebugLine(instruction):68,1,154,148,0
+InstructionLine:(0,148,0,0)
+	pop r1, r2 from [sp]
+DebugLine(instruction):68,1,155,149,0
+InstructionLine:(0,149,0,0)
+retf
+CommentLine:(0,150,0,0)
+
+CommentLine:(0,151,0,0)
+// ============================================================================
+CommentLine:(0,152,0,0)
+// r1: Data
+InstructionLine:(0,153,0,0)
+ISP_UART_Recv:
+CommentLine:(0,154,0,0)
+//	push r2 to [sp]
+CommentLine:(0,155,0,0)
+//	r2 = 0xffff							// Wait about 30ms, if get no data then reset
+CommentLine:(0,156,0,0)
+//?L:
+CommentLine:(0,157,0,0)
+//	r2 -= 1
+CommentLine:(0,158,0,0)
+//	jz ?Err
+InstructionLine:(0,159,0,0)
+?Next:	
+DebugLine(instruction):68,1,156,160,0
+InstructionLine:(0,160,0,0)
+	r1 = 0x01
+DebugLine(instruction):68,1,157,161,0
+InstructionLine:(0,161,0,0)
+	[P_Watchdog_Clear] = r1
+DebugLine(instruction):68,1,159,162,0
+InstructionLine:(0,162,0,0)
+	r1 = C_UART_RX_RDY
+DebugLine(instruction):68,1,161,163,0
+InstructionLine:(0,163,0,0)
+	test r1, [P_UART_Command2]
+DebugLine(instruction):68,1,163,164,0
+InstructionLine:(0,164,0,0)
+	jz ?Next
+DebugLine(instruction):68,1,164,165,0
+InstructionLine:(0,165,0,0)
+	r1 = [P_UART_Data]
+CommentLine:(0,166,0,0)
+//	test r1, 0x0500						// Verify
+CommentLine:(0,167,0,0)
+//	jz ?Exit
+CommentLine:(0,168,0,0)
+//	jmp ?Exit
+CommentLine:(0,169,0,0)
+//?Err:
+CommentLine:(0,170,0,0)
+//	r2 = 1
+CommentLine:(0,171,0,0)
+//	[R_ERR] = r2
+CommentLine:(0,172,0,0)
+//	M_Goto _ISP_START					// Reset
+CommentLine:(0,173,0,0)
+//?Exit:
+CommentLine:(0,174,0,0)
+//	pop r2 from [sp]
+DebugLine(instruction):68,1,166,175,0
+InstructionLine:(0,175,0,0)
+retf
+CommentLine:(0,176,0,0)
+
+CommentLine:(0,177,0,0)
+// ============================================================================
+CommentLine:(0,178,0,0)
+// r1: Data
+InstructionLine:(0,179,0,0)
+ISP_UART_RecvWord:
+DebugLine(instruction):68,1,167,180,0
+InstructionLine:(0,180,0,0)
+	push r2 to [sp]
+DebugLine(instruction):224,1,168,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,168,0,0
+MacroRefStartLine:(0,181,1,0)
+	M_Call ISP_UART_Recv
+DebugLine(instruction):68,1,168,12,1
+InstructionLine:(0,181,1,0)
+	call ISP_UART_Recv - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,170,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,170,1,1
+MacroRefEndLine:(0,181,0,0)
+
+DebugLine(instruction):68,1,170,182,0
+InstructionLine:(0,182,0,0)
+	r2 = r1 & 0x00ff
+DebugLine(instruction):224,1,172,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,172,0,0
+MacroRefStartLine:(0,183,1,0)
+	M_Call ISP_UART_Recv
+DebugLine(instruction):68,1,172,12,1
+InstructionLine:(0,183,1,0)
+	call ISP_UART_Recv - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,174,13,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,174,13,1
+MacroRefEndLine:(0,183,0,0)
+
+DebugLine(instruction):68,1,174,184,0
+InstructionLine:(0,184,0,0)
+	r1 = r1 lsl 4
+DebugLine(instruction):68,1,175,185,0
+InstructionLine:(0,185,0,0)
+	r1 = r1 lsl 4
+DebugLine(instruction):68,1,176,186,0
+InstructionLine:(0,186,0,0)
+	r1 |= r2
+DebugLine(instruction):68,1,177,187,0
+InstructionLine:(0,187,0,0)
+	pop r2 from [sp]
+DebugLine(instruction):68,1,178,188,0
+InstructionLine:(0,188,0,0)
+retf
+CommentLine:(0,189,0,0)
+
+CommentLine:(0,190,0,0)
+// ============================================================================
+InstructionLine:(0,191,0,0)
+ISP_Erase:
+DebugLine(instruction):68,1,179,192,0
+InstructionLine:(0,192,0,0)
+	r1 = 0x4557							// "WE" Wait Erase
+DebugLine(instruction):224,1,181,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,181,0,0
+MacroRefStartLine:(0,193,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,181,12,1
+InstructionLine:(0,193,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,183,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,183,1,1
+MacroRefEndLine:(0,193,0,0)
+
+DebugLine(instruction):224,1,183,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,183,0,0
+MacroRefStartLine:(0,194,1,0)
+	M_Call ISP_UART_Recv				// Get Page Number
+DebugLine(instruction):68,1,183,12,1
+InstructionLine:(0,194,1,0)
+	call ISP_UART_Recv - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,185,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,185,1,1
+MacroRefEndLine:(0,194,0,0)
+
+DebugLine(instruction):68,1,185,195,0
+InstructionLine:(0,195,0,0)
+	r2 = [R_ERR]
+DebugLine(instruction):68,1,186,196,0
+InstructionLine:(0,196,0,0)
+	jnz ?PageErr
+DebugLine(instruction):68,1,187,197,0
+InstructionLine:(0,197,0,0)
+	cmp r1, 0x80
+DebugLine(instruction):68,1,189,198,0
+InstructionLine:(0,198,0,0)
+	jb ?PageErr
+DebugLine(instruction):68,1,190,199,0
+InstructionLine:(0,199,0,0)
+	cmp r1, 0xff
+DebugLine(instruction):68,1,192,200,0
+InstructionLine:(0,200,0,0)
+	ja ?PageErr
+CommentLine:(0,201,0,0)
+
+DebugLine(instruction):68,1,193,202,0
+InstructionLine:(0,202,0,0)
+	r2 = 0xAAAA
+DebugLine(instruction):68,1,195,203,0
+InstructionLine:(0,203,0,0)
+	[P_Flash_Ctrl] = r2
+DebugLine(instruction):68,1,197,204,0
+InstructionLine:(0,204,0,0)
+	r2 = 0x5511
+DebugLine(instruction):68,1,199,205,0
+InstructionLine:(0,205,0,0)
+	[P_Flash_Ctrl] = r2
+DebugLine(instruction):68,1,201,206,0
+InstructionLine:(0,206,0,0)
+	r1 = r1 lsl 4
+DebugLine(instruction):68,1,202,207,0
+InstructionLine:(0,207,0,0)
+	r1 = r1 lsl 4
+DebugLine(instruction):68,1,203,208,0
+InstructionLine:(0,208,0,0)
+	[r1] = r1
+InstructionLine:(0,209,0,0)
+?Verify:								// Verify
+DebugLine(instruction):68,1,204,210,0
+InstructionLine:(0,210,0,0)
+	r2 = [r1++]
+DebugLine(instruction):68,1,205,211,0
+InstructionLine:(0,211,0,0)
+	cmp r2, 0xffff
+DebugLine(instruction):68,1,207,212,0
+InstructionLine:(0,212,0,0)
+	jne ?CheckPageFF
+DebugLine(instruction):68,1,208,213,0
+InstructionLine:(0,213,0,0)
+	test r1, 0xff
+DebugLine(instruction):68,1,210,214,0
+InstructionLine:(0,214,0,0)
+	jnz ?Verify
+DebugLine(instruction):68,1,211,215,0
+InstructionLine:(0,215,0,0)
+	jmp ?EraseDone
+InstructionLine:(0,216,0,0)
+?CheckPageFF:
+DebugLine(instruction):68,1,212,217,0
+InstructionLine:(0,217,0,0)
+	cmp r1, 0xFFF0
+DebugLine(instruction):68,1,214,218,0
+InstructionLine:(0,218,0,0)
+	jae ?EraseDone
+InstructionLine:(0,219,0,0)
+?EraseFail:
+DebugLine(instruction):68,1,215,220,0
+InstructionLine:(0,220,0,0)
+	r1 = 0x4645							// "EF"
+DebugLine(instruction):68,1,217,221,0
+InstructionLine:(0,221,0,0)
+	jmp ?Response
+InstructionLine:(0,222,0,0)
+?PageErr:
+DebugLine(instruction):68,1,218,223,0
+InstructionLine:(0,223,0,0)
+	r1 = 0x5045							// "EP"
+DebugLine(instruction):68,1,220,224,0
+InstructionLine:(0,224,0,0)
+	jmp ?Response	
+InstructionLine:(0,225,0,0)
+?EraseDone:
+DebugLine(instruction):68,1,221,226,0
+InstructionLine:(0,226,0,0)
+	r1 = 0x5345							// "ES"
+InstructionLine:(0,227,0,0)
+?Response:		
+DebugLine(instruction):224,1,223,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,223,0,0
+MacroRefStartLine:(0,228,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,223,12,1
+InstructionLine:(0,228,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,225,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,225,1,1
+MacroRefEndLine:(0,228,0,0)
+
+DebugLine(instruction):68,1,225,229,0
+InstructionLine:(0,229,0,0)
+retf
+CommentLine:(0,230,0,0)
+
+CommentLine:(0,231,0,0)
+// ============================================================================
+InstructionLine:(0,232,0,0)
+ISP_MassErase:
+DebugLine(instruction):68,1,226,233,0
+InstructionLine:(0,233,0,0)
+	r1 = 0x8000
+InstructionLine:(0,234,0,0)
+?Erase:									// Erase 0x8000~0xfbff
+DebugLine(instruction):68,1,228,235,0
+InstructionLine:(0,235,0,0)
+	r2 = 0xAAAA
+DebugLine(instruction):68,1,230,236,0
+InstructionLine:(0,236,0,0)
+	[P_Flash_Ctrl] = r2
+DebugLine(instruction):68,1,232,237,0
+InstructionLine:(0,237,0,0)
+	r2 = 0x5511
+DebugLine(instruction):68,1,234,238,0
+InstructionLine:(0,238,0,0)
+	[P_Flash_Ctrl] = r2
+DebugLine(instruction):68,1,236,239,0
+InstructionLine:(0,239,0,0)
+	[r1] = r1
+DebugLine(instruction):68,1,237,240,0
+InstructionLine:(0,240,0,0)
+	r1 += 0x0100
+DebugLine(instruction):68,1,239,241,0
+InstructionLine:(0,241,0,0)
+	cmp r1, 0xfc00
+DebugLine(instruction):68,1,241,242,0
+InstructionLine:(0,242,0,0)
+	jb ?Erase
+DebugLine(instruction):68,1,242,243,0
+InstructionLine:(0,243,0,0)
+	r1 = 0xff00							// Erase 0xfe00~0xfeff
+DebugLine(instruction):68,1,244,244,0
+InstructionLine:(0,244,0,0)
+	r2 = 0xAAAA
+DebugLine(instruction):68,1,246,245,0
+InstructionLine:(0,245,0,0)
+	[P_Flash_Ctrl] = r2
+DebugLine(instruction):68,1,248,246,0
+InstructionLine:(0,246,0,0)
+	r2 = 0x5511
+DebugLine(instruction):68,1,250,247,0
+InstructionLine:(0,247,0,0)
+	[P_Flash_Ctrl] = r2
+DebugLine(instruction):68,1,252,248,0
+InstructionLine:(0,248,0,0)
+	[r1] = r1
+InstructionLine:(0,249,0,0)
+?Verify:								// Verify
+DebugLine(instruction):68,1,253,250,0
+InstructionLine:(0,250,0,0)
+	r1 = 0x8000
+InstructionLine:(0,251,0,0)
+?L1:	
+DebugLine(instruction):68,1,255,252,0
+InstructionLine:(0,252,0,0)
+	r2 = [r1++]
+DebugLine(instruction):68,1,256,253,0
+InstructionLine:(0,253,0,0)
+	cmp r2, 0xffff
+DebugLine(instruction):68,1,258,254,0
+InstructionLine:(0,254,0,0)
+	jne ?EraseFail
+DebugLine(instruction):68,1,259,255,0
+InstructionLine:(0,255,0,0)
+	cmp r1, 0xFC00
+DebugLine(instruction):68,1,261,256,0
+InstructionLine:(0,256,0,0)
+	jb ?L1
+DebugLine(instruction):68,1,262,257,0
+InstructionLine:(0,257,0,0)
+	r1 = 0xFE00
+InstructionLine:(0,258,0,0)
+?L2:	
+DebugLine(instruction):68,1,264,259,0
+InstructionLine:(0,259,0,0)
+	r2 = [r1++]
+DebugLine(instruction):68,1,265,260,0
+InstructionLine:(0,260,0,0)
+	cmp r2, 0xffff
+DebugLine(instruction):68,1,267,261,0
+InstructionLine:(0,261,0,0)
+	jne ?EraseFail
+DebugLine(instruction):68,1,268,262,0
+InstructionLine:(0,262,0,0)
+	cmp r1, 0xFF00
+DebugLine(instruction):68,1,270,263,0
+InstructionLine:(0,263,0,0)
+	jb ?L2
+InstructionLine:(0,264,0,0)
+?EraseDone:
+DebugLine(instruction):68,1,271,265,0
+InstructionLine:(0,265,0,0)
+	r1 = 0x534D							// "MS"
+DebugLine(instruction):68,1,273,266,0
+InstructionLine:(0,266,0,0)
+	jmp ?Response
+InstructionLine:(0,267,0,0)
+?EraseFail:
+DebugLine(instruction):68,1,274,268,0
+InstructionLine:(0,268,0,0)
+	r1 = 0x464D							// "MF"
+InstructionLine:(0,269,0,0)
+?Response:		
+DebugLine(instruction):224,1,276,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,276,0,0
+MacroRefStartLine:(0,270,1,0)
+	M_Call ISP_UART_SendWord	
+DebugLine(instruction):68,1,276,12,1
+InstructionLine:(0,270,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,278,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,278,1,1
+MacroRefEndLine:(0,270,0,0)
+
+DebugLine(instruction):68,1,278,271,0
+InstructionLine:(0,271,0,0)
+retf
+CommentLine:(0,272,0,0)
+
+CommentLine:(0,273,0,0)
+// ============================================================================
+InstructionLine:(0,274,0,0)
+ISP_Download:
+DebugLine(instruction):68,1,279,275,0
+InstructionLine:(0,275,0,0)
+	r2 = 0								// Clear ErrFlag and CheckSum
+DebugLine(instruction):68,1,280,276,0
+InstructionLine:(0,276,0,0)
+	[R_ERR] = r2
+DebugLine(instruction):68,1,281,277,0
+InstructionLine:(0,277,0,0)
+	[R_Sum] = r2
+DebugLine(instruction):68,1,282,278,0
+InstructionLine:(0,278,0,0)
+	[R_Sum+1] = r2
+CommentLine:(0,279,0,0)
+
+DebugLine(instruction):68,1,283,280,0
+InstructionLine:(0,280,0,0)
+	r1 = 0x5244							// "DR"
+DebugLine(instruction):224,1,285,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,285,0,0
+MacroRefStartLine:(0,281,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,285,12,1
+InstructionLine:(0,281,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,287,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,287,1,1
+MacroRefEndLine:(0,281,0,0)
+
+CommentLine:(0,282,0,0)
+
+DebugLine(instruction):68,1,287,283,0
+InstructionLine:(0,283,0,0)
+	r2 = R_Block
+InstructionLine:(0,284,0,0)
+?L2:	
+DebugLine(instruction):224,1,289,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,289,0,0
+MacroRefStartLine:(0,285,1,0)
+	M_Call ISP_UART_RecvWord
+DebugLine(instruction):68,1,289,12,1
+InstructionLine:(0,285,1,0)
+	call ISP_UART_RecvWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,291,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,291,1,1
+MacroRefEndLine:(0,285,0,0)
+
+DebugLine(instruction):68,1,291,286,0
+InstructionLine:(0,286,0,0)
+	[r2++] = r1
+DebugLine(instruction):68,1,292,287,0
+InstructionLine:(0,287,0,0)
+	r3 = 0
+DebugLine(instruction):68,1,293,288,0
+InstructionLine:(0,288,0,0)
+	r1 += [R_Sum]						// Sum
+DebugLine(instruction):68,1,294,289,0
+InstructionLine:(0,289,0,0)
+	[R_Sum] = r1
+DebugLine(instruction):68,1,295,290,0
+InstructionLine:(0,290,0,0)
+	r3 += [R_Sum+1], carry
+DebugLine(instruction):68,1,296,291,0
+InstructionLine:(0,291,0,0)
+	[R_Sum+1] = r3
+DebugLine(instruction):68,1,297,292,0
+InstructionLine:(0,292,0,0)
+	cmp r2, R_Block+256
+DebugLine(instruction):68,1,299,293,0
+InstructionLine:(0,293,0,0)
+	jb ?L2
+DebugLine(instruction):224,1,300,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,300,0,0
+MacroRefStartLine:(0,294,1,0)
+	M_Call ISP_UART_RecvWord 			// Check Sum
+DebugLine(instruction):68,1,300,12,1
+InstructionLine:(0,294,1,0)
+	call ISP_UART_RecvWord  - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,302,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,302,1,1
+MacroRefEndLine:(0,294,0,0)
+
+DebugLine(instruction):68,1,302,295,0
+InstructionLine:(0,295,0,0)
+	r2 = r1
+DebugLine(instruction):224,1,303,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,303,0,0
+MacroRefStartLine:(0,296,1,0)
+	M_Call ISP_UART_RecvWord 			// Check Sum
+DebugLine(instruction):68,1,303,12,1
+InstructionLine:(0,296,1,0)
+	call ISP_UART_RecvWord  - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,305,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,305,1,1
+MacroRefEndLine:(0,296,0,0)
+
+DebugLine(instruction):68,1,305,297,0
+InstructionLine:(0,297,0,0)
+	cmp r1, [R_Sum+1]
+DebugLine(instruction):68,1,306,298,0
+InstructionLine:(0,298,0,0)
+	jne ?BlockErr
+DebugLine(instruction):68,1,307,299,0
+InstructionLine:(0,299,0,0)
+	cmp r2, [R_Sum]
+DebugLine(instruction):68,1,308,300,0
+InstructionLine:(0,300,0,0)
+	jne ?BlockErr
+DebugLine(instruction):68,1,309,301,0
+InstructionLine:(0,301,0,0)
+	r1 = [R_ERR]						// Check Verify
+DebugLine(instruction):68,1,310,302,0
+InstructionLine:(0,302,0,0)
+	jz ?Done
+InstructionLine:(0,303,0,0)
+?BlockErr:
+DebugLine(instruction):68,1,311,304,0
+InstructionLine:(0,304,0,0)
+	r1 = 0x4644							// "DF"
+DebugLine(instruction):68,1,313,305,0
+InstructionLine:(0,305,0,0)
+	jmp ?Response
+InstructionLine:(0,306,0,0)
+?Done:
+DebugLine(instruction):68,1,314,307,0
+InstructionLine:(0,307,0,0)
+	r1 = 0x5344							// "DS"
+InstructionLine:(0,308,0,0)
+?Response:
+DebugLine(instruction):224,1,316,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,316,0,0
+MacroRefStartLine:(0,309,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,316,12,1
+InstructionLine:(0,309,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,318,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,318,1,1
+MacroRefEndLine:(0,309,0,0)
+
+DebugLine(instruction):68,1,318,310,0
+InstructionLine:(0,310,0,0)
+retf
+CommentLine:(0,311,0,0)
+
+CommentLine:(0,312,0,0)
+// ============================================================================
+InstructionLine:(0,313,0,0)
+ISP_Program:
+DebugLine(instruction):224,1,319,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,319,0,0
+MacroRefStartLine:(0,314,1,0)
+	M_Call ISP_UART_Recv				// Get Page Number
+DebugLine(instruction):68,1,319,12,1
+InstructionLine:(0,314,1,0)
+	call ISP_UART_Recv - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,321,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,321,1,1
+MacroRefEndLine:(0,314,0,0)
+
+DebugLine(instruction):68,1,321,315,0
+InstructionLine:(0,315,0,0)
+	r2 = [R_ERR]
+DebugLine(instruction):68,1,322,316,0
+InstructionLine:(0,316,0,0)
+	jnz ?PageErr
+DebugLine(instruction):68,1,323,317,0
+InstructionLine:(0,317,0,0)
+	cmp r1, 0x80
+DebugLine(instruction):68,1,325,318,0
+InstructionLine:(0,318,0,0)
+	jb ?PageErr
+DebugLine(instruction):68,1,326,319,0
+InstructionLine:(0,319,0,0)
+	cmp r1, 0xff
+DebugLine(instruction):68,1,328,320,0
+InstructionLine:(0,320,0,0)
+	ja ?PageErr
+InstructionLine:(0,321,0,0)
+?Prog:									// Seq Program 256 words
+DebugLine(instruction):68,1,329,322,0
+InstructionLine:(0,322,0,0)
+	r1 = r1 lsl 4
+DebugLine(instruction):68,1,330,323,0
+InstructionLine:(0,323,0,0)
+	r1 = r1 lsl 4
+DebugLine(instruction):68,1,331,324,0
+InstructionLine:(0,324,0,0)
+	r3 = R_Block
+DebugLine(instruction):68,1,333,325,0
+InstructionLine:(0,325,0,0)
+	r2 = 0xAAAA
+DebugLine(instruction):68,1,335,326,0
+InstructionLine:(0,326,0,0)
+	[P_Flash_Ctrl] = r2
+InstructionLine:(0,327,0,0)
+?L1:
+DebugLine(instruction):68,1,337,328,0
+InstructionLine:(0,328,0,0)
+	r4 = [r3++]
+DebugLine(instruction):68,1,338,329,0
+InstructionLine:(0,329,0,0)
+	r2 = 0x5544
+DebugLine(instruction):68,1,340,330,0
+InstructionLine:(0,330,0,0)
+	[P_Flash_Ctrl] = r2
+DebugLine(instruction):68,1,342,331,0
+InstructionLine:(0,331,0,0)
+	[r1++] = r4
+DebugLine(instruction):68,1,343,332,0
+InstructionLine:(0,332,0,0)
+	test r1, 0x00ff
+DebugLine(instruction):68,1,345,333,0
+InstructionLine:(0,333,0,0)
+	jnz ?L1
+DebugLine(instruction):68,1,346,334,0
+InstructionLine:(0,334,0,0)
+	r2 = 0xffff							// End Seq Program
+DebugLine(instruction):68,1,348,335,0
+InstructionLine:(0,335,0,0)
+	[P_Flash_Ctrl] = r2
+InstructionLine:(0,336,0,0)
+?ProgDone:
+DebugLine(instruction):68,1,350,337,0
+InstructionLine:(0,337,0,0)
+	r1 = 0x5350							// "PS"	
+DebugLine(instruction):68,1,352,338,0
+InstructionLine:(0,338,0,0)
+	jmp ?Response
+InstructionLine:(0,339,0,0)
+?PageErr:
+DebugLine(instruction):68,1,353,340,0
+InstructionLine:(0,340,0,0)
+	r1 = 0x5050							// "PP"
+InstructionLine:(0,341,0,0)
+?Response:
+DebugLine(instruction):224,1,355,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,355,0,0
+MacroRefStartLine:(0,342,1,0)
+	M_Call ISP_UART_SendWord	
+DebugLine(instruction):68,1,355,12,1
+InstructionLine:(0,342,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,357,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,357,1,1
+MacroRefEndLine:(0,342,0,0)
+
+DebugLine(instruction):68,1,357,343,0
+InstructionLine:(0,343,0,0)
+retf
+CommentLine:(0,344,0,0)
+
+CommentLine:(0,345,0,0)
+// ============================================================================
+InstructionLine:(0,346,0,0)
+ISP_Query:
+DebugLine(instruction):68,1,358,347,0
+InstructionLine:(0,347,0,0)
+	r1 = 0x4E43							// "CN"
+DebugLine(instruction):224,1,360,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,360,0,0
+MacroRefStartLine:(0,348,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,360,12,1
+InstructionLine:(0,348,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,362,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,362,1,1
+MacroRefEndLine:(0,348,0,0)
+
+DebugLine(instruction):68,1,362,349,0
+InstructionLine:(0,349,0,0)
+retf 
+CommentLine:(0,350,0,0)
+
+CommentLine:(0,351,0,0)
+
+CommentLine:(0,352,0,0)
+// ============================================================================
+InstructionLine:(0,353,0,0)
+ISP_Verify:
+DebugLine(instruction):224,1,363,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,363,0,0
+MacroRefStartLine:(0,354,1,0)
+	M_Call ISP_UART_Recv				// Get Page Number
+DebugLine(instruction):68,1,363,12,1
+InstructionLine:(0,354,1,0)
+	call ISP_UART_Recv - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,365,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,365,1,1
+MacroRefEndLine:(0,354,0,0)
+
+DebugLine(instruction):68,1,365,355,0
+InstructionLine:(0,355,0,0)
+	r2 = [R_ERR]
+DebugLine(instruction):68,1,366,356,0
+InstructionLine:(0,356,0,0)
+	jnz ?PageErr
+DebugLine(instruction):68,1,367,357,0
+InstructionLine:(0,357,0,0)
+	cmp r1, 0x80
+DebugLine(instruction):68,1,369,358,0
+InstructionLine:(0,358,0,0)
+	jb ?PageErr
+DebugLine(instruction):68,1,370,359,0
+InstructionLine:(0,359,0,0)
+	cmp r1, 0xff
+DebugLine(instruction):68,1,372,360,0
+InstructionLine:(0,360,0,0)
+	ja ?PageErr
+CommentLine:(0,361,0,0)
+
+DebugLine(instruction):68,1,373,362,0
+InstructionLine:(0,362,0,0)
+	r1 = r1 lsl 4
+DebugLine(instruction):68,1,374,363,0
+InstructionLine:(0,363,0,0)
+	r1 = r1 lsl 4
+DebugLine(instruction):68,1,375,364,0
+InstructionLine:(0,364,0,0)
+	r3 = R_Block
+InstructionLine:(0,365,0,0)
+?Verify:
+DebugLine(instruction):68,1,377,366,0
+InstructionLine:(0,366,0,0)
+	r2 = [r1++]
+DebugLine(instruction):68,1,378,367,0
+InstructionLine:(0,367,0,0)
+	cmp r2, [r3++] 
+DebugLine(instruction):68,1,379,368,0
+InstructionLine:(0,368,0,0)
+	je ?Next
+DebugLine(instruction):68,1,380,369,0
+InstructionLine:(0,369,0,0)
+	cmp r1, 0xfff8						// [0xfff7] always 0xfc00
+DebugLine(instruction):68,1,382,370,0
+InstructionLine:(0,370,0,0)
+	jne ?VerifyErr
+InstructionLine:(0,371,0,0)
+?Next:	
+DebugLine(instruction):68,1,383,372,0
+InstructionLine:(0,372,0,0)
+	test r1, 0x00ff
+DebugLine(instruction):68,1,385,373,0
+InstructionLine:(0,373,0,0)
+	jnz ?Verify
+InstructionLine:(0,374,0,0)
+?VerifyOK:
+DebugLine(instruction):68,1,386,375,0
+InstructionLine:(0,375,0,0)
+	r1 = 0x5356							// "VS"	
+DebugLine(instruction):68,1,388,376,0
+InstructionLine:(0,376,0,0)
+	jmp ?Response
+InstructionLine:(0,377,0,0)
+?VerifyErr:
+DebugLine(instruction):68,1,389,378,0
+InstructionLine:(0,378,0,0)
+	r1 = 0x4656							// "VF"
+DebugLine(instruction):68,1,391,379,0
+InstructionLine:(0,379,0,0)
+	jmp ?Response
+InstructionLine:(0,380,0,0)
+?PageErr:
+DebugLine(instruction):68,1,392,381,0
+InstructionLine:(0,381,0,0)
+	r1 = 0x5056							// "VP"
+InstructionLine:(0,382,0,0)
+?Response:
+DebugLine(instruction):224,1,394,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,394,0,0
+MacroRefStartLine:(0,383,1,0)
+	M_Call ISP_UART_SendWord	
+DebugLine(instruction):68,1,394,12,1
+InstructionLine:(0,383,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,396,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,396,1,1
+MacroRefEndLine:(0,383,0,0)
+
+DebugLine(instruction):68,1,396,384,0
+InstructionLine:(0,384,0,0)
+retf
+CommentLine:(0,385,0,0)
+
+CommentLine:(0,386,0,0)
+// ============================================================================
+InstructionLine:(0,387,0,0)
+ISP_Upload:
+DebugLine(instruction):68,1,397,388,0
+InstructionLine:(0,388,0,0)
+	r1 = 0
+DebugLine(instruction):68,1,398,389,0
+InstructionLine:(0,389,0,0)
+	[R_Sum] = r1
+DebugLine(instruction):68,1,399,390,0
+InstructionLine:(0,390,0,0)
+	[R_Sum+1] = r1
+CommentLine:(0,391,0,0)
+	
+DebugLine(instruction):224,1,400,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,400,0,0
+MacroRefStartLine:(0,392,1,0)
+	M_Call ISP_UART_Recv				// Get Page Number
+DebugLine(instruction):68,1,400,12,1
+InstructionLine:(0,392,1,0)
+	call ISP_UART_Recv - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,402,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,402,1,1
+MacroRefEndLine:(0,392,0,0)
+
+DebugLine(instruction):68,1,402,393,0
+InstructionLine:(0,393,0,0)
+	r2 = [R_ERR]
+DebugLine(instruction):68,1,403,394,0
+InstructionLine:(0,394,0,0)
+	jnz ?PageErr
+CommentLine:(0,395,0,0)
+
+DebugLine(instruction):68,1,404,396,0
+InstructionLine:(0,396,0,0)
+	r2 = r1
+DebugLine(instruction):68,1,405,397,0
+InstructionLine:(0,397,0,0)
+	r1 = 0x5255							// "UR"
+DebugLine(instruction):224,1,407,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,407,0,0
+MacroRefStartLine:(0,398,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,407,12,1
+InstructionLine:(0,398,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,409,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,409,1,1
+MacroRefEndLine:(0,398,0,0)
+
+CommentLine:(0,399,0,0)
+
+DebugLine(instruction):68,1,409,400,0
+InstructionLine:(0,400,0,0)
+	r2 = r2 lsl 4
+DebugLine(instruction):68,1,410,401,0
+InstructionLine:(0,401,0,0)
+	r2 = r2 lsl 4
+InstructionLine:(0,402,0,0)
+?Upload:
+DebugLine(instruction):68,1,411,403,0
+InstructionLine:(0,403,0,0)
+	r1 = [r2++]
+DebugLine(instruction):224,1,412,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,412,0,0
+MacroRefStartLine:(0,404,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,412,12,1
+InstructionLine:(0,404,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,414,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,414,1,1
+MacroRefEndLine:(0,404,0,0)
+
+DebugLine(instruction):68,1,414,405,0
+InstructionLine:(0,405,0,0)
+	r3 = 0
+DebugLine(instruction):68,1,415,406,0
+InstructionLine:(0,406,0,0)
+	r1 += [R_Sum]
+DebugLine(instruction):68,1,416,407,0
+InstructionLine:(0,407,0,0)
+	[R_Sum]	 = r1
+DebugLine(instruction):68,1,417,408,0
+InstructionLine:(0,408,0,0)
+	r3 += [R_Sum+1], carry
+DebugLine(instruction):68,1,418,409,0
+InstructionLine:(0,409,0,0)
+	[R_Sum+1] = r3
+DebugLine(instruction):68,1,419,410,0
+InstructionLine:(0,410,0,0)
+	test r2, 0x00ff
+DebugLine(instruction):68,1,421,411,0
+InstructionLine:(0,411,0,0)
+	jnz ?Upload
+DebugLine(instruction):68,1,422,412,0
+InstructionLine:(0,412,0,0)
+	r1 = [R_Sum]
+DebugLine(instruction):224,1,423,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,423,0,0
+MacroRefStartLine:(0,413,1,0)
+	M_Call ISP_UART_SendWord			// checksum
+DebugLine(instruction):68,1,423,12,1
+InstructionLine:(0,413,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,425,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,425,1,1
+MacroRefEndLine:(0,413,0,0)
+
+DebugLine(instruction):68,1,425,414,0
+InstructionLine:(0,414,0,0)
+	r1 = [R_Sum+1]
+DebugLine(instruction):224,1,426,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,426,0,0
+MacroRefStartLine:(0,415,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,426,12,1
+InstructionLine:(0,415,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,428,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,428,1,1
+MacroRefEndLine:(0,415,0,0)
+
+DebugLine(instruction):68,1,428,416,0
+InstructionLine:(0,416,0,0)
+	jmp ?Exit
+InstructionLine:(0,417,0,0)
+?PageErr:
+DebugLine(instruction):68,1,429,418,0
+InstructionLine:(0,418,0,0)
+	r1 = 0x5055							// "UP"
+DebugLine(instruction):224,1,431,0,0
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,431,0,0
+MacroRefStartLine:(0,419,1,0)
+	M_Call ISP_UART_SendWord
+DebugLine(instruction):68,1,431,12,1
+InstructionLine:(0,419,1,0)
+	call ISP_UART_SendWord - _ISP_START + 0xFC00
+DebugLine(instruction):224,1,433,1,1
+DebugLine(path):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode/
+DebugLine(file):F:\SPCE061A\ISP Code\SPCE061A\061ISPCode\ISP.asm
+DebugLine(instruction):192,1,433,1,1
+MacroRefEndLine:(0,419,0,0)
+
+InstructionLine:(0,420,0,0)
+?Exit:		
+DebugLine(instruction):68,1,433,421,0
+InstructionLine:(0,421,0,0)
+retf
+InstructionLine:(0,422,0,0)
+_Default_ISR:
+DebugLine(instruction):68,1,434,423,0
+InstructionLine:(0,423,0,0)
+reti
+CommentLine:(0,424,0,0)
+// ============================================================================
+CommentLine:(0,425,0,0)
+// End
+InstructionLine:(0,426,0,0)
+_ISP_END:
+EndOfFileLine:(0,426,0,0)
+

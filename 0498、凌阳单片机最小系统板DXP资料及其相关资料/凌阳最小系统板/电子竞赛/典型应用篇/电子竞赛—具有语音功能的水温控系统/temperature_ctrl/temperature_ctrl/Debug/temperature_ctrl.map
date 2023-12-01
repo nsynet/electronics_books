@@ -1,0 +1,470 @@
+Saturday, July 12, 11:47:50, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             80C3         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop                                          80DF         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop2                                         80DE         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+_RES_Table                                         806F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T034_16K_SA                                   806F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T034_16K_EA                                   8071         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T046_16K_SA                                   8073         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T046_16K_EA                                   8075         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T047_16K_SA                                   8077         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T047_16K_EA                                   8079         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T048_16K_SA                                   807B         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T048_16K_EA                                   807D         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T049_16K_SA                                   807F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T049_16K_EA                                   8081         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T050_16K_SA                                   8083         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T050_16K_EA                                   8085         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T051_16K_SA                                   8087         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T051_16K_EA                                   8089         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T052_16K_SA                                   808B         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T052_16K_EA                                   808D         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T053_16K_SA                                   808F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T053_16K_EA                                   8091         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T054_16K_SA                                   8093         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T054_16K_EA                                   8095         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T055_16K_SA                                   8097         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T055_16K_EA                                   8099         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T056_16K_SA                                   809B         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_RES_T056_16K_EA                                   809D         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+T_SACM_A2000_SpeechTable                           809F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_T_SACM_A2000_SpeechTable                          809F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+_System_Initial                                    9554         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_Clear_WatchDog                                    9562         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_System_ServiceLoop                                9566         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+L_User_Init_IO                                     956B         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_ADC_Init                                          957D         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+F_ADC_Init                                         957D         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_SP_INT_IRQ5                                       958C         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+F_SP_INT_IRQ5                                      958C         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_turn_off_IRQ5                                     9593         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_UART_Init                                         959A         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+F_UART_Init                                        959A         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_SP_INT_IRQ6                                       95BA         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+F_SP_INT_IRQ6                                      95BA         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_SP_INT_TIMEA                                      95C4         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_turn_off_timerB                                   95D3         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_turn_on_relay                                     95DA         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+F_turn_on_relay                                    95DA         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_turn_off_relay                                    95E0         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+F_turn_off_relay                                   95E0         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+_SP_INT_TIMEB                                      95E7         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+LED_No                                             31C          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\led.obj"
+_LED_Show                                          980B         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\led.obj"
+F_LED_Show                                         980B         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\led.obj"
+_iPlay_times                                       354          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_iNumber                                           355          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_fOut                                              356          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_guiLED_Value                                      357          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_main                                              8D54         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_PIDinit                                           8D92         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_PIDCalc                                           8DA2         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_display_speech_ADC_temperature                    8E5E         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_active                                            8F57         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_adc_data_cmp                                      8F94         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_key_value_process                                 9092         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_temperature_speech_index                          911B         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_speech_start_address                              9169         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_speech_end_address                                91C3         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_temperature_speech_play                           921D         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_iRet                                              2F7          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_iaSpeech_index                                    2F8          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_guifgSpeechPlay                                   2FC          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_stPID                                             2FD          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_status                                            307          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_giADC_DataSave                                    308          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+_iAddrSpeech                                       313          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+G_Sum                                              35B          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\isr.obj"
+_G_ADC_flag                                        35C          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\isr.obj"
+_FIQ                                               8009         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\isr.obj"
+_IRQ5                                              8024         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\isr.obj"
+_IRQ6                                              804F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\isr.obj"
+_IRQ2                                              805F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\isr.obj"
+F_SP_Send_PWM                                      928B         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Send_DAC1                                     928E         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Send_DAC2                                     9291         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  9294         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Send_Out                                      9294         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Get_ADC                                       9299         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             929C         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             929F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             92A2         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             92A5         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                92A8         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               92AB         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             92AE         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                92B1         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                92B4         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Write_INT_Status                              92B7         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Read_INT_Status                               92BA         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    92F2         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    9316         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    9328         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    934C         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_RampUpDAC1                                     92F2         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_RampDnDAC1                                     9316         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_RampUpDAC2                                     9328         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_RampDnDAC2                                     934C         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_Delay                                         93B7         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_InitQueue                                     9364         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_ReadQueue                                     9371         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_WriteQueue                                    9383         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_SP_TestQueue                                     9391         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_Export                                         92E8         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_Import                                         92DD         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_Init_IOB                                       92CD         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_Init_IOA                                       92BD         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+_SP_GetResource                                    93A9         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+R_InterruptStatus                                  31E          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+R_FIQTemp                                          31F          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+F_Key_Scan_Initial                                 95F6         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\key.obj"
+F_Key_Scan_ServiceLoop                             9601         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\key.obj"
+F_Key_Scan_ServiceLoop_2                           9627         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\key.obj"
+F_Key_DebounceCnt_Down                             9667         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\key.obj"
+_SP_GetCh                                          966E         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\key.obj"
+F_SP_GetCh                                         966E         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\key.obj"
+R_KeyStrobe                                        317          "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\key.obj"
+__RES_T034_16K_sa                                  986F         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T034_16k.res"
+__RES_T034_16K_ea                                  9C62         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T034_16k.res"
+__RES_T046_16K_sa                                  9C62         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T046_16k.res"
+__RES_T046_16K_ea                                  9E75         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T046_16k.res"
+__RES_T047_16K_sa                                  9E75         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T047_16k.res"
+__RES_T047_16K_ea                                  A028         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T047_16k.res"
+__RES_T048_16K_sa                                  A96A         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T048_16k.res"
+__RES_T048_16K_ea                                  AABD         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T048_16k.res"
+__RES_T049_16K_sa                                  A028         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T049_16k.res"
+__RES_T049_16K_ea                                  A1DB         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T049_16k.res"
+__RES_T050_16K_sa                                  A541         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T050_16k.res"
+__RES_T050_16K_ea                                  A6C4         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T050_16k.res"
+__RES_T051_16K_sa                                  A1DB         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T051_16k.res"
+__RES_T051_16K_ea                                  A38E         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T051_16k.res"
+__RES_T052_16K_sa                                  A6C4         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T052_16k.res"
+__RES_T052_16K_ea                                  A817         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T052_16k.res"
+__RES_T053_16K_sa                                  A817         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T053_16k.res"
+__RES_T053_16K_ea                                  A96A         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T053_16k.res"
+__RES_T054_16K_sa                                  AC10         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T054_16k.res"
+__RES_T054_16K_ea                                  AD03         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T054_16k.res"
+__RES_T055_16K_sa                                  A38E         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T055_16k.res"
+__RES_T055_16K_ea                                  A541         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T055_16k.res"
+__RES_T056_16K_sa                                  AABD         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T056_16k.res"
+__RES_T056_16K_ea                                  AC10         "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T056_16k.res"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            80C3                 80DF         1D     *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          806F                 80AA         3C     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\system.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9554                 95F5         A2     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\led.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          980B                 982F         25     *
+*    DATA                                          AD03                 AD12         10     *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           31C                  31C          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8D54                 928A         537    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          80AB                 80C2         18     *
+*    IRAM                                          9866 (354)           986C (35A)   7      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           2F7                  313          1D     *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\isr.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 806E         66     *
+*    IRAM                                          986D (35B)           986E (35C)   2      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\hardware.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          928B                 93B7         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          9830 (31E)           9865 (353)   36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\key.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          95F6                 9673         7E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           314                  317          4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T034_16k.res"
+*    __sn_section_RES_T034_16K(DATA)               986F                 9C61         3F3    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T046_16k.res"
+*    __sn_section_RES_T046_16K(DATA)               9C62                 9E74         213    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T047_16k.res"
+*    __sn_section_RES_T047_16K(DATA)               9E75                 A027         1B3    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T048_16k.res"
+*    __sn_section_RES_T048_16K(DATA)               A96A                 AABC         153    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T049_16k.res"
+*    __sn_section_RES_T049_16K(DATA)               A028                 A1DA         1B3    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T050_16k.res"
+*    __sn_section_RES_T050_16K(DATA)               A541                 A6C3         183    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T051_16k.res"
+*    __sn_section_RES_T051_16K(DATA)               A1DB                 A38D         1B3    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T052_16k.res"
+*    __sn_section_RES_T052_16K(DATA)               A6C4                 A816         153    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T053_16k.res"
+*    __sn_section_RES_T053_16K(DATA)               A817                 A969         153    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T054_16k.res"
+*    __sn_section_RES_T054_16K(DATA)               AC10                 AD02         F3     *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T055_16k.res"
+*    __sn_section_RES_T055_16K(DATA)               A38E                 A540         1B3    *
+* "F:\电子竞赛\竞赛光盘内容\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\temperature_ctrl\Debug\T056_16k.res"
+*    __sn_section_RES_T056_16K(DATA)               AABD                 AC0F         153    *
+* "d:\working\unsp\mix\release\a2000"                                                       *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          80E0                 8D53         C74    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           31D                  31D          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    A2000_Section(ORAM)                           0                    2F6          2F7    *
+* "cmpf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          971D                 974A         2E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "mulf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          93B8                 9487         D0     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvi1f2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          96E9                 971C         34     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvf2i1"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          97E5                 980A         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "modi1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          974B                 9772         28     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divi1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          96B2                 96E8         37     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "addf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9488                 9553         CC     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "rshu2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9773                 9798         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "mulu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9799                 97BE         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "common"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           318                  31B          4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "lshiu2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          97BF                 97E4         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9674                 96B1         3E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  35D          4A3                   *
+* "First Bank Rom"                  7C00                 2D13         4EED                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\temperature_ctrl.S37
+Disk  Mapping Filename : .\Debug\temperature_ctrl.map
+Symbol  Table FileName : .\Debug\temperature_ctrl.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

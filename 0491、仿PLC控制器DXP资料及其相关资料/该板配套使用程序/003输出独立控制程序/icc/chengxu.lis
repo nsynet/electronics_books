@@ -1,0 +1,576 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile F:\NEW光~1\八路输入输出继电器控制板\该板配套使用程序\003输出独立控制程序\icc\chengxu.c
+ 0000                   .dbfunc e DelayMS _DelayMS fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMS::
+ 0000 00D0              rcall push_gset1
+ 0002                   .dbline -1
+ 0002                   .dbline 65
+ 0002           ; #include <iom8v.h>
+ 0002           ; #include <macros.h> 
+ 0002           ; /**********************************************************************
+ 0002           ;                                 函数数据类型说明                                                              
+ 0002           ; **********************************************************************/
+ 0002           ; #define uchar unsigned char 
+ 0002           ; #define uint unsigned int
+ 0002           ; uchar KEY_PC0;
+ 0002           ; uchar KEY_PC1;
+ 0002           ; uchar KEY_PC2;
+ 0002           ; uchar KEY_PC3;
+ 0002           ; uchar KEY_PB0;
+ 0002           ; uchar KEY_PB1;
+ 0002           ; uchar KEY_PB2;
+ 0002           ; uchar KEY_PB3;
+ 0002           ; //定义BIT 0-7 置1 
+ 0002           ; #define BIT0_POS (1<<0)   
+ 0002           ; #define BIT1_POS (1<<1) 
+ 0002           ; #define BIT2_POS (1<<2) 
+ 0002           ; #define BIT3_POS (1<<3) 
+ 0002           ; //定义BIT 0-7 清零 
+ 0002           ; #define BIT0_NEG ((unsigned char)(~(1<<0))) 
+ 0002           ; #define BIT1_NEG ((unsigned char)(~(1<<1))) 
+ 0002           ; #define BIT2_NEG ((unsigned char)(~(1<<2))) 
+ 0002           ; #define BIT3_NEG ((unsigned char)(~(1<<3))) 
+ 0002           ; 
+ 0002           ; //定义继电器闭合、断开、翻转 
+ 0002           ; #define PB0_OFF PORTB&=BIT0_NEG 
+ 0002           ; #define PB0_ON  PORTB|=BIT0_POS   
+ 0002           ; #define PB0_OTN PORTB^=BIT0_POS 
+ 0002           ; //定义继电器闭合、断开、翻转 
+ 0002           ; #define PB1_OFF PORTB&=BIT1_NEG 
+ 0002           ; #define PB1_ON  PORTB|=BIT1_POS   
+ 0002           ; #define PB1_OTN PORTB^=BIT1_POS 
+ 0002           ; //定义继电器闭合、断开、翻转 
+ 0002           ; #define PB2_OFF PORTB&=BIT2_NEG 
+ 0002           ; #define PB2_ON  PORTB|=BIT2_POS   
+ 0002           ; #define PB2_OTN PORTB^=BIT2_POS 
+ 0002           ; //定义继电器闭合、断开、翻转 
+ 0002           ; #define PB3_OFF PORTB&=BIT3_NEG 
+ 0002           ; #define PB3_ON  PORTB|=BIT3_POS   
+ 0002           ; #define PB3_OTN PORTB^=BIT3_POS 
+ 0002           ; 
+ 0002           ; //定义继电器闭合、断开、翻转 
+ 0002           ; #define PC0_OFF PORTC&=BIT0_NEG 
+ 0002           ; #define PC0_ON  PORTC|=BIT0_POS   
+ 0002           ; #define PC0_OTN PORTC^=BIT0_POS 
+ 0002           ; //定义继电器闭合、断开、翻转 
+ 0002           ; #define PC1_OFF PORTC&=BIT1_NEG 
+ 0002           ; #define PC1_ON  PORTC|=BIT1_POS   
+ 0002           ; #define PC1_OTN PORTC^=BIT1_POS 
+ 0002           ; //定义继电器闭合、断开、翻转 
+ 0002           ; #define PC2_OFF PORTC&=BIT2_NEG 
+ 0002           ; #define PC2_ON  PORTC|=BIT2_POS   
+ 0002           ; #define PC2_OTN PORTC^=BIT2_POS 
+ 0002           ; //定义继电器闭合、断开、翻转 
+ 0002           ; #define PC3_OFF PORTC&=BIT3_NEG 
+ 0002           ; #define PC3_ON  PORTC|=BIT3_POS   
+ 0002           ; #define PC3_OTN PORTC^=BIT3_POS 
+ 0002           ; 
+ 0002           ; /**********************************************************************
+ 0002           ;                                 MS级延时函数程序，参数i 延时时间                                                                      
+ 0002           ; **********************************************************************/
+ 0002           ; void DelayMS(uint i)
+ 0002           ; {
+ 0002                   .dbline 67
+ 0002           ; uint j;
+ 0002           ; for(;i!=0;i--)
+ 0002 0AC0              rjmp L5
+ 0004           L2:
+ 0004                   .dbline 68
+ 0004           ; {
+ 0004                   .dbline 69
+ 0004 48EE              ldi R20,1000
+ 0006 53E0              ldi R21,3
+ 0008 02C0              rjmp L9
+ 000A           L6:
+ 000A                   .dbline 69
+ 000A           L7:
+ 000A                   .dbline 69
+ 000A 4150              subi R20,1
+ 000C 5040              sbci R21,0
+ 000E           L9:
+ 000E                   .dbline 69
+ 000E 4030              cpi R20,0
+ 0010 4507              cpc R20,R21
+ 0012 D9F7              brne L6
+ 0014           X0:
+ 0014                   .dbline 70
+ 0014           L3:
+ 0014                   .dbline 67
+ 0014 0150              subi R16,1
+ 0016 1040              sbci R17,0
+ 0018           L5:
+ 0018                   .dbline 67
+ 0018 0030              cpi R16,0
+ 001A 0107              cpc R16,R17
+ 001C 99F7              brne L2
+ 001E           X1:
+ 001E                   .dbline -2
+ 001E           L1:
+ 001E 00D0              rcall pop_gset1
+ 0020                   .dbline 0 ; func end
+ 0020 0895              ret
+ 0022                   .dbsym r j 20 i
+ 0022                   .dbsym r i 16 i
+ 0022                   .dbend
+ 0022                   .dbfunc e WDT_init _WDT_init fV
+                        .even
+ 0022           _WDT_init::
+ 0022                   .dbline -1
+ 0022                   .dbline 76
+ 0022           ; for(j=1000;j!=0;j--);
+ 0022           ; }
+ 0022           ; }
+ 0022           ; /**********************************************************************
+ 0022           ;                                                               看门狗初始化                                            
+ 0022           ; **********************************************************************/
+ 0022           ; void WDT_init(void)
+ 0022           ; {
+ 0022                   .dbline 77
+ 0022           ;  WDR();//WDT 复位 
+ 0022 A895              wdr
+ 0024                   .dbline 78
+ 0024           ;  WDTCR = 0x0F;//使能看门狗
+ 0024 8FE0              ldi R24,15
+ 0026 81BD              out 0x21,R24
+ 0028                   .dbline -2
+ 0028           L10:
+ 0028                   .dbline 0 ; func end
+ 0028 0895              ret
+ 002A                   .dbend
+ 002A                   .dbfunc e init_eatdog _init_eatdog fV
+                        .even
+ 002A           _init_eatdog::
+ 002A                   .dbline -1
+ 002A                   .dbline 82
+ 002A           ; }
+ 002A           ; /**********************************************************************/
+ 002A           ; void init_eatdog(void)
+ 002A           ; {
+ 002A                   .dbline 83
+ 002A           ;  CLI(); //禁止所有中断
+ 002A F894              cli
+ 002C                   .dbline 84
+ 002C           ;  WDT_init();
+ 002C FADF              rcall _WDT_init
+ 002E                   .dbline 85
+ 002E           ;  SEI();//开全局中断
+ 002E 7894              sei
+ 0030                   .dbline -2
+ 0030           L11:
+ 0030                   .dbline 0 ; func end
+ 0030 0895              ret
+ 0032                   .dbend
+ 0032                   .dbfunc e WDT_off _WDT_off fV
+                        .even
+ 0032           _WDT_off::
+ 0032                   .dbline -1
+ 0032                   .dbline 92
+ 0032           ; }
+ 0032           ; 
+ 0032           ; /**********************************************************************
+ 0032           ;                                                               看门狗关闭(喂狗)                                        
+ 0032           ; **********************************************************************/
+ 0032           ; void WDT_off(void)
+ 0032           ; {
+ 0032                   .dbline 93
+ 0032           ;  WDR();//WDT 复位
+ 0032 A895              wdr
+ 0034                   .dbline 94
+ 0034           ;  WDTCR |= (1<<WDTOE) | (1<<WDE); //置位 WDTOE 和 WDE
+ 0034 81B5              in R24,0x21
+ 0036 8861              ori R24,24
+ 0038 81BD              out 0x21,R24
+ 003A                   .dbline 95
+ 003A           ;  WDTCR = 0x00;//关闭WDT 
+ 003A 2224              clr R2
+ 003C 21BC              out 0x21,R2
+ 003E                   .dbline -2
+ 003E           L12:
+ 003E                   .dbline 0 ; func end
+ 003E 0895              ret
+ 0040                   .dbend
+ 0040                   .dbfunc e get_key _get_key fV
+                        .even
+ 0040           _get_key::
+ 0040                   .dbline -1
+ 0040                   .dbline 103
+ 0040           ; }
+ 0040           ; /**********************************************************************
+ 0040           ;                                         按键扫描函数                  
+ 0040           ; **********************************************************************/
+ 0040           ; 
+ 0040           ; void get_key(void)//按键扫描函数
+ 0040           ; 
+ 0040           ; {
+ 0040 03C0              rjmp L15
+ 0042           L14:
+ 0042                   .dbline 105
+ 0042                   .dbline 105
+ 0042 81E0              ldi R24,1
+ 0044 80930700          sts _KEY_PC0,R24
+ 0048                   .dbline 105
+ 0048           L15:
+ 0048                   .dbline 104
+ 0048           ; while((PIND&0X01)==0)//按下PD0,PC0闭合
+ 0048 809B              sbis 0x10,0
+ 004A FBCF              rjmp L14
+ 004C 03C0              rjmp L18
+ 004E           L17:
+ 004E                   .dbline 107
+ 004E                   .dbline 107
+ 004E 81E0              ldi R24,1
+ 0050 80930600          sts _KEY_PC1,R24
+ 0054                   .dbline 107
+ 0054           L18:
+ 0054                   .dbline 106
+ 0054           ; {KEY_PC0=1;}
+ 0054           ; while((PIND&0X02)==0)//按下PD1,PC1闭合
+ 0054 819B              sbis 0x10,1
+ 0056 FBCF              rjmp L17
+ 0058 03C0              rjmp L21
+ 005A           L20:
+ 005A                   .dbline 109
+ 005A                   .dbline 109
+ 005A 81E0              ldi R24,1
+ 005C 80930500          sts _KEY_PC2,R24
+ 0060                   .dbline 109
+ 0060           L21:
+ 0060                   .dbline 108
+ 0060           ; {KEY_PC1=1;}
+ 0060           ; while((PIND&0X04)==0)//按下PD2,PC2闭合
+ 0060 829B              sbis 0x10,2
+ 0062 FBCF              rjmp L20
+ 0064 03C0              rjmp L24
+ 0066           L23:
+ 0066                   .dbline 111
+ 0066                   .dbline 111
+ 0066 81E0              ldi R24,1
+ 0068 80930400          sts _KEY_PC3,R24
+ 006C                   .dbline 111
+ 006C           L24:
+ 006C                   .dbline 110
+ 006C           ; {KEY_PC2=1;}
+ 006C           ; while((PIND&0X08)==0)//按下PD3,PC3闭合
+ 006C 839B              sbis 0x10,3
+ 006E FBCF              rjmp L23
+ 0070 03C0              rjmp L27
+ 0072           L26:
+ 0072                   .dbline 113
+ 0072                   .dbline 113
+ 0072 81E0              ldi R24,1
+ 0074 80930300          sts _KEY_PB0,R24
+ 0078                   .dbline 113
+ 0078           L27:
+ 0078                   .dbline 112
+ 0078           ; {KEY_PC3=1;}
+ 0078           ; while((PIND&0X10)==0)//按下PD4,PB0闭合
+ 0078 849B              sbis 0x10,4
+ 007A FBCF              rjmp L26
+ 007C 03C0              rjmp L30
+ 007E           L29:
+ 007E                   .dbline 115
+ 007E                   .dbline 115
+ 007E 81E0              ldi R24,1
+ 0080 80930200          sts _KEY_PB1,R24
+ 0084                   .dbline 115
+ 0084           L30:
+ 0084                   .dbline 114
+ 0084           ; {KEY_PB0=1;}
+ 0084           ; while((PIND&0X20)==0)//按下PD5,PB1闭合
+ 0084 859B              sbis 0x10,5
+ 0086 FBCF              rjmp L29
+ 0088 03C0              rjmp L33
+ 008A           L32:
+ 008A                   .dbline 117
+ 008A                   .dbline 117
+ 008A 81E0              ldi R24,1
+ 008C 80930100          sts _KEY_PB2,R24
+ 0090                   .dbline 117
+ 0090           L33:
+ 0090                   .dbline 116
+ 0090           ; {KEY_PB1=1;}
+ 0090           ; while((PIND&0X40)==0)//按下PD6,PB2闭合
+ 0090 869B              sbis 0x10,6
+ 0092 FBCF              rjmp L32
+ 0094 03C0              rjmp L36
+ 0096           L35:
+ 0096                   .dbline 119
+ 0096                   .dbline 119
+ 0096 81E0              ldi R24,1
+ 0098 80930000          sts _KEY_PB3,R24
+ 009C                   .dbline 119
+ 009C           L36:
+ 009C                   .dbline 118
+ 009C           ; {KEY_PB2=1;}
+ 009C           ; while((PIND&0X80)==0)//按下PD7,PB3闭合
+ 009C 879B              sbis 0x10,7
+ 009E FBCF              rjmp L35
+ 00A0                   .dbline -2
+ 00A0           L13:
+ 00A0                   .dbline 0 ; func end
+ 00A0 0895              ret
+ 00A2                   .dbend
+ 00A2                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 00A2           _Init_IO::
+ 00A2                   .dbline -1
+ 00A2                   .dbline 125
+ 00A2           ; {KEY_PB3=1;}
+ 00A2           ; }
+ 00A2           ; /**********************************************************************
+ 00A2           ;                                  初始化                                               
+ 00A2           ; **********************************************************************/
+ 00A2           ; void Init_IO(void)//初始化I/O
+ 00A2           ; {
+ 00A2                   .dbline 127
+ 00A2           ; //设置B口为输出
+ 00A2           ; DDRB=0x3F;
+ 00A2 8FE3              ldi R24,63
+ 00A4 87BB              out 0x17,R24
+ 00A6                   .dbline 128
+ 00A6           ; PORTB=0x3F;
+ 00A6 88BB              out 0x18,R24
+ 00A8                   .dbline 130
+ 00A8           ; //设置C口为输出
+ 00A8           ; DDRC=0xFF;
+ 00A8 8FEF              ldi R24,255
+ 00AA 84BB              out 0x14,R24
+ 00AC                   .dbline 131
+ 00AC           ; PORTC=0xFF;
+ 00AC 85BB              out 0x15,R24
+ 00AE                   .dbline 133
+ 00AE           ; //设置D口为输入
+ 00AE           ; DDRD=0X00;
+ 00AE 2224              clr R2
+ 00B0 21BA              out 0x11,R2
+ 00B2                   .dbline 134
+ 00B2           ; PORTD=0x00;
+ 00B2 22BA              out 0x12,R2
+ 00B4                   .dbline -2
+ 00B4           L38:
+ 00B4                   .dbline 0 ; func end
+ 00B4 0895              ret
+ 00B6                   .dbend
+ 00B6                   .dbfunc e main _main fV
+                        .even
+ 00B6           _main::
+ 00B6                   .dbline -1
+ 00B6                   .dbline 141
+ 00B6           ; }
+ 00B6           ; 
+ 00B6           ; /**********************************************************************
+ 00B6           ;                                 主函数                                        
+ 00B6           ; **********************************************************************/
+ 00B6           ; void main(void)
+ 00B6           ; {
+ 00B6                   .dbline 142
+ 00B6           ; Init_IO();  //初始化I/O
+ 00B6 F5DF              rcall _Init_IO
+ 00B8 71C0              rjmp L41
+ 00BA           L40:
+ 00BA                   .dbline 144
+ 00BA           ; while(1)
+ 00BA           ; {
+ 00BA                   .dbline 145
+ 00BA           ; get_key();
+ 00BA C2DF              rcall _get_key
+ 00BC                   .dbline 146
+ 00BC           ; if(KEY_PC0==1){PC0_OTN;DelayMS(3);KEY_PC0=0;}
+ 00BC 80910700          lds R24,_KEY_PC0
+ 00C0 8130              cpi R24,1
+ 00C2 51F4              brne L43
+ 00C4                   .dbline 146
+ 00C4                   .dbline 146
+ 00C4 81E0              ldi R24,1
+ 00C6 25B2              in R2,0x15
+ 00C8 2826              eor R2,R24
+ 00CA 25BA              out 0x15,R2
+ 00CC                   .dbline 146
+ 00CC 03E0              ldi R16,3
+ 00CE 10E0              ldi R17,0
+ 00D0 97DF              rcall _DelayMS
+ 00D2                   .dbline 146
+ 00D2 2224              clr R2
+ 00D4 20920700          sts _KEY_PC0,R2
+ 00D8                   .dbline 146
+ 00D8           L43:
+ 00D8                   .dbline 147
+ 00D8           ; if(KEY_PC1==1){PC1_OTN;DelayMS(3);KEY_PC1=0;}
+ 00D8 80910600          lds R24,_KEY_PC1
+ 00DC 8130              cpi R24,1
+ 00DE 51F4              brne L45
+ 00E0                   .dbline 147
+ 00E0                   .dbline 147
+ 00E0 82E0              ldi R24,2
+ 00E2 25B2              in R2,0x15
+ 00E4 2826              eor R2,R24
+ 00E6 25BA              out 0x15,R2
+ 00E8                   .dbline 147
+ 00E8 03E0              ldi R16,3
+ 00EA 10E0              ldi R17,0
+ 00EC 89DF              rcall _DelayMS
+ 00EE                   .dbline 147
+ 00EE 2224              clr R2
+ 00F0 20920600          sts _KEY_PC1,R2
+ 00F4                   .dbline 147
+ 00F4           L45:
+ 00F4                   .dbline 148
+ 00F4           ; if(KEY_PC2==1){PC2_OTN;DelayMS(3);KEY_PC2=0;}
+ 00F4 80910500          lds R24,_KEY_PC2
+ 00F8 8130              cpi R24,1
+ 00FA 51F4              brne L47
+ 00FC                   .dbline 148
+ 00FC                   .dbline 148
+ 00FC 84E0              ldi R24,4
+ 00FE 25B2              in R2,0x15
+ 0100 2826              eor R2,R24
+ 0102 25BA              out 0x15,R2
+ 0104                   .dbline 148
+ 0104 03E0              ldi R16,3
+ 0106 10E0              ldi R17,0
+ 0108 7BDF              rcall _DelayMS
+ 010A                   .dbline 148
+ 010A 2224              clr R2
+ 010C 20920500          sts _KEY_PC2,R2
+ 0110                   .dbline 148
+ 0110           L47:
+ 0110                   .dbline 149
+ 0110           ; if(KEY_PC3==1){PC3_OTN;DelayMS(3);KEY_PC3=0;}
+ 0110 80910400          lds R24,_KEY_PC3
+ 0114 8130              cpi R24,1
+ 0116 51F4              brne L49
+ 0118                   .dbline 149
+ 0118                   .dbline 149
+ 0118 88E0              ldi R24,8
+ 011A 25B2              in R2,0x15
+ 011C 2826              eor R2,R24
+ 011E 25BA              out 0x15,R2
+ 0120                   .dbline 149
+ 0120 03E0              ldi R16,3
+ 0122 10E0              ldi R17,0
+ 0124 6DDF              rcall _DelayMS
+ 0126                   .dbline 149
+ 0126 2224              clr R2
+ 0128 20920400          sts _KEY_PC3,R2
+ 012C                   .dbline 149
+ 012C           L49:
+ 012C                   .dbline 150
+ 012C           ; if(KEY_PB0==1){PB0_OTN;DelayMS(3);KEY_PB0=0;}
+ 012C 80910300          lds R24,_KEY_PB0
+ 0130 8130              cpi R24,1
+ 0132 51F4              brne L51
+ 0134                   .dbline 150
+ 0134                   .dbline 150
+ 0134 81E0              ldi R24,1
+ 0136 28B2              in R2,0x18
+ 0138 2826              eor R2,R24
+ 013A 28BA              out 0x18,R2
+ 013C                   .dbline 150
+ 013C 03E0              ldi R16,3
+ 013E 10E0              ldi R17,0
+ 0140 5FDF              rcall _DelayMS
+ 0142                   .dbline 150
+ 0142 2224              clr R2
+ 0144 20920300          sts _KEY_PB0,R2
+ 0148                   .dbline 150
+ 0148           L51:
+ 0148                   .dbline 151
+ 0148           ; if(KEY_PB1==1){PB1_OTN;DelayMS(3);KEY_PB1=0;}
+ 0148 80910200          lds R24,_KEY_PB1
+ 014C 8130              cpi R24,1
+ 014E 51F4              brne L53
+ 0150                   .dbline 151
+ 0150                   .dbline 151
+ 0150 82E0              ldi R24,2
+ 0152 28B2              in R2,0x18
+ 0154 2826              eor R2,R24
+ 0156 28BA              out 0x18,R2
+ 0158                   .dbline 151
+ 0158 03E0              ldi R16,3
+ 015A 10E0              ldi R17,0
+ 015C 51DF              rcall _DelayMS
+ 015E                   .dbline 151
+ 015E 2224              clr R2
+ 0160 20920200          sts _KEY_PB1,R2
+ 0164                   .dbline 151
+ 0164           L53:
+ 0164                   .dbline 152
+ 0164           ; if(KEY_PB2==1){PB2_OTN;DelayMS(3);KEY_PB2=0;}
+ 0164 80910100          lds R24,_KEY_PB2
+ 0168 8130              cpi R24,1
+ 016A 51F4              brne L55
+ 016C                   .dbline 152
+ 016C                   .dbline 152
+ 016C 84E0              ldi R24,4
+ 016E 28B2              in R2,0x18
+ 0170 2826              eor R2,R24
+ 0172 28BA              out 0x18,R2
+ 0174                   .dbline 152
+ 0174 03E0              ldi R16,3
+ 0176 10E0              ldi R17,0
+ 0178 43DF              rcall _DelayMS
+ 017A                   .dbline 152
+ 017A 2224              clr R2
+ 017C 20920100          sts _KEY_PB2,R2
+ 0180                   .dbline 152
+ 0180           L55:
+ 0180                   .dbline 153
+ 0180           ; if(KEY_PB3==1){PB3_OTN;DelayMS(3);KEY_PB3=0;}
+ 0180 80910000          lds R24,_KEY_PB3
+ 0184 8130              cpi R24,1
+ 0186 51F4              brne L57
+ 0188                   .dbline 153
+ 0188                   .dbline 153
+ 0188 88E0              ldi R24,8
+ 018A 28B2              in R2,0x18
+ 018C 2826              eor R2,R24
+ 018E 28BA              out 0x18,R2
+ 0190                   .dbline 153
+ 0190 03E0              ldi R16,3
+ 0192 10E0              ldi R17,0
+ 0194 35DF              rcall _DelayMS
+ 0196                   .dbline 153
+ 0196 2224              clr R2
+ 0198 20920000          sts _KEY_PB3,R2
+ 019C                   .dbline 153
+ 019C           L57:
+ 019C                   .dbline 154
+ 019C           L41:
+ 019C                   .dbline 143
+ 019C 8ECF              rjmp L40
+ 019E           X2:
+ 019E                   .dbline -2
+ 019E           L39:
+ 019E                   .dbline 0 ; func end
+ 019E 0895              ret
+ 01A0                   .dbend
+                        .area bss(ram, con, rel)
+ 0000                   .dbfile F:\NEW光~1\八路输入输出继电器控制板\该板配套使用程序\003输出独立控制程序\icc\chengxu.c
+ 0000           _KEY_PB3::
+ 0000                   .blkb 1
+ 0001                   .dbsym e KEY_PB3 _KEY_PB3 c
+ 0001           _KEY_PB2::
+ 0001                   .blkb 1
+ 0002                   .dbsym e KEY_PB2 _KEY_PB2 c
+ 0002           _KEY_PB1::
+ 0002                   .blkb 1
+ 0003                   .dbsym e KEY_PB1 _KEY_PB1 c
+ 0003           _KEY_PB0::
+ 0003                   .blkb 1
+ 0004                   .dbsym e KEY_PB0 _KEY_PB0 c
+ 0004           _KEY_PC3::
+ 0004                   .blkb 1
+ 0005                   .dbsym e KEY_PC3 _KEY_PC3 c
+ 0005           _KEY_PC2::
+ 0005                   .blkb 1
+ 0006                   .dbsym e KEY_PC2 _KEY_PC2 c
+ 0006           _KEY_PC1::
+ 0006                   .blkb 1
+ 0007                   .dbsym e KEY_PC1 _KEY_PC1 c
+ 0007           _KEY_PC0::
+ 0007                   .blkb 1
+ 0008                   .dbsym e KEY_PC0 _KEY_PC0 c

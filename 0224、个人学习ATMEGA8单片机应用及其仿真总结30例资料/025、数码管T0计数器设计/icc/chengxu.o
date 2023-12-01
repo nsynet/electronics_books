@@ -1,0 +1,177 @@
+XL
+H 4 areas 10 global symbols
+M chengxu.c
+S push_gset2 Ref0000
+S mod16u Ref0000
+S div16u Ref0000
+S pop_gset2 Ref0000
+A text size 13E flags 0
+dbfile D:\Proteus仿真实例\ATMEGA8\数码管计数器设计\icc\chengxu.c
+dbfunc e delay 0 fV
+dbsym r i 14 c
+dbsym r j 16 c
+dbsym r t 10 c
+dbline FFFFFFFF 2
+dbline F 2
+dbline 11 2
+dbline 12 6
+dbline 13 6
+dbline 13 A
+dbline 13 A
+dbline 13 C
+dbline 14 12
+dbline 14 12
+dbline 15 12
+dbline 16 12
+dbline 11 12
+dbline 11 14
+dbline FFFFFFFE 18
+dbline 0 1A
+dbfunc e xianshi 1C fV
+dbline FFFFFFFF 1C
+dbline 1D 1C
+dbline 1F 1C
+dbline 20 32
+dbline 21 4E
+dbline 22 6A
+dbline 24 80
+dbline 25 86
+dbline 26 9A
+dbline 27 9E
+dbline 28 A4
+dbline 29 B8
+dbline 2A BC
+dbline 2B C2
+dbline 2C D6
+dbline 2D DA
+dbline 2E E0
+dbline 2F F4
+dbline FFFFFFFE F8
+dbline 0 F8
+dbfunc e Init_IO FA fV
+dbline FFFFFFFF FA
+dbline 35 FA
+dbline 37 FA
+dbline 38 FE
+dbline 3A 100
+dbline 3B 102
+dbline 3D 104
+dbline 3E 108
+dbline FFFFFFFE 10A
+dbline 0 10A
+dbfunc e main 10C fV
+dbsym r Load 14 c
+dbline FFFFFFFF 10C
+dbline 42 10C
+dbline 44 10C
+dbline 45 10E
+dbline 46 112
+dbline 47 116
+dbline 48 11A
+dbline 49 11E
+dbline 4A 122
+dbline 50 12A
+dbline 51 12A
+dbline 52 12C
+dbline 53 138
+dbline 56 13A
+dbline 4F 13A
+dbline FFFFFFFE 13C
+dbline 0 13C
+S _main Def010C
+S _xianshi Def001C
+S _delay Def0000
+S _Init_IO Def00FA
+A data size F flags 20
+dbfile D:\Proteus仿真实例\ATMEGA8\数码管计数器设计\icc\chengxu.c
+dbsym e duan 0 A[10:10]c
+dbsym e wei A A[4:4]c
+dbsym e CNT E c
+S _duan Def0000
+S _CNT Def000E
+S _wei Def000A
+A idata size F flags 0
+A bss size A flags 20
+dbfile D:\Proteus仿真实例\ATMEGA8\数码管计数器设计\icc\chengxu.c
+dbsym e date 0 i
+dbsym e v 2 i
+dbsym e c 4 i
+dbsym e x 6 i
+dbsym e z 8 i
+S _c Def0004
+S _v Def0002
+S _x Def0006
+S _z Def0008
+S _date Def0000
+T 00 00 C0 F9
+R 00 00 02 00
+T 02 00 A4 B0
+R 00 00 02 00
+T 04 00 99 92
+R 00 00 02 00
+T 06 00 82 F8
+R 00 00 02 00
+T 08 00 80 90
+R 00 00 02 00
+T 0A 00 08 04
+R 00 00 02 00
+T 0C 00 02 01
+R 00 00 02 00
+T 0E 00 00
+R 00 00 02 00
+T 00 00 00 D0 44 27 07 C0 6D E0 01 C0 6A 95 22 24
+R 00 00 00 00 82 02 00 00
+T 0E 00 26 16 E0 F3 43 95 40 17 B8 F3 00 D0 08 95
+R 00 00 00 00 82 0C 03 00
+T 1C 00 28 EE 33 E0 00 91 00 00 10 91 01 00 00 D0
+R 00 00 00 00 00 08 03 00 00 0C 03 00 82 0E 02 00
+T 2A 00 10 93 09 00 00 93 08 00 28 EE 33 E0 00 91
+R 00 00 00 00 00 04 03 00 00 08 03 00
+T 38 00 00 00 10 91 01 00 00 D0 24 E6 30 E0
+R 00 00 00 00 00 02 03 00 00 06 03 00 82 08 01 00
+T 44 00 00 D0 10 93 07 00 00 93 06 00 24 E6 30 E0
+R 00 00 00 00 82 02 02 00 00 06 03 00 00 0A 03 00
+T 52 00 00 91 00 00 10 91 01 00 00 D0 2A E0 30 E0
+R 00 00 00 00 00 04 03 00 00 08 03 00 82 0A 01 00
+T 60 00 00 D0 10 93 05 00 00 93 04 00 2A E0 30 E0
+R 00 00 00 00 82 02 02 00 00 06 03 00 00 0A 03 00
+T 6E 00 00 91 00 00 10 91 01 00 00 D0 10 93
+R 00 00 00 00 00 04 03 00 00 08 03 00 82 0A 01 00
+T 7A 00 03 00 00 93 02 00 20 90 0A 00 25 BA
+R 00 00 00 00 00 02 03 00 00 06 03 00 00 0A 01 00
+T 86 00 80 E0 90 E0 E0 91
+R 00 00 00 00 20 02 01 00 00 00 40 04 01 00 00 00
+T 8C 00 08 00 F0 91 09 00 E8 0F F9 1F 20 80 28 BA
+R 00 00 00 00 00 02 03 00 00 06 03 00
+T 9A 00 02 E3 B1 DF 20 90 0B 00 25 BA 80 E0
+R 00 00 00 00 00 08 01 00 20 0C 01 00 00 00
+T A6 00 90 E0 E0 91 06 00 F0 91
+R 00 00 00 00 40 02 01 00 00 00 00 06 03 00
+T AE 00 07 00 E8 0F F9 1F 20 80 28 BA 02 E3 A2 DF
+R 00 00 00 00 00 02 03 00
+T BC 00 20 90 0C 00 25 BA 80 E0
+R 00 00 00 00 00 04 01 00 20 08 01 00 00 00
+T C4 00 90 E0 E0 91 04 00 F0 91
+R 00 00 00 00 40 02 01 00 00 00 00 06 03 00
+T CC 00 05 00 E8 0F F9 1F 20 80 28 BA 02 E3 93 DF
+R 00 00 00 00 00 02 03 00
+T DA 00 20 90 0D 00 25 BA 80 E0
+R 00 00 00 00 00 04 01 00 20 08 01 00 00 00
+T E2 00 90 E0 E0 91 02 00 F0 91
+R 00 00 00 00 40 02 01 00 00 00 00 06 03 00
+T EA 00 03 00 E8 0F F9 1F 20 80 28 BA 02 E3 84 DF
+R 00 00 00 00 00 02 03 00
+T F8 00 08 95
+R 00 00 00 00
+T FA 00 8F EF 87 BB 88 BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T 08 01 22 BA 08 95
+R 00 00 00 00
+T 0C 01 F6 DF 8F EF 85 BB 22 24 28 BA 0E E1 73 DF
+R 00 00 00 00
+T 1A 01 8F EF 88 BB 86 E0 83 BF 20 90 0E 00 22 BE
+R 00 00 00 00 00 0C 01 00
+T 28 01 08 C0 42 B7 24 2E 33 24 30 92 01 00 20 92
+R 00 00 00 00 00 0C 03 00
+T 36 01 00 00 71 DF F7 CF 08 95
+R 00 00 00 00 00 02 03 00

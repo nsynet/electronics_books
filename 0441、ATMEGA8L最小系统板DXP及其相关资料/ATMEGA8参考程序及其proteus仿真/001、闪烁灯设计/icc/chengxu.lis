@@ -1,0 +1,111 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\整理\个人总结的M8程序\001、闪烁灯设计\icc\chengxu.c
+ 0000                   .dbfunc e DelayMS _DelayMS fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMS::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 11
+ 0004           ; #include <iom8v.h>
+ 0004           ; /**********************************************************************
+ 0004           ;                                 函数数据类型说明                                                              
+ 0004           ; **********************************************************************/
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; /**********************************************************************
+ 0004           ;                                 MS级延时函数程序，参数i 延时时间                                                                      
+ 0004           ; **********************************************************************/
+ 0004           ; void DelayMS(uint i)
+ 0004           ; {
+ 0004                   .dbline 13
+ 0004           ; uint j;
+ 0004           ; for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 14
+ 0006           ; {
+ 0006                   .dbline 15
+ 0006 40E4              ldi R20,8000
+ 0008 5FE1              ldi R21,31
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 15
+ 000C           L7:
+ 000C                   .dbline 15
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 15
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 16
+ 0016           L3:
+ 0016                   .dbline 13
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 13
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e main _main fV
+                        .even
+ 0026           _main::
+ 0026                   .dbline -1
+ 0026                   .dbline 22
+ 0026           ; for(j=8000;j!=0;j--);
+ 0026           ; }
+ 0026           ; }
+ 0026           ; /**********************************************************************
+ 0026           ;                                  主函数                                                       
+ 0026           ; **********************************************************************/
+ 0026           ; void main(void)
+ 0026           ; {
+ 0026                   .dbline 23
+ 0026           ;  DDRB=0XFF;//端口设置，PB口设置为推挽1输出
+ 0026 8FEF              ldi R24,255
+ 0028 87BB              out 0x17,R24
+ 002A                   .dbline 24
+ 002A           ;  PORTB=0XFF;
+ 002A 88BB              out 0x18,R24
+ 002C 0AC0              xjmp L12
+ 002E           L11:
+ 002E                   .dbline 26
+ 002E                   .dbline 27
+ 002E 2224              clr R2
+ 0030 28BA              out 0x18,R2
+ 0032                   .dbline 28
+ 0032 04E6              ldi R16,100
+ 0034 10E0              ldi R17,0
+ 0036 E4DF              xcall _DelayMS
+ 0038                   .dbline 29
+ 0038 8FEF              ldi R24,255
+ 003A 88BB              out 0x18,R24
+ 003C                   .dbline 30
+ 003C 04E6              ldi R16,100
+ 003E 10E0              ldi R17,0
+ 0040 DFDF              xcall _DelayMS
+ 0042                   .dbline 31
+ 0042           L12:
+ 0042                   .dbline 25
+ 0042 F5CF              xjmp L11
+ 0044           X2:
+ 0044                   .dbline -2
+ 0044           L10:
+ 0044                   .dbline 0 ; func end
+ 0044 0895              ret
+ 0046                   .dbend

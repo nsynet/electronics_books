@@ -1,0 +1,68 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        07/12/2009  19:35:15  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE lsd.obj TO liushui
+
+
+INPUT MODULES INCLUDED:
+  lsd.obj (LSD)
+
+
+LINK MAP OF MODULE:  liushui (LSD)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     005AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  liushui (LSD)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LSD
+  C:0035H         SYMBOL        AAA
+  C:0040H         SYMBOL        BBB
+  C:0042H         SYMBOL        CCC
+  C:004DH         SYMBOL        DELAY
+  C:004FH         SYMBOL        DL1
+  C:0051H         SYMBOL        DL2
+  D:0080H         SYMBOL        P0
+  D:0090H         SYMBOL        P1
+  C:0030H         SYMBOL        START
+  C:0000H         LINE#         9
+  C:0030H         LINE#         12
+  C:0033H         LINE#         13
+  C:0035H         LINE#         14
+  C:0037H         LINE#         15
+  C:003AH         LINE#         16
+  C:003DH         LINE#         17
+  C:003EH         LINE#         18
+  C:0040H         LINE#         19
+  C:0042H         LINE#         20
+  C:0044H         LINE#         21
+  C:0047H         LINE#         22
+  C:004AH         LINE#         23
+  C:004BH         LINE#         24
+  C:004DH         LINE#         26
+  C:004FH         LINE#         27
+  C:0051H         LINE#         28
+  C:0053H         LINE#         29
+  C:0055H         LINE#         30
+  C:0057H         LINE#         31
+  C:0059H         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.00                                                      07/12/2009  19:35:15  PAGE 2
+
+
+  -------         ENDMOD        LSD
+
+Program Size: data=8.0 xdata=0 code=90
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

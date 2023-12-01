@@ -1,0 +1,19 @@
+[State Storage]
+Reaction Register=0
+Control Register=0
+[Breakpoints]
+Count=0
+[FET]
+Emulation mode=0
+Free running=0
+[Memory Dump]
+Start address=
+Lenghth=
+Address info=0
+Format=0
+Dump registers=0
+PC=0
+SP=0
+SR=0
+all registers=0
+File name=

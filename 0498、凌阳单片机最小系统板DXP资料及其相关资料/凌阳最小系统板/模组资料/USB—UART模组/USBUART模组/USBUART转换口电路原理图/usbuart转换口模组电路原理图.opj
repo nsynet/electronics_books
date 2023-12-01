@@ -1,0 +1,26 @@
+(ExpressProject ""
+  (ProjectVersion "19981106")
+  (ProjectType "PCB")
+  (Folder "Design Resources"
+    (Folder "Library")
+    (File ".\usbuart转换口模组电路原理图.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (NoModify))
+  (Folder "Outputs")
+  (Folder "Referenced Projects")
+  (PartMRUSelector)
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "F:\大学计划文档\大学计划文档修订工作\检查工作\USB-UART模组\USBUART转换口电路原理图\usbuart转换口模组电路原理图.dsn")
+      (Select "Design Resources"
+         "F:\大学计划文档\大学计划文档修订工作\检查工作\USB-UART模组\USBUART转换口电路原理图\usbuart转换口模组电路原理图.dsn"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -4 -23 0 200 0 411"))
+      (Tab 0))))

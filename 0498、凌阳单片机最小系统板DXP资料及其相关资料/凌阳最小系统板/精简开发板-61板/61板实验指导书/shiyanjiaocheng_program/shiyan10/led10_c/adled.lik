@@ -1,0 +1,10 @@
+Version: 3.0
+Options: m37
+Obj: "C:\Program Files\Sunplus\unSPIDE184\unSPIDE\startupD.obj"
+Obj: "D:\shiyanjiaocheng_program\shiyan10\led10_c\Debug\Resource.obj"
+Obj: "D:\shiyanjiaocheng_program\shiyan10\led10_c\Debug\mian.obj"
+Output: "D:\shiyanjiaocheng_program\shiyan10\led10_c\Debug\adled.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: CODE in "mian.obj" at 8026 
+;Align: CODE in "mian.obj" with 0 

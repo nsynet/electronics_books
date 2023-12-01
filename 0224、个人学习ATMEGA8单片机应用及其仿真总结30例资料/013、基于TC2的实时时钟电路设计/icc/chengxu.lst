@@ -1,0 +1,305 @@
+__start:
+__text_start:
+    0032 E5CF      LDI	R28,0x5F
+    0033 E0D4      LDI	R29,4
+    0034 BFCD      OUT	0x3D,R28
+    0035 BFDE      OUT	0x3E,R29
+    0036 51C0      SUBI	R28,0x10
+    0037 40D0      SBCI	R29,0
+    0038 EA0A      LDI	R16,0xAA
+    0039 8308      STD	Y+0,R16
+    003A 2400      CLR	R0
+    003B E6EF      LDI	R30,0x6F
+    003C E0F0      LDI	R31,0
+    003D E010      LDI	R17,0
+    003E 36EF      CPI	R30,0x6F
+    003F 07F1      CPC	R31,R17
+    0040 F011      BEQ	0x0043
+    0041 9201      ST	R0,Z+
+    0042 CFFB      RJMP	0x003E
+    0043 8300      STD	Z+0,R16
+    0044 E5E4      LDI	R30,0x54
+    0045 E0F0      LDI	R31,0
+    0046 E6A0      LDI	R26,0x60
+    0047 E0B0      LDI	R27,0
+    0048 E010      LDI	R17,0
+    0049 36E3      CPI	R30,0x63
+    004A 07F1      CPC	R31,R17
+    004B F021      BEQ	0x0050
+    004C 95C8      LPM
+    004D 9631      ADIW	R30,1
+    004E 920D      ST	R0,X+
+    004F CFF9      RJMP	0x0049
+    0050 940E00BC  CALL	_main
+_exit:
+    0052 CFFF      RJMP	_exit
+_DelayMs:
+  j                    --> R20
+  i                    --> R16
+    0053 940E00E9  CALL	push_gset1
+FILE: E:\Proteus\AVR单片机应用系统开发经典实例\013、基于TC2的实时时钟电路设计---------------未成功\icc\chengxu.c
+(0001) #include <iom16v.h>
+(0002) /********************************************************************
+(0003)                 数据类型定义
+(0004) *********************************************************************/
+(0005) #define uchar unsigned char
+(0006) #define uint  unsigned int
+(0007) /********************************************************************
+(0008)                 数码管段码定义0123456789
+(0009) *********************************************************************/
+(0010) //数码管字型表，对应0，1，2，3，4，5，6，7，8，9//
+(0011) uchar Table[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};
+(0012) uchar Data[4]={0,0,0,0};       //定义初始时间：00：00            
+(0013) uchar CNT=0;                     //定义中断计数次数    
+(0014) /**********************************************************************
+(0015) 				  MS级延时函数程序，参数i 延时时间					   	
+(0016) **********************************************************************/            
+(0017) void DelayMs(uint i)           //Ms级延时，参数i为延时时间
+(0018) {uint j;
+(0019)  for(;i!=0;i--)
+    0055 C00A      RJMP	0x0060
+(0020)   {for(j=8000;j!=0;j--) {;}}
+    0056 E440      LDI	R20,0x40
+    0057 E15F      LDI	R21,0x1F
+    0058 C002      RJMP	0x005B
+    0059 5041      SUBI	R20,1
+    005A 4050      SBCI	R21,0
+    005B 3040      CPI	R20,0
+    005C 0745      CPC	R20,R21
+    005D F7D9      BNE	0x0059
+    005E 5001      SUBI	R16,1
+    005F 4010      SBCI	R17,0
+    0060 3000      CPI	R16,0
+    0061 0701      CPC	R16,R17
+    0062 F799      BNE	0x0056
+    0063 940E00EC  CALL	pop_gset1
+    0065 9508      RET
+_Display:
+  sel                  --> R20
+  i                    --> R22
+  p                    --> R10
+    0066 940E0104  CALL	push_gset3
+    0068 0158      MOVW	R10,R16
+(0021) }
+(0022) /**********************************************************************
+(0023) 				            显示函数		
+(0024) 注意：使用开发板时sel=0xef;
+(0025) **********************************************************************/
+(0026) void Display(uchar *p)         //动态显示函数，参数p为待显示的数组名
+(0027) {uchar i,sel=0x01;           
+    0069 E041      LDI	R20,1
+(0028)  for(i=0;i<4;i++)
+    006A 2766      CLR	R22
+    006B C013      RJMP	0x007F
+(0029)   {PORTC=sel;                  //选通最右边的数码管
+    006C BB45      OUT	0x15,R20
+(0030)    PORTA=~Table[p[i]];          //送字型码
+    006D 2FE6      MOV	R30,R22
+    006E 27FF      CLR	R31
+    006F 0DEA      ADD	R30,R10
+    0070 1DFB      ADC	R31,R11
+    0071 81E0      LDD	R30,Z+0
+    0072 27FF      CLR	R31
+    0073 E680      LDI	R24,0x60
+    0074 E090      LDI	R25,0
+    0075 0FE8      ADD	R30,R24
+    0076 1FF9      ADC	R31,R25
+    0077 8020      LDD	R2,Z+0
+    0078 9420      COM	R2
+    0079 BA2B      OUT	0x1B,R2
+(0031)    DelayMs(1);                 //显示延时    
+    007A E001      LDI	R16,1
+    007B E010      LDI	R17,0
+    007C DFD6      RCALL	_DelayMs
+(0032)    sel=sel<<1;                 //移位以显示前一位
+    007D 0F44      LSL	R20
+    007E 9563      INC	R22
+    007F 3064      CPI	R22,4
+    0080 F358      BCS	0x006C
+    0081 940E00E6  CALL	pop_gset3
+    0083 9508      RET
+(0033)   }
+(0034) }
+(0035) /**********************************************************************
+(0036) 				         初始化I/O口	
+(0037) **********************************************************************/
+(0038) void Init_IO(void)             //初始化I/O口
+(0039) {DDRA=0xff;                    //设置A口为推挽1输出
+_Init_IO:
+    0084 EF8F      LDI	R24,0xFF
+    0085 BB8A      OUT	0x1A,R24
+(0040)  PORTA=0xff;
+    0086 BB8B      OUT	0x1B,R24
+(0041)  DDRC=0xff;                    //设置C口为推挽1输出             
+    0087 BB84      OUT	0x14,R24
+(0042)  PORTC=0xff;
+    0088 BB85      OUT	0x15,R24
+    0089 9508      RET
+(0043) }
+(0044) /**********************************************************************
+(0045) 				         时间处理，最大计时59分59秒	
+(0046) **********************************************************************/
+(0047) void Add_Second(uchar *p)
+(0048) {p[3]++;
+_Add_Second:
+  p                    --> R16
+    008A 01C8      MOVW	R24,R16
+    008B 9603      ADIW	R24,3
+    008C 01FC      MOVW	R30,R24
+    008D 8180      LDD	R24,Z+0
+    008E 5F8F      SUBI	R24,0xFF
+    008F 8380      STD	Z+0,R24
+(0049)  if(p[3]==10) {p[3]=0;p[2]++;}
+    0090 01F8      MOVW	R30,R16
+    0091 8183      LDD	R24,Z+3
+    0092 308A      CPI	R24,0xA
+    0093 F449      BNE	0x009D
+    0094 2422      CLR	R2
+    0095 01F8      MOVW	R30,R16
+    0096 8223      STD	Z+3,R2
+    0097 01C8      MOVW	R24,R16
+    0098 9602      ADIW	R24,2
+    0099 01FC      MOVW	R30,R24
+    009A 8180      LDD	R24,Z+0
+    009B 5F8F      SUBI	R24,0xFF
+    009C 8380      STD	Z+0,R24
+(0050)  if(p[2]==6)  {p[2]=0;p[1]++;}
+    009D 01F8      MOVW	R30,R16
+    009E 8182      LDD	R24,Z+2
+    009F 3086      CPI	R24,6
+    00A0 F449      BNE	0x00AA
+    00A1 2422      CLR	R2
+    00A2 01F8      MOVW	R30,R16
+    00A3 8222      STD	Z+2,R2
+    00A4 01C8      MOVW	R24,R16
+    00A5 9601      ADIW	R24,1
+    00A6 01FC      MOVW	R30,R24
+    00A7 8180      LDD	R24,Z+0
+    00A8 5F8F      SUBI	R24,0xFF
+    00A9 8380      STD	Z+0,R24
+(0051)  if(p[1]==10) {p[1]=0;p[0]++;}
+    00AA 01F8      MOVW	R30,R16
+    00AB 8181      LDD	R24,Z+1
+    00AC 308A      CPI	R24,0xA
+    00AD F439      BNE	0x00B5
+    00AE 2422      CLR	R2
+    00AF 01F8      MOVW	R30,R16
+    00B0 8221      STD	Z+1,R2
+    00B1 01F8      MOVW	R30,R16
+    00B2 8180      LDD	R24,Z+0
+    00B3 5F8F      SUBI	R24,0xFF
+    00B4 8380      STD	Z+0,R24
+(0052)  if(p[0]==6)  {p[0]=0;}
+    00B5 01F8      MOVW	R30,R16
+    00B6 8180      LDD	R24,Z+0
+    00B7 3086      CPI	R24,6
+    00B8 F411      BNE	0x00BB
+    00B9 2422      CLR	R2
+    00BA 8220      STD	Z+0,R2
+    00BB 9508      RET
+(0053) }
+(0054) /**********************************************************************
+(0055) 				          主函数		
+(0056) **********************************************************************/
+(0057) void main(void)
+(0058) {uchar i;
+(0059)  Init_IO();                    //初始化I/O口
+_main:
+  i                    --> Y+1
+    00BC DFC7      RCALL	_Init_IO
+(0060)  //TCCR2=0x00;				   //停止定时器
+(0061)  //TIMSK=0X00;				   //关闭溢出中断使能
+(0062)  ASSR=0x08;                    //异步时钟使能
+    00BD E088      LDI	R24,0x8
+    00BE BD82      OUT	0x22,R24
+(0063)  TCCR2=0x07;                   //32768的晶振1024分频作为T/C2的时钟源
+    00BF E087      LDI	R24,7
+    00C0 BD85      OUT	0x25,R24
+(0064)  TCNT2=0Xff;				   //数据寄存器初始值（加1溢出）
+    00C1 EF8F      LDI	R24,0xFF
+    00C2 BD84      OUT	0x24,R24
+(0065)  TIMSK=0x40;                   //T/C2溢出中断使能
+    00C3 E480      LDI	R24,0x40
+    00C4 BF89      OUT	0x39,R24
+(0066)  SREG=SREG|0x80;               //全局中断使能       
+    00C5 9478      BSET	7
+    00C6 C00D      RJMP	0x00D4
+(0067)  while(1)
+(0068)  {Display(Data);
+    00C7 E60A      LDI	R16,0x6A
+    00C8 E010      LDI	R17,0
+    00C9 DF9C      RCALL	_Display
+(0069)  if(CNT==32) 
+    00CA 9180006E  LDS	R24,0x6E
+    00CC 3280      CPI	R24,0x20
+    00CD F431      BNE	0x00D4
+(0070)     {CNT=0;
+    00CE 2422      CLR	R2
+    00CF 9220006E  STS	0x6E,R2
+(0071) 	 Add_Second(Data);}		   //时间处理
+    00D1 E60A      LDI	R16,0x6A
+    00D2 E010      LDI	R17,0
+    00D3 DFB6      RCALL	_Add_Second
+    00D4 CFF2      RJMP	0x00C7
+    00D5 9508      RET
+_Timer2:
+    00D6 938A      ST	R24,-Y
+    00D7 939A      ST	R25,-Y
+    00D8 B78F      IN	R24,0x3F
+    00D9 938A      ST	R24,-Y
+(0072)  }
+(0073) }
+(0074) /******************TC2中断服务函数*******************************/
+(0075) #pragma interrupt_handler Timer2:5
+(0076) void Timer2(void)
+(0077) {
+(0078) TCNT2=0XFF;//数据寄存器初始值（加1溢出）
+    00DA EF8F      LDI	R24,0xFF
+    00DB BD84      OUT	0x24,R24
+(0079) CNT=CNT+1;}//中断次数
+FILE: <library>
+    00DC 9180006E  LDS	R24,0x6E
+    00DE 5F8F      SUBI	R24,0xFF
+    00DF 9380006E  STS	0x6E,R24
+    00E1 9189      LD	R24,Y+
+    00E2 BF8F      OUT	0x3F,R24
+    00E3 9199      LD	R25,Y+
+    00E4 9189      LD	R24,Y+
+    00E5 9518      RETI
+pop_gset3:
+    00E6 E0E4      LDI	R30,4
+    00E7 940C00ED  JMP	pop
+push_gset1:
+    00E9 935A      ST	R21,-Y
+    00EA 934A      ST	R20,-Y
+    00EB 9508      RET
+pop_gset1:
+    00EC E0E1      LDI	R30,1
+pop:
+    00ED 9149      LD	R20,Y+
+    00EE 9159      LD	R21,Y+
+    00EF FDE0      SBRC	R30,0
+    00F0 9508      RET
+    00F1 9169      LD	R22,Y+
+    00F2 9179      LD	R23,Y+
+    00F3 FDE1      SBRC	R30,1
+    00F4 9508      RET
+    00F5 90A9      LD	R10,Y+
+    00F6 90B9      LD	R11,Y+
+    00F7 FDE2      SBRC	R30,2
+    00F8 9508      RET
+    00F9 90C9      LD	R12,Y+
+    00FA 90D9      LD	R13,Y+
+    00FB FDE3      SBRC	R30,3
+    00FC 9508      RET
+    00FD 90E9      LD	R14,Y+
+    00FE 90F9      LD	R15,Y+
+    00FF 9508      RET
+push_gset2:
+    0100 937A      ST	R23,-Y
+    0101 936A      ST	R22,-Y
+    0102 940C00E9  JMP	push_gset1
+push_gset3:
+    0104 92BA      ST	R11,-Y
+    0105 92AA      ST	R10,-Y
+    0106 940C0100  JMP	push_gset2

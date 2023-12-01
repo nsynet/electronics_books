@@ -1,0 +1,119 @@
+Version: 3.0
+Options: m37
+Obj: "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\uart.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\System.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Key.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\UART_DataSample.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\LedShow.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\SpeechPlay.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\KeyHandle.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\9_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\10_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\11_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\12_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\13_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\14_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\15_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\16_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\17_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\18_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\19_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\2_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\20_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\21_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\22_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\3_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\4_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\5_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\6_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\7_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\8_72k.res"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\1_72k.res"
+Lib: "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\CMacro.lib"
+Lib: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\.\sacmv25.lib"
+Output: ".\Debug\DataCollection_Host.S37"
+;Locate: TEXT in "Resource.obj" at 8009 
+;Align: TEXT in "Resource.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 90A1  linkat 1B2 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "main.obj" at 1A4 
+;Align: RAM in "main.obj" with 0 
+;Locate: S480_Section in "s480" of "sacmv25.lib"  at 0 
+;Align: S480_Section in "s480" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_10_72K in "10_72k.res" at B598 
+;Align: __sn_section_RES_10_72K in "10_72k.res" with 0 
+;Locate: __sn_section_RES_11_72K in "11_72k.res" at A941 
+;Align: __sn_section_RES_11_72K in "11_72k.res" with 0 
+;Locate: __sn_section_RES_12_72K in "12_72k.res" at B388 
+;Align: __sn_section_RES_12_72K in "12_72k.res" with 0 
+;Locate: __sn_section_RES_13_72K in "13_72k.res" at BA42 
+;Align: __sn_section_RES_13_72K in "13_72k.res" with 0 
+;Locate: __sn_section_RES_14_72K in "14_72k.res" at BCC1 
+;Align: __sn_section_RES_14_72K in "14_72k.res" with 0 
+;Locate: __sn_section_RES_15_72K in "15_72k.res" at BD81 
+;Align: __sn_section_RES_15_72K in "15_72k.res" with 0 
+;Locate: __sn_section_RES_16_72K in "16_72k.res" at B95E 
+;Align: __sn_section_RES_16_72K in "16_72k.res" with 0 
+;Locate: __sn_section_RES_17_72K in "17_72k.res" at B871 
+;Align: __sn_section_RES_17_72K in "17_72k.res" with 0 
+;Locate: __sn_section_RES_18_72K in "18_72k.res" at B784 
+;Align: __sn_section_RES_18_72K in "18_72k.res" with 0 
+;Locate: __sn_section_RES_19_72K in "19_72k.res" at B68E 
+;Align: __sn_section_RES_19_72K in "19_72k.res" with 0 
+;Locate: __sn_section_RES_1_72K in "1_72k.res" at 90DB 
+;Align: __sn_section_RES_1_72K in "1_72k.res" with 0 
+;Locate: __sn_section_RES_20_72K in "20_72k.res" at BBF8 
+;Align: __sn_section_RES_20_72K in "20_72k.res" with 0 
+;Locate: __sn_section_RES_21_72K in "21_72k.res" at B490 
+;Align: __sn_section_RES_21_72K in "21_72k.res" with 0 
+;Locate: __sn_section_RES_22_72K in "22_72k.res" at BB26 
+;Align: __sn_section_RES_22_72K in "22_72k.res" with 0 
+;Locate: __sn_section_RES_2_72K in "2_72k.res" at A36E 
+;Align: __sn_section_RES_2_72K in "2_72k.res" with 0 
+;Locate: __sn_section_RES_3_72K in "3_72k.res" at B118 
+;Align: __sn_section_RES_3_72K in "3_72k.res" with 0 
+;Locate: __sn_section_RES_4_72K in "4_72k.res" at AC02 
+;Align: __sn_section_RES_4_72K in "4_72k.res" with 0 
+;Locate: __sn_section_RES_5_72K in "5_72k.res" at A680 
+;Align: __sn_section_RES_5_72K in "5_72k.res" with 0 
+;Locate: __sn_section_RES_6_72K in "6_72k.res" at 9CE7 
+;Align: __sn_section_RES_6_72K in "6_72k.res" with 0 
+;Locate: __sn_section_RES_7_72K in "7_72k.res" at A038 
+;Align: __sn_section_RES_7_72K in "7_72k.res" with 0 
+;Locate: __sn_section_RES_8_72K in "8_72k.res" at 9891 
+;Align: __sn_section_RES_8_72K in "8_72k.res" with 0 
+;Locate: __sn_section_RES_9_72K in "9_72k.res" at AE9F 
+;Align: __sn_section_RES_9_72K in "9_72k.res" with 0 
+;Locate: CODE in "s480" of "sacmv25.lib"  at 8109 
+;Align: CODE in "s480" of "sacmv25.lib"  with 0 
+;Locate: CODE in "main.obj" at 8AD0 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "hardware.obj" at 8C17 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "UART_DataSample.obj" at 8D44 
+;Align: CODE in "UART_DataSample.obj" with 0 
+;Locate: CODE in "KeyHandle.obj" at 8DFB 
+;Align: CODE in "KeyHandle.obj" with 0 
+;Locate: CODE in "Key.obj" at 8E6D 
+;Align: CODE in "Key.obj" with 0 
+;Locate: CODE in "LedShow.obj" at 8EDE 
+;Align: CODE in "LedShow.obj" with 0 
+;Locate: CODE in "SpeechPlay.obj" at 8F4E 
+;Align: CODE in "SpeechPlay.obj" with 0 
+;Locate: CODE in "uart.obj" at 8FBC 
+;Align: CODE in "uart.obj" with 0 
+;Locate: CODE in "System.obj" at 9002 
+;Align: CODE in "System.obj" with 0 
+;Locate: CODE in "divu1" of "CMacro.lib"  at 9041 
+;Align: CODE in "divu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshu1" of "CMacro.lib"  at 907F 
+;Align: CODE in "rshu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "modu1" of "CMacro.lib"  at 9094 
+;Align: CODE in "modu1" of "CMacro.lib"  with 0 
+;Locate: DATA in "System.obj" at BE41 
+;Align: DATA in "System.obj" with 0 

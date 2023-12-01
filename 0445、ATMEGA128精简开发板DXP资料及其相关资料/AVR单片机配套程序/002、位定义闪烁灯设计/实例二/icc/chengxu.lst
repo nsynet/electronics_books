@@ -1,0 +1,137 @@
+__start:
+__text_start:
+    0046 EFCF      LDI	R28,0xFF
+    0047 E1D0      LDI	R29,0x10
+    0048 BFCD      OUT	0x3D,R28
+    0049 BFDE      OUT	0x3E,R29
+    004A 51C0      SUBI	R28,0x10
+    004B 40D0      SBCI	R29,0
+    004C EA0A      LDI	R16,0xAA
+    004D 8308      STD	Y+0,R16
+    004E 2400      CLR	R0
+    004F E0E0      LDI	R30,0
+    0050 E0F1      LDI	R31,1
+    0051 E011      LDI	R17,1
+    0052 30E0      CPI	R30,0
+    0053 07F1      CPC	R31,R17
+    0054 F011      BEQ	0x0057
+    0055 9201      ST	R0,Z+
+    0056 CFFB      RJMP	0x0052
+    0057 8300      STD	Z+0,R16
+    0058 E8EC      LDI	R30,0x8C
+    0059 E0F0      LDI	R31,0
+    005A E0A0      LDI	R26,0
+    005B E0B1      LDI	R27,1
+    005C E010      LDI	R17,0
+    005D 38EC      CPI	R30,0x8C
+    005E 07F1      CPC	R31,R17
+    005F F021      BEQ	0x0064
+    0060 95C8      LPM
+    0061 9631      ADIW	R30,1
+    0062 920D      ST	R0,X+
+    0063 CFF9      RJMP	0x005D
+    0064 940E007D  CALL	_main
+_exit:
+    0066 CFFF      RJMP	_exit
+_delay:
+  i                    --> R20
+  j                    --> R22
+  MS                   --> R16
+    0067 940E00A4  CALL	push_gset2
+FILE: F:\NEW光~1\MEGA12~1\AVR单片机配套程序\002、位定义闪烁灯设计\实例二\icc\chengxu.c
+(0001) #include <iom128.h>
+(0002) #include <macros.h>
+(0003) /**********************************************************************
+(0004) 				  函数数据类型说明							   	
+(0005) **********************************************************************/
+(0006) #define uchar unsigned char 
+(0007) #define uint unsigned int
+(0008) 
+(0009) /**********************************************************************
+(0010) 				   延时函数						   	
+(0011) **********************************************************************/
+(0012) void delay(uint MS)		  
+(0013) {
+(0014)  uint i,j;
+(0015)  for( i=0;i<MS;i++)
+    0069 2744      CLR	R20
+    006A 2755      CLR	R21
+    006B C00B      RJMP	0x0077
+(0016)  for(j=0;j<1141;j++);	//1141是在8MHz晶振下，通过软件仿真反复实验得到的数值
+    006C 2766      CLR	R22
+    006D 2777      CLR	R23
+    006E C002      RJMP	0x0071
+    006F 5F6F      SUBI	R22,0xFF
+    0070 4F7F      SBCI	R23,0xFF
+    0071 3765      CPI	R22,0x75
+    0072 E0E4      LDI	R30,4
+    0073 077E      CPC	R23,R30
+    0074 F3D0      BCS	0x006F
+    0075 5F4F      SUBI	R20,0xFF
+    0076 4F5F      SBCI	R21,0xFF
+    0077 1740      CP	R20,R16
+    0078 0751      CPC	R21,R17
+    0079 F390      BCS	0x006C
+    007A 940E008A  CALL	pop_gset2
+    007C 9508      RET
+(0017) }
+(0018) /**********************************************************************
+(0019) 				主函数						   	
+(0020) **********************************************************************/
+(0021) void main()
+(0022) {
+(0023)      DDRD=0XFF;//PD口作为输出口
+_main:
+    007D EF8F      LDI	R24,0xFF
+    007E BB81      OUT	0x11,R24
+    007F C008      RJMP	0x0088
+(0024) 	 while(1)
+(0025)      {
+(0026) 	    PORTD|=BIT(3);//00001000 第四个口输出高电平
+    0080 9A93      SBI	0x12,3
+(0027)      	delay(1000); //延时
+    0081 EE08      LDI	R16,0xE8
+    0082 E013      LDI	R17,3
+    0083 DFE3      RCALL	_delay
+(0028) 		PORTD&=~BIT(3);//00001000 第四个口输出低电平
+    0084 9893      CBI	0x12,3
+(0029) 		delay(1000); //延时
+FILE: <library>
+    0085 EE08      LDI	R16,0xE8
+    0086 E013      LDI	R17,3
+    0087 DFDF      RCALL	_delay
+    0088 CFF7      RJMP	0x0080
+    0089 9508      RET
+pop_gset2:
+    008A E0E2      LDI	R30,2
+    008B 940C0091  JMP	pop
+push_gset1:
+    008D 935A      ST	R21,-Y
+    008E 934A      ST	R20,-Y
+    008F 9508      RET
+pop_gset1:
+    0090 E0E1      LDI	R30,1
+pop:
+    0091 9149      LD	R20,Y+
+    0092 9159      LD	R21,Y+
+    0093 FDE0      SBRC	R30,0
+    0094 9508      RET
+    0095 9169      LD	R22,Y+
+    0096 9179      LD	R23,Y+
+    0097 FDE1      SBRC	R30,1
+    0098 9508      RET
+    0099 90A9      LD	R10,Y+
+    009A 90B9      LD	R11,Y+
+    009B FDE2      SBRC	R30,2
+    009C 9508      RET
+    009D 90C9      LD	R12,Y+
+    009E 90D9      LD	R13,Y+
+    009F FDE3      SBRC	R30,3
+    00A0 9508      RET
+    00A1 90E9      LD	R14,Y+
+    00A2 90F9      LD	R15,Y+
+    00A3 9508      RET
+push_gset2:
+    00A4 937A      ST	R23,-Y
+    00A5 936A      ST	R22,-Y
+    00A6 940C008D  JMP	push_gset1

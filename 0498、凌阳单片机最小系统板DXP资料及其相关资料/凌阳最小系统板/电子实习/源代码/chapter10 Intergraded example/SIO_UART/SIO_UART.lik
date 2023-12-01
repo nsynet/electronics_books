@@ -1,0 +1,57 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\isr.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\key.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\main.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\system.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\sram.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\SP_SerialFlashV1.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\hardware.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\FlashROM.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UartAPI.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\EmbedFlashROM.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\UART.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\Debug\Serial_Flash.obj"
+Lib: "F:\电子竞赛\C语言应用篇\Source Code\chapter10 Intergraded example\SIO_UART\.\sacmv26e.lib"
+Lib: "E:\Program Files\Sunplus\unSPIDE180\IDE180\CMacro.lib"
+Output: ".\Debug\SIO_UART.S37"
+;Locate: TEXT in "FlashROM.obj" at 8009 
+;Align: TEXT in "FlashROM.obj" with 0 
+;Locate: IRAM in "hardware.obj" at A55C  linkat 64F 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "main.obj" at 60E 
+;Align: RAM in "main.obj" with 0 
+;Locate: OVERLAP_RAM_BLOCK in "DVR" of "sacmv26e.lib"  at 0 
+;Align: OVERLAP_RAM_BLOCK in "DVR" of "sacmv26e.lib"  with 0 
+;Locate: OVERLAP_SRAM_BLOCK in "DVR" of "sacmv26e.lib"  at 5D1 
+;Align: OVERLAP_SRAM_BLOCK in "DVR" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "DVR" of "sacmv26e.lib"  at 809A 
+;Align: CODE in "DVR" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "main.obj" at 9919 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "hardware.obj" at 9E5B 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "SP_SerialFlashV1.obj" at A03A 
+;Align: CODE in "SP_SerialFlashV1.obj" with 0 
+;Locate: CODE in "Serial_Flash.obj" at A1B4 
+;Align: CODE in "Serial_Flash.obj" with 0 
+;Locate: CODE in "UART.obj" at A2F8 
+;Align: CODE in "UART.obj" with 0 
+;Locate: CODE in "UartAPI.obj" at A39F 
+;Align: CODE in "UartAPI.obj" with 0 
+;Locate: CODE in "key.obj" at A40F 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "EmbedFlashROM.obj" at A46D 
+;Align: CODE in "EmbedFlashROM.obj" with 0 
+;Locate: CODE in "system.obj" at A4C8 
+;Align: CODE in "system.obj" with 0 
+;Locate: CODE in "lshiu2" of "CMacro.lib"  at A4FD 
+;Align: CODE in "lshiu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro.lib"  at A523 
+;Align: CODE in "rshu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "sram.obj" at A549 
+;Align: CODE in "sram.obj" with 0 
+;Locate: DATA in "key.obj" at A5FD 
+;Align: DATA in "key.obj" with 0 

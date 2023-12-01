@@ -1,0 +1,54 @@
+XL
+H 2 areas 3 global symbols
+M chengxu.c
+A text size 48 flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\TEMP\icc\chengxu.c
+dbfunc e timer1_init 0 fV
+dbline FFFFFFFF 0
+dbline 8 0
+dbline 9 0
+dbline B 4
+dbline C 8
+dbline E C
+dbline F E
+dbline 11 12
+dbline 12 14
+dbline 13 16
+dbline FFFFFFFE 1A
+dbline 0 1A
+dbfunc e timer1_ovf_isr 1C fV
+dbline FFFFFFFF 24
+dbline 18 24
+dbline 19 24
+dbline 1A 28
+dbline 1B 2C
+dbline FFFFFFFE 32
+dbline 0 3A
+dbfunc e main 3C fV
+dbline FFFFFFFF 3C
+dbline 1F 3C
+dbline 20 3C
+dbline 21 40
+dbline 22 42
+dbline 23 44
+dbline 23 44
+dbline FFFFFFFE 46
+dbline 0 46
+S _main Def003C
+S _timer1_ovf_isr Def001C
+S _timer1_init Def0000
+A vector size 24 flags C
+T 00 00 22 24 2E BC 83 EE 8D BD 81 EE 8C BD 2F BC
+R 00 00 00 00
+T 0E 00 85 E0 8E BD 25 BE 2B BE 84 E0 89 BF 08 95
+R 00 00 00 00
+T 20 00 0C 94 0E 00
+R 00 00 01 00 10 04 00 00
+T 1C 00 8A 93 9A 93 8F B7 8A 93 83 EE 8D BD 81 EE
+R 00 00 00 00
+T 2A 00 8C BD 82 B3 8F 5F 82 BB 89 91 8F BF 99 91
+R 00 00 00 00
+T 38 00 89 91 18 95
+R 00 00 00 00
+T 3C 00 8F EF 81 BB DF DF 78 94 FF CF 08 95
+R 00 00 00 00

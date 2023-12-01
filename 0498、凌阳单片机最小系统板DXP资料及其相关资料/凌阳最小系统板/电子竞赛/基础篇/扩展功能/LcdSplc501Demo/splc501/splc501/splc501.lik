@@ -1,0 +1,27 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRAM FILES\SUNPLUS\UNSP IDE\startupD.obj"
+Obj: "E:\wrz\splc501\splc501\Debug\Resource.obj"
+Obj: "E:\wrz\splc501\splc501\Debug\hardware.obj"
+Obj: "E:\wrz\splc501\splc501\Debug\test.obj"
+Obj: "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+Obj: "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+Obj: "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+Obj: "E:\wrz\splc501\splc501\Debug\SPLC501DisplayTAB.obj"
+Output: ".\Debug\splc501.S37"
+;Locate: TEXT in "Splc501var.obj" at 8009 
+;Align: TEXT in "Splc501var.obj" with 0 
+;Locate: IRAM in "hardware.obj" at AFFC  linkat A3 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "Splc501var.obj" at 0 
+;Align: RAM in "Splc501var.obj" with 0 
+;Locate: CODE in "SPLC501DisplayTAB.obj" at 804B 
+;Align: CODE in "SPLC501DisplayTAB.obj" with 0 
+;Locate: CODE in "Splc501sys.obj" at 96EF 
+;Align: CODE in "Splc501sys.obj" with 0 
+;Locate: CODE in "SPLC501Hardware.obj" at AB5C 
+;Align: CODE in "SPLC501Hardware.obj" with 0 
+;Locate: CODE in "test.obj" at AD78 
+;Align: CODE in "test.obj" with 0 
+;Locate: CODE in "hardware.obj" at AECF 
+;Align: CODE in "hardware.obj" with 0 

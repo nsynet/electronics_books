@@ -1,0 +1,29 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\Chapter7_1_Linein\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\Chapter7_1_Linein\Debug\main.obj"
+Lib: "E:\Program Files\Sunplus\unSPIDE180\IDE180\CMacro.lib"
+Output: ".\Debug\Chapter7_1_Linein.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: RAM in "common" of "CMacro.lib"  at 0 
+;Align: RAM in "common" of "CMacro.lib"  with 0 
+;Locate: CODE in "main.obj" at 8026 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "divf2" of "CMacro.lib"  at 8116 
+;Align: CODE in "divf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "mulf2" of "CMacro.lib"  at 81FA 
+;Align: CODE in "mulf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "addf2" of "CMacro.lib"  at 82CA 
+;Align: CODE in "addf2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvi1f2" of "CMacro.lib"  at 8396 
+;Align: CODE in "cvi1f2" of "CMacro.lib"  with 0 
+;Locate: CODE in "mulu1" of "CMacro.lib"  at 83CA 
+;Align: CODE in "mulu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "lshiu2" of "CMacro.lib"  at 83F0 
+;Align: CODE in "lshiu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro.lib"  at 8416 
+;Align: CODE in "rshu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "cvi2f2" of "CMacro.lib"  at 843C 
+;Align: CODE in "cvi2f2" of "CMacro.lib"  with 0 

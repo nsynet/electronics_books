@@ -1,0 +1,25 @@
+# Begin Project
+# Begin SubItem "S240  Resources"
+# Begin Source File
+SOURCE=voice\pk3
+USEPARAM=FALSE
+PARAM=
+ID=RES_PK3
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\pk2
+USEPARAM=FALSE
+PARAM=
+ID=RES_PK2
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\pk1
+USEPARAM=FALSE
+PARAM=
+ID=RES_PK1
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

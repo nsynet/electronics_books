@@ -1,0 +1,119 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        09/12/2007  21:30:13  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE pingan.obj TO zhunipingan
+
+
+INPUT MODULES INCLUDED:
+  pingan.obj (PINGAN)
+
+
+LINK MAP OF MODULE:  zhunipingan (PINGAN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0156H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  zhunipingan (PINGAN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PINGAN
+  D:00F0H         SYMBOL        B
+  C:007DH         SYMBOL        DAT
+  C:0072H         SYMBOL        DEL
+  C:0073H         SYMBOL        DEL3
+  C:0075H         SYMBOL        DEL4
+  C:0065H         SYMBOL        END0
+  D:00A8H         SYMBOL        IE
+  C:0023H         SYMBOL        MUSIC0
+  C:002DH         SYMBOL        MUSIC1
+  C:0041H         SYMBOL        MUSIC2
+  C:0054H         SYMBOL        MUSIC3
+  C:0059H         SYMBOL        MUSIC4
+  C:0038H         SYMBOL        MUSIC5
+  C:0068H         SYMBOL        MUSIC6
+  D:00A0H         SYMBOL        P2
+  D:0081H         SYMBOL        SP
+  C:0014H         SYMBOL        START
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         7
+  C:000BH         LINE#         9
+  C:000DH         LINE#         10
+  C:0010H         LINE#         11
+  C:0013H         LINE#         12
+  C:0014H         LINE#         14
+  C:0017H         LINE#         15
+  C:001AH         LINE#         16
+  C:001DH         LINE#         17
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/12/2007  21:30:13  PAGE 2
+
+
+  C:0020H         LINE#         18
+  C:0023H         LINE#         20
+  C:0024H         LINE#         21
+  C:0027H         LINE#         22
+  C:002AH         LINE#         23
+  C:002DH         LINE#         25
+  C:002EH         LINE#         26
+  C:002FH         LINE#         27
+  C:0030H         LINE#         28
+  C:0032H         LINE#         29
+  C:0035H         LINE#         30
+  C:0038H         LINE#         32
+  C:0039H         LINE#         33
+  C:003AH         LINE#         34
+  C:003BH         LINE#         35
+  C:003DH         LINE#         36
+  C:003EH         LINE#         37
+  C:003FH         LINE#         38
+  C:0041H         LINE#         40
+  C:0042H         LINE#         41
+  C:0044H         LINE#         42
+  C:0045H         LINE#         43
+  C:0046H         LINE#         44
+  C:0049H         LINE#         45
+  C:004AH         LINE#         46
+  C:004DH         LINE#         48
+  C:0050H         LINE#         49
+  C:0051H         LINE#         51
+  C:0054H         LINE#         53
+  C:0055H         LINE#         54
+  C:0057H         LINE#         55
+  C:0059H         LINE#         57
+  C:005AH         LINE#         58
+  C:005CH         LINE#         59
+  C:005FH         LINE#         60
+  C:0061H         LINE#         61
+  C:0062H         LINE#         62
+  C:0065H         LINE#         64
+  C:0066H         LINE#         65
+  C:0068H         LINE#         67
+  C:006AH         LINE#         68
+  C:006DH         LINE#         69
+  C:006FH         LINE#         70
+  C:0072H         LINE#         72
+  C:0073H         LINE#         74
+  C:0075H         LINE#         76
+  C:0076H         LINE#         77
+  C:0078H         LINE#         78
+  C:0079H         LINE#         79
+  C:007BH         LINE#         80
+  C:007CH         LINE#         81
+  -------         ENDMOD        PINGAN
+
+Program Size: data=8.0 xdata=0 code=342
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

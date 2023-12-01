@@ -1,0 +1,29 @@
+CodeVisionAVR C Compiler V1.24.8b Professional
+(C) Copyright 1998-2006 Pavel Haiduc, HP InfoTech s.r.l.
+http://www.hpinfotech.com
+
+File: E:\汇诚科技\产品\网上的项目\串口控制继电器板子程序\8kg.c
+Global variables memory map:
+
+Variable                          Address   Size
+data                                                                    R4      1
+temp                                                                    R5      1
+datak                                                                   R6      1
+tempK                                                                   R7      1
+tempG                                                                   R8      1
+tempD                                                                   R9      1
+new_data                                                               R10      1
+old_data                                                               R11      1
+new_num1                                                               R12      1
+old_num1                                                               R13      1
+new_num2                                                               R14      1
+old_num2                                                              160h      1
+new_num3                                                              161h      1
+old_num3                                                              162h      1
+new_num4                                                              163h      1
+old_num4                                                              164h      1
+new_num5                                                              165h      1
+old_num5                                                              166h      1
+new_num6                                                              167h      1
+old_num6                                                              168h      1
+counter                                                               169h      2

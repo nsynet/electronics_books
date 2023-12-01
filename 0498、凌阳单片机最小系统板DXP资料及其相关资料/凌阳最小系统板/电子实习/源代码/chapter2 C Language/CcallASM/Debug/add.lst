@@ -1,0 +1,17 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+0000804B                    	.CODE
+                            	.PUBLIC _ADD
+                            	_ADD:.PROC
+0000804B 88 DA              		PUSH BP to [SP];				
+0000804C 08 0B 01 00        	  	BP = SP + 1;
+0000804E 03 92              		R1 = [BP+3];
+0000804F 04 94              		R2 = [BP+4];
+00008050 02 03              		R1 += R2;
+00008051 88 98              		POP BP from [SP];
+00008052 90 9A              		RETF;
+                            	.ENDP
+                            	
+                            	
+0 error(s), 0 warning(s).
+

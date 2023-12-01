@@ -1,0 +1,220 @@
+BL51 BANKED LINKER/LOCATER V6.15                                                        07/08/2008  11:23:25  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.15, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE djs.obj TO daojishi RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  djs.obj (DJS)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  daojishi (DJS)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0008H                  *** GAP ***
+            REG     0010H     0008H     ABSOLUTE     "REG BANK 2"
+            DATA    0018H     0009H     UNIT         ?DT?DJS
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0152H     UNIT         ?PR?KEYANDDIS_TIME0?DJS
+            CODE    0160H     0067H     UNIT         ?C?LIB_CODE
+            CODE    01C7H     0023H     UNIT         ?PR?_DELAY500?DJS
+            CODE    01EAH     001FH     UNIT         ?PR?_DELAY?DJS
+            CODE    0209H     001EH     UNIT         ?PR?MAIN?DJS
+            CODE    0227H     000CH     UNIT         ?CO?DJS
+            CODE    0233H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   daojishi (DJS)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?PR?KEYANDDIS_TIME0?DJS
+  +--> ?PR?_DELAY?DJS
+  +--> ?CO?DJS
+  +--> ?PR?_DELAY500?DJS
+
+*** NEW ROOT ***************************************************
+
+?C_C51STARTUP
+  +--> ?PR?MAIN?DJS
+
+
+BL51 BANKED LINKER/LOCATER V6.15                                                      07/08/2008  11:23:25  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  daojishi (DJS)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DJS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0018H         PUBLIC        KeyV
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:000EH         PUBLIC        KeyAndDis_Time0
+  B:00A8H.7       PUBLIC        EA
+  C:01CBH         PUBLIC        _Delay500
+  D:0019H         PUBLIC        TempKeyV
+  B:00A0H.1       PUBLIC        beep
+  C:0209H         PUBLIC        main
+  B:0090H.0       PUBLIC        Key_UP
+  D:0089H         PUBLIC        TMOD
+  B:00B0H.5       PUBLIC        P35
+  B:00B0H.6       PUBLIC        P36
+  B:00B0H.7       PUBLIC        P37
+  B:0090H.1       PUBLIC        Key_DOWN
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:001AH         PUBLIC        ds
+  D:001CH         PUBLIC        js
+  B:00A0H.0       PUBLIC        JDQ
+  D:001EH         SYMBOL        i
+  C:01EAH         PUBLIC        _Delay
+  C:0227H         PUBLIC        LEDDis
+  D:0020H         PUBLIC        jsflag
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        ii
+  -------         DO            
+  D:0004H         SYMBOL        jj
+  -------         ENDDO         
+  C:01EAH         LINE#         16
+  C:01EAH         LINE#         17
+  C:01EAH         LINE#         19
+  C:01F3H         LINE#         20
+  C:01F6H         LINE#         21
+  C:0208H         LINE#         23
+  -------         ENDPROC       _DELAY
+  C:01C7H         SYMBOL        L?0039
+  -------         PROC          L?0038
+  -------         ENDPROC       L?0038
+  C:01C7H         SYMBOL        L?0039
+  -------         PROC          _DELAY500
+  D:0006H         SYMBOL        iii
+  -------         DO            
+  D:0004H         SYMBOL        jjj
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.15                                                      07/08/2008  11:23:25  PAGE 3
+
+
+  C:01CBH         LINE#         24
+  C:01CBH         LINE#         25
+  C:01CBH         LINE#         27
+  C:01D4H         LINE#         28
+  C:01D7H         LINE#         29
+  C:01E9H         LINE#         31
+  -------         ENDPROC       _DELAY500
+  -------         PROC          MAIN
+  C:0209H         LINE#         35
+  C:0209H         LINE#         36
+  C:0209H         LINE#         38
+  C:020BH         LINE#         39
+  C:020DH         LINE#         40
+  C:0210H         LINE#         41
+  C:0213H         LINE#         42
+  C:0216H         LINE#         43
+  C:0218H         LINE#         44
+  C:021EH         LINE#         45
+  C:0221H         LINE#         46
+  C:0223H         LINE#         47
+  C:0225H         LINE#         50
+  -------         ENDPROC       MAIN
+  -------         PROC          KEYANDDIS_TIME0
+  C:000EH         LINE#         58
+  C:001BH         LINE#         60
+  C:001EH         LINE#         61
+  C:0021H         LINE#         62
+  C:0024H         LINE#         63
+  C:0027H         LINE#         64
+  C:002AH         LINE#         65
+  C:002DH         LINE#         67
+  C:0031H         LINE#         68
+  C:0031H         LINE#         69
+  C:0038H         LINE#         70
+  C:003BH         LINE#         71
+  C:003EH         LINE#         73
+  C:0041H         LINE#         74
+  C:0044H         LINE#         76
+  C:004AH         LINE#         77
+  C:004AH         LINE#         78
+  C:0050H         LINE#         79
+  C:0052H         LINE#         80
+  C:0058H         LINE#         81
+  C:005EH         LINE#         82
+  C:005EH         LINE#         83
+  C:0066H         LINE#         84
+  C:0068H         LINE#         85
+  C:006EH         LINE#         86
+  C:0070H         LINE#         87
+  C:0078H         LINE#         88
+  C:007CH         LINE#         89
+  C:0084H         LINE#         90
+  C:0086H         LINE#         92
+  C:0086H         LINE#         95
+  C:0086H         LINE#         96
+  C:008BH         LINE#         97
+  C:008EH         LINE#         100
+BL51 BANKED LINKER/LOCATER V6.15                                                      07/08/2008  11:23:25  PAGE 4
+
+
+  C:008EH         LINE#         101
+  C:008EH         LINE#         102
+  C:008EH         LINE#         107
+  C:0093H         LINE#         108
+  C:0095H         LINE#         109
+  C:0095H         LINE#         111
+  C:009BH         LINE#         112
+  C:009DH         LINE#         113
+  C:00A0H         LINE#         114
+  C:00A2H         LINE#         115
+  C:00A2H         LINE#         117
+  C:00BBH         LINE#         118
+  C:00BDH         LINE#         119
+  C:00C0H         LINE#         120
+  C:00C2H         LINE#         121
+  C:00F0H         LINE#         122
+  C:00F2H         LINE#         123
+  C:00F5H         LINE#         124
+  C:00F7H         LINE#         125
+  C:014EH         LINE#         126
+  C:0150H         LINE#         127
+  C:0153H         LINE#         128
+  C:0155H         LINE#         137
+  -------         ENDPROC       KEYANDDIS_TIME0
+  -------         ENDMOD        DJS
+
+  -------         MODULE        ?C?IMUL
+  C:0160H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?UIDIV
+  C:0172H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=26.0 xdata=0 code=567
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,116 @@
+XL
+H 1 areas 5 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size EC flags 0
+dbfile D:\整理\个人总结的M8程序\003、跑马灯设计\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline B 4
+dbline D 4
+dbline E 6
+dbline F 6
+dbline F C
+dbline F C
+dbline F 10
+dbline 10 16
+dbline D 16
+dbline D 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e horse 26 fV
+dbsym r i 10 c
+dbline FFFFFFFF 2A
+dbline 17 2A
+dbline 17 2A
+dbline 18 76
+dbline 19 76
+dbline 19 7A
+dbline 1A 7C
+dbline 1A 80
+dbline 1B 82
+dbline 1B 86
+dbline 1C 88
+dbline 1C 8C
+dbline 1D 8E
+dbline 1D 92
+dbline 1E 94
+dbline 1E 98
+dbline 1F 9A
+dbline 1F 9E
+dbline 20 A0
+dbline 20 A4
+dbline 21 A6
+dbline 21 AA
+dbline 22 AA
+dbline FFFFFFFE AA
+dbline 0 AE
+dbfunc e main B0 fV
+dbsym r i 14 c
+dbline FFFFFFFF B0
+dbline 29 B0
+dbline 2B B0
+dbline 2C B4
+dbline 2D B6
+dbline 2E B8
+dbline 30 C0
+dbline 31 C0
+dbline 32 C4
+dbline 33 C4
+dbline 34 C8
+dbline 35 CE
+dbline 31 CE
+dbline 31 D0
+dbline 36 D4
+dbline 37 D8
+dbline 38 D8
+dbline 39 DC
+dbline 3A E2
+dbline 36 E2
+dbline 36 E4
+dbline 3B E8
+dbline 2F E8
+dbline FFFFFFFE EA
+dbline 0 EA
+S _main Def00B0
+S _horse Def0026
+S _DelayMS Def0000
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 01 00
+T 26 00 0E 94 00 00 40 2F 55 27 40 30 45 07 09 F1
+R 00 00 00 00 12 04 00 00
+T 34 00 41 30 E0 E0 5E 07 01 F1 42 30 E0 E0 5E 07
+R 00 00 00 00
+T 42 00 F9 F0 43 30 E0 E0 5E 07 F1 F0 44 30 E0 E0
+R 00 00 00 00
+T 50 00 5E 07 E9 F0 45 30 E0 E0 5E 07 E1 F0 46 30
+R 00 00 00 00
+T 5E 00 E0 E0 5E 07 D9 F0 47 30 E0 E0 5E 07 D1 F0
+R 00 00 00 00
+T 6C 00 48 30 E0 E0 5E 07 C9 F0 1A C0 22 24 28 BA
+R 00 00 00 00
+T 7A 00 17 C0 81 E0 88 BB 14 C0 83 E0 88 BB 11 C0
+R 00 00 00 00
+T 88 00 87 E0 88 BB 0E C0 8F E0 88 BB 0B C0 8F E1
+R 00 00 00 00
+T 96 00 88 BB 08 C0 8F E3 88 BB 05 C0 8F E7 88 BB
+R 00 00 00 00
+T A4 00 02 C0 8F EF 88 BB 0E 94 00 00 08 95
+R 00 00 00 00 12 0A 01 00
+T B0 00 8F EF 87 BB 88 BB 88 BB 0A E0 10 E0 A1 DF
+R 00 00 00 00
+T BE 00 14 C0 44 27 06 C0 04 2F AF DF 0A E0 10 E0
+R 00 00 00 00
+T CC 00 99 DF 43 95 49 30 C0 F3 47 E0 06 C0 04 2F
+R 00 00 00 00
+T DA 00 A5 DF 0A E0 10 E0 8F DF 4A 95 44 23 C1 F7
+R 00 00 00 00
+T E8 00 EB CF 08 95
+R 00 00 00 00

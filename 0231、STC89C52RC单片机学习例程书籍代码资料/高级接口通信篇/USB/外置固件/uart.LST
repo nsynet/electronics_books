@@ -1,0 +1,173 @@
+C51 COMPILER V7.06   UART                                                                  12/06/2009 21:35:35 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN uart.OBJ
+COMPILER INVOKED BY: C:\Program Files\Keil\C51\BIN\C51.EXE uart.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          #include "stc.h"
+   2          #include "global.h"
+   3          #include "uart.h"
+   4          
+   5          /******************************************************************
+   6          *函数名称:UARTCiInit
+   7          *输    入:无
+   8          *输    出:无
+   9          *说    明:串口 初始化
+  10          *******************************************************************/
+  11          void UARTCiInit(void)
+  12          {
+  13   1              SCON=0x40;
+  14   1              T2CON=0x34;
+  15   1              RCAP2L=0xD9;
+  16   1              RCAP2H=0xFF;
+  17   1              REN=1;
+  18   1      }
+  19          
+  20          /******************************************************************
+  21          *函数名称:UARTCiSendByte
+  22          *输    入:b
+  23          *输    出:无
+  24          *说    明:串口 发送单字节
+  25          *******************************************************************/
+  26          void UARTCiSendByte(UINT8 b)
+  27          {
+  28   1               SBUF=b;
+  29   1               while(TI==0);
+  30   1               TI=0;
+  31   1      }
+  32          /******************************************************************
+  33          *函数名称:UARTCiSendByte
+  34          *输    入:b
+  35          *输    出:无
+  36          *说    明:串口 发送单字节
+  37          *******************************************************************/
+  38          void UARTCiSendNBytes(UINT8 *bytes,UINT8 len)
+  39          {
+  40   1            while(len--)
+  41   1           {
+  42   2              UARTCiSendByte(*bytes++);
+  43   2           }
+  44   1      }
+  45          /******************************************************************
+  46          *函数名称:UARTCiPrintfString
+  47          *输    入:b
+  48          *输    出:无
+  49          *说    明:串口 发送字符串
+  50          *******************************************************************/
+  51          void UARTCiPrintfString(const INT8 *str)
+  52          {
+  53   1           while(str && *str)
+  54   1           {
+  55   2           
+C51 COMPILER V7.06   UART                                                                  12/06/2009 21:35:35 PAGE 2   
+
+  56   2              UARTCiSendByte(*str++); 
+  57   2                     
+  58   2           }
+  59   1      
+  60   1      }
+  61          /******************************************************************
+  62          *函数名称:UARTCiSendByte
+  63          *输    入:b
+  64          *输    出:无
+  65          *说    明:串口 发送单字节
+  66          *******************************************************************/
+  67          void UARTCiPrintfVal(UINT8 *str,UINT32 val,UINT8 show)
+  68          {    
+  69   1           UINT8 i=0;
+  70   1           UINT8 buf[10]={0}; 
+  71   1           
+  72   1               UARTCiPrintfString(str);
+  73   1      
+  74   1           if(10 == show)
+  75   1           {
+  76   2               for(i=0; i<10 ;i++)
+  77   2               {
+  78   3                   buf[i]=(UINT8)('0'+val%10);   
+  79   3                   val/=10;   
+  80   3               } 
+  81   2           
+  82   2               
+  83   2               for(i=9;i>=0;)
+  84   2               {
+  85   3                   if('0' == buf[i])
+  86   3                   {
+  87   4                       i--;
+  88   4                   }
+  89   3                   else
+  90   3                   {
+  91   4                      break;
+  92   4                   }
+  93   3               } 
+  94   2               
+  95   2               while(1)
+  96   2               {    
+  97   3                   
+  98   3                   UARTCiSendByte(buf[i]); 
+  99   3                   
+ 100   3                   if(!i)
+ 101   3                   {
+ 102   4                       break; 
+ 103   4                   } 
+ 104   3                   
+ 105   3                   i--;
+ 106   3               } 
+ 107   2               
+ 108   2               
+ 109   2           }
+ 110   1           
+ 111   1           if(16 == show)
+ 112   1           {
+ 113   2              UARTCiSendByte('0');
+ 114   2                  UARTCiSendByte('x');
+ 115   2                  
+ 116   2              i=28;
+ 117   2              
+C51 COMPILER V7.06   UART                                                                  12/06/2009 21:35:35 PAGE 3   
+
+ 118   2              while(i)
+ 119   2              {
+ 120   3                  if(0  == ((val>>i) &0x0f))
+ 121   3                  {   
+ 122   4                      i=i-4;
+ 123   4                     
+ 124   4                  }
+ 125   3                  else
+ 126   3                  {
+ 127   4                      break;
+ 128   4                  }
+ 129   3              } 
+ 130   2              
+ 131   2              while(1)
+ 132   2              {
+ 133   3                  UARTCiSendByte(HexTable[(val>>i) &0x0f]); 
+ 134   3                  
+ 135   3                  if(!i)
+ 136   3                  {
+ 137   4                      break; 
+ 138   4                  }     
+ 139   3                          
+ 140   3                  i=i-4;
+ 141   3              }  
+ 142   2              
+ 143   2           } 
+ 144   1           
+ 145   1           UARTCiPrintfString("\r\n");
+ 146   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    366    ----
+   CONSTANT SIZE    =     13    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      25
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

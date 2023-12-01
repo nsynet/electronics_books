@@ -1,0 +1,159 @@
+XL
+H 3 areas 6 global symbols
+M chengxu.c
+S push_gset2 Ref0000
+S pop_gset2 Ref0000
+A text size 172 flags 0
+dbfile F:\NEW光~1\八路输入输出继电器控制板\002继电器输出检测程序\icc\chengxu.c
+dbfunc e Init_IO 0 fV
+dbline FFFFFFFF 0
+dbline A 0
+dbline C 0
+dbline D 4
+dbline F 6
+dbline 10 A
+dbline 12 C
+dbline 13 10
+dbline FFFFFFFE 12
+dbline 0 12
+dbfunc e delay 14 fV
+dbsym r i 14 i
+dbsym r j 16 i
+dbsym r t 10 i
+dbline FFFFFFFF 16
+dbline 19 16
+dbline 1B 16
+dbline 1C 1C
+dbline 1D 1C
+dbline 1D 22
+dbline 1D 22
+dbline 1D 26
+dbline 1E 2C
+dbline 1F 2E
+dbline 1F 2E
+dbline 20 2E
+dbline 21 2E
+dbline 1B 2E
+dbline 1B 32
+dbline FFFFFFFE 38
+dbline 0 3A
+dbfunc e main 3C fV
+dbline FFFFFFFF 3C
+dbline 27 3C
+dbline 28 3C
+dbline 2B 40
+dbline 2C 40
+dbline 2D 4A
+dbline 2E 4E
+dbline 2F 58
+dbline 30 5C
+dbline 31 66
+dbline 32 6A
+dbline 33 74
+dbline 34 78
+dbline 35 82
+dbline 36 86
+dbline 37 90
+dbline 38 94
+dbline 39 98
+dbline 3A A2
+dbline 3B A6
+dbline 3C B0
+dbline 3D B4
+dbline 3E BE
+dbline 3F C2
+dbline 40 CC
+dbline 41 D0
+dbline 42 DA
+dbline 43 DE
+dbline 44 E8
+dbline 45 EC
+dbline 46 F6
+dbline 47 FA
+dbline 48 104
+dbline 49 108
+dbline 4A 112
+dbline 4B 116
+dbline 4C 120
+dbline 4D 124
+dbline 4E 12E
+dbline 4F 132
+dbline 50 13C
+dbline 51 140
+dbline 52 14A
+dbline 53 14E
+dbline 54 158
+dbline 55 15C
+dbline 56 15E
+dbline 57 168
+dbline 58 16C
+dbline 59 16E
+dbline 2A 16E
+dbline FFFFFFFE 170
+dbline 0 170
+S _main Def003C
+S _delay Def0014
+S _Init_IO Def0000
+A data size 2 flags 20
+dbfile F:\NEW光~1\八路输入输出继电器控制板\002继电器输出检测程序\icc\chengxu.c
+dbsym e x 0 i
+S _x Def0000
+A idata size 2 flags 0
+T 00 00 C8 00
+R 00 00 02 00
+T 00 00 8F E3 87 BB 88 BB 8F EF 84 BB 85 BB 22 24
+R 00 00 00 00
+T 0E 00 21 BA 22 BA 08 95
+R 00 00 00 00
+T 14 00 00 D0 44 27 55 27 0B C0 68 EE 73 E0 02 C0
+R 00 00 00 00 82 02 00 00
+T 22 00 61 50 70 40 60 30 67 07 D9 F7 A8 95 4F 5F
+R 00 00 00 00
+T 30 00 5F 4F 40 17 51 07 90 F3 00 D0 08 95
+R 00 00 00 00 82 0A 01 00
+T 3C 00 E1 DF 97 C0 00 91 00 00 10 91 01 00 E5 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 4A 00 8F E0 85 BB 00 91 00 00 10 91 01 00 DE DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 58 00 87 E0 88 BB 00 91 00 00 10 91 01 00 D7 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 66 00 8B E0 88 BB 00 91 00 00 10 91 01 00 D0 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 74 00 8D E0 88 BB 00 91 00 00 10 91 01 00 C9 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 82 00 8E E0 88 BB 00 91 00 00 10 91 01 00 C2 DF
+R 00 00 00 00 00 08 01 00 00 0C 01 00
+T 90 00 8F E0 88 BB 87 E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 0C 01 00
+T 9E 00 01 00 B9 DF 8B E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T AC 00 01 00 B2 DF 8D E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T BA 00 01 00 AB DF 8E E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T C8 00 01 00 A4 DF 8A E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T D6 00 01 00 9D DF 85 E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T E4 00 01 00 96 DF 8F E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T F2 00 01 00 8F DF 22 24 25 BA 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 00 01 01 00 88 DF 8F E0 85 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 0E 01 01 00 81 DF 8A E0 88 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 1C 01 01 00 7A DF 85 E0 88 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 2A 01 01 00 73 DF 8F E0 88 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 38 01 01 00 6C DF 22 24 28 BA 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 46 01 01 00 65 DF 8F E0 88 BB 00 91 00 00 10 91
+R 00 00 00 00 00 02 01 00 00 0C 01 00
+T 54 01 01 00 5E DF 22 24 28 BA 25 BA 00 91 00 00
+R 00 00 00 00 00 02 01 00 00 0E 01 00
+T 62 01 10 91 01 00 56 DF 8F E0 88 BB 85 BB 68 CF
+R 00 00 00 00 00 04 01 00
+T 70 01 08 95
+R 00 00 00 00

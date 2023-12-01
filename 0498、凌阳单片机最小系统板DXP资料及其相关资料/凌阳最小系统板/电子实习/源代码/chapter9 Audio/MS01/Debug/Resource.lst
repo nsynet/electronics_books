@@ -1,0 +1,179 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	
+                            	// Resource Table
+                            	// Created by IDE, Do not modify this table
+                            	
+00008009                    	.TEXT
+                            	.public _RES_Table;
+                            	.external __RES_WISH1_BIN_sa
+                            	.public _RES_WISH1_BIN_SA;
+                            	.external __RES_WISH1_BIN_ea;
+                            	.public _RES_WISH1_BIN_EA;
+                            	.external __RES_ALA1_BIN_sa
+                            	.public _RES_ALA1_BIN_SA;
+                            	.external __RES_ALA1_BIN_ea;
+                            	.public _RES_ALA1_BIN_EA;
+                            	.external __RES_ALAINS_BIN_sa
+                            	.public _RES_ALAINS_BIN_SA;
+                            	.external __RES_ALAINS_BIN_ea;
+                            	.public _RES_ALAINS_BIN_EA;
+                            	.external __RES_DECK1_BIN_sa
+                            	.public _RES_DECK1_BIN_SA;
+                            	.external __RES_DECK1_BIN_ea;
+                            	.public _RES_DECK1_BIN_EA;
+                            	.external __RES_GREEN1_BIN_sa
+                            	.public _RES_GREEN1_BIN_SA;
+                            	.external __RES_GREEN1_BIN_ea;
+                            	.public _RES_GREEN1_BIN_EA;
+                            	.external __RES_HK1_BIN_sa
+                            	.public _RES_HK1_BIN_SA;
+                            	.external __RES_HK1_BIN_ea;
+                            	.public _RES_HK1_BIN_EA;
+                            	.external __RES_LA1_BIN_sa
+                            	.public _RES_LA1_BIN_SA;
+                            	.external __RES_LA1_BIN_ea;
+                            	.public _RES_LA1_BIN_EA;
+                            	.external __RES_PP1_BIN_sa
+                            	.public _RES_PP1_BIN_SA;
+                            	.external __RES_PP1_BIN_ea;
+                            	.public _RES_PP1_BIN_EA;
+                            	.external __RES_S31_BIN_sa
+                            	.public _RES_S31_BIN_SA;
+                            	.external __RES_S31_BIN_ea;
+                            	.public _RES_S31_BIN_EA;
+                            	.external __RES_TW1_BIN_sa
+                            	.public _RES_TW1_BIN_SA;
+                            	.external __RES_TW1_BIN_ea;
+                            	.public _RES_TW1_BIN_EA;
+                            	.external __RES_WINE1_BIN_sa
+                            	.public _RES_WINE1_BIN_SA;
+                            	.external __RES_WINE1_BIN_ea;
+                            	.public _RES_WINE1_BIN_EA;
+                            	.external __RES_1231_BIN_sa
+                            	.public _RES_1231_BIN_SA;
+                            	.external __RES_1231_BIN_ea;
+                            	.public _RES_1231_BIN_EA;
+                            	
+                            	
+                            	_RES_Table:
+                            	
+                            	_RES_WISH1_BIN_SA:
+00008009 A5 D6 00 00        		.DW offset __RES_WISH1_BIN_sa,seg __RES_WISH1_BIN_sa;
+                            	_RES_WISH1_BIN_EA:
+0000800B E8 DA 00 00        		.DW offset __RES_WISH1_BIN_ea,seg __RES_WISH1_BIN_ea;
+                            	
+                            	_RES_ALA1_BIN_SA:
+0000800D AD BE 00 00        		.DW offset __RES_ALA1_BIN_sa,seg __RES_ALA1_BIN_sa;
+                            	_RES_ALA1_BIN_EA:
+0000800F 4E C6 00 00        		.DW offset __RES_ALA1_BIN_ea,seg __RES_ALA1_BIN_ea;
+                            	
+                            	_RES_ALAINS_BIN_SA:
+00008011 39 E3 00 00        		.DW offset __RES_ALAINS_BIN_sa,seg __RES_ALAINS_BIN_sa;
+                            	_RES_ALAINS_BIN_EA:
+00008013 14 E4 00 00        		.DW offset __RES_ALAINS_BIN_ea,seg __RES_ALAINS_BIN_ea;
+                            	
+                            	_RES_DECK1_BIN_SA:
+00008015 E8 DA 00 00        		.DW offset __RES_DECK1_BIN_sa,seg __RES_DECK1_BIN_sa;
+                            	_RES_DECK1_BIN_EA:
+00008017 FD DD 00 00        		.DW offset __RES_DECK1_BIN_ea,seg __RES_DECK1_BIN_ea;
+                            	
+                            	_RES_GREEN1_BIN_SA:
+00008019 4E C6 00 00        		.DW offset __RES_GREEN1_BIN_sa,seg __RES_GREEN1_BIN_sa;
+                            	_RES_GREEN1_BIN_EA:
+0000801B A4 CD 00 00        		.DW offset __RES_GREEN1_BIN_ea,seg __RES_GREEN1_BIN_ea;
+                            	
+                            	_RES_HK1_BIN_SA:
+0000801D A4 CD 00 00        		.DW offset __RES_HK1_BIN_sa,seg __RES_HK1_BIN_sa;
+                            	_RES_HK1_BIN_EA:
+0000801F 53 D2 00 00        		.DW offset __RES_HK1_BIN_ea,seg __RES_HK1_BIN_ea;
+                            	
+                            	_RES_LA1_BIN_SA:
+00008021 7C 95 00 00        		.DW offset __RES_LA1_BIN_sa,seg __RES_LA1_BIN_sa;
+                            	_RES_LA1_BIN_EA:
+00008023 D4 A8 00 00        		.DW offset __RES_LA1_BIN_ea,seg __RES_LA1_BIN_ea;
+                            	
+                            	_RES_PP1_BIN_SA:
+00008025 53 D2 00 00        		.DW offset __RES_PP1_BIN_sa,seg __RES_PP1_BIN_sa;
+                            	_RES_PP1_BIN_EA:
+00008027 A5 D6 00 00        		.DW offset __RES_PP1_BIN_ea,seg __RES_PP1_BIN_ea;
+                            	
+                            	_RES_S31_BIN_SA:
+00008029 39 B6 00 00        		.DW offset __RES_S31_BIN_sa,seg __RES_S31_BIN_sa;
+                            	_RES_S31_BIN_EA:
+0000802B AD BE 00 00        		.DW offset __RES_S31_BIN_ea,seg __RES_S31_BIN_ea;
+                            	
+                            	_RES_TW1_BIN_SA:
+0000802D FD DD 00 00        		.DW offset __RES_TW1_BIN_sa,seg __RES_TW1_BIN_sa;
+                            	_RES_TW1_BIN_EA:
+0000802F FA E0 00 00        		.DW offset __RES_TW1_BIN_ea,seg __RES_TW1_BIN_ea;
+                            	
+                            	_RES_WINE1_BIN_SA:
+00008031 D4 A8 00 00        		.DW offset __RES_WINE1_BIN_sa,seg __RES_WINE1_BIN_sa;
+                            	_RES_WINE1_BIN_EA:
+00008033 39 B6 00 00        		.DW offset __RES_WINE1_BIN_ea,seg __RES_WINE1_BIN_ea;
+                            	
+                            	_RES_1231_BIN_SA:
+00008035 FA E0 00 00        		.DW offset __RES_1231_BIN_sa,seg __RES_1231_BIN_sa;
+                            	_RES_1231_BIN_EA:
+00008037 39 E3 00 00        		.DW offset __RES_1231_BIN_ea,seg __RES_1231_BIN_ea;
+                            	
+                            	
+                            	// End Table
+                            	//------------------------------------------------
+                            	// SACM MS01 Song Table
+                            	// -- User nees to add in the song/speech 
+                            	//    for playback based on the _RES_Table above.
+                            	//------------------------------------------------
+                            	.public T_SACM_MS01_SongTable;
+                            	T_SACM_MS01_SongTable:
+00008039 09 80              		.dw _RES_WISH1_BIN_SA
+0000803A 0D 80              		.DW _RES_ALA1_BIN_SA
+0000803B 11 80              		.DW _RES_ALAINS_BIN_SA
+0000803C 15 80              		.DW _RES_DECK1_BIN_SA
+0000803D 19 80              		.DW _RES_GREEN1_BIN_SA
+0000803E 1D 80              		.DW _RES_HK1_BIN_SA
+0000803F 21 80              		.DW _RES_LA1_BIN_SA
+00008040 25 80              		.DW _RES_PP1_BIN_SA
+00008041 29 80              		.DW _RES_S31_BIN_SA
+00008042 2D 80              		.DW _RES_TW1_BIN_SA
+00008043 31 80              		.DW _RES_WINE1_BIN_SA
+00008044 35 80              		.DW _RES_1231_BIN_SA
+                            	              
+                            	//------------------------------------------------
+                            	// SACM MS01 Drum Table
+                            	// -- User nees to add in the song/speech 
+                            	//    for playback based on the _RES_Table above.
+                            	//------------------------------------------------       
+                            	.public T_SACM_MS01_DrumTable;        
+                            	T_SACM_MS01_DrumTable:
+00008045 00 FA              	.dw 0xFA00
+                            	//------------------------------------------------
+                            	// SACM MS01 Drum Sample Rate Table
+                            	// Table: Set the corresponding sample rate of drum speech
+                            	// Formula: N = 65536 - (Fosc/2/sample_rate), N for [P_TimerB_Data]
+                            	//------------------------------------------------
+                            	.public T_SACM_MS01_DrumSampleRate        
+                            	T_SACM_MS01_DrumSampleRate:
+00008046 00 FA              			.dw 0xFA00				//0
+00008047 00 FA              	        .dw 0xFA00				//1
+00008048 00 FA              			.dw 0xFA00				//2
+00008049 00 FA              	        .dw 0xFA00				//3
+0000804A 00 FA              	        .dw 0xFA00				//4
+0000804B 00 FA              	        .dw 0xFA00				//5
+0000804C 00 FA              	        .dw 0xFA00				//6
+0000804D 00 FA              	        .dw 0xFA00				//7
+0000804E 00 FA              	        .dw 0xFA00				//8
+0000804F 00 FA              	        .dw 0xFA00				//9
+00008050 00 FA              	        .dw 0xFA00				//10
+00008051 00 FA              	        .dw 0xFA00				//11
+00008052 00 FA              	        .dw 0xFA00				//12
+00008053 00 FA              	        .dw 0xFA00				//13
+00008054 00 FA              	        .dw 0xFA00				//14
+00008055 00 FA              	        .dw 0xFA00				//15
+00008056 00 FA              	        .dw 0xFA00				//16
+00008057 00 FA              	        .dw 0xFA00				//17
+00008058 00 FA              	        .dw 0xFA00				//18
+00008059 00 FA              			.dw 0xFA00				//19
+0 error(s), 0 warning(s).
+

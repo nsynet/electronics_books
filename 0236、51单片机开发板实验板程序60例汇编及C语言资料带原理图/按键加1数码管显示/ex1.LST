@@ -1,0 +1,64 @@
+C51 COMPILER V8.02   EX1                                                                   06/27/2008 15:15:26 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE EX1
+OBJECT MODULE PLACED IN ex1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ex1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #define uint unsigned int 
+   3          #define uchar unsigned char 
+   4          sbit P37=P3^7;
+   5          //sbit d1=P2^1;
+   6          sbit P10=P1^0;
+   7          uchar num;
+   8          uchar code table[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xC6,0xA1,0x86,0x8E};
+   9          void delay(uint z);
+  10          void main()
+  11          {
+  12   1      //P37=1;
+  13   1      P1=0xff;
+  14   1       while(1){
+  15   2         
+  16   2      if(P10==0){
+  17   3              delay(20);
+  18   3                      if(P10==0){
+  19   4                              num++;
+  20   4                                      if(num==16){
+  21   5                                                      num=0;
+  22   5                               } 
+  23   4      
+  24   4                      while(!P10);
+  25   4      
+  26   4                                      }
+  27   3      }
+  28   2      P37=0;
+  29   2      P0=table[num];  
+  30   2      }
+  31   1      }
+  32          
+  33          
+  34          void delay(uint z)
+  35          {
+  36   1              uint x,y;
+  37   1              for(x=z;x>0;x--)
+  38   1                      for(y=110;y>0;y--);     
+  39   1      }
+  40          
+  41          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     71    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

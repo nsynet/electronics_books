@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+advalue	E:\simulate\proteus\soft\digitalpower\main.asm	8;"	q	line:8
+advflag	E:\simulate\proteus\soft\digitalpower\main.asm	9;"	q	line:9
+bank0	E:\simulate\proteus\soft\digitalpower\main.asm	10;"	m	line:10
+bank1	E:\simulate\proteus\soft\digitalpower\main.asm	13;"	m	line:13
+bcf	E:\simulate\proteus\soft\digitalpower\main.asm	11;"	l	line:11
+bsf	E:\simulate\proteus\soft\digitalpower\main.asm	14;"	l	line:14
+gratethan20	E:\simulate\proteus\soft\digitalpower\main.asm	67;"	l	line:67
+mainlp	E:\simulate\proteus\soft\digitalpower\main.asm	50;"	l	line:50
+mainlp0	E:\simulate\proteus\soft\digitalpower\main.asm	87;"	l	line:87
+mainlp1	E:\simulate\proteus\soft\digitalpower\main.asm	113;"	l	line:113
+mainlp2	E:\simulate\proteus\soft\digitalpower\main.asm	136;"	l	line:136
+pclath_temp	E:\simulate\proteus\soft\digitalpower\main.asm	5;"	q	line:5
+refreshled	E:\simulate\proteus\soft\digitalpower\main.asm	76;"	l	line:76
+refreshled0	E:\simulate\proteus\soft\digitalpower\main.asm	82;"	l	line:82
+refreshled2	E:\simulate\proteus\soft\digitalpower\main.asm	85;"	l	line:85
+reg0	E:\simulate\proteus\soft\digitalpower\main.asm	6;"	q	line:6
+reg1	E:\simulate\proteus\soft\digitalpower\main.asm	7;"	q	line:7
+start	E:\simulate\proteus\soft\digitalpower\main.asm	23;"	l	line:23
+status_temp	E:\simulate\proteus\soft\digitalpower\main.asm	4;"	q	line:4
+tableseg	E:\simulate\proteus\soft\digitalpower\main.asm	162;"	l	line:162
+tablev	E:\simulate\proteus\soft\digitalpower\main.asm	176;"	l	line:176
+w_temp	E:\simulate\proteus\soft\digitalpower\main.asm	3;"	q	line:3

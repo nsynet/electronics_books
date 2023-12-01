@@ -1,0 +1,107 @@
+C51 COMPILER V8.05a   DDZZ                                                                 04/01/2009 15:26:53 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE DDZZ
+OBJECT MODULE PLACED IN ddzz.OBJ
+COMPILER INVOKED BY: D:\Program Files\C51\BIN\C51.EXE ddzz.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          ////////////////////////汇诚科技////////////////////
+   3          //////////////////http://www.ourhc.cn///////////////
+   4          ///////////////////步进电机调试程序/////////////
+   5          
+   6          #include<reg52.h>  
+   7          
+   8          /*****P1.0=A ;P1.1=B ;P1.2=A' ; P1.3=B'****/ 
+   9          //////////////////////////////////////////////////////////////////////////////////////////////
+  10          /*******************************正转数组**************************************************/
+  11          code unsigned char runz[4]={0x0e,0x0d,0x0b,0x07};  //两相四线四拍工作方式
+  12          /*******************************反转数组**************************************************/
+  13          code unsigned char runf[4]={0x07,0x0b,0x0d,0x0e};  //两相四线四拍工作方式
+  14          unsigned char keycan=0;
+  15          unsigned char s,i,j,k,z;
+  16          
+  17          int y=30;//定义转动速度，数值越大电机转速越慢反之则快
+  18          
+  19          sbit P2_0=P2^0;//正转按键
+  20          sbit P2_1=P2^1;//反转按键
+  21          sbit P2_2=P2^2;//电机加速
+  22          sbit P2_3=P2^3;//电机减速
+  23          
+  24          void delay(i)//延时函数
+  25            {
+  26   1            for(j=0;j<i;j++)
+  27   1            for(k=0;k<250;k++);
+  28   1        }
+  29          
+  30          
+  31          
+  32          void zrun()// 正转运行
+  33          {
+  34   1      
+  35   1         for(z=0;z<4;z++)
+  36   1             { 
+  37   2               P1=runz[z];
+  38   2               delay(y);
+  39   2             }
+  40   1      }
+  41          
+  42          void frun()// 反转运行
+  43           {
+  44   1           for(z=0;z<4;z++)
+  45   1              {
+  46   2                  P1=runf[z];
+  47   2                  delay(y);
+  48   2               }
+  49   1      }
+  50          
+  51          main()
+  52          {
+  53   1         while(1)
+  54   1          {
+  55   2               if(P2_0==0)
+C51 COMPILER V8.05a   DDZZ                                                                 04/01/2009 15:26:53 PAGE 2   
+
+  56   2            {
+  57   3              keycan=1;
+  58   3            }
+  59   2               if(P2_1==0)
+  60   2            {
+  61   3              keycan=2;
+  62   3             }
+  63   2                           switch (keycan)
+  64   2                          {
+  65   3                           case 1: zrun();
+  66   3                                       break;
+  67   3                           case 2: frun();
+  68   3                           break;
+  69   3      
+  70   3                           }
+  71   2      
+  72   2                   if(P2_2==0)  //  电机加速
+  73   2            {
+  74   3              y+=5;
+  75   3            }
+  76   2               if(P2_3==0)
+  77   2            {                  // 电机减速
+  78   3              y-=5;
+  79   3             }
+  80   2      
+  81   2         }
+  82   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    138    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      8    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

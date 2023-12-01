@@ -1,0 +1,11 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\AD_DA\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\AD_DA\Debug\main.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter7 AD&DA\AD_DA\Debug\ISR.obj"
+Output: ".\Debug\AD_DA.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: CODE in "main.obj" at 807B 
+;Align: CODE in "main.obj" with 0 

@@ -1,0 +1,176 @@
+Saturday, July 12, 01:39:22, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             804D         "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"
+__sn_loop                                          8069         "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"
+__sn_loop2                                         8068         "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Resource.obj"
+_uiCircleChannelNumber                             8            "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Main.obj"
+_g_uiUARTCommand                                   9            "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Main.obj"
+_g_uiChannelNumber                                 A            "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Main.obj"
+_main                                              806A         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Main.obj"
+_g_aChannelsVoltageValueBuf                        0            "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Main.obj"
+_F_UART_Initial                                    8110         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\UART.obj"
+_F_UART_WriteByteData                              8130         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\UART.obj"
+_F_System_Initial                                  8144         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\System.obj"
+_F_Display_Command                                 8151         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\System.obj"
+_F_GetKeyValue                                     815B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\System.obj"
+_F_LED_On                                          816E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\System.obj"
+_BREAK                                             8022         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_FIQ                                               8009         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_IRQ0                                              8027         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_IRQ1                                              802C         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_IRQ2                                              8031         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_IRQ3                                              8036         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_IRQ4                                              803B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_IRQ5                                              8040         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_IRQ6                                              8043         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_IRQ7                                              8046         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+_F_AD_Initial                                      8178         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Ad.obj"
+_F_ReadAD                                          8184         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Ad.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            804D                 8069         1D     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          806A                 810F         A6     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          81B6 (8)             81B8 (A)     3      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           0                    7            8      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\UART.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8110                 8143         34     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\System.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8144                 8177         34     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 804C         44     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Ad.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8178                 81A0         29     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "rshu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          81A1                 81B5         15     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  B            7F5                   *
+* "First Bank Rom"                  7C00                 1B9          7A47                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\DataCollection_Client.S37
+Disk  Mapping Filename : .\Debug\DataCollection_Client.map
+Symbol  Table FileName : .\Debug\DataCollection_Client.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

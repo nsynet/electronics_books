@@ -1,0 +1,157 @@
+Friday, July 11, 12:27:32, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8009         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8025         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         8024         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         0            "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\Resource.obj"
+F_SP_Send_PWM                                      8026         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Send_DAC1                                     8029         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Send_DAC2                                     802C         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  802F         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Send_Out                                      802F         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Get_ADC                                       8034         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             8037         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             803A         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             803D         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             8040         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                8043         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               8046         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             8049         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                804C         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                804F         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Write_INT_Status                              8052         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Read_INT_Status                               8055         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    808D         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    80B1         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    80C3         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    80E7         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_RampUpDAC1                                     808D         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_RampDnDAC1                                     80B1         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_RampUpDAC2                                     80C3         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_RampDnDAC2                                     80E7         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_Delay                                         8152         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_InitQueue                                     80FF         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_ReadQueue                                     810C         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_WriteQueue                                    811E         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_SP_TestQueue                                     812C         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_Export                                         8083         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_Import                                         8078         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_Init_IOB                                       8068         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_Init_IOA                                       8058         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+_SP_GetResource                                    8144         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+R_InterruptStatus                                  5            "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+R_FIQTemp                                          6            "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"
+F_Key_Scan_Initial                                 81F2         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"
+F_Key_Scan_ServiceLoop                             81FD         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"
+F_Key_Scan_ServiceLoop_2                           8223         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"
+F_Key_DebounceCnt_Down                             8263         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"
+_SP_GetCh                                          826A         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"
+F_SP_GetCh                                         826A         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"
+R_KeyStrobe                                        3            "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"
+_main                                              8153         "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\main.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8009                 8025         1D     *
+* "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\Resource.obj"                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\hardware.obj"                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8026                 8152         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          8270 (5)             82A5 (3A)    36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\key.obj"                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          81F2                 826F         7E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           0                    3            4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "C:\Program Files\Sunplus\unSPIDE180\base_exa\DA_ch\Debug\main.obj"                       *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8153                 81F1         9F     *
+*    DATA                                          82A8                 836F         C8     *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          82A6 (3B)            82A7 (3C)    2      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           4                    4            1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  3D           7C3                   *
+* "First Bank Rom"                  7C00                 370          7890                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\DA_ch.S37
+Disk  Mapping Filename : .\Debug\DA_ch.map
+Symbol  Table FileName : .\Debug\DA_ch.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

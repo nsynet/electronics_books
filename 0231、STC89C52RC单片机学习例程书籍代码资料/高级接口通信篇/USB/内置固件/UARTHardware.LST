@@ -1,0 +1,73 @@
+C51 COMPILER V7.06   UARTHARDWARE                                                          04/20/2010 16:12:21 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE UARTHARDWARE
+OBJECT MODULE PLACED IN .\Output\UARTHardware.obj
+COMPILER INVOKED BY: C:\Program Files\Keil\C51\BIN\C51.EXE UARTHardware.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\UART
+                    -Hardware.obj)
+
+stmt level    source
+
+   1          /************************************************************************
+   2          *作    者:温子祺 邮箱:k125008301@126.com
+   3          *文    件:UARTHardware.c
+   4          --------------------------------------------------------------
+   5          *说    明:定义串口硬件抽象层
+   6          *修改日期:2009/12/02
+   7          --------------------------------------------------------------
+   8          *创建日期:2009/11/30
+   9          *说    明:
+  10          --------------------------------------------------------------
+  11          *************************************************************************/
+  12          #include "stc.h"
+  13          #include "global.h"
+  14          #include "UARTHardware.h"
+  15          #include "UARTInterface.h"
+  16          /******************************************************************
+  17          *函数名称:UARTHwInit
+  18          *输    入:无
+  19          *输    出:无
+  20          *说    明:串口 硬件层初始化
+  21          *******************************************************************/
+  22          void UARTHwInit(void)
+  23          {
+  24   1              SCON=0x40;
+  25   1              T2CON=0x34;
+  26   1              RCAP2L=0xD9;
+  27   1              RCAP2H=0xFF;
+  28   1              REN=1;
+  29   1      
+  30   1      
+  31   1      }
+  32          /******************************************************************
+  33          *函数名称:UARTIRQ
+  34          *输    入:无
+  35          *输    出:无
+  36          *说    明:串口 中断服务程序
+  37          *******************************************************************/
+  38          void UARTIRQ(void) interrupt 4
+  39          {
+  40   1              if(RI)
+  41   1              {
+  42   2                      RI=0;
+  43   2      
+  44   2              }
+  45   1      
+  46   1      
+  47   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     21    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V7.06   UARTHARDWARE                                                          04/20/2010 16:12:21 PAGE 2   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

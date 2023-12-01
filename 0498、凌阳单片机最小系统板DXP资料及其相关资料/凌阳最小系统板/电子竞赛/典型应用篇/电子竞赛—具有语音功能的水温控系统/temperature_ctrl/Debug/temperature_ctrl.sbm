@@ -1,0 +1,1010 @@
+.stabs "startup_code.",0x3c,0,0,0
+.stabs "__sn_main:F15",36,0,0,     36182
+.stabs "__sn_end:F15",36,0,0,     32992
+.stabs "__sn_exception:F15",36,0,0,     32993
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Resource.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabn 0xc0,0,0,     32881
+.stabn 0xe0,0,0,     32941
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\system.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38240
+.stabn 0xe0,0,0,     38240
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\hardware.inc", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38240
+.stabn 0xe0,0,0,     38240
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\system.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38240
+.stabn 0xe0,0,0,     38240
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\key.inc", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38240
+.stabn 0xe0,0,0,     38240
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\system.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38240
+.stabn 0xe0,0,0,     38240
+.stabn 0xc0,0,0,     38240
+.stabn 0x44,0,23,     38240
+.stabn 0x44,0,24,     38242
+.stabn 0x44,0,25,     38244
+.stabn 0x44,0,27,     38246
+.stabn 0x44,0,28,     38248
+.stabn 0x44,0,29,     38249
+.stabn 0x44,0,30,     38251
+.stabn 0x44,0,41,     38252
+.stabn 0x44,0,42,     38253
+.stabn 0x44,0,43,     38255
+.stabn 0x44,0,56,     38256
+.stabn 0x44,0,57,     38258
+.stabn 0x44,0,58,     38260
+.stabn 0x44,0,72,     38261
+.stabn 0x44,0,73,     38263
+.stabn 0x44,0,74,     38265
+.stabn 0x44,0,75,     38267
+.stabn 0x44,0,76,     38269
+.stabn 0x44,0,77,     38271
+.stabn 0x44,0,78,     38272
+.stabn 0x44,0,79,     38274
+.stabn 0x44,0,80,     38276
+.stabn 0x44,0,81,     38278
+.stabn 0x44,0,94,     38279
+.stabn 0x44,0,95,     38280
+.stabn 0x44,0,96,     38282
+.stabn 0x44,0,97,     38284
+.stabn 0x44,0,98,     38285
+.stabn 0x44,0,99,     38287
+.stabn 0x44,0,100,     38289
+.stabn 0x44,0,101,     38291
+.stabn 0x44,0,102,     38293
+.stabn 0x44,0,117,     38294
+.stabn 0x44,0,118,     38296
+.stabn 0x44,0,119,     38297
+.stabn 0x44,0,120,     38299
+.stabn 0x44,0,121,     38300
+.stabn 0x44,0,133,     38301
+.stabn 0x44,0,134,     38303
+.stabn 0x44,0,135,     38305
+.stabn 0x44,0,136,     38307
+.stabn 0x44,0,150,     38308
+.stabn 0x44,0,151,     38310
+.stabn 0x44,0,152,     38312
+.stabn 0x44,0,153,     38314
+.stabn 0x44,0,154,     38316
+.stabn 0x44,0,155,     38318
+.stabn 0x44,0,156,     38320
+.stabn 0x44,0,157,     38322
+.stabn 0x44,0,158,     38324
+.stabn 0x44,0,160,     38326
+.stabn 0x44,0,161,     38328
+.stabn 0x44,0,162,     38330
+.stabn 0x44,0,163,     38331
+.stabn 0x44,0,164,     38333
+.stabn 0x44,0,165,     38334
+.stabn 0x44,0,166,     38336
+.stabn 0x44,0,167,     38338
+.stabn 0x44,0,180,     38340
+.stabn 0x44,0,181,     38341
+.stabn 0x44,0,182,     38343
+.stabn 0x44,0,183,     38345
+.stabn 0x44,0,184,     38346
+.stabn 0x44,0,185,     38348
+.stabn 0x44,0,186,     38349
+.stabn 0x44,0,198,     38350
+.stabn 0x44,0,199,     38352
+.stabn 0x44,0,200,     38354
+.stabn 0x44,0,201,     38356
+.stabn 0x44,0,214,     38357
+.stabn 0x44,0,215,     38359
+.stabn 0x44,0,216,     38360
+.stabn 0x44,0,217,     38362
+.stabn 0x44,0,230,     38363
+.stabn 0x44,0,231,     38365
+.stabn 0x44,0,232,     38367
+.stabn 0x44,0,233,     38369
+.stabn 0x44,0,246,     38370
+.stabn 0x44,0,247,     38372
+.stabn 0x44,0,248,     38374
+.stabn 0x44,0,249,     38375
+.stabn 0x44,0,250,     38377
+.stabn 0x44,0,251,     38379
+.stabn 0x44,0,252,     38381
+.stabn 0x44,0,253,     38383
+.stabn 0x44,0,254,     38384
+.stabn 0xe0,0,0,     38385
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\led.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38918
+.stabn 0xe0,0,0,     38918
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\hardware.inc", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38918
+.stabn 0xe0,0,0,     38918
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\led.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38918
+.stabn 0xe0,0,0,     38918
+.stabn 0xc0,0,0,       795
+.stabs "LED_No:G1",32,0,0,       795
+.stabn 0xe0,0,0,       796
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabn 0xc0,0,0,     44286
+.stabs "C_Address:S1",38,0,0,     44286
+.stabs "C_Dig:S1",38,0,0,     44296
+.stabn 0xe0,0,0,     44302
+.stabn 0xc0,0,0,     38918
+.stabn 0x44,0,24,     38918
+.stabn 0x44,0,27,     38919
+.stabn 0x44,0,28,     38921
+.stabn 0x44,0,29,     38923
+.stabn 0x44,0,30,     38924
+.stabn 0x44,0,31,     38926
+.stabn 0x44,0,32,     38927
+.stabn 0x44,0,33,     38929
+.stabn 0x44,0,34,     38930
+.stabn 0x44,0,35,     38931
+.stabn 0x44,0,36,     38932
+.stabn 0x44,0,37,     38933
+.stabn 0x44,0,39,     38934
+.stabn 0x44,0,40,     38936
+.stabn 0x44,0,41,     38938
+.stabn 0x44,0,42,     38939
+.stabn 0x44,0,46,     38941
+.stabn 0x44,0,47,     38943
+.stabn 0x44,0,48,     38944
+.stabn 0x44,0,49,     38945
+.stabn 0x44,0,50,     38946
+.stabn 0x44,0,51,     38948
+.stabn 0x44,0,52,     38949
+.stabn 0x44,0,53,     38950
+.stabn 0x44,0,54,     38952
+.stabn 0x44,0,55,     38953
+.stabn 0x44,0,56,     38954
+.stabn 0xe0,0,0,     38955
+.stabs "F:\\刻录光盘\\电子竞赛\\典型应用篇\\电子竞赛—具有语音功能的水温控系统\\temperature_ctrl/",0x64,0,0,     36182
+.stabs "F:/刻录光盘/电子竞赛/典型应用篇/电子竞赛—具有语音功能的水温控系统/temperature_ctrl/main.c",0x64,0,0,     36182
+.stabs "int:t1=r1;-32768;32767;",128,0,0,0
+.stabs "char:t2=r2;0;127;",128,0,0,0
+.stabs "long int:t3=r3;-2147483648;2147483647;",128,0,0,0
+.stabs "unsigned int:t4=r4;0;65535;",128,0,0,0
+.stabs "long unsigned int:t5=r5;0;4294967295;",128,0,0,0
+.stabs "long long int:t6=r6;-2147483648;2147483647;",128,0,0,0
+.stabs "long long unsigned int:t7=r7;0;4294967295;",128,0,0,0
+.stabs "short int:t8=r8;-32768;32767;",128,0,0,0
+.stabs "short unsigned int:t9=r9;0;65535;",128,0,0,0
+.stabs "signed char:t10=r10;-32768;32767;",128,0,0,0
+.stabs "unsigned char:t11=r11;0;65535;",128,0,0,0
+.stabs "float:t12=r1;2;0;",128,0,0,0
+.stabs "double:t13=r1;2;0;",128,0,0,0
+.stabs "long double:t14=r1;2;0;",128,0,0,0
+.stabs "complex int:t15=s2real:1,0,16;imag:1,16,16;;",128,0,0,0
+.stabs "complex float:t16=r16;2;0;",128,0,0,0
+.stabs "complex double:t17=r17;2;0;",128,0,0,0
+.stabs "complex long double:t18=r18;2;0;",128,0,0,0
+.stabs "void:t19=19",128,0,0,0
+.stabs "iPlay_times:G1",32,0,0,       851
+.stabs "iNumber:G1",32,0,0,       852
+.stabs "PID:T20=s10SetPoint:1,0,16;Proportion:12,16,32;\\",128,0,0,0
+.stabs "Integral:12,48,32;Derivative:12,80,32;LastError:1,112,16;\\",128,0,0,0
+.stabs "PrevError:1,128,16;SumError:1,144,16;;",128,0,0,0
+.stabs "PID:t21=20",128,0,0,0
+.stabs "fOut:G1",32,0,0,       853
+.stabs "system_status:T22=esystem_temperature_set:0,system_temperature_control:1,;",128,0,0,0
+.stabs "guiLED_Value:G23=ar1;0;2;4",32,0,0,       854
+.stabs "G_ADC_flag:G1",32,0,0,       857
+.stabs "main:F1",36,0,0,     36182
+.stabn 0x44,0,88,         0
+.stabn 0x44,0,89,         7
+.stabn 0x44,0,91,         7
+.stabn 0x44,0,92,        10
+.stabn 0x44,0,93,        13
+.stabn 0x44,0,94,        15
+.stabn 0x44,0,95,        17
+.stabn 0x44,0,96,        21
+.stabn 0x44,0,97,        24
+.stabn 0x44,0,98,        29
+.stabn 0x44,0,99,        35
+.stabn 0x44,0,100,        37
+.stabn 0x44,0,101,        43
+.stabn 0x44,0,102,        45
+.stabn 0x44,0,103,        47
+.stabn 0x44,0,104,        49
+.stabn 0x44,0,105,        57
+.stabn 0x44,0,106,        59
+.stabn 0x44,0,107,        61
+.stabn 0x44,0,107,        61
+.stabn 0xc0,0,0,         7
+.stabs "iKeyValue:1",128,0,0,0
+.stabn 0xc0,0,0,        21
+.stabn 0xe0,0,0,        59
+.stabn 0xe0,0,0,        61
+.stabf         64
+.stabs "PIDinit:F19",36,0,0,     36246
+.stabn 0x44,0,117,         0
+.stabn 0x44,0,118,         5
+.stabn 0x44,0,119,         8
+.stabn 0x44,0,120,        11
+.stabn 0x44,0,121,        14
+.stabn 0x44,0,121,        14
+.stabf         16
+.stabs "PIDCalc:F12",36,0,0,     36262
+.stabn 0x44,0,131,         0
+.stabn 0x44,0,132,         7
+.stabn 0x44,0,134,         7
+.stabn 0x44,0,135,        25
+.stabn 0x44,0,136,        44
+.stabn 0x44,0,137,        58
+.stabn 0x44,0,138,        70
+.stabn 0x44,0,139,        81
+.stabn 0x44,0,143,       185
+.stabn 0x44,0,143,       185
+.stabs "pp:p24=*21",160,0,0,14
+.stabs "NextPoint:p1",160,0,0,15
+.stabn 0xc0,0,0,         7
+.stabs "dError:1",128,0,0,0
+.stabs "Error:1",128,0,0,1
+.stabn 0xe0,0,0,       185
+.stabf        188
+.stabs "display_speech_ADC_temperature:F19",36,0,0,     36450
+.stabn 0x44,0,153,         0
+.stabn 0x44,0,154,         7
+.stabn 0x44,0,157,         7
+.stabn 0x44,0,158,        13
+.stabn 0x44,0,159,        16
+.stabn 0x44,0,160,        23
+.stabn 0x44,0,161,        40
+.stabn 0x44,0,162,        62
+.stabn 0x44,0,163,        72
+.stabn 0x44,0,164,        99
+.stabn 0x44,0,165,       113
+.stabn 0x44,0,166,       127
+.stabn 0x44,0,167,       149
+.stabn 0x44,0,168,       160
+.stabn 0x44,0,169,       166
+.stabn 0x44,0,170,       171
+.stabn 0x44,0,171,       176
+.stabn 0x44,0,172,       178
+.stabn 0x44,0,173,       186
+.stabn 0x44,0,174,       189
+.stabn 0x44,0,175,       197
+.stabn 0x44,0,176,       197
+.stabn 0x44,0,177,       204
+.stabn 0x44,0,178,       211
+.stabn 0x44,0,179,       217
+.stabn 0x44,0,180,       252
+.stabn 0x44,0,182,       254
+.stabn 0x44,0,182,       254
+.stabn 0xc0,0,0,         7
+.stabs "fT:12",128,0,0,0
+.stabs "K:12",128,0,0,2
+.stabs "adc_data:1",128,0,0,4
+.stabs "siTlast:V1",38,0,0,       858
+.stabn 0xc0,0,0,       160
+.stabn 0xe0,0,0,       197
+.stabn 0xe0,0,0,       254
+.stabf        257
+.stabs "active:F19",36,0,0,     36707
+.stabn 0x44,0,191,         0
+.stabn 0x44,0,192,         7
+.stabn 0x44,0,193,        13
+.stabn 0x44,0,194,        15
+.stabn 0x44,0,195,        17
+.stabn 0x44,0,197,        19
+.stabn 0x44,0,198,        50
+.stabn 0x44,0,199,        54
+.stabn 0x44,0,201,        58
+.stabn 0x44,0,202,        58
+.stabn 0x44,0,202,        58
+.stabn 0xc0,0,0,         7
+.stabn 0xc0,0,0,        13
+.stabn 0xe0,0,0,        17
+.stabn 0xc0,0,0,        19
+.stabn 0xc0,0,0,        54
+.stabn 0xe0,0,0,        58
+.stabn 0xe0,0,0,        58
+.stabn 0xe0,0,0,        58
+.stabf         61
+.stabs "adc_data_cmp:F1",36,0,0,     36768
+.stabn 0x44,0,212,         0
+.stabn 0x44,0,213,         6
+.stabn 0x44,0,217,         6
+.stabn 0x44,0,218,         9
+.stabn 0x44,0,219,        26
+.stabn 0x44,0,220,        40
+.stabn 0x44,0,218,        51
+.stabn 0x44,0,222,        69
+.stabn 0x44,0,223,        88
+.stabn 0x44,0,224,       105
+.stabn 0x44,0,225,       123
+.stabn 0x44,0,223,       142
+.stabn 0x44,0,227,       160
+.stabn 0x44,0,228,       177
+.stabn 0x44,0,227,       206
+.stabn 0x44,0,229,       224
+.stabn 0x44,0,230,       243
+.stabn 0x44,0,231,       251
+.stabn 0x44,0,231,       251
+.stabn 0xc0,0,0,         6
+.stabs "max:1",128,0,0,0
+.stabs "min:1",128,0,0,1
+.stabs "Sum:1",128,0,0,2
+.stabs "i:1",128,0,0,3
+.stabn 0xe0,0,0,       251
+.stabf        254
+.stabs "key_value_process:F19",36,0,0,     37022
+.stabn 0x44,0,240,         0
+.stabn 0x44,0,241,         7
+.stabn 0x44,0,242,         7
+.stabn 0x44,0,243,        33
+.stabn 0x44,0,245,        35
+.stabn 0x44,0,246,        41
+.stabn 0x44,0,247,        46
+.stabn 0x44,0,248,        52
+.stabn 0x44,0,250,        55
+.stabn 0x44,0,252,        57
+.stabn 0x44,0,253,        63
+.stabn 0x44,0,254,        68
+.stabn 0x44,0,255,        74
+.stabn 0x44,0,257,        77
+.stabn 0x44,0,259,        79
+.stabn 0x44,0,260,        85
+.stabn 0x44,0,261,        91
+.stabn 0x44,0,262,        94
+.stabn 0x44,0,263,        99
+.stabn 0x44,0,264,       104
+.stabn 0x44,0,265,       107
+.stabn 0x44,0,266,       115
+.stabn 0x44,0,267,       123
+.stabn 0x44,0,269,       125
+.stabn 0x44,0,270,       127
+.stabn 0x44,0,271,       130
+.stabn 0x44,0,272,       130
+.stabn 0x44,0,273,       132
+.stabn 0x44,0,275,       134
+.stabn 0x44,0,275,       134
+.stabs "key:p1",160,0,0,5
+.stabn 0xc0,0,0,         7
+.stabs "iAddr:1",128,0,0,0
+.stabn 0xc0,0,0,        85
+.stabn 0xe0,0,0,       123
+.stabn 0xc0,0,0,       125
+.stabn 0xe0,0,0,       130
+.stabn 0xe0,0,0,       134
+.stabf        137
+.stabs "temperature_speech_index:F19",36,0,0,     37159
+.stabn 0x44,0,284,         0
+.stabn 0x44,0,285,         5
+.stabn 0x44,0,286,        13
+.stabn 0x44,0,287,        19
+.stabn 0x44,0,288,        22
+.stabn 0x44,0,290,        28
+.stabn 0x44,0,291,        36
+.stabn 0x44,0,292,        42
+.stabn 0x44,0,293,        45
+.stabn 0x44,0,294,        48
+.stabn 0x44,0,296,        50
+.stabn 0x44,0,297,        53
+.stabn 0x44,0,300,        56
+.stabn 0x44,0,303,        58
+.stabn 0x44,0,304,        64
+.stabn 0x44,0,305,        70
+.stabn 0x44,0,306,        73
+.stabn 0x44,0,308,        76
+.stabn 0x44,0,308,        76
+.stabs "p_speech:p25=*4",160,0,0,3
+.stabf         78
+.stabs "speech_start_address:F1",36,0,0,     37237
+.stabn 0x44,0,317,         0
+.stabn 0x44,0,318,         6
+.stabn 0x44,0,319,         6
+.stabn 0x44,0,320,        21
+.stabn 0x44,0,321,        26
+.stabn 0x44,0,322,        31
+.stabn 0x44,0,323,        36
+.stabn 0x44,0,324,        41
+.stabn 0x44,0,325,        46
+.stabn 0x44,0,326,        51
+.stabn 0x44,0,327,        56
+.stabn 0x44,0,328,        61
+.stabn 0x44,0,329,        66
+.stabn 0x44,0,330,        71
+.stabn 0x44,0,331,        76
+.stabn 0x44,0,332,        81
+.stabn 0x44,0,334,        83
+.stabn 0x44,0,335,        87
+.stabn 0x44,0,335,        87
+.stabs "n:p1",160,0,0,4
+.stabn 0xc0,0,0,         6
+.stabs "iAddress:1",128,0,0,0
+.stabn 0xe0,0,0,        87
+.stabf         90
+.stabs "speech_end_address:F1",36,0,0,     37327
+.stabn 0x44,0,345,         0
+.stabn 0x44,0,346,         6
+.stabn 0x44,0,347,         6
+.stabn 0x44,0,348,        21
+.stabn 0x44,0,349,        26
+.stabn 0x44,0,350,        31
+.stabn 0x44,0,351,        36
+.stabn 0x44,0,352,        41
+.stabn 0x44,0,353,        46
+.stabn 0x44,0,354,        51
+.stabn 0x44,0,355,        56
+.stabn 0x44,0,356,        61
+.stabn 0x44,0,357,        66
+.stabn 0x44,0,358,        71
+.stabn 0x44,0,359,        76
+.stabn 0x44,0,360,        81
+.stabn 0x44,0,362,        83
+.stabn 0x44,0,363,        87
+.stabn 0x44,0,363,        87
+.stabs "m:p1",160,0,0,4
+.stabn 0xc0,0,0,         6
+.stabs "iEndAddress:1",128,0,0,0
+.stabn 0xe0,0,0,        87
+.stabf         90
+.stabs "temperature_speech_play:F19",36,0,0,     37417
+.stabn 0x44,0,374,         0
+.stabn 0x44,0,375,         7
+.stabn 0x44,0,376,         9
+.stabn 0x44,0,377,        11
+.stabn 0x44,0,379,        17
+.stabn 0x44,0,380,        25
+.stabn 0x44,0,381,        31
+.stabn 0x44,0,382,        36
+.stabn 0x44,0,383,        36
+.stabn 0x44,0,384,        53
+.stabn 0x44,0,386,        57
+.stabn 0x44,0,387,        62
+.stabn 0x44,0,388,        68
+.stabn 0x44,0,389,        70
+.stabn 0x44,0,390,        73
+.stabn 0x44,0,391,        76
+.stabn 0x44,0,392,        78
+.stabn 0x44,0,393,        80
+.stabn 0x44,0,394,        82
+.stabn 0x44,0,396,        84
+.stabn 0x44,0,397,        89
+.stabn 0x44,0,398,       102
+.stabn 0x44,0,400,       107
+.stabn 0x44,0,402,       107
+.stabn 0x44,0,402,       107
+.stabn 0xc0,0,0,         7
+.stabs "k:1",128,0,0,0
+.stabn 0xc0,0,0,        17
+.stabn 0xe0,0,0,        36
+.stabn 0xc0,0,0,        68
+.stabn 0xe0,0,0,        82
+.stabn 0xc0,0,0,        84
+.stabn 0xe0,0,0,       107
+.stabn 0xe0,0,0,       107
+.stabf        110
+.stabs "iRet:G1",32,0,0,       759
+.stabs "iaSpeech_index:G26=ar1;0;3;1",32,0,0,       760
+.stabs "guifgSpeechPlay:G4",32,0,0,       764
+.stabs "stPID:G21",32,0,0,       765
+.stabs "status:G22",32,0,0,       775
+.stabs "giADC_DataSave:G27=ar1;0;9;4",32,0,0,       776
+.stabs "iAddrSpeech:G4",32,0,0,       786
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\isr.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\hardware.inc", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\isr.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\A2000.inc", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\isr.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\Resource.inc", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabn 0xc0,0,0,     32777
+.stabn 0xe0,0,0,     32777
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\isr.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     32777
+.stabn 0xe0,0,0,     32777
+.stabn 0xc0,0,0,       859
+.stabs "G_Sum:G1",32,0,0,       859
+.stabn 0xe0,0,0,       860
+.stabn 0xc0,0,0,     32777
+.stabn 0x44,0,28,     32777
+.stabn 0x44,0,29,     32778
+.stabn 0x44,0,30,     32780
+.stabn 0x44,0,31,     32782
+.stabn 0x44,0,32,     32783
+.stabn 0x44,0,33,     32785
+.stabn 0x44,0,34,     32787
+.stabn 0x44,0,36,     32788
+.stabn 0x44,0,37,     32790
+.stabn 0x44,0,38,     32792
+.stabn 0x44,0,39,     32793
+.stabn 0x44,0,41,     32794
+.stabn 0x44,0,42,     32796
+.stabn 0x44,0,43,     32798
+.stabn 0x44,0,44,     32799
+.stabn 0x44,0,46,     32800
+.stabn 0x44,0,47,     32802
+.stabn 0x44,0,48,     32803
+.stabn 0x44,0,59,     32804
+.stabn 0x44,0,60,     32805
+.stabn 0x44,0,61,     32806
+.stabn 0x44,0,62,     32808
+.stabn 0x44,0,63,     32809
+.stabn 0x44,0,64,     32810
+.stabn 0x44,0,66,     32812
+.stabn 0x44,0,67,     32814
+.stabn 0x44,0,68,     32815
+.stabn 0x44,0,69,     32817
+.stabn 0x44,0,70,     32818
+.stabn 0x44,0,71,     32819
+.stabn 0x44,0,73,     32820
+.stabn 0x44,0,75,     32821
+.stabn 0x44,0,76,     32823
+.stabn 0x44,0,77,     32825
+.stabn 0x44,0,78,     32826
+.stabn 0x44,0,79,     32828
+.stabn 0x44,0,80,     32829
+.stabn 0x44,0,81,     32830
+.stabn 0x44,0,82,     32831
+.stabn 0x44,0,83,     32833
+.stabn 0x44,0,84,     32834
+.stabn 0x44,0,85,     32835
+.stabn 0x44,0,86,     32836
+.stabn 0x44,0,87,     32837
+.stabn 0x44,0,88,     32838
+.stabn 0x44,0,89,     32840
+.stabn 0x44,0,90,     32841
+.stabn 0x44,0,91,     32843
+.stabn 0x44,0,93,     32844
+.stabn 0x44,0,94,     32845
+.stabn 0x44,0,96,     32847
+.stabn 0x44,0,97,     32848
+.stabn 0x44,0,109,     32849
+.stabn 0x44,0,110,     32850
+.stabn 0x44,0,111,     32851
+.stabn 0x44,0,112,     32853
+.stabn 0x44,0,113,     32854
+.stabn 0x44,0,114,     32855
+.stabn 0x44,0,115,     32857
+.stabn 0x44,0,116,     32858
+.stabn 0x44,0,118,     32859
+.stabn 0x44,0,119,     32861
+.stabn 0x44,0,120,     32863
+.stabn 0x44,0,121,     32864
+.stabn 0x44,0,131,     32865
+.stabn 0x44,0,132,     32866
+.stabn 0x44,0,133,     32868
+.stabn 0x44,0,134,     32870
+.stabn 0x44,0,135,     32872
+.stabn 0x44,0,136,     32873
+.stabn 0x44,0,137,     32875
+.stabn 0x44,0,139,     32876
+.stabn 0x44,0,140,     32877
+.stabn 0x44,0,142,     32878
+.stabn 0x44,0,143,     32880
+.stabn 0xe0,0,0,     32881
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\hardware.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     37527
+.stabn 0xe0,0,0,     37527
+.stabn 0xc0,0,0,       797
+.stabs "R_InterruptStatus:G1",32,0,0,       797
+.stabs "R_FIQTemp:G1",32,0,0,       798
+.stabs "R_Queue:S1",38,0,0,       799
+.stabs "R_ReadIndex:S1",38,0,0,       849
+.stabs "R_WriteIndex:S1",38,0,0,       850
+.stabn 0xe0,0,0,       851
+.stabn 0xc0,0,0,     37527
+.stabn 0x44,0,226,     37527
+.stabn 0x44,0,227,     37529
+.stabn 0x44,0,230,     37530
+.stabn 0x44,0,231,     37532
+.stabn 0x44,0,233,     37533
+.stabn 0x44,0,234,     37535
+.stabn 0x44,0,236,     37536
+.stabn 0x44,0,237,     37538
+.stabn 0x44,0,238,     37540
+.stabn 0x44,0,247,     37541
+.stabn 0x44,0,248,     37543
+.stabn 0x44,0,252,     37544
+.stabn 0x44,0,253,     37546
+.stabn 0x44,0,255,     37547
+.stabn 0x44,0,256,     37549
+.stabn 0x44,0,258,     37550
+.stabn 0x44,0,259,     37552
+.stabn 0x44,0,261,     37553
+.stabn 0x44,0,262,     37555
+.stabn 0x44,0,265,     37556
+.stabn 0x44,0,266,     37558
+.stabn 0x44,0,268,     37559
+.stabn 0x44,0,269,     37561
+.stabn 0x44,0,272,     37562
+.stabn 0x44,0,273,     37564
+.stabn 0x44,0,276,     37565
+.stabn 0x44,0,277,     37567
+.stabn 0x44,0,280,     37568
+.stabn 0x44,0,281,     37570
+.stabn 0x44,0,289,     37571
+.stabn 0x44,0,290,     37573
+.stabn 0x44,0,293,     37574
+.stabn 0x44,0,294,     37576
+.stabn 0x44,0,302,     37577
+.stabn 0x44,0,303,     37578
+.stabn 0x44,0,304,     37580
+.stabn 0x44,0,305,     37581
+.stabn 0x44,0,306,     37582
+.stabn 0x44,0,307,     37584
+.stabn 0x44,0,308,     37585
+.stabn 0x44,0,309,     37587
+.stabn 0x44,0,310,     37588
+.stabn 0x44,0,312,     37590
+.stabn 0x44,0,313,     37591
+.stabn 0x44,0,314,     37592
+.stabn 0x44,0,322,     37593
+.stabn 0x44,0,323,     37594
+.stabn 0x44,0,324,     37596
+.stabn 0x44,0,325,     37597
+.stabn 0x44,0,326,     37598
+.stabn 0x44,0,327,     37600
+.stabn 0x44,0,328,     37601
+.stabn 0x44,0,329,     37603
+.stabn 0x44,0,330,     37604
+.stabn 0x44,0,332,     37606
+.stabn 0x44,0,333,     37607
+.stabn 0x44,0,334,     37608
+.stabn 0x44,0,340,     37609
+.stabn 0x44,0,341,     37610
+.stabn 0x44,0,342,     37612
+.stabn 0x44,0,343,     37613
+.stabn 0x44,0,344,     37614
+.stabn 0x44,0,345,     37615
+.stabn 0x44,0,346,     37616
+.stabn 0x44,0,347,     37617
+.stabn 0x44,0,348,     37618
+.stabn 0x44,0,349,     37619
+.stabn 0x44,0,353,     37620
+.stabn 0x44,0,354,     37621
+.stabn 0x44,0,355,     37623
+.stabn 0x44,0,356,     37624
+.stabn 0x44,0,357,     37625
+.stabn 0x44,0,358,     37626
+.stabn 0x44,0,359,     37627
+.stabn 0x44,0,360,     37628
+.stabn 0x44,0,361,     37629
+.stabn 0x44,0,370,     37630
+.stabn 0x44,0,371,     37631
+.stabn 0x44,0,372,     37633
+.stabn 0x44,0,373,     37635
+.stabn 0x44,0,374,     37637
+.stabn 0x44,0,375,     37638
+.stabn 0x44,0,378,     37639
+.stabn 0x44,0,379,     37641
+.stabn 0x44,0,380,     37642
+.stabn 0x44,0,381,     37644
+.stabn 0x44,0,382,     37646
+.stabn 0x44,0,383,     37648
+.stabn 0x44,0,384,     37650
+.stabn 0x44,0,386,     37651
+.stabn 0x44,0,390,     37652
+.stabn 0x44,0,391,     37654
+.stabn 0x44,0,392,     37655
+.stabn 0x44,0,393,     37657
+.stabn 0x44,0,394,     37659
+.stabn 0x44,0,395,     37661
+.stabn 0x44,0,396,     37663
+.stabn 0x44,0,400,     37664
+.stabn 0x44,0,401,     37665
+.stabn 0x44,0,406,     37666
+.stabn 0x44,0,408,     37667
+.stabn 0x44,0,409,     37669
+.stabn 0x44,0,410,     37671
+.stabn 0x44,0,412,     37672
+.stabn 0x44,0,413,     37674
+.stabn 0x44,0,414,     37675
+.stabn 0x44,0,415,     37677
+.stabn 0x44,0,416,     37679
+.stabn 0x44,0,417,     37681
+.stabn 0x44,0,420,     37682
+.stabn 0x44,0,421,     37683
+.stabn 0x44,0,427,     37684
+.stabn 0x44,0,428,     37685
+.stabn 0x44,0,429,     37687
+.stabn 0x44,0,430,     37689
+.stabn 0x44,0,431,     37691
+.stabn 0x44,0,432,     37692
+.stabn 0x44,0,435,     37693
+.stabn 0x44,0,436,     37695
+.stabn 0x44,0,437,     37696
+.stabn 0x44,0,438,     37698
+.stabn 0x44,0,439,     37700
+.stabn 0x44,0,440,     37702
+.stabn 0x44,0,441,     37704
+.stabn 0x44,0,443,     37705
+.stabn 0x44,0,447,     37706
+.stabn 0x44,0,448,     37708
+.stabn 0x44,0,449,     37709
+.stabn 0x44,0,450,     37711
+.stabn 0x44,0,451,     37713
+.stabn 0x44,0,452,     37715
+.stabn 0x44,0,453,     37717
+.stabn 0x44,0,457,     37718
+.stabn 0x44,0,458,     37719
+.stabn 0x44,0,464,     37720
+.stabn 0x44,0,466,     37721
+.stabn 0x44,0,467,     37723
+.stabn 0x44,0,468,     37725
+.stabn 0x44,0,470,     37726
+.stabn 0x44,0,471,     37728
+.stabn 0x44,0,472,     37729
+.stabn 0x44,0,473,     37731
+.stabn 0x44,0,474,     37733
+.stabn 0x44,0,475,     37735
+.stabn 0x44,0,478,     37736
+.stabn 0x44,0,479,     37737
+.stabn 0x44,0,484,     37738
+.stabn 0x44,0,485,     37739
+.stabn 0x44,0,487,     37740
+.stabn 0x44,0,488,     37741
+.stabn 0x44,0,489,     37742
+.stabn 0x44,0,490,     37743
+.stabn 0x44,0,499,     37744
+.stabn 0x44,0,500,     37746
+.stabn 0x44,0,502,     37747
+.stabn 0x44,0,503,     37748
+.stabn 0x44,0,504,     37750
+.stabn 0x44,0,506,     37751
+.stabn 0x44,0,507,     37752
+.stabn 0x44,0,508,     37754
+.stabn 0x44,0,510,     37756
+.stabn 0x44,0,520,     37757
+.stabn 0x44,0,521,     37759
+.stabn 0x44,0,522,     37761
+.stabn 0x44,0,524,     37762
+.stabn 0x44,0,525,     37764
+.stabn 0x44,0,527,     37765
+.stabn 0x44,0,528,     37767
+.stabn 0x44,0,529,     37768
+.stabn 0x44,0,530,     37769
+.stabn 0x44,0,531,     37770
+.stabn 0x44,0,533,     37771
+.stabn 0x44,0,535,     37773
+.stabn 0x44,0,539,     37774
+.stabn 0x44,0,547,     37775
+.stabn 0x44,0,548,     37777
+.stabn 0x44,0,549,     37779
+.stabn 0x44,0,551,     37780
+.stabn 0x44,0,552,     37782
+.stabn 0x44,0,553,     37783
+.stabn 0x44,0,554,     37784
+.stabn 0x44,0,555,     37785
+.stabn 0x44,0,557,     37786
+.stabn 0x44,0,558,     37788
+.stabn 0x44,0,563,     37789
+.stabn 0x44,0,564,     37791
+.stabn 0x44,0,565,     37793
+.stabn 0x44,0,568,     37794
+.stabn 0x44,0,569,     37796
+.stabn 0x44,0,570,     37797
+.stabn 0x44,0,571,     37799
+.stabn 0x44,0,572,     37800
+.stabn 0x44,0,574,     37801
+.stabn 0x44,0,575,     37803
+.stabn 0x44,0,576,     37804
+.stabn 0x44,0,577,     37806
+.stabn 0x44,0,579,     37807
+.stabn 0x44,0,580,     37808
+.stabn 0x44,0,582,     37809
+.stabn 0x44,0,583,     37810
+.stabn 0x44,0,585,     37811
+.stabn 0x44,0,586,     37812
+.stabn 0x44,0,594,     37813
+.stabn 0x44,0,595,     37814
+.stabn 0x44,0,597,     37816
+.stabn 0x44,0,598,     37817
+.stabn 0x44,0,600,     37818
+.stabn 0x44,0,601,     37819
+.stabn 0x44,0,602,     37820
+.stabn 0x44,0,604,     37821
+.stabn 0x44,0,605,     37822
+.stabn 0x44,0,606,     37823
+.stabn 0x44,0,608,     37824
+.stabn 0x44,0,611,     37825
+.stabn 0x44,0,612,     37826
+.stabn 0x44,0,619,     37827
+.stabn 0xe0,0,0,     37828
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\key.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38385
+.stabn 0xe0,0,0,     38385
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\hardware.inc", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38385
+.stabn 0xe0,0,0,     38385
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl/", 0x64,0,0,0
+.stabs "F:\刻录光盘\电子竞赛\典型应用篇\电子竞赛—具有语音功能的水温控系统\temperature_ctrl\key.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     38385
+.stabn 0xe0,0,0,     38385
+.stabn 0xc0,0,0,       787
+.stabs "R_DebounceReg:S1",38,0,0,       787
+.stabs "R_DebounceCnt:S1",38,0,0,       788
+.stabs "R_KeyBuf:S1",38,0,0,       789
+.stabs "R_KeyStrobe:G1",32,0,0,       790
+.stabn 0xe0,0,0,       791
+.stabn 0xc0,0,0,     38385
+.stabn 0x44,0,42,     38385
+.stabn 0x44,0,43,     38386
+.stabn 0x44,0,44,     38388
+.stabn 0x44,0,45,     38390
+.stabn 0x44,0,46,     38392
+.stabn 0x44,0,47,     38393
+.stabn 0x44,0,48,     38395
+.stabn 0x44,0,63,     38396
+.stabn 0x44,0,66,     38398
+.stabn 0x44,0,67,     38400
+.stabn 0x44,0,68,     38402
+.stabn 0x44,0,69,     38404
+.stabn 0x44,0,70,     38406
+.stabn 0x44,0,72,     38407
+.stabn 0x44,0,73,     38408
+.stabn 0x44,0,74,     38410
+.stabn 0x44,0,77,     38411
+.stabn 0x44,0,78,     38413
+.stabn 0x44,0,79,     38414
+.stabn 0x44,0,82,     38415
+.stabn 0x44,0,83,     38417
+.stabn 0x44,0,84,     38419
+.stabn 0x44,0,85,     38421
+.stabn 0x44,0,86,     38423
+.stabn 0x44,0,87,     38425
+.stabn 0x44,0,88,     38427
+.stabn 0x44,0,89,     38429
+.stabn 0x44,0,90,     38431
+.stabn 0x44,0,91,     38433
+.stabn 0x44,0,99,     38434
+.stabn 0x44,0,100,     38436
+.stabn 0x44,0,101,     38438
+.stabn 0x44,0,103,     38440
+.stabn 0x44,0,105,     38442
+.stabn 0x44,0,106,     38443
+.stabn 0x44,0,107,     38444
+.stabn 0x44,0,110,     38446
+.stabn 0x44,0,111,     38447
+.stabn 0x44,0,112,     38448
+.stabn 0x44,0,114,     38449
+.stabn 0x44,0,115,     38451
+.stabn 0x44,0,116,     38453
+.stabn 0x44,0,118,     38455
+.stabn 0x44,0,120,     38457
+.stabn 0x44,0,121,     38458
+.stabn 0x44,0,122,     38459
+.stabn 0x44,0,124,     38460
+.stabn 0x44,0,125,     38461
+.stabn 0x44,0,129,     38462
+.stabn 0x44,0,131,     38464
+.stabn 0x44,0,132,     38466
+.stabn 0x44,0,133,     38468
+.stabn 0x44,0,134,     38470
+.stabn 0x44,0,136,     38471
+.stabn 0x44,0,137,     38472
+.stabn 0x44,0,138,     38474
+.stabn 0x44,0,141,     38475
+.stabn 0x44,0,142,     38477
+.stabn 0x44,0,143,     38478
+.stabn 0x44,0,146,     38479
+.stabn 0x44,0,147,     38481
+.stabn 0x44,0,148,     38483
+.stabn 0x44,0,149,     38485
+.stabn 0x44,0,150,     38487
+.stabn 0x44,0,151,     38489
+.stabn 0x44,0,152,     38491
+.stabn 0x44,0,153,     38493
+.stabn 0x44,0,154,     38495
+.stabn 0x44,0,155,     38497
+.stabn 0x44,0,161,     38498
+.stabn 0x44,0,162,     38500
+.stabn 0x44,0,163,     38501
+.stabn 0x44,0,164,     38502
+.stabn 0x44,0,166,     38504
+.stabn 0x44,0,178,     38505
+.stabn 0x44,0,179,     38507
+.stabn 0x44,0,180,     38508
+.stabn 0x44,0,182,     38510
+.stabn 0xe0,0,0,     38511

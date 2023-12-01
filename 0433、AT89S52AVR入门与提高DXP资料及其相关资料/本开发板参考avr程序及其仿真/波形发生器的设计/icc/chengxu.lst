@@ -1,0 +1,498 @@
+__text_start:
+__start:
+    0032 E5CF      LDI	R28,0x5F
+    0033 E0D4      LDI	R29,4
+    0034 BFCD      OUT	0x3D,R28
+    0035 BFDE      OUT	0x3E,R29
+    0036 51C0      SUBI	R28,0x10
+    0037 40D0      SBCI	R29,0
+    0038 EA0A      LDI	R16,0xAA
+    0039 8308      STD	Y+0,R16
+    003A 2400      CLR	R0
+    003B E7E0      LDI	R30,0x70
+    003C E0F0      LDI	R31,0
+    003D E010      LDI	R17,0
+    003E 37EB      CPI	R30,0x7B
+    003F 07F1      CPC	R31,R17
+    0040 F011      BEQ	0x0043
+    0041 9201      ST	R0,Z+
+    0042 CFFB      RJMP	0x003E
+    0043 8300      STD	Z+0,R16
+    0044 E5E4      LDI	R30,0x54
+    0045 E0F0      LDI	R31,0
+    0046 E6A0      LDI	R26,0x60
+    0047 E0B0      LDI	R27,0
+    0048 E010      LDI	R17,0
+    0049 36E4      CPI	R30,0x64
+    004A 07F1      CPC	R31,R17
+    004B F021      BEQ	0x0050
+    004C 95C8      LPM
+    004D 9631      ADIW	R30,1
+    004E 920D      ST	R0,X+
+    004F CFF9      RJMP	0x0049
+    0050 940E017D  CALL	_main
+_exit:
+    0052 CFFF      RJMP	_exit
+_delay:
+  i                    --> R20
+  j                    --> R22
+  t                    --> R16
+    0053 940E01D5  CALL	push_gset2
+FILE: D:\Proteus仿真实例\ATMEGA16\个人总结AVR\波形发生器的设计\icc\chengxu.c
+(0001) #include <iom16v.h> 
+(0002) #define uchar unsigned char 
+(0003) #define uint unsigned int
+(0004) uchar duan[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};	 //所需的段的位码
+(0005) //uchar wei[4]={0XFE,0XFD,0XFB,0XF7}; //位的控制端	(开发板)
+(0006) uchar wei[4]={0X0e,0X0d,0X0b,0X07};   //位的控制端	(仿真)
+(0007) uchar Key1_Flag,Key2_Flag,Key3_Flag;  //按键控制频率加减复位                          
+(0008) uint z,x,c,v, date;	//定义数据类型
+(0009) uint date=1;        //频率初始值1K
+(0010) /******************************************************************
+(0011) 延时函数
+(0012) ******************************************************************/
+(0013) void delay(uchar t)
+(0014) {
+(0015)   uchar i,j;
+(0016)    for(i=0;i<t;i++)
+    0055 2744      CLR	R20
+    0056 C007      RJMP	0x005E
+(0017)    {
+(0018)    	 for(j=13;j>0;j--);
+    0057 E06D      LDI	R22,0xD
+    0058 C001      RJMP	0x005A
+    0059 956A      DEC	R22
+    005A 2422      CLR	R2
+    005B 1626      CP	R2,R22
+    005C F3E0      BCS	0x0059
+    005D 9543      INC	R20
+    005E 1740      CP	R20,R16
+    005F F3B8      BCS	0x0057
+    0060 940E01BB  CALL	pop_gset2
+    0062 9508      RET
+_xianshi:
+  i                    --> R20
+  j                    --> R20
+    0063 940E01BE  CALL	push_gset1
+(0019) 	 { ; }
+(0020)    }
+(0021) }
+(0022) /**********************************************************************
+(0023)                 数码管动态扫描
+(0024) *********************************************************************/
+(0025) void xianshi()
+(0026)  { 
+(0027)  uint i,j;
+(0028)  /*************************数据转换*****************************/ 
+(0029)   z=date/1000;			 //求千位
+    0065 EE28      LDI	R18,0xE8
+    0066 E033      LDI	R19,3
+    0067 9100006E  LDS	R16,0x6E
+    0069 9110006F  LDS	R17,0x6F
+    006B 940E0191  CALL	div16u
+    006D 93100077  STS	_z+1,R17
+    006F 93000076  STS	_z,R16
+(0030)   x=date%1000/100;		 //求百位
+    0071 EE28      LDI	R18,0xE8
+    0072 E033      LDI	R19,3
+    0073 9100006E  LDS	R16,0x6E
+    0075 9110006F  LDS	R17,0x6F
+    0077 940E018F  CALL	mod16u
+    0079 E624      LDI	R18,0x64
+    007A E030      LDI	R19,0
+    007B 940E0191  CALL	div16u
+    007D 93100075  STS	_x+1,R17
+    007F 93000074  STS	_x,R16
+(0031)   c=date%100/10;		 //求十位
+    0081 E624      LDI	R18,0x64
+    0082 E030      LDI	R19,0
+    0083 9100006E  LDS	R16,0x6E
+    0085 9110006F  LDS	R17,0x6F
+    0087 940E018F  CALL	mod16u
+    0089 E02A      LDI	R18,0xA
+    008A E030      LDI	R19,0
+    008B 940E0191  CALL	div16u
+    008D 93100073  STS	_c+1,R17
+    008F 93000072  STS	_c,R16
+(0032)   v=date%10;			 //求个位
+    0091 E02A      LDI	R18,0xA
+    0092 E030      LDI	R19,0
+    0093 9100006E  LDS	R16,0x6E
+    0095 9110006F  LDS	R17,0x6F
+    0097 940E018F  CALL	mod16u
+    0099 93100071  STS	_v+1,R17
+    009B 93000070  STS	_v,R16
+(0033)  /*****************设置比较寄存器值*****************************/ 
+(0034)  i=z*1000+x*100+c*10+v;
+    009D 91200074  LDS	R18,_x
+    009F 91300075  LDS	R19,_x+1
+    00A1 E604      LDI	R16,0x64
+    00A2 E010      LDI	R17,0
+    00A3 940E01AB  CALL	empy16s
+    00A5 0118      MOVW	R2,R16
+    00A6 91200076  LDS	R18,_z
+    00A8 91300077  LDS	R19,_z+1
+    00AA EE08      LDI	R16,0xE8
+    00AB E013      LDI	R17,3
+    00AC 940E01AB  CALL	empy16s
+    00AE 01A8      MOVW	R20,R16
+    00AF 0D42      ADD	R20,R2
+    00B0 1D53      ADC	R21,R3
+    00B1 91200072  LDS	R18,_c
+    00B3 91300073  LDS	R19,_c+1
+    00B5 E00A      LDI	R16,0xA
+    00B6 E010      LDI	R17,0
+    00B7 940E01AB  CALL	empy16s
+    00B9 0F40      ADD	R20,R16
+    00BA 1F51      ADC	R21,R17
+    00BB 90200070  LDS	R2,_v
+    00BD 90300071  LDS	R3,_v+1
+    00BF 0D42      ADD	R20,R2
+    00C0 1D53      ADC	R21,R3
+(0035)  j=500/i;
+    00C1 EF04      LDI	R16,0xF4
+    00C2 E011      LDI	R17,1
+    00C3 019A      MOVW	R18,R20
+    00C4 940E0191  CALL	div16u
+    00C6 01A8      MOVW	R20,R16
+(0036)  OCR1AH=j>>8;
+    00C7 011A      MOVW	R2,R20
+    00C8 2C23      MOV	R2,R3
+    00C9 2433      CLR	R3
+    00CA BC2B      OUT	0x2B,R2
+(0037)  OCR1AL=j&0x00ff;
+    00CB 01CA      MOVW	R24,R20
+    00CC 7090      ANDI	R25,0
+    00CD BD8A      OUT	0x2A,R24
+(0038)  /********************数码管扫描显示****************************/ 
+(0039) 
+(0040)       PORTC=wei[0];
+    00CE 9020006A  LDS	R2,0x6A
+    00D0 BA25      OUT	0x15,R2
+(0041) 	  PORTA=duan[z];
+    00D1 E680      LDI	R24,0x60
+    00D2 E090      LDI	R25,0
+    00D3 91E00076  LDS	R30,_z
+    00D5 91F00077  LDS	R31,_z+1
+    00D7 0FE8      ADD	R30,R24
+    00D8 1FF9      ADC	R31,R25
+    00D9 8020      LDD	R2,Z+0
+    00DA BA2B      OUT	0x1B,R2
+(0042) 	  delay(50);  
+    00DB E302      LDI	R16,0x32
+    00DC DF76      RCALL	_delay
+(0043)   	  PORTC=wei[1];
+    00DD 9020006B  LDS	R2,0x6B
+    00DF BA25      OUT	0x15,R2
+(0044)       PORTA=duan[x];
+    00E0 E680      LDI	R24,0x60
+    00E1 E090      LDI	R25,0
+    00E2 91E00074  LDS	R30,_x
+    00E4 91F00075  LDS	R31,_x+1
+    00E6 0FE8      ADD	R30,R24
+    00E7 1FF9      ADC	R31,R25
+    00E8 8020      LDD	R2,Z+0
+    00E9 BA2B      OUT	0x1B,R2
+(0045) 	  delay(50);  
+    00EA E302      LDI	R16,0x32
+    00EB DF67      RCALL	_delay
+(0046)    	  PORTC=wei[2];
+    00EC 9020006C  LDS	R2,0x6C
+    00EE BA25      OUT	0x15,R2
+(0047)       PORTA=duan[c];
+    00EF E680      LDI	R24,0x60
+    00F0 E090      LDI	R25,0
+    00F1 91E00072  LDS	R30,_c
+    00F3 91F00073  LDS	R31,_c+1
+    00F5 0FE8      ADD	R30,R24
+    00F6 1FF9      ADC	R31,R25
+    00F7 8020      LDD	R2,Z+0
+    00F8 BA2B      OUT	0x1B,R2
+(0048) 	  delay(50);  
+    00F9 E302      LDI	R16,0x32
+    00FA DF58      RCALL	_delay
+(0049)       PORTC=wei[3];
+    00FB 9020006D  LDS	R2,0x6D
+    00FD BA25      OUT	0x15,R2
+(0050)       PORTA=duan[v];
+    00FE E680      LDI	R24,0x60
+    00FF E090      LDI	R25,0
+    0100 91E00070  LDS	R30,_v
+    0102 91F00071  LDS	R31,_v+1
+    0104 0FE8      ADD	R30,R24
+    0105 1FF9      ADC	R31,R25
+    0106 8020      LDD	R2,Z+0
+    0107 BA2B      OUT	0x1B,R2
+(0051) 	  delay(50);  
+    0108 E302      LDI	R16,0x32
+    0109 DF49      RCALL	_delay
+    010A 940E01C1  CALL	pop_gset1
+    010C 9508      RET
+(0052)  	}
+(0053) /**********************************************************************
+(0054)                           频率调节按键控制
+(0055) *********************************************************************/
+(0056) void Key_Process()
+(0057) {
+_Key_Process:
+    010D C004      RJMP	0x0112
+(0058)  while((PINB&0x01)==0) {xianshi();Key1_Flag=1;}
+    010E DF54      RCALL	_xianshi
+    010F E081      LDI	R24,1
+    0110 9380007A  STS	_Key1_Flag,R24
+    0112 9BB0      SBIS	0x16,0
+    0113 CFFA      RJMP	0x010E
+    0114 C004      RJMP	0x0119
+(0059)  while((PINB&0x02)==0) {xianshi();Key2_Flag=1;}
+    0115 DF4D      RCALL	_xianshi
+    0116 E081      LDI	R24,1
+    0117 93800079  STS	_Key2_Flag,R24
+    0119 9BB1      SBIS	0x16,1
+    011A CFFA      RJMP	0x0115
+    011B C004      RJMP	0x0120
+(0060)  while((PINB&0x04)==0) {xianshi();Key3_Flag=1;}
+    011C DF46      RCALL	_xianshi
+    011D E081      LDI	R24,1
+    011E 93800078  STS	_Key3_Flag,R24
+    0120 9BB2      SBIS	0x16,2
+    0121 CFFA      RJMP	0x011C
+(0061)  if(Key1_Flag==1) //处理频率百位，最高4
+    0122 9180007A  LDS	R24,_Key1_Flag
+    0124 3081      CPI	R24,1
+    0125 F4B1      BNE	0x013C
+(0062)    {
+(0063)     date++;//设置频率值加
+    0126 9180006E  LDS	R24,0x6E
+    0128 9190006F  LDS	R25,0x6F
+    012A 9601      ADIW	R24,1
+    012B 9390006F  STS	0x6F,R25
+    012D 9380006E  STS	0x6E,R24
+(0064) 	if(date>=30) date=30;//设置最大值为30KHZ
+    012F 318E      CPI	R24,0x1E
+    0130 E0E0      LDI	R30,0
+    0131 079E      CPC	R25,R30
+    0132 F030      BCS	0x0139
+    0133 E18E      LDI	R24,0x1E
+    0134 E090      LDI	R25,0
+    0135 9390006F  STS	0x6F,R25
+    0137 9380006E  STS	0x6E,R24
+(0065) 	Key1_Flag=0;
+    0139 2422      CLR	R2
+    013A 9220007A  STS	_Key1_Flag,R2
+(0066) 	}   
+(0067)  if(Key2_Flag==1) //处理频率十位，最高9
+    013C 91800079  LDS	R24,_Key2_Flag
+    013E 3081      CPI	R24,1
+    013F F4D1      BNE	0x015A
+(0068)     {
+(0069) 	if(date<=0) date=1;  //设置最大值为0HZ
+    0140 9020006E  LDS	R2,0x6E
+    0142 9030006F  LDS	R3,0x6F
+    0144 2022      TST	R2
+    0145 F441      BNE	0x014E
+    0146 2033      TST	R3
+    0147 F431      BNE	0x014E
+    0148 E081      LDI	R24,1
+    0149 E090      LDI	R25,0
+    014A 9390006F  STS	0x6F,R25
+    014C 9380006E  STS	0x6E,R24
+(0070) 	date--;//设置频率值减
+    014E 9180006E  LDS	R24,0x6E
+    0150 9190006F  LDS	R25,0x6F
+    0152 9701      SBIW	R24,1
+    0153 9390006F  STS	0x6F,R25
+    0155 9380006E  STS	0x6E,R24
+(0071) 	Key2_Flag=0;
+    0157 2422      CLR	R2
+    0158 92200079  STS	_Key2_Flag,R2
+(0072) 	 }
+(0073)  if(Key3_Flag==1) //处理频率各位，最高9
+    015A 91800078  LDS	R24,_Key3_Flag
+    015C 3081      CPI	R24,1
+    015D F449      BNE	0x0167
+(0074)     {
+(0075) 	date=1;//设置频率复位
+    015E E081      LDI	R24,1
+    015F E090      LDI	R25,0
+    0160 9390006F  STS	0x6F,R25
+    0162 9380006E  STS	0x6E,R24
+(0076) 	Key3_Flag=0;
+    0164 2422      CLR	R2
+    0165 92200078  STS	_Key3_Flag,R2
+(0077) 	 }
+    0167 9508      RET
+(0078) }
+(0079) /******************************************************************
+(0080) 
+(0081) /**********************************************************************
+(0082)                          初始化I/O口
+(0083) *********************************************************************/
+(0084) void Init_IO(void)             //初始化I/O口
+(0085) {DDRA=0xff;                    //设置A口为推挽1输出
+_Init_IO:
+    0168 EF8F      LDI	R24,0xFF
+    0169 BB8A      OUT	0x1A,R24
+(0086)  PORTA=0xff;
+    016A BB8B      OUT	0x1B,R24
+(0087)  DDRC=0xff;                    //设置C口为推挽1输出             
+    016B BB84      OUT	0x14,R24
+(0088)  PORTC=0xff;
+    016C BB85      OUT	0x15,R24
+(0089)  DDRB=0x00;                    //设置B口为三态输入
+    016D 2422      CLR	R2
+    016E BA27      OUT	0x17,R2
+(0090)  PORTB=0x00;
+    016F BA28      OUT	0x18,R2
+(0091)  DDRD=0xff;                    //设置D口为推挽1输出
+    0170 BB81      OUT	0x11,R24
+(0092)  PORTD=0xff;    
+    0171 BB82      OUT	0x12,R24
+    0172 9508      RET
+(0093) }
+(0094) /**********************************************************************
+(0095)                          初始化I/O口
+(0096) *********************************************************************/
+(0097) void Init_Timer1(void)         //初始化T/C1的输入捕获中断
+(0098) {TIMSK=TIMSK|0x10;             //输出比较使能
+_Init_Timer1:
+    0173 B789      IN	R24,0x39
+    0174 6180      ORI	R24,0x10
+    0175 BF89      OUT	0x39,R24
+(0099)  TCCR1B=0x0a;                  //时钟1频,输出比较匹配清除定时器值
+    0176 E08A      LDI	R24,0xA
+    0177 BD8E      OUT	0x2E,R24
+(0100)  TCNT1H=0x00;                  //清除定时器值
+    0178 2422      CLR	R2
+    0179 BC2D      OUT	0x2D,R2
+(0101)  TCNT1L=0x00;
+    017A BC2C      OUT	0x2C,R2
+(0102)  SREG=SREG|0x80;               //全局中断开
+    017B 9478      BSET	7
+    017C 9508      RET
+(0103) } 
+(0104) /**********************************************************************
+(0105)                           主函数
+(0106) *********************************************************************/
+(0107) void main(void)
+(0108) {
+(0109)  Init_IO(); //初始化I/O口
+_main:
+    017D DFEA      RCALL	_Init_IO
+(0110)  xianshi(); //显示初始值
+    017E DEE4      RCALL	_xianshi
+(0111)  Init_Timer1();//初始化T/C1的输入捕获中断 
+    017F DFF3      RCALL	_Init_Timer1
+    0180 C002      RJMP	0x0183
+(0112)  
+(0113)  while(1)
+(0114)  {
+(0115) 
+(0116) Key_Process();//按键值函数
+    0181 DF8B      RCALL	_Key_Process
+(0117) xianshi();//频率值显示
+    0182 DEE0      RCALL	_xianshi
+    0183 CFFD      RJMP	0x0181
+    0184 9508      RET
+_Compare:
+    0185 922A      ST	R2,-Y
+    0186 B62F      IN	R2,0x3F
+    0187 922A      ST	R2,-Y
+(0118) 
+(0119)  }
+(0120) }
+(0121) /**********************************************************************
+(0122)                           中断服务函数
+(0123) *********************************************************************/
+(0124) #pragma interrupt_handler Compare:7
+(0125) void Compare(void)
+(0126) {
+(0127) PORTD=~PORTD;//PD口输出
+FILE: <library>
+    0188 B222      IN	R2,0x12
+    0189 9420      COM	R2
+    018A BA22      OUT	0x12,R2
+    018B 9029      LD	R2,Y+
+    018C BE2F      OUT	0x3F,R2
+    018D 9029      LD	R2,Y+
+    018E 9518      RETI
+mod16u:
+    018F 9468      BSET	6
+    0190 C001      RJMP	xdiv16u
+div16u:
+    0191 94E8      BCLR	6
+xdiv16u:
+    0192 92EA      ST	R14,-Y
+    0193 92FA      ST	R15,-Y
+    0194 938A      ST	R24,-Y
+    0195 24EE      CLR	R14
+    0196 24FF      CLR	R15
+    0197 E180      LDI	R24,0x10
+    0198 0F00      LSL	R16
+    0199 1F11      ROL	R17
+    019A 1CEE      ROL	R14
+    019B 1CFF      ROL	R15
+    019C 16E2      CP	R14,R18
+    019D 06F3      CPC	R15,R19
+    019E F018      BCS	0x01A2
+    019F 1AE2      SUB	R14,R18
+    01A0 0AF3      SBC	R15,R19
+    01A1 9503      INC	R16
+    01A2 958A      DEC	R24
+    01A3 F7A1      BNE	0x0198
+    01A4 F416      BRTC	0x01A7
+    01A5 2D0E      MOV	R16,R14
+    01A6 2D1F      MOV	R17,R15
+    01A7 9189      LD	R24,Y+
+    01A8 90F9      LD	R15,Y+
+    01A9 90E9      LD	R14,Y+
+    01AA 9508      RET
+empy16s:
+    01AB 920A      ST	R0,-Y
+    01AC 921A      ST	R1,-Y
+    01AD 938A      ST	R24,-Y
+    01AE 939A      ST	R25,-Y
+    01AF 9F02      MUL	R16,R18
+    01B0 01C0      MOVW	R24,R0
+    01B1 9F12      MUL	R17,R18
+    01B2 0D90      ADD	R25,R0
+    01B3 9F03      MUL	R16,R19
+    01B4 0D90      ADD	R25,R0
+    01B5 018C      MOVW	R16,R24
+    01B6 9199      LD	R25,Y+
+    01B7 9189      LD	R24,Y+
+    01B8 9019      LD	R1,Y+
+    01B9 9009      LD	R0,Y+
+    01BA 9508      RET
+pop_gset2:
+    01BB E0E2      LDI	R30,2
+    01BC 940C01C2  JMP	pop
+push_gset1:
+    01BE 935A      ST	R21,-Y
+    01BF 934A      ST	R20,-Y
+    01C0 9508      RET
+pop_gset1:
+    01C1 E0E1      LDI	R30,1
+pop:
+    01C2 9149      LD	R20,Y+
+    01C3 9159      LD	R21,Y+
+    01C4 FDE0      SBRC	R30,0
+    01C5 9508      RET
+    01C6 9169      LD	R22,Y+
+    01C7 9179      LD	R23,Y+
+    01C8 FDE1      SBRC	R30,1
+    01C9 9508      RET
+    01CA 90A9      LD	R10,Y+
+    01CB 90B9      LD	R11,Y+
+    01CC FDE2      SBRC	R30,2
+    01CD 9508      RET
+    01CE 90C9      LD	R12,Y+
+    01CF 90D9      LD	R13,Y+
+    01D0 FDE3      SBRC	R30,3
+    01D1 9508      RET
+    01D2 90E9      LD	R14,Y+
+    01D3 90F9      LD	R15,Y+
+    01D4 9508      RET
+push_gset2:
+    01D5 937A      ST	R23,-Y
+    01D6 936A      ST	R22,-Y
+    01D7 940C01BE  JMP	push_gset1

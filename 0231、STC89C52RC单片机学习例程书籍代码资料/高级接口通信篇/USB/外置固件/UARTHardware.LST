@@ -1,0 +1,64 @@
+C51 COMPILER V7.06   UARTHARDWARE                                                          03/21/2011 11:03:30 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE UARTHARDWARE
+OBJECT MODULE PLACED IN UARTHardware.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE UARTHardware.c ROM(COMPACT) BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "global.h"
+   8          #include "UARTHardware.h"
+   9          #include "UARTInterface.h"
+  10          /******************************************************************
+  11          *函数名称:UARTHwInit
+  12          *输    入:无
+  13          *输    出:无
+  14          *说    明:串口 硬件层初始化
+  15          *******************************************************************/
+  16          void UARTHwInit(void)
+  17          {
+  18   1              SCON=0x40;
+  19   1              T2CON=0x34;
+  20   1              RCAP2L=0xD9;
+  21   1              RCAP2H=0xFF;
+  22   1              REN=1;
+  23   1      
+  24   1      
+  25   1      }
+  26          /******************************************************************
+  27          *函数名称:UARTIRQ
+  28          *输    入:无
+  29          *输    出:无
+  30          *说    明:串口 中断服务程序
+  31          *******************************************************************/
+  32          void UARTIRQ(void) interrupt 4
+  33          {
+  34   1              if(RI)
+  35   1              {
+  36   2                      RI=0;
+  37   2      
+  38   2              }
+  39   1      
+  40   1      
+  41   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     21    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,133 @@
+C51 COMPILER V8.02   S51YK                                                                 11/15/2007 09:11:13 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE S51YK
+OBJECT MODULE PLACED IN s51yk.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE s51yk.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3                #define c(x) (x*120000/120000) 
+   4          
+   5                sbit Ir_Pin=P3^2;
+   6                    sbit beep=P2^1;
+   7                    //sbit RELAY=P2^0;
+   8                unsigned char code Led_Tab[]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,
+   9                0xf8,0x80,0x90,0x88,0x83,0xC6,0xA1,0x86,0x8E};                        //共阳极数码显示码0-F.
+  10                unsigned char code Led_Sel[]={0x7f,0xbf,0xdf,0xef};
+  11          
+  12                unsigned char Led_Buf[4]; //显示缓冲区
+  13                char Led_Index;                   //位选         
+  14          
+  15                unsigned char Ir_Buf[4]; //用于保存解码结果
+  16                           void delay_50ms(unsigned int t)
+  17          {
+  18   1       unsigned int j;   
+  19   1       for(;t>0;t--) 
+  20   1        for(j=6245;j>0;j--) 
+  21   1      {;}
+  22   1      }
+  23          
+  24                //==============================================================
+  25                //数码管扫描
+  26                timer0() interrupt 1 using 1
+  27                {
+  28   1            TL0=65536-1000;
+  29   1            TH0=(65536-1000)/256; //定时器0设定约1000us中断一次，用于数码管扫描
+  30   1            P0=0xff;
+  31   1            P3=Led_Sel[Led_Index];                            //位选
+  32   1            P0=Led_Tab[Led_Buf[Led_Index]];                    //段选
+  33   1      
+  34   1            if(++Led_Index>3) Led_Index=0;                    //四个扫描完了,到第一个数码管
+  35   1            }
+  36                //==============================================================
+  37                unsigned int Ir_Get_Low()
+  38                {
+  39   1            TL1=0;
+  40   1            TH1=0;
+  41   1            TR1=1;
+  42   1            while(!Ir_Pin && (TH1&0x80)==0);                
+  43   1            TR1=0;           
+  44   1            return TH1*256+TL1;
+  45   1            }
+  46                //=============================================================
+  47                unsigned int Ir_Get_High()
+  48                {
+  49   1            TL1=0;
+  50   1            TH1=0;
+  51   1            TR1=1;
+  52   1            while(Ir_Pin && (TH1&0x80)==0);
+  53   1            TR1=0;
+  54   1            return TH1*256+TL1;
+  55   1            }
+C51 COMPILER V8.02   S51YK                                                                 11/15/2007 09:11:13 PAGE 2   
+
+  56                //==============================================================
+  57                main()
+  58                {
+  59   1            unsigned int temp;
+  60   1            char i,j;
+  61   1            Led_Index=1;
+  62   1      
+  63   1            TMOD=0x11;
+  64   1            TL0=65536-1000;
+  65   1            TH0=(65536-1000)/256; //定时器0设定约1000us中断一次，用于数码管扫描
+  66   1            EA=1;
+  67   1            ET0=1;
+  68   1            TR0=1;
+  69   1      
+  70   1            Led_Buf[0]=0;
+  71   1            Led_Buf[1]=0;
+  72   1            Led_Buf[2]=0;
+  73   1            Led_Buf[3]=0; //显示区设成0
+  74   1            do{
+  75   2            restart:
+  76   2            while(Ir_Pin);
+  77   2            temp=Ir_Get_Low();
+  78   2            if(temp<c(8500) || temp>c(9500)) continue;//引导脉冲低电平9000
+  79   2            temp=Ir_Get_High();
+  80   2            if(temp<c(4000) || temp>c(5000)) continue;//引导脉冲高电平4500
+  81   2            for(i=0;i<4;i++) //4个字节
+  82   2            for(j=0;j<8;j++) //每个字节8位
+  83   2            {
+  84   3            temp=Ir_Get_Low();
+  85   3            if(temp<c(200) || temp>c(800)) goto restart;
+  86   3            temp=Ir_Get_High();
+  87   3            if(temp<c(200) || temp>c(2000)) goto restart;
+  88   3            Ir_Buf[i]>>=1;
+  89   3            if(temp>c(1120)) Ir_Buf[i]|=0x80;
+  90   3            }
+  91   2            Led_Buf[0]=Ir_Buf[2]&0xf;
+  92   2            Led_Buf[1]=(Ir_Buf[2]/16)&0xf;
+  93   2            Led_Buf[2]=Ir_Buf[3]&0xf;
+  94   2            Led_Buf[3]=(Ir_Buf[3]/16)&0xf; //显示结果
+  95   2                P1=Ir_Buf[2];
+  96   2               beep=0;
+  97   2               delay_50ms(2);
+  98   2               beep=1;
+  99   2               //RELAY=0;
+ 100   2               //delay_50ms(50);
+ 101   2               //RELAY=1;
+ 102   2            }
+ 103   1                while(1);
+ 104   1         
+ 105   1            }
+ 106                   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    494    ----
+   CONSTANT SIZE    =     20    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V8.02   S51YK                                                                 11/15/2007 09:11:13 PAGE 3   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

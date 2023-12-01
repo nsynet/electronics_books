@@ -1,0 +1,56 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	.define     P_System_Clock  0x7013
+                            	.define		P_INT_CTRL		0x7010;
+                            	.define 	P_INT_CTRL_NEW	0x702D;
+                            	.define		P_INT_CLEAR		0x7011;
+                            	.external _KeyFind;
+00000000                    	.RAM
+                            	
+00008374                    	.code
+                            	.public _Initirq5
+                            	_Initirq5:
+00008374 40 F1              		int off 
+00008375 40 F0 7F 83        		call ClearWatchDog;
+                            		//r1=0x0098
+                            	    //[P_System_Clock]=r1
+00008377 48 92              		r1=0x0008			    //开中断IRQ5_4Hz和IRQ5_2Hz
+00008378 19 D3 10 70        		[P_INT_CTRL]=r1 
+0000837A 19 D3 2D 70        		[P_INT_CTRL_NEW]=r1 
+0000837C 40 92              		R1=0 
+0000837D 41 F1              		int	irq 
+0000837E 90 9A              	    retf;
+                            	    
+                            	.public _ClearWatchDog
+                            	.public ClearWatchDog
+                            	_ClearWatchDog: 
+                            	ClearWatchDog: .proc
+0000837F 88 D2              	 push R1 to [SP]
+00008380 41 92              	 R1 = 0x0001
+00008381 19 D3 12 70        	 [0x7012] = R1
+00008383 88 90              	 pop R1 from [SP]
+00008384 90 9A              	 retf
+                            	.endp
+                            		
+00008009                    	.text	
+                            	.public _IRQ5
+                            	_IRQ5:	
+00008009 A8 DA              		push r1,r5 to [sp]		//压栈保护  
+0000800A 48 92              	    r1=0x0008 	    
+0000800B 11 C3 10 70        		test r1,[P_INT_CTRL] 	//比较是否为4Hz的中断源
+0000800D 05 4E              	    jnz l_irq5_4 			//是，则转至对应程序段
+                            	   	
+                            	l_irq5_2:					//否，则进入2Hz程序段
+0000800E 44 92              		r1=0x0004      
+0000800F 19 D3 11 70        		[P_INT_CLEAR]=r1 
+00008011 A8 90              	    pop r1,r5 from [sp]
+00008012 98 9A              	    RETI    
+                            	l_irq5_4:
+                            	    
+00008013 48 92              		r1=0x0008     
+00008014 19 D3 11 70        	   	[P_INT_CLEAR]=r1
+00008016 40 F0 37 80        		 call  _KeyFind; 
+00008018 A8 90              	    pop r1,r5 from [sp]
+00008019 98 9A              	    RETI
+0 error(s), 0 warning(s).
+

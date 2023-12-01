@@ -1,0 +1,30 @@
+//工程名称：DAC的简单应用.spj
+//功能描述：DAC的双通道输出
+//涉及的库：CMacro1016.lib,.\clib100.lib,.\math.lib
+//组成文件：DAC.c
+//硬件连接：通过实验板的两通道DAC输出分别接示波器CH1、CH2可以观察输出波形——正弦波,适应于产生低频信号。
+ #include<SPCE061A.h>
+ #include<math.h>
+ #define pi 3.1415926
+ int main()
+ {
+    float mx=0,mz=0,my=0; 
+    int vv;
+    *P_SystemClock=0x0060;//时钟设置为最高
+ 	__asm("INT OFF");
+ 	*P_DAC_Ctrl=0;
+ 	while(1)
+ 	{
+ 	*P_Watchdog_Clear=0x0001;
+ 	mx=mz * pi/2;         //计算弧度
+ 	my=sinf(mx);          //计算正弦值
+ 	vv=(int)32736 * my;
+ 	vv^=0x8000;  
+ 	*P_DAC1=vv;
+ 	*P_DAC2=vv;
+    __asm("nop");
+ 	mz=mz+0.02;
+ 	if(((unsigned int)mz)==4) mz=0;  //循环
+ 	}
+ 	return(0);
+ }

@@ -1,0 +1,215 @@
+XL
+H 4 areas A global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+A text size 1E4 flags 0
+dbfile D:\MYDOCU~1\AVR单片机应用系统开发经典实例\020、4~1\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 10 4
+dbline 12 4
+dbline 13 6
+dbline 14 6
+dbline 14 C
+dbline 14 C
+dbline 14 10
+dbline 15 16
+dbline 12 16
+dbline 12 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Getch 26 fV
+dbsym r Z 14 c
+dbsym r Y 14 c
+dbsym r X 16 c
+dbline FFFFFFFF 2A
+dbline 1B 2A
+dbline 1D 2A
+dbline 1E 2E
+dbline 1F 32
+dbline 20 3A
+dbline 21 3A
+dbline 22 40
+dbline 23 48
+dbline 24 48
+dbline 25 4C
+dbline 26 52
+dbline 27 56
+dbline 28 5A
+dbline 29 62
+dbline 2A 62
+dbline 2B 68
+dbline 2C 70
+dbline 2D 70
+dbline 2E 74
+dbline 2F 7A
+dbline 30 12A
+dbline 31 12A
+dbline 31 130
+dbline 32 132
+dbline 32 138
+dbline 33 13A
+dbline 33 140
+dbline 34 142
+dbline 34 148
+dbline 35 14A
+dbline 35 150
+dbline 36 152
+dbline 36 158
+dbline 37 15A
+dbline 37 160
+dbline 38 162
+dbline 38 168
+dbline 39 16A
+dbline 39 170
+dbline 3A 172
+dbline 3A 178
+dbline 3B 17A
+dbline 3B 180
+dbline 3C 182
+dbline 3C 188
+dbline 3D 18A
+dbline 3D 190
+dbline 3E 192
+dbline 3E 198
+dbline 3F 19A
+dbline 3F 1A0
+dbline 40 1A2
+dbline 40 1A8
+dbline 41 1A8
+dbline 41 1A8
+dbline 41 1A8
+dbline 41 1A8
+dbline FFFFFFFE 1A8
+dbline 0 1AC
+dbfunc e Init_IO 1AE fV
+dbline FFFFFFFF 1AE
+dbline 44 1AE
+dbline 46 1AE
+dbline 47 1B2
+dbline 49 1B4
+dbline 4A 1B6
+dbline 4C 1B8
+dbline 4D 1BC
+dbline 4F 1BE
+dbline 50 1C0
+dbline FFFFFFFE 1C2
+dbline 0 1C2
+dbfunc e main 1C4 fV
+dbline FFFFFFFF 1C4
+dbline 57 1C4
+dbline 58 1C4
+dbline 5A 1C8
+dbline 5B 1C8
+dbline 5C 1CA
+dbline 5D 1DC
+dbline 5F 1E0
+dbline 59 1E0
+dbline FFFFFFFE 1E2
+dbline 0 1E2
+S _main Def01C4
+S _Getch Def0026
+S _Init_IO Def01AE
+S _DelayMS Def0000
+A data size 10 flags 20
+dbfile D:\MYDOCU~1\AVR单片机应用系统开发经典实例\020、4~1\icc\chengxu.c
+dbsym e Table 0 A[16:16]c
+S _Table Def0000
+A idata size 10 flags 0
+A bss size 1 flags 20
+dbfile D:\MYDOCU~1\AVR单片机应用系统开发经典实例\020、4~1\icc\chengxu.c
+dbsym e k 0 c
+S _k Def0000
+T 00 00 C0 F9
+R 00 00 02 00
+T 02 00 A4 B0
+R 00 00 02 00
+T 04 00 99 92
+R 00 00 02 00
+T 06 00 82 F8
+R 00 00 02 00
+T 08 00 80 90
+R 00 00 02 00
+T 0A 00 88 83
+R 00 00 02 00
+T 0C 00 C6 A1
+R 00 00 02 00
+T 0E 00 86 8E
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E2 53 E0 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 02 00
+T 26 00 0E 94 00 00 80 EF 81 BB 8F E0 82 BB 80 B3
+R 00 00 00 00 12 04 01 00
+T 34 00 8F 30 09 F4 B7 C0 01 E0 10 E0 E0 DF 80 B3
+R 00 00 00 00
+T 42 00 8F 30 09 F4 B0 C0 60 B3 60 6F 01 E0 10 E0
+R 00 00 00 00
+T 50 00 D7 DF 8F E0 81 BB 80 EF 82 BB 80 B3 80 3F
+R 00 00 00 00
+T 5E 00 09 F4 A3 C0 01 E0 10 E0 CC DF 80 B3 80 3F
+R 00 00 00 00
+T 6C 00 09 F4 9C C0 40 B3 4F 60 26 2E 24 22 42 2D
+R 00 00 00 00
+T 7A 00 55 27 47 3B E0 E0 5E 07 09 F4 8A C0 4B 3B
+R 00 00 00 00
+T 88 00 E0 E0 5E 07 09 F4 75 C0 4D 3B E0 E0 5E 07
+R 00 00 00 00
+T 96 00 09 F4 60 C0 4E 3B E0 E0 5E 07 09 F4 4B C0
+R 00 00 00 00
+T A4 00 8E EB 90 E0 84 17 95 07 AC F0 47 37 E0 E0
+R 00 00 00 00
+T B2 00 5E 07 09 F4 75 C0 4B 37 E0 E0 5E 07 09 F4
+R 00 00 00 00
+T C0 00 60 C0 4D 37 E0 E0 5E 07 09 F4 4B C0 4E 37
+R 00 00 00 00
+T CE 00 E0 E0 5E 07 09 F4 36 C0 68 C0 47 3D E0 E0
+R 00 00 00 00
+T DC 00 5E 07 09 F4 58 C0 4B 3D E0 E0 5E 07 09 F4
+R 00 00 00 00
+T EA 00 43 C0 4D 3D E0 E0 5E 07 79 F1 4E 3D E0 E0
+R 00 00 00 00
+T F8 00 5E 07 D9 F0 47 3D E0 E0 5E 07 0C F4 51 C0
+R 00 00 00 00
+T 06 01 47 3E E0 E0 5E 07 09 F4 3D C0 4B 3E E0 E0
+R 00 00 00 00
+T 14 01 5E 07 49 F1 4D 3E E0 E0 5E 07 A9 F0 4E 3E
+R 00 00 00 00
+T 22 01 E0 E0 5E 07 09 F0 3F C0 22 24 20 92 00 00
+R 00 00 00 00 00 0E 03 00
+T 30 01 3B C0 81 E0 80 93 00 00 37 C0 82 E0 80 93
+R 00 00 00 00 00 08 03 00
+T 3E 01 00 00 33 C0 83 E0 80 93 00 00 2F C0 84 E0
+R 00 00 00 00 00 02 03 00 00 0A 03 00
+T 4C 01 80 93 00 00 2B C0 85 E0 80 93 00 00 27 C0
+R 00 00 00 00 00 04 03 00 00 0C 03 00
+T 5A 01 86 E0 80 93 00 00 23 C0 87 E0 80 93 00 00
+R 00 00 00 00 00 06 03 00 00 0E 03 00
+T 68 01 1F C0 88 E0 80 93 00 00 1B C0 89 E0 80 93
+R 00 00 00 00 00 08 03 00
+T 76 01 00 00 17 C0 8A E0 80 93 00 00 13 C0 8B E0
+R 00 00 00 00 00 02 03 00 00 0A 03 00
+T 84 01 80 93 00 00 0F C0 8C E0 80 93 00 00 0B C0
+R 00 00 00 00 00 04 03 00 00 0C 03 00
+T 92 01 8D E0 80 93 00 00 07 C0 8E E0 80 93 00 00
+R 00 00 00 00 00 06 03 00 00 0E 03 00
+T A0 01 03 C0 8F E0 80 93 00 00 0E 94 00 00 08 95
+R 00 00 00 00 00 08 03 00 12 0C 03 00
+T AE 01 8F EF 8A BB 8B BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T BC 01 82 BB 87 BB 88 BB 08 95
+R 00 00 00 00
+T C4 01 F4 DF 0C C0 2E DF 80 E0 90 E0 E0 91
+R 00 00 00 00 20 08 01 00 00 00 40 0A 01 00 00 00
+T D0 01 00 00 FF 27 E8 0F F9 1F 20 80 2B BA 8F E0
+R 00 00 00 00 00 02 03 00
+T DE 01 85 BB F3 CF 08 95
+R 00 00 00 00

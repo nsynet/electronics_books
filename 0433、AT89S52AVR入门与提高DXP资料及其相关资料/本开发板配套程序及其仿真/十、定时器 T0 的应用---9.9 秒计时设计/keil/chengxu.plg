@@ -1,0 +1,76 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+E:\产品最新整理\汇诚科技产品最新整理\S52_M16两用开发板\本开发板配套程序及其仿真\十、定时器 T0 的应用---9.9 秒计时设计\keil\chengxu.uv2
+Project File Date:  12/15/2005
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(64): error C202: 'P3_0': undefined identifier
+CHENGXU.C(68): error C202: 'P3_0': undefined identifier
+CHENGXU.C(70): error C202: 'keycnt': undefined identifier
+CHENGXU.C(74): error C202: 'keycnt': undefined identifier
+CHENGXU.C(85): error C202: 'keycnt': undefined identifier
+CHENGXU.C(86): error C202: 'sec': undefined identifier
+CHENGXU.C(89): error C202: 'P3_0': undefined identifier
+CHENGXU.C(96): error C202: 'tcnt': undefined identifier
+CHENGXU.C(97): error C202: 'tcnt': undefined identifier
+CHENGXU.C(99): error C202: 'tcnt': undefined identifier
+CHENGXU.C(100): error C202: 'sec': undefined identifier
+CHENGXU.C(101): error C202: 'sec': undefined identifier
+CHENGXU.C(103): error C202: 'sec': undefined identifier
+CHENGXU.C(116): error C202: 'sec': undefined identifier
+CHENGXU.C(158): error C202: 'P3_0': undefined identifier
+CHENGXU.C(162): error C202: 'P3_0': undefined identifier
+CHENGXU.C(180): error C202: 'P3_0': undefined identifier
+CHENGXU.C(181): error C237: 'KEY': function already has a body
+CHENGXU.C(194): error C237: 't0': function already has a body
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(67): error C202: 'P3_0': undefined identifier
+CHENGXU.C(71): error C202: 'P3_0': undefined identifier
+CHENGXU.C(92): error C202: 'P3_0': undefined identifier
+CHENGXU.C(134): error C279: 'keycnt': multiple initialization
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(67): error C202: 'P3_0': undefined identifier
+CHENGXU.C(70): error C141: syntax error near 'if'
+CHENGXU.C(70): error C202: 'P3_0': undefined identifier
+CHENGXU.C(91): error C202: 'P3_0': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(70): error C141: syntax error near 'if'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(70): error C141: syntax error near 'if'
+Target not created
+Build target 'Target 1'
+compiling chengxu.c...
+CHENGXU.C(66): warning C280: 'i': unreferenced local variable
+CHENGXU.C(66): warning C280: 'j': unreferenced local variable
+linking...
+Program Size: data=21.0 xdata=0 code=589
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=21.0 xdata=0 code=589
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=21.0 xdata=0 code=589
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: data=21.0 xdata=0 code=589
+creating hex file from "chengxu"...
+"chengxu" - 0 Error(s), 0 Warning(s).

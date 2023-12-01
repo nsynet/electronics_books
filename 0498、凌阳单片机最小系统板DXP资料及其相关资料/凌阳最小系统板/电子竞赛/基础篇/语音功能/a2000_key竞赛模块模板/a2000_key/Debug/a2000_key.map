@@ -1,0 +1,211 @@
+Friday, July 11, 12:16:29, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             802B         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop                                          8047         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop2                                         8046         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+_RES_Table                                         8026         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\Resource.obj"
+_RES_A32_16K_A20_SA                                8026         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\Resource.obj"
+_RES_A32_16K_A20_EA                                8028         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\Resource.obj"
+T_SACM_A2000_SpeechTable                           802A         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\Resource.obj"
+_main                                              8E67         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\main.obj"
+_FIQ                                               8009         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\isr.obj"
+_System_Initial                                    8EE1         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\system.obj"
+F_System_Initial                                   8EE1         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\system.obj"
+_System_ServiceLoop                                8EE4         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\system.obj"
+F_System_ServiceLoop                               8EE4         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\system.obj"
+F_Key_Scan_Initial                                 8DE9         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\key.obj"
+F_Key_Scan_ServiceLoop                             8DF4         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\key.obj"
+F_Key_Scan_ServiceLoop_2                           8E1A         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\key.obj"
+F_Key_DebounceCnt_Down                             8E5A         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\key.obj"
+_SP_GetCh                                          8E61         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\key.obj"
+F_SP_GetCh                                         8E61         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\key.obj"
+R_KeyStrobe                                        2FA          "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\key.obj"
+F_SP_Send_PWM                                      8CBC         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Send_DAC1                                     8CBF         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Send_DAC2                                     8CC2         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  8CC5         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Send_Out                                      8CC5         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Get_ADC                                       8CCA         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             8CCD         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             8CD0         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             8CD3         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             8CD6         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                8CD9         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               8CDC         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             8CDF         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                8CE2         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                8CE5         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Write_INT_Status                              8CE8         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Read_INT_Status                               8CEB         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    8D23         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    8D47         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    8D59         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    8D7D         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_RampUpDAC1                                     8D23         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_RampDnDAC1                                     8D47         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_RampUpDAC2                                     8D59         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_RampDnDAC2                                     8D7D         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_Delay                                         8DE8         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_InitQueue                                     8D95         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_ReadQueue                                     8DA2         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_WriteQueue                                    8DB4         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+F_SP_TestQueue                                     8DC2         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_Export                                         8D19         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_Import                                         8D0E         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_Init_IOB                                       8CFE         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_Init_IOA                                       8CEE         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+_SP_GetResource                                    8DDA         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+R_InterruptStatus                                  2FC          "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+R_FIQTemp                                          2FD          "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+__RES_A32_16K_A20_sa                               8F22         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\A32_16K_a20.res"
+__RES_A32_16K_A20_ea                               EAD5         "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\A32_16K_a20.res"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            802B                 8047         1D     *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8026                 802A         5      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8E67                 8EE0         7A     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\isr.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8025         1D     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\system.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8EE1                 8EEB         B      *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\key.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8DE9                 8E66         7E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           2F7                  2FA          4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\hardware.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8CBC                 8DE8         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          8EEC (2FC)           8F21 (331)   36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\基础篇\语音功能－向\ele_competition\ele_competition\voice\a2000_key\Debug\A32_16K_a20.res"
+*    __sn_section_RES_A32_16K_A20(DATA)            8F22                 EAD4         5BB3   *
+* "d:\working\unsp\mix\release\a2000"                                                       *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8048                 8CBB         C74    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           2FB                  2FB          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    A2000_Section(ORAM)                           0                    2F6          2F7    *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  332          4CE                   *
+* "First Bank Rom"                  7C00                 6AD5         112B                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\a2000_key.S37
+Disk  Mapping Filename : .\Debug\a2000_key.map
+Symbol  Table FileName : .\Debug\a2000_key.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

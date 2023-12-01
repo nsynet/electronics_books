@@ -1,0 +1,70 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:21:40 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          
+   7          #include "stc.h"           //加载stc.h头文件
+   8          
+   9          unsigned char i=0;         //声明变量i
+  10          
+  11          /****************************************
+  12          *函数名称:main
+  13          *输    入:无
+  14          *输    出:无
+  15          *功    能:函数主体
+  16          ******************************************/
+  17          void main(void)              
+  18          {
+  19   1      
+  20   1              TH0=(65536-50000)/256; //计数寄存器高8位
+  21   1              TL0=(65536-50000)%256; //计数寄存器低8位
+  22   1              TMOD=0x01;                //工作方式为16位定时器
+  23   1              ET0=0x01;                 //允许T/C0中断
+  24   1              EA=1;                      //开启全局中断
+  25   1          TR0=1;                     // 启动T/C0运行
+  26   1      
+  27   1              while(1)                   // 进入死循环
+  28   1              {
+  29   2                      if(i>7)i=0;            //若i>7,则i=0
+  30   2          } 
+  31   1      }
+  32          /****************************************
+  33          *函数名称:Timer0IRQ
+  34          *输    入:无
+  35          *输    出:无
+  36          *功    能:T/C0中断服务函数
+  37          ******************************************/
+  38          void Timer0IRQ(void) interrupt 1 //中断服务函数
+  39          {
+  40   1              TH0=(65536-50000)/256;      //计数寄存器高8位重新载入
+  41   1              TL0=(65536-50000)%256;      //计数寄存器低8位重新载入
+  42   1              P2=1<<i;                    //进入位移操作,熄灭相对应位的LED
+  43   1          i++;                        //i自加1
+  44   1      }
+  45          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     70    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:21:40 PAGE 2   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

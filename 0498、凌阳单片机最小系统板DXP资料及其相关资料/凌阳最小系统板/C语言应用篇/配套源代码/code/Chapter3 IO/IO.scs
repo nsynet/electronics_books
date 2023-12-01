@@ -1,0 +1,71 @@
+# Begin Project
+# Begin SubItem "IO  files"
+# Begin Group "Source Files"
+#PROP Default_Filter=
+USEPARAM=FALSE
+PARAM=
+EXPORT=1651453508
+# Begin Source File
+SOURCE=IO.rc
+USEPARAM=FALSE
+PARAM=
+ID=
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=Resource.asm
+USEPARAM=FALSE
+PARAM=
+ID=
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=Key_and_LED.c
+USEPARAM=FALSE
+PARAM=
+ID=
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=..\isr.c and introduce\ISR.c
+USEPARAM=FALSE
+PARAM=
+ID=
+EXPORT=0
+# End Source File
+# End Group
+# Begin Group "Head Files"
+#PROP Default_Filter=
+USEPARAM=FALSE
+PARAM=
+EXPORT=0
+# Begin Source File
+SOURCE=IO.h
+USEPARAM=FALSE
+PARAM=
+ID=
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=Resource.inc
+USEPARAM=FALSE
+PARAM=
+ID=
+EXPORT=3
+# End Source File
+# End Group
+# Begin Group "External Dependencies"
+#PROP Default_Filter=
+USEPARAM=FALSE
+PARAM=
+EXPORT=0
+# Begin Source File
+SOURCE=Makefile
+USEPARAM=FALSE
+PARAM=
+ID=
+EXPORT=3
+# End Source File
+# End Group
+# End SubItem
+# End Project

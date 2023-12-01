@@ -1,0 +1,76 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        10/16/2007  12:50:35  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE JDQ.obj TO JDQ RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  JDQ.obj (JDQ)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  JDQ (JDQ)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     000CH     UNIT         ?PR?MAIN?JDQ
+            CODE    000FH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   JDQ (JDQ)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?JDQ
+
+
+
+SYMBOL TABLE OF MODULE:  JDQ (JDQ)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        JDQ
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0003H         PUBLIC        main
+  B:00A0H.0       PUBLIC        JDQ
+  B:0090H.0       PUBLIC        K1
+  B:0090H.1       PUBLIC        K2
+  -------         PROC          MAIN
+  C:0003H         LINE#         15
+  C:0003H         LINE#         16
+  C:0003H         LINE#         18
+  C:0003H         LINE#         20
+BL51 BANKED LINKER/LOCATER V6.00                                                      10/16/2007  12:50:35  PAGE 2
+
+
+  C:0006H         LINE#         21
+  C:0006H         LINE#         22
+  C:0008H         LINE#         23
+  C:0008H         LINE#         25
+  C:000BH         LINE#         26
+  C:000DH         LINE#         27
+  C:000DH         LINE#         31
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        JDQ
+
+Program Size: data=9.0 xdata=0 code=27
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

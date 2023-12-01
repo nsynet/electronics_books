@@ -1,0 +1,50 @@
+C51 COMPILER V7.06   NETHARDWARE                                                           03/16/2011 16:18:38 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE NETHARDWARE
+OBJECT MODULE PLACED IN .\Output\NETHardware.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE NETHardware.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\NETHardware.obj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "Board.h"
+   7          #include "Global.h"
+   8          #include "NETHardware.h"
+   9          #include "NETInterface.h"
+  10          /****************************************************************************************************
+  11          *
+  12          *                                      函数区
+  13          * 
+  14          *****************************************************************************************************/
+  15          /******************************************************************
+  16          *函数名称:NETHwInit
+  17          *输    入:无
+  18          *输    出:无
+  19          *说    明:网口 硬件层初始化
+  20          *******************************************************************/
+  21          void NETHwInit(void)
+  22          {
+  23   1           NET_PORT=SI_ENJ|SCK_ENJ;
+  24   1                                    
+  25   1      }
+  26          
+  27          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      4    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

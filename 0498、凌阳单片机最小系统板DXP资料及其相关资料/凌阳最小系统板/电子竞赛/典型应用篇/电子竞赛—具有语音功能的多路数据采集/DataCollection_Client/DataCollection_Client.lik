@@ -1,0 +1,27 @@
+Version: 3.0
+Options: m37
+Obj: "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Resource.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Main.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\UART.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\System.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\isr.obj"
+Obj: "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Client\Debug\Ad.obj"
+Lib: "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\CMacro.lib"
+Output: ".\Debug\DataCollection_Client.S37"
+;Locate: TEXT in "isr.obj" at 8009 
+;Align: TEXT in "isr.obj" with 0 
+;Locate: IRAM in "Main.obj" at 81B6  linkat 8 
+;Align: IRAM in "Main.obj" with 0 
+;Locate: RAM in "Main.obj" at 0 
+;Align: RAM in "Main.obj" with 0 
+;Locate: CODE in "Main.obj" at 806A 
+;Align: CODE in "Main.obj" with 0 
+;Locate: CODE in "UART.obj" at 8110 
+;Align: CODE in "UART.obj" with 0 
+;Locate: CODE in "System.obj" at 8144 
+;Align: CODE in "System.obj" with 0 
+;Locate: CODE in "Ad.obj" at 8178 
+;Align: CODE in "Ad.obj" with 0 
+;Locate: CODE in "rshu1" of "CMacro.lib"  at 81A1 
+;Align: CODE in "rshu1" of "CMacro.lib"  with 0 

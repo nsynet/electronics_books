@@ -1,0 +1,111 @@
+	.module chengxu.c
+	.area text(rom, con, rel)
+	.dbfile D:\整理\个人总结的M8程序\001、闪烁灯设计\icc\chengxu.c
+	.dbfunc e DelayMS _DelayMS fV
+;              j -> R20,R21
+;              i -> R16,R17
+	.even
+_DelayMS::
+	xcall push_gset1
+	.dbline -1
+	.dbline 11
+; #include <iom8v.h>
+; /**********************************************************************
+; 				  函数数据类型说明							   	
+; **********************************************************************/
+; #define uchar unsigned char 
+; #define uint unsigned int
+; /**********************************************************************
+; 				  MS级延时函数程序，参数i 延时时间								   	
+; **********************************************************************/
+; void DelayMS(uint i)
+; {
+	.dbline 13
+; uint j;
+; for(;i!=0;i--)
+	xjmp L5
+L2:
+	.dbline 14
+; {
+	.dbline 15
+	ldi R20,8000
+	ldi R21,31
+	xjmp L9
+L6:
+	.dbline 15
+L7:
+	.dbline 15
+	subi R20,1
+	sbci R21,0
+L9:
+	.dbline 15
+	cpi R20,0
+	cpc R20,R21
+	brne L6
+X0:
+	.dbline 16
+L3:
+	.dbline 13
+	subi R16,1
+	sbci R17,0
+L5:
+	.dbline 13
+	cpi R16,0
+	cpc R16,R17
+	brne L2
+X1:
+	.dbline -2
+L1:
+	xcall pop_gset1
+	.dbline 0 ; func end
+	ret
+	.dbsym r j 20 i
+	.dbsym r i 16 i
+	.dbend
+	.dbfunc e main _main fV
+	.even
+_main::
+	.dbline -1
+	.dbline 22
+; for(j=8000;j!=0;j--);
+; }
+; }
+; /**********************************************************************
+; 				   主函数						   	
+; **********************************************************************/
+; void main(void)
+; {
+	.dbline 23
+;  DDRB=0XFF;//端口设置，PB口设置为推挽1输出
+	ldi R24,255
+	out 0x17,R24
+	.dbline 24
+;  PORTB=0XFF;
+	out 0x18,R24
+	xjmp L12
+L11:
+	.dbline 26
+	.dbline 27
+	clr R2
+	out 0x18,R2
+	.dbline 28
+	ldi R16,100
+	ldi R17,0
+	xcall _DelayMS
+	.dbline 29
+	ldi R24,255
+	out 0x18,R24
+	.dbline 30
+	ldi R16,100
+	ldi R17,0
+	xcall _DelayMS
+	.dbline 31
+L12:
+	.dbline 25
+	xjmp L11
+X2:
+	.dbline -2
+L10:
+	.dbline 0 ; func end
+	ret
+	.dbend

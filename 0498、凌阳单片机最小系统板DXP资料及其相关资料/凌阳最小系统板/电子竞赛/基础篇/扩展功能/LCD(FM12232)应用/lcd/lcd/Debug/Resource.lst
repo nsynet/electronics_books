@@ -1,0 +1,34 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	
+                            	// Resource Table
+                            	// Created by IDE, Do not modify this table
+                            	
+000087CD                    	.TEXT
+                            	.public _RES_Table;
+                            	.external __RES_A32_16K_A20_sa
+                            	.public _RES_A32_16K_A20_SA;
+                            	.external __RES_A32_16K_A20_ea;
+                            	.public _RES_A32_16K_A20_EA;
+                            	
+                            	
+                            	_RES_Table:
+                            	
+                            	_RES_A32_16K_A20_SA:
+000087CD F3 96 00 00        		.DW offset __RES_A32_16K_A20_sa,seg __RES_A32_16K_A20_sa;
+                            	_RES_A32_16K_A20_EA:
+000087CF A6 F2 00 00        		.DW offset __RES_A32_16K_A20_ea,seg __RES_A32_16K_A20_ea;
+                            	
+                            	
+                            	// End Table
+                            	//------------------------------------------------
+                            	// SACM A2000 Speech Table
+                            	// -- User nees to add in the song/speech 
+                            	//    for playback based on the _RES_Table above.
+                            	//------------------------------------------------
+                            	.public T_SACM_A2000_SpeechTable;
+000087D1                    	.Text
+                            	T_SACM_A2000_SpeechTable:
+000087D1 CD 87              		.dw _RES_A32_16K_A20_SA;
+0 error(s), 0 warning(s).
+

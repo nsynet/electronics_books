@@ -1,0 +1,351 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _Table::
+ 0000                   .blkb 2
+                        .area idata
+ 0000 3F06              .byte 63,6
+                        .area data(ram, con, rel)
+ 0002                   .blkb 2
+                        .area idata
+ 0002 5B4F              .byte 91,'O
+                        .area data(ram, con, rel)
+ 0004                   .blkb 2
+                        .area idata
+ 0004 666D              .byte 'f,'m
+                        .area data(ram, con, rel)
+ 0006                   .blkb 2
+                        .area idata
+ 0006 7D07              .byte 125,7
+                        .area data(ram, con, rel)
+ 0008                   .blkb 2
+                        .area idata
+ 0008 7F6F              .byte 127,'o
+                        .area data(ram, con, rel)
+ 000A                   .blkb 2
+                        .area idata
+ 000A 777C              .byte 'w,124
+                        .area data(ram, con, rel)
+ 000C                   .blkb 2
+                        .area idata
+ 000C 395E              .byte 57,94
+                        .area data(ram, con, rel)
+ 000E                   .blkb 2
+                        .area idata
+ 000E 7971              .byte 'y,'q
+                        .area data(ram, con, rel)
+ 0010                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+ 0010                   .dbsym e Table _Table A[16:16]c
+ 0010           _Send_Data::
+ 0010                   .blkb 2
+                        .area idata
+ 0010 6162              .byte 'a,'b
+                        .area data(ram, con, rel)
+ 0012                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+ 0012                   .blkb 2
+                        .area idata
+ 0012 6364              .byte 'c,'d
+                        .area data(ram, con, rel)
+ 0014                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+ 0014                   .dbsym e Send_Data _Send_Data A[4:4]c
+ 0014           _Receive_Data::
+ 0014                   .blkb 2
+                        .area idata
+ 0014 0000              .byte 0,0
+                        .area data(ram, con, rel)
+ 0016                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+ 0016                   .blkb 2
+                        .area idata
+ 0016 0000              .byte 0,0
+                        .area data(ram, con, rel)
+ 0018                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+ 0018                   .dbsym e Receive_Data _Receive_Data A[4:4]c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+ 0000                   .dbfunc e DelayMs _DelayMs fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMs::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 25
+ 0004           ; /********************************************************************
+ 0004           ;     计算机通过RS232接口向计算机发送1,2,3,4四个数据。单片机收
+ 0004           ; 到四个数据后在数码管上动态显示出来，然后单片机向计算机发送a，b，c，d，四
+ 0004           ; 个字符，使用着通过“串口调试助手 ”等软件观察数据传输过程
+ 0004           ; 
+ 0004           ; *********************************************************************/
+ 0004           ; #include <iom16v.h>
+ 0004           ; #include <macros.h>
+ 0004           ; /********************************************************************
+ 0004           ;                 数据类型定义
+ 0004           ; *********************************************************************/
+ 0004           ; #define uchar unsigned char
+ 0004           ; #define uint  unsigned int
+ 0004           ; /********************************************************************
+ 0004           ;                 数码管段码定义0123456789
+ 0004           ; *********************************************************************/
+ 0004           ; uchar Table[16]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+ 0004           ;                  0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};
+ 0004           ; uchar Send_Data[]={'a','b','c','d'};//单片机向电脑发送的数据数组
+ 0004           ; uchar Receive_Data[]={0,0,0,0};           //单片机接收到电脑的数据数组                                        
+ 0004           ; /**********************************************************************
+ 0004           ;                                 MS级延时函数程序，参数i 延时时间                                              
+ 0004           ; **********************************************************************/            
+ 0004           ; void DelayMs(uint i)           //Ms级延时，参数i为延时时间
+ 0004           ; {uint j;
+ 0004                   .dbline 26
+ 0004           ;  for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 27
+ 0006                   .dbline 27
+ 0006 40E4              ldi R20,8000
+ 0008 5FE1              ldi R21,31
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 27
+ 000C                   .dbline 27
+ 000C                   .dbline 27
+ 000C           L7:
+ 000C                   .dbline 27
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 27
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 27
+ 0016           L3:
+ 0016                   .dbline 26
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 26
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e Display _Display fV
+ 0026           ;            sel -> R20
+ 0026           ;              i -> R22
+ 0026           ;              p -> R10,R11
+                        .even
+ 0026           _Display::
+ 0026 0E940000          xcall push_gset3
+ 002A 5801              movw R10,R16
+ 002C                   .dbline -1
+ 002C                   .dbline 34
+ 002C           ;   {for(j=8000;j!=0;j--) {;}}
+ 002C           ; }
+ 002C           ; /**********************************************************************
+ 002C           ;                                           显示函数            
+ 002C           ; 注意：使用开发板时sel=0xef;
+ 002C           ; **********************************************************************/
+ 002C           ; void Display(uchar *p)         //动态显示函数，参数p为待显示的数组名
+ 002C           ; {uchar i,sel=0xef;           
+ 002C                   .dbline 34
+ 002C 4FEE              ldi R20,239
+ 002E                   .dbline 35
+ 002E           ;  for(i=0;i<4;i++)
+ 002E 6627              clr R22
+ 0030 13C0              xjmp L14
+ 0032           L11:
+ 0032                   .dbline 36
+ 0032                   .dbline 36
+ 0032 45BB              out 0x15,R20
+ 0034                   .dbline 37
+ 0034 E62F              mov R30,R22
+ 0036 FF27              clr R31
+ 0038 EA0D              add R30,R10
+ 003A FB1D              adc R31,R11
+ 003C E081              ldd R30,z+0
+ 003E FF27              clr R31
+ 0040 80E0              ldi R24,<_Table
+ 0042 90E0              ldi R25,>_Table
+ 0044 E80F              add R30,R24
+ 0046 F91F              adc R31,R25
+ 0048 2080              ldd R2,z+0
+ 004A 2094              com R2
+ 004C 2BBA              out 0x1b,R2
+ 004E                   .dbline 38
+ 004E 01E0              ldi R16,1
+ 0050 10E0              ldi R17,0
+ 0052 D6DF              xcall _DelayMs
+ 0054                   .dbline 39
+ 0054 440F              lsl R20
+ 0056                   .dbline 40
+ 0056           L12:
+ 0056                   .dbline 35
+ 0056 6395              inc R22
+ 0058           L14:
+ 0058                   .dbline 35
+ 0058 6430              cpi R22,4
+ 005A 58F3              brlo L11
+ 005C                   .dbline -2
+ 005C           L10:
+ 005C 0E940000          xcall pop_gset3
+ 0060                   .dbline 0 ; func end
+ 0060 0895              ret
+ 0062                   .dbsym r sel 20 c
+ 0062                   .dbsym r i 22 c
+ 0062                   .dbsym r p 10 pc
+ 0062                   .dbend
+ 0062                   .dbfunc e Init_IO _Init_IO fV
+                        .even
+ 0062           _Init_IO::
+ 0062                   .dbline -1
+ 0062                   .dbline 46
+ 0062           ;   {PORTC=sel;                  //选通最右边的数码管
+ 0062           ;    PORTA=~Table[p[i]];          //送字型码
+ 0062           ;    DelayMs(1);                 //显示延时    
+ 0062           ;    sel=sel<<1;                 //移位以显示前一位
+ 0062           ;   }
+ 0062           ; }
+ 0062           ; /**********************************************************************
+ 0062           ;                                        初始化I/O口    
+ 0062           ; **********************************************************************/
+ 0062           ; void Init_IO(void)             //初始化I/O口
+ 0062           ; {DDRA=0xff;                    //设置A口为推挽1输出
+ 0062                   .dbline 46
+ 0062 8FEF              ldi R24,255
+ 0064 8ABB              out 0x1a,R24
+ 0066                   .dbline 47
+ 0066           ;  PORTA=0xff;
+ 0066 8BBB              out 0x1b,R24
+ 0068                   .dbline 48
+ 0068           ;  DDRC=0xff;                    //设置C口为推挽1输出             
+ 0068 84BB              out 0x14,R24
+ 006A                   .dbline 49
+ 006A           ;  PORTC=0xff;
+ 006A 85BB              out 0x15,R24
+ 006C                   .dbline -2
+ 006C           L15:
+ 006C                   .dbline 0 ; func end
+ 006C 0895              ret
+ 006E                   .dbend
+ 006E                   .dbfunc e main _main fV
+ 006E           ;              i -> R20
+                        .even
+ 006E           _main::
+ 006E                   .dbline -1
+ 006E                   .dbline 56
+ 006E           ; 
+ 006E           ;  }
+ 006E           ; /**********************************************************************
+ 006E           ;                                         主函数                
+ 006E           ; **********************************************************************/
+ 006E           ; void main(void)
+ 006E           ; {uchar i;
+ 006E                   .dbline 57
+ 006E           ; Init_IO();
+ 006E F9DF              xcall _Init_IO
+ 0070                   .dbline 58
+ 0070           ;  UBRR=51;//9600bps,8MHZ,
+ 0070 83E3              ldi R24,51
+ 0072 89B9              out 0x9,R24
+ 0074                   .dbline 59
+ 0074           ;  UCSRB=0x18;//RXD.TXD使能；
+ 0074 88E1              ldi R24,24
+ 0076 8AB9              out 0xa,R24
+ 0078                   .dbline 60
+ 0078           ; for(i=0;i<4;i++)
+ 0078 4427              clr R20
+ 007A 0FC0              xjmp L20
+ 007C           X2:
+ 007C                   .dbline 61
+ 007C           ;    {while(!(UCSRA&0x80)) 
+ 007C           L21:
+ 007C                   .dbline 62
+ 007C                   .dbline 62
+ 007C 00E0              ldi R16,<_Receive_Data
+ 007E 10E0              ldi R17,>_Receive_Data
+ 0080 D2DF              xcall _Display
+ 0082                   .dbline 62
+ 0082           L22:
+ 0082                   .dbline 61
+ 0082 5F9B              sbis 0xb,7
+ 0084 FBCF              rjmp L21
+ 0086                   .dbline 63
+ 0086 80E0              ldi R24,<_Receive_Data
+ 0088 90E0              ldi R25,>_Receive_Data
+ 008A E42F              mov R30,R20
+ 008C FF27              clr R31
+ 008E E80F              add R30,R24
+ 0090 F91F              adc R31,R25
+ 0092 8CB1              in R24,0xc
+ 0094 8053              subi R24,48
+ 0096 8083              std z+0,R24
+ 0098                   .dbline 63
+ 0098           L18:
+ 0098                   .dbline 60
+ 0098 4395              inc R20
+ 009A           L20:
+ 009A                   .dbline 60
+ 009A 4430              cpi R20,4
+ 009C 90F3              brlo L22
+ 009E                   .dbline 64
+ 009E           ;       {Display(Receive_Data);}            //等待接收完成
+ 009E           ;     Receive_Data[i]=UDR-48;}              //接收数据
+ 009E           ;  for(i=0;i<12;i++)                                              
+ 009E 4427              clr R20
+ 00A0 0EC0              xjmp L27
+ 00A2           X3:
+ 00A2                   .dbline 65
+ 00A2           ;    {while(!(UCSRA&0x20))                                //等待接收完成
+ 00A2           L28:
+ 00A2                   .dbline 66
+ 00A2                   .dbline 66
+ 00A2 00E0              ldi R16,<_Receive_Data
+ 00A4 10E0              ldi R17,>_Receive_Data
+ 00A6 BFDF              xcall _Display
+ 00A8                   .dbline 66
+ 00A8           L29:
+ 00A8                   .dbline 65
+ 00A8 5D9B              sbis 0xb,5
+ 00AA FBCF              rjmp L28
+ 00AC                   .dbline 67
+ 00AC 80E0              ldi R24,<_Send_Data
+ 00AE 90E0              ldi R25,>_Send_Data
+ 00B0 E42F              mov R30,R20
+ 00B2 FF27              clr R31
+ 00B4 E80F              add R30,R24
+ 00B6 F91F              adc R31,R25
+ 00B8 2080              ldd R2,z+0
+ 00BA 2CB8              out 0xc,R2
+ 00BC                   .dbline 67
+ 00BC           L25:
+ 00BC                   .dbline 64
+ 00BC 4395              inc R20
+ 00BE           L27:
+ 00BE                   .dbline 64
+ 00BE 4C30              cpi R20,12
+ 00C0 98F3              brlo L29
+ 00C2 03C0              xjmp L32
+ 00C4           L31:
+ 00C4                   .dbline 69
+ 00C4                   .dbline 69
+ 00C4 00E0              ldi R16,<_Receive_Data
+ 00C6 10E0              ldi R17,>_Receive_Data
+ 00C8 AEDF              xcall _Display
+ 00CA                   .dbline 69
+ 00CA           L32:
+ 00CA                   .dbline 68
+ 00CA FCCF              xjmp L31
+ 00CC           X4:
+ 00CC                   .dbline -2
+ 00CC           L16:
+ 00CC                   .dbline 0 ; func end
+ 00CC 0895              ret
+ 00CE                   .dbsym r i 20 c
+ 00CE                   .dbend

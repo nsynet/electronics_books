@@ -1,0 +1,64 @@
+C51 COMPILER V7.06   USBHARDWARE                                                           03/16/2011 16:14:50 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE USBHARDWARE
+OBJECT MODULE PLACED IN .\Output\USBHardware.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE USBHardware.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\USBHardware.obj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "global.h"
+   8          #include "USBHardware.h"
+   9          #include "USBInterface.h"
+  10          /***********************************************************************************
+  11          ** 函数名称 : USBHwInit
+  12          ** 功能描述 : USB 硬件初始化
+  13          ** 输    入     : 无
+  14          ** 输   出      : 无
+  15          ************************************************************************************/
+  16          void USBHwInit(void)
+  17          {
+  18   1               IT0=0; //低电平触发
+  19   1               EX0=1; //允许外部中断0
+  20   1      
+  21   1      }
+  22          
+  23          /*
+  24            ---------------------  USB 中断服务程序  ---------------------
+  25          */
+  26          
+  27          /***********************************************************************************
+  28          ** 函数名称 : USBHwIRQ
+  29          ** 功能描述 : 中断服务程序
+  30          ** 输    入     : 无
+  31          ** 输   出      : 无
+  32          ************************************************************************************/
+  33          void USBHwIRQ(void) interrupt 0
+  34          {
+  35   1               ENTER_CRITICAL();                       //关全局中断，即EA=0
+  36   1      
+  37   1               SYSPostCurMsg(RUN_USB_DISPOSE_DATA);    //发送消息
+  38   1      
+  39   1           EXIT_CRITICAL();                        //开全局中断，即EA=1
+  40   1      
+  41   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     70    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

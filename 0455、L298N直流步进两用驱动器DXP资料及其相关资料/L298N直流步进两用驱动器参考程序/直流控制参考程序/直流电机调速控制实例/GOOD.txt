@@ -1,0 +1,92 @@
+#include<reg52.h>
+#define uchar unsigned char
+
+unsigned char N=0;
+unsigned char X=5;	//占空比初始值为50%
+unsigned char Y=3;
+
+int a,b;
+
+sbit P2_2=P2^2;//M1加速
+sbit P2_3=P2^3;//M2减速
+
+sbit P2_0=P3^0;//M1启动
+sbit P2_1=P3^1;//M1停止
+
+sbit PWMA=P3^7;
+sbit PWMB=P3^6;
+
+void del()  /*延时0.2秒*/
+{
+unsigned char i,j,k;
+for(i=20;i>0;i--)
+for(j=20;j>0;j--)
+for(k=248;k>0;k--);
+}
+
+
+void scjs(void)interrupt 3
+{
+TH1=0XC6;
+TL1=0x17;
+if(P2_2==0)
+{Y++;
+del();
+}		  
+if(P2_3==0)
+{Y--;
+del();
+}
+switch(Y)
+ {
+ case 0: X=0;  break;
+ case 1: X=5;  break;
+ case 2: X=10; break;
+ case 3: X=15; break;
+ case 4: X=20; break;
+ case 5: X=25; break;
+ case 6: X=40; break;
+ case 7: X=60; break;
+ case 8: X=80; break;
+ case 9: X=99; break;
+ default:      break;
+ }
+
+b++;
+}
+
+main()
+{
+TMOD=0x00;
+IE=0X88;
+TH1=0XC6;
+TL1=0X17;
+TR0=1;
+TR1=1;
+a=0;
+b=0;
+while(1)
+{
+ PWMB=PWMA=1;
+ while(1)
+ {
+ b=0;
+ while(!b);
+ if (N==X)
+ PWMB=PWMA=0;
+ if (N==100)break;
+if(P2_0==0)//M1启动
+         {
+          P1=0X05;
+          }
+ if(P2_1==0)//M1停止
+          {
+           P1=0X0E;
+          }
+ 
+ N++;
+ }
+ N=0;
+ }
+
+}

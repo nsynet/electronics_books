@@ -1,0 +1,11 @@
+# Begin Project
+# Begin SubItem "A2000_manual  Resources"
+# Begin Source File
+SOURCE=voice\d1.24K
+USEPARAM=FALSE
+PARAM=
+ID=RES_D1_24K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

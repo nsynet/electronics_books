@@ -1,0 +1,43 @@
+#include <reg52.h>                     
+code unsigned char seg7code[10]={ 0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90}; //显示段码 数码管字跟：
+
+Delay(unsigned int tc) //延时程序
+{
+while( tc != 0 ) //如果tc 为0 则终止延时
+{
+unsigned int i; //局部正整数变量 i
+for(i=0; i<50; i++); //执行400 次将耗时1毫秒
+tc--; //tc计数减一
+}
+}
+void Led(int date) //显示函数
+{ 
+
+P1=P1&0xf7; //P2.7 输出低电平，选通千位数
+P0=seg7code[date/1000]; //取出千位数，查表，输出。
+Delay(5); //延时
+P1=P1|0x0f; //销隐
+P1=P1&0xfb; //P2.6 输出低电平，选通百位数
+P0=seg7code[date%1000/100]; //取出百位数，查表，输出。
+Delay(5); //延时
+P1=P1|0x0f; //销隐
+P1=P1&0xfd; //P2.5 输出低电平，选通十位数
+P0=seg7code[date%100/10]; //取出十位数，查表，输出。
+Delay(5); //延时
+P1=P1|0x0f; //销隐
+P1=P1&0xfe;
+P0=seg7code[date%10]; //取出个位数，查表，输出。
+Delay(5);
+ P1=P1|0x0f; //销隐
+}
+main()
+{
+int display_date=2343; //定义并赋值要显示的数据
+while(1)
+{
+Led(display_date);//调用显示函数显示数据display_date
+}
+}
+
+
+

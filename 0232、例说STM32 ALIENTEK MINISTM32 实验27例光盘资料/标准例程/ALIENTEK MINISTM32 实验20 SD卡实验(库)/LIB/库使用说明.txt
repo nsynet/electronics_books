@@ -1,0 +1,89 @@
+
+//=======================启动文件======================================//
+CMSISV1.2.0:
+   低容量产品启动库文件
+	 - Low density devices are STM32F101xx, STM32F102xx and STM32F103xx microcontrollers
+   where the Flash memory density ranges between 16 and 32 Kbytes.
+ 
+//=======================其它文件======================================//
+ALIENTEK_MiniSTM32_REVB0_HardWare_V1.1
+	ALIENTEK MiniSTM32_REVB0开发板硬件配置文件
+
+ALIENTEK_MiniSTM32_TFT_Horizontal_LCD_REV1.0
+	ALIENTEK MiniSTM32_REVB0开发板LCD横屏显示驱动文件
+
+ALIENTEK_MiniSTM32_TFTLCD_REV1.0
+        ALIENTEK MiniSTM32_REVB0开发板LCD竖屏显示驱动文件
+
+
+//=======================库函数文件======================================//
+STM32F10x_StdPeriph_DriverV3.1.1:
+	3.1.1库文件夹
+
+
+
+//=======================官方启动文件说明描述======================================//  
+详见stm32f10x.h文件中的说明
+/**
+  ******************************************************************************
+  * @file    stm32f10x.h
+  * @author  MCD Application Team
+  * @version V3.1.0
+  * @date    06/19/2009
+  * @brief   CMSIS Cortex-M3 Device Peripheral Access Layer Header File. 
+  *          This file contains all the peripheral register's definitions, bits 
+  *          definitions and memory mapping for STM32F10x Connectivity line, High
+  *          density, Medium density and Low density devices.
+  ******************************************************************************     
+  *
+  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+  *
+  * <h2><center>&copy; COPYRIGHT 2009 STMicroelectronics</center></h2>
+  ******************************************************************************
+  */
+
+/** @addtogroup CMSIS
+  * @{
+  */
+
+/** @addtogroup stm32f10x
+  * @{
+  */
+    
+#ifndef __STM32F10x_H
+#define __STM32F10x_H
+
+#ifdef __cplusplus
+ extern "C" {
+#endif 
+  
+/** @addtogroup Library_configuration_section
+  * @{
+  */
+  
+/* Uncomment the line below according to the target STM32 device used in your
+   application 
+  */
+
+#if !defined (STM32F10X_LD) && !defined (STM32F10X_MD) && !defined (STM32F10X_HD) && !defined (STM32F10X_CL)
+  /* #define STM32F10X_LD */   /*!< STM32F10X_LD: STM32 Low density devices */
+  /* #define STM32F10X_MD */   /*!< STM32F10X_MD: STM32 Medium density devices */
+  /* #define STM32F10X_HD */   /*!< STM32F10X_HD: STM32 High density devices */
+  /* #define STM32F10X_CL */  /*!< STM32F10X_CL: STM32 Connectivity line devices */
+#endif
+/*  Tip: To avoid modifying this file each time you need to switch between these
+        devices, you can define the device in your toolchain compiler preprocessor.
+
+ - Low density devices are STM32F101xx, STM32F102xx and STM32F103xx microcontrollers
+   where the Flash memory density ranges between 16 and 32 Kbytes.
+ - Medium density devices are STM32F101xx, STM32F102xx and STM32F103xx microcontrollers
+   where the Flash memory density ranges between 64 and 128 Kbytes.
+ - High density devices are STM32F101xx and STM32F103xx microcontrollers where
+   the Flash memory density ranges between 256 and 512 Kbytes.
+ - Connectivity line devices are STM32F105xx and STM32F107xx microcontrollers.
+  */

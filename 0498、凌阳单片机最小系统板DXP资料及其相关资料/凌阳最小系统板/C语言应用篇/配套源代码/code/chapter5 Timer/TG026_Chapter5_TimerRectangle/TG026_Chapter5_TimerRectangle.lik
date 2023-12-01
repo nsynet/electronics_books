@@ -1,0 +1,14 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRA~1\Sunplus\UNSPID~1.0\startupD.obj"
+Obj: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerRectangle\Debug\Resource.obj"
+Obj: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerRectangle\Debug\TG026_Chapter5_TimerRectangle_Main.obj"
+Lib: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerRectangle\.\SPCE061V003.LIB"
+Output: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerRectangle\Debug\TG026_Chapter5_TimerRectangle.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: CODE in "TG026_Chapter5_TimerRectangle_Main.obj" at 8026 
+;Align: CODE in "TG026_Chapter5_TimerRectangle_Main.obj" with 0 
+;Locate: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  at 8078 
+;Align: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  with 0 
+;Locate: __sn_init_table at 8000 

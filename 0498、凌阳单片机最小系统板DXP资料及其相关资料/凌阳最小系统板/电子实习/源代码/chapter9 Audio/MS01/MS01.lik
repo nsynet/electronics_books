@@ -1,0 +1,71 @@
+Version: 3.0
+Options: m37
+Obj: "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Resource.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\main.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\System.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\sacmV32.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SP_lib.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\spce.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\SACM_user.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\Isr.obj"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\WISH1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\ALA1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\ALAINS_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\DECK1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\GREEN1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\HK1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\LA1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\PP1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\S31_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\TW1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\WINE1_BIN.res"
+Obj: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\Debug\1231_BIN.res"
+Lib: "F:\电子竞赛\C语言应用篇\Source Code\chapter9 Audio\MS01\.\sacmv32e.lib"
+Output: ".\Debug\MS01.S37"
+;Locate: TEXT in "Resource.obj" at 8009 
+;Align: TEXT in "Resource.obj" with 0 
+;Locate: IRAM in "SACM_user.obj" at 9570  linkat B7 
+;Align: IRAM in "SACM_user.obj" with 0 
+;Locate: RAM in "sacmV32.obj" at 7E 
+;Align: RAM in "sacmV32.obj" with 0 
+;Locate: OVERLAP_MS01_RAM_BLOCK in "MS01_V~1" of "sacmv32e.lib"  at 3F 
+;Align: OVERLAP_MS01_RAM_BLOCK in "MS01_V~1" of "sacmv32e.lib"  with 0 
+;Locate: OVERLAP_MS01_SRAM_BLOCK in "MS01_V~1" of "sacmv32e.lib"  at 0 
+;Align: OVERLAP_MS01_SRAM_BLOCK in "MS01_V~1" of "sacmv32e.lib"  with 0 
+;Locate: __sn_section_RES_1231_BIN in "1231_BIN.res" at E0FA 
+;Align: __sn_section_RES_1231_BIN in "1231_BIN.res" with 0 
+;Locate: __sn_section_RES_ALA1_BIN in "ALA1_BIN.res" at BEAD 
+;Align: __sn_section_RES_ALA1_BIN in "ALA1_BIN.res" with 0 
+;Locate: __sn_section_RES_ALAINS_BIN in "ALAINS_BIN.res" at E339 
+;Align: __sn_section_RES_ALAINS_BIN in "ALAINS_BIN.res" with 0 
+;Locate: __sn_section_RES_DECK1_BIN in "DECK1_BIN.res" at DAE8 
+;Align: __sn_section_RES_DECK1_BIN in "DECK1_BIN.res" with 0 
+;Locate: __sn_section_RES_GREEN1_BIN in "GREEN1_BIN.res" at C64E 
+;Align: __sn_section_RES_GREEN1_BIN in "GREEN1_BIN.res" with 0 
+;Locate: __sn_section_RES_HK1_BIN in "HK1_BIN.res" at CDA4 
+;Align: __sn_section_RES_HK1_BIN in "HK1_BIN.res" with 0 
+;Locate: __sn_section_RES_LA1_BIN in "LA1_BIN.res" at 957C 
+;Align: __sn_section_RES_LA1_BIN in "LA1_BIN.res" with 0 
+;Locate: __sn_section_RES_PP1_BIN in "PP1_BIN.res" at D253 
+;Align: __sn_section_RES_PP1_BIN in "PP1_BIN.res" with 0 
+;Locate: __sn_section_RES_S31_BIN in "S31_BIN.res" at B639 
+;Align: __sn_section_RES_S31_BIN in "S31_BIN.res" with 0 
+;Locate: __sn_section_RES_TW1_BIN in "TW1_BIN.res" at DDFD 
+;Align: __sn_section_RES_TW1_BIN in "TW1_BIN.res" with 0 
+;Locate: __sn_section_RES_WINE1_BIN in "WINE1_BIN.res" at A8D4 
+;Align: __sn_section_RES_WINE1_BIN in "WINE1_BIN.res" with 0 
+;Locate: __sn_section_RES_WISH1_BIN in "WISH1_BIN.res" at D6A5 
+;Align: __sn_section_RES_WISH1_BIN in "WISH1_BIN.res" with 0 
+;Locate: CODE in "MS01_V~1" of "sacmv32e.lib"  at 809A 
+;Align: CODE in "MS01_V~1" of "sacmv32e.lib"  with 0 
+;Locate: CODE in "sacmV32.obj" at 9095 
+;Align: CODE in "sacmV32.obj" with 0 
+;Locate: CODE in "main.obj" at 933A 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "SP_lib.obj" at 942F 
+;Align: CODE in "SP_lib.obj" with 0 
+;Locate: CODE in "SACM_user.obj" at 94E2 
+;Align: CODE in "SACM_user.obj" with 0 
+;Locate: CODE in "System.obj" at 954D 
+;Align: CODE in "System.obj" with 0 

@@ -1,0 +1,200 @@
+# Begin Project
+# Begin SubItem "Temper  Resources"
+# Begin Source File
+SOURCE=voice\9.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_9_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\1.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_1_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\10.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_10_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\11.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_11_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\12.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_12_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\13.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_13_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\14.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_14_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\15.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_15_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\16.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_16_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\17.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_17_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\18.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_18_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\19.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_19_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\2.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_2_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\20.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_20_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\21.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_21_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\22.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_22_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\23.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_23_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\24.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_24_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\25.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_25_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\26.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_26_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\8.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_8_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\3.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_3_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\4.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_4_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\5.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_5_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\6.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_6_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\7.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_7_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\0.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_0_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\27.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_27_48K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

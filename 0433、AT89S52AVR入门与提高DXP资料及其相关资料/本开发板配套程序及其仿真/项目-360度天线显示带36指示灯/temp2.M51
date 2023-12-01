@@ -1,0 +1,393 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        02/06/2009  23:32:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+D:\PROGRAM FILES\C51\BIN\BL51.EXE STARTUP.obj, temp.obj TO temp2 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  temp.obj (TEMP)
+  D:\PROGRAM FILES\C51\LIB\C51S.LIB (?C_INIT)
+  D:\PROGRAM FILES\C51\LIB\C51S.LIB (?C?UIDIV)
+
+
+LINK MAP OF MODULE:  temp2 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?TEMP
+            DATA    000CH     0002H     UNIT         _DATA_GROUP_
+                    000EH     0012H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         ?BI?TEMP
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0006H     UNIT         ?PR?FLASH?TEMP
+                    0009H     0002H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     005FH     UNIT         ?PR?LED?TEMP
+            CODE    00F9H     0055H     UNIT         ?C?LIB_CODE
+            CODE    014EH     0039H     UNIT         ?PR?T0?TEMP
+            CODE    0187H     0038H     UNIT         ?PR?_DELAY?TEMP
+            CODE    01BFH     0027H     UNIT         ?PR?READX?TEMP
+            CODE    01E6H     0027H     UNIT         ?PR?MAIN?TEMP
+            CODE    020DH     0025H     UNIT         ?PR?_X24C08_READ?TEMP
+            CODE    0232H     0023H     UNIT         ?PR?CLOCK?TEMP
+            CODE    0255H     001EH     UNIT         ?PR?_WRITEX?TEMP
+            CODE    0273H     001EH     UNIT         ?PR?_X24C08_WRITE?TEMP
+            CODE    0291H     0015H     UNIT         ?PR?_DELAY1?TEMP
+            CODE    02A6H     0013H     UNIT         ?PR?DATE?TEMP
+            CODE    02B9H     000FH     UNIT         ?PR?START?TEMP
+            CODE    02C8H     000BH     UNIT         ?CO?TEMP
+            CODE    02D3H     000AH     UNIT         ?PR?X24C08_INIT?TEMP
+            CODE    02DDH     000AH     UNIT         ?PR?STOP?TEMP
+            CODE    02E7H     0003H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   temp2 (?C_STARTUP)
+
+
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/06/2009  23:32:10  PAGE 2
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?TEMP
+  +--> ?C_INITSEG
+
+?PR?MAIN?TEMP                  -----    -----
+  +--> ?PR?X24C08_INIT?TEMP
+  +--> ?PR?_X24C08_READ?TEMP
+  +--> ?PR?LED?TEMP
+
+?PR?X24C08_INIT?TEMP           -----    -----
+  +--> ?PR?FLASH?TEMP
+
+?PR?_X24C08_READ?TEMP          -----    -----
+  +--> ?PR?START?TEMP
+  +--> ?PR?CLOCK?TEMP
+  +--> ?PR?_WRITEX?TEMP
+  +--> ?PR?READX?TEMP
+  +--> ?PR?STOP?TEMP
+  +--> ?PR?_DELAY1?TEMP
+
+?PR?START?TEMP                 -----    -----
+  +--> ?PR?FLASH?TEMP
+
+?PR?CLOCK?TEMP                 -----    -----
+  +--> ?PR?_WRITEX?TEMP
+  +--> ?PR?FLASH?TEMP
+
+?PR?_WRITEX?TEMP               -----    -----
+  +--> ?PR?FLASH?TEMP
+
+?PR?READX?TEMP                 -----    -----
+  +--> ?PR?FLASH?TEMP
+
+?PR?STOP?TEMP                  -----    -----
+  +--> ?PR?FLASH?TEMP
+
+?PR?LED?TEMP                   -----    -----
+  +--> ?PR?_DELAY?TEMP
+  +--> ?CO?TEMP
+
+?PR?_DELAY?TEMP                000CH    0002H
+  +--> ?CO?TEMP
+
+
+
+SYMBOL TABLE OF MODULE:  temp2 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:000EH         SEGMENT       ?C_C51STARTUP
+  I:0021H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/06/2009  23:32:10  PAGE 3
+
+
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0011H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:000EH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:000EH         LINE#         133
+  C:0010H         LINE#         134
+  C:0011H         LINE#         135
+  C:0012H         LINE#         136
+  C:0014H         LINE#         185
+  C:0017H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        TEMP
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:02C8H         PUBLIC        table
+  B:00A0H.6       PUBLIC        shiwei
+  D:00A8H         PUBLIC        IE
+  C:023DH         PUBLIC        clock
+  C:0008H         PUBLIC        flash
+  B:00A0H.7       PUBLIC        gewei
+  C:01BFH         PUBLIC        readx
+  D:00B8H         PUBLIC        IP
+  B:00D0H.7       PUBLIC        CY
+  C:02A6H         PUBLIC        date
+  C:014EH         PUBLIC        t0
+  B:00A0H.1       PUBLIC        jian
+  C:01E6H         PUBLIC        main
+  C:0255H         PUBLIC        _writex
+  C:020DH         PUBLIC        _x24c08_read
+  B:0020H.0       PUBLIC        write
+  C:02B9H         PUBLIC        start
+  D:0098H         PUBLIC        SCON
+  B:00A0H.0       PUBLIC        jia
+  D:0089H         PUBLIC        TMOD
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/06/2009  23:32:10  PAGE 4
+
+
+  D:0088H         PUBLIC        TCON
+  B:00B0H.0       PUBLIC        sda
+  C:0273H         PUBLIC        _x24c08_write
+  D:0008H         PUBLIC        tcnt
+  D:000AH         PUBLIC        sec
+  C:02D3H         PUBLIC        x24c08_init
+  C:0291H         PUBLIC        _delay1
+  B:00B0H.1       PUBLIC        scl
+  C:02DDH         PUBLIC        stop
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  C:009AH         PUBLIC        LED
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  C:01A0H         PUBLIC        _Delay
+  B:00A0H.4       PUBLIC        qianwei
+  B:00A0H.5       PUBLIC        baiwei
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY1
+  D:0007H         SYMBOL        x
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0291H         LINE#         20
+  C:0291H         LINE#         21
+  C:0291H         LINE#         22
+  C:02A5H         LINE#         23
+  -------         ENDPROC       _DELAY1
+  C:0003H         SYMBOL        L?0049
+  -------         PROC          L?0048
+  -------         ENDPROC       L?0048
+  C:0003H         SYMBOL        L?0049
+  -------         PROC          FLASH
+  C:0008H         LINE#         24
+  C:0008H         LINE#         25
+  -------         ENDPROC       FLASH
+  -------         PROC          X24C08_INIT
+  C:02D3H         LINE#         26
+  C:02D3H         LINE#         27
+  -------         ENDPROC       X24C08_INIT
+  -------         PROC          START
+  C:02B9H         LINE#         28
+  C:02B9H         LINE#         29
+  -------         ENDPROC       START
+  -------         PROC          STOP
+  C:02DDH         LINE#         30
+  C:02DDH         LINE#         31
+  -------         ENDPROC       STOP
+  -------         PROC          _WRITEX
+  D:0007H         SYMBOL        j
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0007H         SYMBOL        temp
+  -------         ENDDO         
+  C:0255H         LINE#         32
+  C:0255H         LINE#         33
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/06/2009  23:32:10  PAGE 5
+
+
+  C:0255H         LINE#         34
+  C:0255H         LINE#         35
+  C:0257H         LINE#         36
+  C:0269H         LINE#         37
+  -------         ENDPROC       _WRITEX
+  -------         PROC          READX
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0007H         SYMBOL        j
+  D:0006H         SYMBOL        k
+  -------         ENDDO         
+  C:01BFH         LINE#         39
+  C:01BFH         LINE#         40
+  C:01BFH         LINE#         41
+  C:01C1H         LINE#         42
+  C:01C8H         LINE#         43
+  C:01C9H         LINE#         44
+  C:01C9H         LINE#         45
+  C:01CCH         LINE#         46
+  C:01D3H         LINE#         47
+  C:01D5H         LINE#         48
+  C:01DAH         LINE#         49
+  C:01E0H         LINE#         50
+  C:01E5H         LINE#         51
+  -------         ENDPROC       READX
+  -------         PROC          L?0047
+  -------         ENDPROC       L?0047
+  -------         PROC          CLOCK
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:023DH         LINE#         52
+  C:023DH         LINE#         53
+  C:023DH         LINE#         54
+  C:023FH         LINE#         55
+  C:0244H         LINE#         56
+  C:0250H         LINE#         57
+  -------         ENDPROC       CLOCK
+  -------         PROC          _X24C08_READ
+  D:0005H         SYMBOL        address
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:020DH         LINE#         60
+  C:020FH         LINE#         61
+  C:020FH         LINE#         63
+  C:0214H         LINE#         64
+  C:0214H         LINE#         65
+  C:021AH         LINE#         66
+  C:0222H         LINE#         67
+  C:022AH         LINE#         68
+  C:022FH         LINE#         69
+  C:0231H         LINE#         70
+  -------         ENDPROC       _X24C08_READ
+  -------         PROC          _X24C08_WRITE
+  D:0004H         SYMBOL        address
+  D:0005H         SYMBOL        info
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/06/2009  23:32:10  PAGE 6
+
+
+  C:0273H         LINE#         72
+  C:0275H         LINE#         73
+  C:0275H         LINE#         74
+  C:0277H         LINE#         75
+  C:027FH         LINE#         76
+  C:0284H         LINE#         77
+  C:0284H         LINE#         78
+  C:028AH         LINE#         79
+  C:028CH         LINE#         80
+  -------         ENDPROC       _X24C08_WRITE
+  -------         PROC          L?0046
+  -------         ENDPROC       L?0046
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        tc
+  -------         DO            
+  D:000CH         SYMBOL        i
+  -------         ENDDO         
+  C:01A0H         LINE#         83
+  C:01A0H         LINE#         84
+  C:01A0H         LINE#         85
+  C:01A4H         LINE#         86
+  C:01A4H         LINE#         87
+  C:01B7H         LINE#         88
+  C:01BEH         LINE#         89
+  -------         ENDPROC       _DELAY
+  -------         PROC          LED
+  C:009AH         LINE#         90
+  C:009AH         LINE#         91
+  C:009AH         LINE#         92
+  C:00A5H         LINE#         93
+  C:00C9H         LINE#         94
+  C:00D4H         LINE#         95
+  C:00F8H         LINE#         96
+  -------         ENDPROC       LED
+  -------         PROC          T0
+  C:014EH         LINE#         97
+  C:0152H         LINE#         99
+  C:0155H         LINE#         100
+  C:0158H         LINE#         101
+  C:0160H         LINE#         102
+  C:0166H         LINE#         103
+  C:0166H         LINE#         104
+  C:016AH         LINE#         105
+  C:0172H         LINE#         106
+  C:0174H         LINE#         107
+  C:017CH         LINE#         108
+  C:0182H         LINE#         109
+  C:0182H         LINE#         110
+  -------         ENDPROC       T0
+  -------         PROC          DATE
+  C:02A6H         LINE#         111
+  C:02A6H         LINE#         112
+  C:02A6H         LINE#         113
+  C:02AFH         LINE#         114
+  C:02B8H         LINE#         115
+  -------         ENDPROC       DATE
+  -------         PROC          MAIN
+BL51 BANKED LINKER/LOCATER V6.00                                                      02/06/2009  23:32:10  PAGE 7
+
+
+  C:01E6H         LINE#         116
+  C:01E6H         LINE#         117
+  C:01E6H         LINE#         118
+  C:01ECH         LINE#         119
+  C:01EFH         LINE#         120
+  C:01F3H         LINE#         121
+  C:01F6H         LINE#         122
+  C:0200H         LINE#         123
+  C:0203H         LINE#         124
+  C:0206H         LINE#         125
+  C:0208H         LINE#         126
+  C:0208H         LINE#         127
+  C:0208H         LINE#         129
+  C:020BH         LINE#         135
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TEMP
+
+  -------         MODULE        ?C?UIDIV
+  C:00F9H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_X24C08_WRITE?TEMP
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DATE?TEMP
+
+Program Size: data=15.1 xdata=0 code=744
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

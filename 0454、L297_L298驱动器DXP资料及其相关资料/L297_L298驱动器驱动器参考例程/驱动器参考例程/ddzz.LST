@@ -1,0 +1,57 @@
+C51 COMPILER V8.05a   DDZZ                                                                 08/04/2009 21:42:25 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE DDZZ
+OBJECT MODULE PLACED IN ddzz.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ddzz.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          ////////////////////////汇诚科技////////////////////
+   3          //////////////////http://www.ourhc.cn///////////////
+   4          ///////////////////步进电机调试程序/////////////
+   5          
+   6          #include<reg52.h>  
+   7          #define uchar unsigned char//宏定义无符号字符型
+   8          #define uint unsigned int  //宏定义无符号整型
+   9          
+  10          sbit CW=P1^0;   //控制步进电机的方向
+  11          sbit H_F=P1^1;  //控制步进电机的工作方式（1为四拍工作方式，0为八拍工作方式）
+  12          sbit CLK=P1^2;  //控制步进电机的转动速度，一个脉冲电机转动一个步进角。
+  13          sbit RES=P1^3;  //使能控制(为1时电机运行，为0时电机停止)
+  14          
+  15          /*********************************************************************/
+  16          void delay(uint i)//延时函数
+  17          {
+  18   1      uint j,k;
+  19   1      for(j=0;j<i;j++)
+  20   1      for(k=0;k<150;k++);
+  21   1      }
+  22          /*********************************主函数************************************/
+  23          main()
+  24          {
+  25   1              CW=1;  //为1时电机正转，为0时电机反转
+  26   1              H_F=0; //1为四拍工作方式，0为八拍工作方式
+  27   1              CLK=1; //脉冲输出初始值
+  28   1              RES=1; //为1时电机运行，为0时电机停止
+  29   1      while(1)
+  30   1              {
+  31   2                      CLK=!CLK; //产生脉冲
+  32   2                      delay(1); //控制速度（改变括号内的阿拉伯数字可以改变转速）《数字越小电机转动越快》
+  33   2              }
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     51    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

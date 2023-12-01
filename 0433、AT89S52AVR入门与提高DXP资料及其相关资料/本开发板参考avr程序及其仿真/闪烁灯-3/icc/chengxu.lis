@@ -1,0 +1,124 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _led::
+ 0000                   .blkb 1
+                        .area idata
+ 0000 00                .byte 0
+                        .area data(ram, con, rel)
+ 0001                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\闪烁灯-3\icc\chengxu.c
+ 0001                   .dbsym e led _led c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\闪烁灯-3\icc\chengxu.c
+ 0000                   .dbfunc e del _del fI
+                        .even
+ 0000           _del::
+ 0000                   .dbline -1
+ 0000                   .dbline 4
+ 0000           ; #include <iom16v.h>
+ 0000           ; unsigned char i, j, k,led=0;
+ 0000           ; del()  /*延时*/
+ 0000           ; {
+ 0000                   .dbline 6
+ 0000           ; 
+ 0000           ; for(i=100;i>0;i--)
+ 0000 84E6              ldi R24,100
+ 0002 80930200          sts _i,R24
+ 0006 21C0              xjmp L5
+ 0008           L2:
+ 0008                   .dbline 7
+ 0008           ; for(j=20;j>0;j--)
+ 0008 84E1              ldi R24,20
+ 000A 80930100          sts _j,R24
+ 000E 13C0              xjmp L9
+ 0010           L6:
+ 0010                   .dbline 8
+ 0010 88EF              ldi R24,248
+ 0012 80930000          sts _k,R24
+ 0016 05C0              xjmp L13
+ 0018           L10:
+ 0018                   .dbline 8
+ 0018           L11:
+ 0018                   .dbline 8
+ 0018 80910000          lds R24,_k
+ 001C 8150              subi R24,1
+ 001E 80930000          sts _k,R24
+ 0022           L13:
+ 0022                   .dbline 8
+ 0022 2224              clr R2
+ 0024 30900000          lds R3,_k
+ 0028 2314              cp R2,R3
+ 002A B0F3              brlo L10
+ 002C           L7:
+ 002C                   .dbline 7
+ 002C 80910100          lds R24,_j
+ 0030 8150              subi R24,1
+ 0032 80930100          sts _j,R24
+ 0036           L9:
+ 0036                   .dbline 7
+ 0036 2224              clr R2
+ 0038 30900100          lds R3,_j
+ 003C 2314              cp R2,R3
+ 003E 40F3              brlo L6
+ 0040           L3:
+ 0040                   .dbline 6
+ 0040 80910200          lds R24,_i
+ 0044 8150              subi R24,1
+ 0046 80930200          sts _i,R24
+ 004A           L5:
+ 004A                   .dbline 6
+ 004A 2224              clr R2
+ 004C 30900200          lds R3,_i
+ 0050 2314              cp R2,R3
+ 0052 D0F2              brlo L2
+ 0054                   .dbline -2
+ 0054           L1:
+ 0054                   .dbline 0 ; func end
+ 0054 0895              ret
+ 0056                   .dbend
+ 0056                   .dbfunc e main _main fI
+                        .even
+ 0056           _main::
+ 0056                   .dbline -1
+ 0056                   .dbline 11
+ 0056           ; for(k=248;k>0;k--);
+ 0056           ; }
+ 0056           ; int main( void )
+ 0056           ; {
+ 0056                   .dbline 12
+ 0056           ; DDRB=0xFF; /* all outputs */
+ 0056 8FEF              ldi R24,255
+ 0058 87BB              out 0x17,R24
+ 005A 06C0              xjmp L16
+ 005C           L15:
+ 005C                   .dbline 15
+ 005C                   .dbline 17
+ 005C 8EEF              ldi R24,254
+ 005E 88BB              out 0x18,R24
+ 0060                   .dbline 18
+ 0060 CFDF              xcall _del
+ 0062                   .dbline 19
+ 0062 8FEF              ldi R24,255
+ 0064 88BB              out 0x18,R24
+ 0066                   .dbline 20
+ 0066 CCDF              xcall _del
+ 0068                   .dbline 21
+ 0068           L16:
+ 0068                   .dbline 14
+ 0068 F9CF              xjmp L15
+ 006A           X0:
+ 006A                   .dbline -2
+ 006A           L14:
+ 006A                   .dbline 0 ; func end
+ 006A 0895              ret
+ 006C                   .dbend
+                        .area bss(ram, con, rel)
+ 0000                   .dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\闪烁灯-3\icc\chengxu.c
+ 0000           _k::
+ 0000                   .blkb 1
+ 0001                   .dbsym e k _k c
+ 0001           _j::
+ 0001                   .blkb 1
+ 0002                   .dbsym e j _j c
+ 0002           _i::
+ 0002                   .blkb 1
+ 0003                   .dbsym e i _i c

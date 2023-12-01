@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Project>
+  <Desktop>
+    <Static>
+      <Debug-Log/>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>198</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Disassembly>
+        
+        
+        
+      <MixedMode>1</MixedMode><CodeCovEnabled>0</CodeCovEnabled><CodeCovShow>0</CodeCovShow></Disassembly>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>723</ColumnWidth1><ColumnWidth2>193</ColumnWidth2><ColumnWidth3>48</ColumnWidth3></Build>
+    </Static>
+    <Windows>
+      
+      
+      
+    <Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-22696-26981</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-22173-26991</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-676-26984</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>&lt;ws></ExpandedNode><ExpandedNode>&lt;ws>/KB12</ExpandedNode><ExpandedNode>&lt;ws>/KB12_A</ExpandedNode><ExpandedNode>&lt;ws>/KB3</ExpandedNode><ExpandedNode>&lt;ws>/KB3/main.c</ExpandedNode><ExpandedNode>&lt;ws>/KB3_A</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd4><Wnd5>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-11425-26987</Identity>
+            <TabName>Disassembly</TabName>
+            <Factory>Disassembly</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd5></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e8C;  &#x952e;&#x76D8;&#x4e0e;LED\KeyBoard12\SourceFile\main.c</Filename><XPos>0</XPos><YPos>35</YPos><SelStart>677</SelStart><SelEnd>677</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e8C;  &#x952e;&#x76D8;&#x4e0e;LED\KeyBoard12\SourceFile\keyboard12.s43</Filename><XPos>0</XPos><YPos>275</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e8C;  &#x952e;&#x76D8;&#x4e0e;LED\keyBoard3\SourceFile\main.c</Filename><XPos>0</XPos><YPos>30</YPos><SelStart>193</SelStart><SelEnd>193</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e8C;  &#x952e;&#x76D8;&#x4e0e;LED\keyBoard3\SourceFile\keyBoard3.s43</Filename><XPos>0</XPos><YPos>30</YPos><SelStart>1737</SelStart><SelEnd>1737</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e8C;  &#x952e;&#x76D8;&#x4e0e;LED\keyBoard3\KB3_A.ewp</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>497</SelStart><SelEnd>497</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e8C;  &#x952e;&#x76D8;&#x4e0e;LED\KeyBoard12\SourceFile\keyboard12.c</Filename><XPos>0</XPos><YPos>86</YPos><SelStart>223</SelStart><SelEnd>223</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e8C;  &#x952e;&#x76D8;&#x4e0e;LED\LED\led.c</Filename><XPos>0</XPos><YPos>30</YPos><SelStart>1285</SelStart><SelEnd>1285</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>E:\&#x5355;&#x7247;&#x673A;&#x8D44;&#x6599;\MSP430\&#x56Fe;&#x4e66;&#x8D44;&#x6599;\MSP430&#x7CFB;&#x5217;16&#x4F4D;&#x8D85;&#x4F4e;&#x529F;&#x8017;&#x5355;&#x7247;&#x673A;&#x539F;&#x7406;&#x4e0e;&#x5B9e;&#x8DF5;\MSP430-EX44X&#x5B9e;&#x9A8C;&#x5185;&#x5BB9;\&#x5B9e;&#x9A8C;&#x7A0B;&#x5e8F;&#x4ee3;&#x7801;\&#x5B9e;&#x9A8C;&#x4e8C;  &#x952e;&#x76D8;&#x4e0e;LED\keyBoard3\SourceFile\keyboard3.c</Filename><XPos>0</XPos><YPos>20</YPos><SelStart>885</SelStart><SelEnd>885</SelEnd></Tab><ActiveTab>7</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003baeb8><key>iaridepm1</key></Toolbar-003baeb8></Sizes></Row0><Row1><Sizes><Toolbar-0271c7c8><key>debuggergui1</key></Toolbar-0271c7c8></Sizes></Row1><Row2><Sizes><Toolbar-0271c940><key>430fet1</key></Toolbar-0271c940></Sizes></Row2><Row3><Sizes/></Row3></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>409</Bottom><Right>272</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>192</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>277457</sizeHorzCY><sizeVertCX>267578</sizeVertCX><sizeVertCY>593931</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>409</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>192</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>277457</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>593931</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>190</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>192</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>277457</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>277457</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Project>
+
+

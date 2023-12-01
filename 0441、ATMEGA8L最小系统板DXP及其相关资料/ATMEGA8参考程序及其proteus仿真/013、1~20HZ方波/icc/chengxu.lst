@@ -1,0 +1,212 @@
+__start:
+__text_start:
+    0015 E5CF      LDI	R28,0x5F
+    0016 E0D4      LDI	R29,4
+    0017 BFCD      OUT	0x3D,R28
+    0018 BFDE      OUT	0x3E,R29
+    0019 51C0      SUBI	R28,0x10
+    001A 40D0      SBCI	R29,0
+    001B EA0A      LDI	R16,0xAA
+    001C 8308      STD	Y+0,R16
+    001D 2400      CLR	R0
+    001E E6E3      LDI	R30,0x63
+    001F E0F0      LDI	R31,0
+    0020 E010      LDI	R17,0
+    0021 36E3      CPI	R30,0x63
+    0022 07F1      CPC	R31,R17
+    0023 F011      BEQ	0x0026
+    0024 9201      ST	R0,Z+
+    0025 CFFB      RJMP	0x0021
+    0026 8300      STD	Z+0,R16
+    0027 E2E6      LDI	R30,0x26
+    0028 E0F0      LDI	R31,0
+    0029 E6A0      LDI	R26,0x60
+    002A E0B0      LDI	R27,0
+    002B E010      LDI	R17,0
+    002C 32E9      CPI	R30,0x29
+    002D 07F1      CPC	R31,R17
+    002E F021      BEQ	0x0033
+    002F 95C8      LPM
+    0030 9631      ADIW	R30,1
+    0031 920D      ST	R0,X+
+    0032 CFF9      RJMP	0x002C
+    0033 D018      RCALL	_main
+_exit:
+    0034 CFFF      RJMP	_exit
+_DelayMS:
+  j                    --> R20
+  i                    --> R16
+    0035 D046      RCALL	push_gset1
+FILE: E:\Proteus\ATMEGA8\1~20HZ方波\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) #define uchar unsigned char 
+(0003) #define uint unsigned int
+(0004) //定义BIT 0-7 置1 
+(0005) #define BIT0_POS (1<<0)   
+(0006) #define BIT1_POS (1<<1) 
+(0007) #define BIT2_POS (1<<2) 
+(0008) #define BIT3_POS (1<<3) 
+(0009) #define BIT4_POS (1<<4) 
+(0010) #define BIT5_POS (1<<5) 
+(0011) #define BIT6_POS (1<<6) 
+(0012) #define BIT7_POS (1<<7) 
+(0013) 
+(0014) //定义BIT 0-7 清零 
+(0015) #define BIT0_NEG ((unsigned char)(~(1<<0))) 
+(0016) #define BIT1_NEG ((unsigned char)(~(1<<1))) 
+(0017) #define BIT2_NEG ((unsigned char)(~(1<<2))) 
+(0018) #define BIT3_NEG ((unsigned char)(~(1<<3))) 
+(0019) #define BIT4_NEG ((unsigned char)(~(1<<4))) 
+(0020) #define BIT5_NEG ((unsigned char)(~(1<<5))) 
+(0021) #define BIT6_NEG ((unsigned char)(~(1<<6))) 
+(0022) #define BIT7_NEG ((unsigned char)(~(1<<7))) 
+(0023) 
+(0024) //定义红色LED熄灭、亮、翻转 
+(0025) #define LED_red_OFF PORTB&=BIT2_NEG 
+(0026) #define LED_red_ON   PORTB|=BIT2_POS   
+(0027) #define LED_red_OTN PORTB^=BIT2_POS 
+(0028) 
+(0029) uchar CNT=0;//计数初值
+(0030) uchar CNT1=0;//判断值
+(0031) uchar CNT2=0;//改变频率值
+(0032) ////////////////////////////////////////////////////////////////////
+(0033) void DelayMS(uint i)//延时
+(0034)    {
+(0035)     uint j;
+(0036)     for(;i!=0;i--)
+    0036 C00A      RJMP	0x0041
+(0037)         {
+(0038)           for(j=8000;j!=0;j--);
+    0037 E440      LDI	R20,0x40
+    0038 E15F      LDI	R21,0x1F
+    0039 C002      RJMP	0x003C
+    003A 5041      SUBI	R20,1
+    003B 4050      SBCI	R21,0
+    003C 3040      CPI	R20,0
+    003D 0745      CPC	R20,R21
+    003E F7D9      BNE	0x003A
+    003F 5001      SUBI	R16,1
+    0040 4010      SBCI	R17,0
+    0041 3000      CPI	R16,0
+    0042 0701      CPC	R16,R17
+    0043 F799      BNE	0x0037
+    0044 D03A      RCALL	pop_gset1
+    0045 9508      RET
+(0039)         }
+(0040)    }
+(0041) //////////////////////////////初始化////////////////////////////////////
+(0042) void Init_IO(void)//初始化I/O
+(0043) {
+(0044) //设置C口为输出
+(0045) DDRC=0xFF;
+_Init_IO:
+    0046 EF8F      LDI	R24,0xFF
+    0047 BB84      OUT	0x14,R24
+(0046) PORTC=0xFF;
+    0048 BB85      OUT	0x15,R24
+(0047) //设置B口为输出
+(0048) DDRB=0XFF;
+    0049 BB87      OUT	0x17,R24
+(0049) PORTB=0xFF;
+    004A BB88      OUT	0x18,R24
+    004B 9508      RET
+(0050) }
+(0051) /////////////////////////////主函数/////////////////////////////////////
+(0052) void main(void)
+(0053) {
+(0054) //uchar Load;
+(0055) Init_IO();  //初始化I/O
+_main:
+    004C DFF9      RCALL	_Init_IO
+(0056) TCCR0=0x04; //T/C0工作方式选择，系统时钟256分频
+    004D E084      LDI	R24,4
+    004E BF83      OUT	0x33,R24
+(0057) //(上一句可以改为)TCCR0 |= (1<<CS02);//T/C0工作于定时方式，系统时钟256分频
+(0058) TCNT0=0X06; //计数初始值
+    004F E086      LDI	R24,6
+    0050 BF82      OUT	0x32,R24
+(0059) TIMSK=0x01;  //使能T0溢出中断
+    0051 E081      LDI	R24,1
+    0052 BF89      OUT	0x39,R24
+(0060) //(上一句可以改为)TIMSK |= (1<<TOIE0);  //使能T0溢出中断
+(0061) SREG=0x80;  //使能全局中断
+    0053 E880      LDI	R24,0x80
+    0054 BF8F      OUT	0x3F,R24
+(0062) //(上一句可以改为)SREG |= (1<<7);  //使能全局中断
+(0063) while(1)
+    0055 CFFF      RJMP	0x0055
+    0056 9508      RET
+_Timer0:
+    0057 922A      ST	R2,-Y
+    0058 938A      ST	R24,-Y
+    0059 939A      ST	R25,-Y
+    005A B62F      IN	R2,0x3F
+    005B 922A      ST	R2,-Y
+(0064) {
+(0065) 
+(0066) }
+(0067) }
+(0068) //////////////////////////T/CO中断服务函数//////////////////////////////////////////
+(0069) #pragma interrupt_handler Timer0:10
+(0070) void Timer0(void)
+(0071) {
+(0072) CNT++;           //中断次数累加
+    005C 91800060  LDS	R24,0x60
+    005E 5F8F      SUBI	R24,0xFF
+    005F 93800060  STS	0x60,R24
+(0073) CNT2++;
+    0061 91800062  LDS	R24,0x62
+    0063 5F8F      SUBI	R24,0xFF
+    0064 93800062  STS	0x62,R24
+(0074) if(CNT==4)     //计数到125次，计数复位
+    0066 91800060  LDS	R24,0x60
+    0068 3084      CPI	R24,4
+    0069 F461      BNE	0x0076
+(0075) {
+(0076) CNT=0;
+    006A 2422      CLR	R2
+    006B 92200060  STS	0x60,R2
+(0077) CNT1++;
+    006D 91800061  LDS	R24,0x61
+    006F 5F8F      SUBI	R24,0xFF
+    0070 93800061  STS	0x61,R24
+(0078) LED_red_OTN;
+    0072 E084      LDI	R24,4
+    0073 B228      IN	R2,0x18
+    0074 2628      EOR	R2,R24
+    0075 BA28      OUT	0x18,R2
+(0079) 
+(0080) }
+FILE: <library>
+    0076 9029      LD	R2,Y+
+    0077 BE2F      OUT	0x3F,R2
+    0078 9199      LD	R25,Y+
+    0079 9189      LD	R24,Y+
+    007A 9029      LD	R2,Y+
+    007B 9518      RETI
+push_gset1:
+    007C 935A      ST	R21,-Y
+    007D 934A      ST	R20,-Y
+    007E 9508      RET
+pop_gset1:
+    007F E0E1      LDI	R30,1
+pop:
+    0080 9149      LD	R20,Y+
+    0081 9159      LD	R21,Y+
+    0082 FDE0      SBRC	R30,0
+    0083 9508      RET
+    0084 9169      LD	R22,Y+
+    0085 9179      LD	R23,Y+
+    0086 FDE1      SBRC	R30,1
+    0087 9508      RET
+    0088 90A9      LD	R10,Y+
+    0089 90B9      LD	R11,Y+
+    008A FDE2      SBRC	R30,2
+    008B 9508      RET
+    008C 90C9      LD	R12,Y+
+    008D 90D9      LD	R13,Y+
+    008E FDE3      SBRC	R30,3
+    008F 9508      RET
+    0090 90E9      LD	R14,Y+
+    0091 90F9      LD	R15,Y+
+    0092 9508      RET

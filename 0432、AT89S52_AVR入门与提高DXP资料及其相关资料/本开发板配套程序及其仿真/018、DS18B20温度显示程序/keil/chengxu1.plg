@@ -1,0 +1,14 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+D:\My Documents\My QQ Files\CPZL\1acpzlzl\AT89S52单片机入门与提高——new\本开发板配套程序及其仿真\018、DS18B20温度显示程序\keil\chengxu.uv2
+Project File Date:  03/26/2009
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+Program Size: data=16.2 xdata=0 code=769
+creating hex file from "chengxu1"...
+"chengxu1" - 0 Error(s), 0 Warning(s).

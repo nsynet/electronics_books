@@ -1,0 +1,71 @@
+C51 COMPILER V8.05a   CHENGXU                                                              08/23/2009 03:51:27 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE CHENGXU
+OBJECT MODULE PLACED IN chengxu.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE chengxu.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          ////////////////////////汇诚科技////////////////////
+   3          //////////////////http://www.ourhc.cn///////////////
+   4          ///////////////////步进电机正转调试程序/////////////
+   5          
+   6          #include<reg52.h> 
+   7          #define uchar unsigned char
+   8          #define uint unsigned int
+   9          
+  10          /********************************************************
+  11                                                          控制位定义
+  12          ********************************************************/
+  13          
+  14          sbit shi_neng=P2^0;  // 使能控制位
+  15          sbit fang_shi=P2^1;  // 工作方式控制位
+  16          sbit fang_xiang=P2^2;// 旋转方向控制位
+  17          sbit mai_chong=P2^3; // 脉冲控制位
+  18          
+  19          /********************************************************
+  20                                                          延时函数
+  21          ********************************************************/
+  22          void delay(uint i)//延时函数
+  23          {
+  24   1              uchar j,k;
+  25   1              for(j=0;j<i;j++)
+  26   1              for(k=0;k<250;k++);
+  27   1      }
+  28          
+  29          /********************************************************
+  30                                                          延时函数
+  31          ********************************************************/
+  32          
+  33          main()
+  34          {
+  35   1              shi_neng=1;  // 使能控制位
+  36   1              fang_shi=1;  // 工作方式控制位
+  37   1              fang_xiang=1;// 旋转方向控制位
+  38   1              mai_chong=1; // 脉冲控制位
+  39   1              
+  40   1              while(1)
+  41   1              {
+  42   2                      mai_chong=~mai_chong; //输出时钟脉冲
+  43   2                      delay(8);                         //延时  (括号内数值越小，电机转动速度越快)
+  44   2                      
+  45   2              }
+  46   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     38    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V8.05a   CHENGXU                                                              08/23/2009 03:51:27 PAGE 2   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

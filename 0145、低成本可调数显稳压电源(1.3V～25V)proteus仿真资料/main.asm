@@ -1,0 +1,434 @@
+	list      p=12c672           ; list directive to define processor
+	#include <p12c672.inc>        ; processor specific variable definitions
+w_temp		EQU	0x70
+status_temp	EQU	0x71
+pclath_temp	EQU	0x72
+reg0		EQU	0x75
+reg1		EQU	0x76
+advalue		EQU	0x77
+advflag		EQU	0x78
+bank0	macro
+bcf	STATUS,5
+endm
+bank1	macro
+bsf	STATUS,5
+endm
+	ORG	0x00
+	nop
+	nop
+	goto	start
+	ORG     0x004
+	
+	
+start
+	bank0
+	clrf	GPIO
+	bcf	INTCON,GIE
+	bank1
+	movlw	0xc0
+	movwf	OPTION_REG
+	movlw	0x06
+	movwf	ADCON1
+	movlw	0xc9
+	TRIS	GPIO
+	
+	
+	movlw	0x00
+	movwf	reg0
+	movlw	0x08
+	movwf	reg1
+	
+	
+	bank0
+	movlw	b'00110000'
+	iorwf	GPIO,f
+	movlw	0xc1
+	movwf	ADCON0
+	
+	bsf	ADCON0,GO
+	goto	mainlp
+mainlp
+	btfsc	ADCON0,GO_DONE
+	goto	$-1
+	movlw	HIGH(tablev)
+	movwf	PCLATH
+	
+	clrf	advflag
+	movlw	0xab
+	subwf	ADRES,w
+	btfss	STATUS,C
+	goto	$+3
+	bsf	advflag,1
+	goto	gratethan20
+	movlw	0x56
+	subwf	ADRES,w
+	btfsc	STATUS,C
+	bsf	advflag,0
+gratethan20		
+	movf	ADRES,w
+	
+	call	tablev
+	movwf	advalue
+	clrf	PCLATH
+	bsf	ADCON0,GO
+	call	refreshled
+	goto	mainlp
+refreshled
+	movlw	0x0
+	btfss	advflag,0
+	goto	refreshled0
+	movlw	b'01100000'
+	goto	refreshled2
+refreshled0
+	btfsc	advflag,1
+	movlw	b'11011010'	
+refreshled2
+	movwf	reg0
+mainlp0
+	bcf	GPIO,1
+	rrf	reg0
+	btfsc	STATUS,C
+	goto	$+3
+	bcf	GPIO,2
+	goto	$+2
+	bsf	GPIO,2
+	bsf	GPIO,1
+	decfsz	reg1
+	goto	mainlp0
+	
+	
+	;bcf	INTCON,GIE
+	movlw	b'11001111'
+	andwf	GPIO,f
+	swapf	advalue,w
+	andlw	0x0f
+	call	tableseg
+	movwf	reg0
+	bsf	reg0,0
+	movlw	0x08
+	movwf	reg1
+	movlw	b'00110000'
+	iorwf	GPIO,f
+	;bsf	INTCON,GIE
+mainlp1
+	bcf	GPIO,1
+	rrf	reg0
+	btfsc	STATUS,C
+	goto	$+3
+	bcf	GPIO,2
+	goto	$+2
+	bsf	GPIO,2
+	bsf	GPIO,1
+	decfsz	reg1
+	goto	mainlp1
+	;bcf	INTCON,GIE
+	movlw	b'11011111'
+	andwf	GPIO,f
+	movf	advalue,w
+	andlw	0x0f
+	call	tableseg
+	movwf	reg0
+	movlw	0x08
+	movwf	reg1
+	movlw	b'00110000'
+	iorwf	GPIO,f
+	;bsf	INTCON,GIE
+mainlp2
+	bcf	GPIO,1
+	rrf	reg0
+	btfsc	STATUS,C
+	goto	$+3
+	bcf	GPIO,2
+	goto	$+2
+	bsf	GPIO,2
+	bsf	GPIO,1
+	decfsz	reg1
+	goto	mainlp2
+	;bcf	INTCON,GIE
+	movlw	b'11101111'
+	andwf	GPIO,f
+	movlw	0x08
+	movwf	reg1
+	nop
+	nop
+	nop
+	nop
+	movlw	b'00110000'
+	iorwf	GPIO,f
+	;bsf	INTCON,GIE
+	return
+;
+;abcdefgp
+tableseg
+	addwf	PCL,f
+	retlw	b'11111100'	;0
+	retlw	b'01100000'	;1
+	retlw	b'11011010'	;2
+	retlw	b'11110010'	;3
+	retlw	b'01100110'	;4
+	retlw	b'10110110'	;5
+	retlw	b'10111110'	;6
+	retlw	b'11100100'	;7
+	retlw	b'11111110'	;8
+	retlw	b'11110110'	;9
+	
+	ORG	0x100
+tablev
+	addwf	PCL,f
+	retlw	0x00
+	retlw	0x01
+	retlw	0x02
+	retlw	0x03
+	retlw	0x00
+	retlw	0x01
+	retlw	0x02
+	retlw	0x03
+	retlw	0x00
+	retlw	0x01
+	retlw	0x02
+	retlw	0x13	
+	retlw	0x14
+	retlw	0x15
+	retlw	0x16
+	retlw	0x17
+	retlw	0x18
+	retlw	0x19
+	retlw	0x20
+	retlw	0x22
+	retlw	0x24
+	retlw	0x25
+	retlw	0x26
+	retlw	0x27
+	retlw	0x28
+	retlw	0x29
+	retlw	0x30
+	retlw	0x31
+	retlw	0x33
+	retlw	0x34
+	retlw	0x35
+	retlw	0x36
+	retlw	0x37
+	retlw	0x38
+	retlw	0x39
+	retlw	0x40
+	retlw	0x42
+	retlw	0x43
+	retlw	0x44
+	retlw	0x45
+	retlw	0x46
+	retlw	0x48
+	retlw	0x49
+	retlw	0x50
+	retlw	0x52
+	retlw	0x53
+	retlw	0x54
+	retlw	0x55
+	retlw	0x56
+	retlw	0x57
+	retlw	0x58
+	retlw	0x59
+	retlw	0x60
+	retlw	0x62
+	retlw	0x63
+	retlw	0x64
+	retlw	0x65
+	retlw	0x66
+	retlw	0x68
+	retlw	0x70
+	retlw	0x71
+	retlw	0x72
+	retlw	0x74
+	retlw	0x75
+	retlw	0x76
+	retlw	0x77
+	retlw	0x79
+	retlw	0x80
+	retlw	0x81
+	retlw	0x82
+	retlw	0x83
+	retlw	0x84
+	retlw	0x85
+	retlw	0x86
+	retlw	0x87
+	retlw	0x88
+	retlw	0x89
+	retlw	0x90
+	retlw	0x91
+	retlw	0x93
+	retlw	0x94
+	retlw	0x96
+	retlw	0x97
+	retlw	0x98
+	retlw	0x99
+	retlw	0x02
+	retlw	0x02
+	retlw	0x03	
+	retlw	0x04
+	retlw	0x05
+	retlw	0x06
+	retlw	0x07
+	retlw	0x08
+	retlw	0x09
+	retlw	0x10
+	retlw	0x11
+	retlw	0x13
+	retlw	0x14
+	retlw	0x15
+	retlw	0x16
+	retlw	0x17
+	retlw	0x19
+	retlw	0x20
+	retlw	0x22
+	retlw	0x23
+	retlw	0x24
+	retlw	0x25
+	retlw	0x26
+	retlw	0x27
+	retlw	0x28
+	retlw	0x29
+	retlw	0x30
+	retlw	0x32
+	retlw	0x33
+	retlw	0x34
+	retlw	0x35
+	retlw	0x36
+	retlw	0x37
+	retlw	0x39
+	retlw	0x41
+	retlw	0x42
+	retlw	0x43
+	retlw	0x44
+	retlw	0x45
+	retlw	0x46
+	retlw	0x47
+	retlw	0x48
+	retlw	0x49
+	retlw	0x50
+	retlw	0x52
+	retlw	0x53
+	retlw	0x54
+	retlw	0x55
+	retlw	0x56
+	retlw	0x57
+	retlw	0x59
+	retlw	0x61
+	retlw	0x62
+	retlw	0x63
+	retlw	0x64
+	retlw	0x65
+	retlw	0x66
+	retlw	0x67
+	retlw	0x69
+	retlw	0x70
+	retlw	0x71
+	retlw	0x72
+	retlw	0x73
+	retlw	0x74
+	retlw	0x75
+	retlw	0x76
+	retlw	0x77
+	retlw	0x79
+	retlw	0x80
+	retlw	0x82
+	retlw	0x83
+	retlw	0x84
+	retlw	0x85
+	retlw	0x86
+	retlw	0x87
+	retlw	0x88
+	retlw	0x89
+	retlw	0x90
+	retlw	0x92	
+	retlw	0x93
+	retlw	0x94
+	retlw	0x95
+	retlw	0x96
+	retlw	0x98
+	retlw	0x99
+	retlw	0x01
+	retlw	0x02
+	retlw	0x03
+	retlw	0x04
+	retlw	0x05
+	retlw	0x06
+	retlw	0x07
+	retlw	0x08
+	retlw	0x09
+	retlw	0x10
+	retlw	0x11
+	retlw	0x13
+	retlw	0x14
+	retlw	0x15
+	retlw	0x16
+	retlw	0x17
+	retlw	0x19
+	retlw	0x20
+	retlw	0x22
+	retlw	0x23
+	retlw	0x24
+	retlw	0x25
+	retlw	0x26
+	retlw	0x27
+	retlw	0x28
+	retlw	0x29
+	retlw	0x30
+	retlw	0x31
+	retlw	0x32
+	retlw	0x33
+	retlw	0x34
+	retlw	0x35
+	retlw	0x36
+	retlw	0x39
+	retlw	0x40
+	retlw	0x41
+	retlw	0x42
+	retlw	0x43
+	retlw	0x45
+	retlw	0x46
+	retlw	0x47
+	retlw	0x48
+	retlw	0x49
+	retlw	0x50
+	retlw	0x52
+	retlw	0x53
+	retlw	0x54
+	retlw	0x55
+	retlw	0x56
+	retlw	0x57
+	retlw	0x58
+	retlw	0x60
+	retlw	0x61
+	retlw	0x62
+	retlw	0x63
+	retlw	0x65
+	retlw	0x66
+	retlw	0x68
+	retlw	0x69
+	retlw	0x70
+	retlw	0x71
+	retlw	0x72
+	retlw	0x73
+	retlw	0x74
+	retlw	0x76
+	retlw	0x77
+	retlw	0x78
+	retlw	0x79
+	retlw	0x79
+	retlw	0x80	
+	retlw	0x00
+	retlw	0x01
+	retlw	0x02
+	retlw	0x03
+	retlw	0x00
+	retlw	0x01
+	retlw	0x02
+	retlw	0x03	
+	retlw	0x00
+	retlw	0x01
+	retlw	0x02
+	retlw	0x03
+	retlw	0x01
+	retlw	0x02
+	retlw	0x03
+END
+

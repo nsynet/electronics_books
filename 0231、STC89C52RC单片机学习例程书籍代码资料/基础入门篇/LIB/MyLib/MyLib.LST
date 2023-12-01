@@ -1,0 +1,35 @@
+C51 COMPILER V7.06   MYLIB                                                                 03/16/2011 16:20:12 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MYLIB
+OBJECT MODULE PLACED IN MyLib.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE MyLib.c DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *×÷    Õß£ºÎÂ×Óì÷
+   4           ----------------------------------------------------
+   5           */
+   6          #include "Mylib.h"
+   7          
+   8          unsigned int add(unsigned char i,unsigned char j)
+   9          {
+  10   1            return i+j;
+  11   1      
+  12   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      7    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

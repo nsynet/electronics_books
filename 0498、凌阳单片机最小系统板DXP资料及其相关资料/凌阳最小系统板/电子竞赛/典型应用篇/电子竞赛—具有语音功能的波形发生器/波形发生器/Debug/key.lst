@@ -1,0 +1,65 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	
+                            	.define		P_IOA_DATA  	    0x7000
+                            	.define		P_IOA_DIR   	    0x7002 
+                            	.define		P_IOA_ATTRI			0x7003
+                            	.define		P_IOB_DATA  	    0x7005
+                            	.define		P_IOB_DIR   	    0x7007
+                            	.define		P_IOB_ATTRI			0x7008
+                            	.define		P_INT_CLEAR		0x7011;
+                            	.external _main
+000001B4                    	.ram
+000001B4 00 00 00 00        	.var first,last,keyword;
+         00 00      
+                            	
+0000A83C                    	.code
+                            	.public Scan_loop10;
+                            	.public _key_asm
+                            	
+                            	_key_asm:
+                            	    
+                            	/////////////////////////////////////
+0000A83C 09 93 F0 00        	    r1=0x00f0;
+0000A83E 19 D3 02 70        			[P_IOA_DIR]=r1 ;
+0000A840 C7 92              	   r1=[pc]
+0000A841 40 92              	    r1=0x0000;
+0000A842 19 D3 03 70        			[P_IOA_ATTRI]=r1   ;        
+                            		
+0000A844 40 92              		r1=0x0000;
+0000A845 19 D3 00 70        			[P_IOA_DATA]=r1;
+0000A847 40 96              	 Scan_loop10:  r3=0x0000;
+                            	Scan_loop0:		
+                            	 
+0000A848 12 95 00 70        	  r2=[P_IOA_DATA];
+0000A84A 09 93 F0 00        	  r1=0x00f0;
+0000A84C 02 43              	cmp r1,r2;
+0000A84D 47 1E              	  jcs Scan_loop10;
+0000A84E 41 06              	  r3+=1;
+0000A84F 40 9C              	  sr=0x0000;
+0000A850 48 46              	  cmp r3,8;
+0000A851 4A 0E              	  jcc Scan_loop0;
+0000A852 11 93 00 70        	   r1=[P_IOA_DATA];
+0000A854 19 D3 B4 01        	   [first]=r1;
+                            	
+                            	 
+0000A856 00 EE              	        nop
+0000A857 00 EE              	        nop
+0000A858 00 EE              	        nop
+0000A859 90 9A              	        retf;
+                            	 aa_wait:
+0000A85A 41 EE              	   jmp aa_wait; 
+                            	 
+                            	 
+                            	.public _baab
+                            	
+                            	_baab:.proc
+                            	    
+0000A85B 98 9A              	   reti
+                            	   .endp
+                            	
+                            	
+                            	//retf
+                            	//.endp
+0 error(s), 0 warning(s).
+

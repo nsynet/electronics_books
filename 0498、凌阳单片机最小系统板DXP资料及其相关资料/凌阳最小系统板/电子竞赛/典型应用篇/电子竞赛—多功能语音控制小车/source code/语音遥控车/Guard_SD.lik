@@ -1,0 +1,74 @@
+Version: 3.0
+Options: m37
+Obj: "C:\Program Files\Sunplus\unSPIDE184\unSPIDE\startupD.obj"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\InitIO.obj"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\hardware.obj"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\FIQ.obj"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\Resource.obj"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\main.obj"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\singel.obj"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\2_48k.res"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\3_48k.res"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\5_48k.res"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\10_48k.res"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\11_48k.res"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\15_48k.res"
+Obj: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\S12_24K.res"
+Lib: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\.\bsrv222SDL.lib"
+Lib: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\sacmv26e.lib"
+Lib: "C:\Program Files\Sunplus\unSPIDE184\unSPIDE\CMacro.lib"
+Output: "F:\test\CD_Root\AutoPlay\Docs\刻录光盘\电子竞赛\典型应用篇\电子竞赛—多功能语音控制小车\source code\语音遥控车\Debug\Guard_SD.S37"
+;Locate: TEXT in "BSRSDCON" of "bsrv222SDL.lib"  at 8009 
+;Align: TEXT in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: BSR_IRAM_EXCLUSIVE in "BSRSDCON" of "bsrv222SDL.lib"  at BF91  linkat 48F 
+;Align: BSR_IRAM_EXCLUSIVE in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: IRAM in "hardware.obj" at BF9D  linkat 49B 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: BSR_RAM_BLOCK in "BSRSDCON" of "bsrv222SDL.lib"  at 39C 
+;Align: BSR_RAM_BLOCK in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: BSR_RAM_EXCLUSIVE in "BSRSDCON" of "bsrv222SDL.lib"  at 466 
+;Align: BSR_RAM_EXCLUSIVE in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: RAM in "FIQ.obj" at 47C 
+;Align: RAM in "FIQ.obj" with 0 
+;Locate: OVERLAP_RAM_BLOCK in "BSRSDCON" of "bsrv222SDL.lib"  at 0 
+;Align: OVERLAP_RAM_BLOCK in "BSRSDCON" of "bsrv222SDL.lib"  with 0 
+;Locate: OVERLAP_SRAM_BLOCK in "A2000" of "sacmv26e.lib"  at 361 
+;Align: OVERLAP_SRAM_BLOCK in "A2000" of "sacmv26e.lib"  with 0 
+;Locate: __sn_section_RES_10_48K in "10_48k.res" at D939 
+;Align: __sn_section_RES_10_48K in "10_48k.res" with 0 
+;Locate: __sn_section_RES_11_48K in "11_48k.res" at D631 
+;Align: __sn_section_RES_11_48K in "11_48k.res" with 0 
+;Locate: __sn_section_RES_15_48K in "15_48k.res" at D2FC 
+;Align: __sn_section_RES_15_48K in "15_48k.res" with 0 
+;Locate: __sn_section_RES_2_48K in "2_48k.res" at C68D 
+;Align: __sn_section_RES_2_48K in "2_48k.res" with 0 
+;Locate: __sn_section_RES_3_48K in "3_48k.res" at CF01 
+;Align: __sn_section_RES_3_48K in "3_48k.res" with 0 
+;Locate: __sn_section_RES_5_48K in "5_48k.res" at CAD0 
+;Align: __sn_section_RES_5_48K in "5_48k.res" with 0 
+;Locate: __sn_section_RES_S12_24K in "S12_24K.res" at C012 
+;Align: __sn_section_RES_S12_24K in "S12_24K.res" with 0 
+;Locate: CODE in "main.obj" at A6CC 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "S480" of "sacmv26e.lib"  at AF01 
+;Align: CODE in "S480" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "A2000" of "sacmv26e.lib"  at B60A 
+;Align: CODE in "A2000" of "sacmv26e.lib"  with 0 
+;Locate: CODE in "hardware.obj" at BBFF 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "divu2" of "CMacro.lib"  at BDDE 
+;Align: CODE in "divu2" of "CMacro.lib"  with 0 
+;Locate: CODE in "divi2" of "CMacro.lib"  at BE82 
+;Align: CODE in "divi2" of "CMacro.lib"  with 0 
+;Locate: CODE in "divu1" of "CMacro.lib"  at BECF 
+;Align: CODE in "divu1" of "CMacro.lib"  with 0 
+;Locate: CODE in "divi1" of "CMacro.lib"  at BF0D 
+;Align: CODE in "divi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "modi1" of "CMacro.lib"  at BF44 
+;Align: CODE in "modi1" of "CMacro.lib"  with 0 
+;Locate: CODE in "InitIO.obj" at BF6C 
+;Align: CODE in "InitIO.obj" with 0 
+;Locate: CODE in "singel.obj" at BF89 
+;Align: CODE in "singel.obj" with 0 
+;Locate: DATA in "singel.obj" at DC1D 
+;Align: DATA in "singel.obj" with 0 

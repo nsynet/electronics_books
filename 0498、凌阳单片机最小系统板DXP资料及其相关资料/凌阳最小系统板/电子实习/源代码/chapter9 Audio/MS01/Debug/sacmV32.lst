@@ -1,0 +1,1779 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	//========================================================================================
+                            	// Progarm: Standard function definition for SACM library V32
+                            	// Writen by: Arthur Shieh
+                            	//
+                            	// Lastest modified date: 
+                            	// 		2000/06/23: first version
+                            	//		2000/07/15: modified
+                            	//		2000/07/24: modified					for sacmv25.lib
+                            	//		2001/10/03: Add more public about queue for sacmv25f.lib
+                            	// 		2001/11/05: Independent Queue for A2000/S480/MS01 Manual Mode - sacmv25h.lib
+                            	//		2001/11/06: Fix volume parameter problem - sacmv25i.lib
+                            	//      2001/12/28: add F_SP_SACM_S530_Init_ by Huangsheng
+                            	//      2003/01/03: For SACMV32a.lib
+                            	//      2003/04/16: For SACMV32e.lib
+                            	//
+                            	//
+                            	// Note: 
+                            	//  1. Users are advised to change the user definition only if necessary.
+                            	//     Any improper change to other SACM related function may cause library malfunction.  
+                            	//  2. This module is inherited Use the SACMVxx.inc,SACMVxx.h,SACMVxx.asm with sacmvxx.lib  
+                            	//	3. Provide Open code for sacmVxx.lib
+                            	//  4. Please refer to spce.inc for BODY_TYPE definition.
+                            	//       This setting affects the configuration of some functions in this file.
+                            	//
+                            	//========================================================================================
+                            	.include spce.inc
+                     <      	//========================================================================================
+                     <      	// Program: Standard function definition V1.0
+                     <      	// Arranged by: Arthur Shieh
+                     <      	// Platform:  SPCE500A/060A/061A, IDE 1.63, Windows 2000
+                     <      	//
+                     <      	// Date: 	2002/10/31 V1.0 : first version
+                     <      	//
+                     <      	// Note: 1)This inc file defines the ports available for user to use SPCE series.
+                     <      	//         The port setting constants is also included for users' convenience. 
+                     <      	//       2)Naming rule:
+                     <      	//         C : define constant 
+                     <      	//         P : define I/O port
+                     <      	//=======================================================================================
+                     <      	
+                     <      	//---------------------------------------------------------- 
+                     <      	//CPU Type definition : User needs to modified this according to the body used
+                     <      	//---------------------------------------------------------- 
+                     <      	.define SPCE500A 0
+                     <      	.define SPCE061A 1   // SPCE060A as well
+                     <      	
+                     <      	//.define BODY_TYPE SPCE500A	       // SPCE500A 
+                     <      	.define BODY_TYPE SPCE061A	       // SPCE061A 
+                     <      	//---------------------------------------------------------- 
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define Area for I/O									
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	//PortA,PortB contain some special functions
+                     <      	P_IOA_Data:			.VDEF  0x7000;		// Write Data into data register and read from IOA pad
+                     <      	P_IOA_Buffer:   	.VDEF  0x7001;		// Write Data into buffer register and read from buffer register
+                     <      	P_IOA_Dir:      	.VDEF  0x7002;     // Direction vector for IOA
+                     <      	P_IOA_Attrib:   	.VDEF  0x7003;     // Attribute vector for IOA
+                     <      	P_IOA_Latch:		.VDEF  0x7004;     // Latch PortA data for key change wake-up
+                     <      	
+                     <      	P_IOB_Data:         .VDEF  0x7005      // Write Data into the data register and read from IOB pad
+                     <      	P_IOB_Buffer:       .VDEF  0x7006      // Write Data into buffer register and read from buffer register
+                     <      	P_IOB_Dir:          .VDEF  0x7007      // Direction vector for IOB
+                     <      	P_IOB_Attrib:       .VDEF  0x7008  	// Attribute vector for IOB
+                     <      	
+                     <      	P_FeedBack:     	.VDEF  0x7009;     // Clock form external R,C
+                     <      	P_TimerA_Data:  	.VDEF  0x700A;     // Data port for TimerA 
+                     <      	P_TimerA_Ctrl:  	.VDEF  0x700B;     // Control Port for TimerA
+                     <      	P_TimerB_Data:  	.VDEF  0x700C;     // Data port for TimerB
+                     <      	P_TimerB_Ctrl:  	.VDEF  0x700D;     // Control Port for TimerB
+                     <      	P_TimeBase_Setup:  	.VDEF  0x700E;     // TimerBase Freq. Set
+                     <      	P_TimeBase_Clear:  	.VDEF  0x700F;   	// Reset Timerbase counter
+                     <      	P_INT_Ctrl:     	.VDEF  0x7010;     // for read INT flag(R)
+                     <      	P_INT_Clear:    	.VDEF  0x7011;     // Clear interrupt source
+                     <      	P_Watchdog_Clear:   .VDEF  0x7012;     // Watchdog Reset
+                     <      	P_SystemClock:      .VDEF  0x7013;     // Change system clock frequency(include go to standby mode)
+                     <      	
+                     <      	P_ADC: 	        	.VDEF  0x7014;     // Data Port for AD
+                     <      	P_ADC_Ctrl:    		.VDEF  0x7015;     // Control Port for AD control
+                     <      	P_ADC_Status:   	.VDEF  0x7015;     // AD Port Status
+                     <      	P_DAC2:         	.VDEF  0x7016;     // Data Port for DAC2
+                     <      	P_PWM:          	.VDEF  0x7016;     // Data Port for PWM
+                     <      	P_DAC1:	        	.VDEF  0x7017;     // Data Port for DAC1
+                     <      	P_DAC_Ctrl:	    	.VDEF  0x702A;		// Control Port for two DAC and audio output mode
+                     <      	
+                     <      	P_LVD_Ctrl:     	.VDEF  0x7019;     // Control Port for LVD
+                     <      	
+                     <      	P_SIO_Data:	    	.VDEF  0x701A;		// serial interface IO	
+                     <      	P_SIO_Addr_Low:  	.VDEF  0x701B;		// Address Port low
+                     <      	P_SIO_Addr_Mid:  	.VDEF  0x701C;		// Address Port middle
+                     <      	P_SIO_Addr_High:    .VDEF  0x701D;		// Address Port high
+                     <      	P_SIO_Ctrl:    	    .VDEF  0x701E;		// Control Port
+                     <      	P_SIO_Start:    	.VDEF  0x701F;		// Start port for serial interface
+                     <      	P_SIO_Stop:     	.VDEF  0x7020;		// Stop port for serial interface
+                     <      	
+                     <      	P_UART_Command1:    .VDEF 	0x7021;		// Command1 Port for UART
+                     <      	P_UART_Command2:    .VDEF 	0x7022;		// Command2 Port for UART
+                     <      	P_UART_Data: 	    .VDEF 	0x7023; 	// Data Port for UART
+                     <      	P_UART_BaudScalarLow:  .VDEF  	0x7024;		// Set Baud Rate scalar low
+                     <      	P_UART_BaudScalarHigh: .VDEF  	0x7025;		// Set Baud Rate scalar high
+                     <      	
+                     <      	//SPCE061A new ports
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	P_ADC_MUX_Ctrl:  	.VDEF  	0x702B		// Control Port
+                     <      	P_ADC_LINEIN_Data:  .VDEF  	0x702C		// Line in data
+                     <      	P_INT_Mask:         .VDEF   0x702D		//R/W INT enable/disable
+                     <      	P_Flash_Ctrl:       .VDEF   0x7555		//Internal flash access enable/disable
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define Area for constants									
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Define for P_INT_Ctrl 
+                     <      	.DEFINE C_IRQ6_TMB2             0x0001;     //TMB2 IRQ6
+                     <      	.DEFINE C_IRQ6_TMB1             0x0002;		//TMB1 IRQ6
+                     <      	.DEFINE C_IRQ5_2Hz              0x0004;     //2Hz IRQ5
+                     <      	.DEFINE C_IRQ5_4Hz              0x0008;     //4Hz IRQ5
+                     <      	.DEFINE C_IRQ4_1KHz            	0x0010;     //1024Hz IRQ4
+                     <      	.DEFINE C_IRQ4_2KHz            	0x0020;     //2048 IRQ4
+                     <      	.DEFINE C_IRQ4_4KHz            	0x0040;     //4096 IRQ4
+                     <      	.DEFINE C_IRQ3_KEY         		0x0080;     //Key Change IRQ3
+                     <      	.DEFINE C_IRQ3_Ext1             0x0100;     //Ext1 IRQ3
+                     <      	.DEFINE C_IRQ3_Ext2             0x0200;     //Ext2 IRQ3
+                     <      	.DEFINE C_IRQ2_TMB            	0x0400;     //Timer B IRQ2
+                     <      	.DEFINE C_FIQ_TMB           	0x0800;     //Timer B FIQ
+                     <      	.DEFINE C_IRQ1_TMA            	0x1000;     //Timer A IRQ1
+                     <      	.DEFINE C_FIQ_TMA            	0x2000;     //Timer A FIQ
+                     <      	.DEFINE C_IRQ0_PWM              0x4000;     //PWM IRQ0
+                     <      	.DEFINE C_FIQ_PWM               0x8000;     //PWM FIQ
+                     <      	
+                     <      	// Define for P_TimerA_Ctrl, P_TimerB_Ctrl                               
+                     <      	.DEFINE	C_Timer_Fosc_2			0x0000;		// b0--b2: clock of source A
+                     <      	.DEFINE	C_Timer_Fosc_256		0x0001;		//
+                     <      	.DEFINE	C_Timer_32768Hz			0x0002;		//
+                     <      	.DEFINE	C_Timer_8192Hz			0x0003;		//
+                     <      	.DEFINE	C_Timer_4096Hz			0x0004;		//
+                     <      	.DEFINE	C_Timer_A1				0x0005;		//
+                     <      	.DEFINE C_Timer_A0				0x0006;		//
+                     <      	.DEFINE C_Timer_Ext1			0x0007;		//
+                     <      	
+                     <      	.DEFINE	C_Timer_2048Hz			0x0000;		//b3--b5: clock of source B
+                     <      	.DEFINE	C_Timer_1024Hz			0x0008;		//
+                     <      	.DEFINE	C_Timer_256Hz			0x0000;		//
+                     <      	.DEFINE	C_Timer_TMB1			0x0018;		//
+                     <      	.DEFINE	C_Timer_4Hz				0x0020;		//
+                     <      	.DEFINE	C_Timer_2Hz				0x0028;		//
+                     <      	.DEFINE	C_Timer_B1				0x0030;		//
+                     <      	.DEFINE	C_Timer_Ext2			0x0038;		//
+                     <      	
+                     <      	.DEFINE	C_PWMO_Off				0x0000;		//b6--b9: output pulse
+                     <      	.DEFINE C_PWMO_D1				0x0040;		//
+                     <      	.DEFINE C_PWMO_D2				0x0080;		//
+                     <      	.DEFINE C_PWMO_D3				0x00C0;		//
+                     <      	.DEFINE C_PWMO_D4				0x0100;		//
+                     <      	.DEFINE C_PWMO_D5				0x0140;		//
+                     <      	.DEFINE C_PWMO_D6				0x0180;		//
+                     <      	.DEFINE C_PWMO_D7				0x01C0;		//
+                     <      	.DEFINE C_PWMO_D8				0x0200;		//
+                     <      	.DEFINE C_PWMO_D9				0x0240;		//
+                     <      	.DEFINE C_PWMO_D10				0x0280;		//
+                     <      	.DEFINE C_PWMO_D11				0x02C0;		//
+                     <      	.DEFINE C_PWMO_D12				0x0300;		//
+                     <      	.DEFINE C_PWMO_D13				0x0340;		//
+                     <      	.DEFINE C_PWMO_D14				0x0380;		//
+                     <      	.DEFINE C_PWMO_Div_2			0x03C0;		// 
+                     <      	
+                     <      	
+                     <      	// Define for P_SystemClock
+                     <      	// SPCE 061 PLL
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_Fosc_49M				0x0080			// b7..b5
+                     <      	.DEFINE C_Fosc_41M				0x0060			//
+                     <      	.DEFINE C_Fosc_33M				0x0040			//
+                     <      	.DEFINE C_Fosc_20M				0x0020			// (default)
+                     <      	.DEFINE C_Fosc_24M				0x0000			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	.DEFINE C_Fosc					0x0000;		// b2..b0: frequency select 
+                     <      	.DEFINE C_Fosc_Div_2			0x0001;		//
+                     <      	.DEFINE C_Fosc_Div_4			0x0002;		//
+                     <      	.DEFINE C_Fosc_Div_8			0x0003;		// (default)
+                     <      	.DEFINE C_Fosc_Div_16			0x0004;		//
+                     <      	.DEFINE C_Fosc_Div_32			0x0005;		//
+                     <      	.DEFINE C_Fosc_Div_64			0x0006;		//
+                     <      	.DEFINE C_Sleep					0x0007;		//
+                     <      	
+                     <      	.DEFINE	C_32K_Work				0x0010;		// b4 = 1: at sleep mode,32.768k still work 
+                     <      	.DEFINE C_32K_Off				0x0000;		// b4 = 0: at sleep mode,32.768k off 
+                     <      	.DEFINE C_StrongMode			0x0008;		// b3 = 1: force strong mode
+                     <      	.DEFINE C_AutoWeakMode			0x0000;		// b3 = 0: auto weak mode(default) 
+                     <      	
+                     <      	.DEFINE	C_PLL_Freq_24M			0x0000		//b5..b7: PLL frequency select
+                     <      	.DEFINE	C_PLL_Freq_20M			0x0020		//
+                     <      	.DEFINE	C_PLL_Freq_32M			0x0040		//
+                     <      	.DEFINE	C_PLL_Freq_40M			0x0060		//
+                     <      	.DEFINE	C_PLL_Freq_49M			0x0080		//
+                     <      	
+                     <      	
+                     <      	// Define for P_ADC_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE	C_AD_Enable				0x0001;		//b0=1: enable A/D converter
+                     <      	.DEFINE C_AD_Disable			0x0000;		//b0=0: disable A/D converter
+                     <      	.DEFINE C_AD_Line_In			0x0002;		//b1=1: microphone disable
+                     <      	.DEFINE C_AD_MIC_In				0x0000;		//b1=0: microphone enable
+                     <      	.DEFINE C_AGC_Enable			0x0004;		//b2=1: enable AGC function
+                     <      	.DEFINE C_AGC_Disable			0x0000;		//b2=0: disable AGC function
+                     <      	.DEFINE C_AD_Sample	 			0x0004;		//b3=1: sample the analog signal(manual mode)
+                     <      	.DEFINE C_AD_Hold				0x0000;		//b3=0: hold(manual mode)
+                     <      	.DEFINE C_Auto_Mode	 			0x0010;		//b4=1: A/D auto mode
+                     <      	.DEFINE C_Manual_Mode	 		0x0000;		//b4=0: A/D manual mode
+                     <      	//b5: ADINI?
+                     <      	.DEFINE C_DAC_Current_2mA		0x0040;		//b6=1: DAC current = 2mA @ vdd=3V(new option)
+                     <      	.DEFINE C_DAC_Current_3mA		0x0000;		//b6=0: DAC current = 3mA @ vdd=3V(Default)
+                     <      	.DEFINE C_AD_Vref_VDD			0x0080;		//b7=1: Vref is VDD
+                     <      	.DEFINE C_AD_Vref_VRTPAD		0x0000;		//b7=0: Vref is from pin "VRTPAD"
+                     <      	.DEFINE C_AD_COMP				0x4000;		//b14=1: output voltage of DAC0<Analog input signal
+                     <      												//b14=0: output voltage of DAC0>Analog input signal
+                     <      	.DEFINE C_AD_RDY				0x8000;		//b15=1: A/D digital data ready; 0: not ready
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE	C_AD					0x0001 			//
+                     <      	.DEFINE C_DA					0x0000 			//
+                     <      	.DEFINE C_MIC					0x0000 			//
+                     <      	.DEFINE C_LINE					0x0002 			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	// Define for P_DAC_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE	C_DAC1_Direct			0x0000;		// b8 b7: DAC1 latch
+                     <      	.DEFINE C_DAC1_LatchA			0x0080;		// Latch data to DAC1 by TimerA 
+                     <      	.DEFINE C_DAC1_LatchB			0x0100;		// Latch data to DAC1 by TimerB
+                     <      	.DEFINE C_DAC1_LatchAB			0x0180;		// Latch data to DAC1 by TimerA or TimerB
+                     <      	
+                     <      	.DEFINE	C_DAC2_Direct			0x0000;		// b6 b5: DAC2 latch
+                     <      	.DEFINE C_DAC2_LatchA			0x0020;		// Latch data to DAC2 by TimerA
+                     <      	.DEFINE C_DAC2_LatchB			0x0040;		// Latch data to DAC2 by TimerB
+                     <      	.DEFINE C_DAC2_LatchAB			0x0060;		// Latch data to DAC2 by TimerA or TimerB
+                     <      	
+                     <      	.DEFINE	C_ADC_Direct			0x0000;		// b4 b3: ADC latch
+                     <      	.DEFINE C_ADC_LatchA			0x0008;		// Latch data to ADC by TimerA
+                     <      	.DEFINE C_ADC_LatchB			0x0010;		// Latch data to ADC by TimerB
+                     <      	.DEFINE C_ADC_LatchAB			0x0018;		// Latch data to ADC by TimerA or TimerB
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE C_PushPull				0x0000 			// b0, (default) 
+                     <      	.DEFINE C_DoubleEnd				0x0001 			// b0
+                     <      	.DEFINE	C_DAC_Mode				0x0000 			// b1, (default)
+                     <      	.DEFINE C_PWM_Mode				0x0002 			// b1
+                     <      	
+                     <      	.DEFINE	C_D1_Direct				0x0000 			// DAC1 latch
+                     <      	.DEFINE C_D1_LatchA				0x0008 			// 
+                     <      	.DEFINE C_D1_LatchB				0x0010 			//
+                     <      	.DEFINE C_D1_LatchAB			0x0018 			//
+                     <      	
+                     <      	.DEFINE	C_D2_Direct				0x0000 			// DAC2 latch
+                     <      	.DEFINE C_D2_LatchA				0x0020 			// 
+                     <      	.DEFINE C_D2_LatchB				0x0040 			//
+                     <      	.DEFINE C_D2_LatchAB			0x00C0 			//
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	// Define for P_LVD_Ctrl
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_LVD24V				0x0000;		// LVD = 2.4V; b1b0 
+                     <      	.DEFINE C_LVD28V				0x0001;		// LVD = 2.8V
+                     <      	.DEFINE C_LVD32V				0x0002;		// LVD = 3.2V
+                     <      	.endif
+                     <      	
+                     <      	.if BODY_TYPE == SPCE500A
+                     <      	.DEFINE C_LVD26V				0x0000 			// LVD = 2.6V 
+                     <      	.DEFINE C_LVD30V				0x0001 			// LVD = 3.0V
+                     <      	.DEFINE C_LVD36V				0x0002 			// LVD = 3.6V
+                     <      	.DEFINE C_LVD40V				0x0003 			// LVD = 4.0V
+                     <      	.endif
+                     <      	
+                     <      	.DEFINE C_LVD_Result			0x8000;		// b15 = 1: below the selected LVD level
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	// SPCE061 flash operation instruction definition
+                     <      	//----------------------------------------------
+                     <      	.if BODY_TYPE == SPCE061A
+                     <      	.DEFINE C_EnableFlashAccess		0xAAAA;
+                     <      	.DEFINE C_EraseFlashPage  		0x5511;
+                     <      	.DEFINE C_ProgramFlash 	   		0x5533;
+                     <      	.endif
+                     <      	//----------------------------------------------
+                     <      	
+                     <      	
+                     <      	
+                     <      	//===============================================================
+                     <      	// Sunplus APIs for SPCE 061A
+                     <      	//===============================================================
+                     <      	//////////////////////////////////////////////////
+                     <      	// Note: This register will map to the P_INT_Ctrl
+                     <      	//	(0x7010), The SACMvxx.lib use this register to
+                     <      	//	combine with user's interrupt setting.
+                     <      	//  In SPCE061, it is not necessary since the 
+                     <      	//  P_INT_Mask(0x702D) already does this. It is for 
+                     <      	//  compatibility to keep it here. 
+                     <      	//////////////////////////////////////////////////
+                     <      	//.EXTERNAL	R_InterruptStatus 
+                     <      	
+                     <      	//========================================================================================        
+                     <      	// End of SPCE.inc
+                     <      	//========================================================================================
+                     <      	
+                     <      	
+                     <      	        
+                            	
+                            	//== User definition =====================
+                            	.define C_RampDelay 80
+                            	
+                            	//---<< System Clock Setting >>----------------------
+                            	// Note: Please refer to spce.inc for BODY_TYPE definition.
+                            	//       This setting affects the validity of C_SystemClock.
+                            	//
+                            	
+                            	.define C_SystemClock C_Fosc_49M
+                            	//.define C_SystemClock C_Fosc
+                            	//----<< Timer definition >>------------------------
+                            	.define C_Timer_Setting_8K_For_24MHz   0xF9FF
+                            	.define C_Timer_Setting_9K_For_24MHz   0xFAAA
+                            	.define C_Timer_Setting_10K_For_24MHz  0xFB33
+                            	.define C_Timer_Setting_11K_For_24MHz  0xFBA2
+                            	.define C_Timer_Setting_12K_For_24MHz  0xFBFF
+                            	.define C_Timer_Setting_16K_For_24MHz  0xFCFF
+                            	.define C_Timer_Setting_20K_For_24MHz  0xFD98
+                            	.define C_Timer_Setting_24K_For_24MHz  0xFDFF
+                            	
+                            	.define C_Timer_Setting_8K_For_49MHz   0xF3FF
+                            	.define C_Timer_Setting_9K_For_49MHz   0xF555
+                            	.define C_Timer_Setting_10K_For_49MHz  0xF666
+                            	.define C_Timer_Setting_11K_For_49MHz  0xF745
+                            	.define C_Timer_Setting_12K_For_49MHz  0xF7FF
+                            	.define C_Timer_Setting_16K_For_49MHz  0xF9FF
+                            	.define C_Timer_Setting_20K_For_49MHz  0xFB33
+                            	.define C_Timer_Setting_24K_For_49MHz  0xFBFF
+                            	
+                            	//---<< Timer setting >>
+                            	.define C_S200_Timer_Setting  C_Timer_Setting_16K_For_49MHz
+                            	.define C_S240_Timer_Setting  C_Timer_Setting_20K_For_49MHz
+                            	.define C_S480_Timer_Setting  C_Timer_Setting_16K_For_49MHz
+                            	.define C_S530_Timer_Setting  C_Timer_Setting_12K_For_49MHz
+                            	
+                            	
+                            	.define C_A1600_Timer_Setting 		C_Timer_Setting_16K_For_49MHz
+                            	.define C_A2000_Timer_Setting 		C_Timer_Setting_16K_For_49MHz
+                            	
+                            	.define C_DVR_Timer_Setting   		C_Timer_Setting_8K_For_49MHz
+                            	.define C_DVR_Rec_Timer_Setting 	C_Timer_Setting_24K_For_49MHz
+                            	.define C_DVR_Play_Timer_Setting 	C_Timer_Setting_16K_For_49MHz
+                            	// For A3200 Timer setting , please go to F_SP_SACM_A3200_Init_, 
+                            	//                                        F_SP_SACM_2Ch_A3200_Init_
+                            	//                           it is determined by library internally.
+                            	// For Ms01 Timer setting , please go to F_SP_SACM_MS01_Init_
+                            	//-------------------------------------------------
+                            	
+                            	
+                            	//================================================== 
+                            	
+                            	
+                            	.PUBLIC	F_SP_RampUpDAC1
+                            	.PUBLIC	F_SP_RampDnDAC1
+                            	.PUBLIC	F_SP_RampUpDAC2
+                            	.PUBLIC	F_SP_RampDnDAC2
+                            	.PUBLIC	_SP_RampUpDAC1 
+                            	.PUBLIC	_SP_RampDnDAC1 
+                            	.PUBLIC	_SP_RampUpDAC2 
+                            	.PUBLIC	_SP_RampDnDAC2 
+                            	
+                            	.PUBLIC	_SP_InitQueue
+                            	.PUBLIC	_SP_InitQueue_A2000
+                            	.PUBLIC	_SP_InitQueue_S530
+                            	.PUBLIC	_SP_InitQueue_S480
+                            	.PUBLIC	_SP_InitQueue_S240
+                            	.PUBLIC	_SP_InitQueue_MS01
+                            	.PUBLIC	_SP_InitQueue_DVR
+                            	
+                            	.PUBLIC	F_SP_InitQueue
+                            	.PUBLIC	F_SP_InitQueue_A2000
+                            	.PUBLIC	F_SP_InitQueue_S530
+                            	.PUBLIC	F_SP_InitQueue_S480
+                            	.PUBLIC	F_SP_InitQueue_S240
+                            	.PUBLIC	F_SP_InitQueue_MS01
+                            	.PUBLIC	F_SP_InitQueue_DVR
+                            	
+                            	.PUBLIC	F_SP_ReadQueue
+                            	.PUBLIC F_SP_ReadQueue_A2000
+                            	.PUBLIC F_SP_ReadQueue_S530
+                            	.PUBLIC F_SP_ReadQueue_S480
+                            	.PUBLIC F_SP_ReadQueue_S240
+                            	.PUBLIC F_SP_ReadQueue_MS01
+                            	.PUBLIC F_SP_ReadQueue_DVR
+                            	
+                            	.PUBLIC	F_SP_ReadQueue_NIC			// Read Queue with no index change
+                            	.PUBLIC	F_SP_ReadQueue_NIC_A2000
+                            	.PUBLIC	F_SP_ReadQueue_NIC_S530
+                            	.PUBLIC	F_SP_ReadQueue_NIC_S480
+                            	.PUBLIC	F_SP_ReadQueue_NIC_S240
+                            	.PUBLIC	F_SP_ReadQueue_NIC_MS01
+                            	.PUBLIC	F_SP_ReadQueue_NIC_DVR
+                            	
+                            	.PUBLIC	F_SP_WriteQueue
+                            	.PUBLIC F_SP_WriteQueue_A2000
+                            	.PUBLIC F_SP_WriteQueue_S530
+                            	.PUBLIC F_SP_WriteQueue_S480
+                            	.PUBLIC F_SP_WriteQueue_S240
+                            	.PUBLIC F_SP_WriteQueue_MS01
+                            	.PUBLIC F_SP_WriteQueue_DVR
+                            	
+                            	.PUBLIC F_SP_TestQueue
+                            	.PUBLIC F_SP_TestQueue_A2000
+                            	.PUBLIC F_SP_TestQueue_S530
+                            	.PUBLIC F_SP_TestQueue_S480
+                            	.PUBLIC F_SP_TestQueue_S240
+                            	.PUBLIC F_SP_TestQueue_MS01
+                            	.PUBLIC F_SP_TestQueue_DVR
+                            	
+                            	
+                            	.PUBLIC	_SP_GetResource	
+                            	
+                            	.PUBLIC	F_RampUpDAC1 
+                            	.PUBLIC	F_RampDnDAC1 
+                            	.PUBLIC	F_RampUpDAC2 
+                            	.PUBLIC	F_RampDnDAC2 
+                            	.PUBLIC	_STD_RampUpDAC1 
+                            	.PUBLIC	_STD_RampDnDAC1 
+                            	.PUBLIC	_STD_RampUpDAC2 
+                            	.PUBLIC	_STD_RampDnDAC2 
+                            	
+                            	
+                            	/////////////////////////////////////////////////////////////////
+                            	// Note: This register map to the P_INT_Ctrl(0x7010)
+                            	// 	User's interrupt setting have to combine with this register 
+                            	//	while co-work with SACM library.
+                            	//
+                            	//  See. following function for example:
+                            	//	F_SP_SACM_A2000_Init_:
+                            	//	F_SP_SACM_S480_Init_:
+                            	//	F_SP_SACM_S240_Init_:
+                            	//	F_SP_SACM_MS01_Init_:
+                            	//	F_SP_SACM_DVR_Init_: 
+                            	//////////////////////////////////////////////////
+                            	
+                            	.external R_InterruptStatus // declared in spce.asm
+                            	//////////////////////////////////////////////////
+                            	
+                            	.define C_QueueSize 50					
+0000007E                    	.RAM
+0000007E 00 00              	.VAR 	R_Queue 
+0000007F 00 00 00 00        	.DW		C_QueueSize-1	DUP(0) 
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00 00 00
+         00 00      
+000000B0 00 00              	.VAR	R_ReadIndex 
+000000B1 00 00              	.VAR	R_WriteIndex 
+                            	
+00009095                    	.CODE
+                            	//////////////////////////////////////////////////////
+                            	// Ramp Functions
+                            	//////////////////////////////////////////////////////	
+                            	////////////////////////////////////////////////////////
+                            	// Function: _SP_RampUpDAC1
+                            	// Description: Ramp Up before using DAC to avoid "bow" sound
+                            	//              from speaker 
+                            	// Syntax  : SP_RampUpDAC1()
+                            	// Destory: R1,R2
+                            	////////////////////////////////////////////////////////
+                            	_SP_RampUpDAC1:	.PROC
+                            	F_SP_RampUpDAC1:
+00009095 90 D4              			push r1,r2 to [sp] 
+00009096 11 93 17 70        	        r1=[P_DAC1] 
+00009098 09 B3 C0 FF        	        r1 &= ~0x003f 
+0000909A 09 43 00 80        	        cmp     r1,0x8000
+0000909C 0E 0E              	        jb     	L_RU_NormalUp
+0000909D 19 5E              	        je      L_RU_End
+                            	                
+                            	L_RU_DownLoop:
+0000909E 40 F0 01 91        	        call    F_Delay         
+000090A0 41 94              	        r2 = 0x0001 
+000090A1 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+000090A3 09 23 40 00        	        r1 -= 0x40 
+000090A5 19 D3 17 70        	        [P_DAC1] = r1 
+000090A7 09 43 00 80        	        cmp     r1,0x8000 
+000090A9 4C 4E              	        jne     L_RU_DownLoop   
+                            	L_RD_DownEnd:
+000090AA 0C EE              	        jmp     L_RU_End 
+                            	
+                            	L_RU_NormalUp:
+                            	L_RU_Loop:
+000090AB 40 F0 01 91        	        call    F_Delay 
+000090AD 41 94              	        r2 = 0x0001 
+000090AE 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+000090B0 09 03 40 00        	        r1 += 0x40 
+000090B2 19 D3 17 70        	        [P_DAC1] = r1 
+000090B4 09 43 00 80        	        cmp     r1, 0x8000 
+000090B6 4C 4E              	        jne     L_RU_Loop 
+                            	L_RU_End:
+000090B7 90 90              			pop     r1,r2 from [sp] 
+000090B8 90 9A              	  		retf 
+                            	    	.ENDP
+                            	    
+                            	////////////////////////////////////////////////////////
+                            	// Function: _SP_RampDnDAC1
+                            	// Description: Ramp down after using DAC to avoid "bow" sound
+                            	//              from speaker 
+                            	// Syntax  : SP_RampDnDAC1()
+                            	// Destory: R1,R2
+                            	////////////////////////////////////////////////////////
+                            	_SP_RampDnDAC1:	.PROC
+                            	F_SP_RampDnDAC1:
+000090B9 90 D4              			push r1,r2 to [sp] 
+                            	  		//int off 
+000090BA 11 93 17 70        	    	r1 = [P_DAC1] 
+000090BC 09 B3 C0 FF        	     	r1 &= ~0x003F 
+000090BE 0A 5E              	      	jz      L_RD_End 
+                            	L_RD_Loop:                
+000090BF 40 F0 01 91        	        call    F_Delay         
+000090C1 41 94              	        r2 = 0x0001 
+000090C2 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+000090C4 09 23 40 00        	        r1 -= 0x40 
+000090C6 19 D3 17 70        	        [P_DAC1] = r1   
+000090C8 4A 4E              	        jnz     L_RD_Loop 
+                            	L_RD_End:       
+000090C9 90 90              	        pop     r1,r2 from [sp] 
+000090CA 90 9A              	        retf 
+                            			.ENDP
+                            	
+                            	////////////////////////////////////////////////////////
+                            	// Function: _SP_RampUpDAC2
+                            	// Description: Ramp Up before using DAC to avoid "bow" sound
+                            	//              from speaker 
+                            	// Syntax  : SP_RampUpDAC2()
+                            	// Destory: R1,R2
+                            	////////////////////////////////////////////////////////
+                            	_SP_RampUpDAC2:	.PROC
+                            	F_SP_RampUpDAC2:
+000090CB 90 D4              			push r1,r2 to [sp] 
+000090CC 11 93 16 70        	  		r1=[P_DAC2] 
+000090CE 09 B3 C0 FF        	    	r1 &= ~0x003f 
+000090D0 09 43 00 80        	     	cmp     r1,0x8000
+000090D2 0E 0E              	      	jb     	L_RU_NormalUp_   
+000090D3 5D 5E              	       	je      L_RU_End 
+                            	                
+                            	L_RU_DownLoop_:
+000090D4 40 F0 01 91        	        call    F_Delay         
+000090D6 41 94              	        r2 = 0x0001 
+000090D7 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+000090D9 09 23 40 00        	        r1 -= 0x40 
+000090DB 19 D3 16 70        	        [P_DAC2] = r1 
+000090DD 09 43 00 80        	        cmp     r1,0x8000 
+000090DF 4C 4E              	        jne     L_RU_DownLoop_   
+                            	L_RD_DownEnd_:
+000090E0 0C EE              	        jmp     L_RU_End_ 
+                            	
+                            	L_RU_NormalUp_:
+                            	L_RU_Loop_:
+000090E1 40 F0 01 91        			call    F_Delay 
+000090E3 41 94              	  		r2 = 0x0001 
+000090E4 1A D5 12 70        	    	[P_Watchdog_Clear] = r2 
+000090E6 09 03 40 00        	        r1 += 0x40 
+000090E8 19 D3 16 70        	        [P_DAC2] = r1 
+000090EA 09 43 00 80        	        cmp     r1, 0x8000 
+000090EC 4C 4E              	        jne     L_RU_Loop_ 
+                            	L_RU_End_:
+000090ED 90 90              	   		pop     r1,r2 from [sp] 
+000090EE 90 9A              	     	retf 
+                            	      	.ENDP
+                            	
+                            	////////////////////////////////////////////////////////
+                            	// Function: _SP_RampDnDAC2
+                            	// Description: Ramp down after using DAC to avoid "bow" sound
+                            	//              from speaker 
+                            	// Syntax  : SP_RampDnDAC2()
+                            	// Destory: R1,R2
+                            	////////////////////////////////////////////////////////
+                            	_SP_RampDnDAC2:	.PROC
+                            	F_SP_RampDnDAC2:
+                            			//int off 
+000090EF 90 D4              			push r1,r2 to [sp] 
+                            	                
+000090F0 11 93 16 70        	        r1 = [P_DAC2] 
+000090F2 09 B3 C0 FF        	        r1 &= ~0x003F 
+000090F4 0A 5E              	        jz      L_RD_End_ 
+                            	L_RD_Loop_:                
+000090F5 40 F0 01 91        	        call    F_Delay         
+000090F7 41 94              	        r2 = 0x0001 
+000090F8 1A D5 12 70        	        [P_Watchdog_Clear] = r2 
+000090FA 09 23 40 00        	        r1 -= 0x40 
+000090FC 19 D3 16 70        	        [P_DAC2] = r1   
+000090FE 4A 4E              	        jnz     L_RD_Loop_ 
+                            	L_RD_End_:       
+000090FF 90 90              	        pop     r1,r2 from [sp] 
+00009100 90 9A              	        retf 
+                            			.ENDP
+                            	
+                            		
+                            	//-------------------------------------------------------
+                            	// Function: F_Delay
+                            	// Description: Provide delay for Ramp up/down 
+                            	//              The delay time is adjustable by adjusting C_RampDelay
+                            	// Destory: R1
+                            	//-------------------------------------------------------			
+                            	F_Delay:
+00009101 88 D2              	        push r1 to [sp] 
+00009102 09 93 50 00        	        r1 = C_RampDelay; 							// Ramp Up/Dn delay per step
+                            	
+                            	L_D_Loop:
+00009104 41 22              	        r1 -= 1 
+00009105 42 4E              	        jnz     L_D_Loop  
+00009106 88 90              	        pop     r1 from [sp] 
+00009107 90 9A              	        RETF	 
+                            	
+                            	
+                            	
+                            	//////////////////////////////////////////////////////
+                            	// Queue Functions
+                            	//////////////////////////////////////////////////////				
+                            	
+                            	////////////////////////////////////////////////////////
+                            	// Function: _SP_InitQueue
+                            	// Description: Initiate queue for algorism use 
+                            	// Syntax  : SP_InitQueue()
+                            	// Destory: R1
+                            	////////////////////////////////////////////////////////
+                            	_SP_InitQueue:	.PROC
+                            	_SP_InitQueue_A2000:
+                            	_SP_InitQueue_S530:
+                            	_SP_InitQueue_S480:
+                            	_SP_InitQueue_S240:
+                            	_SP_InitQueue_MS01:
+                            	_SP_InitQueue_DVR:
+                            	
+                            	F_SP_InitQueue_A2000:
+                            	F_SP_InitQueue_S530:
+                            	F_SP_InitQueue_S480:
+                            	F_SP_InitQueue_S240:
+                            	F_SP_InitQueue_MS01:
+                            	F_SP_InitQueue_DVR:
+                            	F_SP_InitQueue:
+00009108 09 93 7E 00        			R1 = R_Queue
+0000910A 40 94              			R2 = 0 
+                            	?L_ClearQueueLoop:		
+0000910B D1 D4              			[R1++] = R2
+0000910C 09 43 B0 00        			cmp	R1, R_Queue+C_QueueSize
+0000910E 44 4E              			jne	?L_ClearQueueLoop
+                            				
+0000910F 40 92              			R1 = 0
+00009110 19 D3 B0 00        			[R_ReadIndex] = R1
+00009112 19 D3 B1 00        			[R_WriteIndex] = R1
+                            					
+00009114 90 9A              			RETF
+                            			.ENDP
+                            			
+                            	//-------------------------------------------------------
+                            	// Function: F_SP_ReadQueue_Xnnn
+                            	// Description Get a data form Queue
+                            	// Output:  R1: Data read
+                            	// Destory: R1,R2
+                            	//-------------------------------------------------------
+                            	F_SP_ReadQueue_A2000:
+                            	F_SP_ReadQueue_S530:
+                            	F_SP_ReadQueue_S480:
+                            	F_SP_ReadQueue_S240:
+                            	F_SP_ReadQueue_MS01:
+                            	F_SP_ReadQueue_DVR:
+                            	F_SP_ReadQueue:
+00009115 12 95 B0 00        			R2 = [R_ReadIndex]
+00009117 12 45 B1 00        			cmp R2,[R_WriteIndex]
+00009119 0C 5E              			je	L_RQ_QueueEmpty
+                            	
+0000911A 0A 05 7E 00        			R2 += R_Queue				// get queue data address
+0000911C C2 92              			R1 = [R2]
+                            			
+0000911D 12 95 B0 00        			R2 = [R_ReadIndex]
+0000911F 41 04              			R2 += 1
+00009120 72 44              			cmp	R2, C_QueueSize
+00009121 01 4E              			jne	L_RQ_NotQueueBottom
+00009122 40 94              			R2 = 0
+                            	L_RQ_NotQueueBottom:	
+00009123 1A D5 B0 00        			[R_ReadIndex] = R2		
+                            			//r2 = 0x0000 						// get queue data
+00009125 90 9A              			retf 
+                            	L_RQ_QueueEmpty:
+                            			//r2 = 0x8000 						// queue empty
+00009126 90 9A              			retf 
+                            	
+                            	//-------------------------------------------------------
+                            	// Function: F_SP_ReadQueue_NIC_Xnnn
+                            	// Description: Get a data from Queue but do 
+                            	//			not change queue index
+                            	// Output:  R1: Data read
+                            	// Destory: R1,R2
+                            	//-------------------------------------------------------
+                            	F_SP_ReadQueue_NIC:
+                            	F_SP_ReadQueue_NIC_A2000:
+                            	F_SP_ReadQueue_NIC_S530:
+                            	F_SP_ReadQueue_NIC_S480:
+                            	F_SP_ReadQueue_NIC_S240:
+                            	F_SP_ReadQueue_NIC_MS01:
+                            	F_SP_ReadQueue_NIC_DVR:
+00009127 12 95 B0 00        			R2 = [R_ReadIndex]
+00009129 12 45 B1 00        			cmp R2,[R_WriteIndex]
+0000912B 03 5E              			je	?L_RQ_QueueEmpty
+                            	
+0000912C 0A 05 7E 00        			R2 += R_Queue				// get queue data index
+0000912E C2 92              			R1 = [R2]
+                            	?L_RQ_QueueEmpty:
+0000912F 90 9A              			RETF
+                            			
+                            	//-------------------------------------------------------
+                            	// Function: F_SP_WriteQueue_Xnnn
+                            	// Description: Put a data to Queue
+                            	// Input  :  R1 Data to write 
+                            	// Destory: R1,R2
+                            	//-------------------------------------------------------
+                            	F_SP_WriteQueue_A2000:
+                            	F_SP_WriteQueue_S530:
+                            	F_SP_WriteQueue_S480:
+                            	F_SP_WriteQueue_S240:
+                            	F_SP_WriteQueue_MS01:
+                            	F_SP_WriteQueue_DVR:
+                            	F_SP_WriteQueue:
+00009130 12 95 B1 00        			R2 = [R_WriteIndex] 			// put data to queue
+00009132 0A 05 7E 00        			R2 += R_Queue
+00009134 C2 D2              			[R2] = R1
+                            	
+00009135 12 95 B1 00        			R2 = [R_WriteIndex]
+00009137 41 04              			R2 += 1
+00009138 72 44              			cmp	R2, C_QueueSize
+00009139 01 4E              			jne	L_WQ_NotQueueBottom
+0000913A 40 94              			R2 = 0
+                            	L_WQ_NotQueueBottom:
+0000913B 1A D5 B1 00        			[R_WriteIndex] = R2
+0000913D 90 9A              			RETF
+                            	
+                            			
+                            	
+                            	//-------------------------------------------------------
+                            	// Function: F_SP_ReadQueue_NIC_Xnnn
+                            	// Description: Test Queue Status
+                            	// Output:  R1: queue status
+                            	//	            0: not Full, not empty
+                            	//              1: full
+                            	//              2: empty 
+                            	// Destory: R1
+                            	//-------------------------------------------------------
+                            	F_SP_TestQueue_A2000:
+                            	F_SP_TestQueue_S530:
+                            	F_SP_TestQueue_S480:
+                            	F_SP_TestQueue_S240:
+                            	F_SP_TestQueue_MS01:
+                            	F_SP_TestQueue_DVR:
+                            	F_SP_TestQueue:
+                            			//... Test Queue Empty ...
+0000913E 11 93 B0 00        			R1 = [R_ReadIndex] 
+00009140 11 43 B1 00        			cmp R1,[R_WriteIndex] 
+00009142 11 5E              			je	L_TQ_QueueEmpty 
+                            	
+                            			//... Test Queue Full ...
+00009143 11 93 B0 00        			R1 = [R_ReadIndex] 				// For N Queue Full: 1.R=0 and W=N-1 2. R<>0 and W=R-1 
+00009145 04 4E              			jnz	L_TQ_JudgeCond2 
+00009146 11 93 B1 00        			R1 = [R_WriteIndex] 
+00009148 71 42              			cmp	R1, C_QueueSize-1 			// Cond1
+00009149 08 5E              			je	L_TQ_QueueFull 			
+                            	L_TQ_JudgeCond2:		
+0000914A 11 93 B0 00        			R1 = [R_ReadIndex] 
+0000914C 41 22              			R1 -=1 
+0000914D 11 43 B1 00        			cmp R1,[R_WriteIndex] 
+0000914F 02 5E              			je	L_TQ_QueueFull 	
+                            	
+00009150 40 92              			r1 = 0 							// not Full, not empty
+00009151 90 9A              			retf 
+                            	L_TQ_QueueFull:
+00009152 41 92              			r1 = 1 							// full
+00009153 90 9A              			retf 
+                            	L_TQ_QueueEmpty:
+00009154 42 92              			r1 = 2 							// empty
+00009155 90 9A              			retf 
+                            	
+                            	
+                            	
+                            	//////////////////////////////////////////////////////
+                            	// SACM_dependent functions 
+                            	//////////////////////////////////////////////////////
+                            	 
+                            	//////////////////////////////////////////////////////////////////  
+                            	// Function: _SP_GetResource
+                            	// Description: Get data from resource(ROM area)
+                            	// Syntax:  int SP_GetResource(int Addr, int Page)
+                            	// Output:  R1: data to read
+                            	// Destory: R1
+                            	//////////////////////////////////////////////////////////////////  
+                            	////////////////////////////////////////////////////////////////// 
+                            	// Function: Get data from resource(ROM area)
+                            	// 	int SP_GetResource(int Addr, int Page)
+                            	//////////////////////////////////////////////////////////////////  
+                            	_SP_GetResource:	.PROC
+00009156 88 DA              			push bp to [sp] 
+00009157 08 0B 01 00        			bp = sp + 1 
+                            			
+00009159 03 92              			r1 = [bp+3] 					// Address
+0000915A 04 94              			r2 = [bp+4] 					// Page
+                            			
+0000915B 5A 95              			r2 = r2 lsl 4 					// Prepare Page for SR
+0000915C 5A 95              			r2 = r2 lsl 4 
+0000915D 4A 95              			r2 = r2 lsl 2 
+                            			
+0000915E 7F BC              			sr &= 0x03f 					// Change Page
+0000915F 06 A5              	        r2 |=sr 						//
+00009160 02 9D              	        sr = r2 						//
+                            	  
+00009161 E1 92              	  		r1 = D:[r1] 					// Get data
+                            	       
+00009162 88 98              			pop	 bp from [sp] 
+00009163 90 9A              			retf 
+                            			.ENDP 
+                            	//........................................
+                            	F_SP_GetResource:
+00009164 5A 95              			r2 = r2 lsl 4 					// Prepare Page for SR
+00009165 5A 95              			r2 = r2 lsl 4 
+00009166 4A 95              			r2 = r2 lsl 2 
+                            			
+00009167 7F BC              			sr &= 0x03f 					// Change Page
+00009168 06 A5              	        r2 |=sr 						//
+00009169 02 9D              	        sr = r2 						//
+                            	  
+0000916A E1 92              	  		r1 = D:[r1] 					// Get data
+0000916B 90 9A              		  	retf
+                            	
+                            	
+                            	////////////////////////////////////////////////////////////////// 
+                            	// Function: Delay
+                            	// 	void SP_Delay()
+                            	//////////////////////////////////////////////////////////////////  
+                            	_SP_Delay:	.PROC
+                            	F_SP_Delay:
+                            			// User define
+0000916C 90 9A              			retf 
+                            			.ENDP
+                            	
+                            	
+                            	
+                            	//////////////////////////////////////////////////////
+                            	// SACM initial functions
+                            	//////////////////////////////////////////////////////	
+                            	.public F_SP_SACM_A1600_Init_
+                            	.PUBLIC F_SP_SACM_A2000_Init_
+                            	.PUBLIC F_SP_SACM_S530_Init_
+                            	.PUBLIC F_SP_SACM_S480_Init_
+                            	.PUBLIC F_SP_SACM_S240_Init_
+                            	.public F_SP_SACM_S200_Init_
+                            	
+                            	.PUBLIC F_SP_SACM_MS01_Init_
+                            	.PUBLIC F_SP_PlayMode0_
+                            	.PUBLIC F_SP_PlayMode1_    
+                            	.PUBLIC F_SP_PlayMode2_  
+                            	.PUBLIC F_SP_PlayMode3_   
+                            	
+                            	.PUBLIC F_SP_SACM_DVR_Init_
+                            	.PUBLIC F_SP_SACM_DVR_Rec_Init_
+                            	.PUBLIC F_SP_SACM_DVR_Play_Init_
+                            	
+                            	//----------------------------------------------------
+                            	// A1600
+                            	//----------------------------------------------------	
+                            	///////////////////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_A1600_Initial() 
+                            	//			or F_SACM_A1600_Initial:
+                            	// Note: The following functions are the partial code of original
+                            	//			initial subroutine. (H/W setting part) 
+                            	//
+                            	//	Ex: F_SACM_A1600_Initial:
+                            	//			...
+                            	//			call F_SP_SACM_A1600_Init_	: S480/S240/MS01 is same
+                            	//			...
+                            	//			retf
+                            	////////////////////////////////////////////////////////////////////////////////
+                            	
+                            	F_SP_SACM_A1600_Init_:	
+0000916D 09 93 80 00        			R1 = C_SystemClock;             // 24MHz, Fcpu=Fosc
+0000916F 19 D3 13 70        	        [P_SystemClock]=R1           	//  Frequency 20MHz
+00009171 70 92              	        R1 = 0x0030                     // TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009172 19 D3 0B 70        	        [P_TimerA_Ctrl] = R1			// Initial Timer A
+00009174 09 93 FF F9        	        R1 = C_A1600_Timer_Setting                  	// 16K
+00009176 19 D3 0A 70        	        [P_TimerA_Data] = R1 
+00009178 09 93 A8 00        	        R1 = 0x00A8                     // Set the DAC Ctrl
+0000917A 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+0000917C 09 93 FF FF        	        R1 = 0xffff
+                            	        
+0000917E 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+00009180 40 92              	        R1 =0x0000						// 
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+00009181 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif        
+                            	        
+00009183 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+                            	        //R1 |= C_IRQ4_1KHz
+00009185 19 D3 C2 00        	        [R_InterruptStatus] = R1		//
+00009187 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+                            	
+00009189 90 9A              			RETF
+                            	//----------------------------------------------------
+                            	// A2000
+                            	//----------------------------------------------------	
+                            	///////////////////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_A2000_Initial() 
+                            	//			or F_SACM_A2000_Initial:
+                            	// Note: The following functions are the partial code of original
+                            	//			initial subroutine. (H/W setting part) 
+                            	//
+                            	//	Ex: F_SACM_A2000_Initial:
+                            	//			...
+                            	//			call F_SP_SACM_A2000_Init_	: S480/S240/MS01 is same
+                            	//			...
+                            	//			retf
+                            	////////////////////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_A2000_Init_:	
+0000918A 09 93 80 00        			R1=C_SystemClock;        // 24MHz, Fcpu=Fosc
+0000918C 19 D3 13 70        	        [P_SystemClock]=R1           	//  Frequency 20MHz
+0000918E 70 92              	        R1 = 0x0030                     // TimerA CKA=Fosc/2 CKB=1 Tout:off
+0000918F 19 D3 0B 70        	        [P_TimerA_Ctrl] = R1			// Initial Timer A
+00009191 09 93 FF F9        	        R1 = C_A2000_Timer_Setting                   	// 16K
+00009193 19 D3 0A 70        	        [P_TimerA_Data] = R1 
+00009195 09 93 A8 00        	        R1 = 0x00A8                     // Set the DAC Ctrl
+00009197 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+00009199 09 93 FF FF        	        R1 = 0xffff
+                            	        
+0000919B 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+                            	
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+0000919D 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+                            	                
+0000919F 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+                            	
+000091A1 19 D3 C2 00        	        [R_InterruptStatus] = R1		//
+000091A3 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+                            	
+000091A5 90 9A              			RETF
+                            	
+                            	
+                            	
+                            	//----------------------------------------------------
+                            	// A3200 1ch
+                            	//----------------------------------------------------	
+                            	.public F_SP_SACM_A3200_Init_
+                            	.public F_SACM_A3200_SetTimerSrc			
+                            	.public F_SACM_A3200_SetIntSrc
+                            	.public F_SACM_A3200_SendDecodedData
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of 
+                            	//			 SACM_A3200_Initial() or F_SACM_A3200_Initial:
+                            	//           Single Channel A3200      
+                            	//////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_A3200_Init_:	.proc 
+                            	//	R1 = 0x0020;		// 20MHz 	
+                            	//	R1 = 0x0000;		// 24MHz
+                            	//	R1 = 0x0040;		// 32MHz						
+                            	//	R1 = 0x0060;		// 40MHz
+                            	//	R1 = 0x0080;		// 49MHz
+000091A6 09 93 80 00        		R1 = C_SystemClock
+000091A8 19 D3 13 70        		[P_SystemClock] = R1;
+                            		
+000091AA 09 93 A4 00        		R1 = 0x00A4; 			// Latch DAR1 data to DAC1 by TimerA
+000091AC 19 D3 2A 70        		[P_DAC_Ctrl] = R1;  	// Latch DAR2 data to DAC2 by TimerA	
+                            		
+000091AE 90 9A              		RETF;
+                            	.endp 
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_SetTimerSrc
+                            	//-- Parameter: R1 : TimerData
+                            	//-- Return: NONE
+                            	//-- Description: This function called by A3200 library to set timer A                 
+                            	//--------------------------------------------------------------------
+                            	F_SACM_A3200_SetTimerSrc: .proc
+000091AF 88 D4              		push R2 to [sp];
+000091B0 70 94              		R2 = 0x0030;
+000091B1 1A D5 0B 70        		[P_TimerA_Ctrl] = R2;	// select Fosc/2 as Timer A clock source 
+000091B3 19 D3 0A 70        		[P_TimerA_Data] = R1;
+000091B5 88 92              		pop R2 from [sp];
+000091B6 90 9A              		retf;
+                            	.endp	
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_SetIntSrc
+                            	//-- Parameter: NONE
+                            	//-- Return: NONE
+                            	//-- Description: This function called by A3200 library to set  
+                            	//                interrupt 
+                            	//--------------------------------------------------------------------
+                            	F_SACM_A3200_SetIntSrc: .proc 
+000091B7 88 D2              		push R1 to [SP];
+                            	    .if BODY_TYPE == SPCE061A
+000091B8 11 93 2D 70        	     R1 = [P_INT_Mask]		//
+                            	    .endif
+                            	    .if BODY_TYPE == SPCE500A
+                            	     R1 = [R_InterruptStatus]		//
+                            	    .endif 
+                            	
+000091BA 09 A3 00 10        		R1 |= C_IRQ1_TMA;
+000091BC 19 D3 C2 00        		[R_InterruptStatus] = R1;
+000091BE 19 D3 10 70        		[P_INT_Ctrl] = R1;
+000091C0 88 90              		pop R1 from [SP];
+000091C1 90 9A              		RETF;
+                            	.endp
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_SendDecodedData
+                            	//-- Parameter: R1 : decoded sample
+                            	//-- Return: NONE
+                            	//-- Description: This function called by A3200 library to send  
+                            	//                decoded data to DACs
+                            	//--------------------------------------------------------------------
+                            	F_SACM_A3200_SendDecodedData: .proc
+000091C2 19 D3 17 70        		[P_DAC1] = R1;
+000091C4 19 D3 16 70        		[P_DAC2] = R1;
+000091C6 90 9A              		RETF;
+                            	.endp 		
+                            	
+                            			
+                            	
+                            	//----------------------------------------------------
+                            	// A3200 2ch
+                            	//----------------------------------------------------	
+                            	.public F_SP_SACM_2Ch_A3200_Init_
+                            	.public F_SACM_A3200_Ch1_SetTimerSrc			
+                            	.public F_SACM_A3200_Ch1_SetIntSrc
+                            	.public F_SACM_A3200_Ch1_SendDecodedData
+                            	.public F_SACM_A3200_Ch2_SetTimerSrc			
+                            	.public F_SACM_A3200_Ch2_SetIntSrc
+                            	.public F_SACM_A3200_Ch2_SendDecodedData
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of 
+                            	//			 SACM_2Ch_A3200_Initial() or F_SACM_2Ch_A3200_Initial:
+                            	//           2 Channel A3200  
+                            	//////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_2Ch_A3200_Init_:	
+                            	//		R1 = 0x0020;		// 20MHz 	
+                            	//		R1 = 0x0000;		// 24MHz
+                            	//		R1 = 0x0040;		// 32MHz						
+                            	//		R1 = 0x0060;		// 40MHz
+                            	//		R1 = 0x0080;		// 49MHz
+000091C7 09 93 80 00        			R1 = C_SystemClock
+                            	
+000091C9 19 D3 13 70        	        [P_SystemClock] = R1;           	
+                            	         
+000091CB 09 93 C4 00        	        R1 = 0x00C4;                     // Latch DAR1 data to DAC1 by TimerA
+000091CD 19 D3 2A 70        	        [P_DAC_Ctrl] = R1;               // Latch DAR2 data to DAC2 by TimerB
+                            	        
+000091CF 09 93 FF FF        	        R1 = 0xffff;
+000091D1 19 D3 11 70        	        [P_INT_Clear] = R1;
+                            	                 
+000091D3 90 9A              	        RETF
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_Ch1_SetTimerSrc
+                            	//-- Parameter: R1 : TimerData
+                            	//-- Return: NONE
+                            	//-- Description: This function called by 2Ch A3200 library to set timer A 
+                            	//                for channel 1
+                            	//--------------------------------------------------------------------
+                            	
+                            	F_SACM_A3200_Ch1_SetTimerSrc: .proc
+000091D4 88 D4              		push R2 to [sp];
+000091D5 70 94              		R2 = 0x0030;
+000091D6 1A D5 0B 70        		[P_TimerA_Ctrl] = R2;	// select Fosc/2 as Timer A clock source 
+000091D8 19 D3 0A 70        		[P_TimerA_Data] = R1;
+000091DA 88 92              		pop R2 from [sp];
+000091DB 90 9A              		retf;
+                            	.endp	
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_Ch1_SetIntSrc
+                            	//-- Parameter: NONE
+                            	//-- Return: NONE
+                            	//-- Description: This function called by 2Ch A3200 library to set  
+                            	//                interrupt for channel 1
+                            	//--------------------------------------------------------------------
+                            	F_SACM_A3200_Ch1_SetIntSrc: .proc 
+000091DC 88 D2              		push R1 to [SP];
+                            	    .if BODY_TYPE == SPCE061A
+000091DD 11 93 2D 70        	     R1 = [P_INT_Mask]		//
+                            	    .endif
+                            	    .if BODY_TYPE == SPCE500A
+                            	     R1 = [R_InterruptStatus]		//
+                            	    .endif 
+                            	
+000091DF 09 A3 00 10        		R1 |= C_IRQ1_TMA;
+000091E1 19 D3 C2 00        		[R_InterruptStatus] = R1;
+000091E3 19 D3 10 70        		[P_INT_Ctrl] = R1;
+000091E5 88 90              		pop R1 from [SP];
+000091E6 90 9A              		RETF;
+                            	.endp
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_Ch1_SendDecodedData
+                            	//-- Parameter: R1 : decoded sample
+                            	//-- Return: NONE
+                            	//-- Description: This function called by 2Ch A3200 library to send  
+                            	//                decoded data to DAC1
+                            	//--------------------------------------------------------------------
+                            	.external _Ch1_Stop
+                            	F_SACM_A3200_Ch1_SendDecodedData: .proc
+000091E7 19 D3 17 70        		[P_DAC1] = R1;
+000091E9 90 9A              		RETF;
+                            	.endp 		
+                            	
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_Ch2_SetTimerSrc
+                            	//-- Parameter: R1 : TimerData
+                            	//-- Return: NONE
+                            	//-- Description: This function called by 2Ch A3200 library to set  
+                            	//                timer B for channel 2
+                            	//--------------------------------------------------------------------
+                            	
+                            	F_SACM_A3200_Ch2_SetTimerSrc: .proc
+000091EA 88 D4              		push R2 to [sp];
+000091EB 40 94              		R2 = 0x0000;
+000091EC 1A D5 0D 70        		[P_TimerB_Ctrl] = R2;	// select Fosc/2 as Timer B clock source 
+000091EE 19 D3 0C 70        		[P_TimerB_Data] = R1;
+000091F0 88 92              		pop R2 from [sp];
+000091F1 90 9A              		retf;
+                            	.endp	
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_Ch2_SetIntSrc
+                            	//-- Parameter: NONE
+                            	//-- Return: NONE
+                            	//-- Description: This function called by 2Ch A3200 library to set  
+                            	//                interrupt for channel 2
+                            	//--------------------------------------------------------------------
+                            	F_SACM_A3200_Ch2_SetIntSrc: .proc 
+000091F2 88 D2              		push R1 to [SP];
+                            	    .if BODY_TYPE == SPCE061A
+000091F3 11 93 2D 70        	     R1 = [P_INT_Mask]		//
+                            	    .endif
+                            	    .if BODY_TYPE == SPCE500A
+                            	     R1 = [R_InterruptStatus]		//
+                            	    .endif 
+                            	
+000091F5 09 A3 00 04        		R1 |= C_IRQ2_TMB;
+000091F7 19 D3 C2 00        		[R_InterruptStatus] = R1;
+000091F9 19 D3 10 70        		[P_INT_Ctrl] = R1;
+000091FB 88 90              		pop R1 from [SP];
+000091FC 90 9A              		RETF;
+                            	.endp
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SACM_A3200_Ch2_SendDecodedData
+                            	//-- Parameter: R1 : decoded sample
+                            	//-- Return: NONE
+                            	//-- Description: This function called by 2Ch A3200 library to send  
+                            	//                decoded data to DAC2
+                            	//--------------------------------------------------------------------
+                            	
+                            	F_SACM_A3200_Ch2_SendDecodedData: .proc
+000091FD 19 D3 16 70        		[P_DAC2] = R1;
+000091FF 90 9A              		RETF;
+                            	.endp 		
+                            	
+                            	
+                            	
+                            	//----------------------------------------------------
+                            	// S530
+                            	//----------------------------------------------------	
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_S530_Initial() 
+                            	//			or F_SACM_S530_Initial:
+                            	//////////////////////////////////////////////////////////////////
+                            	// Sampling rate   |   data rate   |   TimerA_Data   | CPU(24MHz) % 
+                            	// -----------------------------------------------------------------  
+                            	//     8K Hz       |   5.3  Kbps   |     0xfa00      |    50 %
+                            	//     9K Hz       |   5.96 Kbps   |     0xfaaa      |    56 %  
+                            	//    10K Hz       |   6.63 Kbps   |     0xfb33      |    63 %
+                            	//    11K Hz       |   7.29 Kbps   |     0xfba2      |    69 %  
+                            	//    12K Hz       |   7.95 Kbps   |     0xfc00      |    75 %      
+                            	
+                            	F_SP_SACM_S530_Init_:
+00009200 09 93 80 00        	        R1 = C_SystemClock;				// system clock 49MHz Fosc,CPU clock 49MHz
+                            	        //R1 = 0x0080;					// system clock 24MHz Fosc,CPU clock 24MHz
+00009202 19 D3 13 70        	        [P_SystemClock]=R1          	// Initial System Clock
+00009204 70 92              	        R1 = 0x0030                     // TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009205 19 D3 0B 70        	        [P_TimerA_Ctrl]=R1				// Initial Timer A
+                            	        //R1 = 0xfa00                  	//  8KHz, Using  8KHz to play  8KHz audio data. 
+                            	        //R1 = 0xfaaa                  	//  9KHz, Using  9KHz to play  9KHz audio data. 
+                            	        //R1 = 0xfb33                  	// 10KHz, Using 10KHz to play 10KHz audio data. 
+                            	        //R1 = 0xfba2 					// 11KHz, Using 11KHz to play 11KHz audio data. 
+00009207 09 93 FF F7        	        R1 = C_S530_Timer_Setting      	// 12KHz, Using 12KHz to play 12KHz audio data.
+00009209 19 D3 0A 70        	        [P_TimerA_Data]=R1
+0000920B 09 93 A8 00        	        R1 = 0x00A8				// 
+0000920D 19 D3 2A 70        	        [P_DAC_Ctrl] = R1				//
+                            	        
+0000920F 09 93 FF FF        	        R1 = 0xffff
+00009211 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+00009213 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+                            	        
+00009215 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+                            	  
+00009217 19 D3 C2 00        	        [R_InterruptStatus] = R1		//
+00009219 19 D3 10 70        	        [P_INT_Ctrl] = R1				//	
+0000921B 43 F1              	        INT IRQ,FIQ	      
+0000921C 90 9A              	        RETF
+                            	//----------------------------------------------------
+                            	// S480
+                            	//----------------------------------------------------
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_S480_Initial() 
+                            	//			or F_SACM_S480_Initial:
+                            	//////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_S480_Init_:
+0000921D 09 93 80 00        	        R1 = C_SystemClock					// 24MHz Fosc
+0000921F 19 D3 13 70        	        [P_SystemClock]=R1          	// Initial System Clock
+00009221 70 92              	        R1=0x0030                       // TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009222 19 D3 0B 70        	        [P_TimerA_Ctrl]=R1				// Initial Timer A
+00009224 09 93 FF F9        	        R1 = C_S480_Timer_Setting      	// 24K
+                            	        //R1 = 0xfd00                  	// 16K
+                            	        //R1 = 0xfc00                  	// 12KHz
+00009226 19 D3 0A 70        	        [P_TimerA_Data]=R1
+00009228 09 93 A8 00        	        R1 = 0x00A8						// 
+0000922A 19 D3 2A 70        	        [P_DAC_Ctrl] = R1				//
+                            	        
+0000922C 09 93 FF FF        	        R1 = 0xffff
+0000922E 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+00009230 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+                            	        
+00009232 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+00009234 19 D3 C2 00        	        [R_InterruptStatus] = R1		//
+00009236 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+00009238 90 9A              	        RETF
+                            	
+                            	//----------------------------------------------------
+                            	// S240
+                            	//----------------------------------------------------
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_S240_Initial() 
+                            	//			or F_SACM_S240_Initial:
+                            	//////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_S240_Init_:	
+00009239 09 93 80 00        			R1 = C_SystemClock;	
+0000923B 19 D3 13 70        			[P_SystemClock]=R1
+0000923D 09 93 A8 00        			R1 = 0x00A8;					// 
+0000923F 19 D3 2A 70        			[P_DAC_Ctrl]= R1
+00009241 70 92              			R1 = 0x0030;               	// TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009242 19 D3 0B 70        	        [P_TimerA_Ctrl] = R1;
+00009244 09 93 33 FB        			R1 = C_S240_Timer_Setting;                    // 24K
+00009246 19 D3 0A 70        	    	[P_TimerA_Data] = R1;		
+00009248 09 93 FF FF        	        R1 = 0xffff
+0000924A 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+0000924C 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+                            	        
+0000924E 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+00009250 19 D3 C2 00        	        [R_InterruptStatus] = R1		//
+00009252 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+00009254 90 9A              	        RETF
+                            	
+                            	//----------------------------------------------------
+                            	// S200
+                            	//----------------------------------------------------
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_S200_Initial() 
+                            	//			or F_SACM_S200_Initial:
+                            	//////////////////////////////////////////////////////////////////       
+                            	
+                            	F_SP_SACM_S200_Init_:
+                            	
+                            	 		//R1 = 0X0098; // Set CPU Clock=Fosc (49Mhz)
+00009255 09 93 80 00        	 		R1 = C_SystemClock;  // 24.576MHz
+00009257 19 D3 13 70        	 		[P_SystemClock] = R1;
+00009259 09 93 30 02        	 		R1 = 0X0230; // source =FOSC/2, PWMO 8/16
+0000925B 19 D3 0B 70        	 		[P_TimerA_Ctrl] = R1;
+                            	 		//R1 = 0XFa00; // Sample rate = 32khz
+0000925D 09 93 FF F9        	 		R1= C_S200_Timer_Setting; // 24kHz
+0000925F 19 D3 0A 70        	 		[P_TimerA_Data] = R1;
+                            	
+                            	 		//R1 = 0X2000; // FIQ TMA
+                            	 		//[P_INT_Ctrl] = R1;
+                            	        .if BODY_TYPE == SPCE061A
+00009261 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+                            	        
+00009263 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+00009265 19 D3 C2 00        	        [R_InterruptStatus] = R1		//
+00009267 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+00009269 90 9A              	        RETF
+0000926A 90 9A              	 RETF;
+                            	 
+                            	 
+                            	//----------------------------------------------------
+                            	// MS01
+                            	//----------------------------------------------------
+                            	//////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_MS01_Initial() 
+                            	//			or F_SACM_MS01_Initial:
+                            	//
+                            	//	Ex: F_SACM_MS01_Initial:
+                            	//			...
+                            	//			call F_SP_SACM_MS01_Init_
+                            	//			call F_SP_Play_Mode0/1/2/3	->0,1,2,3 depending on the para1
+                            	//			...
+                            	//			retf
+                            	//////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_MS01_Init_:	
+0000926B 09 93 80 00        			R1 = C_SystemClock;                    // 24MHz, Fcpu=Fosc
+0000926D 19 D3 13 70        	        [P_SystemClock] = R1;        	// Initial System Clock
+0000926F 70 92              	        R1 = 0x0030;                    // TimerA CKA=Fosc/2 CKB=1 Tout:off
+00009270 19 D3 0B 70        	        [P_TimerA_Ctrl] = R1			// Initial Timer A
+00009272 43 92              	        R1 = 0x0003
+00009273 19 D3 0D 70        	        [P_TimerB_Ctrl] = R1;
+00009275 09 93 FF FF        	        R1 = 0xFFFF 					// Any time for ADPCM channel 0,1
+00009277 19 D3 0C 70        	        [P_TimerB_Data] = R1			// Initial Timer B -> 8192	
+                            	        
+00009279 09 93 FF FF        			R1 = 0xffff
+0000927B 19 D3 11 70        	        [P_INT_Clear] = R1          	// Clear interrupt occuiped events
+0000927D 90 9A              	        RETF
+                            	
+                            	//........................................
+                            	F_SP_PlayMode0_:						// with F_SP_SACM_MS01_Initial
+0000927E 46 92              			R1 = 0x0006
+0000927F 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+                            	        //R1 = 0xFE00
+00009281 09 93 FF FB        	        R1 = C_Timer_Setting_24K_For_49MHz
+00009283 19 D3 0A 70        	        [P_TimerA_Data] = R1 			//
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+00009285 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+00009287 09 A3 10 84        	        R1 |= C_FIQ_PWM+C_IRQ2_TMB+C_IRQ4_1KHz
+                            	        //R1 = C_FIQ_PWM+C_IRQ2_TMB+C_IRQ4_1KHz
+00009289 19 D3 C2 00        	        [R_InterruptStatus] = R1 		//
+0000928B 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+0000928D 90 9A              	        RETF
+                            	
+                            	F_SP_PlayMode1_:						// with F_SP_SACM_MS01_Initial
+0000928E 09 93 A8 00        			R1 = 0x00A8
+00009290 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+                            	        //R1 = 0xFE00
+00009292 09 93 FF FB        	        R1 = C_Timer_Setting_24K_For_49MHz
+00009294 19 D3 0A 70        	        [P_TimerA_Data] = R1 			//
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+00009296 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+                            	        
+                            	        //R1 = C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz
+00009298 09 A3 10 24        	        R1 |= C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz        
+0000929A 19 D3 C2 00        	        [R_InterruptStatus] = R1 		//
+0000929C 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+0000929E 90 9A              	        RETF
+                            	
+                            	
+                            	F_SP_PlayMode2_:	 						// with F_SP_SACM_MS01_Initial
+0000929F 09 93 A8 00        			R1 = 0x00A8
+000092A1 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+                            	        //R1 = 0xFD9A
+000092A3 09 93 33 FB        	        R1=C_Timer_Setting_20K_For_49MHz
+000092A5 19 D3 0A 70        	        [P_TimerA_Data] = R1 				//
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+000092A7 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+                            	        
+                            	        //R1 = C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz
+000092A9 09 A3 10 24        	        R1 |= C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz        
+000092AB 19 D3 C2 00        	        [R_InterruptStatus] = R1 			//
+000092AD 19 D3 10 70        	        [P_INT_Ctrl] = R1					//
+000092AF 90 9A              	        RETF
+                            	
+                            	      
+                            	F_SP_PlayMode3_:							// with F_SP_SACM_MS01_Initial
+000092B0 09 93 A8 00        			R1 = 0x00A8
+000092B2 19 D3 2A 70        	        [P_DAC_Ctrl] = R1
+000092B4 09 93 FF F9        	        R1 = C_Timer_Setting_16K_For_49MHz;
+000092B6 19 D3 0A 70        	        [P_TimerA_Data] = R1 			//
+                            	        
+                            	        .if BODY_TYPE == SPCE061A
+000092B8 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif 
+                            	        
+                            	        //R1 = C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz
+000092BA 09 A3 10 24        	        R1 |= C_FIQ_TMA+C_IRQ2_TMB+C_IRQ4_1KHz        
+000092BC 19 D3 C2 00        		    [R_InterruptStatus] = R1 		//
+000092BE 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+000092C0 90 9A              	        RETF
+                            	
+                            	
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SP_IRQ2_ON
+                            	//-- Parameter: NONE
+                            	//-- Return: NONE
+                            	//-- Description: This function called by library to turn on IRQ2 
+                            	//--------------------------------------------------------------------
+                            	.public F_SP_IRQ2_ON
+                            	F_SP_IRQ2_ON:
+                            			//------------------------------------------
+                            			// By Arthur 01/16/2003 (123)
+                            			//------------------------------------------
+                            			.if BODY_TYPE == SPCE061A
+000092C1 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif       
+                            			//------------------------------------------	
+000092C3 09 A3 00 04        	        r1 |= C_IRQ2_TMB ;
+000092C5 19 D3 C2 00        	        [R_InterruptStatus] = r1;				//
+000092C7 19 D3 10 70        	        [P_INT_Ctrl] = R1
+000092C9 90 9A              	retf
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SP_IRQ2_OFF
+                            	//-- Parameter: NONE
+                            	//-- Return: NONE
+                            	//-- Description: This function called by library to turn off IRQ2 
+                            	//--------------------------------------------------------------------
+                            	.public F_SP_IRQ2_OFF
+                            	F_SP_IRQ2_OFF:
+                            			//------------------------------------------
+                            			// By Arthur 01/16/2003 (123)
+                            			//------------------------------------------
+                            			.if BODY_TYPE == SPCE061A
+000092CA 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	        .endif
+                            	        .if BODY_TYPE == SPCE500A
+                            	        R1 = [R_InterruptStatus]		//
+                            	        .endif       
+                            			//------------------------------------------	
+000092CC 09 B3 FF FB        	        r1 &= ~C_IRQ2_TMB ;
+000092CE 19 D3 C2 00        	        [R_InterruptStatus] = r1;				//
+000092D0 19 D3 10 70        	        [P_INT_Ctrl] = R1
+000092D2 90 9A              	retf
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SP_Send_DAC1
+                            	//-- Parameter: R4 = audio out data
+                            	//-- Return: NONE
+                            	//-- Description: This function called by library to send audio data to 
+                            	//                DAC1
+                            	//--------------------------------------------------------------------
+                            	.public F_SP_Send_DAC1
+                            	F_SP_Send_DAC1:
+000092D3 1C D9 17 70        			[P_DAC1] = R4
+000092D5 90 9A              			retf
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SP_Send_DAC2
+                            	//-- Parameter: R4 = audio out data
+                            	//-- Return: NONE
+                            	//-- Description: This function called by library to send audio data to 
+                            	//                DAC1
+                            	//--------------------------------------------------------------------
+                            	.public F_SP_Send_DAC2
+                            	F_SP_Send_DAC2:
+000092D6 1C D9 16 70        			[P_DAC2] = R4
+000092D8 90 9A              			retf
+                            	/////////////////////////////////////////////////////////
+                            	
+                            	
+                            		
+                            	//----------------------------------------------------
+                            	// DVR
+                            	//----------------------------------------------------
+                            	///////////////////////////////////////////////////////////////////////////////
+                            	// Function: The partial code of hardware setting of SACM_MS01_Initial() 
+                            	//			or F_SACM_MS01_Initial:
+                            	//
+                            	//	Ex: F_SACM_DVR_Initial:
+                            	//			...
+                            	//			call F_SP_SACM_DVR_Init_
+                            	//			call F_SP_Play_Mode0/1/2/3	->0,1,2,3 depending on the para1
+                            	//			...
+                            	//			retf
+                            	//	Ex1:
+                            	//		F_SACM_DVR_Record: (or F_SACM_DVR_InitEncoder)
+                            	//			...
+                            	//			call F_SP_SACM_DVR_Rec_Init
+                            	//			...
+                            	//			retf
+                            	//	Ex2:
+                            	//		F_SACM_DVR_Play: (or F_SACM_DVR_InitDecoder)
+                            	//			...
+                            	//			call F_SP_SACM_DVR_Play_Init_
+                            	//			...
+                            	//			retf
+                            	///////////////////////////////////////////////////////////////////////////////
+                            	F_SP_SACM_DVR_Init_:
+000092D9 09 93 80 00        	        r1 = C_SystemClock;             // 24MHz, Fcpu=Fosc
+000092DB 19 D3 13 70        	        [P_SystemClock] = r1;           //  Frequency 20MHz
+000092DD 70 92              	        r1 = 0x0030;                    // TimerA CKA=Fosc/2 CKB=1 Tout:off
+000092DE 19 D3 0B 70        	        [P_TimerA_Ctrl] = r1;
+000092E0 09 93 FF F3        	        r1 = C_DVR_Timer_Setting;       // 8K @ 24.576MHz
+                            	        //r1 = 0xfb1d;                  // 8K @ 20MHz
+000092E2 19 D3 0A 70        	        [P_TimerA_Data] = r1;
+                            	       //
+                            	       //SPCE500A setting
+                            	       // --------------------------
+                            	       .if BODY_TYPE == SPCE500A       
+                            			R1=0x0015;	// 500A: MIC IN, Auto,AGC,Enable ADC
+                            	//		R1=0x0011;	// 500A: MIC IN, Auto ,Enable ADC
+                            	//	    R1=0x0013;	// 500A: LINE IN, Auto,Enable ADC       
+                            	        [P_ADC_Ctrl] = r1;
+                            	        r1 = 0x00AC;                    // DAC1-TMA, DAC2-TMA, ADC-TMA  
+                            	        [P_DAC_Ctrl] = r1;
+                            	        
+                            	        r1 = 0xffff;
+                            	        [P_INT_Clear] = r1;          	// Clear interrupt occuiped events
+                            	
+                            	        R1 = [R_InterruptStatus]		//
+                            	    
+                            	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+                            	        [R_InterruptStatus] = R1		//
+                            	        [P_INT_Ctrl] = R1				//
+                            	        .endif 
+                            	       
+                            	       // 
+                            	       // SPCE061A Setting   
+                            	       // --------------------------
+                            	       .if BODY_TYPE == SPCE061A  
+000092E4 09 93 15 01        	        r1 = 0x0115;  // 061A: MIC IN, AGC,Enable ADC 
+                            	//      r1 = 0x0101;  // 061A: MIC IN, Enable ADC      
+                            	//      r1 = 0x0103;  // 061A: LINE IN, Enable ADC              
+                            	     
+000092E6 19 D3 15 70        	        [P_ADC_Ctrl] = r1;
+                            	        
+000092E8 40 92              			R1=0x0000					// Mic
+                            	//		R1 = 0x0001      			// Line_in 1
+000092E9 19 D3 2B 70        	        [P_ADC_MUX_Ctrl] = R1
+                            	//      R1=[P_ADC_LINEIN_Data]; 
+                            	        
+                            	 //      r1 = 0x00A8;                    // 061A: DAC1-TMA, DAC2-TMA, ADC-TMA     
+000092EB 09 93 A0 00        	        r1 = 0x00A0;                    // 061A: DAC1-TMA, DAC2-TMA, ADC-Direct   
+000092ED 19 D3 2A 70        	        [P_DAC_Ctrl] = r1;
+                            	        
+000092EF 09 93 FF FF        	        r1 = 0xffff;
+000092F1 19 D3 11 70        	        [P_INT_Clear] = r1;          	// Clear interrupt occuiped events
+                            	 
+000092F3 11 93 2D 70        	        R1 = [P_INT_Mask]		//
+                            	    
+000092F5 09 A3 00 20        	        R1 |= C_FIQ_TMA					// Enable Timer A FIQ
+000092F7 19 D3 C2 00        	        [R_InterruptStatus] = R1		//
+000092F9 19 D3 10 70        	        [P_INT_Ctrl] = R1				//
+000092FB 11 93 14 70        	        R1=[P_ADC]
+000092FD 11 93 2C 70        	        R1=[P_ADC_LINEIN_Data]  
+                            	       .endif       
+000092FF 90 9A              	        RETF
+                            	
+                            	
+                            	
+                            	
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SP_SACM_DVR_Rec_Init_
+                            	//-- Parameter: NONE
+                            	//-- Return: NONE
+                            	//-- Description: This function called by library to set  
+                            	//                ADC and sampling rate for recording. 
+                            	//                Uaser would have to modified the function body 
+                            	//                based on the need to fulfill this request from 
+                            	//                library. 
+                            	//--------------------------------------------------------------------
+                            	F_SP_SACM_DVR_Rec_Init_:				// call by SACM_DVR_Record / SACM_DVR_InitEncoder
+                            	               	
+00009300 09 93 FF FB        	        R1 = C_DVR_Rec_Timer_Setting    //24K @ 24.576/49.152 MHz
+00009302 19 D3 0A 70        	        [P_TimerA_Data] = r1 
+00009304 90 9A              			RETF
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SP_SACM_DVR_Play_Init_
+                            	//-- Parameter: NONE
+                            	//-- Return: NONE
+                            	//-- Description: This function called by library to set  
+                            	//                ADC and sampling rate for playback. 
+                            	//                Uaser would have to modified the function body 
+                            	//                based on the need to fulfill this request from 
+                            	//                library. 
+                            	//--------------------------------------------------------------------
+                            	F_SP_SACM_DVR_Play_Init_:
+00009305 40 92              		    r1 = 0x0000						// call by SACM_DVR_Stop / SACM_DVR_Play
+00009306 19 D3 15 70        	        [P_ADC_Ctrl] = r1;       		// Disable ADC
+                            	        	
+00009308 09 93 FF F9        	        R1 = C_DVR_Play_Timer_Setting   // 16K @ 24.576/49.152 MHz
+0000930A 19 D3 0A 70        	        [P_TimerA_Data] = r1;
+0000930C 90 9A              	        RETF
+                            	
+                            	//--------------------------------------------------------------------
+                            	//-- Function: F_SP_GetADC
+                            	//-- Parameter: R1 = ADC Channel
+                            	//-- Return: R1 = ADC data
+                            	//-- Description: This function called by library to get  
+                            	//                ADC data for recording. It can be from either Microphone
+                            	//                or line-in.
+                            	//                User would have to modified the function body 
+                            	//                based on the need to fulfill this request from 
+                            	//                library. 
+                            	//                User should store the value in register(R2-R5)if use them. 
+                            	//--------------------------------------------------------------------
+                            	.public F_SP_GetADC
+                            	F_SP_GetADC:
+                            	        
+0000930D 40 42              	        cmp R1,0;
+0000930E 03 4E              	        jnz ?L_WaitLinIn;
+                            			//For Mic
+                            			?L_Mic:
+0000930F 11 93 14 70        			r1 = [P_ADC]  // from 500A/061A microphone or 500A Lin-in
+00009311 90 9A              	        retf
+                            			
+                            			// For Line in
+                            			?L_WaitLinIn:  // Wait for ADC ready    		
+                            			.if BODY_TYPE == SPCE500A    
+                            			r1 = [P_ADC] ; // from 500A/061A microphone or 500A Lin-in
+                            	        .endif		
+                            	        		 
+                            			.if BODY_TYPE == SPCE061A    
+00009312 11 93 2B 70        	        R1 = [P_ADC_MUX_Ctrl] 
+00009314 09 B3 00 80        	        R1 &= 0x8000
+00009316 45 5E              	        jz ?L_WaitLinIn;	
+00009317 11 93 2C 70        			r1 = [P_ADC_LINEIN_Data]  // from 061A line-in only
+                            	        .endif
+00009319 90 9A              	        retf
+                            	
+                            	//---------------------------------------------------------------
+                            	//Function : F_SP_SwitchChannel
+                            	//Description: This function switches the A/D channel based on 
+                            	//             the parameter. 
+                            	//Used register: r1
+                            	//Return: none
+                            	//---------------------------------------------------------------
+                            	.PUBLIC F_SP_SwitchChannel
+                            	F_SP_SwitchChannel: .proc
+0000931A 88 D4              	 push R2 to [sp]
+                            	 //
+                            	 // SPCE500A Setting
+                            	 //
+                            	  .if BODY_TYPE == SPCE500A
+                            	 // Check if microphone selected
+                            	 cmp R1,0;
+                            	 jnz ?L_LineIn;
+                            	 
+                            	 // Wait for ADC ready
+                            	 ?L_Wait_AD_ready_0:
+                            	   R1=0x0015;	// 500A: MIC IN, Auto,AGC,Enable ADC
+                            	   [P_ADC_Ctrl] = r1;
+                            	    jmp ?L_Done;
+                            	 
+                            	 // Wait for ADC ready
+                            	 ?L_LineIn:	
+                            	   R1=0x0013;	// 500A: LINE IN, Auto,Enable ADC       
+                            	   [P_ADC_Ctrl] = r1;
+                            	 
+                            	 ?L_Done:
+                            	 .endif
+                            	 //
+                            	 // SPCE500A Setting
+                            	 //
+                            	 .if BODY_TYPE == SPCE061A
+                            	 // Check if microphone selected
+0000931B 40 42              	 cmp R1,0;
+0000931C 0E 4E              	 jnz ?L_LineIn;
+                            	 
+                            	 // Wait for ADC ready
+                            	 ?L_Wait_AD_ready_0:
+0000931D 12 95 15 70        	 r2 = [P_ADC_Status];
+0000931F 0A B5 00 80        	 r2 = r2 & 0x8000;
+00009321 45 5E              	 jz  ?L_Wait_AD_ready_0
+00009322 0A 95 15 01        	 r2 = 0x0115;  // 061A: Mic, Enable ADC              
+00009324 1A D5 15 70        	 [P_ADC_Ctrl] = r2; 
+00009326 19 D3 2B 70        	 [P_ADC_MUX_Ctrl] = R1; // Switch channel to Mic
+00009328 12 95 14 70        	 R2 = [P_ADC]
+0000932A 0D EE              	 jmp ?L_Done;
+                            	 
+                            	 // Wait for ADC ready
+                            	 ?L_LineIn:	
+                            	 ?L_Wait_AD_ready_1:
+0000932B 12 95 15 70        	 r2 = [P_ADC_Status];
+0000932D 0A B5 00 80        	 r2 = r2 & 0x8000;
+0000932F 45 5E              	 jz  ?L_Wait_AD_ready_1
+                            	   
+00009330 0A 95 13 01        	 r2 = 0x0113;  // 061A: LINE IN, Enable ADC              
+00009332 1A D5 15 70        	 [P_ADC_Ctrl] = r2; 
+                            	 
+00009334 19 D3 2B 70        	 [P_ADC_MUX_Ctrl] = R1; // Switch channel to Line_in
+00009336 12 95 2C 70        	 R2 = [P_ADC_LINEIN_Data]; 
+                            	 
+                            	 ?L_Done:
+                            	 .endif
+00009338 88 92              	 pop R2 from [sp];
+00009339 90 9A              	 retf;
+                            	
+                            	.ENDP
+                            	///////////////////////////////////////////////////////////////////
+                            	//////////////////////////////////////////////////////////////////
+                            	// Functions: Reserve old defintion
+                            	// Note: Some user who use old library may use the old name
+                            	//////////////////////////////////////////////////////////////////
+                            	.DEFINE F_RampUpDAC1 F_SP_RampUpDAC1
+                            	.DEFINE F_RampDnDAC1 F_SP_RampDnDAC1
+                            	.DEFINE F_RampUpDAC2 F_SP_RampUpDAC2
+                            	.DEFINE F_RampDnDAC2 F_SP_RampDnDAC2
+                            	
+                            	.DEFINE _STD_RampUpDAC1 _SP_RampUpDAC1
+                            	.DEFINE _STD_RampDnDAC1 _SP_RampDnDAC1
+                            	.DEFINE _STD_RampUpDAC2 _SP_RampUpDAC2
+                            	.DEFINE _STD_RampDnDAC2 _SP_RampDnDAC2
+                            	                
+                            	//========================================================================================        
+                            	// End of sacmv32.asm
+                            	//========================================================================================
+                            	
+                            	
+                            	
+                            	        
+                            	        
+                            	        
+0 error(s), 0 warning(s).
+
+

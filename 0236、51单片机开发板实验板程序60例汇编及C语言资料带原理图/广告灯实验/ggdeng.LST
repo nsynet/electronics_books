@@ -1,0 +1,98 @@
+C51 COMPILER V8.02   GGDENG                                                                09/19/2007 12:52:06 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE GGDENG
+OBJECT MODULE PLACED IN ggdeng.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ggdeng.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <AT89X51.H> 
+   2          
+   3          unsigned char code table[]={0xfe,0xfd,0xfb,0xf7, 
+   4          
+   5                                      0xef,0xdf,0xbf,0x7f, 
+   6          
+   7                                      0xfe,0xfd,0xfb,0xf7, 
+   8          
+   9                                      0xef,0xdf,0xbf,0x7f, 
+  10          
+  11                                      0x7f,0xbf,0xdf,0xef, 
+  12          
+  13                                      0xf7,0xfb,0xfd,0xfe, 
+  14          
+  15                                      0x7f,0xbf,0xdf,0xef, 
+  16          
+  17                                      0xf7,0xfb,0xfd,0xfe, 
+  18          
+  19                                      0x00,0xff,0x00,0xff, 
+  20          
+  21                                      0x01}; 
+  22          
+  23          unsigned char i; 
+  24          
+  25            
+  26          
+  27          void delay(void) 
+  28          
+  29          { 
+  30   1      
+  31   1        unsigned char m,n,s; 
+  32   1      
+  33   1        for(m=20;m>0;m--) 
+  34   1      
+  35   1        for(n=20;n>0;n--) 
+  36   1      
+  37   1        for(s=248;s>0;s--); 
+  38   1      
+  39   1      } 
+  40          
+  41            
+  42          
+  43          void main(void) 
+  44          
+  45          { 
+  46   1      
+  47   1        while(1) 
+  48   1      
+  49   1          { 
+  50   2      
+  51   2            if(table[i]!=0x01) 
+  52   2      
+  53   2              { 
+  54   3      
+  55   3                P0=table[i]; 
+C51 COMPILER V8.02   GGDENG                                                                09/19/2007 12:52:06 PAGE 2   
+
+  56   3      
+  57   3                i++; 
+  58   3      
+  59   3                delay(); 
+  60   3      
+  61   3              } 
+  62   2      
+  63   2              else 
+  64   2      
+  65   2                { 
+  66   3      
+  67   3                  i=0; 
+  68   3      
+  69   3                } 
+  70   2      
+  71   2          } 
+  72   1      
+  73   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     38    ----
+   CONSTANT SIZE    =     37    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

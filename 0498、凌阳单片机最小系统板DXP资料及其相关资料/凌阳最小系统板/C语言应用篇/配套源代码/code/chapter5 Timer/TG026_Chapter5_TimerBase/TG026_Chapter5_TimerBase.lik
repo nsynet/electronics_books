@@ -1,0 +1,17 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRA~1\Sunplus\UNSPID~1.0\startupD.obj"
+Obj: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerBase\Debug\Resource.obj"
+Obj: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerBase\Debug\TG026_Chapter5_TimeBase_Main.obj"
+Obj: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerBase\Debug\ISR.obj"
+Lib: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerBase\.\SPCE061V003.LIB"
+Output: "I:\1disktest\C_Code\chapter5 Timer\TG026_Chapter5_TimerBase\Debug\TG026_Chapter5_TimerBase.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: IRAM in "ISR.obj" at 80CF  linkat 1 
+;Align: IRAM in "ISR.obj" with 0 
+;Locate: CODE in "TG026_Chapter5_TimeBase_Main.obj" at 80A2 
+;Align: CODE in "TG026_Chapter5_TimeBase_Main.obj" with 0 
+;Locate: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  at 80D0 
+;Align: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  with 0 
+;Locate: __sn_init_table at 8000 

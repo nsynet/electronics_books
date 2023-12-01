@@ -1,0 +1,68 @@
+XL
+H 4 areas 6 global symbols
+M chengxu.c
+A text size 6C flags 0
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\闪烁灯-3\icc\chengxu.c
+dbfunc e del 0 fI
+dbline FFFFFFFF 0
+dbline 4 0
+dbline 6 0
+dbline 7 8
+dbline 8 10
+dbline 8 18
+dbline 8 18
+dbline 8 22
+dbline 7 2C
+dbline 7 36
+dbline 6 40
+dbline 6 4A
+dbline FFFFFFFE 54
+dbline 0 54
+dbfunc e main 56 fI
+dbline FFFFFFFF 56
+dbline B 56
+dbline C 56
+dbline F 5C
+dbline 11 5C
+dbline 12 60
+dbline 13 62
+dbline 14 66
+dbline 15 68
+dbline E 68
+dbline FFFFFFFE 6A
+dbline 0 6A
+S _main Def0056
+S _del Def0000
+A data size 1 flags 20
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\闪烁灯-3\icc\chengxu.c
+dbsym e led 0 c
+S _led Def0000
+A idata size 1 flags 0
+A bss size 3 flags 20
+dbfile D:\Proteus仿真实例\ATMEGA16\个人总结AVR\闪烁灯-3\icc\chengxu.c
+dbsym e k 0 c
+dbsym e j 1 c
+dbsym e i 2 c
+S _i Def0002
+S _j Def0001
+S _k Def0000
+T 00 00 00
+R 00 00 02 00
+T 00 00 84 E6 80 93 02 00 21 C0 84 E1 80 93 01 00
+R 00 00 00 00 00 06 03 00 00 0E 03 00
+T 0E 00 13 C0 88 EF 80 93 00 00 05 C0 80 91 00 00
+R 00 00 00 00 00 08 03 00 00 0E 03 00
+T 1C 00 81 50 80 93 00 00 22 24 30 90 00 00 23 14
+R 00 00 00 00 00 06 03 00 00 0C 03 00
+T 2A 00 B0 F3 80 91 01 00 81 50 80 93 01 00 22 24
+R 00 00 00 00 00 06 03 00 00 0C 03 00
+T 38 00 30 90 01 00 23 14 40 F3 80 91 02 00 81 50
+R 00 00 00 00 00 04 03 00 00 0C 03 00
+T 46 00 80 93 02 00 22 24 30 90 02 00 23 14 D0 F2
+R 00 00 00 00 00 04 03 00 00 0A 03 00
+T 54 00 08 95
+R 00 00 00 00
+T 56 00 8F EF 87 BB 06 C0 8E EF 88 BB CF DF 8F EF
+R 00 00 00 00
+T 64 00 88 BB CC DF F9 CF 08 95
+R 00 00 00 00

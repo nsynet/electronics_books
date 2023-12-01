@@ -1,0 +1,17 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRA~1\Sunplus\UNSPID~1.0\startupD.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\Resource.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\TimeBase_Main.obj"
+Obj: "I:\1disktest\C_Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\ISR.obj"
+Lib: "I:\1disktest\C_Code\chapter6 Interrupt\Capter6_2_TimeBase\.\SPCE061V003.LIB"
+Output: "I:\1disktest\C_Code\chapter6 Interrupt\Capter6_2_TimeBase\Debug\Capter6_2_TimeBase.S37"
+;Locate: TEXT in "ISR.obj" at 8009 
+;Align: TEXT in "ISR.obj" with 0 
+;Locate: IRAM in "ISR.obj" at 80BB  linkat 1 
+;Align: IRAM in "ISR.obj" with 0 
+;Locate: CODE in "TimeBase_Main.obj" at 8091 
+;Align: CODE in "TimeBase_Main.obj" with 0 
+;Locate: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  at 80BC 
+;Align: DATA in "SPCE_R~1" of "SPCE061V003.LIB"  with 0 
+;Locate: __sn_init_table at 8000 

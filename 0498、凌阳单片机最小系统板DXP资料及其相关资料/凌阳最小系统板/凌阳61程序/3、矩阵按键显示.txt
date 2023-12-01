@@ -1,0 +1,104 @@
+//工程名称：change.spj
+//功能描述：I/O端口的操作
+//涉及的库：
+//组成文件：change.c
+//硬件连接：A口的4~8位为4个共阳极数码管的位选，B口的低7位为数据端口，A端口为键盘输入端
+	#define		P_IOA_Data			   (*(volatile unsigned int *)0x7000)
+	#define		P_IOA_Buffer		   (*(volatile unsigned int *)0x7001)
+	#define		P_IOA_Dir			   (*(volatile unsigned int *)0x7002)
+	#define		P_IOA_Attrib		   (*(volatile unsigned int *)0x7003)
+	#define		P_IOA_Latch			   (*(volatile unsigned int *)0x7004)
+
+	#define		P_IOB_Data			   (*(volatile unsigned int *)0x7005)
+	#define		P_IOB_Buffer		   (*(volatile unsigned int *)0x7006)
+	#define		P_IOB_Dir			   (*(volatile unsigned int *)0x7007)
+	#define		P_IOB_Attrib		   (*(volatile unsigned int *)0x7008)
+	#define     P_Watchdog_Clear       (*(volatile unsigned int *)0x7012)
+		
+	#define     SET_BIT(x,y)           ((x)|=(0x0001<<(y)))        //置x的第y位为一
+	#define     CLR_BIT(x,y)           ((x)&=~(0x0001<<(y)))       //清x的第y位为零
+	#define     CPL_BIT(x,y)           ((x)^=(0x0001<<(y)))        //x的第y位取反
+	#define     GET_BIT(x,y)           (((x)&(1<<(y)))== 0 ? 0:1)  //读取x的第y位，返回0或1
+	#define     LET_BIT(x,y,z)         ((x)=(x)&(~(0x0001<<(y)))|((z)<<y))  //将x的第y位写上z(0/1)
+		
+    static unsigned char sect[]={0x00c0,0x00f9,0x00a4,0x00b0,0x0099,0x0092,0x0082,0x00f8,0x0080,0x0090,0x0088,0x0083,0x00c6,0x00a1,0x0086,0x008e};//数码管显示0~9
+    unsigned char number;
+    /****************延时函数**************/
+	int delay(unsigned int t)
+	{
+		unsigned int i,delayValue;
+		for(i=0;i<t;i++)
+		 for(delayValue=0;delayValue<600;delayValue++)
+		 {
+			P_Watchdog_Clear=0x0001;   //12us清一次看门狗
+		 }
+		return(0);//无返回值，编译是一定要加入此句，否则会出现编译警告 
+    }
+       
+    /*********************显示函数************************/
+    int Display()
+    { 
+     CLR_BIT(P_IOA_Data,4); 	 
+     P_IOB_Data=sect[number%1000%100%10];
+     delay(1);
+     P_IOA_Data=0xffff;
+     CLR_BIT(P_IOA_Data,5); 	 
+     P_IOB_Data=sect[number%1000%100/10];
+     delay(1);
+     P_IOA_Data=0xffff;
+     CLR_BIT(P_IOA_Data,6); 	 
+     P_IOB_Data=sect[number%1000/100];
+     delay(1);
+     P_IOA_Data=0xffff;
+     CLR_BIT(P_IOA_Data,7); 	 
+     P_IOB_Data=sect[number/1000];
+     delay(1);
+     P_IOA_Data=0xffff;
+     return(0);//无返回值，编译是一定要加入此句，否则会出现编译警告 
+    }
+    /*******************矩阵键盘扫描*********************/
+    int scan()
+    {
+     unsigned char i,tel=0x0100;
+     for(i=0;i<4;i++)         //进行行列扫描
+     {
+      P_IOA_Data =~tel;
+	  tel=tel<<1;
+      delay(1);
+	  if((P_IOA_Data &0xf000)!=0xf000)
+        {
+        while((P_IOA_Data &0xf000)!=0xf000)
+	     {
+	     switch (P_IOA_Data &0xf000)    //计算键值 
+           {
+		  case 0x7000:number=15-(3-i)*4;break;
+		  case 0xb000:number=14-(3-i)*4;break;
+		  case 0xd000:number=13-(3-i)*4;break;
+	 	  case 0xe000:number=12-(3-i)*4;break;
+           }
+	     }
+	    }  
+     }
+    return(0);
+    }
+    /*************主函数***********/
+	int main()	
+	{
+    //设置B端口为带数据缓存器的高电平输出
+	P_IOB_Dir   =0xffff;                   //方向向量单元
+	P_IOB_Attrib=0xffff;                   //属性向量单元
+	P_IOB_Data  =0xffff;                   //数据单元
+	//设置A端口12~15为带数据缓存器的高电平输出，8~11为带数据缓存器的低电平输出
+	P_IOA_Dir   =0xffff;                   //方向向量单元
+	P_IOA_Attrib=0xffff;                   //属性向量单元
+	P_IOA_Data  =0xf0ff;                   //数据单元
+		
+	while(1)
+ 	 {
+ 	 Display();
+ 	 scan();
+ 	 }
+	return(0);	//无返回值，编译是一定要加入此句，否则会出现编译警告 
+	}
+	
+	

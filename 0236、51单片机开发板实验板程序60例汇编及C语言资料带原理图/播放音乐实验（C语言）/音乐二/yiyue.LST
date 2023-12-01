@@ -1,0 +1,186 @@
+A51 MACRO ASSEMBLER  YIYUE                                                                06/18/2007 19:48:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00
+OBJECT MODULE PLACED IN yiyue.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE yiyue.asm SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  00A1                 1     SPK                  BIT P2.1
+                       2     
+0000                   3                      ORG 0000H
+0000 020014            4                      LJMP START
+000B                   5                      ORG 000BH
+000B 0520              6                      INC 20H ;中断服务,中断计数器加1
+000D 758CD8            7                      MOV TH0,#0D8H
+0010 758AEF            8                      MOV TL0,#0EFH ;12M晶振，形成10毫秒中断
+0013 32                9                      RETI
+                      10     
+0014                  11     START: 
+0014 758150           12                      MOV SP,#50H
+0017 758CD8           13                      MOV TH0,#0D8H
+001A 758AEF           14                      MOV TL0,#0EFH
+001D 758901           15                      MOV TMOD,#01H
+0020 75A882           16                      MOV IE,#82H
+0023                  17     MUSIC0:
+0023 00               18                      NOP
+0024 90007D           19                      MOV DPTR,#DAT ;表头地址送DPTR
+0027 752000           20                      MOV 20H,#00H ;中断计数器清0
+002A 75F000           21                      MOV B,#00H ;表序号清0
+002D                  22     MUSIC1:
+002D 00               23                      NOP
+002E E4               24                      CLR A
+002F 93               25                      MOVC A,@A+DPTR ;查表取代码
+0030 6033             26                      JZ END0 ;是00H,则结束
+0032 B4FF03           27                      CJNE A,#0FFH,MUSIC5
+0035 020054           28                      LJMP MUSIC3
+0038                  29     MUSIC5:
+0038 00               30                      NOP
+0039 FE               31                      MOV R6,A
+003A A3               32                      INC DPTR
+003B E5F0             33                      MOV A,B
+003D 93               34                      MOVC A,@A+DPTR ;取节拍代码送R7
+003E FF               35                      MOV R7,A
+003F D28C             36                      SETB TR0 ;启动计数
+0041                  37     MUSIC2:
+0041 00               38                      NOP
+0042 B2A1             39                      CPL SPK
+0044 EE               40                      MOV A,R6
+0045 FB               41                      MOV R3,A
+0046 120072           42                      LCALL DEL
+0049 EF               43                      MOV A,R7
+004A B520F4           44                      CJNE A,20H,MUSIC2 ;中断计数器(20H)=R7否?
+                      45                      ;不等,则继续循环
+004D 752000           46                      MOV 20H,#00H ;等于,则取下一代码
+0050 A3               47                      INC DPTR
+                      48                      ; INC B
+0051 02002D           49                      LJMP MUSIC1
+0054                  50     MUSIC3:
+0054 00               51                      NOP
+0055 C28C             52                      CLR TR0 ;休止100毫秒
+0057 7A0D             53                      MOV R2,#0DH
+0059                  54     MUSIC4:
+0059 00               55                      NOP
+005A 7BFF             56                      MOV R3,#0FFH
+005C 120072           57                      LCALL DEL
+005F DAF8             58                      DJNZ R2,MUSIC4
+A51 MACRO ASSEMBLER  YIYUE                                                                06/18/2007 19:48:00 PAGE     2
+
+0061 A3               59                      INC DPTR
+0062 02002D           60                      LJMP MUSIC1
+0065                  61     END0:
+0065 00               62                      NOP
+0066 7A64             63                      MOV R2,#64H ;歌曲结束,延时1秒后继续
+0068                  64     MUSIC6:
+0068 7B00             65                      MOV R3,#00H
+006A 120072           66                      LCALL DEL
+006D DAF9             67                      DJNZ R2,MUSIC6
+006F 020023           68                      LJMP MUSIC0
+0072                  69     DEL:
+0072 00               70                      NOP
+0073                  71     DEL3: 
+0073 7C02             72                      MOV R4,#02H
+0075                  73     DEL4: 
+0075 00               74                      NOP
+0076 DCFD             75                      DJNZ R4,DEL4
+0078 00               76                      NOP
+0079 DBF8             77                      DJNZ R3,DEL3
+007B 22               78                      RET
+007C 00               79                      NOP
+007D                  80     DAT:
+007D 26202020         81                      db 26h,20h,20h,20h,20h,20h,26h,10h,20h,10h,20h,80h,26h,20h,30h,20h
+0081 20202610                
+0085 20102080                
+0089 26203020                
+008D 30203910         82                      db 30h,20h,39h,10h,30h,10h,30h,80h,26h,20h,20h,20h,20h,20h,1ch,20h
+0091 30103080                
+0095 26202020                
+0099 20201C20                
+009D 20802B20         83                      db 20h,80h,2bh,20h,26h,20h,20h,20h,2bh,10h,26h,10h,2bh,80h,26h,20h
+00A1 26202020                
+00A5 2B102610                
+00A9 2B802620                
+00AD 30203020         84                      db 30h,20h,30h,20h,39h,10h,26h,10h,26h,60h,40h,10h,39h,10h,26h,20h
+00B1 39102610                
+00B5 26604010                
+00B9 39102620                
+00BD 30203020         85                      db 30h,20h,30h,20h,39h,10h,26h,10h,26h,80h,26h,20h,2bh,10h,2bh,10h
+00C1 39102610                
+00C5 26802620                
+00C9 2B102B10                
+00CD 2B203010         86                      db 2bh,20h,30h,10h,39h,10h,26h,10h,2bh,10h,2bh,20h,2bh,40h,40h,20h
+00D1 39102610                
+00D5 2B102B20                
+00D9 2B404020                
+00DD 20102010         87                      db 20h,10h,20h,10h,2bh,10h,26h,30h,30h,80h,18h,20h,18h,20h,26h,20h
+00E1 2B102630                
+00E5 30801820                
+00E9 18202620                
+00ED 20202040         88                      db 20h,20h,20h,40h,26h,20h,2bh,20h,30h,20h,30h,20h,1ch,20h,20h,20h
+00F1 26202B20                
+00F5 30203020                
+00F9 1C202020                
+00FD 20801C20         89                      db 20h,80h,1ch,20h,1ch,20h,1ch,20h,30h,20h,30h,60h,39h,10h,30h,10h
+0101 1C201C20                
+0105 30203060                
+0109 39103010                
+010D 20202B10         90                      db 20h,20h,2bh,10h,26h,10h,2bh,10h,26h,10h,26h,10h,2bh,10h,2bh,80h
+0111 26102B10                
+0115 26102610                
+0119 2B102B80                
+011D 18201820         91                      db 18h,20h,18h,20h,26h,20h,20h,20h,20h,60h,26h,10h,2bh,20h,30h,20h
+0121 26202020                
+0125 20602610                
+0129 2B203020                
+A51 MACRO ASSEMBLER  YIYUE                                                                06/18/2007 19:48:00 PAGE     3
+
+012D 30201C20         92                      db 30h,20h,1ch,20h,20h,20h,20h,80h,26h,20h,30h,10h,30h,10h,30h,20h
+0131 20202080                
+0135 26203010                
+0139 30103020                
+013D 39202610         93                      db 39h,20h,26h,10h,2bh,10h,2bh,20h,2bh,40h,40h,10h,40h,10h,20h,10h
+0141 2B102B20                
+0145 2B404010                
+0149 40102010                
+014D 20102B10         94                      db 20h,10h,2bh,10h,26h,30h,30h,80h,00H
+0151 26303080                
+0155 00                      
+                      95     
+                      96                      END
+A51 MACRO ASSEMBLER  YIYUE                                                                06/18/2007 19:48:00 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DAT. . . . . . . .  C ADDR   007DH   A   
+DEL. . . . . . . .  C ADDR   0072H   A   
+DEL3 . . . . . . .  C ADDR   0073H   A   
+DEL4 . . . . . . .  C ADDR   0075H   A   
+END0 . . . . . . .  C ADDR   0065H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+MUSIC0 . . . . . .  C ADDR   0023H   A   
+MUSIC1 . . . . . .  C ADDR   002DH   A   
+MUSIC2 . . . . . .  C ADDR   0041H   A   
+MUSIC3 . . . . . .  C ADDR   0054H   A   
+MUSIC4 . . . . . .  C ADDR   0059H   A   
+MUSIC5 . . . . . .  C ADDR   0038H   A   
+MUSIC6 . . . . . .  C ADDR   0068H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+SPK. . . . . . . .  B ADDR   00A0H.1 A   
+START. . . . . . .  C ADDR   0014H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

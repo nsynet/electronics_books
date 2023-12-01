@@ -1,0 +1,414 @@
+__start:
+__text_start:
+    0033 E5CF      LDI	R28,0x5F
+    0034 E0D4      LDI	R29,4
+    0035 BFCD      OUT	0x3D,R28
+    0036 BFDE      OUT	0x3E,R29
+    0037 51C0      SUBI	R28,0x10
+    0038 40D0      SBCI	R29,0
+    0039 EA0A      LDI	R16,0xAA
+    003A 8308      STD	Y+0,R16
+    003B 2400      CLR	R0
+    003C E7E1      LDI	R30,0x71
+    003D E0F0      LDI	R31,0
+    003E E010      LDI	R17,0
+    003F 37E5      CPI	R30,0x75
+    0040 07F1      CPC	R31,R17
+    0041 F011      BEQ	0x0044
+    0042 9201      ST	R0,Z+
+    0043 CFFB      RJMP	0x003F
+    0044 8300      STD	Z+0,R16
+    0045 E5E4      LDI	R30,0x54
+    0046 E0F0      LDI	R31,0
+    0047 E6A0      LDI	R26,0x60
+    0048 E0B0      LDI	R27,0
+    0049 E010      LDI	R17,0
+    004A 36E5      CPI	R30,0x65
+    004B 07F1      CPC	R31,R17
+    004C F021      BEQ	0x0051
+    004D 95C8      LPM
+    004E 9631      ADIW	R30,1
+    004F 920D      ST	R0,X+
+    0050 CFF9      RJMP	0x004A
+    0051 940E00DB  CALL	_main
+_exit:
+    0053 CFFF      RJMP	_exit
+_DelayMs:
+  j                    --> R20
+  i                    --> R16
+    0054 940E0150  CALL	push_gset1
+FILE: E:\Proteus\AVR单片机应用系统开发经典实例\010、基于T_C1的频率计设计\icc\chengxu.c
+(0001) #include <iom16v.h>
+(0002) #include <macros.h>       
+(0003) /********************************************************************
+(0004)                 数据类型定义
+(0005) *********************************************************************/   
+(0006) #define uchar unsigned char
+(0007) #define uint  unsigned int
+(0008) 
+(0009) #define CON 1000      
+(0010) //频率常数定义
+(0011) uchar Flag=0;         
+(0012) //捕获次数定义
+(0013) 
+(0014) /********************************************************************
+(0015)                 数码管段码定义0123456789
+(0016) *********************************************************************/
+(0017) uchar Table[10]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+(0018)                  0x7f,0x6f};
+(0019) uchar Data[4]={0,0,0,0};       //显示初始值：0 0 0 0
+(0020) uint  CNT1;                    //第一次捕获值
+(0021) uint  CNT2;                    //第二此捕获值
+(0022) uint  CNT=100;                 //捕获差值 
+(0023) /**********************************************************************
+(0024) 				  MS级延时函数程序，参数i 延时时间					   	
+(0025) **********************************************************************/      
+(0026) void DelayMs(uint i)           //Ms级延时，参数i为延时时间
+(0027) {uint j;
+(0028)  for(;i!=0;i--)
+    0056 C00A      RJMP	0x0061
+(0029)   {for(j=8000;j!=0;j--) {;}}
+    0057 E440      LDI	R20,0x40
+    0058 E15F      LDI	R21,0x1F
+    0059 C002      RJMP	0x005C
+    005A 5041      SUBI	R20,1
+    005B 4050      SBCI	R21,0
+    005C 3040      CPI	R20,0
+    005D 0745      CPC	R20,R21
+    005E F7D9      BNE	0x005A
+    005F 5001      SUBI	R16,1
+    0060 4010      SBCI	R17,0
+    0061 3000      CPI	R16,0
+    0062 0701      CPC	R16,R17
+    0063 F799      BNE	0x0057
+    0064 940E0153  CALL	pop_gset1
+    0066 9508      RET
+_Display:
+  sel                  --> R20
+  i                    --> R22
+  p                    --> R10
+    0067 940E016B  CALL	push_gset3
+    0069 0158      MOVW	R10,R16
+(0030) }
+(0031) /**********************************************************************
+(0032) 				            显示函数		
+(0033) 注意：使用开发板时sel=0xef;
+(0034) **********************************************************************/
+(0035) void Display(uchar *p)         //动态显示函数，参数p为待显示的数组名
+(0036) {uchar i,sel=0x01;           
+    006A E041      LDI	R20,1
+(0037)  for(i=0;i<4;i++)
+    006B 2766      CLR	R22
+    006C C013      RJMP	0x0080
+(0038)   {PORTC=sel;                  //选通最右边的数码管
+    006D BB45      OUT	0x15,R20
+(0039)    PORTA=~Table[p[i]];          //送字型码
+    006E 2FE6      MOV	R30,R22
+    006F 27FF      CLR	R31
+    0070 0DEA      ADD	R30,R10
+    0071 1DFB      ADC	R31,R11
+    0072 81E0      LDD	R30,Z+0
+    0073 27FF      CLR	R31
+    0074 E681      LDI	R24,0x61
+    0075 E090      LDI	R25,0
+    0076 0FE8      ADD	R30,R24
+    0077 1FF9      ADC	R31,R25
+    0078 8020      LDD	R2,Z+0
+    0079 9420      COM	R2
+    007A BA2B      OUT	0x1B,R2
+(0040)    DelayMs(1);                 //显示延时    
+    007B E001      LDI	R16,1
+    007C E010      LDI	R17,0
+    007D DFD6      RCALL	_DelayMs
+(0041)    sel=sel<<1;                 //移位以显示前一位
+    007E 0F44      LSL	R20
+    007F 9563      INC	R22
+    0080 3064      CPI	R22,4
+    0081 F358      BCS	0x006D
+    0082 940E014D  CALL	pop_gset3
+    0084 9508      RET
+_HZ:
+  TEM                  --> R22
+  p                    --> R20
+  i                    --> R10
+    0085 940E016B  CALL	push_gset3
+    0087 01A9      MOVW	R20,R18
+    0088 0158      MOVW	R10,R16
+(0042)   }
+(0043) }
+(0044) /**************************频率值处理函数********************************/
+(0045) void HZ(uint i,uchar *p)
+(0046) {
+(0047)  uint TEM;
+(0048)  p[0]=CON/i;
+    0089 EE08      LDI	R16,0xE8
+    008A E013      LDI	R17,3
+    008B 0195      MOVW	R18,R10
+    008C 940E0123  CALL	div16u
+    008E 01FA      MOVW	R30,R20
+    008F 8300      STD	Z+0,R16
+(0049)  TEM=CON%i;
+    0090 EE08      LDI	R16,0xE8
+    0091 E013      LDI	R17,3
+    0092 0195      MOVW	R18,R10
+    0093 940E0121  CALL	mod16u
+    0095 01B8      MOVW	R22,R16
+(0050)  TEM=TEM*10;
+    0096 E00A      LDI	R16,0xA
+    0097 E010      LDI	R17,0
+    0098 019B      MOVW	R18,R22
+    0099 940E013D  CALL	empy16s
+    009B 01B8      MOVW	R22,R16
+(0051)  p[1]=TEM/i;
+    009C 0195      MOVW	R18,R10
+    009D 940E0123  CALL	div16u
+    009F 01FA      MOVW	R30,R20
+    00A0 8301      STD	Z+1,R16
+(0052)  TEM=TEM%i;
+    00A1 0195      MOVW	R18,R10
+    00A2 018B      MOVW	R16,R22
+    00A3 940E0121  CALL	mod16u
+    00A5 01B8      MOVW	R22,R16
+(0053)  TEM=TEM*10;
+    00A6 E00A      LDI	R16,0xA
+    00A7 E010      LDI	R17,0
+    00A8 019B      MOVW	R18,R22
+    00A9 940E013D  CALL	empy16s
+    00AB 01B8      MOVW	R22,R16
+(0054)  p[2]=TEM/i;
+    00AC 0195      MOVW	R18,R10
+    00AD 940E0123  CALL	div16u
+    00AF 01FA      MOVW	R30,R20
+    00B0 8302      STD	Z+2,R16
+(0055)  TEM=TEM%i;
+    00B1 0195      MOVW	R18,R10
+    00B2 018B      MOVW	R16,R22
+    00B3 940E0121  CALL	mod16u
+    00B5 01B8      MOVW	R22,R16
+(0056)  TEM=TEM*10;
+    00B6 E00A      LDI	R16,0xA
+    00B7 E010      LDI	R17,0
+    00B8 019B      MOVW	R18,R22
+    00B9 940E013D  CALL	empy16s
+    00BB 01B8      MOVW	R22,R16
+(0057)  p[3]=TEM/i;
+    00BC 0195      MOVW	R18,R10
+    00BD 940E0123  CALL	div16u
+    00BF 01FA      MOVW	R30,R20
+    00C0 8303      STD	Z+3,R16
+    00C1 940E014D  CALL	pop_gset3
+    00C3 9508      RET
+(0058) }
+(0059) /**********************************************************************
+(0060) 				           初始化I/O			   	
+(0061) **********************************************************************/
+(0062) void Init_IO(void)             //初始化I/O口
+(0063) {DDRA=0xff;                    //设置A口为推挽1输出
+_Init_IO:
+    00C4 EF8F      LDI	R24,0xFF
+    00C5 BB8A      OUT	0x1A,R24
+(0064)  PORTA=0xff;
+    00C6 BB8B      OUT	0x1B,R24
+(0065)  DDRC=0xff;                    //设置C口为推挽1输出             
+    00C7 BB84      OUT	0x14,R24
+(0066)  PORTC=0xff;
+    00C8 BB85      OUT	0x15,R24
+(0067)  DDRD=0x00;                    //设置D口为带上拉电阻输入
+    00C9 2422      CLR	R2
+    00CA BA21      OUT	0x11,R2
+(0068)  PORTD=0x00;    
+    00CB BA22      OUT	0x12,R2
+    00CC 9508      RET
+(0069) }
+(0070) /**********************************************************************
+(0071) 				          初始化T/C1的输入捕获中断		   	
+(0072) **********************************************************************/
+(0073) void Init_Timer1(void)         //初始化T/C1的输入捕获中断
+(0074) {
+(0075)  TIMSK=TIMSK|0x20;             //输入捕获使能
+_Init_Timer1:
+    00CD B789      IN	R24,0x39
+    00CE 6280      ORI	R24,0x20
+    00CF BF89      OUT	0x39,R24
+(0076)  TCCR1B=0xC2;                  //输入捕获噪音使能，下降沿捕获，时钟8分频1uS计数一次。
+    00D0 EC82      LDI	R24,0xC2
+    00D1 BD8E      OUT	0x2E,R24
+(0077)  ICR1H=0x00;
+    00D2 2422      CLR	R2
+    00D3 BC27      OUT	0x27,R2
+(0078)  ICR1L=0x00;
+    00D4 BC26      OUT	0x26,R2
+(0079)  TIFR=0x20;                    //清中断标志
+    00D5 E280      LDI	R24,0x20
+    00D6 BF88      OUT	0x38,R24
+(0080)  SREG=SREG&0x7f;               //全局中断关
+    00D7 B78F      IN	R24,0x3F
+    00D8 778F      ANDI	R24,0x7F
+    00D9 BF8F      OUT	0x3F,R24
+    00DA 9508      RET
+(0081)  } 
+(0082) /**********************************************************************
+(0083) 				          主函数		   	
+(0084) **********************************************************************/
+(0085) void main(void)
+(0086) {uchar i;
+(0087)  Init_IO();                    //初始化I/O口
+_main:
+  i                    --> R20
+    00DB DFE8      RCALL	_Init_IO
+(0088)  Init_Timer1();                //T/C1初试化 
+    00DC DFF0      RCALL	_Init_Timer1
+    00DD C041      RJMP	0x011F
+(0089)  while(1)
+(0090)   {
+(0091) while(TIFR&0x20)             //捕获检测
+(0092)       {
+(0093) 	  TIFR|=0x20;             //清除捕获标志
+    00DE B788      IN	R24,0x38
+    00DF 6280      ORI	R24,0x20
+    00E0 BF88      OUT	0x38,R24
+(0094) 	  CNT1=ICR1L;
+    00E1 B426      IN	R2,0x26
+    00E2 2433      CLR	R3
+    00E3 92300074  STS	_CNT1+1,R3
+    00E5 92200073  STS	_CNT1,R2
+(0095) 	  CNT2=(ICR1H<<8)+ICR1L; 
+    00E7 B426      IN	R2,0x26
+    00E8 B437      IN	R3,0x27
+    00E9 92300072  STS	_CNT2+1,R3
+    00EB 92200071  STS	_CNT2,R2
+(0096) 	  CNT=CNT2;
+    00ED 92300070  STS	0x70,R3
+    00EF 9220006F  STS	0x6F,R2
+(0097) 	  Flag++;
+    00F1 91800060  LDS	R24,0x60
+    00F3 5F8F      SUBI	R24,0xFF
+    00F4 93800060  STS	0x60,R24
+    00F6 B628      IN	R2,0x38
+    00F7 FC25      SBRC	R2,5
+    00F8 CFE5      RJMP	0x00DE
+(0098) 	   }                //检测到第一次捕获
+(0099)    if(Flag==1)                 //检测到第二此捕获
+    00F9 91800060  LDS	R24,0x60
+    00FB 3081      CPI	R24,1
+    00FC F511      BNE	0x011F
+(0100)       {Flag=0;                 //清除捕获检测标志
+    00FD 2422      CLR	R2
+    00FE 92200060  STS	0x60,R2
+(0101) 	   HZ(CNT,Data);           //数据处理
+    0100 E62B      LDI	R18,0x6B
+    0101 E030      LDI	R19,0
+    0102 9100006F  LDS	R16,0x6F
+    0104 91100070  LDS	R17,0x70
+    0106 DF7E      RCALL	_HZ
+(0102) 	   for(i=0;i<100;i++)      //频率显示
+    0107 2744      CLR	R20
+    0108 C004      RJMP	0x010D
+(0103) 	       Display(Data);
+    0109 E60B      LDI	R16,0x6B
+    010A E010      LDI	R17,0
+    010B DF5B      RCALL	_Display
+    010C 9543      INC	R20
+    010D 3644      CPI	R20,0x64
+    010E F3D0      BCS	0x0109
+(0104) 	   CNT=0;CNT1=0;CNT2=0;
+    010F 2422      CLR	R2
+    0110 2433      CLR	R3
+    0111 92300070  STS	0x70,R3
+    0113 9220006F  STS	0x6F,R2
+    0115 92300074  STS	_CNT1+1,R3
+    0117 92200073  STS	_CNT1,R2
+    0119 92300072  STS	_CNT2+1,R3
+    011B 92200071  STS	_CNT2,R2
+(0105) 	   ICR1H=0x00;
+    011D BC27      OUT	0x27,R2
+(0106)        ICR1L=0x00;
+FILE: <library>
+    011E BC26      OUT	0x26,R2
+    011F CFD6      RJMP	0x00F6
+    0120 9508      RET
+mod16u:
+    0121 9468      BSET	6
+    0122 C001      RJMP	xdiv16u
+div16u:
+    0123 94E8      BCLR	6
+xdiv16u:
+    0124 92EA      ST	R14,-Y
+    0125 92FA      ST	R15,-Y
+    0126 938A      ST	R24,-Y
+    0127 24EE      CLR	R14
+    0128 24FF      CLR	R15
+    0129 E180      LDI	R24,0x10
+    012A 0F00      LSL	R16
+    012B 1F11      ROL	R17
+    012C 1CEE      ROL	R14
+    012D 1CFF      ROL	R15
+    012E 16E2      CP	R14,R18
+    012F 06F3      CPC	R15,R19
+    0130 F018      BCS	0x0134
+    0131 1AE2      SUB	R14,R18
+    0132 0AF3      SBC	R15,R19
+    0133 9503      INC	R16
+    0134 958A      DEC	R24
+    0135 F7A1      BNE	0x012A
+    0136 F416      BRTC	0x0139
+    0137 2D0E      MOV	R16,R14
+    0138 2D1F      MOV	R17,R15
+    0139 9189      LD	R24,Y+
+    013A 90F9      LD	R15,Y+
+    013B 90E9      LD	R14,Y+
+    013C 9508      RET
+empy16s:
+    013D 920A      ST	R0,-Y
+    013E 921A      ST	R1,-Y
+    013F 938A      ST	R24,-Y
+    0140 939A      ST	R25,-Y
+    0141 9F02      MUL	R16,R18
+    0142 01C0      MOVW	R24,R0
+    0143 9F12      MUL	R17,R18
+    0144 0D90      ADD	R25,R0
+    0145 9F03      MUL	R16,R19
+    0146 0D90      ADD	R25,R0
+    0147 018C      MOVW	R16,R24
+    0148 9199      LD	R25,Y+
+    0149 9189      LD	R24,Y+
+    014A 9019      LD	R1,Y+
+    014B 9009      LD	R0,Y+
+    014C 9508      RET
+pop_gset3:
+    014D E0E4      LDI	R30,4
+    014E 940C0154  JMP	pop
+push_gset1:
+    0150 935A      ST	R21,-Y
+    0151 934A      ST	R20,-Y
+    0152 9508      RET
+pop_gset1:
+    0153 E0E1      LDI	R30,1
+pop:
+    0154 9149      LD	R20,Y+
+    0155 9159      LD	R21,Y+
+    0156 FDE0      SBRC	R30,0
+    0157 9508      RET
+    0158 9169      LD	R22,Y+
+    0159 9179      LD	R23,Y+
+    015A FDE1      SBRC	R30,1
+    015B 9508      RET
+    015C 90A9      LD	R10,Y+
+    015D 90B9      LD	R11,Y+
+    015E FDE2      SBRC	R30,2
+    015F 9508      RET
+    0160 90C9      LD	R12,Y+
+    0161 90D9      LD	R13,Y+
+    0162 FDE3      SBRC	R30,3
+    0163 9508      RET
+    0164 90E9      LD	R14,Y+
+    0165 90F9      LD	R15,Y+
+    0166 9508      RET
+push_gset2:
+    0167 937A      ST	R23,-Y
+    0168 936A      ST	R22,-Y
+    0169 940C0150  JMP	push_gset1
+push_gset3:
+    016B 92BA      ST	R11,-Y
+    016C 92AA      ST	R10,-Y
+    016D 940C0167  JMP	push_gset2

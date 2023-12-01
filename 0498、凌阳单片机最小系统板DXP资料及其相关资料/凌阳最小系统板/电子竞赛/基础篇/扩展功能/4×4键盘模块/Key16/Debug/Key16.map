@@ -1,0 +1,105 @@
+Tuesday, July 08, 09:37:40, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8009         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8025         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         8024         "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\功能扩展\Key16\Debug\Resource.obj"
+_SP_Init_IOA                                       8026         "F:\功能扩展\Key16\Debug\key.obj"
+_F_Key_Scan                                        802F         "F:\功能扩展\Key16\Debug\key.obj"
+F_Key_Scaning                                      8044         "F:\功能扩展\Key16\Debug\key.obj"
+_F_Get_Key                                         808C         "F:\功能扩展\Key16\Debug\key.obj"
+_main                                              80AD         "F:\功能扩展\Key16\Debug\main.obj"
+_KeyVal                                            0            "F:\功能扩展\Key16\Debug\main.obj"
+_KeyDownTimes                                      1            "F:\功能扩展\Key16\Debug\main.obj"
+_KeyFlag                                           2            "F:\功能扩展\Key16\Debug\main.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8009                 8025         1D     *
+* "F:\功能扩展\Key16\Debug\Resource.obj"                                                    *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\Key16\Debug\key.obj"                                                         *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8026                 80AC         87     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          80D8 (3)             80D9 (4)     2      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\Key16\Debug\main.obj"                                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          80AD                 80D7         2B     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           0                    2            3      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  5            7FB                   *
+* "First Bank Rom"                  7C00                 DA           7B26                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\Key16.S37
+Disk  Mapping Filename : .\Debug\Key16.map
+Symbol  Table FileName : .\Debug\Key16.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

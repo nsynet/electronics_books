@@ -1,0 +1,189 @@
+BL51 BANKED LINKER/LOCATER V5.03                                                        03/16/2011  16:19:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.03, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE STARTUP.obj, Main.obj TO EXINT RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  Main.obj (MAIN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  EXINT (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     000EH     UNIT         ?PR?MAIN?MAIN
+                    0011H     0002H                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+            CODE    0016H     002DH     UNIT         ?PR?_UARTPRINTSTRING?MAIN
+            CODE    0043H     002DH     UNIT         ?PR?EXINT1IRQ?MAIN
+            CODE    0070H     0019H     UNIT         ?C?LIB_CODE
+            CODE    0089H     000DH     UNIT         ?PR?UARTINIT?MAIN
+            CODE    0096H     000CH     UNIT         ?C_C51STARTUP
+            CODE    00A2H     000AH     UNIT         ?CO?MAIN
+            CODE    00ACH     0008H     UNIT         ?PR?_UARTSENDBYTE?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   EXINT (?C_STARTUP)
+
+
+SEGMENT                             DATA_GROUP 
+  +--> CALLED SEGMENT             START    LENGTH
+-------------------------------------------------
+?C_C51STARTUP                     -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                     -----    -----
+  +--> ?PR?UARTINIT?MAIN
+
+*** NEW ROOT ***************************************************
+
+?PR?EXINT1IRQ?MAIN                -----    -----
+  +--> ?CO?MAIN
+  +--> ?PR?_UARTPRINTSTRING?MAIN
+
+?PR?_UARTPRINTSTRING?MAIN         0008H    0003H
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:19:05  PAGE 2
+
+
+  +--> ?PR?_UARTSENDBYTE?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  EXINT (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0096H         SEGMENT       ?C_C51STARTUP
+  I:000BH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0099H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0000H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0096H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         92
+  C:0096H         LINE#         99
+  C:0098H         LINE#         100
+  C:0099H         LINE#         101
+  C:009AH         LINE#         102
+  C:009CH         LINE#         151
+  C:009FH         LINE#         155
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  B:00A8H.7       PUBLIC        EA
+  C:0043H         PUBLIC        ExInt1IRQ
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  B:0098H.1       PUBLIC        TI
+  D:00CBH         PUBLIC        RCAP2H
+  D:00CAH         PUBLIC        RCAP2L
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:19:05  PAGE 3
+
+
+  C:0003H         PUBLIC        main
+  C:0016H         PUBLIC        _UARTPrintString
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:00ACH         PUBLIC        _UARTSendByte
+  B:00A8H.2       PUBLIC        EX1
+  B:0088H.2       PUBLIC        IT1
+  C:0089H         PUBLIC        UARTInit
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          UARTINIT
+  C:0089H         LINE#         13
+  C:0089H         LINE#         14
+  C:0089H         LINE#         15
+  C:008CH         LINE#         16
+  C:008FH         LINE#         17
+  C:0092H         LINE#         18
+  C:0095H         LINE#         19
+  -------         ENDPROC       UARTINIT
+  -------         PROC          _UARTSENDBYTE
+  D:0007H         SYMBOL        byte
+  C:00ACH         LINE#         26
+  C:00ACH         LINE#         27
+  C:00ACH         LINE#         28
+  C:00AEH         LINE#         29
+  C:00B1H         LINE#         30
+  C:00B3H         LINE#         31
+  -------         ENDPROC       _UARTSENDBYTE
+  -------         PROC          _UARTPRINTSTRING
+  D:0008H         SYMBOL        str
+  C:0016H         LINE#         38
+  C:001CH         LINE#         39
+  C:001CH         LINE#         40
+  C:002FH         LINE#         41
+  C:002FH         LINE#         42
+  C:0040H         LINE#         43
+  C:0042H         LINE#         44
+  -------         ENDPROC       _UARTPRINTSTRING
+  -------         PROC          MAIN
+  C:0003H         LINE#         51
+  C:0003H         LINE#         52
+  C:0003H         LINE#         53
+  C:0006H         LINE#         54
+  C:0009H         LINE#         55
+  C:000BH         LINE#         56
+  C:000DH         LINE#         57
+  C:000FH         LINE#         58
+  -------         ENDPROC       MAIN
+  -------         PROC          EXINT1IRQ
+  C:0043H         LINE#         66
+  C:0056H         LINE#         68
+  C:005FH         LINE#         69
+  -------         ENDPROC       EXINT1IRQ
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?CLDPTR
+BL51 BANKED LINKER/LOCATER V5.03                                                      03/16/2011  16:19:05  PAGE 4
+
+
+  C:0070H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+Program Size: data=12.0 xdata=0 code=178
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

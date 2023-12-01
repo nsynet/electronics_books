@@ -1,0 +1,158 @@
+# Begin Project
+# Begin SubItem "DataCollection_Host  Resources"
+# Begin Source File
+SOURCE=voice\9.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_9_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\10.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_10_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\11.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_11_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\12.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_12_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\13.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_13_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\14.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_14_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\15.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_15_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\16.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_16_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\17.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_17_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\18.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_18_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\19.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_19_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\2.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_2_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\20.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_20_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\21.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_21_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\22.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_22_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\3.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_3_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\4.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_4_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\5.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_5_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\6.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_6_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\7.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_7_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\8.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_8_72K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\1.72k
+USEPARAM=FALSE
+PARAM=
+ID=RES_1_72K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

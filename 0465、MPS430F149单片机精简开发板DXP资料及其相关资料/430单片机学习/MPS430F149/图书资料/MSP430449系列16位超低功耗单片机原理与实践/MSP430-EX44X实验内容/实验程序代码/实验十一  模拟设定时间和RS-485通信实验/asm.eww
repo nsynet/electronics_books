@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\keyBoard3\keyBoard3.ewp</path>
+  </project>
+  <project>
+    <path>$WS_DIR$\RS_485\RS-485.ewp</path>
+  </project>
+  <batchBuild/>
+</workspace>
+
+

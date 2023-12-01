@@ -1,0 +1,52 @@
+//工程名称：ADC简单应用.spj
+//功能描述：ADC的简单应用
+//涉及的库：CMacro1016.lib
+//组成文件：ADC.c
+//硬件连接：输入电压由IOA0输入，通过串口将数据发送到PC机,PC机发送数据，启动数据的传输
+ #include<MYSPCE061A.h> //自定义头文件
+ unsigned char number;
+ unsigned int AD(void)                  //定义AD（）函数
+ { 
+ 	unsigned int uiData;
+ 	while(!(P_ADC_MUX_Ctrl & 0x8000 )); //等待A/D转换完成
+ 	uiData = P_ADC_MUX_Data;            //获取A/D转换结果
+ 	return(uiData & 0xffc0);
+ }
+ int main()
+ {
+ 	unsigned long int uiData;
+ 	unsigned int i;
+ 	float fVoltage;
+ 	fVoltage=0.0;
+    //B端口操作设置，设置IOB7为输入引脚，IOB10为输出引脚
+   	P_IOB_Data	 = 0x0400;   //数据单
+   	P_IOB_Attrib = 0x0480;   //属性向量单元
+   	P_IOB_Dir	 = 0x0400;   //方向向量单元
+   	//系统时钟源的设定，Fosc=24.576MHz，CPU时钟：24.756MHz
+   	P_SystemClock= 0x0000;
+   	// 串口初始化
+   	P_UART_BaudScalarHigh= 0x05; 
+   	P_UART_BaudScalarLow = 0x00;//波特率设定为9600bit/s
+   	P_UART_Command1	=0x0000;  //UART复位 
+   	P_UART_Command2  = 0x00c0;  //允许接收、发送
+ 	P_ADC_MUX_Ctrl = 0x0001;  //设置模拟电压由1通道输入
+ 	P_ADC_Ctrl     = 0x0001;  //ADC使能,不使用外部输入电压
+ 	uiData=P_ADC_MUX_Data;    //ADC转换开始    
+    uiData=0;         
+    while(1)
+    {
+    	for(i=0;i<16;i++)
+    	{
+    	P_Watchdog_Clear=0x0001;   //清一次看门狗
+    	uiData+=AD();	
+    	}
+    	uiData=uiData/16;          //取的平均值
+    	fVoltage=(float)uiData/0xffc0*3.3; //SPCE061A最高参考电压为3.3V，因为其内核的电压为3.3V。
+    	//串口操作
+    	while((P_UART_Command2 & 0x0080)==0) P_Watchdog_Clear=0x0001;
+        number=P_UART_Data;	        //接收数据
+     	while((P_UART_Command2 & 0x0040)==0) P_Watchdog_Clear=0x0001;
+        P_UART_Data=fVoltage*16;
+    }
+    return(0);                  //无返回值	
+ }

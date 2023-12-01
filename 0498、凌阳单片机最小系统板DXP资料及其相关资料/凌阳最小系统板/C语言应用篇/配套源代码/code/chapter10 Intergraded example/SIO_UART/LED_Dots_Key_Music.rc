@@ -1,0 +1,74 @@
+# Begin Project
+# Begin SubItem "LED_Dots_Key_Music  Resources"
+# Begin Source File
+SOURCE=S8.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S8_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S1.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S1_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S10.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S10_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S2.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S2_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S3.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S3_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S4.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S4_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S5.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S5_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S6.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S6_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S7.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S7_48K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=S0.48k
+USEPARAM=FALSE
+PARAM=
+ID=RES_S0_48K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

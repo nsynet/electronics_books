@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\Debug\Obj\main_485.pbi</file>
+      <file>$PROJ_DIR$\sourceFile\keyboard12.c</file>
+      <file>$PROJ_DIR$\sourceFile\rs485.c</file>
+      <file>$PROJ_DIR$\sourceFile\led.c</file>
+      <file>$PROJ_DIR$\sourceFile\main_485.c</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x44x.h</file>
+      <file>$PROJ_DIR$\DEBUG\OBJ\RS485.pbd</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\sourceFile\main_485.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5 8 7 2 3 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\DEBUG\OBJ\RS485.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

@@ -1,0 +1,98 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:18:38 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Output\main.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\Output\main.obj)
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "Board.h" 
+   7          #include "Global.h"
+   8          /*
+   9                  网口
+  10          */
+  11          #include "NETDefine.h" 
+  12          #include "NETInterface.h"
+  13          #include "NETProtocol.h"
+  14          #include "NETApplication.h"
+  15          
+  16          
+  17          
+  18          
+  19          
+  20          /****************************************************************************************************
+  21          *
+  22          *                                      变量区
+  23          * 
+  24          *****************************************************************************************************/
+  25          static   UINT8 CODE acLocalMac[6] = {0x54,0x55,0x58,0x10,0x00,0x24};
+  26          static   UINT8 CODE acLocalIP[4]  = {192,168,1,218};
+  27          /*
+  28                    任务级函数
+  29          
+  30          说明:自行添加需要运行的任务
+  31          注意:认真检查MAX_TASKS的最大值和自己添加的任务
+  32          
+  33          */
+  34          
+  35          
+  36          static void (* CODE avTaskTbl[MAX_TASKS])(void)={  SYSIdle,              //    系统空闲 任务
+  37                                                                                                     NULL,                 //       空    任务
+  38                                                                                                     NULL,                 //       空    任务
+  39                                                                                                     NULL,                 //       空    任务
+  40                                                                                                     NULL,                 //       空    任务
+  41                                                                                                     NULL,                 //       空    任务
+  42                                                                                                     NETApDisposeData,     //NET 处理数据 任务
+  43                                                                                                     NULL                  //       空    任务
+  44          };
+  45          /****************************************************************************************************
+  46          *
+  47          *                                      函数区
+  48          * 
+  49          *****************************************************************************************************/
+  50          void main(void)
+  51          { 
+  52   1      
+  53   1        NET_PORT=SI_ENJ|SO_ENJ|SCK_ENJ;
+  54   1        P3=0xFF;
+  55   1        
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:18:38 PAGE 2   
+
+  56   1        NETCiInit(acLocalMac);        //设置ENC28j60的MAC地址
+  57   1        NETCiClkOut(2);               //设置ENC28j60的时钟翻倍
+  58   1        DelayNms(10);
+  59   1        NETCiPhyWrite(PHLCON,0xD76);   
+  60   1        DelayNms(20);   
+  61   1        NETPcInit(acLocalMac,acLocalIP,TCP_PORT); //网络初始化本机IP地址和MAC地址
+  62   1      
+  63   1        SYSPostCurMsg(RUN_NET_DISPOSE_DATA);      //设置任务
+  64   1      
+  65   1      
+  66   1        while(1)
+  67   1        {
+  68   2              
+  69   2              avTaskTbl[SYSRecvCurMsg()](); //总线捕获信息
+  70   2        }
+  71   1      
+  72   1      }
+  73          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    102    ----
+   CONSTANT SIZE    =     34    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

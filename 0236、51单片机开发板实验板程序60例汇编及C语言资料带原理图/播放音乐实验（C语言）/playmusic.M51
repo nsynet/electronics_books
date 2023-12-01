@@ -1,0 +1,133 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        09/17/2007  16:55:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE music.obj TO playmusic
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  music.obj (MUSIC)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  playmusic (MUSIC)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?MUSIC
+                    000CH     0014H                  *** GAP ***
+            BIT     0020H.0   0000H.2   UNIT         ?BI?MUSIC
+                    0020H.2   0000H.6                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0047H     UNIT         ?PR?T0?MUSIC
+            CODE    0055H     0021H     UNIT         ?PR?MAIN?MUSIC
+            CODE    0076H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   playmusic (MUSIC)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MUSIC
+
+
+
+SYMBOL TABLE OF MODULE:  playmusic (MUSIC)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MUSIC
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:00A8H.7       PUBLIC        EA
+  D:0008H         PUBLIC        t5hz
+  D:0009H         PUBLIC        t7hz
+  B:00A0H.1       PUBLIC        P2_1
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/17/2007  16:55:18  PAGE 2
+
+
+  B:0020H.0       PUBLIC        flag
+  C:000EH         PUBLIC        t0
+  C:0055H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  D:000AH         PUBLIC        tcnt
+  B:0020H.1       PUBLIC        stop
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  -------         PROC          MAIN
+  C:0055H         LINE#         13
+  C:0055H         LINE#         15
+  C:0055H         LINE#         19
+  C:0058H         LINE#         21
+  C:005BH         LINE#         23
+  C:005EH         LINE#         25
+  C:0060H         LINE#         27
+  C:0062H         LINE#         29
+  C:0062H         LINE#         31
+  C:0062H         LINE#         45
+  C:0065H         LINE#         47
+  C:0067H         LINE#         49
+  C:006BH         LINE#         51
+  C:006DH         LINE#         53
+  C:006FH         LINE#         55
+  C:0071H         LINE#         57
+  -------         ENDPROC       MAIN
+  -------         PROC          T0
+  C:000EH         LINE#         67
+  C:0012H         LINE#         71
+  C:001AH         LINE#         73
+  C:0022H         LINE#         75
+  C:0022H         LINE#         77
+  C:0028H         LINE#         79
+  C:002BH         LINE#         81
+  C:002BH         LINE#         83
+  C:002DH         LINE#         85
+  C:002FH         LINE#         89
+  C:002FH         LINE#         91
+  C:0031H         LINE#         93
+  C:0033H         LINE#         95
+  C:0033H         LINE#         97
+  C:0033H         LINE#         99
+  C:0036H         LINE#         101
+  C:0036H         LINE#         103
+  C:0038H         LINE#         105
+  C:003DH         LINE#         107
+  C:003DH         LINE#         109
+  C:0040H         LINE#         111
+  C:0042H         LINE#         113
+  C:0042H         LINE#         115
+  C:0044H         LINE#         119
+  C:0044H         LINE#         121
+  C:0046H         LINE#         123
+  C:004BH         LINE#         125
+  C:004BH         LINE#         127
+BL51 BANKED LINKER/LOCATER V6.00                                                      09/17/2007  16:55:18  PAGE 3
+
+
+  C:004EH         LINE#         129
+  C:0050H         LINE#         131
+  C:0050H         LINE#         133
+  C:0050H         LINE#         135
+  -------         ENDPROC       T0
+  -------         ENDMOD        MUSIC
+
+Program Size: data=13.2 xdata=0 code=122
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

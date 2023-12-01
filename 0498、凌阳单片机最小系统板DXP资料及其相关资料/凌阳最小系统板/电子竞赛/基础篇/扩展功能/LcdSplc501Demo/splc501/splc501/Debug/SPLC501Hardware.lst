@@ -1,0 +1,959 @@
+Sunplus u'nSP Assember - Ver. 1.3.0 (Build:2)
+              Listing File Has Been Relocated
+                            	.include   hardware.inc
+                     <      	//========================================================================================
+                     <      	// Progarm: The file be included by modules
+                     <      	// Arranged by: Andy Hsu
+                     <      	// Date: 	2000/06/23: first version
+                     <      	//		2000/07/24: modified
+                     <      	//		2000/10/20: modified for version 52A
+                     <      	//========================================================================================
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	// Definitions for I/O Port
+                     <      	//////////////////////////////////////////////////////////////////
+                     <      	.DEFINE	P_IOA_Data   		0x7000;        // Write Data into data register and read from IOA pad
+                     <      	.DEFINE P_IOA_Buffer        0x7001;        // Write Data into buffer register and read from buffer register
+                     <      	.DEFINE P_IOA_Dir           0x7002;        // Direction vector for IOA
+                     <      	.DEFINE P_IOA_Attrib        0x7003;        // Attribute vector for IOA
+                     <      	.DEFINE P_IOA_Latch         0x7004;        // Latch PortA data for key change wake-up
+                     <      	
+                     <      	.DEFINE P_IOB_Data         	0x7005;        // Write Data into the data register and read from IOB pad
+                     <      	.DEFINE P_IOB_Buffer        0x7006;        // Write Data into buffer register and read from buffer register
+                     <      	.DEFINE P_IOB_Dir           0x7007;        // Direction vector for IOB
+                     <      	.DEFINE P_IOB_Attrib        0x7008;        // Attribute vector for IOB
+                     <      	
+                     <      	.DEFINE P_FeedBack          0x7009;        // Clock form external R,C
+                     <      	.DEFINE P_TimerA_Data       0x700A;        // Data port for TimerA 
+                     <      	.DEFINE P_TimerA_Ctrl       0x700B;        // Control Port for TimerA
+                     <      	.DEFINE P_TimerB_Data       0x700C;        // Data port for TimerB
+                     <      	.DEFINE P_TimerB_Ctrl       0x700D;        // Control Port for TimerB
+                     <      	.DEFINE P_TimeBase_Setup    0x700E;        // TimerBase Freq. Set
+                     <      	.DEFINE P_TimeBase_Clear	0x700F;		   // Reset Timerbase counter
+                     <      	.DEFINE P_INT_Ctrl          0x7010;        // Control port for interrupt source
+                     <      	.DEFINE P_INT_Clear         0x7011;        // Clear interrupt source
+                     <      	.DEFINE P_Watchdog_Clear    0x7012;        // Watchdog Reset
+                     <      	.DEFINE P_SystemClock       0x7013;        // Change system clock frequency(include go to standby mode)
+                     <      	
+                     <      	//... PA6442 Old version (for EC-02) ...........
+                     <      	//.DEFINE P_ADDA               0x7014;        //10-bit DA(W) AD(R)
+                     <      	//.DEFINE P_DAC1               0x7014;        //
+                     <      	//.DEFINE P_AD_Ctrl            0x7015;        //AD/DA control
+                     <      	//.DEFINE P_AD_Status          0x7015;        //AD status
+                     <      	//.DEFINE P_DAC2               0x7016;        //DAC channel 2
+                     <      	//.DEFINE P_PWM                0x7016;        //PWM output
+                     <      	//.DEFINE P_DA_Ctrl            0x7017;        //DAC latch control
+                     <      	
+                     <      	//... PA6442 New version MC52A (For EC-03)....
+                     <      	.DEFINE P_ADC 	        	0x7014;        	// Data Port for AD
+                     <      	.DEFINE P_ADC_Ctrl          0x7015;        	// Control Port for AD control
+                     <      	.DEFINE P_ADC_Status        0x7015;        	// AD Port Status
+                     <      	.DEFINE P_DAC2              0x7016;        	// Data Port for DAC2
+                     <      	.DEFINE P_PWM               0x7016;        	// Data Port for PWM
+                     <      	.DEFINE P_DAC1	        	0x7017;        	// Data Port for DAC1
+                     <      	.DEFINE P_DAC_Ctrl			0x702A;			// Control Port for two DAC and audio output mode
+                     <      	//............................................
+                     <      	
+                     <      	.DEFINE P_IR_Ctrl			0x7018;			// Control Port for IR
+                     <      	.DEFINE P_LVD_Ctrl          0x7019;        	// Control Port for LVD
+                     <      	
+                     <      	.DEFINE P_SIO_Addr_Low		0x701B;			// Address Port low
+                     <      	.DEFINE P_SIO_Addr_Mid		0x701C;			// Address Port middle
+                     <      	.DEFINE P_SIO_Addr_High	 	0x701D;			// Address Port high
+                     <      	.DEFINE P_SIO_Ctrl			0x701E;			// Control Port
+                     <      	.DEFINE P_SIO_Start			0x701F;			// Start port for serial interface
+                     <      	.DEFINE P_SIO_Stop			0x7020;			// Stop port for serial interface
+                     <      	
+                     <      	.DEFINE P_UART_Command1		 0x7021;		// Command1 Port for UART
+                     <      	.DEFINE P_UART_Command2		 0x7022;		// Command2 Port for UART
+                     <      	.DEFINE P_UART_Data			 0x7023; 		// Data Port for UART
+                     <      	.DEFINE	P_UART_BaudScalarLow 0x7024;		// Set Baud Rate scalar low
+                     <      	.DEFINE	P_UART_BaudScalarHigh 0x7025;		// Set Baud Rate scalar high
+                     <      	
+                     <      	
+                     <      	//... Definitions for P_INT_Ctrl ..............
+                     <      	.DEFINE C_IRQ6_TMB2             0x0001;        	// Timer B IRQ6
+                     <      	.DEFINE C_IRQ6_TMB1             0x0002;        	// Timer A IRQ6
+                     <      	.DEFINE C_IRQ5_2Hz              0x0004;        	// 2Hz IRQ5
+                     <      	.DEFINE C_IRQ5_4Hz              0x0008;        	// 4Hz IRQ5
+                     <      	.DEFINE C_IRQ4_1KHz             0x0010;        	// 1024Hz IRQ4
+                     <      	.DEFINE C_IRQ4_2KHz             0x0020;        	// 2048Hz IRQ4
+                     <      	.DEFINE C_IRQ4_4KHz             0x0040;        	// 4096Hz IRQ4
+                     <      	.DEFINE C_IRQ3_KEY              0x0080;        	// Key Change IRQ3
+                     <      	.DEFINE C_IRQ3_EXT1             0x0100;        	// Ext1 IRQ3
+                     <      	.DEFINE C_IRQ3_EXT2             0x0200;        	// Ext2 IRQ3
+                     <      	.DEFINE C_IRQ2_TMB              0x0400;        	// Timer B IRQ2
+                     <      	.DEFINE C_FIQ_TMB               0x0800;        	// Timer B FIQ
+                     <      	.DEFINE C_IRQ1_TMA              0x1000;        	// Timer A IRQ1
+                     <      	.DEFINE C_FIQ_TMA               0x2000;        	// Timer A FIQ
+                     <      	.DEFINE C_IRQ0_PWM              0x4000;        	// PWM IRQ0
+                     <      	.DEFINE C_FIQ_PWM               0x8000;        	// PWM FIQ
+                     <      	
+                     <      	// Definitions for P_TimerA/B_Ctrl ............                               
+                     <      	.DEFINE	C_Fosc_2				0x0000;			// 
+                     <      	.DEFINE	C_Fosc_256		    	0x0001;			//
+                     <      	.DEFINE	C_32768Hz				0x0002;			//
+                     <      	.DEFINE	C_8192Hz				0x0003;			//
+                     <      	.DEFINE	C_4096Hz				0x0004;			//
+                     <      	.DEFINE	C_A1					0x0005;			//
+                     <      	.DEFINE C_A0					0x0006;			//
+                     <      	.DEFINE C_Ext1					0x0007;			//
+                     <      	
+                     <      	.DEFINE	C_2048Hz				0x0000;			//
+                     <      	.DEFINE	C_1024Hz				0x0008;			//
+                     <      	.DEFINE	C_256Hz					0x0010;			//
+                     <      	.DEFINE	C_TMB1Hz				0x0018;			//
+                     <      	.DEFINE	C_4Hz					0x0020;			//
+                     <      	.DEFINE	C_2Hz					0x0028;			//
+                     <      	.DEFINE	C_B1					0x0030;			//
+                     <      	.DEFINE	C_Ext2					0x0038;			//
+                     <      	
+                     <      	.DEFINE	C_Off					0x0000;			//
+                     <      	.DEFINE C_D1					0x0040;			//
+                     <      	.DEFINE C_D2					0x0080;			//
+                     <      	.DEFINE C_D3					0x00C0;			//
+                     <      	.DEFINE C_D4					0x0100;			//
+                     <      	.DEFINE C_D5					0x0140;			//
+                     <      	.DEFINE C_D6					0x0180;			//
+                     <      	.DEFINE C_D7					0x01C0;			//
+                     <      	.DEFINE C_D8					0x0200;			//
+                     <      	.DEFINE C_D9					0x0240;			//
+                     <      	.DEFINE C_D10					0x0280;			//
+                     <      	.DEFINE C_D11					0x02C0;			//
+                     <      	.DEFINE C_D12					0x0300;			//
+                     <      	.DEFINE C_D13					0x0340;			//
+                     <      	.DEFINE C_D14					0x0380;			//
+                     <      	.DEFINE C_TA_Div_2				0x03C0;			// Timer A
+                     <      	.DEFINE C_TB_Div_2				0x03C0;			// Timer B
+                     <      	
+                     <      	//... Definition for P_SystemClock ............
+                     <      	.DEFINE C_Fosc					0x0000;			// b3..b0
+                     <      	.DEFINE C_Fosc_Div_2			0x0001;			//
+                     <      	.DEFINE C_Fosc_Div_4			0x0002;			//
+                     <      	.DEFINE C_Fosc_Div_8			0x0003;			// (default)
+                     <      	.DEFINE C_Fosc_Div_16			0x0004;			//
+                     <      	.DEFINE C_Fosc_Div_32			0x0005;			//
+                     <      	.DEFINE C_Fosc_Div_64			0x0006;			//
+                     <      	.DEFINE C_Sleep					0x0007;		 	//
+                     <      	
+                     <      	.DEFINE	C_32K_Work				0x0000;			// b4
+                     <      	.DEFINE C_32K_Off				0x0000;			// 
+                     <      	.DEFINE C_StrongMode			0x0000;			// b5
+                     <      	.DEFINE C_AutoMode				0x0000;			//
+                     <      	
+                     <      	//... Define for P_AD_Ctrl ....................
+                     <      	.DEFINE	C_AD					0x0001;			//
+                     <      	.DEFINE C_DA					0x0000;			//
+                     <      	.DEFINE C_MIC					0x0000;			//
+                     <      	.DEFINE C_LINE					0x0002;			//
+                     <      	
+                     <      	//... Define for P_DA_Ctrl ....................
+                     <      	.DEFINE C_PushPull				0x0000;			// b0, (default) 
+                     <      	.DEFINE C_DoubleEnd				0x0001;			// b0
+                     <      	.DEFINE	C_DAC_Mode				0x0000;			// b1, (default)
+                     <      	.DEFINE C_PWM_Mode				0x0002;			// b1
+                     <      	
+                     <      	.DEFINE	C_D1_Direct				0x0000;			// DAC1 latch
+                     <      	.DEFINE C_D1_LatchA				0x0008;			// 
+                     <      	.DEFINE C_D1_LatchB				0x0010;			//
+                     <      	.DEFINE C_D1_LatchAB			0x0018;			//
+                     <      	
+                     <      	.DEFINE	C_D2_Direct				0x0000;			// DAC2 latch
+                     <      	.DEFINE C_D2_LatchA				0x0020;			// 
+                     <      	.DEFINE C_D2_LatchB				0x0040;			//
+                     <      	.DEFINE C_D2_LatchAB			0x00C0;			//
+                     <      	
+                     <      	//... Define for P_LVD_Ctrl ...................
+                     <      	.DEFINE C_LVD24V				0x0000;			// LVD = 2.4V 
+                     <      	.DEFINE C_LVD28V				0x0001;			// LVD = 2.8V
+                     <      	.DEFINE C_LVD32V				0x0002;			// LVD = 3.2V
+                     <      	.DEFINE C_LVD36V				0x0003;			// LVD = 3.6V
+                     <      	
+                     <      	
+                     <      	.EXTERNAL	F_SP_Read_INT_Status;			// for further use
+                     <      	.EXTERNAL 	F_SP_Write_INT_Status;			// for further use
+                     <      	.EXTERNAL  	F_SP_Set_INT_Vector;			// for further use
+                     <      	.EXTERNAL	F_SP_Clear_INT_Vector;			// for further use
+                     <      	
+                     <      	.EXTERNAL	F_SP_Send_Out;					//
+                     <      	.EXTERNAL	F_SP_Send_DAC1;					//
+                     <      	.EXTERNAL	F_SP_Send_DAC2;					//
+                     <      	.EXTERNAL	F_SP_Send_Two_DAC;				//
+                     <      	.EXTERNAL	F_SP_Init_HW;					//
+                     <      	
+                     <      	.EXTERNAL	R_InterruptStatus;
+                     <      	
+                     <      	
+                     <      	.EXTERNAL 	F_SP_RampUpDAC1;
+                     <      	.EXTERNAL 	F_SP_RampDnDAC1;
+                     <      	.EXTERNAL 	F_SP_RampUpDAC2;
+                     <      	.EXTERNAL  	F_SP_RampDnDAC2;
+                     <      	
+                     <      	.EXTERNAL 	F_SP_InitQueue;
+                     <      	.EXTERNAL 	F_SP_ReadQueue;
+                     <      	.EXTERNAL 	F_SP_WriteQueue;
+                     <      	.EXTERNAL 	F_SP_TestQueue;
+                     <      	
+                     <      	
+                     <      	
+                     <      	.EXTERNAL	F_SP_Get_ADC
+                     <      	
+                     <      	.EXTERNAL 	F_SP_Set_P_TimerA_Ctrl
+                     <      	.EXTERNAL 	F_SP_Set_P_TimerA_Data
+                     <      	.EXTERNAL 	F_SP_Set_P_TimerB_Ctrl
+                     <      	.EXTERNAL 	F_SP_Set_P_TimerB_Data
+                     <      	.EXTERNAL 	F_SP_Set_P_INT_Ctrl
+                     <      	.EXTERNAL 	F_SP_Set_P_INT_Clear
+                     <      	.EXTERNAL 	F_SP_Set_P_SystemClock
+                     <      	.EXTERNAL 	F_SP_Set_P_DAC_Ctrl
+                     <      	.EXTERNAL 	F_SP_Set_P_ADC_Ctrl
+                     <      	
+                     <      		
+                     <      	
+                     <      	//--------------------------------------------
+                     <      	SACM_MACRO1: 	.MACRO
+                     <      		
+                     <      		.ENDM
+                     <      	
+                     <      	SACM_MACRO2:	.MACRO
+                     <      		
+                     <      		.ENDM
+                     <      	
+                     <      	
+                     <      	
+                     <      	
+                     <      	//.define PC_Play_Enable_A2000		1    	// Enable the PC-Play function for SACM-A2000 module
+                     <      	//.define PC_Play_Enable_S480		1    	// Enable the PC-Play function for SACM-S480 module
+                     <      	//.define PC_Play_Enable_S240		1    	// Enable the PC-Play function for SACM-S240 module    
+                     <      	//.define PC_Play_Enable_MS01		1    	// Enable the PC-Play function for SACM-MS01 module
+                     <      	
+                     <      	
+                     <      	
+                     <      	//========================================================================================        
+                     <      	// End of hardware.inc
+                     <      	//========================================================================================
+                            	.define		C_data
+                            	.include		splc501c_io.inc
+                     <      	//========================================================
+                     <      	//SPLC501C Library Pin Definition
+                     <      	//==========================================================
+                     <      	//6800 Control Pin
+                     <      	//-----------------------------------------------------------------------------
+                     <      	//User can change  any of control pins at any bit, except user select the IO port 
+                     <      	//of control pin the same as control bus. 
+                     <      	//=======================================================
+                     <      	//								FEDCBA9876543210					
+                     <      	//.define		C_AOP_Pin    	00100000000000b;		//IO AOP
+                     <      	//.define		C_EP_Pin   		01000000000000b;		//IO EP
+                     <      	//.define		C_RWP_Pin     	10000000000000b;		//IO as RWP
+                     <      	//								FEDCBA9876543210
+                     <      	.define		C_AOP_Pin    	    0000000100000000b;		//IO AOP
+                     <      	.define		C_EP_Pin   			0000001000000000b;		//IO EP
+                     <      	.define		C_RWP_Pin     		0000010000000000b;		//IO as RWP
+                     <      	//========================================================
+                     <      	//Define the SPLC Data Bus Pin
+                     <      	//Only Two Type Can Select
+                     <      	//=====================================================
+                     <      	//							FEDCBA9876543210
+                     <      	.define		C_DataBus		1111111100000000b;		//IO Data Bus
+                     <      	.define		C_BusHighLow	1;			//Set Data High/Low Byte 1:High	
+                     <      	//.define	C_AddressBus	0000000011111111b;		//IO Data Bus
+                     <      	//.define	C_DataBus		0000000011111111b;		//IO Data Bus
+                     <      	//.define	C_BusHighLow	0;			//Set Data High/Low Byte 0:Low
+                     <      	//=====================================================
+                     <      	//================================================
+                     <      	//Set Control Pins Port
+                     <      	//================================================
+                     <      	//Set Control Pins At Port A
+                     <      	.define	P_IO_Control_Data			0x7000;		//P_IOA_Data
+                     <      	.define	P_IO_Control_Buffer			0x7001;		//P_IOA_Buffer
+                     <      	.define	P_IO_Control_Dir			0x7002;		//P_IOA_Dir
+                     <      	.define	P_IO_Control_Attrib			0x7003;		//P_IOA_Attrib
+                     <      	//=========================================================
+                     <      	//Set Control Pins At Port B
+                     <      	//.define	P_IO_Control_Data		0x7005;		//P_IOB_Data
+                     <      	//.define	P_IO_Control_Buffer		0x7006;		//P_IOB_Buffer
+                     <      	//.define	P_IO_Control_Dir		0x7007;		//P_IOB_Dir
+                     <      	//.define	P_IO_Control_Attrib		0x7008;		//P_IOB_Attrib
+                     <      	//========================================================
+                     <      	//=========================================================
+                     <      	//Set Control Bus Port
+                     <      	//==========================================================
+                     <      	//Set Control Bus At Port A
+                     <      	//.define	P_IO_Data_Data				0x7000;		//P_IOA_Data
+                     <      	//.define	P_IO_Data_Buffer			0x7001;		//P_IOA_Buffer
+                     <      	//.define	P_IO_Data_Dir				0x7002;		//P_IOA_Dir
+                     <      	//.define	P_IO_Data_Attrib			0x7003;		//P_IOA_Attrib
+                     <      	//==========================================================
+                     <      	//Set Control Bus At Port B
+                     <      	.define	P_IO_Data_Data			0x7005;		//P_IOB_Data
+                     <      	.define	P_IO_Data_Buffer		0x7006;		//P_IOB_Buffer
+                     <      	.define	P_IO_Data_Dir			0x7007;		//P_IOB_Dir
+                     <      	.define	P_IO_Data_Attrib		0x7008;		//P_IOB_Attrib
+                     <      	//=========================================================
+0000AB5C                    	.code
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//Filename : F_Init_LCD_501
+                            	//Function : Intialize  SPLC501c
+                            	//Input    : None
+                            	//Output   : None
+                            	//Destory  : R1,R2,r3
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	.public		_Init_LCD_501
+                            	_Init_LCD_501:		.proc
+0000AB5C 41 92              			R1 = 0x0001;
+0000AB5D 19 D3 12 70        	        [P_Watchdog_Clear] = R1;   // reset watchdog
+0000AB5F 40 F0 7A AB        	        CALL    F_LCD_Reset_Command;//Destory  : r3
+0000AB61 40 F0 88 AB        	        CALL    F_LCD_Command_Nop;	//Destory  : r3
+0000AB63 40 F0 96 AB        	        CALL    F_LCD_Solomon_Freq;	//Destory  : r3
+0000AB65 40 F0 B1 AB        	        CALL    F_LCD_Power_Set;	//Destory  : r3
+0000AB67 40 F0 26 AC        	        CALL    F_LCD_Display_On;	//Destory  : r3
+0000AB69 40 92              	        R1 = 0x0000;                //Page No. = 0
+0000AB6A 40 F0 50 AC        	        CALL    F_Set_LCD_Page_No;	//Destory  : r3,r1
+0000AB6C 40 92              	        R1 = 0x0000;                //Start line = 0
+0000AB6D 40 F0 68 AC        	        CALL    F_Set_LCD_Start_Line;//Destory  : r3,r1
+0000AB6F 40 94              	        R2 = 0x0000;                //Column address = 0
+0000AB70 40 F0 79 AC        	        CALL    F_Set_LCD_Column_Addr;//Destory  : r3,r2,r1
+0000AB72 40 F0 34 AC        	        CALL    F_LCD_ALL_On;		//Destory  : r3
+0000AB74 40 F0 42 AC        	        CALL    F_LCD_Normal_Display;//Destory  : r3
+0000AB76 40 96              	        R3 = 0x0000;                //Fill "00"
+0000AB77 40 F0 AF AC        	        CALL  F_Fill_All_LCD_Value;	
+0000AB79 90 9A              	        RETF;
+                            			.endp
+                            		
+                            		
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//Subroutine
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	F_LCD_Reset_Command:
+0000AB7A 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AB7C 0A 95 00 FF        			r2=C_DataBus
+0000AB7E 0A 85 FF FF        			r2^=0xffff
+0000AB80 02 B7              			r3&=r2
+0000AB81 0B A7 00 E2        			r3|=0xe200
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AB83 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AB85 40 F0 DF AC        			CALL F_Send_data			   
+                            	//        R1=0x0AE2;                //Reset
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL    F_Delay_Bus_Time;
+                            	
+0000AB87 90 9A              	        RETF;
+                            	
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	F_LCD_Command_Nop:
+0000AB88 13 97 05 70        			r3=[P_IO_Data_Data]
+                            			
+0000AB8A 0A 95 00 FF        			r2=C_DataBus
+0000AB8C 0A 85 FF FF        			r2^=0xffff
+0000AB8E 02 B7              			r3&=r2
+                            		
+0000AB8F 0B A7 00 E3        			r3|=0xe300
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AB91 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AB93 40 F0 DF AC        			CALL F_Send_data			   
+                            	//        R1=0x0AE3;                //Nop
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL F_Delay_Bus_Time;
+                            	
+0000AB95 90 9A              	        RETF;
+                            	
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	F_LCD_Solomon_Freq:
+0000AB96 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AB98 0A 95 00 FF        					r2=C_DataBus
+0000AB9A 0A 85 FF FF        			r2^=0xffff
+0000AB9C 02 B7              			r3&=r2
+                            		
+0000AB9D 0B A7 00 C8        			r3|=0xC800					//C8
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AB9F 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ABA1 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1=0x0AA9;                //
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL F_Delay_Bus_Time;
+0000ABA3 13 97 05 70        			r3=[P_IO_Data_Data]
+0000ABA5 0A 95 00 FF        					r2=C_DataBus
+0000ABA7 0A 85 FF FF        			r2^=0xffff
+0000ABA9 02 B7              			r3&=r2
+                            		
+0000ABAA 0B A7 00 A0        			r3|=0xa000					//A0
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000ABAC 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ABAE 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1=0x0AA1;                //ADC : Normal
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL F_Delay_Bus_Time;
+                            	
+0000ABB0 90 9A              	        RETF;
+                            	
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	F_LCD_Power_Set:
+0000ABB1 13 97 05 70        			r3=[P_IO_Data_Data]
+0000ABB3 0A 95 00 FF        					r2=C_DataBus
+0000ABB5 0A 85 FF FF        			r2^=0xffff
+0000ABB7 02 B7              			r3&=r2
+                            		
+0000ABB8 0B A7 00 A2        			r3|=0xa200
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000ABBA 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ABBC 40 F0 DF AC        			CALL F_Send_data			   
+                            	//        R1=0x0AA2;
+                            	//        [P_Lcd501Ctrl]=R1;        // 1/9 bias
+                            	//        CALL F_Delay_Bus_Time;
+0000ABBE 13 97 05 70        			r3=[P_IO_Data_Data]
+0000ABC0 0A 95 00 FF        					r2=C_DataBus
+0000ABC2 0A 85 FF FF        			r2^=0xffff
+0000ABC4 02 B7              			r3&=r2
+                            		
+0000ABC5 0B A7 00 25        			r3|=0x2500
+                            			.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000ABC7 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ABC9 40 F0 DF AC        			CALL F_Send_data			   
+                            	//        R1=0x0A24;
+                            	//        [P_Lcd501Ctrl]=R1;        // V5 RATIO 5 FOR 1/9 BIAS
+                            	//        CALL F_Delay_Bus_Time;
+0000ABCB 13 97 05 70        			r3=[P_IO_Data_Data]
+0000ABCD 0A 95 00 FF        					r2=C_DataBus
+0000ABCF 0A 85 FF FF        			r2^=0xffff
+0000ABD1 02 B7              			r3&=r2
+                            		
+0000ABD2 0B A7 00 81        			r3|=0x8100
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000ABD4 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ABD6 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1=0x0A81;
+                            	//        [P_Lcd501Ctrl]=R1;        // ELECTRONIC VOLUME MODE
+                            	//        CALL F_Delay_Bus_Time;
+0000ABD8 13 97 05 70        			r3=[P_IO_Data_Data]
+0000ABDA 0A 95 00 FF        					r2=C_DataBus
+0000ABDC 0A 85 FF FF        			r2^=0xffff
+0000ABDE 02 B7              			r3&=r2
+                            		
+0000ABDF 0B A7 00 1A        			r3|=0x1a00
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000ABE1 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ABE3 40 F0 DF AC        			CALL F_Send_data			   
+                            	//        R1=0x0A1A;
+                            	//        [P_Lcd501Ctrl]=R1;        // MS Column : A
+                            	//        CALL F_Delay_Bus_Time;
+0000ABE5 13 97 05 70        			r3=[P_IO_Data_Data]
+0000ABE7 0A 95 00 FF        					r2=C_DataBus
+0000ABE9 0A 85 FF FF        			r2^=0xffff
+0000ABEB 02 B7              			r3&=r2
+                            		
+0000ABEC 0B A7 00 D2        			r3|=0xd200
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000ABEE 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ABF0 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1=0x0AD2;
+                            	//        [P_Lcd501Ctrl]=R1;        // Set driving mode register
+                            	//        CALL F_Delay_Bus_Time;
+0000ABF2 13 97 05 70        			r3=[P_IO_Data_Data]
+0000ABF4 0A 95 00 FF        					r2=C_DataBus
+0000ABF6 0A 85 FF FF        			r2^=0xffff
+0000ABF8 02 B7              			r3&=r2
+                            		
+0000ABF9 40 A6              			r3|=0x0000
+                            			.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000ABFA 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ABFC 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1=0x0A00;
+                            	//        [P_Lcd501Ctrl]=R1;        // LS Column : 0
+                            	//        CALL F_Delay_Bus_Time;
+0000ABFE 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AC00 0A 95 00 FF        					r2=C_DataBus
+0000AC02 0A 85 FF FF        			r2^=0xffff
+0000AC04 02 B7              			r3&=r2
+                            		
+0000AC05 0B A7 00 2C        			r3|=0x2c00
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AC07 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AC09 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1=0x0A2C;
+                            	//        [P_Lcd501Ctrl]=R1;        // REGULATOR on
+                            	//        CALL F_Delay_Bus_Time;
+0000AC0B 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AC0D 0A 95 00 FF        					r2=C_DataBus
+0000AC0F 0A 85 FF FF        			r2^=0xffff
+0000AC11 02 B7              			r3&=r2
+                            		
+0000AC12 0B A7 00 2E        			r3|=0x2e00
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AC14 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AC16 40 F0 DF AC        			CALL F_Send_data			 
+                            	//        R1=0x0A2E;
+                            	//        [P_Lcd501Ctrl]=R1;        // +FOLLOWER oFF
+                            	//        CALL F_Delay_Bus_Time;
+0000AC18 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AC1A 0A 95 00 FF        					r2=C_DataBus
+0000AC1C 0A 85 FF FF        			r2^=0xffff
+0000AC1E 02 B7              			r3&=r2
+                            		
+0000AC1F 0B A7 00 2F        			r3|=0x2f00
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AC21 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AC23 40 F0 DF AC        			CALL F_Send_data			
+                            	//        R1=0x0A2F;
+                            	//        [P_Lcd501Ctrl]=R1;        // +FOLLOWER oFF
+                            	//        CALL F_Delay_Bus_Time;
+                            	
+0000AC25 90 9A              	        RETF;
+                            	
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	F_LCD_Display_On:
+0000AC26 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AC28 0A 95 00 FF        					r2=C_DataBus
+0000AC2A 0A 85 FF FF        			r2^=0xffff
+0000AC2C 02 B7              			r3&=r2
+                            		
+0000AC2D 0B A7 00 AF        			r3|=0xaf00
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AC2F 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AC31 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1=0x0AAF;
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL F_Delay_Bus_Time;
+                            	
+0000AC33 90 9A              	        RETF;
+                            	
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	F_LCD_ALL_On:
+0000AC34 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AC36 0A 95 00 FF        					r2=C_DataBus
+0000AC38 0A 85 FF FF        			r2^=0xffff
+0000AC3A 02 B7              			r3&=r2
+                            		
+0000AC3B 0B A7 00 A5        			r3|=0xa500
+                            			.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AC3D 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AC3F 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1=0x0AA5;              	//All points on
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL F_Delay_Bus_Time;
+                            	
+0000AC41 90 9A              	        RETF;
+                            	
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	F_LCD_Normal_Display:
+0000AC42 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AC44 0A 95 00 FF        					r2=C_DataBus
+0000AC46 0A 85 FF FF        			r2^=0xffff
+0000AC48 02 B7              			r3&=r2
+                            		
+0000AC49 0B A7 00 A4        			r3|=0xa400
+                            			.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AC4B 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AC4D 40 F0 DF AC        			CALL F_Send_data			 
+                            	//        R1=0x0AA4;              	//Normal display
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL F_Delay_Bus_Time;
+                            	
+0000AC4F 90 9A              	        RETF;
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//Filename : F_Set_LCD_Page_No
+                            	//Function : Set the LCD page No.
+                            	//Input    : Page No. (R1:0x0000~0x0007)
+                            	//Output   : None
+                            	//Destroy  : R1
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	
+                            	.public	_Set_LCD_Page_No
+                            	.public	F_Set_LCD_Page_No
+                            	F_Set_LCD_Page_No:
+                            	_Set_LCD_Page_No:
+0000AC50 59 93              			r1=r1 lsl 0x04
+0000AC51 59 93              			r1=r1 lsl 0x04
+0000AC52 09 A3 00 B0        			r1|=0xb000
+0000AC54 88 D2              			PUSH R1,R1 TO [SP]
+0000AC55 11 93 05 70        			r1=[P_IO_Data_Data]
+0000AC57 88 D4              			push r2 to [sp]
+0000AC58 0A 95 00 FF        			r2=C_DataBus
+0000AC5A 0A 85 FF FF        			r2^=0xffff
+0000AC5C 02 B3              			r1&=r2
+0000AC5D 88 92              			pop r2 from [sp]
+0000AC5E 19 D3 05 70        			[P_IO_Data_Data]=r1
+0000AC60 88 90              			POP R1,R1 FROM [SP]
+0000AC61 11 A3 05 70        			r1|=[P_IO_Data_Data]
+                            			.if	C_BusHighLow
+                            		.else
+                            			R1	=	R1	lsr	4;
+                            			R1	=	R1	lsr	4;		
+                            		.endif
+0000AC63 19 D3 05 70        			[P_IO_Data_Data]=r1
+0000AC65 40 F0 DF AC        			CALL F_Send_data
+                            	//        R1 |= 0x0AB0;         	//Set Page No. (0~7)
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL F_Delay_Bus_Time;
+                            	
+0000AC67 90 9A              	        RETF;
+                            	
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//Filename : F_Set_LCD_Start_Line
+                            	//Function : Set the LCD start line
+                            	//Input    : Page No. (R1:0x0000~0x003F)
+                            	//Output   : None
+                            	//Destroy  : R1
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	F_Set_LCD_Start_Line:
+0000AC68 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AC6A 0A 95 00 FF        					r2=C_DataBus
+0000AC6C 0A 85 FF FF        			r2^=0xffff
+0000AC6E 02 B7              			r3&=r2
+                            		
+0000AC6F 59 93              			r1=r1 lsl 0x04
+0000AC70 59 93              			r1=r1 lsl 0x04
+0000AC71 0B A7 00 40        			r3|=0x4000
+0000AC73 01 A7              			r3|=r1
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AC74 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AC76 40 F0 DF AC        			CALL F_Send_data			  
+                            	//        R1 |= 0x0A40;           	//Set start line (00D ~ 63D)
+                            	//        [P_Lcd501Ctrl]=R1;
+                            	//        CALL F_Delay_Bus_Time;
+                            	
+0000AC78 90 9A              	        RETF;
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//Filename : F_Set_LCD_Column_Addr
+                            	//Function : Set the LCD column address
+                            	//Input    : Page No. (R2:0x0000~0x0083)
+                            	//Output   : None
+                            	//Destroy  : R1,R2
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	.public		_Set_LCD_Column_Addr
+                            	.public		F_Set_LCD_Column_Addr
+                            	F_Set_LCD_Column_Addr:
+                            	_Set_LCD_Column_Addr:
+0000AC79 88 D2              	        push	r1 to [sp]
+0000AC7A 88 D6              	        push	r3 to [sp]
+0000AC7B 02 93              	        R1 = R2                 
+0000AC7C 59 93              	        R1 = R1 LSl 4;
+0000AC7D 09 B3 00 0F        	        R1 &= 0x0F00;           	      
+0000AC7F 09 A3 00 10        	        R1 |= 0x1000;
+0000AC81 88 D2              	        push r1,r1 to [sp]
+0000AC82 11 93 05 70        	        r1=[P_IO_Data_Data]
+                            	 //      r1&=0x00ff
+0000AC84 88 D4              	 		push r2 to [sp]
+0000AC85 0A 95 00 FF        			r2=C_DataBus
+0000AC87 0A 85 FF FF        			r2^=0xffff
+0000AC89 02 B3              			r1&=r2
+0000AC8A 88 92              			pop r2 from [sp]
+0000AC8B 19 D3 05 70        	        [P_IO_Data_Data]=r1
+0000AC8D 88 90              	        pop r1,r1 from [sp] 
+0000AC8E 11 A3 05 70        	        r1|=[P_IO_Data_Data]      
+                            	        .if	C_BusHighLow
+                            		.else
+                            			R1	=	R1	lsr	4;
+                            			R1	=	R1	lsr	4;		
+                            		.endif   	
+0000AC90 19 D3 05 70        			[P_IO_Data_Data]=r1
+0000AC92 40 F0 DF AC        			CALL F_Send_data
+0000AC94 02 93              			R1 = R2
+0000AC95 59 93              			R1 = R1 LSl 4;
+0000AC96 59 93              			R1 = R1 LSl 4;
+0000AC97 09 B3 00 0F        	        R1 &= 0x0F00;   
+0000AC99 88 D2              	        push r1,r1 to [sp]
+0000AC9A 11 93 05 70        	        r1=[P_IO_Data_Data]
+                            	   //     r1&=0x00ff
+0000AC9C 88 D4              	  		push r2 to [sp]
+0000AC9D 0A 95 00 FF        			r2=C_DataBus
+0000AC9F 0A 85 FF FF        			r2^=0xffff
+0000ACA1 02 B3              			r1&=r2
+0000ACA2 88 92              			pop r2 from [sp]
+0000ACA3 19 D3 05 70        	        [P_IO_Data_Data]=r1
+0000ACA5 88 90              	        pop r1,r1 from [sp] 
+0000ACA6 11 A3 05 70        	        r1|=[P_IO_Data_Data]    
+                            	        .if	C_BusHighLow
+                            		.else
+                            			R1	=	R1	lsr	4;
+                            			R1	=	R1	lsr	4;		
+                            		.endif    	         	 	
+0000ACA8 19 D3 05 70        	        [P_IO_Data_Data]=r1
+0000ACAA 40 F0 DF AC        			CALL F_Send_data
+0000ACAC 88 94              			pop	r3 from [sp]
+0000ACAD 88 90              			pop	r1 from [sp]
+                            	        
+0000ACAE 90 9A              	        RETF;
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//Filename : F_Fill_All_LCD_Value
+                            	//Function : Clear all LCD dots
+                            	//Input    : Value (R3 : b0~7)
+                            	//Output   : None
+                            	//Destroy  : R1,R2
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	.public _Fill_All_LCD_Value
+                            	.public F_Fill_All_LCD_Value
+                            	_Fill_All_LCD_Value:
+                            	F_Fill_All_LCD_Value:
+0000ACAF 0B B7 00 FF        	        R3 &= 0xFF00;           	//Filling value
+0000ACB1 40 92              	        R1 = 0x0000;            	//Page No. = 0
+                            			.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+                            	L_Fill_Page_Loop:
+0000ACB2 98 D6              	        PUSH R1,R3 TO [SP];     	//Store R1 temporarily
+0000ACB3 40 F0 50 AC        	        CALL F_Set_LCD_Page_No; 	//Page No. = 0
+0000ACB5 40 94              	        R2 = 0x0000;            	//Column address (00H ~ 63H)
+0000ACB6 40 F0 79 AC        	        CALL F_Set_LCD_Column_Addr; //Column Addr. = 0
+0000ACB8 98 90              	        POP R1,R3 FROM [SP];    	//Restore R1
+0000ACB9 0A 95 84 00        	        R2 = 0x0084;            	//Max. column address +1
+                            	L_Fill_Column_Loop:
+0000ACBB 88 D6              	        push r3,r3 to[sp]
+0000ACBC 13 97 05 70        			r3=[P_IO_Data_Data]
+0000ACBE 88 D4              			push r2 to [sp]
+0000ACBF 0A 95 00 FF        			r2=C_DataBus
+0000ACC1 0A 85 FF FF        			r2^=0xffff
+0000ACC3 02 B7              			r3&=r2
+0000ACC4 88 92              			pop r2 from [sp]
+0000ACC5 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000ACC7 88 94              			pop r3,r3 from [sp]
+0000ACC8 13 A7 05 70        			r3|=[P_IO_Data_Data]
+                            	
+0000ACCA 1B D7 05 70        	        [P_IO_Data_Data]=r3
+0000ACCC 88 D6              	        PUSH R3,R3 TO [SP];
+0000ACCD 0B 97 00 01        	        r3=C_AOP_Pin				//0x2000
+0000ACCF 13 A7 00 70        	        r3|=[P_IO_Control_Data]
+0000ACD1 1B D7 00 70        	        [P_IO_Control_Data]=r3
+0000ACD3 40 F0 DF AC        			CALL F_Send_data					////xxxxxxxx	  
+0000ACD5 88 94              	        POP R3,R3 FROM [SP]
+0000ACD6 41 24              	        R2 -= 0x0001;           	//Next column address
+0000ACD7 5D 4E              	        JNZ L_Fill_Column_Loop; 	//End Page ?
+0000ACD8 41 02              	        R1 += 0x0001;
+0000ACD9 48 42              	        CMP R1,0x0008;          	//Next page address
+0000ACDA 69 4E              	        JNE L_Fill_Page_Loop;
+0000ACDB 41 92              	        R1 = 0x0001;
+0000ACDC 19 D3 12 70        	        [P_Watchdog_Clear] = R1;  	// reset watchdog
+                            	
+0000ACDE 90 9A              	        RETF;
+                            	
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//destory: r3
+                            	//////////////////////////////////////////////////////////////////////
+                            	.public	 _Send_data
+                            	.public	 F_Send_data
+                            	F_Send_data:
+                            	_Send_data:			.proc
+0000ACDF 13 97 00 70        			r3=[P_IO_Control_Data]
+0000ACE1 0B A7 00 02        			r3|=C_EP_Pin				//0x4000
+0000ACE3 1B D7 00 70        			[P_IO_Control_Data]=r3
+0000ACE5 88 D2              			push  r1 to [sp]
+0000ACE6 09 93 00 02        			r1=C_EP_Pin
+0000ACE8 09 83 FF FF        			r1^=0xffff
+0000ACEA 01 B7              			r3&=r1						//0xbfff
+0000ACEB 88 90              			pop r1 from [sp]
+0000ACEC 1B D7 00 70        			[P_IO_Control_Data]=r3
+0000ACEE 88 D2              	        push r1 to [sp]
+0000ACEF 09 93 00 01        	        r1=C_AOP_Pin
+0000ACF1 09 83 FF FF        			r1^=0xffff
+0000ACF3 01 B7              			r3&=r1
+0000ACF4 09 93 00 04        			r1=C_RWP_Pin
+0000ACF6 09 83 FF FF        			r1^=0xffff
+0000ACF8 01 B7              			r3&=r1
+0000ACF9 88 90              			pop r1 from [sp]
+                            	//        r3&=0x1fff
+0000ACFA 1B D7 00 70        	        [P_IO_Control_Data]=r3
+0000ACFC 90 9A              	        retf
+                            	        .endp
+                            	////////////////////////////////////////////////////////////////////////////// 
+                            	F_Delay_Bus_Time:
+                            	
+0000ACFD 90 9A              	        RETF;
+                            	//////////////////////////////////////////////////////////////////////////////    
+                            	//Filename : F_Read_Lcd_data
+                            	//Function : frist read appoint  data on lcd
+                            	//Input    : 
+                            	//Output   : r3
+                            	//Destroy  : R1,r3
+                            	////////////////////////////////////////////////////////////////////////////// 
+                            	.public	_Read_Lcd_data
+                            	.public	F_Read_Lcd_data
+                            	_Read_Lcd_data:	.proc
+                            	F_Read_Lcd_data:
+0000ACFE 11 93 07 70        			r1=[P_IO_Data_Dir]
+0000AD00 88 D4              			push r2 to [sp]
+0000AD01 0A 95 00 FF        			r2=C_DataBus
+0000AD03 0A 85 FF FF        			r2^=0xffff
+0000AD05 02 B3              			r1&=r2
+0000AD06 88 92              			pop r2 from [sp]
+                            		//	r1&=0x00ff
+0000AD07 19 D3 07 70        			[P_IO_Data_Dir]=r1					
+                            	//		r1=[P_IOA_Attrib]
+                            	//		r1|=0xff00
+                            	//		[P_IOA_Attrib]=r1				
+                            	
+                            	//		r3=0x00fd
+0000AD09 13 97 00 70        	        r3=[P_IO_Control_Data]
+                            	//       r3|=0xb000
+0000AD0B 0B A7 00 01        			r3|=C_AOP_Pin
+0000AD0D 0B A7 00 04        			r3|=C_RWP_Pin
+0000AD0F 09 93 00 02        			r1=C_EP_Pin
+0000AD11 09 83 FF FF        			r1^=0xffff
+0000AD13 01 B7              	        r3&=r1
+0000AD14 1B D7 00 70        	        [P_IO_Control_Data]=r3
+0000AD16 40 F0 DF AC        	        CALL F_Send_data				//Dummy read after setting column address immediately
+                            	 //       r3=0x00fd
+0000AD18 13 97 00 70        	        r3=[P_IO_Control_Data]
+0000AD1A 0B A7 00 01        	        r3|=C_AOP_Pin
+0000AD1C 0B A7 00 04        			r3|=C_RWP_Pin
+0000AD1E 09 93 00 02        			r1=C_EP_Pin
+0000AD20 09 83 FF FF        			r1^=0xffff
+0000AD22 01 B7              	        r3&=r1
+0000AD23 1B D7 00 70        	        [P_IO_Control_Data]=r3
+0000AD25 40 F0 DF AC        	        CALL F_Send_data                //Read Data
+0000AD27 13 97 05 70        	        R3 = [P_IO_Data_Data]               //Get it
+                            	    .if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsl	4;
+                            			R3	=	R3	lsl	4;		
+                            		.endif 
+0000AD29 11 93 07 70        	        r1=[P_IO_Data_Dir]
+0000AD2B 09 A3 00 FF        	   	 	r1|=C_DataBus
+0000AD2D 19 D3 07 70        			[P_IO_Data_Dir]=r1
+0000AD2F 90 9A              			retf
+                            	        .endp    
+                            	//////////////////////////////////////////////////////////////////////
+                            	//input: r3
+                            	//destory: r3
+                            	//////////////////////////////////////////////////////////////////////
+                            	.PUBLIC  		F_Display_point
+                            	//_Display_point:		.proc
+                            	F_Display_point:
+0000AD30 00 EE              			nop
+0000AD31 00 EE              			nop 
+0000AD32 88 D6              			push r3,r3 to[sp]
+0000AD33 13 97 05 70        			r3=[P_IO_Data_Data]
+0000AD35 0A 95 00 FF        			r2=C_DataBus
+0000AD37 0A 85 FF FF        			r2^=0xffff
+0000AD39 02 B7              			r3&=r2
+                            		
+0000AD3A 1B D7 05 70        			[P_IO_Data_Data]=r3
+0000AD3C 88 94              			pop r3,r3 from [sp]
+0000AD3D 5B 97              			r3=r3 lsl	0x04
+0000AD3E 5B 97              			r3=r3 lsl	0x04 
+                            	//        R3 |= 0x00f4;           	//Write data
+                            		.if	C_BusHighLow
+                            		.else
+                            			R3	=	R3	lsr	4;
+                            			R3	=	R3	lsr	4;		
+                            		.endif
+0000AD3F 13 A7 05 70        			r3|=[P_IO_Data_Data]
+0000AD41 1B D7 05 70        	        [P_IO_Data_Data]=r3
+0000AD43 13 97 00 70        	        r3=[P_IO_Control_Data]
+0000AD45 0B A7 00 01        	        r3|=C_AOP_Pin			//0x2000
+0000AD47 1B D7 00 70        	        [P_IO_Control_Data]=r3
+0000AD49 40 F0 DF AC        	        CALL F_Send_data
+0000AD4B 90 9A              	        retf    
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	//Filename : F_Init_IO
+                            	//Function : Intialize I/O 
+                            	//Input    : None
+                            	//Output   : None
+                            	//Destory  : R1
+                            	//////////////////////////////////////////////////////////////////////////////
+                            	.public		F_Init_IO
+                            	.public		_Init_IO
+                            	_Init_IO:
+                            	F_Init_IO:		.proc
+                            		
+0000AD4C 11 93 07 70        	    r1=[P_IO_Data_Dir]
+0000AD4E 09 A3 00 FF        	    r1|=C_DataBus
+0000AD50 19 D3 07 70        		[P_IO_Data_Dir]=r1
+0000AD52 11 93 08 70        		r1=[P_IO_Data_Attrib]					
+0000AD54 09 A3 00 FF        		r1|=C_DataBus
+0000AD56 19 D3 08 70        		[P_IO_Data_Attrib]=r1				
+0000AD58 11 93 05 70        		r1=[P_IO_Data_Data]
+0000AD5A 0A 95 00 FF        		r2=C_DataBus
+0000AD5C 0A 85 FF FF        		r2^=0xffff
+0000AD5E 02 B3              		r1&=r2
+0000AD5F 19 D3 05 70        		[P_IO_Data_Data]=r1					//Initial porta
+                            		
+0000AD61 11 93 02 70        		r1=[P_IO_Control_Dir]
+0000AD63 09 A3 00 01        		r1|=C_AOP_Pin
+0000AD65 09 A3 00 02        		r1|=C_EP_Pin
+0000AD67 09 A3 00 04        		r1|=C_RWP_Pin
+0000AD69 19 D3 02 70        		[P_IO_Control_Dir]=r1					
+0000AD6B 12 95 03 70        		r2=[P_IO_Control_Attrib]
+0000AD6D 01 A5              		r2|=r1
+0000AD6E 1A D5 03 70        		[P_IO_Control_Attrib]=r2				
+0000AD70 12 95 00 70        		r2=[P_IO_Control_Data]
+0000AD72 09 83 FF FF        		r1^=0xffff
+0000AD74 01 B5              		r2&=r1
+0000AD75 19 D3 00 70        		[P_IO_Control_Data]=r1	
+0000AD77 90 9A              	    RETF
+                            		.endp
+0 error(s), 0 warning(s).
+
+
+
+
+

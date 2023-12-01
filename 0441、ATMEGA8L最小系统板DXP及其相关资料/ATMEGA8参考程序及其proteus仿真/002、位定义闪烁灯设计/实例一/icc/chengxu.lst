@@ -1,0 +1,171 @@
+__text_start:
+__start:
+    002A E5CF      LDI	R28,0x5F
+    002B E0D4      LDI	R29,4
+    002C BFCD      OUT	0x3D,R28
+    002D BFDE      OUT	0x3E,R29
+    002E 51C0      SUBI	R28,0x10
+    002F 40D0      SBCI	R29,0
+    0030 EA0A      LDI	R16,0xAA
+    0031 8308      STD	Y+0,R16
+    0032 2400      CLR	R0
+    0033 E6E0      LDI	R30,0x60
+    0034 E0F0      LDI	R31,0
+    0035 E010      LDI	R17,0
+    0036 36E0      CPI	R30,0x60
+    0037 07F1      CPC	R31,R17
+    0038 F011      BEQ	0x003B
+    0039 9201      ST	R0,Z+
+    003A CFFB      RJMP	0x0036
+    003B 8300      STD	Z+0,R16
+    003C E5E4      LDI	R30,0x54
+    003D E0F0      LDI	R31,0
+    003E E6A0      LDI	R26,0x60
+    003F E0B0      LDI	R27,0
+    0040 E010      LDI	R17,0
+    0041 35E4      CPI	R30,0x54
+    0042 07F1      CPC	R31,R17
+    0043 F021      BEQ	0x0048
+    0044 95C8      LPM
+    0045 9631      ADIW	R30,1
+    0046 920D      ST	R0,X+
+    0047 CFF9      RJMP	0x0041
+    0048 940E005E  CALL	_main
+_exit:
+    004A CFFF      RJMP	_exit
+_DelayMS:
+  j                    --> R20
+  i                    --> R16
+    004B 940E0075  CALL	push_gset1
+FILE: D:\整理\个人总结的M8程序\002、位定义闪烁灯设计\实例一\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) /**********************************************************************
+(0003) 				  函数数据类型说明							   	
+(0004) **********************************************************************/
+(0005) #define uchar unsigned char 
+(0006) #define uint unsigned int
+(0007) 
+(0008) //定义BIT 0-7 置1 
+(0009) #define BIT0_POS (1<<0)   
+(0010) #define BIT1_POS (1<<1) 
+(0011) #define BIT2_POS (1<<2) 
+(0012) #define BIT3_POS (1<<3) 
+(0013) #define BIT4_POS (1<<4) 
+(0014) #define BIT5_POS (1<<5) 
+(0015) #define BIT6_POS (1<<6) 
+(0016) #define BIT7_POS (1<<7) 
+(0017) 
+(0018) //定义BIT 0-7 清零 
+(0019) #define BIT0_NEG ((unsigned char)(~(1<<0))) 
+(0020) #define BIT1_NEG ((unsigned char)(~(1<<1))) 
+(0021) #define BIT2_NEG ((unsigned char)(~(1<<2))) 
+(0022) #define BIT3_NEG ((unsigned char)(~(1<<3))) 
+(0023) #define BIT4_NEG ((unsigned char)(~(1<<4))) 
+(0024) #define BIT5_NEG ((unsigned char)(~(1<<5))) 
+(0025) #define BIT6_NEG ((unsigned char)(~(1<<6))) 
+(0026) #define BIT7_NEG ((unsigned char)(~(1<<7))) 
+(0027) 
+(0028) //定义红色LED熄灭、亮、翻转 
+(0029) #define LED_red_OFF PORTB&=BIT0_NEG 
+(0030) #define LED_red_ON   PORTB|=BIT0_POS   
+(0031) #define LED_red_OTN PORTB^=BIT0_POS 
+(0032) 
+(0033) //定义绿色LED熄灭、亮、翻转 
+(0034) #define LED_green_OFF PORTB&=BIT1_NEG 
+(0035) #define LED_green_ON PORTB|=BIT1_POS 
+(0036) #define LED_green_OTN PORTB^=BIT1_POS 
+(0037) 
+(0038) 
+(0039) /**********************************************************************
+(0040) 				  MS级延时函数程序，参数i 延时时间								   	
+(0041) **********************************************************************/
+(0042) void DelayMS(uint i)
+(0043) {
+(0044) uint j;
+(0045) for(;i!=0;i--)
+    004D C00A      RJMP	0x0058
+(0046) {
+(0047) for(j=8000;j!=0;j--);
+    004E E440      LDI	R20,0x40
+    004F E15F      LDI	R21,0x1F
+    0050 C002      RJMP	0x0053
+    0051 5041      SUBI	R20,1
+    0052 4050      SBCI	R21,0
+    0053 3040      CPI	R20,0
+    0054 0745      CPC	R20,R21
+    0055 F7D9      BNE	0x0051
+    0056 5001      SUBI	R16,1
+    0057 4010      SBCI	R17,0
+    0058 3000      CPI	R16,0
+    0059 0701      CPC	R16,R17
+    005A F799      BNE	0x004E
+    005B 940E0078  CALL	pop_gset1
+    005D 9508      RET
+(0048) }
+(0049) }
+(0050) /**********************************************************************
+(0051) 				   主函数						   	
+(0052) **********************************************************************/
+(0053) void main(void)
+(0054) {
+(0055)  DDRB=0XFF;//端口设置，PB口设置为推挽1输出
+_main:
+    005E EF8F      LDI	R24,0xFF
+    005F BB87      OUT	0x17,R24
+(0056)  PORTB=0XFF;
+    0060 BB88      OUT	0x18,R24
+    0061 C011      RJMP	0x0073
+(0057)  			while(1)//程序无条件执行
+(0058) 			{
+(0059) 			    LED_red_ON;
+    0062 9AC0      SBI	0x18,0
+(0060) 				LED_green_ON;
+    0063 9AC1      SBI	0x18,1
+(0061) 				DelayMS(100);//延时时间约100MS
+    0064 E604      LDI	R16,0x64
+    0065 E010      LDI	R17,0
+    0066 DFE4      RCALL	_DelayMS
+(0062) 				LED_red_OFF;
+    0067 EF8E      LDI	R24,0xFE
+    0068 EF9F      LDI	R25,0xFF
+    0069 B228      IN	R2,0x18
+    006A 2228      AND	R2,R24
+    006B BA28      OUT	0x18,R2
+(0063) 				LED_green_OFF;
+    006C EF8D      LDI	R24,0xFD
+    006D B228      IN	R2,0x18
+    006E 2228      AND	R2,R24
+    006F BA28      OUT	0x18,R2
+(0064) 			 	DelayMS(100);//延时时间约100MS
+FILE: <library>
+    0070 E604      LDI	R16,0x64
+    0071 E010      LDI	R17,0
+    0072 DFD8      RCALL	_DelayMS
+    0073 CFEE      RJMP	0x0062
+    0074 9508      RET
+push_gset1:
+    0075 935A      ST	R21,-Y
+    0076 934A      ST	R20,-Y
+    0077 9508      RET
+pop_gset1:
+    0078 E0E1      LDI	R30,1
+pop:
+    0079 9149      LD	R20,Y+
+    007A 9159      LD	R21,Y+
+    007B FDE0      SBRC	R30,0
+    007C 9508      RET
+    007D 9169      LD	R22,Y+
+    007E 9179      LD	R23,Y+
+    007F FDE1      SBRC	R30,1
+    0080 9508      RET
+    0081 90A9      LD	R10,Y+
+    0082 90B9      LD	R11,Y+
+    0083 FDE2      SBRC	R30,2
+    0084 9508      RET
+    0085 90C9      LD	R12,Y+
+    0086 90D9      LD	R13,Y+
+    0087 FDE3      SBRC	R30,3
+    0088 9508      RET
+    0089 90E9      LD	R14,Y+
+    008A 90F9      LD	R15,Y+
+    008B 9508      RET

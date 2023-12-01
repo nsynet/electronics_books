@@ -1,0 +1,89 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRA~1\Sunplus\UNSPID~1.0\startupD.obj"
+Obj: "I:\1disktest\R_Parameter_Order\Debug\Resource.obj"
+Obj: "I:\1disktest\R_Parameter_Order\Debug\shican.obj"
+Lib: "I:\1disktest\R_Parameter_Order\.\clib100.lib"
+Lib: "C:\Program Files\Sunplus\unSP IDE 2.0.0\library\CMacro\CMacro1016.lib"
+Output: "I:\1disktest\R_Parameter_Order\Debug\R_Parameter_Order.S37"
+;Locate: TEXT in "printf" of "clib100.lib"  at 8009 
+;Align: TEXT in "printf" of "clib100.lib"  with 0 
+;Locate: IRAM in "impure" of "clib100.lib"  at AA14  linkat 1 
+;Align: IRAM in "impure" of "clib100.lib"  with 0 
+;Locate: CODE in "printf" of "clib100.lib"  at 8104 
+;Align: CODE in "printf" of "clib100.lib"  with 0 
+;Locate: CODE in "dtoa" of "clib100.lib"  at 8AD5 
+;Align: CODE in "dtoa" of "clib100.lib"  with 0 
+;Locate: CODE in "mprec" of "clib100.lib"  at 9487 
+;Align: CODE in "mprec" of "clib100.lib"  with 0 
+;Locate: CODE in "fphook" of "clib100.lib"  at 9D28 
+;Align: CODE in "fphook" of "clib100.lib"  with 0 
+;Locate: CODE in "ecvtbuf" of "clib100.lib"  at A06D 
+;Align: CODE in "ecvtbuf" of "clib100.lib"  with 0 
+;Locate: CODE in "mulf2" of "CMacro1016.lib"  at A312 
+;Align: CODE in "mulf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "addf2" of "CMacro1016.lib"  at A3E3 
+;Align: CODE in "addf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "divf2" of "CMacro1016.lib"  at A4B2 
+;Align: CODE in "divf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "write" of "clib100.lib"  at A572 
+;Align: CODE in "write" of "clib100.lib"  with 0 
+;Locate: CODE in "divu2" of "CMacro1016.lib"  at A5D4 
+;Align: CODE in "divu2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "efgcvt" of "clib100.lib"  at A629 
+;Align: CODE in "efgcvt" of "clib100.lib"  with 0 
+;Locate: CODE in "cmpf2" of "CMacro1016.lib"  at A67C 
+;Align: CODE in "cmpf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "divi2" of "CMacro1016.lib"  at A6C8 
+;Align: CODE in "divi2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "cvi1f2" of "CMacro1016.lib"  at A70B 
+;Align: CODE in "cvi1f2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "malloc" of "clib100.lib"  at A74C 
+;Align: CODE in "malloc" of "clib100.lib"  with 0 
+;Locate: CODE in "divu1" of "CMacro1016.lib"  at A784 
+;Align: CODE in "divu1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "divi1" of "CMacro1016.lib"  at A7B8 
+;Align: CODE in "divi1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "calloc" of "clib100.lib"  at A7E9 
+;Align: CODE in "calloc" of "clib100.lib"  with 0 
+;Locate: CODE in "cvf2i2" of "CMacro1016.lib"  at A817 
+;Align: CODE in "cvf2i2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "mulu2" of "CMacro1016.lib"  at A845 
+;Align: CODE in "mulu2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "rshi2" of "CMacro1016.lib"  at A86C 
+;Align: CODE in "rshi2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "cvf2i1" of "CMacro1016.lib"  at A892 
+;Align: CODE in "cvf2i1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "shican.obj" at A8B8 
+;Align: CODE in "shican.obj" with 0 
+;Locate: CODE in "modi1" of "CMacro1016.lib"  at A8DC 
+;Align: CODE in "modi1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro1016.lib"  at A900 
+;Align: CODE in "rshu2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "mulu1" of "CMacro1016.lib"  at A91E 
+;Align: CODE in "mulu1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "realloc" of "clib100.lib"  at A93C 
+;Align: CODE in "realloc" of "clib100.lib"  with 0 
+;Locate: CODE in "lshiu2" of "CMacro1016.lib"  at A95A 
+;Align: CODE in "lshiu2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "cvi2f2" of "CMacro1016.lib"  at A978 
+;Align: CODE in "cvi2f2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "lshiu1" of "CMacro1016.lib"  at A98F 
+;Align: CODE in "lshiu1" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "modu2" of "CMacro1016.lib"  at A9A4 
+;Align: CODE in "modu2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "muli2" of "CMacro1016.lib"  at A9B7 
+;Align: CODE in "muli2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "blockcopy" of "CMacro1016.lib"  at A9CA 
+;Align: CODE in "blockcopy" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "STRCPY" of "clib100.lib"  at A9D9 
+;Align: CODE in "STRCPY" of "clib100.lib"  with 0 
+;Locate: CODE in "TOUPPER" of "clib100.lib"  at A9E6 
+;Align: CODE in "TOUPPER" of "clib100.lib"  with 0 
+;Locate: CODE in "subf2" of "CMacro1016.lib"  at A9F3 
+;Align: CODE in "subf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "STRLEN" of "clib100.lib"  at A9FF 
+;Align: CODE in "STRLEN" of "clib100.lib"  with 0 
+;Locate: CODE in "negf2" of "CMacro1016.lib"  at AA0B 
+;Align: CODE in "negf2" of "CMacro1016.lib"  with 0 
+;Locate: __sn_init_table at 8000 

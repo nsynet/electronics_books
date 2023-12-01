@@ -1,0 +1,451 @@
+                        .module chengxu.c
+                        .area data(ram, con, rel)
+ 0000           _table::
+ 0000                   .blkb 2
+                        .area idata
+ 0000 C0F9              .byte 192,249
+                        .area data(ram, con, rel)
+ 0002                   .blkb 2
+                        .area idata
+ 0002 A4B0              .byte 164,176
+                        .area data(ram, con, rel)
+ 0004                   .blkb 2
+                        .area idata
+ 0004 9992              .byte 153,146
+                        .area data(ram, con, rel)
+ 0006                   .blkb 2
+                        .area idata
+ 0006 82F8              .byte 130,248
+                        .area data(ram, con, rel)
+ 0008                   .blkb 2
+                        .area idata
+ 0008 8090              .byte 128,144
+                        .area data(ram, con, rel)
+ 000A                   .dbfile C:\DOCUME~1\Administrator\桌面\数码管计数显示设计\icc\chengxu.c
+ 000A                   .dbsym e table _table A[10:10]c
+ 000A           _cnt::
+ 000A                   .blkb 2
+                        .area idata
+ 000A 0000              .word 0
+                        .area data(ram, con, rel)
+ 000C                   .dbfile C:\DOCUME~1\Administrator\桌面\数码管计数显示设计\icc\chengxu.c
+ 000C                   .dbsym e cnt _cnt i
+                        .area text(rom, con, rel)
+ 0000                   .dbfile C:\DOCUME~1\Administrator\桌面\数码管计数显示设计\icc\chengxu.c
+ 0000                   .dbfunc e delayms _delayms fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _delayms::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 15
+ 0004           ; #include <iom16v.h>
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; #define WEI PORTC
+ 0004           ; #define DUAN PORTA
+ 0004           ; 
+ 0004           ; uchar table[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
+ 0004           ; 
+ 0004           ; uint cnt=0000;//计数初值
+ 0004           ; 
+ 0004           ; uchar key_up;
+ 0004           ; uchar key_down;
+ 0004           ; ////////////////////////////////////////////////////////////////////
+ 0004           ; void delayms(uint i)//延时
+ 0004           ; {
+ 0004                   .dbline 17
+ 0004           ; uint j;
+ 0004           ; for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 18
+ 0006           ; {
+ 0006                   .dbline 19
+ 0006 40E4              ldi R20,8000
+ 0008 5FE1              ldi R21,31
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 19
+ 000C           L7:
+ 000C                   .dbline 19
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 19
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 20
+ 0016           L3:
+ 0016                   .dbline 17
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 17
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e delayus _delayus fV
+ 0026           ;              j -> R20,R21
+ 0026           ;              i -> R16,R17
+                        .even
+ 0026           _delayus::
+ 0026 0E940000          xcall push_gset1
+ 002A                   .dbline -1
+ 002A                   .dbline 24
+ 002A           ; for(j=8000;j!=0;j--);
+ 002A           ; }
+ 002A           ; }
+ 002A           ; ////////////////////////////////////////////////////////////////////
+ 002A           ; void delayus(uint i)//延时
+ 002A           ; {
+ 002A                   .dbline 26
+ 002A           ; uint j;
+ 002A           ; for(;i!=0;i--)
+ 002A 0AC0              xjmp L14
+ 002C           L11:
+ 002C                   .dbline 27
+ 002C           ; {
+ 002C                   .dbline 28
+ 002C 44E6              ldi R20,100
+ 002E 50E0              ldi R21,0
+ 0030 02C0              xjmp L18
+ 0032           L15:
+ 0032                   .dbline 28
+ 0032           L16:
+ 0032                   .dbline 28
+ 0032 4150              subi R20,1
+ 0034 5040              sbci R21,0
+ 0036           L18:
+ 0036                   .dbline 28
+ 0036 4030              cpi R20,0
+ 0038 4507              cpc R20,R21
+ 003A D9F7              brne L15
+ 003C           X2:
+ 003C                   .dbline 29
+ 003C           L12:
+ 003C                   .dbline 26
+ 003C 0150              subi R16,1
+ 003E 1040              sbci R17,0
+ 0040           L14:
+ 0040                   .dbline 26
+ 0040 0030              cpi R16,0
+ 0042 0107              cpc R16,R17
+ 0044 99F7              brne L11
+ 0046           X3:
+ 0046                   .dbline -2
+ 0046           L10:
+ 0046 0E940000          xcall pop_gset1
+ 004A                   .dbline 0 ; func end
+ 004A 0895              ret
+ 004C                   .dbsym r j 20 i
+ 004C                   .dbsym r i 16 i
+ 004C                   .dbend
+ 004C                   .dbfunc e Led _Led fV
+ 004C           ;              m -> R20
+                        .even
+ 004C           _Led::
+ 004C 0E940000          xcall push_gset1
+ 0050                   .dbline -1
+ 0050                   .dbline 33
+ 0050           ; for(j=100;j!=0;j--);
+ 0050           ; }
+ 0050           ; }
+ 0050           ; ////////////////////////////////////////////////////////////////////
+ 0050           ; void Led() //显示函数
+ 0050           ; {
+ 0050                   .dbline 34
+ 0050           ; uchar m=1;//消隐延时
+ 0050 41E0              ldi R20,1
+ 0052                   .dbline 36
+ 0052           ; 
+ 0052           ; WEI=0x7f; //输出低电平，选通千位数
+ 0052 8FE7              ldi R24,127
+ 0054 85BB              out 0x15,R24
+ 0056                   .dbline 37
+ 0056           ; DUAN=table[cnt/1000]; //取出千位数，查表，输出。
+ 0056 28EE              ldi R18,1000
+ 0058 33E0              ldi R19,3
+ 005A 00910A00          lds R16,_cnt
+ 005E 10910B00          lds R17,_cnt+1
+ 0062 0E940000          xcall div16u
+ 0066 F801              movw R30,R16
+ 0068 80E0              ldi R24,<_table
+ 006A 90E0              ldi R25,>_table
+ 006C E80F              add R30,R24
+ 006E F91F              adc R31,R25
+ 0070 2080              ldd R2,z+0
+ 0072 2BBA              out 0x1b,R2
+ 0074                   .dbline 38
+ 0074           ; delayus(m); //延时
+ 0074 042F              mov R16,R20
+ 0076 1127              clr R17
+ 0078 D6DF              xcall _delayus
+ 007A                   .dbline 39
+ 007A           ; WEI=0xbf;
+ 007A 8FEB              ldi R24,191
+ 007C 85BB              out 0x15,R24
+ 007E                   .dbline 41
+ 007E           ; //delayus(m); //延时
+ 007E           ; DUAN=0xff;
+ 007E 8FEF              ldi R24,255
+ 0080 8BBB              out 0x1b,R24
+ 0082                   .dbline 42
+ 0082           ; WEI=0xbf; //输出低电平，选通百位数
+ 0082 8FEB              ldi R24,191
+ 0084 85BB              out 0x15,R24
+ 0086                   .dbline 43
+ 0086           ; DUAN=table[cnt%1000/100]; //取出百位数，查表，输出。
+ 0086 28EE              ldi R18,1000
+ 0088 33E0              ldi R19,3
+ 008A 00910A00          lds R16,_cnt
+ 008E 10910B00          lds R17,_cnt+1
+ 0092 0E940000          xcall mod16u
+ 0096 24E6              ldi R18,100
+ 0098 30E0              ldi R19,0
+ 009A 0E940000          xcall div16u
+ 009E F801              movw R30,R16
+ 00A0 80E0              ldi R24,<_table
+ 00A2 90E0              ldi R25,>_table
+ 00A4 E80F              add R30,R24
+ 00A6 F91F              adc R31,R25
+ 00A8 2080              ldd R2,z+0
+ 00AA 2BBA              out 0x1b,R2
+ 00AC                   .dbline 44
+ 00AC           ; delayus(m); //延时
+ 00AC 042F              mov R16,R20
+ 00AE 1127              clr R17
+ 00B0 BADF              xcall _delayus
+ 00B2                   .dbline 45
+ 00B2           ; WEI=0xff;
+ 00B2 8FEF              ldi R24,255
+ 00B4 85BB              out 0x15,R24
+ 00B6                   .dbline 47
+ 00B6           ; //delayus(m); //延时
+ 00B6           ; DUAN=0xff;
+ 00B6 8BBB              out 0x1b,R24
+ 00B8                   .dbline 48
+ 00B8           ; WEI=0xdf; //输出低电平，选通十位数
+ 00B8 8FED              ldi R24,223
+ 00BA 85BB              out 0x15,R24
+ 00BC                   .dbline 49
+ 00BC           ; DUAN=table[cnt%100/10]; //取出十位数，查表，输出。
+ 00BC 24E6              ldi R18,100
+ 00BE 30E0              ldi R19,0
+ 00C0 00910A00          lds R16,_cnt
+ 00C4 10910B00          lds R17,_cnt+1
+ 00C8 0E940000          xcall mod16u
+ 00CC 2AE0              ldi R18,10
+ 00CE 30E0              ldi R19,0
+ 00D0 0E940000          xcall div16u
+ 00D4 F801              movw R30,R16
+ 00D6 80E0              ldi R24,<_table
+ 00D8 90E0              ldi R25,>_table
+ 00DA E80F              add R30,R24
+ 00DC F91F              adc R31,R25
+ 00DE 2080              ldd R2,z+0
+ 00E0 2BBA              out 0x1b,R2
+ 00E2                   .dbline 50
+ 00E2           ; delayus(m); //延时
+ 00E2 042F              mov R16,R20
+ 00E4 1127              clr R17
+ 00E6 9FDF              xcall _delayus
+ 00E8                   .dbline 51
+ 00E8           ; WEI=0xff;
+ 00E8 8FEF              ldi R24,255
+ 00EA 85BB              out 0x15,R24
+ 00EC                   .dbline 53
+ 00EC           ; //delayus(m); //延时
+ 00EC           ; DUAN=0xff;
+ 00EC 8BBB              out 0x1b,R24
+ 00EE                   .dbline 54
+ 00EE           ; WEI=0xef;
+ 00EE 8FEE              ldi R24,239
+ 00F0 85BB              out 0x15,R24
+ 00F2                   .dbline 55
+ 00F2           ; DUAN=table[cnt%10]; //取出个位数，查表，输出。
+ 00F2 2AE0              ldi R18,10
+ 00F4 30E0              ldi R19,0
+ 00F6 00910A00          lds R16,_cnt
+ 00FA 10910B00          lds R17,_cnt+1
+ 00FE 0E940000          xcall mod16u
+ 0102 F801              movw R30,R16
+ 0104 80E0              ldi R24,<_table
+ 0106 90E0              ldi R25,>_table
+ 0108 E80F              add R30,R24
+ 010A F91F              adc R31,R25
+ 010C 2080              ldd R2,z+0
+ 010E 2BBA              out 0x1b,R2
+ 0110                   .dbline 56
+ 0110           ; delayus(m);
+ 0110 042F              mov R16,R20
+ 0112 1127              clr R17
+ 0114 88DF              xcall _delayus
+ 0116                   .dbline 57
+ 0116           ; WEI=0xff;
+ 0116 8FEF              ldi R24,255
+ 0118 85BB              out 0x15,R24
+ 011A                   .dbline 58
+ 011A           ; delayus(m); //延时
+ 011A 042F              mov R16,R20
+ 011C 1127              clr R17
+ 011E 83DF              xcall _delayus
+ 0120                   .dbline 59
+ 0120           ; DUAN=0xff;
+ 0120 8FEF              ldi R24,255
+ 0122 8BBB              out 0x1b,R24
+ 0124                   .dbline -2
+ 0124           L19:
+ 0124 0E940000          xcall pop_gset1
+ 0128                   .dbline 0 ; func end
+ 0128 0895              ret
+ 012A                   .dbsym r m 20 c
+ 012A                   .dbend
+ 012A                   .dbfunc e init_io _init_io fV
+                        .even
+ 012A           _init_io::
+ 012A                   .dbline -1
+ 012A                   .dbline 64
+ 012A           ; 
+ 012A           ; }
+ 012A           ; //////////////////////////////////////////////////////////////////
+ 012A           ; void init_io(void)//初始化I/O
+ 012A           ; {
+ 012A                   .dbline 66
+ 012A           ; //设置A口为输出
+ 012A           ; DDRA=0XFF;
+ 012A 8FEF              ldi R24,255
+ 012C 8ABB              out 0x1a,R24
+ 012E                   .dbline 67
+ 012E           ; PORTA=0xFF;
+ 012E 8BBB              out 0x1b,R24
+ 0130                   .dbline 69
+ 0130           ; //设置B口为输出
+ 0130           ; DDRB=0XFF;
+ 0130 87BB              out 0x17,R24
+ 0132                   .dbline 70
+ 0132           ; PORTB=0xFF;
+ 0132 88BB              out 0x18,R24
+ 0134                   .dbline 72
+ 0134           ; //设置C口为输入
+ 0134           ; DDRC=0xFF;
+ 0134 84BB              out 0x14,R24
+ 0136                   .dbline 73
+ 0136           ; PORTC=0xFF;
+ 0136 85BB              out 0x15,R24
+ 0138                   .dbline 75
+ 0138           ; //设置D口为输出
+ 0138           ; DDRD=0XFF;
+ 0138 81BB              out 0x11,R24
+ 013A                   .dbline 76
+ 013A           ; PORTD=0xFF;
+ 013A 82BB              out 0x12,R24
+ 013C                   .dbline -2
+ 013C           L20:
+ 013C                   .dbline 0 ; func end
+ 013C 0895              ret
+ 013E                   .dbend
+ 013E                   .dbfunc e get_key _get_key fV
+                        .even
+ 013E           _get_key::
+ 013E                   .dbline -1
+ 013E                   .dbline 83
+ 013E           ; }
+ 013E           ; 
+ 013E           ; //////////////////////////////////////////////////////////////////
+ 013E           ; 
+ 013E           ; void get_key(void)//按键扫描函数
+ 013E           ; 
+ 013E           ; {
+ 013E 04C0              xjmp L23
+ 0140           L22:
+ 0140                   .dbline 85
+ 0140                   .dbline 85
+ 0140 81E0              ldi R24,1
+ 0142 80930100          sts _key_up,R24
+ 0146                   .dbline 86
+ 0146 82DF              xcall _Led
+ 0148                   .dbline 87
+ 0148           L23:
+ 0148                   .dbline 84
+ 0148           ; while((PINB&0X01)==0)//按键加计数标志
+ 0148 B09B              sbis 0x16,0
+ 014A FACF              rjmp L22
+ 014C 04C0              xjmp L26
+ 014E           L25:
+ 014E                   .dbline 89
+ 014E                   .dbline 89
+ 014E 81E0              ldi R24,1
+ 0150 80930000          sts _key_down,R24
+ 0154                   .dbline 90
+ 0154 7BDF              xcall _Led
+ 0156                   .dbline 90
+ 0156           L26:
+ 0156                   .dbline 88
+ 0156           ; {key_up=1;
+ 0156           ; Led();
+ 0156           ; }
+ 0156           ; while((PINB&0X02)==0)//按键减计数标志
+ 0156 B19B              sbis 0x16,1
+ 0158 FACF              rjmp L25
+ 015A                   .dbline -2
+ 015A           L21:
+ 015A                   .dbline 0 ; func end
+ 015A 0895              ret
+ 015C                   .dbend
+ 015C                   .dbfunc e main _main fV
+                        .even
+ 015C           _main::
+ 015C                   .dbline -1
+ 015C                   .dbline 94
+ 015C           ; {key_down=1;
+ 015C           ; Led();}
+ 015C           ; }
+ 015C           ; //////////////////////////////////////////////////////////////////
+ 015C           ; void main(void)
+ 015C           ; {
+ 015C                   .dbline 95
+ 015C           ; init_io();//初始化I/O
+ 015C E6DF              xcall _init_io
+ 015E 08C0              xjmp L30
+ 0160           L29:
+ 0160                   .dbline 98
+ 0160                   .dbline 99
+ 0160 EEDF              xcall _get_key
+ 0162                   .dbline 100
+ 0162 74DF              xcall _Led
+ 0164                   .dbline 101
+ 0164 82ED              ldi R24,1234
+ 0166 94E0              ldi R25,4
+ 0168 90930B00          sts _cnt+1,R25
+ 016C 80930A00          sts _cnt,R24
+ 0170                   .dbline 120
+ 0170           L30:
+ 0170                   .dbline 97
+ 0170 F7CF              xjmp L29
+ 0172           X4:
+ 0172                   .dbline -2
+ 0172           L28:
+ 0172                   .dbline 0 ; func end
+ 0172 0895              ret
+ 0174                   .dbend
+                        .area bss(ram, con, rel)
+ 0000                   .dbfile C:\DOCUME~1\Administrator\桌面\数码管计数显示设计\icc\chengxu.c
+ 0000           _key_down::
+ 0000                   .blkb 1
+ 0001                   .dbsym e key_down _key_down c
+ 0001           _key_up::
+ 0001                   .blkb 1
+ 0002                   .dbsym e key_up _key_up c

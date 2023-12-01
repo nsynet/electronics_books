@@ -1,0 +1,190 @@
+XL
+H 4 areas D global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset3 Ref0000
+S pop_gset1 Ref0000
+S pop_gset3 Ref0000
+A text size 126 flags 0
+dbfile E:\Proteus\AVR单片机应用系统开发经典实例\013、基于TC2的实时时钟电路设计---------------未成功\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 12 4
+dbline 13 4
+dbline 14 6
+dbline 14 6
+dbline 14 C
+dbline 14 C
+dbline 14 C
+dbline 14 C
+dbline 14 10
+dbline 14 16
+dbline 13 16
+dbline 13 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 1B 2C
+dbline 1B 2C
+dbline 1C 2E
+dbline 1D 32
+dbline 1D 32
+dbline 1E 34
+dbline 1F 4E
+dbline 20 54
+dbline 21 56
+dbline 1C 56
+dbline 1C 58
+dbline FFFFFFFE 5C
+dbline 0 60
+dbfunc e Init_IO 62 fV
+dbline FFFFFFFF 62
+dbline 27 62
+dbline 27 62
+dbline 28 66
+dbline 29 68
+dbline 2A 6A
+dbline FFFFFFFE 6C
+dbline 0 6C
+dbfunc e Add_Second 6E fV
+dbsym r p 10 pc
+dbline FFFFFFFF 6E
+dbline 30 6E
+dbline 30 6E
+dbline 31 7A
+dbline 31 82
+dbline 31 82
+dbline 31 88
+dbline 31 94
+dbline 32 94
+dbline 32 9C
+dbline 32 9C
+dbline 32 A2
+dbline 32 AE
+dbline 33 AE
+dbline 33 B6
+dbline 33 B6
+dbline 33 BC
+dbline 33 C4
+dbline 34 C4
+dbline 34 CC
+dbline 34 CC
+dbline 34 D0
+dbline FFFFFFFE D0
+dbline 0 D0
+dbfunc e main D2 fV
+dbsym l i 1 c
+dbline FFFFFFFF D2
+dbline 3A D2
+dbline 3B D2
+dbline 3E D4
+dbline 3F D8
+dbline 40 DC
+dbline 41 E0
+dbline 42 E4
+dbline 44 E8
+dbline 44 E8
+dbline 45 EE
+dbline 46 F6
+dbline 46 F6
+dbline 47 FC
+dbline 47 102
+dbline 48 102
+dbline 43 102
+dbline FFFFFFFE 104
+dbline 0 104
+dbfunc e Timer2 106 fV
+dbline FFFFFFFF 10E
+dbline 4D 10E
+dbline 4E 10E
+dbline 4F 112
+dbline FFFFFFFE 11C
+dbline 0 124
+S _main Def00D2
+S _DelayMs Def0000
+S _Add_Second Def006E
+S _Display Def0026
+S _Timer2 Def0106
+S _Init_IO Def0062
+A data size F flags 20
+dbfile E:\Proteus\AVR单片机应用系统开发经典实例\013、基于TC2的实时时钟电路设计---------------未成功\icc\chengxu.c
+dbsym e Table 0 A[10:10]c
+dbsym e Data A A[4:4]c
+dbsym e CNT E c
+S _CNT Def000E
+S _Table Def0000
+S _Data Def000A
+A idata size F flags 0
+A vector size 14 flags C
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 00 00
+R 00 00 02 00
+T 0C 00 00 00
+R 00 00 02 00
+T 0E 00 00
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 02 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 01 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 20 94 2B BA 01 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 10 E0 D6 DF 44 0F 63 95 64 30 58 F3 0E 94
+R 00 00 00 00
+T 5E 00 00 00 08 95
+R 00 00 00 00 12 02 03 00
+T 62 00 8F EF 8A BB 8B BB 84 BB 85 BB 08 95
+R 00 00 00 00
+T 6E 00 C8 01 03 96 FC 01 80 81 8F 5F 80 83 F8 01
+R 00 00 00 00
+T 7C 00 83 81 8A 30 49 F4 22 24 F8 01 23 82 C8 01
+R 00 00 00 00
+T 8A 00 02 96 FC 01 80 81 8F 5F 80 83 F8 01 82 81
+R 00 00 00 00
+T 98 00 86 30 49 F4 22 24 F8 01 22 82 C8 01 01 96
+R 00 00 00 00
+T A6 00 FC 01 80 81 8F 5F 80 83 F8 01 81 81 8A 30
+R 00 00 00 00
+T B4 00 39 F4 22 24 F8 01 21 82 F8 01 80 81 8F 5F
+R 00 00 00 00
+T C2 00 80 83 F8 01 80 81 86 30 11 F4 22 24 20 82
+R 00 00 00 00
+T D0 00 08 95
+R 00 00 00 00
+T D2 00 C7 DF 88 E0 82 BD 87 E0 85 BD 8F EF 84 BD
+R 00 00 00 00
+T E0 00 80 E4 89 BF 78 94 0D C0 00 E0 10 E0 9C DF
+R 00 00 00 00 20 0A 01 00 0A 00 40 0C 01 00 0A 00
+T EE 00 80 91 0E 00 80 32 31 F4 22 24 20 92 0E 00
+R 00 00 00 00 00 04 01 00 00 0E 01 00
+T FC 00 00 E0 10 E0 B6 DF F2 CF 08 95
+R 00 00 00 00 20 02 01 00 0A 00 40 04 01 00 0A 00
+T 10 00 0C 94 83 00
+R 00 00 03 00 10 04 00 00
+T 06 01 8A 93 9A 93 8F B7 8A 93 8F EF 84 BD 80 91
+R 00 00 00 00
+T 14 01 0E 00 8F 5F 80 93 0E 00 89 91 8F BF 99 91
+R 00 00 00 00 00 02 01 00 00 08 01 00
+T 22 01 89 91 18 95
+R 00 00 00 00

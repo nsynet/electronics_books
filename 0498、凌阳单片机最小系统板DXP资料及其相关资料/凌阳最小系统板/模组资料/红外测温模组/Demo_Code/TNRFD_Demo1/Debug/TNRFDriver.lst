@@ -1,0 +1,175 @@
+Sunplus u'nSP Assembler - Ver. 1.10.0
+              Listing File Has Been Relocated
+                            	//==========================================================
+                            	//文件名称:TNRFDriver.asm
+                            	//功能描述:驱动函数
+                            	//维护记录 2005.12.2 v1.0
+                            	//==========================================================
+                            	.define	P_IOA_Data 				0x7000   
+                            	.define P_IOA_Buffer 			0x7001
+                            	.define P_IOA_Dir 				0x7002
+                            	.define P_IOA_Attrib 			0x7003
+                            	.define P_IOA_Latch 			0x7004
+                            	//............................................
+                            	.define P_IOB_Data				0x7005  
+                            	.define P_IOB_Buffer			0x7006   
+                            	.define P_IOB_Dir				0x7007   
+                            	.define P_IOB_Attrib			0x7008   
+                            	//............................................
+                            	.define P_Watchdog_Clear		0x7012   
+                            	
+                            	//=====================定义红外模块的控制口======================
+                            	.define TN_ACK		0x2000             
+                            	.define TN_Data		0x8000
+                            	.define TN_Clk		0x4000
+                            	.define TN_ACK_N	0xdfff
+                            	.define TN_Data_N	0x7fff
+                            	.define TN_Clk_N	0xbfff
+                            	
+                            	//=====================//define the port========================
+                            	//如果使用IOA口，用下面程序-------------------------------------
+                            	.define IO_Port			P_IOA_Data				
+                            	.define IO_Port_Dir		P_IOA_Dir
+                            	.define IO_Port_Attrib	P_IOA_Attrib
+                            	.define IO_Port_Buffer	P_IOA_Buffer
+                            	//如果使用IOB口，用下面程序-------------------------------------
+                            	//.define IO_Port			P_IOB_Data				
+                            	//.define IO_Port_Dir		P_IOB_Dir
+                            	//.define IO_Port_Attrib	P_IOB_Attrib
+                            	//.define IO_Port_Buffer	P_IOB_Buffer
+                            	
+                            	.public _TN_Data_Buff
+00000001                    	.ram
+00000001 FF FF FF FF        	_TN_Data_Buff:.dw 3 dup(?)
+         FF FF      
+00000004 00 00              	.var Data_Counter
+                            	
+00008280                    	.code
+                            	//==========================================================================
+                            	//	汇编格式：	_TN_InitalIO
+                            	//	C格式：		void TN_InitalIO(void);
+                            	//	实现功能：	红外模块初始化
+                            	//	入口参数：	无
+                            	//	出口参数：	无
+                            	//	破坏寄存器：r1
+                            	//==========================================================================
+                            	.public _TN_InitalIO
+                            	_TN_InitalIO:
+00008280 88 DA              		push bp to [sp]
+00008281 11 93 02 70        		r1 = [IO_Port_Dir]
+00008283 09 B3 FF DF        		r1 &= TN_ACK_N
+00008285 09 B3 FF 7F        		r1 &= TN_Data_N
+00008287 09 B3 FF BF        		r1 &= TN_Clk_N
+00008289 19 D3 02 70        		[IO_Port_Dir] = r1            
+0000828B 11 93 03 70        		r1 = [IO_Port_Attrib]
+0000828D 09 A3 00 20        		r1 |= TN_ACK
+0000828F 09 B3 FF 7F        		r1 &= TN_Data_N
+00008291 09 B3 FF BF        		r1 &= TN_Clk_N
+00008293 19 D3 03 70        		[IO_Port_Attrib] = r1
+00008295 11 93 01 70        		r1 = [IO_Port_Buffer]
+00008297 09 B3 FF DF        		r1 &= TN_ACK_N
+00008299 09 B3 FF 7F        		r1 &= TN_Data_N
+0000829B 09 B3 FF BF        		r1 &= TN_Clk_N
+0000829D 19 D3 00 70        		[IO_Port] = r1
+0000829F 88 98              		pop bp from [sp]
+000082A0 90 9A              		retf
+                            	//==========================================================================
+                            	//	汇编格式：	_TN_IRACK_EN
+                            	//	C格式：		void TN_IRACK_EN(void);
+                            	//	实现功能：	红外模块启动函数
+                            	//	入口参数：	无
+                            	//	出口参数：	无
+                            	//	破坏寄存器：r1
+                            	//==========================================================================
+                            	.public _TN_IRACK_EN
+                            	_TN_IRACK_EN:
+000082A1 88 DA              		push bp to [sp]
+000082A2 11 93 02 70        		r1 = [IO_Port_Dir]		        //启动TN
+000082A4 09 A3 00 20        		r1 |= TN_ACK
+000082A6 19 D3 02 70        		[IO_Port_Dir] = r1				//...end
+000082A8 88 98              		pop bp from [sp]
+000082A9 90 9A              		retf
+                            	//==========================================================================
+                            	//	汇编格式：	_TN_IRACK_UN
+                            	//	C格式：		void TN_IRACK_UN(void);
+                            	//	实现功能：	红外模块启动函数
+                            	//	入口参数：	无
+                            	//	出口参数：	无
+                            	//	破坏寄存器：r1
+                            	//==========================================================================	
+                            	.public _TN_IRACK_UN
+                            	_TN_IRACK_UN:
+000082AA 88 DA              		push bp to [sp]
+000082AB 11 93 02 70        		r1 = [IO_Port_Dir]		        //启动TN
+000082AD 09 B3 FF DF        		r1 &= TN_ACK_N
+000082AF 19 D3 02 70        		[IO_Port_Dir] = r1				//...end
+000082B1 88 98              		pop bp from [sp]
+000082B2 90 9A              		retf
+                            	//==========================================================================
+                            	//	汇编格式：	_TN_ReadData
+                            	//	C格式：		int TN_ReadData(void);
+                            	//	实现功能：	读测得数据
+                            	//	入口参数：	无
+                            	//	出口参数：	读到的三个字数据
+                            	//	破坏寄存器：r1
+                            	//==========================================================================	
+                            	.public _TN_ReadData
+                            	_TN_ReadData:
+000082B3 88 DA              		push bp to [sp]
+000082B4 68 94              		r2 = 40                  //读5个字节的数据
+000082B5 0D 9B 01 00        		r5 = _TN_Data_Buff       //取缓冲区数据
+                            	TN_Read_loop:
+000082B7 41 92              		r1 = 0x0001
+000082B8 19 D3 12 70        		[P_Watchdog_Clear] = r1
+000082BA 11 93 00 70        		r1 = [IO_Port]            
+000082BC 09 B3 00 40        		r1 &= TN_Clk             //检测时钟数据 
+000082BE 48 4E              		jnz TN_Read_loop         //不为零时继续检测 
+000082BF 11 93 00 70        		r1 = [IO_Port]           //为0时读一个bit数据，即检测到下跳沿
+000082C1 09 B3 00 80        		r1 &= TN_Data            
+000082C3 02 4E              		jnz TN_Read_Data_H       //不为0时转到TN_Read_Data_H
+000082C4 40 92              		r1 = 0                   //返回数据0
+000082C5 01 EE              		jmp TN_Read_Data_NN
+                            	TN_Read_Data_H:
+000082C6 41 92              		r1 = 1                    //返回数据1
+                            	TN_Read_Data_NN:
+                            	//	[r5++] = r1
+000082C7 02 96              		r3 = [r5+2]               //第一个字数据处理
+000082C8 43 97              		r3 = r3 lsl 1             //   
+000082C9 01 A7              		r3 = r3|r1                //
+000082CA 02 D6              		[r5+2] = r3    
+000082CB 54 99              		r4 = r4 lsl 3
+000082CC 01 96              		r3 = [r5+1]              //第二个字数据处理
+000082CD 83 97              		r3 = r3 rol 1
+000082CE 54 99              		r4 = r4 lsl 3
+000082CF 01 D6              		[r5+1] = r3
+000082D0 C5 96              		r3 = [r5]               //第三个字数据处理
+000082D1 83 97              		r3 = r3 rol 1
+000082D2 54 99              		r4 = r4 lsl 3
+000082D3 C5 D6              		[r5] = r3
+000082D4 41 24              		r2-=1
+000082D5 01 4E              		jnz TN_Read_Wait       //40个bit数据没有读完转向TN_Read_Wait
+000082D6 09 EE              		jmp TN_Read_Exit       //读完转向TN_Read_Exit
+                            	TN_Read_Wait:
+000082D7 41 92              		r1 = 0x0001
+000082D8 19 D3 12 70        		[P_Watchdog_Clear] = r1
+000082DA 11 93 00 70        		r1 = [IO_Port]        //检测时钟 
+000082DC 09 B3 00 40        		r1 &= TN_Clk      
+000082DE 68 4E              		jnz TN_Read_loop       //时钟不为0时转向TN_Read_loop
+000082DF 49 EE              		jmp TN_Read_Wait
+                            	TN_Read_Exit:
+000082E0 00 EE              		nop
+000082E1 00 EE              		nop
+000082E2 88 98              		pop bp from [sp]
+000082E3 90 9A              		retf
+0 error(s), 0 warning(s).
+
+
+
+
+
+
+
+
+
+
+

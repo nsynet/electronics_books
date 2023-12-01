@@ -1,0 +1,695 @@
+Friday, July 11, 10:38:25, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             8218         "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8234         "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         8233         "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         817B         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T022_48K_SA                                   817B         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T022_48K_EA                                   817D         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T023_48K_SA                                   817F         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T023_48K_EA                                   8181         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T024_48K_SA                                   8183         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T024_48K_EA                                   8185         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T025_48K_SA                                   8187         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T025_48K_EA                                   8189         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T026_48K_SA                                   818B         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T026_48K_EA                                   818D         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T027_48K_SA                                   818F         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T027_48K_EA                                   8191         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T028_48K_SA                                   8193         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T028_48K_EA                                   8195         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T029_48K_SA                                   8197         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T029_48K_EA                                   8199         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T030_48K_SA                                   819B         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T030_48K_EA                                   819D         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T031_48K_SA                                   819F         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T031_48K_EA                                   81A1         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T066_48K_SA                                   81A3         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T066_48K_EA                                   81A5         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T016_48K_SA                                   81A7         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_RES_T016_48K_EA                                   81A9         "F:\功能扩展\UpDown\Debug\Resource.obj"
+T_SACM_S480_SpeechTable                            81AB         "F:\功能扩展\UpDown\Debug\Resource.obj"
+_K_IRQ                                             9D7E         "F:\功能扩展\UpDown\Debug\line.obj"
+_Sanjiaobo                                         9D8E         "F:\功能扩展\UpDown\Debug\line.obj"
+_Juchibo                                           9DF6         "F:\功能扩展\UpDown\Debug\line.obj"
+_Fangbo                                            9E2A         "F:\功能扩展\UpDown\Debug\line.obj"
+_L_asin                                            9F1E         "F:\功能扩展\UpDown\Debug\line.obj"
+_IRQ3                                              8123         "F:\功能扩展\UpDown\Debug\line.obj"
+_playS480                                          8235         "F:\功能扩展\UpDown\Debug\main.obj"
+_showled                                           826F         "F:\功能扩展\UpDown\Debug\main.obj"
+_pp                                                1F1          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_Z                                              1F2          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_F                                              1F3          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_Z1                                             1F4          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_F1                                             1F5          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_Z2                                             1F6          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_F2                                             1F7          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_Z3                                             1F8          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_F3                                             1F9          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_Z4                                             1FA          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_F4                                             1FB          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_Z5                                             1FC          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_F5                                             1FD          "F:\功能扩展\UpDown\Debug\main.obj"
+_V_GA                                              1FE          "F:\功能扩展\UpDown\Debug\main.obj"
+_Bianxing                                          1FF          "F:\功能扩展\UpDown\Debug\main.obj"
+_Bianxing1                                         200          "F:\功能扩展\UpDown\Debug\main.obj"
+_sanju                                             201          "F:\功能扩展\UpDown\Debug\main.obj"
+_Mk_Z6                                             202          "F:\功能扩展\UpDown\Debug\main.obj"
+_main                                              84BD         "F:\功能扩展\UpDown\Debug\main.obj"
+_w                                                 1A4          "F:\功能扩展\UpDown\Debug\main.obj"
+_y                                                 1A6          "F:\功能扩展\UpDown\Debug\main.obj"
+_t                                                 1A8          "F:\功能扩展\UpDown\Debug\main.obj"
+_tt                                                1AA          "F:\功能扩展\UpDown\Debug\main.obj"
+_h                                                 1AC          "F:\功能扩展\UpDown\Debug\main.obj"
+_j                                                 1AE          "F:\功能扩展\UpDown\Debug\main.obj"
+Scan_loop10                                        A847         "F:\功能扩展\UpDown\Debug\key.obj"
+_key_asm                                           A83C         "F:\功能扩展\UpDown\Debug\key.obj"
+_baab                                              A85B         "F:\功能扩展\UpDown\Debug\key.obj"
+_key_asm1                                          A85C         "F:\功能扩展\UpDown\Debug\key1.obj"
+_Gaopin                                            A87B         "F:\功能扩展\UpDown\Debug\initial.obj"
+_Dipin                                             A88B         "F:\功能扩展\UpDown\Debug\initial.obj"
+_DAC_FW                                            A895         "F:\功能扩展\UpDown\Debug\initial.obj"
+_delay                                             A818         "F:\功能扩展\UpDown\Debug\delay1ms.obj"
+_car_wait                                          A820         "F:\功能扩展\UpDown\Debug\delay1ms.obj"
+_F_Apwm                                            A82A         "F:\功能扩展\UpDown\Debug\delay1ms.obj"
+_singleled                                         B119         "F:\功能扩展\UpDown\Debug\single.obj"
+_FIQ                                               81D9         "F:\功能扩展\UpDown\Debug\isr.obj"
+_SP_INT_64Hz                                       A8CB         "F:\功能扩展\UpDown\Debug\system.obj"
+F_SP_INT_64Hz                                      A8CB         "F:\功能扩展\UpDown\Debug\system.obj"
+_Turnoff_INT_64Hz                                  A8D7         "F:\功能扩展\UpDown\Debug\system.obj"
+F_SP_Send_PWM                                      9F4C         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Send_DAC1                                     9F4F         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Send_DAC2                                     9F52         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  9F55         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Send_Out                                      9F55         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Get_ADC                                       9F5A         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             9F5D         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             9F60         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             9F63         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             9F66         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                9F69         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               9F6C         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             9F6F         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                9F72         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                9F75         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Write_INT_Status                              9F78         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Read_INT_Status                               9F7B         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    9FB3         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    9FD7         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    9FE9         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    A00D         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_RampUpDAC1                                     9FB3         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_RampDnDAC1                                     9FD7         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_RampUpDAC2                                     9FE9         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_RampDnDAC2                                     A00D         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_Delay                                         A078         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_InitQueue                                     A025         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_ReadQueue                                     A032         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_WriteQueue                                    A044         "F:\功能扩展\UpDown\Debug\hardware.obj"
+F_SP_TestQueue                                     A052         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_Export                                         9FA9         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_Import                                         9F9E         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_Init_IOB                                       9F8E         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_Init_IOA                                       9F7E         "F:\功能扩展\UpDown\Debug\hardware.obj"
+_SP_GetResource                                    A06A         "F:\功能扩展\UpDown\Debug\hardware.obj"
+R_InterruptStatus                                  1BB          "F:\功能扩展\UpDown\Debug\hardware.obj"
+R_FIQTemp                                          1BC          "F:\功能扩展\UpDown\Debug\hardware.obj"
+__RES_T022_48K_sa                                  AD10         "F:\功能扩展\UpDown\Debug\T022_48k.res"
+__RES_T022_48K_ea                                  AD99         "F:\功能扩展\UpDown\Debug\T022_48k.res"
+__RES_T023_48K_sa                                  B048         "F:\功能扩展\UpDown\Debug\T023_48k.res"
+__RES_T023_48K_ea                                  B0AD         "F:\功能扩展\UpDown\Debug\T023_48k.res"
+__RES_T024_48K_sa                                  B0AD         "F:\功能扩展\UpDown\Debug\T024_48k.res"
+__RES_T024_48K_ea                                  B109         "F:\功能扩展\UpDown\Debug\T024_48k.res"
+__RES_T025_48K_sa                                  AC75         "F:\功能扩展\UpDown\Debug\T025_48k.res"
+__RES_T025_48K_ea                                  AD10         "F:\功能扩展\UpDown\Debug\T025_48k.res"
+__RES_T026_48K_sa                                  AE19         "F:\功能扩展\UpDown\Debug\T026_48k.res"
+__RES_T026_48K_ea                                  AE99         "F:\功能扩展\UpDown\Debug\T026_48k.res"
+__RES_T027_48K_sa                                  AF75         "F:\功能扩展\UpDown\Debug\T027_48k.res"
+__RES_T027_48K_ea                                  AFE3         "F:\功能扩展\UpDown\Debug\T027_48k.res"
+__RES_T028_48K_sa                                  AF07         "F:\功能扩展\UpDown\Debug\T028_48k.res"
+__RES_T028_48K_ea                                  AF75         "F:\功能扩展\UpDown\Debug\T028_48k.res"
+__RES_T029_48K_sa                                  ABC8         "F:\功能扩展\UpDown\Debug\T029_48k.res"
+__RES_T029_48K_ea                                  AC75         "F:\功能扩展\UpDown\Debug\T029_48k.res"
+__RES_T030_48K_sa                                  AFE3         "F:\功能扩展\UpDown\Debug\T030_48k.res"
+__RES_T030_48K_ea                                  B048         "F:\功能扩展\UpDown\Debug\T030_48k.res"
+__RES_T031_48K_sa                                  AE99         "F:\功能扩展\UpDown\Debug\T031_48k.res"
+__RES_T031_48K_ea                                  AF07         "F:\功能扩展\UpDown\Debug\T031_48k.res"
+__RES_T066_48K_sa                                  AD99         "F:\功能扩展\UpDown\Debug\T066_48k.res"
+__RES_T066_48K_ea                                  AE19         "F:\功能扩展\UpDown\Debug\T066_48k.res"
+__RES_T016_48K_sa                                  AADC         "F:\功能扩展\UpDown\Debug\T016_48k.res"
+__RES_T016_48K_ea                                  ABC8         "F:\功能扩展\UpDown\Debug\T016_48k.res"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "D:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            8218                 8234         1D     *
+* "F:\功能扩展\UpDown\Debug\Resource.obj"                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          817B                 81B7         3D     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\line.obj"                                                       *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9D7E                 9F4B         1CE    *
+*    DATA                                          A94C                 AADB         190    *
+*    TEXT                                          8123                 817A         58     *
+*    IRAM                                          A949 (203)           A94B (205)   3      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\main.obj"                                                       *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8235                 8C98         A64    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          A937 (1F1)           A948 (202)   12     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1A4                  1AF          C      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\key.obj"                                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A83C                 A85B         20     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1B4                  1B6          3      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\key1.obj"                                                       *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A85C                 A87A         1F     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1B7                  1B9          3      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\initial.obj"                                                    *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A87B                 A899         1F     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\delay1ms.obj"                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A818                 A83B         24     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\single.obj"                                                     *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          B109                 B13B         33     *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\isr.obj"                                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          81D9                 81F3         1B     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\system.obj"                                                     *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A8CB                 A8DF         15     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\hardware.obj"                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9F4C                 A078         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          A901 (1BB)           A936 (1F0)   36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\功能扩展\UpDown\Debug\T022_48k.res"                                                   *
+*    __sn_section_RES_T022_48K(DATA)               AD10                 AD98         89     *
+* "F:\功能扩展\UpDown\Debug\T023_48k.res"                                                   *
+*    __sn_section_RES_T023_48K(DATA)               B048                 B0AC         65     *
+* "F:\功能扩展\UpDown\Debug\T024_48k.res"                                                   *
+*    __sn_section_RES_T024_48K(DATA)               B0AD                 B108         5C     *
+* "F:\功能扩展\UpDown\Debug\T025_48k.res"                                                   *
+*    __sn_section_RES_T025_48K(DATA)               AC75                 AD0F         9B     *
+* "F:\功能扩展\UpDown\Debug\T026_48k.res"                                                   *
+*    __sn_section_RES_T026_48K(DATA)               AE19                 AE98         80     *
+* "F:\功能扩展\UpDown\Debug\T027_48k.res"                                                   *
+*    __sn_section_RES_T027_48K(DATA)               AF75                 AFE2         6E     *
+* "F:\功能扩展\UpDown\Debug\T028_48k.res"                                                   *
+*    __sn_section_RES_T028_48K(DATA)               AF07                 AF74         6E     *
+* "F:\功能扩展\UpDown\Debug\T029_48k.res"                                                   *
+*    __sn_section_RES_T029_48K(DATA)               ABC8                 AC74         AD     *
+* "F:\功能扩展\UpDown\Debug\T030_48k.res"                                                   *
+*    __sn_section_RES_T030_48K(DATA)               AFE3                 B047         65     *
+* "F:\功能扩展\UpDown\Debug\T031_48k.res"                                                   *
+*    __sn_section_RES_T031_48K(DATA)               AE99                 AF06         6E     *
+* "F:\功能扩展\UpDown\Debug\T066_48k.res"                                                   *
+*    __sn_section_RES_T066_48K(DATA)               AD99                 AE18         80     *
+* "F:\功能扩展\UpDown\Debug\T016_48k.res"                                                   *
+*    __sn_section_RES_T016_48K(DATA)               AADC                 ABC7         EC     *
+* "sf_sin"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A529                 A586         5E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "d:\working\unsp\mix\release\s480"                                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8C99                 965F         9C7    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1BA                  1BA          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    S480_Section(ORAM)                            0                    1A3          1A4    *
+* "cmpf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A6D5                 A702         2E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "addf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A22D                 A2F8         CC     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvi1f2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A6A1                 A6D4         34     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvf2i1"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A7A6                 A7CB         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A079                 A15C         E4     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "mulf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A15D                 A22C         D0     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divi1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A66A                 A6A0         37     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "modi1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A731                 A758         28     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divi2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A5DF                 A62B         4D     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "kf_cos"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A39D                 A42A         8E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          81F4                 8201         E      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "ef_rem_pio2"                                                                             *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9AC8                 9D7D         2B6    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8122         11A    *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "kf_sin"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A42B                 A4B7         8D     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8202                 820F         E      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "subf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A8F5                 A900         C      *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "lshiu2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A7CC                 A7F1         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "rshu2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A7F2                 A817         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "common"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1B0                  1B3          4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "mulu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A780                 A7A5         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A62C                 A669         3E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divu2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A2F9                 A39C         A4     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "sf_poly"                                                                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A759                 A77F         27     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "kf_rem_pio2"                                                                             *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9660                 9AC7         468    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          81B8                 81D8         21     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvi2f2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A8B4                 A8CA         17     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvf2i2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A703                 A730         2E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "sf_floor"                                                                                *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A587                 A5DE         58     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8216                 8217         2      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "sf_scalbn"                                                                               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A4B8                 A528         71     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8210                 8215         6      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "rshi1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A89A                 A8B3         1A     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "lshiu1"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          A8E0                 A8F4         15     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  206          5FA                   *
+* "First Bank Rom"                  7C00                 313C         4AC4                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\UpDown.S37
+Disk  Mapping Filename : .\Debug\UpDown.map
+Symbol  Table FileName : .\Debug\UpDown.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

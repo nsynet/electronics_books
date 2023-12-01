@@ -1,0 +1,39 @@
+Sunplus u'nSP Assembler - Ver. 1.8.0
+              Listing File Has Been Relocated
+                            	.define		P_IOA_DATA  	    0x7000
+                            	.define		P_IOA_DIR   	    0x7002 
+                            	.define		P_IOA_ATTRI			0x7003
+                            	.define		P_IOB_DATA  	    0x7005
+                            	.define		P_IOB_DIR   	    0x7007
+                            	.define		P_IOB_ATTRI			0x7008
+                            	
+                            	.external _main
+                            	.external ClearWatchDog
+00000004                    	.ram
+00000004 00 00 00 00        	.var first,last,keyword;
+         00 00      
+                            	
+00008349                    	.code
+                            	.public _key_asm
+                            	
+                            	_key_asm:
+00008349 09 93 F0 00        	    r1=0x00f0;                                    //IOA4---IOA7做扫描线，IOA0---IOA3做接收线
+0000834B 19 D3 02 70        		[P_IOA_DIR]=r1 ;
+0000834D C7 92              	    r1=[pc]
+0000834E 40 92              	    r1=0x0000;
+0000834F 19 D3 03 70        	   	[P_IOA_ATTRI]=r1;        
+00008351 40 92              		r1=0x0000;
+00008352 19 D3 00 70        		[P_IOA_DATA]=r1;
+00008354 09 93 F0 00        	    r1=0x00f0;
+00008356 11 93 00 70        	    r1=[P_IOA_DATA];
+00008358 19 D3 04 00        	    [first]=r1;
+0000835A 40 F0 7F 83        	    call ClearWatchDog;
+0000835C 00 EE              	    nop
+0000835D 00 EE              	    nop
+0000835E 00 EE              	    nop
+0000835F 90 9A              	    retf;
+                            	 
+                            	
+                            	
+0 error(s), 0 warning(s).
+

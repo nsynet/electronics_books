@@ -1,0 +1,647 @@
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001         list      p=12c672           ; list directive to define processor
+                      00002         #include <p12c672.inc>        ; processor specific variable definitions
+                      00001         LIST
+                      00002 ; P12C672.INC  Standard Header File, Version 1.03    Microchip Technology, Inc.
+                      00178         LIST
+  00000070            00003 w_temp          EQU     0x70
+  00000071            00004 status_temp     EQU     0x71
+  00000072            00005 pclath_temp     EQU     0x72
+  00000075            00006 reg0            EQU     0x75
+  00000076            00007 reg1            EQU     0x76
+  00000077            00008 advalue         EQU     0x77
+  00000078            00009 advflag         EQU     0x78
+                      00010 bank0   macro
+                      00011 bcf     STATUS,5
+Warning[205]: Found directive in column 1. (endm)
+                      00012 endm
+                      00013 bank1   macro
+                      00014 bsf     STATUS,5
+Warning[205]: Found directive in column 1. (endm)
+                      00015 endm
+0000                  00016         ORG     0x00
+0000   0000           00017         nop
+0001   0000           00018         nop
+0002   2804           00019         goto    start
+0004                  00020         ORG     0x004
+                      00021         
+                      00022         
+0004                  00023 start
+                      00024         bank0
+Warning[203]: Found opcode in column 1. (bcf)
+0004   1283               M bcf     STATUS,5
+0005   0185           00025         clrf    GPIO
+0006   138B           00026         bcf     INTCON,GIE
+                      00027         bank1
+Warning[203]: Found opcode in column 1. (bsf)
+0007   1683               M bsf     STATUS,5
+0008   30C0           00028         movlw   0xc0
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0009   0081           00029         movwf   OPTION_REG
+000A   3006           00030         movlw   0x06
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000B   009F           00031         movwf   ADCON1
+000C   30C9           00032         movlw   0xc9
+Warning[224]: Use of this instruction is not recommended.
+000D   0065           00033         TRIS    GPIO
+                      00034         
+                      00035         
+000E   3000           00036         movlw   0x00
+000F   00F5           00037         movwf   reg0
+0010   3008           00038         movlw   0x08
+0011   00F6           00039         movwf   reg1
+                      00040         
+                      00041         
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00042         bank0
+Warning[203]: Found opcode in column 1. (bcf)
+0012   1283               M bcf     STATUS,5
+0013   3030           00043         movlw   b'00110000'
+0014   0485           00044         iorwf   GPIO,f
+0015   30C1           00045         movlw   0xc1
+0016   009F           00046         movwf   ADCON0
+                      00047         
+0017   151F           00048         bsf     ADCON0,GO
+0018   2819           00049         goto    mainlp
+0019                  00050 mainlp
+0019   191F           00051         btfsc   ADCON0,GO_DONE
+001A   2819           00052         goto    $-1
+001B   3001           00053         movlw   HIGH(tablev)
+001C   008A           00054         movwf   PCLATH
+                      00055         
+001D   01F8           00056         clrf    advflag
+001E   30AB           00057         movlw   0xab
+001F   021E           00058         subwf   ADRES,w
+0020   1C03           00059         btfss   STATUS,C
+0021   2824           00060         goto    $+3
+0022   14F8           00061         bsf     advflag,1
+0023   2828           00062         goto    gratethan20
+0024   3056           00063         movlw   0x56
+0025   021E           00064         subwf   ADRES,w
+0026   1803           00065         btfsc   STATUS,C
+0027   1478           00066         bsf     advflag,0
+0028                  00067 gratethan20             
+0028   081E           00068         movf    ADRES,w
+                      00069         
+0029   2100           00070         call    tablev
+002A   00F7           00071         movwf   advalue
+002B   018A           00072         clrf    PCLATH
+002C   151F           00073         bsf     ADCON0,GO
+002D   202F           00074         call    refreshled
+002E   2819           00075         goto    mainlp
+002F                  00076 refreshled
+002F   3000           00077         movlw   0x0
+0030   1C78           00078         btfss   advflag,0
+0031   2834           00079         goto    refreshled0
+0032   3060           00080         movlw   b'01100000'
+0033   2836           00081         goto    refreshled2
+0034                  00082 refreshled0
+0034   18F8           00083         btfsc   advflag,1
+0035   30DA           00084         movlw   b'11011010'     
+0036                  00085 refreshled2
+0036   00F5           00086         movwf   reg0
+0037                  00087 mainlp0
+0037   1085           00088         bcf     GPIO,1
+Message[305]: Using default destination of 1 (file).
+0038   0CF5           00089         rrf     reg0
+0039   1803           00090         btfsc   STATUS,C
+003A   283D           00091         goto    $+3
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+003B   1105           00092         bcf     GPIO,2
+003C   283E           00093         goto    $+2
+003D   1505           00094         bsf     GPIO,2
+003E   1485           00095         bsf     GPIO,1
+Message[305]: Using default destination of 1 (file).
+003F   0BF6           00096         decfsz  reg1
+0040   2837           00097         goto    mainlp0
+                      00098         
+                      00099         
+                      00100         ;bcf    INTCON,GIE
+0041   30CF           00101         movlw   b'11001111'
+0042   0585           00102         andwf   GPIO,f
+0043   0E77           00103         swapf   advalue,w
+0044   390F           00104         andlw   0x0f
+0045   2075           00105         call    tableseg
+0046   00F5           00106         movwf   reg0
+0047   1475           00107         bsf     reg0,0
+0048   3008           00108         movlw   0x08
+0049   00F6           00109         movwf   reg1
+004A   3030           00110         movlw   b'00110000'
+004B   0485           00111         iorwf   GPIO,f
+                      00112         ;bsf    INTCON,GIE
+004C                  00113 mainlp1
+004C   1085           00114         bcf     GPIO,1
+Message[305]: Using default destination of 1 (file).
+004D   0CF5           00115         rrf     reg0
+004E   1803           00116         btfsc   STATUS,C
+004F   2852           00117         goto    $+3
+0050   1105           00118         bcf     GPIO,2
+0051   2853           00119         goto    $+2
+0052   1505           00120         bsf     GPIO,2
+0053   1485           00121         bsf     GPIO,1
+Message[305]: Using default destination of 1 (file).
+0054   0BF6           00122         decfsz  reg1
+0055   284C           00123         goto    mainlp1
+                      00124         ;bcf    INTCON,GIE
+0056   30DF           00125         movlw   b'11011111'
+0057   0585           00126         andwf   GPIO,f
+0058   0877           00127         movf    advalue,w
+0059   390F           00128         andlw   0x0f
+005A   2075           00129         call    tableseg
+005B   00F5           00130         movwf   reg0
+005C   3008           00131         movlw   0x08
+005D   00F6           00132         movwf   reg1
+005E   3030           00133         movlw   b'00110000'
+005F   0485           00134         iorwf   GPIO,f
+                      00135         ;bsf    INTCON,GIE
+0060                  00136 mainlp2
+0060   1085           00137         bcf     GPIO,1
+Message[305]: Using default destination of 1 (file).
+0061   0CF5           00138         rrf     reg0
+0062   1803           00139         btfsc   STATUS,C
+0063   2866           00140         goto    $+3
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0064   1105           00141         bcf     GPIO,2
+0065   2867           00142         goto    $+2
+0066   1505           00143         bsf     GPIO,2
+0067   1485           00144         bsf     GPIO,1
+Message[305]: Using default destination of 1 (file).
+0068   0BF6           00145         decfsz  reg1
+0069   2860           00146         goto    mainlp2
+                      00147         ;bcf    INTCON,GIE
+006A   30EF           00148         movlw   b'11101111'
+006B   0585           00149         andwf   GPIO,f
+006C   3008           00150         movlw   0x08
+006D   00F6           00151         movwf   reg1
+006E   0000           00152         nop
+006F   0000           00153         nop
+0070   0000           00154         nop
+0071   0000           00155         nop
+0072   3030           00156         movlw   b'00110000'
+0073   0485           00157         iorwf   GPIO,f
+                      00158         ;bsf    INTCON,GIE
+0074   0008           00159         return
+                      00160 ;
+                      00161 ;abcdefgp
+0075                  00162 tableseg
+0075   0782           00163         addwf   PCL,f
+0076   34FC           00164         retlw   b'11111100'     ;0
+0077   3460           00165         retlw   b'01100000'     ;1
+0078   34DA           00166         retlw   b'11011010'     ;2
+0079   34F2           00167         retlw   b'11110010'     ;3
+007A   3466           00168         retlw   b'01100110'     ;4
+007B   34B6           00169         retlw   b'10110110'     ;5
+007C   34BE           00170         retlw   b'10111110'     ;6
+007D   34E4           00171         retlw   b'11100100'     ;7
+007E   34FE           00172         retlw   b'11111110'     ;8
+007F   34F6           00173         retlw   b'11110110'     ;9
+                      00174         
+0100                  00175         ORG     0x100
+0100                  00176 tablev
+0100   0782           00177         addwf   PCL,f
+0101   3400           00178         retlw   0x00
+0102   3401           00179         retlw   0x01
+0103   3402           00180         retlw   0x02
+0104   3403           00181         retlw   0x03
+0105   3400           00182         retlw   0x00
+0106   3401           00183         retlw   0x01
+0107   3402           00184         retlw   0x02
+0108   3403           00185         retlw   0x03
+0109   3400           00186         retlw   0x00
+010A   3401           00187         retlw   0x01
+010B   3402           00188         retlw   0x02
+010C   3413           00189         retlw   0x13    
+010D   3414           00190         retlw   0x14
+010E   3415           00191         retlw   0x15
+010F   3416           00192         retlw   0x16
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0110   3417           00193         retlw   0x17
+0111   3418           00194         retlw   0x18
+0112   3419           00195         retlw   0x19
+0113   3420           00196         retlw   0x20
+0114   3422           00197         retlw   0x22
+0115   3424           00198         retlw   0x24
+0116   3425           00199         retlw   0x25
+0117   3426           00200         retlw   0x26
+0118   3427           00201         retlw   0x27
+0119   3428           00202         retlw   0x28
+011A   3429           00203         retlw   0x29
+011B   3430           00204         retlw   0x30
+011C   3431           00205         retlw   0x31
+011D   3433           00206         retlw   0x33
+011E   3434           00207         retlw   0x34
+011F   3435           00208         retlw   0x35
+0120   3436           00209         retlw   0x36
+0121   3437           00210         retlw   0x37
+0122   3438           00211         retlw   0x38
+0123   3439           00212         retlw   0x39
+0124   3440           00213         retlw   0x40
+0125   3442           00214         retlw   0x42
+0126   3443           00215         retlw   0x43
+0127   3444           00216         retlw   0x44
+0128   3445           00217         retlw   0x45
+0129   3446           00218         retlw   0x46
+012A   3448           00219         retlw   0x48
+012B   3449           00220         retlw   0x49
+012C   3450           00221         retlw   0x50
+012D   3452           00222         retlw   0x52
+012E   3453           00223         retlw   0x53
+012F   3454           00224         retlw   0x54
+0130   3455           00225         retlw   0x55
+0131   3456           00226         retlw   0x56
+0132   3457           00227         retlw   0x57
+0133   3458           00228         retlw   0x58
+0134   3459           00229         retlw   0x59
+0135   3460           00230         retlw   0x60
+0136   3462           00231         retlw   0x62
+0137   3463           00232         retlw   0x63
+0138   3464           00233         retlw   0x64
+0139   3465           00234         retlw   0x65
+013A   3466           00235         retlw   0x66
+013B   3468           00236         retlw   0x68
+013C   3470           00237         retlw   0x70
+013D   3471           00238         retlw   0x71
+013E   3472           00239         retlw   0x72
+013F   3474           00240         retlw   0x74
+0140   3475           00241         retlw   0x75
+0141   3476           00242         retlw   0x76
+0142   3477           00243         retlw   0x77
+0143   3479           00244         retlw   0x79
+0144   3480           00245         retlw   0x80
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0145   3481           00246         retlw   0x81
+0146   3482           00247         retlw   0x82
+0147   3483           00248         retlw   0x83
+0148   3484           00249         retlw   0x84
+0149   3485           00250         retlw   0x85
+014A   3486           00251         retlw   0x86
+014B   3487           00252         retlw   0x87
+014C   3488           00253         retlw   0x88
+014D   3489           00254         retlw   0x89
+014E   3490           00255         retlw   0x90
+014F   3491           00256         retlw   0x91
+0150   3493           00257         retlw   0x93
+0151   3494           00258         retlw   0x94
+0152   3496           00259         retlw   0x96
+0153   3497           00260         retlw   0x97
+0154   3498           00261         retlw   0x98
+0155   3499           00262         retlw   0x99
+0156   3402           00263         retlw   0x02
+0157   3402           00264         retlw   0x02
+0158   3403           00265         retlw   0x03    
+0159   3404           00266         retlw   0x04
+015A   3405           00267         retlw   0x05
+015B   3406           00268         retlw   0x06
+015C   3407           00269         retlw   0x07
+015D   3408           00270         retlw   0x08
+015E   3409           00271         retlw   0x09
+015F   3410           00272         retlw   0x10
+0160   3411           00273         retlw   0x11
+0161   3413           00274         retlw   0x13
+0162   3414           00275         retlw   0x14
+0163   3415           00276         retlw   0x15
+0164   3416           00277         retlw   0x16
+0165   3417           00278         retlw   0x17
+0166   3419           00279         retlw   0x19
+0167   3420           00280         retlw   0x20
+0168   3422           00281         retlw   0x22
+0169   3423           00282         retlw   0x23
+016A   3424           00283         retlw   0x24
+016B   3425           00284         retlw   0x25
+016C   3426           00285         retlw   0x26
+016D   3427           00286         retlw   0x27
+016E   3428           00287         retlw   0x28
+016F   3429           00288         retlw   0x29
+0170   3430           00289         retlw   0x30
+0171   3432           00290         retlw   0x32
+0172   3433           00291         retlw   0x33
+0173   3434           00292         retlw   0x34
+0174   3435           00293         retlw   0x35
+0175   3436           00294         retlw   0x36
+0176   3437           00295         retlw   0x37
+0177   3439           00296         retlw   0x39
+0178   3441           00297         retlw   0x41
+0179   3442           00298         retlw   0x42
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+017A   3443           00299         retlw   0x43
+017B   3444           00300         retlw   0x44
+017C   3445           00301         retlw   0x45
+017D   3446           00302         retlw   0x46
+017E   3447           00303         retlw   0x47
+017F   3448           00304         retlw   0x48
+0180   3449           00305         retlw   0x49
+0181   3450           00306         retlw   0x50
+0182   3452           00307         retlw   0x52
+0183   3453           00308         retlw   0x53
+0184   3454           00309         retlw   0x54
+0185   3455           00310         retlw   0x55
+0186   3456           00311         retlw   0x56
+0187   3457           00312         retlw   0x57
+0188   3459           00313         retlw   0x59
+0189   3461           00314         retlw   0x61
+018A   3462           00315         retlw   0x62
+018B   3463           00316         retlw   0x63
+018C   3464           00317         retlw   0x64
+018D   3465           00318         retlw   0x65
+018E   3466           00319         retlw   0x66
+018F   3467           00320         retlw   0x67
+0190   3469           00321         retlw   0x69
+0191   3470           00322         retlw   0x70
+0192   3471           00323         retlw   0x71
+0193   3472           00324         retlw   0x72
+0194   3473           00325         retlw   0x73
+0195   3474           00326         retlw   0x74
+0196   3475           00327         retlw   0x75
+0197   3476           00328         retlw   0x76
+0198   3477           00329         retlw   0x77
+0199   3479           00330         retlw   0x79
+019A   3480           00331         retlw   0x80
+019B   3482           00332         retlw   0x82
+019C   3483           00333         retlw   0x83
+019D   3484           00334         retlw   0x84
+019E   3485           00335         retlw   0x85
+019F   3486           00336         retlw   0x86
+01A0   3487           00337         retlw   0x87
+01A1   3488           00338         retlw   0x88
+01A2   3489           00339         retlw   0x89
+01A3   3490           00340         retlw   0x90
+01A4   3492           00341         retlw   0x92    
+01A5   3493           00342         retlw   0x93
+01A6   3494           00343         retlw   0x94
+01A7   3495           00344         retlw   0x95
+01A8   3496           00345         retlw   0x96
+01A9   3498           00346         retlw   0x98
+01AA   3499           00347         retlw   0x99
+01AB   3401           00348         retlw   0x01
+01AC   3402           00349         retlw   0x02
+01AD   3403           00350         retlw   0x03
+01AE   3404           00351         retlw   0x04
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01AF   3405           00352         retlw   0x05
+01B0   3406           00353         retlw   0x06
+01B1   3407           00354         retlw   0x07
+01B2   3408           00355         retlw   0x08
+01B3   3409           00356         retlw   0x09
+01B4   3410           00357         retlw   0x10
+01B5   3411           00358         retlw   0x11
+01B6   3413           00359         retlw   0x13
+01B7   3414           00360         retlw   0x14
+01B8   3415           00361         retlw   0x15
+01B9   3416           00362         retlw   0x16
+01BA   3417           00363         retlw   0x17
+01BB   3419           00364         retlw   0x19
+01BC   3420           00365         retlw   0x20
+01BD   3422           00366         retlw   0x22
+01BE   3423           00367         retlw   0x23
+01BF   3424           00368         retlw   0x24
+01C0   3425           00369         retlw   0x25
+01C1   3426           00370         retlw   0x26
+01C2   3427           00371         retlw   0x27
+01C3   3428           00372         retlw   0x28
+01C4   3429           00373         retlw   0x29
+01C5   3430           00374         retlw   0x30
+01C6   3431           00375         retlw   0x31
+01C7   3432           00376         retlw   0x32
+01C8   3433           00377         retlw   0x33
+01C9   3434           00378         retlw   0x34
+01CA   3435           00379         retlw   0x35
+01CB   3436           00380         retlw   0x36
+01CC   3439           00381         retlw   0x39
+01CD   3440           00382         retlw   0x40
+01CE   3441           00383         retlw   0x41
+01CF   3442           00384         retlw   0x42
+01D0   3443           00385         retlw   0x43
+01D1   3445           00386         retlw   0x45
+01D2   3446           00387         retlw   0x46
+01D3   3447           00388         retlw   0x47
+01D4   3448           00389         retlw   0x48
+01D5   3449           00390         retlw   0x49
+01D6   3450           00391         retlw   0x50
+01D7   3452           00392         retlw   0x52
+01D8   3453           00393         retlw   0x53
+01D9   3454           00394         retlw   0x54
+01DA   3455           00395         retlw   0x55
+01DB   3456           00396         retlw   0x56
+01DC   3457           00397         retlw   0x57
+01DD   3458           00398         retlw   0x58
+01DE   3460           00399         retlw   0x60
+01DF   3461           00400         retlw   0x61
+01E0   3462           00401         retlw   0x62
+01E1   3463           00402         retlw   0x63
+01E2   3465           00403         retlw   0x65
+01E3   3466           00404         retlw   0x66
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01E4   3468           00405         retlw   0x68
+01E5   3469           00406         retlw   0x69
+01E6   3470           00407         retlw   0x70
+01E7   3471           00408         retlw   0x71
+01E8   3472           00409         retlw   0x72
+01E9   3473           00410         retlw   0x73
+01EA   3474           00411         retlw   0x74
+01EB   3476           00412         retlw   0x76
+01EC   3477           00413         retlw   0x77
+01ED   3478           00414         retlw   0x78
+01EE   3479           00415         retlw   0x79
+01EF   3479           00416         retlw   0x79
+01F0   3480           00417         retlw   0x80    
+01F1   3400           00418         retlw   0x00
+01F2   3401           00419         retlw   0x01
+01F3   3402           00420         retlw   0x02
+01F4   3403           00421         retlw   0x03
+01F5   3400           00422         retlw   0x00
+01F6   3401           00423         retlw   0x01
+01F7   3402           00424         retlw   0x02
+01F8   3403           00425         retlw   0x03    
+01F9   3400           00426         retlw   0x00
+01FA   3401           00427         retlw   0x01
+01FB   3402           00428         retlw   0x02
+01FC   3403           00429         retlw   0x03
+01FD   3401           00430         retlw   0x01
+01FE   3402           00431         retlw   0x02
+01FF   3403           00432         retlw   0x03
+Warning[205]: Found directive in column 1. (END)
+                      00433 END
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE 10
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRES                             0000001E
+C                                 00000000
+CAL0                              00000004
+CAL1                              00000005
+CAL2                              00000006
+CAL3                              00000007
+CALFST                            00000003
+CALSLW                            00000002
+CHS0                              00000003
+CHS1                              00000004
+DC                                00000001
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+GPIE                              00000003
+GPIF                              00000000
+GPIO                              00000005
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_DONE                          00000002
+NOT_GPPU                          00000007
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_TO                            00000004
+OPTION_REG                        00000081
+OSCCAL                            0000008F
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PIE1                              0000008C
+PIR1                              0000000C
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RP0                               00000005
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE 11
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISIO                            00000085
+W                                 00000000
+Z                                 00000002
+_CP_50                            00002ADF
+_CP_75                            000015BF
+_CP_ALL                           0000009F
+_CP_OFF                           00003FFF
+_EXTRC_OSC                        00003FFE
+_EXTRC_OSC_CLKOUT                 00003FFF
+_EXTRC_OSC_NOCLKOUT               00003FFE
+_HS_OSC                           00003FFA
+_INTRC_OSC                        00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FF8
+_MCLRE_OFF                        00003F7F
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FEF
+_WDT_OFF                          00003FF7
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FF9
+__12C672                          00000001
+advalue                           00000077
+advflag                           00000078
+bank0                             
+bank1                             
+gratethan20                       00000028
+mainlp                            00000019
+mainlp0                           00000037
+mainlp1                           0000004C
+mainlp2                           00000060
+pclath_temp                       00000072
+refreshled                        0000002F
+refreshled0                       00000034
+refreshled2                       00000036
+reg0                              00000075
+reg1                              00000076
+start                             00000004
+status_temp                       00000071
+tableseg                          00000075
+tablev                            00000100
+w_temp                            00000070
+MPASM  5.06                          MAIN.ASM   9-7-2007  21:07:14         PAGE 12
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+
+0000 : XXX-XXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+01C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+
+All other memory blocks unused.
+
+Program Memory Words Used:   383
+Program Memory Words Free:  1665
+
+
+Errors   :     0
+Warnings :     7 reported,     0 suppressed
+Messages :     8 reported,     0 suppressed
+
+

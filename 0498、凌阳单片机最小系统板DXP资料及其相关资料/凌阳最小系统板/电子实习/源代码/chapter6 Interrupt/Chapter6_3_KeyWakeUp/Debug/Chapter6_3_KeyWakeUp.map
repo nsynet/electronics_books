@@ -1,0 +1,132 @@
+Wednesday, July 09, 16:42:49, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             80B1         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          80CD         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         80CC         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\Resource.obj"
+_main                                              80CE         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\KeyWakeUp_Main.obj"
+_BREAK                                             8009         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_FIQ                                               8010         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_IRQ0                                              8017         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_IRQ1                                              801E         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_IRQ2                                              8025         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_IRQ3                                              802C         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_IRQ4                                              8095         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_IRQ5                                              809C         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_IRQ6                                              80A3         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_IRQ7                                              80AA         "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+_g_uiOutput                                        0            "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            80B1                 80CD         1D     *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\KeyWakeUp_Main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          80CE                 8105         38     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\C语言应用篇\Source Code\chapter6 Interrupt\Chapter6_3_KeyWakeUp\Debug\ISR.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 80B0         A8     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           0                    0            1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "D:\SunPlus\SPCE\Library\SPCE06~1\Debug\SPCE_R~1"                                         *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          811B                 8143         29     *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "rshu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8106                 811A         15     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  1            7FF                   *
+* "First Bank Rom"                  7C00                 144          7ABC                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\Chapter6_3_KeyWakeUp.S37
+Disk  Mapping Filename : .\Debug\Chapter6_3_KeyWakeUp.map
+Symbol  Table FileName : .\Debug\Chapter6_3_KeyWakeUp.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

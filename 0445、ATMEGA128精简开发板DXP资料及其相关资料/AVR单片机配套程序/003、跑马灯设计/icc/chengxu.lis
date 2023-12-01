@@ -1,0 +1,286 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile F:\NEW光~1\MEGA12~1\AVR单片机配套程序\003、跑马灯设计\icc\chengxu.c
+ 0000                   .dbfunc e DelayMS _DelayMS fV
+ 0000           ;              j -> R20,R21
+ 0000           ;              i -> R16,R17
+                        .even
+ 0000           _DelayMS::
+ 0000 0E940000          xcall push_gset1
+ 0004                   .dbline -1
+ 0004                   .dbline 11
+ 0004           ; #include <iom128.h>
+ 0004           ; /**********************************************************************
+ 0004           ;                                 函数数据类型说明                                                              
+ 0004           ; **********************************************************************/
+ 0004           ; #define uchar unsigned char 
+ 0004           ; #define uint unsigned int
+ 0004           ; /**********************************************************************
+ 0004           ;                                 MS级延时函数程序，参数i 延时时间                                                                      
+ 0004           ; **********************************************************************/
+ 0004           ; void DelayMS(uint i)
+ 0004           ; {
+ 0004                   .dbline 13
+ 0004           ; uint j;
+ 0004           ; for(;i!=0;i--)
+ 0004 0AC0              xjmp L5
+ 0006           L2:
+ 0006                   .dbline 14
+ 0006           ; {
+ 0006                   .dbline 15
+ 0006 40E4              ldi R20,8000
+ 0008 5FE1              ldi R21,31
+ 000A 02C0              xjmp L9
+ 000C           L6:
+ 000C                   .dbline 15
+ 000C           L7:
+ 000C                   .dbline 15
+ 000C 4150              subi R20,1
+ 000E 5040              sbci R21,0
+ 0010           L9:
+ 0010                   .dbline 15
+ 0010 4030              cpi R20,0
+ 0012 4507              cpc R20,R21
+ 0014 D9F7              brne L6
+ 0016           X0:
+ 0016                   .dbline 16
+ 0016           L3:
+ 0016                   .dbline 13
+ 0016 0150              subi R16,1
+ 0018 1040              sbci R17,0
+ 001A           L5:
+ 001A                   .dbline 13
+ 001A 0030              cpi R16,0
+ 001C 0107              cpc R16,R17
+ 001E 99F7              brne L2
+ 0020           X1:
+ 0020                   .dbline -2
+ 0020           L1:
+ 0020 0E940000          xcall pop_gset1
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r j 20 i
+ 0026                   .dbsym r i 16 i
+ 0026                   .dbend
+ 0026                   .dbfunc e horse _horse fV
+ 0026           ;              i -> R16
+                        .even
+ 0026           _horse::
+ 0026 0E940000          xcall push_gset1
+ 002A                   .dbline -1
+ 002A                   .dbline 23
+ 002A           ; for(j=8000;j!=0;j--);
+ 002A           ; }
+ 002A           ; }
+ 002A           ; /**********************************************************************
+ 002A           ;                                 跑马灯程序，通过跑过的步数进行判断来点亮相应的LED
+ 002A           ;                                 低电平点亮LED                                                                 
+ 002A           ; **********************************************************************/
+ 002A           ; void horse(uchar i)
+ 002A           ; {switch (i)
+ 002A                   .dbline 23
+ 002A 402F              mov R20,R16
+ 002C 5527              clr R21
+ 002E 4030              cpi R20,0
+ 0030 4507              cpc R20,R21
+ 0032 09F1              breq L14
+ 0034           X2:
+ 0034 4130              cpi R20,1
+ 0036 E0E0              ldi R30,0
+ 0038 5E07              cpc R21,R30
+ 003A 01F1              breq L15
+ 003C 4230              cpi R20,2
+ 003E E0E0              ldi R30,0
+ 0040 5E07              cpc R21,R30
+ 0042 F9F0              breq L16
+ 0044 4330              cpi R20,3
+ 0046 E0E0              ldi R30,0
+ 0048 5E07              cpc R21,R30
+ 004A F1F0              breq L17
+ 004C 4430              cpi R20,4
+ 004E E0E0              ldi R30,0
+ 0050 5E07              cpc R21,R30
+ 0052 E9F0              breq L18
+ 0054 4530              cpi R20,5
+ 0056 E0E0              ldi R30,0
+ 0058 5E07              cpc R21,R30
+ 005A E1F0              breq L19
+ 005C 4630              cpi R20,6
+ 005E E0E0              ldi R30,0
+ 0060 5E07              cpc R21,R30
+ 0062 D9F0              breq L20
+ 0064 4730              cpi R20,7
+ 0066 E0E0              ldi R30,0
+ 0068 5E07              cpc R21,R30
+ 006A D1F0              breq L21
+ 006C 4830              cpi R20,8
+ 006E E0E0              ldi R30,0
+ 0070 5E07              cpc R21,R30
+ 0072 C9F0              breq L22
+ 0074 1AC0              xjmp L12
+ 0076           X3:
+ 0076                   .dbline 24
+ 0076           ; {
+ 0076           L14:
+ 0076                   .dbline 25
+ 0076           ; case 0:PORTD=0X00;break;//0000 0000B 点亮LED1~LED8
+ 0076 2224              clr R2
+ 0078 22BA              out 0x12,R2
+ 007A                   .dbline 25
+ 007A 17C0              xjmp L12
+ 007C           L15:
+ 007C                   .dbline 26
+ 007C           ; case 1:PORTD=0X01;break;//0000 0001B 点亮LED2~LED8
+ 007C 81E0              ldi R24,1
+ 007E 82BB              out 0x12,R24
+ 0080                   .dbline 26
+ 0080 14C0              xjmp L12
+ 0082           L16:
+ 0082                   .dbline 27
+ 0082           ; case 2:PORTD=0X03;break;//0000 0011B 点亮LED3~LED8
+ 0082 83E0              ldi R24,3
+ 0084 82BB              out 0x12,R24
+ 0086                   .dbline 27
+ 0086 11C0              xjmp L12
+ 0088           L17:
+ 0088                   .dbline 28
+ 0088           ; case 3:PORTD=0X07;break;//0000 0111B 点亮LED4~LED8
+ 0088 87E0              ldi R24,7
+ 008A 82BB              out 0x12,R24
+ 008C                   .dbline 28
+ 008C 0EC0              xjmp L12
+ 008E           L18:
+ 008E                   .dbline 29
+ 008E           ; case 4:PORTD=0X0f;break;//0000 1111B 点亮LED5~LED8
+ 008E 8FE0              ldi R24,15
+ 0090 82BB              out 0x12,R24
+ 0092                   .dbline 29
+ 0092 0BC0              xjmp L12
+ 0094           L19:
+ 0094                   .dbline 30
+ 0094           ; case 5:PORTD=0X1f;break;//0001 1111B 点亮LED6~LED8
+ 0094 8FE1              ldi R24,31
+ 0096 82BB              out 0x12,R24
+ 0098                   .dbline 30
+ 0098 08C0              xjmp L12
+ 009A           L20:
+ 009A                   .dbline 31
+ 009A           ; case 6:PORTD=0X3f;break;//0011 1111B 点亮LED7~LED8
+ 009A 8FE3              ldi R24,63
+ 009C 82BB              out 0x12,R24
+ 009E                   .dbline 31
+ 009E 05C0              xjmp L12
+ 00A0           L21:
+ 00A0                   .dbline 32
+ 00A0           ; case 7:PORTD=0X7f;break;//0111 1111B 点亮LED8
+ 00A0 8FE7              ldi R24,127
+ 00A2 82BB              out 0x12,R24
+ 00A4                   .dbline 32
+ 00A4 02C0              xjmp L12
+ 00A6           L22:
+ 00A6                   .dbline 33
+ 00A6 8FEF              ldi R24,255
+ 00A8 82BB              out 0x12,R24
+ 00AA                   .dbline 33
+ 00AA                   .dbline 34
+ 00AA           L12:
+ 00AA                   .dbline -2
+ 00AA           L10:
+ 00AA 0E940000          xcall pop_gset1
+ 00AE                   .dbline 0 ; func end
+ 00AE 0895              ret
+ 00B0                   .dbsym r i 16 c
+ 00B0                   .dbend
+ 00B0                   .dbfunc e main _main fV
+ 00B0           ;              i -> R20
+                        .even
+ 00B0           _main::
+ 00B0                   .dbline -1
+ 00B0                   .dbline 41
+ 00B0           ; case 8:PORTD=0Xff;break;//1111 1111B 全熄灭
+ 00B0           ; default:break;
+ 00B0           ; }
+ 00B0           ; }
+ 00B0           ; /**********************************************************************
+ 00B0           ;                                  主函数                                                       
+ 00B0           ; **********************************************************************/
+ 00B0           ; void main(void)
+ 00B0           ; {
+ 00B0                   .dbline 43
+ 00B0           ; uchar i;
+ 00B0           ; DDRD=0XFF;//端口设置，PA口设置为推挽1输出
+ 00B0 8FEF              ldi R24,255
+ 00B2 81BB              out 0x11,R24
+ 00B4                   .dbline 44
+ 00B4           ; PORTD=0XFF;
+ 00B4 82BB              out 0x12,R24
+ 00B6                   .dbline 45
+ 00B6           ; PORTD=0XFF;//PORTD初始化为1,灭掉所有的LED
+ 00B6 82BB              out 0x12,R24
+ 00B8                   .dbline 46
+ 00B8           ; DelayMS(10);
+ 00B8 0AE0              ldi R16,10
+ 00BA 10E0              ldi R17,0
+ 00BC A1DF              xcall _DelayMS
+ 00BE 14C0              xjmp L25
+ 00C0           L24:
+ 00C0                   .dbline 48
+ 00C0           ; while(1)//程序无条件执行
+ 00C0           ; {
+ 00C0                   .dbline 49
+ 00C0           ; for(i=0;i<9;i++)
+ 00C0 4427              clr R20
+ 00C2 06C0              xjmp L30
+ 00C4           L27:
+ 00C4                   .dbline 50
+ 00C4                   .dbline 51
+ 00C4 042F              mov R16,R20
+ 00C6 AFDF              xcall _horse
+ 00C8                   .dbline 52
+ 00C8 0AE0              ldi R16,10
+ 00CA 10E0              ldi R17,0
+ 00CC 99DF              xcall _DelayMS
+ 00CE                   .dbline 53
+ 00CE           L28:
+ 00CE                   .dbline 49
+ 00CE 4395              inc R20
+ 00D0           L30:
+ 00D0                   .dbline 49
+ 00D0 4930              cpi R20,9
+ 00D2 C0F3              brlo L27
+ 00D4                   .dbline 54
+ 00D4           ; {
+ 00D4           ; horse(i);
+ 00D4           ; DelayMS(10);//延时时间约10MS
+ 00D4           ; }
+ 00D4           ; for(i=7;i!=0;i--)
+ 00D4 47E0              ldi R20,7
+ 00D6 06C0              xjmp L34
+ 00D8           L31:
+ 00D8                   .dbline 55
+ 00D8                   .dbline 56
+ 00D8 042F              mov R16,R20
+ 00DA A5DF              xcall _horse
+ 00DC                   .dbline 57
+ 00DC 0AE0              ldi R16,10
+ 00DE 10E0              ldi R17,0
+ 00E0 8FDF              xcall _DelayMS
+ 00E2                   .dbline 58
+ 00E2           L32:
+ 00E2                   .dbline 54
+ 00E2 4A95              dec R20
+ 00E4           L34:
+ 00E4                   .dbline 54
+ 00E4 4423              tst R20
+ 00E6 C1F7              brne L31
+ 00E8                   .dbline 59
+ 00E8           L25:
+ 00E8                   .dbline 47
+ 00E8 EBCF              xjmp L24
+ 00EA           X4:
+ 00EA                   .dbline -2
+ 00EA           L23:
+ 00EA                   .dbline 0 ; func end
+ 00EA 0895              ret
+ 00EC                   .dbsym r i 20 c
+ 00EC                   .dbend

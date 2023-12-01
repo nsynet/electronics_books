@@ -1,0 +1,89 @@
+矩阵键盘/4X4键盘/阵列键盘
+
+简要说明：
+尺寸：长57mmX宽38mmX高8mm
+
+【原理图】
+
+
+
+【例程】
+
+[实验原理]
+每个按键有它的行值和列值 ，行值和列值的组合就是识别这个按键的编码。
+矩阵的行线和列线分别通过两并行接口和CPU通信。键盘处理程序的任务是：确
+定有无键按下，判断哪一个键按下，键的功能是什么；还要消除按键在闭合或断
+开时的抖动。两个并行口中，一个输出扫描码，使按键逐行动态接地，另一个并
+行口输入按键状态，由行扫描值和回馈信号共同形成键编码而识别按键，通过软
+件查表，查出该键的功能。
+[C语言源程序]
+#include <reg52.h>
+Unsigned char code seg7code[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90,0x88,0x83,0xc6,0xa1,0x86,0x8e };
+unsigned char k;
+void delay10ms(void) //延时程序
+{
+unsigned char i,j;
+for(i=20;i>0;i--)
+for(j=248;j>0;j--);
+}
+void Getch ( )
+{ unsigned char X,Y,Z;
+P3=0xff;
+P3=0x0f; //先对P3 置数 行扫描
+if(P3!=0x0f) //判断是否有键按下
+{delay10ms(); //延时,软件去干扰
+if(P3!=0x0f) //确认按键按下X = P3;
+{
+X=P3; //保存行扫描时有键按下时状态
+P3=0xf0; //列扫描
+Y=P3;                      //保存列扫描时有键按下时状态
+Z=X|Y; //取出键值
+switch ( Z ) //判断键值（那一个键按下）
+{
+case 0xee: k=0; break; //对键值赋值
+case 0xde: k=1; break;
+case 0xbe: k=2; break;
+case 0x7e: k=3; break;
+case 0xed: k=4; break;
+case 0xdd: k=5; break;
+case 0xbd: k=6; break;
+case 0x7d: k=7; break;
+case 0xeb: k=8; break;
+case 0xdb: k=9; break;
+case 0xbb: k=10;break;
+case 0x7b: k=11;break;
+case 0xe7: k=12;break;
+case 0xd7: k=13;break;
+case 0xb7: k=14;break;
+case 0x77: k=15;break;
+} } } } //请注意写程序时的格式规范，此处是为了节省纸张
+void main(void)
+{
+while(1)
+{ P3=0xff;
+Getch();
+P0=seg7code[k]; //查表LED输出
+P2=0x0f; //输出相同的四位数据。
+}
+}
+
+
+关于快递：
+
+1、默认快递为（申通快递）
+/********************************************/
+
+
+
+
+注明：量大优惠！欢迎批发或团购！ 
+
+
+1、QQ：115451619  阿里旺旺（随时在线）
+
+2、邮箱：115451619@qq.com
+
+
+                            汇诚科技
+网址：http://www.ourhc.cn
+产品有售淘宝店：http://shop36330473.taobao.com   

@@ -1,0 +1,252 @@
+__text_start:
+__start:
+    0036 E5CF      LDI	R28,0x5F
+    0037 E0D4      LDI	R29,4
+    0038 BFCD      OUT	0x3D,R28
+    0039 BFDE      OUT	0x3E,R29
+    003A 51C0      SUBI	R28,0x10
+    003B 40D0      SBCI	R29,0
+    003C EA0A      LDI	R16,0xAA
+    003D 8308      STD	Y+0,R16
+    003E 2400      CLR	R0
+    003F E7E8      LDI	R30,0x78
+    0040 E0F0      LDI	R31,0
+    0041 E010      LDI	R17,0
+    0042 37E8      CPI	R30,0x78
+    0043 07F1      CPC	R31,R17
+    0044 F011      BEQ	0x0047
+    0045 9201      ST	R0,Z+
+    0046 CFFB      RJMP	0x0042
+    0047 8300      STD	Z+0,R16
+    0048 E5E4      LDI	R30,0x54
+    0049 E0F0      LDI	R31,0
+    004A E6A0      LDI	R26,0x60
+    004B E0B0      LDI	R27,0
+    004C E010      LDI	R17,0
+    004D 36EC      CPI	R30,0x6C
+    004E 07F1      CPC	R31,R17
+    004F F021      BEQ	0x0054
+    0050 95C8      LPM
+    0051 9631      ADIW	R30,1
+    0052 920D      ST	R0,X+
+    0053 CFF9      RJMP	0x004D
+    0054 940E008E  CALL	_main
+_exit:
+    0056 CFFF      RJMP	_exit
+_DelayMs:
+  j                    --> R20
+  i                    --> R16
+    0057 940E00C1  CALL	push_gset1
+FILE: D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式一\icc\chengxu.c
+(0001) /********************************************************************
+(0002)     计算机通过RS232接口向计算机发送1,2,3,4四个数据。单片机收
+(0003) 到四个数据后在数码管上动态显示出来，然后单片机向计算机发送a，b，c，d，四
+(0004) 个字符，使用着通过“串口调试助手 ”等软件观察数据传输过程
+(0005) 
+(0006) *********************************************************************/
+(0007) #include <iom16v.h>
+(0008) #include <macros.h>
+(0009) /********************************************************************
+(0010)                 数据类型定义
+(0011) *********************************************************************/
+(0012) #define uchar unsigned char
+(0013) #define uint  unsigned int
+(0014) /********************************************************************
+(0015)                 数码管段码定义0123456789
+(0016) *********************************************************************/
+(0017) uchar Table[16]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,
+(0018)                  0x7f,0x6f,0x77,0x7c,0x39,0x5e,0x79,0x71};
+(0019) uchar Send_Data[]={'a','b','c','d'};//单片机向电脑发送的数据数组
+(0020) uchar Receive_Data[]={0,0,0,0};	    //单片机接收到电脑的数据数组					
+(0021) /**********************************************************************
+(0022) 				  MS级延时函数程序，参数i 延时时间					   	
+(0023) **********************************************************************/            
+(0024) void DelayMs(uint i)           //Ms级延时，参数i为延时时间
+(0025) {uint j;
+(0026)  for(;i!=0;i--)
+    0059 C00A      RJMP	0x0064
+(0027)   {for(j=8000;j!=0;j--) {;}}
+    005A E440      LDI	R20,0x40
+    005B E15F      LDI	R21,0x1F
+    005C C002      RJMP	0x005F
+    005D 5041      SUBI	R20,1
+    005E 4050      SBCI	R21,0
+    005F 3040      CPI	R20,0
+    0060 0745      CPC	R20,R21
+    0061 F7D9      BNE	0x005D
+    0062 5001      SUBI	R16,1
+    0063 4010      SBCI	R17,0
+    0064 3000      CPI	R16,0
+    0065 0701      CPC	R16,R17
+    0066 F799      BNE	0x005A
+    0067 940E00C4  CALL	pop_gset1
+    0069 9508      RET
+_Display:
+  sel                  --> R20
+  i                    --> R22
+  p                    --> R10
+    006A 940E00DC  CALL	push_gset3
+    006C 0158      MOVW	R10,R16
+(0028) }
+(0029) /**********************************************************************
+(0030) 				            显示函数		
+(0031) 注意：使用开发板时sel=0xef;
+(0032) **********************************************************************/
+(0033) void Display(uchar *p)         //动态显示函数，参数p为待显示的数组名
+(0034) {uchar i,sel=0xef;           
+    006D EE4F      LDI	R20,0xEF
+(0035)  for(i=0;i<4;i++)
+    006E 2766      CLR	R22
+    006F C013      RJMP	0x0083
+(0036)   {PORTC=sel;                  //选通最右边的数码管
+    0070 BB45      OUT	0x15,R20
+(0037)    PORTA=~Table[p[i]];          //送字型码
+    0071 2FE6      MOV	R30,R22
+    0072 27FF      CLR	R31
+    0073 0DEA      ADD	R30,R10
+    0074 1DFB      ADC	R31,R11
+    0075 81E0      LDD	R30,Z+0
+    0076 27FF      CLR	R31
+    0077 E680      LDI	R24,0x60
+    0078 E090      LDI	R25,0
+    0079 0FE8      ADD	R30,R24
+    007A 1FF9      ADC	R31,R25
+    007B 8020      LDD	R2,Z+0
+    007C 9420      COM	R2
+    007D BA2B      OUT	0x1B,R2
+(0038)    DelayMs(1);                 //显示延时    
+    007E E001      LDI	R16,1
+    007F E010      LDI	R17,0
+    0080 DFD6      RCALL	_DelayMs
+(0039)    sel=sel<<1;                 //移位以显示前一位
+    0081 0F44      LSL	R20
+    0082 9563      INC	R22
+    0083 3064      CPI	R22,4
+    0084 F358      BCS	0x0070
+    0085 940E00BE  CALL	pop_gset3
+    0087 9508      RET
+(0040)   }
+(0041) }
+(0042) /**********************************************************************
+(0043) 				         初始化I/O口	
+(0044) **********************************************************************/
+(0045) void Init_IO(void)             //初始化I/O口
+(0046) {DDRA=0xff;                    //设置A口为推挽1输出
+_Init_IO:
+    0088 EF8F      LDI	R24,0xFF
+    0089 BB8A      OUT	0x1A,R24
+(0047)  PORTA=0xff;
+    008A BB8B      OUT	0x1B,R24
+(0048)  DDRC=0xff;                    //设置C口为推挽1输出             
+    008B BB84      OUT	0x14,R24
+(0049)  PORTC=0xff;
+    008C BB85      OUT	0x15,R24
+    008D 9508      RET
+(0050) 
+(0051)  }
+(0052) /**********************************************************************
+(0053) 				          主函数		
+(0054) **********************************************************************/
+(0055) void main(void)
+(0056) {uchar i;
+(0057) Init_IO();
+_main:
+  i                    --> R20
+    008E DFF9      RCALL	_Init_IO
+(0058)  UBRR=51;//9600bps,8MHZ,
+    008F E383      LDI	R24,0x33
+    0090 B989      OUT	0x09,R24
+(0059)  UCSRB=0x18;//RXD.TXD使能；
+    0091 E188      LDI	R24,0x18
+    0092 B98A      OUT	0x0A,R24
+(0060) for(i=0;i<4;i++)
+    0093 2744      CLR	R20
+    0094 C00F      RJMP	0x00A4
+(0061)    {while(!(UCSRA&0x80)) 
+(0062)       {Display(Receive_Data);}            //等待接收完成
+    0095 E704      LDI	R16,0x74
+    0096 E010      LDI	R17,0
+    0097 DFD2      RCALL	_Display
+    0098 9B5F      SBIS	0x0B,7
+    0099 CFFB      RJMP	0x0095
+(0063)     Receive_Data[i]=UDR-48;}              //接收数据
+    009A E784      LDI	R24,0x74
+    009B E090      LDI	R25,0
+    009C 2FE4      MOV	R30,R20
+    009D 27FF      CLR	R31
+    009E 0FE8      ADD	R30,R24
+    009F 1FF9      ADC	R31,R25
+    00A0 B18C      IN	R24,0x0C
+    00A1 5380      SUBI	R24,0x30
+    00A2 8380      STD	Z+0,R24
+    00A3 9543      INC	R20
+    00A4 3044      CPI	R20,4
+    00A5 F390      BCS	0x0098
+(0064)  for(i=0;i<12;i++)						  
+    00A6 2744      CLR	R20
+    00A7 C00E      RJMP	0x00B6
+(0065)    {while(!(UCSRA&0x20)) 				  //等待接收完成
+(0066)       {Display(Receive_Data); }           //等待移位寄存器空；
+    00A8 E704      LDI	R16,0x74
+    00A9 E010      LDI	R17,0
+    00AA DFBF      RCALL	_Display
+    00AB 9B5D      SBIS	0x0B,5
+    00AC CFFB      RJMP	0x00A8
+(0067)     UDR=Send_Data[i];} 
+    00AD E780      LDI	R24,0x70
+    00AE E090      LDI	R25,0
+    00AF 2FE4      MOV	R30,R20
+    00B0 27FF      CLR	R31
+    00B1 0FE8      ADD	R30,R24
+    00B2 1FF9      ADC	R31,R25
+    00B3 8020      LDD	R2,Z+0
+    00B4 B82C      OUT	0x0C,R2
+    00B5 9543      INC	R20
+    00B6 304C      CPI	R20,0xC
+    00B7 F398      BCS	0x00AB
+    00B8 C003      RJMP	0x00BC
+(0068)  while(1)
+(0069)   { Display(Receive_Data);  }
+FILE: <library>
+    00B9 E704      LDI	R16,0x74
+    00BA E010      LDI	R17,0
+    00BB DFAE      RCALL	_Display
+    00BC CFFC      RJMP	0x00B9
+    00BD 9508      RET
+pop_gset3:
+    00BE E0E4      LDI	R30,4
+    00BF 940C00C5  JMP	pop
+push_gset1:
+    00C1 935A      ST	R21,-Y
+    00C2 934A      ST	R20,-Y
+    00C3 9508      RET
+pop_gset1:
+    00C4 E0E1      LDI	R30,1
+pop:
+    00C5 9149      LD	R20,Y+
+    00C6 9159      LD	R21,Y+
+    00C7 FDE0      SBRC	R30,0
+    00C8 9508      RET
+    00C9 9169      LD	R22,Y+
+    00CA 9179      LD	R23,Y+
+    00CB FDE1      SBRC	R30,1
+    00CC 9508      RET
+    00CD 90A9      LD	R10,Y+
+    00CE 90B9      LD	R11,Y+
+    00CF FDE2      SBRC	R30,2
+    00D0 9508      RET
+    00D1 90C9      LD	R12,Y+
+    00D2 90D9      LD	R13,Y+
+    00D3 FDE3      SBRC	R30,3
+    00D4 9508      RET
+    00D5 90E9      LD	R14,Y+
+    00D6 90F9      LD	R15,Y+
+    00D7 9508      RET
+push_gset2:
+    00D8 937A      ST	R23,-Y
+    00D9 936A      ST	R22,-Y
+    00DA 940C00C1  JMP	push_gset1
+push_gset3:
+    00DC 92BA      ST	R11,-Y
+    00DD 92AA      ST	R10,-Y
+    00DE 940C00D8  JMP	push_gset2

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Project>
+  <Desktop>
+    <Static>
+      <Debug-Log/>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>124</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Disassembly>
+        <MixedMode>1</MixedMode>
+        <CodeCovEnabled>0</CodeCovEnabled>
+        <CodeCovShow>0</CodeCovShow>
+      <PreferedWindows><Position>4</Position><ScreenPosX>557</ScreenPosX><ScreenPosY>159</ScreenPosY><Windows/></PreferedWindows></Disassembly>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>723</ColumnWidth1><ColumnWidth2>193</ColumnWidth2><ColumnWidth3>48</ColumnWidth3></Build>
+    <STACK2/></Static>
+    <Windows>
+      
+      
+      
+    <Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-918-5229</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          <Tab>
+            <Identity>TabID-396-5238</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd1><Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-11667-5232</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>&lt;ws></ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd5><Tabs><Tab><Identity>TabID-24695-6421</Identity><TabName>Stack</TabName><Factory>STACK2</Factory><Session><ShowVariables>1</ShowVariables><ShowOffsets>1</ShowOffsets><UnitWidth>1</UnitWidth><SelectedStack>0</SelectedStack><AddressColWidth>95</AddressColWidth><StackColWidth>95</StackColWidth><SymbolColWidth>90</SymbolColWidth><ValueColWidth>60</ValueColWidth><FrameColWidth>60</FrameColWidth></Session></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>E:\YH07O3\test\&#x5B9e;&#x9A8C;&#x4e09;\TimerA\SourceFile\pwm_mod7.s43</Filename><XPos>0</XPos><YPos>4</YPos><SelStart>436</SelStart><SelEnd>436</SelEnd></Tab><ActiveTab>0</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003beb48><key>iaridepm1</key></Toolbar-003beb48></Sizes></Row0><Row1><Sizes><Toolbar-00f3fdf8><key>debuggergui1</key></Toolbar-00f3fdf8></Sizes></Row1><Row2><Sizes><Toolbar-00fa0cf0><key>430fet1</key></Toolbar-00fa0cf0></Sizes></Row2></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>431</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>277008</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>599723</sizeVertCY></Rect></Wnd2></Sizes></Row0><Row1><Sizes><Wnd5><Rect><Top>-2</Top><Left>196</Left><Bottom>431</Bottom><Right>396</Right><x>196</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>277008</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>599723</sizeVertCY></Rect></Wnd5></Sizes></Row1></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>200</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>277008</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>277008</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Project>
+
+

@@ -1,0 +1,57 @@
+C51 COMPILER V8.05a   DDZZ                                                                 04/01/2009 15:28:38 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE DDZZ
+OBJECT MODULE PLACED IN ddzz.OBJ
+COMPILER INVOKED BY: D:\Program Files\C51\BIN\C51.EXE ddzz.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          ////////////////////////汇诚科技////////////////////
+   3          //////////////////http://www.ourhc.cn///////////////
+   4          ///////////////////步进电机调试程序/////////////
+   5          
+   6          #include<reg52.h>  
+   7          
+   8          /*****P1.0=A ;P1.1=B ;P1.2=A' ; P1.3=B'****/  
+   9          //////////////////////////////////////////////////////////////////////////////////////////////
+  10          /*******************************正转数组**************************************************/
+  11          //code unsigned char run[4]={0x0e,0x0d,0x0b,0x07};  //两相四线四拍工作方式
+  12          /*******************************反转数组**************************************************/
+  13          code unsigned char run[4]={0x07,0x0b,0x0d,0x0e};  //两相四线四拍工作方式
+  14          
+  15          unsigned char s,i,j,k;
+  16          
+  17          void delay(i)//延时函数
+  18          {
+  19   1      for(j=0;j<i;j++)
+  20   1      for(k=0;k<250;k++);
+  21   1      }
+  22          main()
+  23          {
+  24   1      unsigned char z,y;
+  25   1      y=30;       //定义延时时间，时间越长电机转速越慢反之则快
+  26   1      while(1)
+  27   1      {
+  28   2      for(z=0;z<4;z++)
+  29   2      {
+  30   3      P1=run[z];
+  31   3      delay(y);
+  32   3      }
+  33   2      }
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     55    ----
+   CONSTANT SIZE    =      4    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

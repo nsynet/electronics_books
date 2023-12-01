@@ -1,0 +1,108 @@
+//  工程名称：61-MaskROM.spj
+//  功能描述: 61板ROM的学习
+//  硬件连接：A端口高8位接4*4矩阵键盘，低八位的高四位为数码管位选通，B端口的低七位为数码管的数据端口，在应用61板时，若用到键盘，建议采用矩阵键盘接法
+//  涉及的库：	CMacro1016.lib
+//  调用函数：Flash.h
+   #include"SPCE061A.h"
+   #include"Flash.h"
+   #define     CLR_BIT(x,y)           ((x)&=~(0x0001<<(y)))       //清x的第y位为零
+  const unsigned char sect[]={0x00c0,0x00f9,0x00a4,0x00b0,0x0099,0x0092,
+  0x0082,0x00f8,0x0080,0x0090,0x0088,0x0083,0x00c6,0x00a1,0x0086,0x008e};//const：表示为数值不能在程序中更改，数码管显示0~9
+   unsigned char change,key;
+    /****************延时函数**************/
+	int delay(unsigned int t)
+	{
+		unsigned int i,delayValue;
+		for(i=0;i<t;i++)
+		 for(delayValue=0;delayValue<300;delayValue++)
+		 {
+			*P_Watchdog_Clear=0x0001;   //12us清一次看门狗
+		 }
+		return(0);//无返回值，编译是一定要加入此句，否则会出现编译警告 
+    }
+    /*********************显示函数************************/
+    int Display()
+    { 
+     CLR_BIT(*P_IOA_Data,4); 	 
+     *P_IOB_Data=sect[change%1000%100%10];
+     delay(1);
+     *P_IOA_Data=0xffff;
+     CLR_BIT(*P_IOA_Data,5); 	 
+     *P_IOB_Data=sect[change%1000%100/10];
+     delay(1);
+     *P_IOA_Data=0xffff;
+     CLR_BIT(*P_IOA_Data,6); 	 
+     *P_IOB_Data=sect[change%1000/100];
+     delay(1);
+     *P_IOA_Data=0xffff;
+     CLR_BIT(*P_IOA_Data,7); 	 
+     *P_IOB_Data=sect[change/1000];
+     delay(1);
+     *P_IOA_Data=0xffff;
+     return(0);//无返回值，编译是一定要加入此句，否则会出现编译警告 
+    }
+    /*******************矩阵键盘扫描*********************/
+    int scan()
+    {
+     unsigned char i,tel=0x0100;
+     for(i=0;i<4;i++)         //进行行列扫描
+     {
+      *P_IOA_Data =~tel;
+	  tel=tel<<1;
+      delay(1);
+	  if((*P_IOA_Data &0xf000)!=0xf000)
+        {
+        while((*P_IOA_Data &0xf000)!=0xf000)
+	     {
+	     switch (*P_IOA_Data &0xf000)    //计算键值 
+           {
+		  case 0x7000:key=15-(3-i)*4;break;
+		  case 0xb000:key=14-(3-i)*4;break;
+		  case 0xd000:key=13-(3-i)*4;break;
+	 	  case 0xe000:key=12-(3-i)*4;break;
+           }
+	     }
+	    }  
+     }
+    return(0);
+    }
+    /***************ROM操作******************/
+    //重要说明：按键按下的时间要足够长，因读写ROM需要硬件延时一定的时间，否则会出现写入数据混乱的现象
+    int flash_work()
+    {
+     scan();         //键盘扫描
+     if(key==0)	             
+             {   	
+    	      change=Flash_ReadWord(0xa000);    //默认现实的数值
+             }
+     if(key==1)
+    	    { 
+    	       key=0;                         
+               change=Flash_ReadWord(0xa000);    //读出现地址中的数据
+    	       Flash_Erase(0xa001);              //擦除原地址中的数据
+    	       Flash_WriteWord(0xa001,6666);     //写入新的数据
+    	     }
+      if(key==2)	             
+             {   	
+    	      change=Flash_ReadWord(0xa001);      //读出写入地址中的数据
+             }
+    return(0);
+    }
+   int main()
+   { 
+   	/************端口定义*************/
+   	*P_IOA_Dir    =0xffff;//设定A端口低4位为带下拉的无唤醒功能的输入引脚
+   	*P_IOA_Attrib =0xffff;
+   	*P_IOA_Data   =0xf0ff;
+   	
+   	*P_IOB_Dir    =0xffff;//设定B端口为带数据寄存器的高电平输出
+   	*P_IOB_Attrib =0xffff;
+   	*P_IOB_Data   =0xffff;
+   	Flash_WriteWord(0xa000,8888);//在地址为0xa00的ROM中写入一数值8888
+   	while(1)
+   	{	
+   	flash_work();//ROM的操作
+   	Display();  //数码管显示	
+   	}
+   	return(0);
+   }

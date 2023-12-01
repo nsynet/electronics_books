@@ -1,0 +1,88 @@
+# Begin Project
+# Begin SubItem "temperature_ctrl  Resources"
+# Begin Source File
+SOURCE=voice\T034.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T034_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T046.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T046_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T047.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T047_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T048.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T048_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T049.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T049_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T050.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T050_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T051.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T051_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T052.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T052_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T053.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T053_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T054.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T054_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T055.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T055_16K
+EXPORT=3
+# End Source File
+# Begin Source File
+SOURCE=voice\T056.16k
+USEPARAM=FALSE
+PARAM=
+ID=RES_T056_16K
+EXPORT=3
+# End Source File
+# End SubItem
+# End Project

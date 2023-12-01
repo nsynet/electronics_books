@@ -1,0 +1,61 @@
+C51 COMPILER V7.06   74LS164                                                               03/19/2011 11:31:42 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE 74LS164
+OBJECT MODULE PLACED IN 74LS164.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 74LS164.c OPTIMIZE(SIZE) BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "global.h"
+   8          #include "74LS164.h"
+   9          
+  10          /*************************************************************
+  11          * 函数名称:LS164Send
+  12          * 输    入:无
+  13          * 输    出:无
+  14          * 说    明:74LS164 发送单个字节
+  15          **************************************************************/ 
+  16          void LS164Send(UINT8 byte)
+  17          {
+  18   1         UINT8 j;
+  19   1      
+  20   1         for(j=0;j<=7;j++)
+  21   1         {
+  22   2      
+  23   2           if(byte&(1<<(7-j)))
+  24   2           {
+  25   3                  LS164_DATA(HIGH);
+  26   3               }
+  27   2               else
+  28   2               {
+  29   3                  LS164_DATA(LOW);
+  30   3               }
+  31   2      
+  32   2           LS164_CLK(LOW); 
+  33   2           LS164_CLK(HIGH);
+  34   2             
+  35   2         }
+  36   1      
+  37   1      }
+  38          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     47    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,50 @@
+.stabs "startup_code.",0x3c,0,0,0
+.stabs "__sn_main:F15",36,0,0,     32822
+.stabs "__sn_end:F15",36,0,0,     32820
+.stabs "__sn_exception:F15",36,0,0,     32821
+.stabs "E:\ele_competition\voice\MIC_AD/", 0x64,0,0,0
+.stabs "E:\ele_competition\voice\MIC_AD\Resource.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabn 0xc0,0,0,         0
+.stabn 0xe0,0,0,         0
+.stabs "E:\ele_competition\voice\MIC_AD/", 0x64,0,0,0
+.stabs "E:\ele_competition\voice\MIC_AD\main.asm", 0x64,0,0,0
+.stabs "unsigned int:t1=r1;0;65535;",128,0,0,0
+.stabs "long long int:t2=r1;-2147483648;2147483647;",128,0,0,0
+.stabs "float:t3=r1;2;0;",128,0,0,0
+.stabs "double:t4=r1;4;0;",128,0,0,0
+.stabn 0xc0,0,0,     32822
+.stabn 0xe0,0,0,     32822
+.stabn 0xc0,0,0,     32822
+.stabn 0x44,0,54,     32822
+.stabn 0x44,0,55,     32823
+.stabn 0x44,0,56,     32824
+.stabn 0x44,0,57,     32826
+.stabn 0x44,0,58,     32828
+.stabn 0x44,0,59,     32830
+.stabn 0x44,0,60,     32831
+.stabn 0x44,0,61,     32833
+.stabn 0x44,0,62,     32835
+.stabn 0x44,0,63,     32837
+.stabn 0x44,0,64,     32839
+.stabn 0x44,0,65,     32841
+.stabn 0x44,0,66,     32842
+.stabn 0x44,0,67,     32843
+.stabn 0xe0,0,0,     32844
+.stabn 0xc0,0,0,     32777
+.stabn 0x44,0,81,     32777
+.stabn 0x44,0,82,     32778
+.stabn 0x44,0,83,     32780
+.stabn 0x44,0,84,     32782
+.stabn 0x44,0,85,     32784
+.stabn 0x44,0,86,     32786
+.stabn 0x44,0,87,     32788
+.stabn 0x44,0,88,     32789
+.stabn 0x44,0,89,     32791
+.stabn 0x44,0,90,     32792
+.stabn 0xe0,0,0,     32793

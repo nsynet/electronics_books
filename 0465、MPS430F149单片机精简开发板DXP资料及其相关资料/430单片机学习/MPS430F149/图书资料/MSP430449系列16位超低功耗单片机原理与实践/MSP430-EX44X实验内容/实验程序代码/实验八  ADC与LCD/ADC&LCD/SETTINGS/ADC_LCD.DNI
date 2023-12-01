@@ -1,0 +1,73 @@
+[Interrupts]
+Enabled=1
+[MemoryMap]
+Enabled=0
+[Watch]
+Watch 1=
+Watch 2=
+Watch 3=
+[DisAssemblyWindow]
+NumStates=_ 0
+[State Storage]
+Reaction Register=0
+Control Register=0
+[Profiling]
+State=_ 0
+[TermIOSettings]
+Filename=_ ""
+InputMode=_ 1
+[Desktop-Debug]
+Wnd0=_ "Log" "open" 44 0 1 -1 -1 -4 -23 435 385 795 487
+Wnd1=_ "CallStack" "open" 44 0 1 -1 -1 -1 -1 0 313 123 463 1
+Wnd2=_ "Disassembly" "open" 44 0 1 -1 -1 -1 -1 340 0 567 366
+Wnd3=_ "Locals" "open" 44 0 1 -1 -1 -1 -1 568 0 795 122 100 100 100 100
+Wnd4=_ "Terminal I/O" "open" 44 0 1 -1 -1 -1 -1 567 231 795 366
+Wnd5=_ "Watch" "open" 44 0 1 -1 -1 -1 -1 568 122 795 232 100 100 100 100
+Wnd6=_ "Editor-DebugSource" "open" 44 0 1 -1 -1 -1 -1 123 0 434 463 "C:\Documents and Settings\Administrator\桌面\实验程序\实验八\ADC&LCD\SourceFile\main.c" 1 1 0 0 72 72 0 0 170 170
+Maximized=_ 0
+Count=_ 7
+[Sequencer]
+Control Register=0
+NextState0=0
+NextState1=0
+[Action Register]
+Break=0
+State Storage=0
+[StackPlugin]
+Enabled=1
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnHow=0
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Breakpoints]
+Count=0
+[FET]
+Clock mode=14
+Extended Clock mode=61663
+Extended Clock Control Enable=0
+Advanced Extended Clock Control=0
+Emulation mode=0
+Free running=0
+Shutting Down=3
+[Memory Dump]
+Start address=
+Lenghth=
+Address info=0
+Format=0
+Dump registers=0
+PC=0
+SP=0
+SR=0
+all registers=0
+File name=

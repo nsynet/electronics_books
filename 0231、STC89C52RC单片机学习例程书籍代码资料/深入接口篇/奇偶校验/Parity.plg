@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>礦ision2 Build Log</h1>
+<h2>Project:</h2>
+E:\计划\开发\SmartM开发板\书籍光盘\书籍代码\深入接口篇\奇偶校验\Parity.uv2
+Project File Date:  03/06/2010
+
+<h2>Output:</h2>
+Build target 'Parity'
+compiling Main.c...
+MAIN.C(308): warning C280: 'sum': unreferenced local variable
+assembling STARTUP.A51...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_UARTCIPRINTFVAL?MAIN
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_ODDPARITY?MAIN
+    CALLER1: ?PR?UARTIRQ?MAIN
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_BUFCPY?MAIN
+    CALLER1: ?PR?UARTIRQ?MAIN
+    CALLER2: ?C_C51STARTUP
+Program Size: data=90.5 xdata=0 code=1660
+creating hex file from "Parity"...
+"Parity" - 0 Error(s), 4 Warning(s).
+Build target 'Parity'
+compiling Main.c...
+MAIN.C(308): warning C280: 'sum': unreferenced local variable
+assembling STARTUP.A51...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_UARTCIPRINTFVAL?MAIN
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_ODDPARITY?MAIN
+    CALLER1: ?PR?UARTIRQ?MAIN
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_BUFCPY?MAIN
+    CALLER1: ?PR?UARTIRQ?MAIN
+    CALLER2: ?C_C51STARTUP
+Program Size: data=90.5 xdata=0 code=1660
+creating hex file from "Parity"...
+"Parity" - 0 Error(s), 4 Warning(s).

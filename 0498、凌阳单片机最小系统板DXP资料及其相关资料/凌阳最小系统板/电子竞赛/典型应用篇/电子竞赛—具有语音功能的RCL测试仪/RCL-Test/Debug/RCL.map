@@ -1,0 +1,556 @@
+Saturday, July 12, 12:02:19, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             80E4         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop                                          8100         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+__sn_loop2                                         80FF         "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"
+_RES_Table                                         8009         "E:\RCL-Test\Debug\Resource.obj"
+_RES_9_48K_SA                                      8009         "E:\RCL-Test\Debug\Resource.obj"
+_RES_9_48K_EA                                      800B         "E:\RCL-Test\Debug\Resource.obj"
+_RES_1_48K_SA                                      800D         "E:\RCL-Test\Debug\Resource.obj"
+_RES_1_48K_EA                                      800F         "E:\RCL-Test\Debug\Resource.obj"
+_RES_10_48K_SA                                     8011         "E:\RCL-Test\Debug\Resource.obj"
+_RES_10_48K_EA                                     8013         "E:\RCL-Test\Debug\Resource.obj"
+_RES_11_48K_SA                                     8015         "E:\RCL-Test\Debug\Resource.obj"
+_RES_11_48K_EA                                     8017         "E:\RCL-Test\Debug\Resource.obj"
+_RES_12_48K_SA                                     8019         "E:\RCL-Test\Debug\Resource.obj"
+_RES_12_48K_EA                                     801B         "E:\RCL-Test\Debug\Resource.obj"
+_RES_13_48K_SA                                     801D         "E:\RCL-Test\Debug\Resource.obj"
+_RES_13_48K_EA                                     801F         "E:\RCL-Test\Debug\Resource.obj"
+_RES_14_48K_SA                                     8021         "E:\RCL-Test\Debug\Resource.obj"
+_RES_14_48K_EA                                     8023         "E:\RCL-Test\Debug\Resource.obj"
+_RES_15_48K_SA                                     8025         "E:\RCL-Test\Debug\Resource.obj"
+_RES_15_48K_EA                                     8027         "E:\RCL-Test\Debug\Resource.obj"
+_RES_16_48K_SA                                     8029         "E:\RCL-Test\Debug\Resource.obj"
+_RES_16_48K_EA                                     802B         "E:\RCL-Test\Debug\Resource.obj"
+_RES_17_48K_SA                                     802D         "E:\RCL-Test\Debug\Resource.obj"
+_RES_17_48K_EA                                     802F         "E:\RCL-Test\Debug\Resource.obj"
+_RES_18_48K_SA                                     8031         "E:\RCL-Test\Debug\Resource.obj"
+_RES_18_48K_EA                                     8033         "E:\RCL-Test\Debug\Resource.obj"
+_RES_19_48K_SA                                     8035         "E:\RCL-Test\Debug\Resource.obj"
+_RES_19_48K_EA                                     8037         "E:\RCL-Test\Debug\Resource.obj"
+_RES_2_48K_SA                                      8039         "E:\RCL-Test\Debug\Resource.obj"
+_RES_2_48K_EA                                      803B         "E:\RCL-Test\Debug\Resource.obj"
+_RES_20_48K_SA                                     803D         "E:\RCL-Test\Debug\Resource.obj"
+_RES_20_48K_EA                                     803F         "E:\RCL-Test\Debug\Resource.obj"
+_RES_21_48K_SA                                     8041         "E:\RCL-Test\Debug\Resource.obj"
+_RES_21_48K_EA                                     8043         "E:\RCL-Test\Debug\Resource.obj"
+_RES_22_48K_SA                                     8045         "E:\RCL-Test\Debug\Resource.obj"
+_RES_22_48K_EA                                     8047         "E:\RCL-Test\Debug\Resource.obj"
+_RES_23_48K_SA                                     8049         "E:\RCL-Test\Debug\Resource.obj"
+_RES_23_48K_EA                                     804B         "E:\RCL-Test\Debug\Resource.obj"
+_RES_24_48K_SA                                     804D         "E:\RCL-Test\Debug\Resource.obj"
+_RES_24_48K_EA                                     804F         "E:\RCL-Test\Debug\Resource.obj"
+_RES_25_48K_SA                                     8051         "E:\RCL-Test\Debug\Resource.obj"
+_RES_25_48K_EA                                     8053         "E:\RCL-Test\Debug\Resource.obj"
+_RES_26_48K_SA                                     8055         "E:\RCL-Test\Debug\Resource.obj"
+_RES_26_48K_EA                                     8057         "E:\RCL-Test\Debug\Resource.obj"
+_RES_8_48K_SA                                      8059         "E:\RCL-Test\Debug\Resource.obj"
+_RES_8_48K_EA                                      805B         "E:\RCL-Test\Debug\Resource.obj"
+_RES_3_48K_SA                                      805D         "E:\RCL-Test\Debug\Resource.obj"
+_RES_3_48K_EA                                      805F         "E:\RCL-Test\Debug\Resource.obj"
+_RES_4_48K_SA                                      8061         "E:\RCL-Test\Debug\Resource.obj"
+_RES_4_48K_EA                                      8063         "E:\RCL-Test\Debug\Resource.obj"
+_RES_5_48K_SA                                      8065         "E:\RCL-Test\Debug\Resource.obj"
+_RES_5_48K_EA                                      8067         "E:\RCL-Test\Debug\Resource.obj"
+_RES_6_48K_SA                                      8069         "E:\RCL-Test\Debug\Resource.obj"
+_RES_6_48K_EA                                      806B         "E:\RCL-Test\Debug\Resource.obj"
+_RES_7_48K_SA                                      806D         "E:\RCL-Test\Debug\Resource.obj"
+_RES_7_48K_EA                                      806F         "E:\RCL-Test\Debug\Resource.obj"
+_RES_0_48K_SA                                      8071         "E:\RCL-Test\Debug\Resource.obj"
+_RES_0_48K_EA                                      8073         "E:\RCL-Test\Debug\Resource.obj"
+_RES_27_48K_SA                                     8075         "E:\RCL-Test\Debug\Resource.obj"
+_RES_27_48K_EA                                     8077         "E:\RCL-Test\Debug\Resource.obj"
+T_SACM_S480_SpeechTable                            8079         "E:\RCL-Test\Debug\Resource.obj"
+_g_fRx                                             1E6          "E:\RCL-Test\Debug\main.obj"
+_g_fCx                                             1E8          "E:\RCL-Test\Debug\main.obj"
+_g_fLx                                             1EA          "E:\RCL-Test\Debug\main.obj"
+_g_ucIntFlag                                       1EC          "E:\RCL-Test\Debug\main.obj"
+_g_uiKey                                           1ED          "E:\RCL-Test\Debug\main.obj"
+_g_uifx                                            1EE          "E:\RCL-Test\Debug\main.obj"
+_g_uisum                                           1EF          "E:\RCL-Test\Debug\main.obj"
+_j                                                 1F0          "E:\RCL-Test\Debug\main.obj"
+_i                                                 1F1          "E:\RCL-Test\Debug\main.obj"
+_Lxsum                                             1F2          "E:\RCL-Test\Debug\main.obj"
+_LxFlag                                            1F3          "E:\RCL-Test\Debug\main.obj"
+_g_speechID                                        1F4          "E:\RCL-Test\Debug\main.obj"
+_g_speachIndex                                     1F5          "E:\RCL-Test\Debug\main.obj"
+_g_Speechary                                       1F6          "E:\RCL-Test\Debug\main.obj"
+_g_array                                           1FC          "E:\RCL-Test\Debug\main.obj"
+_voicflag                                          200          "E:\RCL-Test\Debug\main.obj"
+_PlayTestValue                                     8FFF         "E:\RCL-Test\Debug\main.obj"
+_main                                              9040         "E:\RCL-Test\Debug\main.obj"
+_g_uiStatus                                        1E2          "E:\RCL-Test\Debug\main.obj"
+_g_uidisplay                                       1E3          "E:\RCL-Test\Debug\main.obj"
+_System_Initial                                    94B3         "E:\RCL-Test\Debug\sys.obj"
+F_System_Initial                                   94B3         "E:\RCL-Test\Debug\sys.obj"
+_System_ServiceLoop                                94D0         "E:\RCL-Test\Debug\sys.obj"
+_Clear_WatchDog                                    94D8         "E:\RCL-Test\Debug\sys.obj"
+_RunTime2Hz                                        94DC         "E:\RCL-Test\Debug\sys.obj"
+_SP_INT_32Hz                                       94E2         "E:\RCL-Test\Debug\sys.obj"
+_Turnoff_INT_32Hz                                  94EB         "E:\RCL-Test\Debug\sys.obj"
+_OffTime2Hz                                        94F4         "E:\RCL-Test\Debug\sys.obj"
+_Rline_on                                          94FE         "E:\RCL-Test\Debug\sys.obj"
+_Cline_on                                          9507         "E:\RCL-Test\Debug\sys.obj"
+_Lline_on                                          9510         "E:\RCL-Test\Debug\sys.obj"
+_R_Above1K                                         9519         "E:\RCL-Test\Debug\sys.obj"
+_C_Below1K                                         9522         "E:\RCL-Test\Debug\sys.obj"
+_TmbCount                                          952B         "E:\RCL-Test\Debug\sys.obj"
+_F_Show                                            9532         "E:\RCL-Test\Debug\sys.obj"
+F_Key_Scan_Initial                                 95CA         "E:\RCL-Test\Debug\key.obj"
+_Key_Scan_ServiceLoop                              95CA         "E:\RCL-Test\Debug\key.obj"
+F_Key_Scan_ServiceLoop                             95D5         "E:\RCL-Test\Debug\key.obj"
+F_Key_DebounceCnt_Down                             95F8         "E:\RCL-Test\Debug\key.obj"
+_SP_GetCh                                          95FF         "E:\RCL-Test\Debug\key.obj"
+F_SP_GetCh                                         95FF         "E:\RCL-Test\Debug\key.obj"
+R_KeyStrobe                                        1DD          "E:\RCL-Test\Debug\key.obj"
+F_SP_Send_PWM                                      91D6         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Send_DAC1                                     91D9         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Send_DAC2                                     91DC         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  91DF         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Send_Out                                      91DF         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Get_ADC                                       91E4         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             91E7         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             91EA         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             91ED         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             91F0         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                91F3         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               91F6         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             91F9         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                91FC         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                91FF         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Write_INT_Status                              9202         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Read_INT_Status                               9205         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    923D         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    9261         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    9273         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    9297         "E:\RCL-Test\Debug\hardware.obj"
+_SP_RampUpDAC1                                     923D         "E:\RCL-Test\Debug\hardware.obj"
+_SP_RampDnDAC1                                     9261         "E:\RCL-Test\Debug\hardware.obj"
+_SP_RampUpDAC2                                     9273         "E:\RCL-Test\Debug\hardware.obj"
+_SP_RampDnDAC2                                     9297         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_Delay                                         9302         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_InitQueue                                     92AF         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_ReadQueue                                     92BC         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_WriteQueue                                    92CE         "E:\RCL-Test\Debug\hardware.obj"
+F_SP_TestQueue                                     92DC         "E:\RCL-Test\Debug\hardware.obj"
+_SP_Export                                         9233         "E:\RCL-Test\Debug\hardware.obj"
+_SP_Import                                         9228         "E:\RCL-Test\Debug\hardware.obj"
+_SP_Init_IOB                                       9218         "E:\RCL-Test\Debug\hardware.obj"
+_SP_Init_IOA                                       9208         "E:\RCL-Test\Debug\hardware.obj"
+_SP_GetResource                                    92F4         "E:\RCL-Test\Debug\hardware.obj"
+R_FIQTemp                                          1A5          "E:\RCL-Test\Debug\hardware.obj"
+R_InterruptStatus                                  1A4          "E:\RCL-Test\Debug\hardware.obj"
+_FIQ                                               8095         "E:\RCL-Test\Debug\FIQ.obj"
+_IRQ5                                              80B0         "E:\RCL-Test\Debug\FIQ.obj"
+_IRQ6                                              80CE         "E:\RCL-Test\Debug\FIQ.obj"
+_R_display                                         8AC8         "E:\RCL-Test\Debug\DISPLAY.obj"
+_C_display                                         8D33         "E:\RCL-Test\Debug\DISPLAY.obj"
+_L_display                                         8EA2         "E:\RCL-Test\Debug\DISPLAY.obj"
+_g_uiAx                                            1E5          "E:\RCL-Test\Debug\DISPLAY.obj"
+__RES_9_48K_sa                                     B018         "E:\RCL-Test\Debug\9_48k.res"
+__RES_9_48K_ea                                     B0BD         "E:\RCL-Test\Debug\9_48k.res"
+__RES_1_48K_sa                                     B324         "E:\RCL-Test\Debug\1_48k.res"
+__RES_1_48K_ea                                     B3AE         "E:\RCL-Test\Debug\1_48k.res"
+__RES_10_48K_sa                                    AD69         "E:\RCL-Test\Debug\10_48k.res"
+__RES_10_48K_ea                                    AE20         "E:\RCL-Test\Debug\10_48k.res"
+__RES_11_48K_sa                                    ACA0         "E:\RCL-Test\Debug\11_48k.res"
+__RES_11_48K_ea                                    AD69         "E:\RCL-Test\Debug\11_48k.res"
+__RES_12_48K_sa                                    AE20         "E:\RCL-Test\Debug\12_48k.res"
+__RES_12_48K_ea                                    AECE         "E:\RCL-Test\Debug\12_48k.res"
+__RES_13_48K_sa                                    B3AE         "E:\RCL-Test\Debug\13_48k.res"
+__RES_13_48K_ea                                    B438         "E:\RCL-Test\Debug\13_48k.res"
+__RES_14_48K_sa                                    B159         "E:\RCL-Test\Debug\14_48k.res"
+__RES_14_48K_ea                                    B1F5         "E:\RCL-Test\Debug\14_48k.res"
+__RES_15_48K_sa                                    B438         "E:\RCL-Test\Debug\15_48k.res"
+__RES_15_48K_ea                                    B4B9         "E:\RCL-Test\Debug\15_48k.res"
+__RES_16_48K_sa                                    ABC5         "E:\RCL-Test\Debug\16_48k.res"
+__RES_16_48K_ea                                    ACA0         "E:\RCL-Test\Debug\16_48k.res"
+__RES_17_48K_sa                                    AAE1         "E:\RCL-Test\Debug\17_48k.res"
+__RES_17_48K_ea                                    ABC5         "E:\RCL-Test\Debug\17_48k.res"
+__RES_18_48K_sa                                    A8FE         "E:\RCL-Test\Debug\18_48k.res"
+__RES_18_48K_ea                                    A9F4         "E:\RCL-Test\Debug\18_48k.res"
+__RES_19_48K_sa                                    A9F4         "E:\RCL-Test\Debug\19_48k.res"
+__RES_19_48K_ea                                    AAE1         "E:\RCL-Test\Debug\19_48k.res"
+__RES_2_48K_sa                                     B633         "E:\RCL-Test\Debug\2_48k.res"
+__RES_2_48K_ea                                     B6AB         "E:\RCL-Test\Debug\2_48k.res"
+__RES_20_48K_sa                                    A478         "E:\RCL-Test\Debug\20_48k.res"
+__RES_20_48K_ea                                    A6CD         "E:\RCL-Test\Debug\20_48k.res"
+__RES_21_48K_sa                                    9FC5         "E:\RCL-Test\Debug\21_48k.res"
+__RES_21_48K_ea                                    A223         "E:\RCL-Test\Debug\21_48k.res"
+__RES_22_48K_sa                                    9D5E         "E:\RCL-Test\Debug\22_48k.res"
+__RES_22_48K_ea                                    9FC5         "E:\RCL-Test\Debug\22_48k.res"
+__RES_23_48K_sa                                    9AF7         "E:\RCL-Test\Debug\23_48k.res"
+__RES_23_48K_ea                                    9D5E         "E:\RCL-Test\Debug\23_48k.res"
+__RES_24_48K_sa                                    A223         "E:\RCL-Test\Debug\24_48k.res"
+__RES_24_48K_ea                                    A478         "E:\RCL-Test\Debug\24_48k.res"
+__RES_25_48K_sa                                    A6CD         "E:\RCL-Test\Debug\25_48k.res"
+__RES_25_48K_ea                                    A8FE         "E:\RCL-Test\Debug\25_48k.res"
+__RES_26_48K_sa                                    96F2         "E:\RCL-Test\Debug\26_48k.res"
+__RES_26_48K_ea                                    9AF7         "E:\RCL-Test\Debug\26_48k.res"
+__RES_8_48K_sa                                     B5BB         "E:\RCL-Test\Debug\8_48k.res"
+__RES_8_48K_ea                                     B633         "E:\RCL-Test\Debug\8_48k.res"
+__RES_3_48K_sa                                     B1F5         "E:\RCL-Test\Debug\3_48k.res"
+__RES_3_48K_ea                                     B291         "E:\RCL-Test\Debug\3_48k.res"
+__RES_4_48K_sa                                     B4B9         "E:\RCL-Test\Debug\4_48k.res"
+__RES_4_48K_ea                                     B53A         "E:\RCL-Test\Debug\4_48k.res"
+__RES_5_48K_sa                                     B0BD         "E:\RCL-Test\Debug\5_48k.res"
+__RES_5_48K_ea                                     B159         "E:\RCL-Test\Debug\5_48k.res"
+__RES_6_48K_sa                                     B291         "E:\RCL-Test\Debug\6_48k.res"
+__RES_6_48K_ea                                     B324         "E:\RCL-Test\Debug\6_48k.res"
+__RES_7_48K_sa                                     AF73         "E:\RCL-Test\Debug\7_48k.res"
+__RES_7_48K_ea                                     B018         "E:\RCL-Test\Debug\7_48k.res"
+__RES_0_48K_sa                                     B53A         "E:\RCL-Test\Debug\0_48k.res"
+__RES_0_48K_ea                                     B5BB         "E:\RCL-Test\Debug\0_48k.res"
+__RES_27_48K_sa                                    AECE         "E:\RCL-Test\Debug\27_48k.res"
+__RES_27_48K_ea                                    AF73         "E:\RCL-Test\Debug\27_48k.res"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\Program Files\Sunplus\unSPIDE180\IDE180\startupD.obj"                                 *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            80E4                 8100         1D     *
+* "E:\RCL-Test\Debug\Resource.obj"                                                          *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8094         8C     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "E:\RCL-Test\Debug\main.obj"                                                              *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8FFF                 91D5         1D7    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          96D7 (1E6)           96F1 (200)   1B     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1E2                  1E3          2      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "E:\RCL-Test\Debug\sys.obj"                                                               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          94B3                 9545         93     *
+*    DATA                                          B6AB                 B6B8         E      *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "E:\RCL-Test\Debug\key.obj"                                                               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          95CA                 9604         3B     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1DA                  1DD          4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "E:\RCL-Test\Debug\hardware.obj"                                                          *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          91D6                 9302         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1A4                  1D9          36     *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "E:\RCL-Test\Debug\FIQ.obj"                                                               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8095                 80E3         4F     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "E:\RCL-Test\Debug\DISPLAY.obj"                                                           *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8AC8                 8FFE         537    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1E5                  1E5          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "E:\RCL-Test\Debug\9_48k.res"                                                             *
+*    __sn_section_RES_9_48K(DATA)                  B018                 B0BC         A5     *
+* "E:\RCL-Test\Debug\1_48k.res"                                                             *
+*    __sn_section_RES_1_48K(DATA)                  B324                 B3AD         8A     *
+* "E:\RCL-Test\Debug\10_48k.res"                                                            *
+*    __sn_section_RES_10_48K(DATA)                 AD69                 AE1F         B7     *
+* "E:\RCL-Test\Debug\11_48k.res"                                                            *
+*    __sn_section_RES_11_48K(DATA)                 ACA0                 AD68         C9     *
+* "E:\RCL-Test\Debug\12_48k.res"                                                            *
+*    __sn_section_RES_12_48K(DATA)                 AE20                 AECD         AE     *
+* "E:\RCL-Test\Debug\13_48k.res"                                                            *
+*    __sn_section_RES_13_48K(DATA)                 B3AE                 B437         8A     *
+* "E:\RCL-Test\Debug\14_48k.res"                                                            *
+*    __sn_section_RES_14_48K(DATA)                 B159                 B1F4         9C     *
+* "E:\RCL-Test\Debug\15_48k.res"                                                            *
+*    __sn_section_RES_15_48K(DATA)                 B438                 B4B8         81     *
+* "E:\RCL-Test\Debug\16_48k.res"                                                            *
+*    __sn_section_RES_16_48K(DATA)                 ABC5                 AC9F         DB     *
+* "E:\RCL-Test\Debug\17_48k.res"                                                            *
+*    __sn_section_RES_17_48K(DATA)                 AAE1                 ABC4         E4     *
+* "E:\RCL-Test\Debug\18_48k.res"                                                            *
+*    __sn_section_RES_18_48K(DATA)                 A8FE                 A9F3         F6     *
+* "E:\RCL-Test\Debug\19_48k.res"                                                            *
+*    __sn_section_RES_19_48K(DATA)                 A9F4                 AAE0         ED     *
+* "E:\RCL-Test\Debug\2_48k.res"                                                             *
+*    __sn_section_RES_2_48K(DATA)                  B633                 B6AA         78     *
+* "E:\RCL-Test\Debug\20_48k.res"                                                            *
+*    __sn_section_RES_20_48K(DATA)                 A478                 A6CC         255    *
+* "E:\RCL-Test\Debug\21_48k.res"                                                            *
+*    __sn_section_RES_21_48K(DATA)                 9FC5                 A222         25E    *
+* "E:\RCL-Test\Debug\22_48k.res"                                                            *
+*    __sn_section_RES_22_48K(DATA)                 9D5E                 9FC4         267    *
+* "E:\RCL-Test\Debug\23_48k.res"                                                            *
+*    __sn_section_RES_23_48K(DATA)                 9AF7                 9D5D         267    *
+* "E:\RCL-Test\Debug\24_48k.res"                                                            *
+*    __sn_section_RES_24_48K(DATA)                 A223                 A477         255    *
+* "E:\RCL-Test\Debug\25_48k.res"                                                            *
+*    __sn_section_RES_25_48K(DATA)                 A6CD                 A8FD         231    *
+* "E:\RCL-Test\Debug\26_48k.res"                                                            *
+*    __sn_section_RES_26_48K(DATA)                 96F2                 9AF6         405    *
+* "E:\RCL-Test\Debug\8_48k.res"                                                             *
+*    __sn_section_RES_8_48K(DATA)                  B5BB                 B632         78     *
+* "E:\RCL-Test\Debug\3_48k.res"                                                             *
+*    __sn_section_RES_3_48K(DATA)                  B1F5                 B290         9C     *
+* "E:\RCL-Test\Debug\4_48k.res"                                                             *
+*    __sn_section_RES_4_48K(DATA)                  B4B9                 B539         81     *
+* "E:\RCL-Test\Debug\5_48k.res"                                                             *
+*    __sn_section_RES_5_48K(DATA)                  B0BD                 B158         9C     *
+* "E:\RCL-Test\Debug\6_48k.res"                                                             *
+*    __sn_section_RES_6_48K(DATA)                  B291                 B323         93     *
+* "E:\RCL-Test\Debug\7_48k.res"                                                             *
+*    __sn_section_RES_7_48K(DATA)                  AF73                 B017         A5     *
+* "E:\RCL-Test\Debug\0_48k.res"                                                             *
+*    __sn_section_RES_0_48K(DATA)                  B53A                 B5BA         81     *
+* "E:\RCL-Test\Debug\27_48k.res"                                                            *
+*    __sn_section_RES_27_48K(DATA)                 AECE                 AF72         A5     *
+* "d:\working\unsp\mix\release\s480"                                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8101                 8AC7         9C7    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1E4                  1E4          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    S480_Section(ORAM)                            0                    1A3          1A4    *
+* "divf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9303                 93E6         E4     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvi2f2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          96A5                 96BD         19     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "subf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          96CB                 96D6         C      *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cmpf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9605                 9632         2E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          958C                 95C9         3E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "modu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          96BE                 96CA         D      *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvf2i1"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9633                 9658         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "common"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1DE                  1E1          4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "cvi1f2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9546                 958B         46     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "addf2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          93E7                 94B2         CC     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "rshu2"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9659                 967E         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "lshiu2"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          967F                 96A4         26     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  201          5FF                   *
+* "First Bank Rom"                  7C00                 36B9         4547                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\RCL.S37
+Disk  Mapping Filename : .\Debug\RCL.map
+Symbol  Table FileName : .\Debug\RCL.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

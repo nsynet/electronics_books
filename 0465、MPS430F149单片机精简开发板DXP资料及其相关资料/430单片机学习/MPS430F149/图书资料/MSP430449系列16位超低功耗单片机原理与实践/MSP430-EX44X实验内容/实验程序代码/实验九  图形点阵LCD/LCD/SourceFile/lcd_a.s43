@@ -1,0 +1,235 @@
+;--------------------------------------------------------------------
+;文件名称：
+;        lcd_a.s43
+;文件说明：
+;       程序运行后，在LCD上显示字符Hello
+;---------------------------------------------------------------------
+#include "msp430x44x.h"
+;----------------------------------------------------------------------
+
+             ORG     08000h                           ; 程序开始处
+
+;-----------------------------------------------------------------------
+RESET          
+             mov.w   #0600h,SP                        ; 系统堆栈指针
+main
+             push.w  R10
+             push.w  R11
+             mov.w   #0x5A80,&WDTCTL                  ; 关闭看门狗
+             call    #init_LCD                        ; 初始化LCD  
+             mov.b   #0x18,R11
+             mov.b   #0x28,R10
+             mov.b   R10,R14                          ; 设置字符显示位置
+             mov.b   R11,R12
+             call    #drawStr                         ; 显示字符Hello
+MainLoop   
+             jmp     MainLoop                         ; 循环 
+                           	
+;--------------------------------------------------------------------------
+write_Command
+;--------------------------------------------------------------------------
+             bic.b   #0x4,&P2OUT                      ; P2.2=0
+             mov.b   #0xFF,&P3DIR                     ;
+             and.b   #0xFC,&P2OUT                     ; P2.1,P2.0 = 0
+             mov.b   R12,&P3OUT                       ; r/w=0
+             bis.b   #0x4,&P2OUT                      ;
+             bic.b   #0x4,&P2OUT                      ; EN=0
+             ret     
+;--------------------------------------------------------------------------
+move_To
+;--------------------------------------------------------------------------
+                 push.w  R10                          ; 寄存器入栈
+                 push.w  R11                          ;
+                 push.w  R8                           ;
+                 mov.b   R12,R11                      ; 获取参数x、y
+                 mov.b   R14,R10                      ;
+    
+                 mov.b   R10,R14                      ; 
+                 and.b   #0x7F,R14                    ;
+                 mov.b   R14,R8                       ;
+                 cmp.b   #0x40,R8                     ; 检查在哪一片
+                 jc      T2                           ;
+                 bic.b   #0x40,&P2OUT                 ;
+                 bis.b   #0x8,&P2OUT                  ;
+                 mov.b   #0xB8,R12                    ;
+                 add.b   R11,R12                      ;
+                 call    #write_Command               ; 设定x    
+                
+                 mov.b   #0x40,R12                    ;
+                 add.b   R8,R12                       ;
+                 call    #write_Command               ; 设定y
+                 jmp     EXIT_M                       ; 退出Move_To
+T2               cmp.b   #0x40,R8                     ; 
+                 jnc     EXIT_M                       ; 退出
+                 bic.b   #0x8,&P2OUT                  ;
+                 bis.b   #0x40,&P2OUT                 ;
+                 mov.b   #0xB8,R12                    ;
+                 add.b   R11,R12                      ;
+                 call    #write_Command               ; 设定x
+                 mov.b   R8,R12                       ;
+                 call    #write_Command               ; 设定y
+EXIT_M           pop.w   R8                           ;   
+                 pop.w   R11                          ; 恢复寄存器
+                 pop.w   R10                          ;
+                 ret                                  ;
+;-----------------------------------------------------------------------------     
+write_Data
+;-----------------------------------------------------------------------------
+                bic.b   #0x4,&P2OUT                   ; r/w=0
+                mov.b   #0xFF,&P3DIR                  ;
+                and.b   #0xFC,&P2OUT                  ; rs=1
+                bis.b   #0x1,&P2OUT                   ;
+                mov.b   R12,&P3OUT                    ;
+                bis.b   #0x4,&P2OUT                   ; enable=1
+                bic.b   #0x4,&P2OUT                   ; enable=0
+                ret                                   ;
+;----------------------------------------------------------------------------
+clear_Rect
+;----------------------------------------------------------------------------
+                 push.w  R10                          ;
+                 push.w  R11                          ; 保存寄存器
+                 push.w  R8                           ;
+                 push.w  R9                           ;
+                 push.w  R6                           ;
+                 push.w  R7                           ;
+                 mov.b   R12,R10                      ; 获取参数
+                 mov.b   R14,R11                      ; 获取参数
+                 mov.b   0xE(SP),R8                   ; 获取参数
+                 mov.b   0x10(SP),R9                  ; 获取参数
+                 mov.b   R10,R6                       ; 
+CLEAR            mov.b   R6,R15                       ;
+                 and.w   #0xFF,R15                    ;
+                 mov.b   R10,R12                      ;
+                 and.w   #0xFF,R12                    ;
+                 mov.b   R8,R14                       ;
+                 and.w   #0xFF,R14                    ;
+                 add.w   R12,R14                      ;
+                 cmp.w   R14,R15                      ; 列是否显示完
+                 jge     EXIT_C                       ;
+                 mov.b   R11,R7                       ;
+CLEAR2           mov.b   R7,R15                       ;
+                 and.w   #0xFF,R15                    ;
+                 mov.b   R11,R12                      ;
+                 and.w   #0xFF,R12                    ;
+                 mov.b   R9,R14                       ;
+                 and.w   #0xFF,R14                    ;
+                 add.w   R12,R14                      ;
+                 cmp.w   R14,R15                      ; 行是否显示完
+                 jge     TT                           ;
+                 mov.b   R7,R14                       ;
+                 mov.b   R6,R12                       ; 
+                 call    #move_To                     ; 移动位置
+                 clr.b   R12                          ;
+                 call    #write_Data                  ; 写数据0
+                 inc.b   R7                           ;
+                 jmp     CLEAR2                       ;
+TT               inc.b   R6                           ;
+                 jmp     CLEAR                        ;
+EXIT_C           pop.w   R7                           ; 恢复堆栈
+                 pop.w   R6                           ;
+                 pop.w   R9                           ; 
+                 pop.w   R8                           ;
+                 pop.w   R11                          ;
+                 pop.w   R10                          ;
+                 ret                                  ;
+                                                      ;
+;------------------------------------------------------------------------
+init_LCD                                                
+;------------------------------------------------------------------------
+             mov.b   #0xFF,&P3DIR                     ;
+             clr.b   &P3OUT                           ;
+             bis.b   #0xCF,&P2DIR                     ;
+             bis.b   #0x48,&P2OUT                     ; reset=0,cs1,cs2=1
+             nop     
+             nop     
+             bis.b   #0x4,&P2OUT                      ;
+             bis.b   #0x80,&P2OUT                     ;
+             mov.b   #0xC0,R12                        ;
+             call    #write_Command                   ;
+             mov.b   #0x3F,R12                        ;
+             call    #write_Command                   ; 显示开
+             push.b  #0x40                            ; 通过堆栈传参数
+             push.b  #0x8                             ;
+             clr.b   R14
+             clr.b   R12
+             call    #clear_Rect                      ;清除区域(0,0,8,64)
+             push.b  #0x40
+             push.b  #0x8
+             mov.b   #0x40,R14
+             clr.b   R12
+             call    #clear_Rect                       ;清除显示区域(0,64,8,64)
+             add.w   #0x8,SP
+             ret     
+;-------------------------------------------------------------------------------
+drawStr
+;-------------------------------------------------------------------------------
+                 push.w  R10                           ;
+                 push.w  R11                           ;
+                 push.w  R8                            ;
+                 push.w  R9                            ;
+                 mov.b   R12,R11                       ;获取参数
+                 mov.b   R14,R8                        ; 
+                 clr.b   R9                            ;
+                 mov.b   R8,R10                        ;
+DRAW             mov.b   R10,R14                       ;
+                 and.w   #0xFF,R14                     ;
+                 mov.b   R8,R15                        ;
+                 and.w   #0xFF,R15                     ;
+                 add.w   #0x28,R15                     ;     
+                 cmp.w   R15,R14                       ; 检测是否显示完
+                 jge     ExitDRAW                      ;
+                 mov.b   R10,R14                       ;
+                 mov.b   R11,R12                       ;
+                 and.b   #0xFF,R12                     ;
+                 call    #ShiftRight_3                 ;
+                 call    #move_To                      ; 移动到显示位置
+                 mov.b   R9,R14                        ;
+                 and.w   #0xFF,R14                     ;
+                 mov.b   show_Data(R14),R12            ; 获取显示字符
+                 call    #write_Data                   ; 写数据
+                 mov.b   R10,R14                       ;
+                 mov.b   R11,R12                       ;
+                 and.b   #0xFF,R12                     ;
+                 call    #ShiftRight_3                 ;
+                 inc.b   R12                           ;
+                 call    #move_To                      ;      
+                 inc.b   R9                            ;
+                 mov.b   R9,R14                        ;
+                 and.w   #0xFF,R14    
+                 mov.b   show_Data(R14),R12            ; 获取要显示的信息
+                 call    #write_Data                   ; 写数据到LCD
+                 inc.b  R9                             ;
+                 inc.b   R10                           ;
+                 jmp     DRAW                          ;
+ExitDRAW         pop.w   R9                            ;
+                 pop.w   R8
+                 pop.w   R11                           ; 恢复堆栈
+                 pop.w   R10
+                 ret 
+;-------------------------------------------------------------------------------
+ShiftRight_3                                           ;右移3位
+;--------------------------------------------------------------------------------
+                 clrc    
+                 rrc.w   R12                           ;右移
+                 rra.w   R12                           ;右移
+                 rra.w   R12                           ;右移
+                 ret                                   ;     
+;---------------------------------------------------------------------------------
+show_Data                                              ;Hello对应的在点阵LCD上的编码
+;---------------------------------------------------------------------------------
+          db 08,32,248,63,8,33,0,1,0,1,8,33,248,63,8,32     ;"H",0
+        
+          db 0,0,0,31,128,34,128,34,128,34,128,34,0,19,0,0  ;"e",1
+        
+          db 0,0,8,32,8,32,248,63,0,32,0,32,0,0,0,0         ;"l",2
+        
+          db 0,0,8,32,8,32,248,63,0,32,0,32,0,0,0,0         ;"l",3
+        
+          db 0,0,0,31,128,32,128,32,128,32,128,32,0,31,0,0  ;"o",4
+;---------------------------------------------------------------------------
+;           中断向量          
+;--------------------------------------------------------------------------- 
+                  ORG     0FFFEh                  ; MSP430 RESET 向量
+                  DW      RESET                   ; 
+                  
+                  END

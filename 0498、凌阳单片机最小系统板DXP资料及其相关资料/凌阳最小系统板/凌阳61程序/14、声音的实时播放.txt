@@ -1,0 +1,30 @@
+//工程名称：ADC&&DAC.spj
+//功能描述：实现声音的实时录制
+//涉及的库：CMacro1016.lib
+//组成文件：ADC&&DAC.c
+//硬件连接：通过实验板的MIC通道录取声音信号，并通过SPK输出录制的声音
+#include<MYSPCE061A.h>
+void IRQ1(void)__attribute__((ISR));
+void IRQ1(void)
+{
+	int temp;
+	temp=P_ADC;
+	P_DAC1=temp;
+	P_DAC2=temp;
+	P_INT_Clear=0x1000;//清中断
+}
+int main()
+{
+    __asm("IRQ OFF");
+	P_TimerA_Data=0xff00;//转换的速度，过高会使数据发生错误
+	P_TimerA_Ctrl=0x0030;//时钟源源B为1，时钟源A为Fosc/2
+	P_ADC_Ctrl   =0x003d;//启用自动增益模式，b5，b4，b3为1
+	P_DAC_Ctrl   =0x00a8;//双通道输出，通过TimerA溢出锁存数据到DAC1或DAC2，通过TimerA溢出触发A/D转换
+	P_INT_Ctrl   =0x1000;//开中断
+	__asm("IRQ ON");
+	while(1)
+	{
+		P_Watchdog_Clear=0x0001;
+	}
+	return(0);
+}

@@ -1,0 +1,246 @@
+;*************************************************************************
+;   文件名称：
+;           exflash.s43
+;   文件说明：
+;          对扩展FlashAT45DB041进行操作，在Flash的0x08
+;  位置写0x08,写入数据显示到 LED[0],读出的数据显示到LED[1]
+;
+;*************************************************************************
+#include "msp430x44x.h"
+;************************************************************************
+LED_CTRL                  equ         200H   ; LED显示控制
+TMP                       equ         201H   ; 临时变量
+write_Buf                 equ         202H   ; data buffer
+read_Buf                  equ         203H   ; 读缓冲区
+LED_BUF                   equ         204H   ; LED显示缓冲区
+;*************************************************************************
+            ORG     08000h                  ; 程序起始位置
+;*************************************************************************
+RESET       mov.w   #0600h,SP               ; 设置堆栈
+StopWDT     mov.w   #WDTPW+WDTHOLD,&WDTCTL  ; 关看门狗
+START       mov.b   #0x8,R10                ; 设置要写的内容
+            call    #INIT_LED               ; 初始化LED
+            call    #INIT_EXFLASH           ; 初始化Flash
+            mov.b   #0x84,&write_Buf        ; 设置写命令   
+            call    #OP_START               ; 为对AT45DB041做好准备工作
+            call    #WRITEDATA              ; 写数据到Flash
+            clr.b   &write_Buf              ; 清除write_buf
+            call    #WRITEDATA              ; 写0
+            clr.b   &write_Buf              ; 
+            call    #WRITEDATA              ; 写0，因为改为无关位
+            mov.b   #0x8,&write_Buf         ; 设置地址
+            call    #WRITEDATA              ; 写地址
+            mov.b   R10,&write_Buf          ; 设置写的数据
+            call    #WRITEDATA              ; 写数据
+            call    #OP_STOP                ; 操作停止
+            call    #OP_START               ; 为对AT45DB041做好准备工作
+            mov.b   #0x54,&write_Buf        ; 设置命令
+            call    #WRITEDATA              ; 写命令
+            clr.b   &write_Buf              ;
+            call    #WRITEDATA              ; 写无关位
+            clr.b   &write_Buf              ;
+            call    #WRITEDATA              ;
+            mov.b   #0x8,&write_Buf         ;设置地址
+            call    #WRITEDATA
+            mov.b   #0xFF,&write_Buf        ;8个无关位
+            call    #WRITEDATA
+            call    #OPR_START              ; 转换模式，准备读
+            call    #READ_DATA              ; 读数据
+            call    #OP_STOP                ; 停止操作
+            mov.b   R10,&LED_BUF            ;  Led_Buf[0] ＝写入Flash的内容
+            mov.w   #1,R10
+            mov.b   &read_Buf,LED_BUF(R10)  ; led_Buf[1] ＝ 读出内容 
+DISPLAY     call    #LED_DISPLAY            ; 显示到LED
+            call    #FLASH_DELAY2           ; 延迟
+            jmp     DISPLAY                 ; 循环
+;*******************************************************
+
+; 初始化LED
+
+;*******************************************************
+INIT_LED    mov.b   #0xFF,&P3DIR          ; output mode
+            clr.b   &P3OUT                ; 输出置为0 
+            bis.b   #0x3,&P4DIR           ; P1.0,P1.1=1
+            and.b   #0xFC,&P4OUT          ; P4.1,P4.0 =0
+            clr.b   &LED_CTRL             ; LED CTROL =0
+            clr.b   R14                   ; R14=0
+LED_CHECK   cmp.b   #0x6,R14              ; LED缓冲区是否全部清空
+            jc      LED_RET               ; 
+            mov.b   R14,R15               ; 
+            and.w   #0xFF,R15             ; 高位置0
+            mov.b   #0x0A,LED_BUF(R15)    ; 200H对应于LED_buf的地址
+            inc.b   R14                   ; 计数器加1
+            jmp     LED_CHECK             ; 
+LED_RET     ret                           ;
+
+;*************************************************************
+
+;*************************************************************
+LED_DISPLAY    push.w  R10                ;
+               mov.w   #0x01,R10          ; 
+               mov.b   &LED_CTRL,R14      ; r14＝LED_CTRL
+               and.w   #0xFF,R14          ; 清除高位
+               mov.b   LED_BUF(R14),R14   ; 获取显示内容
+               and.w   #0xFF,R14          ;
+               mov.b   NUM_LED(R14),&TMP  ; 获取显示内容对应的显示码
+                                          ; 
+               mov.b   R10,R12            ; 
+               mov.b   &LED_CTRL,R14      ; 
+               call    #SHIFTLEFT         ; 把0x01移位，得到那个LED要显示的控制码
+               inv.b   R12                ; 
+               mov.b   R12,&P3OUT         ; 
+               bis.b   #0x1,&P4OUT        ; 开数据控制片选
+               bic.b   #0x1,&P4OUT        ; 关数据控制片选
+               mov.b   &TMP,&P3OUT        ; 
+               bis.b   #0x02,&P4OUT       ; 开控制片选
+               bic.b   #0x02,&P4OUT       ; 关控制片选
+               
+               mov.b   &LED_CTRL,R12      ; 
+               and.w   #0xFF,R12          ;
+               inc.w   R12                ;
+               cmp.w   #0x6,R12           ;  if (LED_CTRL >= 6){
+               JL      MOD_1              ;  
+               mov.w   #0,R12             ;  
+MOD_1          mov.b   R12,&LED_CTRL      ;  LED_CTRL =0
+               pop.w   R10                ;  }
+               ret                        ; 
+;********************************************************
+;     初始化Flash
+;*********************************************************
+INIT_EXFLASH   bis.b   #0x1B,&FLL_CTL1    ;
+               and.b   #0x80,&P6DIR       ;si,so,wp,reset,rd_Busy,sck,cs 输入模式
+               and.b   #0x80,&P6SEL       ;  
+               bis.b   #0x63,&P6DIR       ; wp,rset sck ,cs =1
+               bis.b   #0x63,&P6OUT       ; wp,rset ,sck cs =1
+               ret     
+;**************************************************************
+;  发送“1”
+;**************************************************************
+SEND_ONE      bis.b   #0x10,&P6OUT       ; si = 1
+              bis.b   #0x20,&P6OUT       ; sck = 1
+              ret     
+;**************************************************************  
+;  发送“0”
+;**************************************************************
+SEND_ZERO    bic.b   #0x10,&P6OUT        ; si=0
+             bis.b   #0x20,&P6OUT        ; sck =1 
+             ret                         ;
+;****************************************************************
+;  写一个Byte
+;****************************************************************
+WRITEDATA    push.w  R10                 ;
+             push.w  R11                 ; 保存堆栈
+             mov.b   #0x80,R10           ; 
+             clr.b   R11                 ; 计数器
+WRITEBIT     cmp.b   #0x8,R11            ; 是否写完八位
+             jge      WSET               ; 
+             bic.b   #0x20,&P6OUT        ; 
+             mov.b   &write_Buf,R14      ; r14＝write_buf
+             and.b   R10,R14             ; 
+             tst.b   R14                 ; 测试R10指定位是0 还是1
+             jne     ONE                 ; 
+ZERO         call    #SEND_ZERO          ; 发送0
+             jmp     DIV_1               ;
+ONE          call    #SEND_ONE           ; 发送1
+DIV_1        mov.b   #0,R12              ;
+             inc.b   R12                 ;做一个简单操作，使进位为0
+             mov.b   R10,R12             ;
+             rrc.b   R12                 ;
+             mov.b   R12,R10             ;
+             inc.b   R11                 ; 计数器加1
+             jmp     WRITEBIT            ;
+WSET         pop.w   R11                 ;
+             pop.w   R10                 ; 恢复堆栈
+             ret                         ;
+;***************************************************************    
+;     停止操作
+;****************************************************************
+OP_STOP      bis.b   #0x40,&P6OUT       ; cs＝1
+             ret                        ;
+;*****************************************************************    
+;       为对AT45DB041做好准备工作
+;*******************************************************************
+OP_START    bis.b   #0x40,&P6DIR         ; 
+            bic.b   #0x40,&P6OUT         ; cs＝0
+            call    #FLASH_DELAY         ; 延迟
+            and.b   #0xCF,&P6DIR         ; reset
+            bis.b   #0x10,&P6DIR         ; si=1
+            bis.b   #0x20,&P6DIR         ; sck=1
+            bis.b   #0x20,&P6OUT         ;
+            jmp     FLASH_DELAY          ; 延迟
+;*************************************************     
+;     准备开始读操作
+;*************************************************
+OPR_START   bic.b   #0x8,&P6DIR         ; so=0
+            bis.b   #0x20,&P6DIR        ; sck=1
+            jmp     FLASH_DELAY         ;
+;***************************************************
+;  对1个Byte
+;*********************************************
+READ_DATA     push.w  R10              ;
+              push.w  R11              ; 保存堆栈
+              mov.b   #0x80,R10        ; 用于取指定的位
+              clr.b   &read_Buf        ; 清空缓冲区
+              clr.b   R11              ; R11＝0
+READ_BIT      cmp.b   #0x8,R11         ; 是否取完8位
+              jc      RRET             ; 
+              bic.b   #0x20,&P6OUT     ; sck＝0
+              call    #FLASH_DELAY     ; 延迟
+              bis.b   #0x20,&P6OUT     ; sck＝1
+              bit.b   #0x8,&P6IN       ; 测试第四位
+              jnc     DIV_2            ; 
+              bis.b   R10,&read_Buf    ; 置1
+DIV_2         mov.b   #0,R12           ; 
+              inc.b   R12              ;  
+              mov.b   R10,R12          ; 
+              rrc.b   R12              ;  
+              mov.b   R12,R10          ; R10 ＝ R10/2
+              inc.b   R11              ; 计数器加1
+              jmp     READ_BIT         ; 
+RRET          pop.w   R11              ; 恢复堆栈
+              pop.w   R10              ;
+              ret                      ;
+;******************************************************
+;   移位
+;*******************************************************
+SHIFTLEFT    tst.b   R14               ;
+             jeq     SRET              ;
+SHIFTL       rla.w   R12               ;
+             dec.b   R14               ;
+             jne     SHIFTL            ;
+SRET         ret                       ;
+;****************************************************
+;   延迟
+;****************************************************
+FLASH_DELAY clr.b   R14                ; 计数器
+DELAY       cmp.b   #0x3,R14           ; 是否延迟时间到 
+            jc      DELAYRET           ;  
+            inc.b   R14                ; 计数器加1
+            jmp     DELAY              ; 
+DELAYRET    ret 
+;*******************************************************************
+FLASH_DELAY2  clr     R14             ;
+DELAY2        cmp     #0x1ff,R14      ;  是否延时到
+              jc      DELAYRET        ; 
+              inc     R14             ;  计数器加1
+              jmp     DELAY           ;
+DELAYRET2     ret 			
+;*****************************************************************
+NUM_LED       DB      0d7h          ;0
+              DB      14h           ;1
+              DB      0cdh          ;2
+              DB      5dh           ;3
+              DB      1Eh           ;4
+              DB      5bh           ;5
+              DB      0dbh          ;6
+              DB      15h           ;7
+              DB      0dfh          ;8
+              DB      05fh          ;9
+              DB      00H
+          
+;*********************************************************************** 
+;           中断向量        
+;*********************************************************************** 
+            ORG     0FFFEh          ; Reset 向量
+            DW      RESET           ; 
+            END

@@ -1,0 +1,79 @@
+Sunplus u'nSP Assembler - Ver. 1.10.0
+              Listing File Has Been Relocated
+                            	
+                            	// Resource Table
+                            	// Created by IDE, Do not modify this table
+                            	
+0000A688                    	.TEXT
+                            	.public _RES_Table;
+                            	.external __RES_2_48K_sa
+                            	.public _RES_2_48K_SA;
+                            	.external __RES_2_48K_ea;
+                            	.public _RES_2_48K_EA;
+                            	.external __RES_3_48K_sa
+                            	.public _RES_3_48K_SA;
+                            	.external __RES_3_48K_ea;
+                            	.public _RES_3_48K_EA;
+                            	.external __RES_5_48K_sa
+                            	.public _RES_5_48K_SA;
+                            	.external __RES_5_48K_ea;
+                            	.public _RES_5_48K_EA;
+                            	.external __RES_10_48K_sa
+                            	.public _RES_10_48K_SA;
+                            	.external __RES_10_48K_ea;
+                            	.public _RES_10_48K_EA;
+                            	.external __RES_11_48K_sa
+                            	.public _RES_11_48K_SA;
+                            	.external __RES_11_48K_ea;
+                            	.public _RES_11_48K_EA;
+                            	.external __RES_15_48K_sa
+                            	.public _RES_15_48K_SA;
+                            	.external __RES_15_48K_ea;
+                            	.public _RES_15_48K_EA;
+                            	.external __RES_S12_24K_sa
+                            	.public _RES_S12_24K_SA;
+                            	.external __RES_S12_24K_ea;
+                            	.public _RES_S12_24K_EA;
+                            	
+                            	
+                            	_RES_Table:
+                            	
+                            	_RES_2_48K_SA:
+0000A688 8D C6 00 00        		.DW offset __RES_2_48K_sa,seg __RES_2_48K_sa;
+                            	_RES_2_48K_EA:
+0000A68A D0 CA 00 00        		.DW offset __RES_2_48K_ea,seg __RES_2_48K_ea;
+                            	
+                            	_RES_3_48K_SA:
+0000A68C 01 CF 00 00        		.DW offset __RES_3_48K_sa,seg __RES_3_48K_sa;
+                            	_RES_3_48K_EA:
+0000A68E FC D2 00 00        		.DW offset __RES_3_48K_ea,seg __RES_3_48K_ea;
+                            	
+                            	_RES_5_48K_SA:
+0000A690 D0 CA 00 00        		.DW offset __RES_5_48K_sa,seg __RES_5_48K_sa;
+                            	_RES_5_48K_EA:
+0000A692 01 CF 00 00        		.DW offset __RES_5_48K_ea,seg __RES_5_48K_ea;
+                            	
+                            	_RES_10_48K_SA:
+0000A694 39 D9 00 00        		.DW offset __RES_10_48K_sa,seg __RES_10_48K_sa;
+                            	_RES_10_48K_EA:
+0000A696 1D DC 00 00        		.DW offset __RES_10_48K_ea,seg __RES_10_48K_ea;
+                            	
+                            	_RES_11_48K_SA:
+0000A698 31 D6 00 00        		.DW offset __RES_11_48K_sa,seg __RES_11_48K_sa;
+                            	_RES_11_48K_EA:
+0000A69A 39 D9 00 00        		.DW offset __RES_11_48K_ea,seg __RES_11_48K_ea;
+                            	
+                            	_RES_15_48K_SA:
+0000A69C FC D2 00 00        		.DW offset __RES_15_48K_sa,seg __RES_15_48K_sa;
+                            	_RES_15_48K_EA:
+0000A69E 31 D6 00 00        		.DW offset __RES_15_48K_ea,seg __RES_15_48K_ea;
+                            	
+                            	_RES_S12_24K_SA:
+0000A6A0 12 C0 00 00        		.DW offset __RES_S12_24K_sa,seg __RES_S12_24K_sa;
+                            	_RES_S12_24K_EA:
+0000A6A2 8D C6 00 00        		.DW offset __RES_S12_24K_ea,seg __RES_S12_24K_ea;
+                            	
+                            	
+                            	// End Table
+0 error(s), 0 warning(s).
+

@@ -1,0 +1,150 @@
+Friday, July 11, 09:30:54, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             80D3         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop                                          80EF         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+__sn_loop2                                         80EE         "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"
+_RES_Table                                         0            "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\Resource.obj"
+_System_Initial                                    8224         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\System.obj"
+_Fir                                               8253         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\System.obj"
+_Timer_for_Record                                  10           "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\System.obj"
+_Timer_for_Play                                    17           "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\System.obj"
+_SP_SIOSendAWord                                   80F0         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\SP_SerialFlashV1.obj"
+_SP_SIOReadAWord                                   8136         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\SP_SerialFlashV1.obj"
+_SP_SIOMassErase                                   8168         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\SP_SerialFlashV1.obj"
+_Delay100uS                                        8197         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\SP_SerialFlashV1.obj"
+_DelayPT                                           819E         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\SP_SerialFlashV1.obj"
+_SP_SIOSectorErase                                 81A5         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\SP_SerialFlashV1.obj"
+_BREAK                                             8009         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_FIQ                                               8010         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_IRQ0                                              809B         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_IRQ1                                              80A2         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_IRQ2                                              80A9         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_IRQ3                                              80B0         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_IRQ4                                              80B7         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_IRQ5                                              80BE         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_IRQ6                                              80C5         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_IRQ7                                              80CC         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+_main                                              81C8         "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\main.obj"
+_g_ulAddr                                          1E           "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\main.obj"
+_g_Flag_Status                                     20           "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\main.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "E:\PROGRA~1\Sunplus\UNSPID~3\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            80D3                 80EF         1D     *
+* "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\System.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8224                 8263         40     *
+*    DATA                                          8282                 8291         10     *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         8264 (0)             8281 (1D)    1E     *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\SP_SerialFlashV1.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          80F0                 81C7         D8     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\ISR.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 80D2         CA     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\电子竞赛\竞赛光盘\典型应用篇\电子竞赛—数字化语音存储与回放\LineIN_Filter\LineIN_Filter\Debug\main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          81C8                 8223         5C     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1E                   20           3      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   1E           22                    *
+* "Ram"                             800                  21           7DF                   *
+* "First Bank Rom"                  7C00                 292          796E                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\LineIN_Record_DigitalFilter.S37
+Disk  Mapping Filename : .\Debug\LineIN_Record_DigitalFilter.map
+Symbol  Table FileName : .\Debug\LineIN_Record_DigitalFilter.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

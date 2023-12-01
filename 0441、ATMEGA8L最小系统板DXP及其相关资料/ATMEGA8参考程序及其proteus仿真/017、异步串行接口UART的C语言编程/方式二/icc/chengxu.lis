@@ -1,0 +1,317 @@
+                        .module chengxu.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式二\icc\chengxu.c
+ 0000                   .dbfunc e Uart_Init _Uart_Init fV
+                        .even
+ 0000           _Uart_Init::
+ 0000                   .dbline -1
+ 0000                   .dbline 7
+ 0000           ; #include <iom8v.h>
+ 0000           ; #include <macros.h>
+ 0000           ; /********************************************************************
+ 0000           ;                       串口初始化子程序
+ 0000           ; *********************************************************************/
+ 0000           ; void Uart_Init(void)
+ 0000           ; {
+ 0000                   .dbline 8
+ 0000           ;     UCSRB  =  0x00;     //disable while setting baud rate
+ 0000 2224              clr R2
+ 0002 2AB8              out 0xa,R2
+ 0004                   .dbline 9
+ 0004           ;     UCSRA  =  0x00;     //Bit1为1则倍速发送
+ 0004 2BB8              out 0xb,R2
+ 0006                   .dbline 10
+ 0006           ;     UCSRC  =  0x86;  
+ 0006 86E8              ldi R24,134
+ 0008 80BD              out 0x20,R24
+ 000A                   .dbline 11
+ 000A           ;     UBRRL  =  0x33;     //波特率：9600 Bps
+ 000A 83E3              ldi R24,51
+ 000C 89B9              out 0x9,R24
+ 000E                   .dbline 12
+ 000E           ;     UBRRH  =  0x00;     //误差率：0.156%
+ 000E 20BC              out 0x20,R2
+ 0010                   .dbline 13
+ 0010           ;     UCSRB  =  0x18;  
+ 0010 88E1              ldi R24,24
+ 0012 8AB9              out 0xa,R24
+ 0014                   .dbline -2
+ 0014           L1:
+ 0014                   .dbline 0 ; func end
+ 0014 0895              ret
+ 0016                   .dbend
+ 0016                   .dbfunc e Getchar _Getchar fc
+                        .even
+ 0016           _Getchar::
+ 0016                   .dbline -1
+ 0016                   .dbline 19
+ 0016           ; }
+ 0016           ; /********************************************************************
+ 0016           ;                       串口接收字节子程序
+ 0016           ; *********************************************************************/
+ 0016           ; unsigned char Getchar(void)
+ 0016           ; {
+ 0016           L3:
+ 0016                   .dbline 20
+ 0016           L4:
+ 0016                   .dbline 20
+ 0016           ;    while(!(UCSRA& (1<<RXC)));
+ 0016 5F9B              sbis 0xb,7
+ 0018 FECF              rjmp L3
+ 001A                   .dbline 21
+ 001A           ;    return UDR;
+ 001A 0CB1              in R16,0xc
+ 001C                   .dbline -2
+ 001C           L2:
+ 001C                   .dbline 0 ; func end
+ 001C 0895              ret
+ 001E                   .dbend
+ 001E                   .dbfunc e Putchar _Putchar fV
+ 001E           ;              c -> R16
+                        .even
+ 001E           _Putchar::
+ 001E                   .dbline -1
+ 001E                   .dbline 27
+ 001E           ; }
+ 001E           ; /********************************************************************
+ 001E           ;                      串口发送字节子程序
+ 001E           ; *********************************************************************/
+ 001E           ; void Putchar(unsigned char c)
+ 001E           ; {
+ 001E           L7:
+ 001E                   .dbline 28
+ 001E           L8:
+ 001E                   .dbline 28
+ 001E           ;    while (!(UCSRA&(1<<UDRE)));
+ 001E 5D9B              sbis 0xb,5
+ 0020 FECF              rjmp L7
+ 0022                   .dbline 29
+ 0022           ;    UDR=c;
+ 0022 0CB9              out 0xc,R16
+ 0024                   .dbline -2
+ 0024           L6:
+ 0024                   .dbline 0 ; func end
+ 0024 0895              ret
+ 0026                   .dbsym r c 16 c
+ 0026                   .dbend
+ 0026                   .dbfunc e Putstr _Putstr fV
+ 0026           ;              s -> R20,R21
+                        .even
+ 0026           _Putstr::
+ 0026 0E940000          xcall push_gset1
+ 002A A801              movw R20,R16
+ 002C                   .dbline -1
+ 002C                   .dbline 35
+ 002C           ; }
+ 002C           ; /********************************************************************
+ 002C           ;                      串口发送字符串子程序
+ 002C           ; *********************************************************************/
+ 002C           ; void Putstr(char *s)
+ 002C           ; {
+ 002C 05C0              xjmp L12
+ 002E           L11:
+ 002E                   .dbline 37
+ 002E                   .dbline 38
+ 002E FA01              movw R30,R20
+ 0030 0081              ldd R16,z+0
+ 0032 F5DF              xcall _Putchar
+ 0034                   .dbline 39
+ 0034 4F5F              subi R20,255  ; offset = 1
+ 0036 5F4F              sbci R21,255
+ 0038                   .dbline 40
+ 0038           L12:
+ 0038                   .dbline 36
+ 0038           ;    while (*s)
+ 0038 FA01              movw R30,R20
+ 003A 2080              ldd R2,z+0
+ 003C 2220              tst R2
+ 003E B9F7              brne L11
+ 0040                   .dbline -2
+ 0040           L10:
+ 0040 0E940000          xcall pop_gset1
+ 0044                   .dbline 0 ; func end
+ 0044 0895              ret
+ 0046                   .dbsym r s 20 pc
+ 0046                   .dbend
+ 0046                   .dbfunc e Puts _Puts fV
+ 0046           ;              s -> R20,R21
+                        .even
+ 0046           _Puts::
+ 0046 0E940000          xcall push_gset1
+ 004A A801              movw R20,R16
+ 004C                   .dbline -1
+ 004C                   .dbline 46
+ 004C           ;    {
+ 004C           ;       Putchar(*s);
+ 004C           ;       s++;
+ 004C           ;    }
+ 004C           ; }
+ 004C           ; /********************************************************************
+ 004C           ;                      串口发送字符串子程序(带有换行符)
+ 004C           ; *********************************************************************/
+ 004C           ; void Puts(char *s)
+ 004C           ; {
+ 004C 05C0              xjmp L16
+ 004E           L15:
+ 004E                   .dbline 48
+ 004E                   .dbline 49
+ 004E FA01              movw R30,R20
+ 0050 0081              ldd R16,z+0
+ 0052 E5DF              xcall _Putchar
+ 0054                   .dbline 50
+ 0054 4F5F              subi R20,255  ; offset = 1
+ 0056 5F4F              sbci R21,255
+ 0058                   .dbline 51
+ 0058           L16:
+ 0058                   .dbline 47
+ 0058           ;    while (*s)
+ 0058 FA01              movw R30,R20
+ 005A 2080              ldd R2,z+0
+ 005C 2220              tst R2
+ 005E B9F7              brne L15
+ 0060                   .dbline 52
+ 0060           ;    {
+ 0060           ;       Putchar(*s);
+ 0060           ;       s++;
+ 0060           ;    }
+ 0060           ;    Putchar(0x0a);   //回车换行
+ 0060 0AE0              ldi R16,10
+ 0062 DDDF              xcall _Putchar
+ 0064                   .dbline 53
+ 0064           ;    Putchar(0x0d);
+ 0064 0DE0              ldi R16,13
+ 0066 DBDF              xcall _Putchar
+ 0068                   .dbline -2
+ 0068           L14:
+ 0068 0E940000          xcall pop_gset1
+ 006C                   .dbline 0 ; func end
+ 006C 0895              ret
+ 006E                   .dbsym r s 20 pc
+ 006E                   .dbend
+ 006E                   .dbfunc e main _main fV
+ 006E           ;              i -> R20
+                        .even
+ 006E           _main::
+ 006E                   .dbline -1
+ 006E                   .dbline 59
+ 006E           ; }
+ 006E           ; /********************************************************************
+ 006E           ;                             主函数
+ 006E           ; *********************************************************************/
+ 006E           ; void main(void)
+ 006E           ; {
+ 006E                   .dbline 60
+ 006E           ;    unsigned char i=0;
+ 006E 4427              clr R20
+ 0070                   .dbline 62
+ 0070           ; 
+ 0070           ;    Uart_Init();
+ 0070 C7DF              xcall _Uart_Init
+ 0072                   .dbline 64
+ 0072           ; 
+ 0072           ;    Puts("zhang xin chun ");
+ 0072 00E0              ldi R16,<L19
+ 0074 10E0              ldi R17,>L19
+ 0076 E7DF              xcall _Puts
+ 0078                   .dbline 65
+ 0078           ;    Puts("Http://www.ourhc.cn");
+ 0078 00E0              ldi R16,<L20
+ 007A 10E0              ldi R17,>L20
+ 007C E4DF              xcall _Puts
+ 007E                   .dbline 66
+ 007E           ;    Puts("ATMega16 UART TEST");
+ 007E 00E0              ldi R16,<L21
+ 0080 10E0              ldi R17,>L21
+ 0082 E1DF              xcall _Puts
+ 0084                   .dbline 67
+ 0084           ;    Putchar(0x0a);
+ 0084 0AE0              ldi R16,10
+ 0086 CBDF              xcall _Putchar
+ 0088                   .dbline 68
+ 0088           ;    Putchar(0x0d);
+ 0088 0DE0              ldi R16,13
+ 008A C9DF              xcall _Putchar
+ 008C 12C0              xjmp L23
+ 008E           L22:
+ 008E                   .dbline 70
+ 008E           ;    while(1)
+ 008E           ;    {
+ 008E                   .dbline 71
+ 008E           ;       i=Getchar();
+ 008E C3DF              xcall _Getchar
+ 0090 402F              mov R20,R16
+ 0092                   .dbline 72
+ 0092           ;       if (i!=0)    //发送0x0F开始测试
+ 0092 0023              tst R16
+ 0094 71F0              breq L25
+ 0096                   .dbline 73
+ 0096           ;       {
+ 0096                   .dbline 74
+ 0096           ;          i=0;
+ 0096 4427              clr R20
+ 0098                   .dbline 75
+ 0098           ;          Puts("AVR-ARM RS232 TEST CODE");
+ 0098 00E0              ldi R16,<L27
+ 009A 10E0              ldi R17,>L27
+ 009C D4DF              xcall _Puts
+ 009E                   .dbline 76
+ 009E           ;          Puts("Http://www.ourhc.cn");
+ 009E 00E0              ldi R16,<L20
+ 00A0 10E0              ldi R17,>L20
+ 00A2 D1DF              xcall _Puts
+ 00A4                   .dbline 77
+ 00A4           ;          Puts("ATMega16 UART TEST");
+ 00A4 00E0              ldi R16,<L21
+ 00A6 10E0              ldi R17,>L21
+ 00A8 CEDF              xcall _Puts
+ 00AA                   .dbline 78
+ 00AA           ;          Putchar(0x0a);
+ 00AA 0AE0              ldi R16,10
+ 00AC B8DF              xcall _Putchar
+ 00AE                   .dbline 79
+ 00AE           ;          Putchar(0x0d);
+ 00AE 0DE0              ldi R16,13
+ 00B0 B6DF              xcall _Putchar
+ 00B2                   .dbline 80
+ 00B2           ;       }
+ 00B2           L25:
+ 00B2                   .dbline 81
+ 00B2           L23:
+ 00B2                   .dbline 69
+ 00B2 EDCF              xjmp L22
+ 00B4           X0:
+ 00B4                   .dbline -2
+ 00B4           L18:
+ 00B4                   .dbline 0 ; func end
+ 00B4 0895              ret
+ 00B6                   .dbsym r i 20 c
+ 00B6                   .dbend
+                        .area data(ram, con, rel)
+ 0000                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式二\icc\chengxu.c
+ 0000           L27:
+ 0000                   .blkb 24
+                        .area idata
+ 0000 4156522D41524D205253323332205445  .byte 'A,'V,'R,45,'A,'R,'M,32,'R,'S,50,51,50,32,'T,'E
+ 0010 535420434F444500  .byte 'S,'T,32,'C,'O,'D,'E,0
+                        .area data(ram, con, rel)
+ 0018                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式二\icc\chengxu.c
+ 0018           L21:
+ 0018                   .blkb 19
+                        .area idata
+ 0018 41544D65676131362055415254205445  .byte 'A,'T,'M,'e,'g,'a,49,54,32,'U,'A,'R,'T,32,'T,'E
+ 0028 535400            .byte 'S,'T,0
+                        .area data(ram, con, rel)
+ 002B                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式二\icc\chengxu.c
+ 002B           L20:
+ 002B                   .blkb 20
+                        .area idata
+ 002B 487474703A2F2F7777772E6F75726863  .byte 'H,'t,'t,'p,58,47,47,'w,'w,'w,46,'o,'u,'r,'h,'c
+ 003B 2E636E00          .byte 46,'c,'n,0
+                        .area data(ram, con, rel)
+ 003F                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式二\icc\chengxu.c
+ 003F           L19:
+ 003F                   .blkb 16
+                        .area idata
+ 003F 7A68616E672078696E206368756E2000  .byte 'z,'h,'a,'n,'g,32,'x,'i,'n,32,'c,'h,'u,'n,32,0
+                        .area data(ram, con, rel)
+ 004F                   .dbfile D:\整理\个人总结的M8程序\017、异步串行接口UART的C语言编程\方式二\icc\chengxu.c

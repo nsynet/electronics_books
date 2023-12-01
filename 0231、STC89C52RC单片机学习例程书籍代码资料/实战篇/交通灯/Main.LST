@@ -1,0 +1,447 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:26:21 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          
+   8          /***************************************************
+   9           *          类型定义，方便代码移植
+  10           ***************************************************/
+  11          typedef unsigned char   UINT8;
+  12          typedef unsigned int    UINT16;
+  13          typedef unsigned long   UINT32;  
+  14          typedef char               INT8;
+  15          typedef int                INT16;
+  16          typedef long               INT32;
+  17          
+  18          /***************************************************
+  19           *          大量宏定义，便于代码移植和阅读
+  20           ***************************************************/
+  21          #define TIMER0_INITIAL_VALUE 5000
+  22          
+  23          #define HIGH               1
+  24          #define LOW                0
+  25          
+  26          #define ON                 1
+  27          #define OFF                0
+  28          
+  29          #define SEG_PORT           P0
+  30          
+  31          /**************************************
+  32          74LS164操作宏函数
+  33           **************************************/
+  34          
+  35          #define LS164_DATA(x)      {if((x))P0_4=1;else P0_4=0;}         
+  36          #define LS164_CLK(x)       {if((x))P0_5=1;else P0_5=0;} 
+  37          //-----------------------------------------------------
+  38          
+  39          /**************************************
+  40          *                交通灯操作宏函数
+  41          *NORTH：北方向
+  42          *SOUTH：南方向
+  43           **************************************/
+  44          #define NORTH_R_LIGHT(x)   {if((x))P2_0=0;else P2_0=1;}
+  45          #define NORTH_Y_LIGHT(x)   {if((x))P2_1=0;else P2_1=1;}
+  46          #define NORTH_G_LIGHT(x)   {if((x))P2_2=0;else P2_2=1;}
+  47          
+  48          #define SOUTH_R_LIGHT(x)   {if((x))P2_3=0;else P2_3=1;}
+  49          #define SOUTH_Y_LIGHT(x)   {if((x))P2_4=0;else P2_4=1;}
+  50          #define SOUTH_G_LIGHT(x)   {if((x))P2_5=0;else P2_5=1;}
+  51          //-----------------------------------------------------
+  52          
+  53          #define UART_MARKER         0xEE    //数据帧首部标识
+  54          
+  55          UINT8  Timer0IRQEvent=0;            //T/C0中断事件
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:26:21 PAGE 2   
+
+  56          UINT8  Time1SecEvent=0;             //定时1秒事件
+  57          UINT8  Time500MsEvent=0;            //定时500毫秒事件
+  58          UINT8  TimeCount=0;                  //计数器
+  59          
+  60          UINT8  SegCurPosition=0;            //数码管
+  61          
+  62          UINT8  LightOrgCount[4]={15,5,15,5};//交通灯计数初始值
+  63          UINT8  LightCurCount[4]={15,5,15,5};//交通灯计数当前值
+  64          
+  65          UINT8  TrafficLightStatus=0;          //当前交通灯状态
+  66          
+  67          //共阳极数码管字型码，并且保存在程序存储区，节省RAM资源
+  68          code UINT8  SegCode[10]={0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+  69          //共阳极数码管片选数组，并且保存在程序存储区，节省RAM资源
+  70          code UINT8  SegSelTbl[4]={0x07,0x0b,0x0d,0x0e};
+  71          UINT8  SegBuf[4]   ={0};         //数码管显示缓冲区
+  72          
+  73          /**************************************
+  74          *              交通灯数据帧格式
+  75          **************************************/
+  76          typedef struct _LIGHT_VAL
+  77          {
+  78              UINT8 Head;   
+  79              UINT8 val[4]; 
+  80          }LIGHT_VAL;
+  81          
+  82          typedef union _LIGHT_VAL_EX
+  83          {
+  84               LIGHT_VAL lv;
+  85               UINT8    p[5]; 
+  86          }LIGHT_VAL_EX;
+  87          //-----------------------------------------------------
+  88          
+  89          /****************************************************
+  90          * 函数名称: LS164Send
+  91          * 输    入: byte 要发送的字节
+  92          * 输    出: 无
+  93          * 功能描述: 74LS164发送数据函数
+  94          *****************************************************/
+  95          void LS164Send(UINT8 byte)
+  96          {
+  97   1         UINT8 j;
+  98   1      
+  99   1         for(j=0;j<=7;j++)
+ 100   1         {
+ 101   2      
+ 102   2           if(byte&(1<<(7-j)))
+ 103   2           {
+ 104   3                  LS164_DATA(HIGH);
+ 105   3               }
+ 106   2               else
+ 107   2               {
+ 108   3                  LS164_DATA(LOW);
+ 109   3               }
+ 110   2      
+ 111   2           LS164_CLK(LOW); 
+ 112   2           LS164_CLK(HIGH);
+ 113   2         }
+ 114   1      }
+ 115          /****************************************************
+ 116          * 函数名称: SegRefreshDisplayBuf
+ 117          * 输    入: s1 计数值
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:26:21 PAGE 3   
+
+ 118          * 输    出: 无
+ 119          * 功能描述: 刷新显示缓存
+ 120          *****************************************************/
+ 121          void SegRefreshDisplayBuf(UINT8 s1)
+ 122          {
+ 123   1              SegBuf[0] = s1%10;
+ 124   1              SegBuf[1] = s1/10;
+ 125   1              SegBuf[2] = s1%10;
+ 126   1              SegBuf[3] = s1/10;
+ 127   1      
+ 128   1      }
+ 129          /****************************************************
+ 130          * 函数名称: SegDisplay
+ 131          * 输    入: 无
+ 132          * 输    出: 无
+ 133          * 功能描述: 显示数据
+ 134          *****************************************************/
+ 135          void SegDisplay(void)
+ 136          {
+ 137   1         unsigned char  t;
+ 138   1      
+ 139   1         SEG_PORT = 0x0F;  //熄灭所有数码管
+ 140   1         
+ 141   1         t = SegCode[SegBuf[SegCurPosition]];   //确定当前的字型码
+ 142   1      
+ 143   1         LS164Send(t); 
+ 144   1      
+ 145   1         SEG_PORT = SegSelTbl[SegCurPosition];//选中一个数码管来显示  
+ 146   1                      
+ 147   1         if(++SegCurPosition>=4) 
+ 148   1         {                            
+ 149   2                  SegCurPosition=0;
+ 150   2         }              
+ 151   1      }
+ 152          /****************************************************
+ 153          * 函数名称: TimerInit
+ 154          * 输    入: 无
+ 155          * 输    出: 无
+ 156          * 功能描述: T/C初始化
+ 157          *****************************************************/
+ 158          void TimerInit(void)
+ 159          { 
+ 160   1         TH0 = (65536-TIMER0_INITIAL_VALUE)/256;
+ 161   1         TL0 = (65536-TIMER0_INITIAL_VALUE)%256; //定时5MS
+ 162   1         TMOD = 0x01; 
+ 163   1        
+ 164   1      }
+ 165          /****************************************************
+ 166          * 函数名称: Timer0Start
+ 167          * 输    入: 无
+ 168          * 输    出: 无
+ 169          * 功能描述: T/C0启用
+ 170          *****************************************************/
+ 171          void Timer0Start(void)
+ 172          {
+ 173   1            TR0 = 1;           
+ 174   1               ET0 = 1;       
+ 175   1      }
+ 176          /****************************************************
+ 177          * 函数名称: PortInit
+ 178          * 输    入: 无
+ 179          * 输    出: 无
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:26:21 PAGE 4   
+
+ 180          * 功能描述: 单片机I/O口初始化
+ 181          *****************************************************/
+ 182          void PortInit(void)
+ 183          {
+ 184   1               P0=P1=P2=P3=0xFF;
+ 185   1      }
+ 186          /****************************************************
+ 187          * 函数名称: UartInit
+ 188          * 输    入: 无
+ 189          * 输    出: 无
+ 190          * 功能描述: 串口初始化
+ 191          *****************************************************/
+ 192          void UartInit(void)
+ 193          {
+ 194   1              SCON=0x40;    //10位异步收发
+ 195   1              T2CON=0x34;   //使用T/C2为波特率发生器
+ 196   1              RCAP2L=0xD9; //9600波特率
+ 197   1              RCAP2H=0xFF;
+ 198   1              REN=1;        //允许串口接收
+ 199   1           ES=1;         //允许串口中断
+ 200   1      }
+ 201          /****************************************************
+ 202          * 函数名称: UartSendByte
+ 203          * 输    入: byte 单个字节
+ 204          * 输    出: 无
+ 205          * 功能描述: 串口 发送单个字节
+ 206          *****************************************************/
+ 207          void UartSendByte(UINT8 byte)
+ 208          {
+ 209   1              SBUF=byte;
+ 210   1           while(TI==0);
+ 211   1           TI=0;
+ 212   1      }
+ 213          /****************************************************
+ 214          * 函数名称: UartPrintfString
+ 215          * 输    入: str 字符串
+ 216          * 输    出: 无
+ 217          * 功能描述: 串口 打印字符串
+ 218          *****************************************************/
+ 219          void UartPrintfString(INT8 *str)
+ 220          {
+ 221   1              while(str && *str)
+ 222   1          {
+ 223   2                      UartSendByte(*str++);
+ 224   2          }
+ 225   1      }
+ 226          /****************************************************
+ 227          * 函数名称: main
+ 228          * 输    入: 无
+ 229          * 输    出: 无
+ 230          * 功能描述: 函数主体
+ 231          *****************************************************/
+ 232          void main(void)
+ 233          {
+ 234   1          UINT8 i=0;
+ 235   1          PortInit();
+ 236   1          TimerInit();
+ 237   1          Timer0Start();
+ 238   1          UartInit();
+ 239   1          SegRefreshDisplayBuf (LightCurCount[0]);
+ 240   1          EA=1;
+ 241   1          NORTH_R_LIGHT(ON);
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:26:21 PAGE 5   
+
+ 242   1          SOUTH_G_LIGHT(ON);
+ 243   1      
+ 244   1          while(1)
+ 245   1          {
+ 246   2                      if(Timer0IRQEvent)//T/C0中断事件
+ 247   2                      { 
+ 248   3                  Timer0IRQEvent=0;
+ 249   3                  TimeCount++;
+ 250   3        
+ 251   3                  if(TimeCount>=200)//计数到1秒
+ 252   3                  {
+ 253   4                                TimeCount=0;
+ 254   4                                      
+ 255   4                                if(LightCurCount[0])
+ 256   4                      {
+ 257   5                          TrafficLightStatus=0;//状态0
+ 258   5                      }
+ 259   4                                else if(LightCurCount[1])
+ 260   4                      {
+ 261   5                          TrafficLightStatus=1; //状态1
+ 262   5                      }
+ 263   4                                else if(LightCurCount[2])
+ 264   4                      {   
+ 265   5                          TrafficLightStatus=2; //状态2
+ 266   5                      }
+ 267   4                      else if(LightCurCount[3])
+ 268   4                      {
+ 269   5                                        TrafficLightStatus=3; //状态3
+ 270   5                      }
+ 271   4                      else //所有计数值为0时，交通灯当前计数值重载初值
+ 272   4                      {
+ 273   5                         for(i=0;i<4;i++)
+ 274   5                         {
+ 275   6                           LightCurCount[i]=LightOrgCount[i];
+ 276   6                         }
+ 277   5                         TrafficLightStatus=0;
+ 278   5                      }       
+ 279   4                              
+ 280   4                                      switch(TrafficLightStatus)//根据不同的交通灯状态进行相对应的亮灯操作
+ 281   4                                      {
+ 282   5                                        case 0:
+ 283   5                          {
+ 284   6                              NORTH_R_LIGHT(ON);
+ 285   6                              SOUTH_R_LIGHT(OFF);
+ 286   6                              NORTH_G_LIGHT(OFF);
+ 287   6                              SOUTH_G_LIGHT(ON);
+ 288   6                                                  NORTH_Y_LIGHT(OFF);
+ 289   6                              SOUTH_Y_LIGHT(OFF);
+ 290   6                          }
+ 291   5                          break;
+ 292   5                          
+ 293   5                          case 1:
+ 294   5                          {
+ 295   6                              if(LightCurCount[1]%2)//状态切换，闪烁操作
+ 296   6                              {
+ 297   7                                                     NORTH_R_LIGHT(ON);
+ 298   7                                 SOUTH_G_LIGHT(ON);
+ 299   7                              }
+ 300   6                              else
+ 301   6                              {
+ 302   7                                                     NORTH_R_LIGHT(OFF);
+ 303   7                                 SOUTH_G_LIGHT(OFF);          
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:26:21 PAGE 6   
+
+ 304   7                              }
+ 305   6      
+ 306   6                              NORTH_Y_LIGHT(ON);
+ 307   6                              SOUTH_Y_LIGHT(ON);
+ 308   6      
+ 309   6                          }
+ 310   5                          break;
+ 311   5      
+ 312   5                          case 2:
+ 313   5                          {
+ 314   6                              NORTH_R_LIGHT(OFF);
+ 315   6                              SOUTH_R_LIGHT(ON);
+ 316   6                              NORTH_G_LIGHT(ON);
+ 317   6                              SOUTH_G_LIGHT(OFF);
+ 318   6                              NORTH_Y_LIGHT(OFF);
+ 319   6                              SOUTH_Y_LIGHT(OFF);
+ 320   6                          }
+ 321   5                          break;
+ 322   5                             
+ 323   5                          case 3:
+ 324   5                          {
+ 325   6                              if(LightCurCount[3]%2) //状态切换，闪烁操作
+ 326   6                              {
+ 327   7                                 NORTH_G_LIGHT(ON);
+ 328   7                                 SOUTH_R_LIGHT(ON);
+ 329   7                              }
+ 330   6                              else
+ 331   6                              {
+ 332   7                                 NORTH_G_LIGHT(OFF);
+ 333   7                                 SOUTH_R_LIGHT(OFF);          
+ 334   7                              }
+ 335   6      
+ 336   6                              NORTH_Y_LIGHT(ON);
+ 337   6                              SOUTH_Y_LIGHT(ON);
+ 338   6      
+ 339   6                          }
+ 340   5                          break;  
+ 341   5                          
+ 342   5                         default:break;                  
+ 343   5                      }
+ 344   4      
+ 345   4                   SegRefreshDisplayBuf (LightCurCount[TrafficLightStatus]);
+ 346   4                   LightCurCount[TrafficLightStatus]--;//按照不同的状态，进行当前计数值自减
+ 347   4                  }
+ 348   3                  
+ 349   3                              SegDisplay();//显示数码管数值
+ 350   3              }
+ 351   2              
+ 352   2                      
+ 353   2      
+ 354   2          }
+ 355   1      
+ 356   1      }
+ 357          /****************************************************
+ 358          * 函数名称: UartIRQ
+ 359          * 输    入: 无
+ 360          * 输    出: 无
+ 361          * 功能描述: 串口 中断服务函数
+ 362          *****************************************************/
+ 363          void UartIRQ(void)interrupt 4 
+ 364          {
+ 365   1        static UINT8 cnt=0;              //接收数据计数器
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:26:21 PAGE 7   
+
+ 366   1        static LIGHT_VAL_EX LightValEx;//定义交通灯数据帧类型变量，并且为静态变量
+ 367   1      
+ 368   1        if(RI)  
+ 369   1        {  
+ 370   2           RI=0;
+ 371   2               LightValEx.p[cnt++]=SBUF;//获取数据
+ 372   2      
+ 373   2           if(LightValEx.lv.Head == UART_MARKER)//检测帧头部是否匹配
+ 374   2           {                                                  
+ 375   3                  if(cnt>=5)
+ 376   3              {
+ 377   4                        for(cnt=0;cnt<4;cnt++)//当接收正确接收字节数为5字节时，进行数码管初值、
+ 378   4                                                //计数值重新赋值
+ 379   4                  {
+ 380   5                                LightOrgCount[cnt]=LightValEx.lv.val[cnt]; 
+ 381   5                      LightCurCount[cnt]=LightValEx.lv.val[cnt];
+ 382   5                     
+ 383   5                  }
+ 384   4      
+ 385   4                  cnt=0;
+ 386   4                  UartPrintfString("设置交通灯完成\r\n");//设置成功后，打印信息
+ 387   4              }
+ 388   3           }
+ 389   2           else
+ 390   2           {
+ 391   3                      cnt=0;
+ 392   3           }
+ 393   2        
+ 394   2        }
+ 395   1      
+ 396   1      }
+ 397          /****************************************************
+ 398          * 函数名称: Timer0IRQ
+ 399          * 输    入: 无
+ 400          * 输    出: 无
+ 401          * 功能描述: T/C0 中断服务函数
+ 402          *****************************************************/
+ 403          void Timer0IRQ(void) interrupt 1 
+ 404          {
+ 405   1              
+ 406   1              TH0 = (65536-TIMER0_INITIAL_VALUE)/256;//T/C初值重载
+ 407   1              TL0 = (65536-TIMER0_INITIAL_VALUE)%256; 
+ 408   1              Timer0IRQEvent=1;
+ 409   1          
+ 410   1      
+ 411   1      }
+ 412          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    543    ----
+   CONSTANT SIZE    =     31    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     24       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

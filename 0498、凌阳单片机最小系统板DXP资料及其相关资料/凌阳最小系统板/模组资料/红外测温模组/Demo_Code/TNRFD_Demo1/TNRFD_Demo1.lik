@@ -1,0 +1,37 @@
+Version: 3.0
+Options: m37
+Obj: "F:\SPCE061A\IDE\startupcode\startupD.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo1\Debug\Resource.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo1\Debug\isr.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo1\Debug\TNRFDriver.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo1\Debug\main.obj"
+Obj: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo1\Debug\TNDriverUser.obj"
+Lib: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo1\CMacro1016.lib"
+Output: "E:\单片机整理\凌阳单片机\模组资料\红外测温模组\Demo_Code\TNRFD_Demo1\Debug\TNRFD_Demo1.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: IRAM in "main.obj" at 83CB  linkat 5 
+;Align: IRAM in "main.obj" with 0 
+;Locate: RAM in "TNRFDriver.obj" at 1 
+;Align: RAM in "TNRFDriver.obj" with 0 
+;Locate: CODE in "TNRFDriver.obj" at 8280 
+;Align: CODE in "TNRFDriver.obj" with 0 
+;Locate: CODE in "main.obj" at 82E4 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "TNDriverUser.obj" at 80FF 
+;Align: CODE in "TNDriverUser.obj" with 0 
+;Locate: CODE in "subf2" of "CMacro1016.lib"  at 83BF 
+;Align: CODE in "subf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "divf2" of "CMacro1016.lib"  at 81C0 
+;Align: CODE in "divf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "cvi2f2" of "CMacro1016.lib"  at 83A8 
+;Align: CODE in "cvi2f2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "addf2" of "CMacro1016.lib"  at 8030 
+;Align: CODE in "addf2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "cvi1f2" of "CMacro1016.lib"  at 832B 
+;Align: CODE in "cvi1f2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "lshiu2" of "CMacro1016.lib"  at 836C 
+;Align: CODE in "lshiu2" of "CMacro1016.lib"  with 0 
+;Locate: CODE in "rshu2" of "CMacro1016.lib"  at 838A 
+;Align: CODE in "rshu2" of "CMacro1016.lib"  with 0 
+;Locate: __sn_init_table at 8000 

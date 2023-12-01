@@ -1,0 +1,474 @@
+Saturday, July 12, 01:21:30, 2003
+
+                    Sunplus u'nSP Linker version 1.8.0 (enc)
+                    -------------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             80EC         "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"
+__sn_loop                                          8108         "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"
+__sn_loop2                                         8107         "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"
+_RES_Table                                         8009         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_9_72K_SA                                      8009         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_9_72K_EA                                      800B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_10_72K_SA                                     800D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_10_72K_EA                                     800F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_11_72K_SA                                     8011         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_11_72K_EA                                     8013         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_12_72K_SA                                     8015         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_12_72K_EA                                     8017         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_13_72K_SA                                     8019         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_13_72K_EA                                     801B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_14_72K_SA                                     801D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_14_72K_EA                                     801F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_15_72K_SA                                     8021         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_15_72K_EA                                     8023         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_16_72K_SA                                     8025         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_16_72K_EA                                     8027         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_17_72K_SA                                     8029         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_17_72K_EA                                     802B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_18_72K_SA                                     802D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_18_72K_EA                                     802F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_19_72K_SA                                     8031         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_19_72K_EA                                     8033         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_2_72K_SA                                      8035         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_2_72K_EA                                      8037         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_20_72K_SA                                     8039         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_20_72K_EA                                     803B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_21_72K_SA                                     803D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_21_72K_EA                                     803F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_22_72K_SA                                     8041         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_22_72K_EA                                     8043         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_3_72K_SA                                      8045         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_3_72K_EA                                      8047         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_4_72K_SA                                      8049         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_4_72K_EA                                      804B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_5_72K_SA                                      804D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_5_72K_EA                                      804F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_6_72K_SA                                      8051         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_6_72K_EA                                      8053         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_7_72K_SA                                      8055         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_7_72K_EA                                      8057         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_8_72K_SA                                      8059         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_8_72K_EA                                      805B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_1_72K_SA                                      805D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_RES_1_72K_EA                                      805F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+T_SACM_S480_SpeechTable                            8061         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+_g_uiKeyValue                                      1E8          "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+_uiTwoSecondTimeFlag                               1E9          "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+_ui2HzIntCounter                                   1EA          "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+_uiStartSampleFlag                                 1EB          "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+_main                                              8AD0         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+_F_SystemFlag_Initial                              8BE0         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+_sSysFlags                                         1A4          "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+_F_UART_Initial                                    8FBC         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\uart.obj"
+_F_UART_ReadByte                                   8FDF         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\uart.obj"
+_F_UART_SendCommand                                8FF5         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\uart.obj"
+_F_SPCE061A_Initial                                9002         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\System.obj"
+_F_Display_Command                                 9022         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\System.obj"
+_F_Led_Show                                        902C         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\System.obj"
+_F_Key_Scan                                        8E6D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Key.obj"
+_F_Get_KeyValue                                    8ED8         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Key.obj"
+F_SP_Send_PWM                                      8C17         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Send_DAC1                                     8C1A         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Send_DAC2                                     8C1D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  8C20         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Send_Out                                      8C20         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Get_ADC                                       8C25         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             8C28         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             8C2B         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             8C2E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             8C31         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                8C34         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               8C37         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             8C3A         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                8C3D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                8C40         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Write_INT_Status                              8C43         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Read_INT_Status                               8C46         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    8C7E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    8CA2         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    8CB4         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    8CD8         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_RampUpDAC1                                     8C7E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_RampDnDAC1                                     8CA2         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_RampUpDAC2                                     8CB4         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_RampDnDAC2                                     8CD8         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_Delay                                         8D43         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_InitQueue                                     8CF0         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_ReadQueue                                     8CFD         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_WriteQueue                                    8D0F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+F_SP_TestQueue                                     8D1D         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_Export                                         8C74         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_Import                                         8C69         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_Init_IOB                                       8C59         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_Init_IOA                                       8C49         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_SP_GetResource                                    8D35         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+R_InterruptStatus                                  1B2          "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+R_FIQTemp                                          1B3          "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+_FIQ                                               8077         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_BREAK                                             8095         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_IRQ0                                              809A         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_IRQ1                                              809F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_IRQ2                                              80A4         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_IRQ3                                              80A9         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_IRQ4                                              80AE         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_IRQ5                                              80B3         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_IRQ6                                              80CC         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_IRQ7                                              80CF         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+_F_UART_DataSample                                 8D44         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\UART_DataSample.obj"
+_F_Led_Show_Handle                                 8EDE         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\LedShow.obj"
+_F_Led_Show_NotReady                               8F3C         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\LedShow.obj"
+_F_SpeechPlayChannelData                           8F4E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\SpeechPlay.obj"
+_F_PlayRespond                                     8F93         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\SpeechPlay.obj"
+_F_KeyHandle                                       8DFB         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\KeyHandle.obj"
+__RES_9_72K_sa                                     AE9F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\9_72k.res"
+__RES_9_72K_ea                                     B118         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\9_72k.res"
+__RES_10_72K_sa                                    B598         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\10_72k.res"
+__RES_10_72K_ea                                    B68E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\10_72k.res"
+__RES_11_72K_sa                                    A941         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\11_72k.res"
+__RES_11_72K_ea                                    AC02         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\11_72k.res"
+__RES_12_72K_sa                                    B388         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\12_72k.res"
+__RES_12_72K_ea                                    B490         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\12_72k.res"
+__RES_13_72K_sa                                    BA42         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\13_72k.res"
+__RES_13_72K_ea                                    BB26         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\13_72k.res"
+__RES_14_72K_sa                                    BCC1         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\14_72k.res"
+__RES_14_72K_ea                                    BD81         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\14_72k.res"
+__RES_15_72K_sa                                    BD81         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\15_72k.res"
+__RES_15_72K_ea                                    BE41         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\15_72k.res"
+__RES_16_72K_sa                                    B95E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\16_72k.res"
+__RES_16_72K_ea                                    BA42         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\16_72k.res"
+__RES_17_72K_sa                                    B871         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\17_72k.res"
+__RES_17_72K_ea                                    B95E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\17_72k.res"
+__RES_18_72K_sa                                    B784         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\18_72k.res"
+__RES_18_72K_ea                                    B871         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\18_72k.res"
+__RES_19_72K_sa                                    B68E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\19_72k.res"
+__RES_19_72K_ea                                    B784         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\19_72k.res"
+__RES_2_72K_sa                                     A36E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\2_72k.res"
+__RES_2_72K_ea                                     A680         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\2_72k.res"
+__RES_20_72K_sa                                    BBF8         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\20_72k.res"
+__RES_20_72K_ea                                    BCC1         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\20_72k.res"
+__RES_21_72K_sa                                    B490         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\21_72k.res"
+__RES_21_72K_ea                                    B598         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\21_72k.res"
+__RES_22_72K_sa                                    BB26         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\22_72k.res"
+__RES_22_72K_ea                                    BBF8         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\22_72k.res"
+__RES_3_72K_sa                                     B118         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\3_72k.res"
+__RES_3_72K_ea                                     B388         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\3_72k.res"
+__RES_4_72K_sa                                     AC02         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\4_72k.res"
+__RES_4_72K_ea                                     AE9F         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\4_72k.res"
+__RES_5_72K_sa                                     A680         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\5_72k.res"
+__RES_5_72K_ea                                     A941         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\5_72k.res"
+__RES_6_72K_sa                                     9CE7         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\6_72k.res"
+__RES_6_72K_ea                                     A038         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\6_72k.res"
+__RES_7_72K_sa                                     A038         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\7_72k.res"
+__RES_7_72K_ea                                     A36E         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\7_72k.res"
+__RES_8_72K_sa                                     9891         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\8_72k.res"
+__RES_8_72K_ea                                     9CE7         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\8_72k.res"
+__RES_1_72K_sa                                     90DB         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\1_72k.res"
+__RES_1_72K_ea                                     9891         "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\1_72k.res"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "D:\PROGRA~1\Sunplus\UNSPID~2\IDE180\startupD.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp(TEXT)                            80EC                 8108         1D     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Resource.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8076         6E     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\main.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8AD0                 8C16         147    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          90D7 (1E8)           90DA (1EB)   4      *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1A4                  1A8          5      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\uart.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8FBC                 9001         46     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\System.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9002                 9040         3F     *
+*    DATA                                          BE41                 BE5A         1A     *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\Key.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8E6D                 8EDD         71     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          80D2                 80DF         E      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1A9                  1AC          4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\hardware.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8C17                 8D43         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          90A1 (1B2)           90D6 (1E7)   36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\ISR.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8077                 80D1         5B     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\UART_DataSample.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8D44                 8DFA         B7     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\LedShow.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8EDE                 8F4D         70     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\SpeechPlay.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8F4E                 8FBB         6E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\KeyHandle.obj"
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8DFB                 8E6C         72     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          80E0                 80EB         C      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    CTOR                                          ----                 ----         ----   *
+*    DTOR                                          ----                 ----         ----   *
+*    IM                                            ----                 ----         ----   *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\9_72k.res"
+*    __sn_section_RES_9_72K(DATA)                  AE9F                 B117         279    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\10_72k.res"
+*    __sn_section_RES_10_72K(DATA)                 B598                 B68D         F6     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\11_72k.res"
+*    __sn_section_RES_11_72K(DATA)                 A941                 AC01         2C1    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\12_72k.res"
+*    __sn_section_RES_12_72K(DATA)                 B388                 B48F         108    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\13_72k.res"
+*    __sn_section_RES_13_72K(DATA)                 BA42                 BB25         E4     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\14_72k.res"
+*    __sn_section_RES_14_72K(DATA)                 BCC1                 BD80         C0     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\15_72k.res"
+*    __sn_section_RES_15_72K(DATA)                 BD81                 BE40         C0     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\16_72k.res"
+*    __sn_section_RES_16_72K(DATA)                 B95E                 BA41         E4     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\17_72k.res"
+*    __sn_section_RES_17_72K(DATA)                 B871                 B95D         ED     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\18_72k.res"
+*    __sn_section_RES_18_72K(DATA)                 B784                 B870         ED     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\19_72k.res"
+*    __sn_section_RES_19_72K(DATA)                 B68E                 B783         F6     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\2_72k.res"
+*    __sn_section_RES_2_72K(DATA)                  A36E                 A67F         312    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\20_72k.res"
+*    __sn_section_RES_20_72K(DATA)                 BBF8                 BCC0         C9     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\21_72k.res"
+*    __sn_section_RES_21_72K(DATA)                 B490                 B597         108    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\22_72k.res"
+*    __sn_section_RES_22_72K(DATA)                 BB26                 BBF7         D2     *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\3_72k.res"
+*    __sn_section_RES_3_72K(DATA)                  B118                 B387         270    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\4_72k.res"
+*    __sn_section_RES_4_72K(DATA)                  AC02                 AE9E         29D    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\5_72k.res"
+*    __sn_section_RES_5_72K(DATA)                  A680                 A940         2C1    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\6_72k.res"
+*    __sn_section_RES_6_72K(DATA)                  9CE7                 A037         351    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\7_72k.res"
+*    __sn_section_RES_7_72K(DATA)                  A038                 A36D         336    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\8_72k.res"
+*    __sn_section_RES_8_72K(DATA)                  9891                 9CE6         456    *
+* "F:\DXJH\e_design\Data_Sample\release\DataCollection_code\DataCollection_Host\Debug\1_72k.res"
+*    __sn_section_RES_1_72K(DATA)                  90DB                 9890         7B6    *
+* "rshu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          907F                 9093         15     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "d:\working\unsp\mix\release\s480"                                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          8109                 8ACF         9C7    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1B1                  1B1          1      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    S480_Section(ORAM)                            0                    1A3          1A4    *
+* "modu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9094                 90A0         D      *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "divu1"                                                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          9041                 907E         3E     *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "common"                                                                                  *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           1AD                  1B0          4      *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "SRam/OSRam/ISRam"                40                   0            40                    *
+* "Ram"                             800                  1EC          614                   *
+* "First Bank Rom"                  7C00                 3E5B         3DA5                  *
+* "Other Banks Rom"                 0                    0            0                     *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\DataCollection_Host.S37
+Disk  Mapping Filename : .\Debug\DataCollection_Host.map
+Symbol  Table FileName : .\Debug\DataCollection_Host.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

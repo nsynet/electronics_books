@@ -1,0 +1,189 @@
+XL
+H 4 areas F global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S push_gset2 Ref0000
+S push_gset3 Ref0000
+S pop_gset1 Ref0000
+S pop_gset2 Ref0000
+S pop_gset3 Ref0000
+A text size 140 flags 0
+dbfile D:\整理\个人总结的M8程序\014、Eeprom的c语言编程\icc\chengxu.c
+dbfunc e DelayMs 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 4
+dbline 12 4
+dbline 13 4
+dbline 14 6
+dbline 14 6
+dbline 14 C
+dbline 14 C
+dbline 14 C
+dbline 14 C
+dbline 14 10
+dbline 14 16
+dbline 13 16
+dbline 13 1A
+dbline FFFFFFFE 20
+dbline 0 24
+dbfunc e Display 26 fV
+dbsym r sel 14 c
+dbsym r i 16 c
+dbsym r p A pc
+dbline FFFFFFFF 2C
+dbline 1B 2C
+dbline 1B 2C
+dbline 1C 2E
+dbline 1D 32
+dbline 1D 32
+dbline 1E 34
+dbline 1F 4E
+dbline 20 54
+dbline 21 56
+dbline 1C 56
+dbline 1C 58
+dbline FFFFFFFE 5C
+dbline 0 60
+dbfunc e Init_IO 62 fV
+dbline FFFFFFFF 62
+dbline 27 62
+dbline 27 62
+dbline 28 66
+dbline 29 68
+dbline 2A 6A
+dbline 2B 6C
+dbline 2C 70
+dbline FFFFFFFE 72
+dbline 0 72
+dbfunc e Write_EEPROM 74 fV
+dbsym r Address 16 i
+dbsym r Data 14 c
+dbline FFFFFFFF 7C
+dbline 34 7C
+dbline 34 7C
+dbline 34 80
+dbline 35 86
+dbline 36 8E
+dbline 37 94
+dbline 38 96
+dbline 39 98
+dbline 3A 9A
+dbline FFFFFFFE A0
+dbline 0 A4
+dbfunc e Read_EEPROM A6 fc
+dbsym r i 14 c
+dbsym r Address 14 i
+dbline FFFFFFFF AC
+dbline 41 AC
+dbline 42 AC
+dbline 42 B0
+dbline 43 B6
+dbline 44 BE
+dbline 45 C4
+dbline 46 C6
+dbline 47 CC
+dbline 48 CE
+dbline FFFFFFFE D0
+dbline 0 D4
+dbfunc e main D6 fV
+dbline FFFFFFFF D6
+dbline 4E D6
+dbline 50 D6
+dbline 54 D8
+dbline 55 E0
+dbline 54 F0
+dbline 54 FA
+dbline 56 102
+dbline 57 10A
+dbline 56 122
+dbline 56 12C
+dbline 59 136
+dbline 58 13C
+dbline FFFFFFFE 13E
+dbline 0 13E
+S _Read_EEPROM Def00A6
+S _main Def00D6
+S _DelayMs Def0000
+S _Display Def0026
+S _Write_EEPROM Def0074
+S _Init_IO Def0062
+A data size 10 flags 20
+dbfile D:\整理\个人总结的M8程序\014、Eeprom的c语言编程\icc\chengxu.c
+dbsym e Table 0 A[16:16]c
+S _Table Def0000
+A idata size 10 flags 0
+A bss size 5 flags 20
+dbfile D:\整理\个人总结的M8程序\014、Eeprom的c语言编程\icc\chengxu.c
+dbsym e i 0 c
+dbsym e Read_Data 1 A[4:4]c
+S _Read_Data Def0001
+S _i Def0000
+T 00 00 3F 06
+R 00 00 02 00
+T 02 00 5B 4F
+R 00 00 02 00
+T 04 00 66 6D
+R 00 00 02 00
+T 06 00 7D 07
+R 00 00 02 00
+T 08 00 7F 6F
+R 00 00 02 00
+T 0A 00 77 7C
+R 00 00 02 00
+T 0C 00 39 5E
+R 00 00 02 00
+T 0E 00 79 71
+R 00 00 02 00
+T 00 00 0E 94 00 00 0A C0 40 E4 5F E1 02 C0 41 50
+R 00 00 00 00 12 04 00 00
+T 0E 00 50 40 40 30 45 07 D9 F7 01 50 10 40 00 30
+R 00 00 00 00
+T 1C 00 01 07 99 F7 0E 94 00 00 08 95
+R 00 00 00 00 12 08 03 00
+T 26 00 0E 94 00 00 58 01 41 E0 66 27 13 C0 45 BB
+R 00 00 00 00 12 04 02 00
+T 34 00 E6 2F FF 27 EA 0D FB 1D E0 81 FF 27 80 E0
+R 00 00 00 00 20 0E 01 00 00 00
+T 42 00 90 E0 E8 0F F9 1F 20 80 20 94 28 BA 01 E0
+R 00 00 00 00 40 02 01 00 00 00
+T 50 00 10 E0 D6 DF 44 0F 63 95 64 30 58 F3 0E 94
+R 00 00 00 00
+T 5E 00 00 00 08 95
+R 00 00 00 00 12 02 05 00
+T 62 00 8F EF 87 BB 88 BB 84 BB 85 BB 22 24 21 BA
+R 00 00 00 00
+T 70 00 22 BA 08 95
+R 00 00 00 00
+T 74 00 0E 94 00 00 B9 01 40 2F E5 9B 03 C0 04 E0
+R 00 00 00 00 12 04 01 00
+T 82 00 10 E0 BD DF 1B 01 23 2C 33 24 2F BA CB 01
+R 00 00 00 00
+T 90 00 90 70 8E BB 4D BB E2 9A E1 9A 04 E0 10 E0
+R 00 00 00 00
+T 9E 00 B0 DF 0E 94 00 00 08 95
+R 00 00 00 00 12 06 04 00
+T A6 00 0E 94 00 00 A8 01 E0 9B 03 C0 04 E0 10 E0
+R 00 00 00 00 12 04 00 00
+T B4 00 A5 DF 1A 01 23 2C 33 24 2F BA CA 01 90 70
+R 00 00 00 00
+T C2 00 8E BB E0 9A 05 E0 10 E0 9A DF 4D B3 04 2F
+R 00 00 00 00
+T D0 00 0E 94 00 00 08 95
+R 00 00 00 00 12 04 03 00
+T D6 00 C5 DF 22 24 20 92 00 00 0D C0 20 91 00 00
+R 00 00 00 00 00 08 03 00 00 0E 03 00
+T E4 00 33 27 22 2E 83 E0 82 9D 00 2D C2 DF 80 91
+R 00 00 00 00
+T F2 00 00 00 8F 5F 80 93 00 00 80 91 00 00 84 30
+R 00 00 00 00 00 02 03 00 00 08 03 00 00 0C 03 00
+T 00 01 78 F3 22 24 20 92 00 00 11 C0 00 91 00 00
+R 00 00 00 00 00 08 03 00 00 0E 03 00
+T 0E 01 11 27 CA DF 80 E0 90 E0 E0 91
+R 00 00 00 00 20 06 03 00 01 00 40 08 03 00 01 00
+T 18 01 00 00 FF 27 E8 0F F9 1F 00 83 80 91 00 00
+R 00 00 00 00 00 02 03 00 00 0E 03 00
+T 26 01 8F 5F 80 93 00 00 80 91 00 00 84 30 58 F3
+R 00 00 00 00 00 06 03 00 00 0A 03 00
+T 34 01 03 C0 00 E0 10 E0 75 DF FC CF 08 95
+R 00 00 00 00 20 04 03 00 01 00 40 06 03 00 01 00

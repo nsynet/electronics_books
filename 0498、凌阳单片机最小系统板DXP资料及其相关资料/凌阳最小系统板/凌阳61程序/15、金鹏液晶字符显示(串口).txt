@@ -1,0 +1,114 @@
+//工程名称：LCD.spj
+//功能描述：金鹏液晶显示器128*64字符显示
+//涉及的库：
+//组成文件：lcd.c
+//硬件连接：IOB0：cs    IOB1:std    IOB2:sclk  IOB3:psb  IOB4:rst
+
+#include <MYSPCE061A.h>
+
+#define uint  unsigned int
+#define uchar unsigned char
+#define x1    0x80
+#define x2    0x88
+#define y     0x80
+#define comm  0
+#define dat   1
+
+void wr_lcd (uchar dat_comm,uchar content);
+uchar tab1[]={
+"金鹏科技有限公司"
+"Golden Palm TECH"
+"奥可拉液晶显示器"
+"TEL:0758-2263858"
+};
+/*----------------延时-------------------*/
+void delay (uint us)   //delay time
+{
+  while(us--);
+}
+/*------------------初始化-----------------*/
+void init_lcd (void)
+{
+  SET_BIT(P_IOB_Data,4);//rst置高
+  CLR_BIT(P_IOB_Data,3);//psb清零
+  wr_lcd (comm,0x30);  /*30---基本指令动作*/   
+  wr_lcd (comm,0x01);  /*清屏，地址指针指向00H*/
+  delay (100);
+  wr_lcd (comm,0x06);  /*光标的移动方向*/
+  wr_lcd (comm,0x0c);  /*开显示，关游标*/
+}
+/*---------------显示汉字或字符----------------*/
+void chn_disp (uchar *chn)
+{
+  uchar i,j;
+  wr_lcd (comm,0x30);
+  wr_lcd (comm,0x80);
+  for (j=0;j<4;j++)
+  {
+    for (i=0;i<16;i++)
+    wr_lcd (dat,chn[j*16+i]);
+  }
+}
+/*---------------------------------------*/
+void wr_lcd (uchar dat_comm,uchar content)
+{
+  uchar a,i,j;
+  delay (50);
+  a=content;
+  SET_BIT(P_IOB_Data,0);//cs置高
+  CLR_BIT(P_IOB_Data,2);//sclk清零
+  SET_BIT(P_IOB_Data,1);//std置高
+  for(i=0;i<5;i++)
+  {
+    SET_BIT(P_IOB_Data,2);//sclk置高
+    CLR_BIT(P_IOB_Data,2);//sclk清零
+  }
+  
+  CLR_BIT(P_IOB_Data,1);//std清零
+  SET_BIT(P_IOB_Data,2);//sclk置高
+  CLR_BIT(P_IOB_Data,2);//sclk清零
+  
+  if(dat_comm)
+    SET_BIT(P_IOB_Data,1);//data
+  else
+    CLR_BIT(P_IOB_Data,1);//command
+    
+  SET_BIT(P_IOB_Data,2);//sclk置高
+  CLR_BIT(P_IOB_Data,2);//sclk清零
+  
+  CLR_BIT(P_IOB_Data,1);//std清零
+  SET_BIT(P_IOB_Data,2);//sclk置高
+  CLR_BIT(P_IOB_Data,2);//sclk清零
+  for(j=0;j<2;j++)
+  {
+    for(i=0;i<4;i++)
+    {
+     if((a&0x80)==0x80)   SET_BIT(P_IOB_Data,1);//std置高
+     else                 CLR_BIT(P_IOB_Data,1);//std清零
+     a=a<<1;
+     SET_BIT(P_IOB_Data,2);//sclk置高
+     CLR_BIT(P_IOB_Data,2);//sclk清零
+    }
+    CLR_BIT(P_IOB_Data,1);//std清零
+	for(i=0;i<4;i++)
+    {
+     SET_BIT(P_IOB_Data,2);//sclk置高
+     CLR_BIT(P_IOB_Data,2);//sclk清零
+    }
+  }
+}
+/*------------------主程序--------------------*/
+int main ()
+{   	 
+  P_IOB_Dir    = 0xffff;//设置端口，将端口B设置为带数据寄存器的高电平输出	
+  P_IOB_Attrib = 0xffff;	
+  P_IOB_Data   = 0xffff;
+  P_SystemClock= 0x0001;//设置CPU时钟为Fosc/2
+  init_lcd ();
+  while (1)
+  {
+    chn_disp (tab1);
+    P_Watchdog_Clear=0x0001;//清看门狗
+  }
+  return(0);
+}

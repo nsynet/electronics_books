@@ -1,0 +1,301 @@
+__start:
+__text_start:
+    002A E5CF      LDI	R28,0x5F
+    002B E0D4      LDI	R29,4
+    002C BFCD      OUT	0x3D,R28
+    002D BFDE      OUT	0x3E,R29
+    002E 51C0      SUBI	R28,0x10
+    002F 40D0      SBCI	R29,0
+    0030 EA0A      LDI	R16,0xAA
+    0031 8308      STD	Y+0,R16
+    0032 2400      CLR	R0
+    0033 E6E0      LDI	R30,0x60
+    0034 E0F0      LDI	R31,0
+    0035 E010      LDI	R17,0
+    0036 36E0      CPI	R30,0x60
+    0037 07F1      CPC	R31,R17
+    0038 F011      BEQ	0x003B
+    0039 9201      ST	R0,Z+
+    003A CFFB      RJMP	0x0036
+    003B 8300      STD	Z+0,R16
+    003C E5E4      LDI	R30,0x54
+    003D E0F0      LDI	R31,0
+    003E E6A0      LDI	R26,0x60
+    003F E0B0      LDI	R27,0
+    0040 E010      LDI	R17,0
+    0041 35E4      CPI	R30,0x54
+    0042 07F1      CPC	R31,R17
+    0043 F021      BEQ	0x0048
+    0044 95C8      LPM
+    0045 9631      ADIW	R30,1
+    0046 920D      ST	R0,X+
+    0047 CFF9      RJMP	0x0041
+    0048 940E00B0  CALL	_main
+_exit:
+    004A CFFF      RJMP	_exit
+_DelayMs:
+  j                    --> R20
+  i                    --> R16
+    004B 940E00D7  CALL	push_gset1
+FILE: D:\整理\个人总结的M8程序\019、看门狗的c语言编程\icc\chengxu.c
+(0001) #include <iom8v.h>
+(0002) #include <macros.h> 
+(0003) #define uchar unsigned char
+(0004) #define uint  unsigned int
+(0005) #define uchar unsigned char    //数据类型说明
+(0006) #define uint  unsigned int     //数据类型说明
+(0007) /**********************************************************************
+(0008) 								延时函数			
+(0009) 
+(0010) 					   	
+(0011) **********************************************************************/
+(0012) void DelayMs(uint i)           //Ms级延时函数,参数i：延时时间
+(0013) {uint j;
+(0014)  for(;i!=0;i--)
+    004D C00A      RJMP	0x0058
+(0015)   {for(j=2000;j!=0;j--) {;}
+    004E ED40      LDI	R20,0xD0
+    004F E057      LDI	R21,7
+    0050 C002      RJMP	0x0053
+    0051 5041      SUBI	R20,1
+    0052 4050      SBCI	R21,0
+    0053 3040      CPI	R20,0
+    0054 0745      CPC	R20,R21
+    0055 F7D9      BNE	0x0051
+    0056 5001      SUBI	R16,1
+    0057 4010      SBCI	R17,0
+    0058 3000      CPI	R16,0
+    0059 0701      CPC	R16,R17
+    005A F799      BNE	0x004E
+    005B 940E00DA  CALL	pop_gset1
+    005D 9508      RET
+_Horse:
+  i                    --> R16
+    005E 940E00D7  CALL	push_gset1
+(0016)   }
+(0017) }
+(0018) /**********************************************************************
+(0019) 								跑马灯函数			
+(0020) 
+(0021) 					   	
+(0022) **********************************************************************/
+(0023) void Horse(uchar i)            //跑马灯程序，通过步判断点亮相应的LED
+(0024) {switch(i)                     //高电平点亮LED
+    0060 2F40      MOV	R20,R16
+    0061 2755      CLR	R21
+    0062 3041      CPI	R20,1
+    0063 E0E0      LDI	R30,0
+    0064 075E      CPC	R21,R30
+    0065 F0E9      BEQ	0x0083
+    0066 3042      CPI	R20,2
+    0067 E0E0      LDI	R30,0
+    0068 075E      CPC	R21,R30
+    0069 F0E1      BEQ	0x0086
+    006A 3043      CPI	R20,3
+    006B E0E0      LDI	R30,0
+    006C 075E      CPC	R21,R30
+    006D F0D9      BEQ	0x0089
+    006E 3044      CPI	R20,4
+    006F E0E0      LDI	R30,0
+    0070 075E      CPC	R21,R30
+    0071 F0D1      BEQ	0x008C
+    0072 3045      CPI	R20,5
+    0073 E0E0      LDI	R30,0
+    0074 075E      CPC	R21,R30
+    0075 F0C9      BEQ	0x008F
+    0076 3046      CPI	R20,6
+    0077 E0E0      LDI	R30,0
+    0078 075E      CPC	R21,R30
+    0079 F0C1      BEQ	0x0092
+    007A 3047      CPI	R20,7
+    007B E0E0      LDI	R30,0
+    007C 075E      CPC	R21,R30
+    007D F0B9      BEQ	0x0095
+    007E 3048      CPI	R20,0x8
+    007F E0E0      LDI	R30,0
+    0080 075E      CPC	R21,R30
+    0081 F0B1      BEQ	0x0098
+    0082 C017      RJMP	0x009A
+(0025)  {case 1:PORTB=0xfe;break;     //1111 1110B 点亮LED1
+    0083 EF8E      LDI	R24,0xFE
+    0084 BB88      OUT	0x18,R24
+    0085 C014      RJMP	0x009A
+(0026)   case 2:PORTB=0xfc;break;     //1111 1100B 点亮LED1~LED2
+    0086 EF8C      LDI	R24,0xFC
+    0087 BB88      OUT	0x18,R24
+    0088 C011      RJMP	0x009A
+(0027)   case 3:PORTB=0xf8;break;     //1111 1000B 点亮LED1~LED3
+    0089 EF88      LDI	R24,0xF8
+    008A BB88      OUT	0x18,R24
+    008B C00E      RJMP	0x009A
+(0028)   case 4:PORTB=0xf0;break;     //1111 0000B 点亮LED1~LED4
+    008C EF80      LDI	R24,0xF0
+    008D BB88      OUT	0x18,R24
+    008E C00B      RJMP	0x009A
+(0029)   case 5:PORTB=0xe0;break;     //1110 0000B 点亮LED1~LED5
+    008F EE80      LDI	R24,0xE0
+    0090 BB88      OUT	0x18,R24
+    0091 C008      RJMP	0x009A
+(0030)   case 6:PORTB=0xc0;break;     //1100 0000B 点亮LED1~LED6
+    0092 EC80      LDI	R24,0xC0
+    0093 BB88      OUT	0x18,R24
+    0094 C005      RJMP	0x009A
+(0031)   case 7:PORTB=0x80;break;     //1000 0000B 点亮LED1~LED7
+    0095 E880      LDI	R24,0x80
+    0096 BB88      OUT	0x18,R24
+    0097 C002      RJMP	0x009A
+(0032)   case 8:PORTB=0x00;break;     //0000 0000B 点亮LED1~LED8
+    0098 2422      CLR	R2
+    0099 BA28      OUT	0x18,R2
+(0033)   default:break;}
+    009A 940E00DA  CALL	pop_gset1
+    009C 9508      RET
+(0034) }
+(0035) /**********************************************************************
+(0036) 								初始化I/0						   	
+(0037) **********************************************************************/
+(0038) void Init_IO(void)             //初始化I/O口
+(0039) {
+(0040) DDRB=0xff;                    //端口设置：PA口设置为推挽1输出
+_Init_IO:
+    009D EF8F      LDI	R24,0xFF
+    009E BB87      OUT	0x17,R24
+(0041)  PORTB=0xff;
+    009F BB88      OUT	0x18,R24
+    00A0 9508      RET
+(0042) }
+(0043) /**********************************************************************
+(0044) 								看门狗初始化					   	
+(0045) **********************************************************************/
+(0046) void WDT_init(void)
+(0047) {
+(0048)  WDR();//WDT 复位 
+_WDT_init:
+    00A1 95A8      WDR
+(0049)  WDTCR = 0x0F;//使能看门狗
+    00A2 E08F      LDI	R24,0xF
+    00A3 BD81      OUT	0x21,R24
+    00A4 9508      RET
+(0050) }
+(0051) /**********************************************************************/
+(0052) void init_eatdog(void)
+(0053) {
+(0054)  CLI(); //禁止所有中断
+_init_eatdog:
+    00A5 94F8      BCLR	7
+(0055)  WDT_init();
+    00A6 DFFA      RCALL	_WDT_init
+(0056)  SEI();//开全局中断
+    00A7 9478      BSET	7
+    00A8 9508      RET
+(0057) }
+(0058) 
+(0059) /**********************************************************************
+(0060) 								看门狗关闭(喂狗)				   	
+(0061) **********************************************************************/
+(0062) void WDT_off(void)
+(0063) {
+(0064)  WDR();//WDT 复位
+_WDT_off:
+    00A9 95A8      WDR
+(0065)  WDTCR |= (1<<WDTOE) | (1<<WDE); //置位 WDTOE 和 WDE
+    00AA B581      IN	R24,0x21
+    00AB 6188      ORI	R24,0x18
+    00AC BD81      OUT	0x21,R24
+(0066)  WDTCR = 0x00;//关闭WDT 
+    00AD 2422      CLR	R2
+    00AE BC21      OUT	0x21,R2
+    00AF 9508      RET
+(0067) }
+(0068) 
+(0069) /**********************************************************************
+(0070) 								主函数						   	
+(0071) **********************************************************************/
+(0072) void main(void)               
+(0073) {uchar i;
+(0074)  Init_IO();
+_main:
+  i                    --> R20
+    00B0 DFEC      RCALL	_Init_IO
+(0075)  PORTB=0x00;                   //PORTA初始值为0，灭掉所有的LED      
+    00B1 2422      CLR	R2
+    00B2 BA28      OUT	0x18,R2
+(0076)  DelayMs(100);                //延时
+    00B3 E604      LDI	R16,0x64
+    00B4 E010      LDI	R17,0
+    00B5 DF95      RCALL	_DelayMs
+(0077)  WDTCR=0x00;				   //看门狗开启使能  1.9S
+    00B6 2422      CLR	R2
+    00B7 BC21      OUT	0x21,R2
+    00B8 C01C      RJMP	0x00D5
+(0078)  while(1)                      //程序无条件执行
+(0079)   { 
+(0080)   
+(0081)   for(i=1;i<9;i++)           //依次点亮LED1~LED8
+    00B9 E041      LDI	R20,1
+    00BA C008      RJMP	0x00C3
+(0082)       {Horse(i);
+    00BB 2F04      MOV	R16,R20
+    00BC DFA1      RCALL	_Horse
+(0083) 	   DelayMs(100);         //延时
+    00BD E604      LDI	R16,0x64
+    00BE E010      LDI	R17,0
+    00BF DF8B      RCALL	_DelayMs
+(0084) 	   init_eatdog();		 //看门狗初始化
+    00C0 DFE4      RCALL	_init_eatdog
+(0085) 	   WDT_off();			 //喂狗（如果停止喂狗系统自动复位）
+    00C1 DFE7      RCALL	_WDT_off
+    00C2 9543      INC	R20
+    00C3 3049      CPI	R20,0x9
+    00C4 F3B0      BCS	0x00BB
+(0086) 	   }         
+(0087) 	for(i=9;i>0;i--)          //依次熄灭LED8~LED1
+    00C5 E049      LDI	R20,0x9
+    00C6 C006      RJMP	0x00CD
+(0088)       {Horse(i);
+    00C7 2F04      MOV	R16,R20
+    00C8 DF95      RCALL	_Horse
+(0089) 	   DelayMs(100);}         //熄灭时间约1秒
+    00C9 E604      LDI	R16,0x64
+    00CA E010      LDI	R17,0
+    00CB DF7F      RCALL	_DelayMs
+    00CC 954A      DEC	R20
+    00CD 2422      CLR	R2
+    00CE 1624      CP	R2,R20
+    00CF F3B8      BCS	0x00C7
+(0090) 	PORTB=0xff;
+    00D0 EF8F      LDI	R24,0xFF
+    00D1 BB88      OUT	0x18,R24
+(0091)     DelayMs(100);
+FILE: <library>
+    00D2 E604      LDI	R16,0x64
+    00D3 E010      LDI	R17,0
+    00D4 DF76      RCALL	_DelayMs
+    00D5 CFE3      RJMP	0x00B9
+    00D6 9508      RET
+push_gset1:
+    00D7 935A      ST	R21,-Y
+    00D8 934A      ST	R20,-Y
+    00D9 9508      RET
+pop_gset1:
+    00DA E0E1      LDI	R30,1
+pop:
+    00DB 9149      LD	R20,Y+
+    00DC 9159      LD	R21,Y+
+    00DD FDE0      SBRC	R30,0
+    00DE 9508      RET
+    00DF 9169      LD	R22,Y+
+    00E0 9179      LD	R23,Y+
+    00E1 FDE1      SBRC	R30,1
+    00E2 9508      RET
+    00E3 90A9      LD	R10,Y+
+    00E4 90B9      LD	R11,Y+
+    00E5 FDE2      SBRC	R30,2
+    00E6 9508      RET
+    00E7 90C9      LD	R12,Y+
+    00E8 90D9      LD	R13,Y+
+    00E9 FDE3      SBRC	R30,3
+    00EA 9508      RET
+    00EB 90E9      LD	R14,Y+
+    00EC 90F9      LD	R15,Y+
+    00ED 9508      RET

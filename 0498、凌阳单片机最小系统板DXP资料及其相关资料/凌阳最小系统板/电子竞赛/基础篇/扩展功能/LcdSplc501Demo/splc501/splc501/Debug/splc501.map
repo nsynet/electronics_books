@@ -1,0 +1,358 @@
+Thursday, November 21, 09:33:13, 2002
+
+                    Sunplus u'nSP Linker - Ver. 1.3.0 (Build:2)
+                    -----------------------------------------
+
+Global Symbol Name                             Global Value     Global Filename
+*********************************************************************************************
+_RESET                                             802E         "C:\PROGRAM FILES\SUNPLUS\UNSP IDE\startupD.obj"
+__sn_loop                                          804A         "C:\PROGRAM FILES\SUNPLUS\UNSP IDE\startupD.obj"
+__sn_loop2                                         8049         "C:\PROGRAM FILES\SUNPLUS\UNSP IDE\startupD.obj"
+_RES_Table                                         0            "E:\wrz\splc501\splc501\Debug\Resource.obj"
+F_SP_Send_PWM                                      AECF         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Send_DAC1                                     AED2         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Send_DAC2                                     AED5         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Send_Two_DAC                                  AED8         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Send_Out                                      AED8         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Get_ADC                                       AEDD         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Ctrl                             AEE0         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_TimerA_Data                             AEE3         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Ctrl                             AEE6         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_TimerB_Data                             AEE9         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_INT_Ctrl                                AEEC         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_INT_Clear                               AEEF         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_SystemClock                             AEF2         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_DAC_Ctrl                                AEF5         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Set_P_ADC_Ctrl                                AEF8         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Write_INT_Status                              AEFB         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Read_INT_Status                               AEFE         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_RampUpDAC1                                    AF36         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_RampDnDAC1                                    AF5A         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_RampUpDAC2                                    AF6C         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_RampDnDAC2                                    AF90         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_RampUpDAC1                                     AF36         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_RampDnDAC1                                     AF5A         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_RampUpDAC2                                     AF6C         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_RampDnDAC2                                     AF90         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_Delay                                         AFFB         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_InitQueue                                     AFA8         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_ReadQueue                                     AFB5         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_WriteQueue                                    AFC7         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+F_SP_TestQueue                                     AFD5         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_Export                                         AF2C         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_Import                                         AF21         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_Init_IOB                                       AF11         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_Init_IOA                                       AF01         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_SP_GetResource                                    AFED         "E:\wrz\splc501\splc501\Debug\hardware.obj"
+R_InterruptStatus                                  A3           "E:\wrz\splc501\splc501\Debug\hardware.obj"
+R_FIQTemp                                          A4           "E:\wrz\splc501\splc501\Debug\hardware.obj"
+_main                                              AD78         "E:\wrz\splc501\splc501\Debug\test.obj"
+_Init_sys                                          96EF         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+F_zk_bank                                          96F5         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_pixel                                             9708         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+image                                              9764         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_InitGraphic                                    9849         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_ClearScreen                                    9857         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetBMPMode                                     986B         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetLineStyle                                   987C         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetRectStyle                                   988C         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetCircleStyle                                 988F         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetEllipseStyle                                9892         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetCharMode                                    9895         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_SetBMPMode                                     9898         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_SetCharMode                                    98C3         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_SetLineStyle                                   98C5         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_SetRectStyle                                   991F         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_SetCircleStyle                                 9921         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_SetEllipseStyle                                9923         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_PutBitmap                                      9990         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_F_image_bank                                      99CC         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_LineTo                                         9AA4         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+DISPLAY_A_POINT                                    9C6E         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+get_a_point_address                                9D55         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_Rectangle                                      9D96         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_Circle                                         9F86         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_Ellipse                                        9FA5         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_ellipse_process1                                  A0E9         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_ellipse_process2                                  A116         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_ellipse_process3                                  A132         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_ellipse_process4                                  A165         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_offset                                            A1A1         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_sub                                               A24A         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_a_square_b_square                                 A284         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_PutChar                                        A29C         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_PutStr                                         A3FD         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetPixel                                       A47B         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_PutPixel                                       A494         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetY                                           A4BF         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetX                                           A4C2         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetCharHeight                                  A4C5         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetCharWidth                                   A4E0         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_GetStrWidth                                    A53F         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_MoveDelta                                      A5A9         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_MoveTo                                         A5C1         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_Bar                                            A5D5         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_ClearRect                                      A6B9         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_ClearEllipse                                   A79B         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_FG_ClearCircle                                    A7FC         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+_mode2                                             A85B         "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"
+bank                                               0            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+bank1                                              1            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+label1                                             2            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+pixel_page                                         2            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+pixel_column                                       3            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+pixel_bit                                          4            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_width_byte                                   2            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_high_bit                                     3            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_jumpoff_point_x                              4            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_jumpoff_point_y                              5            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_tab                                          6            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_page                                         7            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_bit                                          8            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_lcd_data                                     9            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_temp_data                                    A            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_temp_data1                                   D            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+image_tab_pointer                                  C            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_line_x0                                           E            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_line_x1                                           F            "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_line_y0                                           10           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_line_y1                                           11           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_line_x                                            12           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_line_y                                            13           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_lineparameter_a                                   14           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_lineparameter_b                                   15           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_lineparameter_a_temp                              16           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_lineparameter_b_temp                              17           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_x                           18           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_y                           19           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_high                                    1A           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_wide                                    1B           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectagle_shape                                    1C           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectagle_mode                                     1D           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_page                        1E           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_place                       1F           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_bit                         20           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_end_place                               21           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_end_page                                22           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_end_bit                                 23           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+rectangle_temp_bit                                 24           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+rectangle_temp_page                                25           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_jumping_off_bit_temp                    26           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectagle_high_temp                                28           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectagle_wide_temp                                29           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_temp_x                                  2A           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_wide_temp                               2B           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_rectangle_end_place_temp                          27           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_long_axes                                 2C           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_short_axes                                2D           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_x                                         2E           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_y                                         2F           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_origin_x                                  30           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_origin_y                                  31           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_a_square_mul_y_square_l                           32           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_a_square_mul_y_square_h                           33           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_b_square_mul_x_square_l                           34           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_b_square_mul_x_square_h                           35           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_a_square_mul_b_square_l                           36           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_a_square_mul_b_square_h                           37           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_a                                          38           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_b                                          39           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_a_squ_mul_b_squ_l                          3A           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_a_squ_mul_b_squ_h                          3B           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_sbc_l                                      3C           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_sbc_h                                      3D           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_c_l                                        3E           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_c_h                                        3F           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_d_l                                        40           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_d_h                                        41           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_x_temp                                    42           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_y_temp                                    43           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_in_a_l                              44           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_in_a_h                              45           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_in_b_l                              46           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_in_b_h                              47           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_in_c_l                              48           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_in_c_h                              49           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_out_l                               4A           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_out_h                               4B           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_sign                                              4C           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_first_l                     4D           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_first_h                     4E           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_second_l                    4F           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_second_h                    50           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_ellipse_reckon_offset_sign                        51           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_process_sign                                      52           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+charnum                                            53           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+charwide                                           54           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+charhigh                                           55           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+chartemp                                           57           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+str_tab                                            59           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+str_x                                              5A           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+str_y                                              5B           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+label2                                             5C           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+bp_temp                                            5C           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+R_GraphicMode_temp                                 5D           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+sign                                               5E           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+constant                                           58           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+label3                                             66           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_page_place_bit                                    75           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_page                                              76           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_page_place                                        77           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_point_shape                                       7F           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_x                                                 78           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_y                                                 79           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_x                                   7A           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_offset_y                                   7B           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_public_area_sign                                  7C           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_point_value                                       7D           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_point_value_temp                                  7E           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+label4                                             80           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+R_GraphicMode                                      A0           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_x0                                                A1           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_y0                                                A2           "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+tab_rectangle1                                     8009         "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+tab_rectangle2                                     8012         "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+TAB_pixel                                          801B         "E:\wrz\splc501\splc501\Debug\Splc501var.obj"
+_Init_LCD_501                                      AB5C         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+_Set_LCD_Page_No                                   AC50         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+F_Set_LCD_Page_No                                  AC50         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+_Set_LCD_Column_Addr                               AC79         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+F_Set_LCD_Column_Addr                              AC79         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+_Fill_All_LCD_Value                                ACAF         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+F_Fill_All_LCD_Value                               ACAF         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+_Send_data                                         ACDF         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+F_Send_data                                        ACDF         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+_Read_Lcd_data                                     ACFE         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+F_Read_Lcd_data                                    ACFE         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+F_Display_point                                    AD30         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+F_Init_IO                                          AD4C         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+_Init_IO                                           AD4C         "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"
+tiny3                                              804B         "E:\wrz\splc501\splc501\Debug\SPLC501DisplayTAB.obj"
+large1                                             8283         "E:\wrz\splc501\splc501\Debug\SPLC501DisplayTAB.obj"
+smallb1                                            8844         "E:\wrz\splc501\splc501\Debug\SPLC501DisplayTAB.obj"
+small1                                             8D91         "E:\wrz\splc501\splc501\Debug\SPLC501DisplayTAB.obj"
+narrow1                                            927F         "E:\wrz\splc501\splc501\Debug\SPLC501DisplayTAB.obj"
+*********************************************************************************************
+
+*********************************************************************************************
+*                             S E C T I O N     S U M M A R Y                               *
+*********************************************************************************************
+*     Section Name                             Startting Address   Ending Address    Size   *
+*********************************************************************************************
+* "C:\PROGRAM FILES\SUNPLUS\UNSP IDE\startupD.obj"                                          *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+*    unSP_StartUp                                  802E                 804A         1D     *
+* "E:\wrz\splc501\splc501\Debug\Resource.obj"                                               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "E:\wrz\splc501\splc501\Debug\hardware.obj"                                               *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          AECF                 AFFB         12D    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          AFFC (A3)            B031 (D8)    36     *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "E:\wrz\splc501\splc501\Debug\test.obj"                                                   *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          AD78                 AECE         157    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8024                 802D         A      *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "E:\wrz\splc501\splc501\Debug\Splc501sys.obj"                                             *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          96EF                 AB5B         146D   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "E:\wrz\splc501\splc501\Debug\Splc501var.obj"                                             *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          ----                 ----         ----   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          8009                 8023         1B     *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           0                    A2           A3     *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "E:\wrz\splc501\splc501\Debug\SPLC501Hardware.obj"                                        *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          AB5C                 AD77         21C    *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "E:\wrz\splc501\splc501\Debug\SPLC501DisplayTAB.obj"                                      *
+*    DEBUG                                         ----                 ----         ----   *
+*    CODE                                          804B                 96EE         16A4   *
+*    DATA                                          ----                 ----         ----   *
+*    TEXT                                          ----                 ----         ----   *
+*    IRAM                                          ----                 ----         ----   *
+*    ISRAM                                         ----                 ----         ----   *
+*    RAM                                           ----                 ----         ----   *
+*    SRAM                                          ----                 ----         ----   *
+*    ORAM                                          ----                 ----         ----   *
+*    OSRAM                                         ----                 ----         ----   *
+*    NB_DATA                                       ----                 ----         ----   *
+* "Init Table"                                     8000                 8008         9      *
+*********************************************************************************************
+
+*********************************************************************************************
+*                             M E M O R Y     S U M M A R Y                                 *
+*********************************************************************************************
+*     Type                          Total               Using        Remain                 *
+*********************************************************************************************
+* "Ram"                             800                  D9           727                   *
+* "First Bank Rom"                  7C00                 3032         4BCE                  *
+* "Other Banks Rom"                 40000                0            40000                 *
+*********************************************************************************************
+
+Linker Output Filename : .\Debug\splc501.S37
+Disk  Mapping Filename : .\Debug\splc501.map
+Symbol  Table FileName : .\Debug\splc501.sym
+Format :                 Microtek
+
+Linker Errors :          0
+Output Format :          S37

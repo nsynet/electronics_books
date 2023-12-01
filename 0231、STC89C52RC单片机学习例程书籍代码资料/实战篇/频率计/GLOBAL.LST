@@ -1,0 +1,142 @@
+C51 COMPILER V7.06   GLOBAL                                                                03/19/2011 11:31:42 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE GLOBAL
+OBJECT MODULE PLACED IN GLOBAL.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE GLOBAL.c OPTIMIZE(SIZE) BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          #include "global.h"
+   8          
+   9          //16进制数表格
+  10          CODE INT8 HexTable[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+  11          /*************************************************************
+  12          * 函数名称:DelayNus
+  13          * 输    入:t 延时时间
+  14          * 输    出:无
+  15          * 说    明:毫秒级延时
+  16          **************************************************************/
+  17          void DelayNus(UINT16 t)
+  18          {
+  19   1              do
+  20   1              {
+  21   2                      NOP();
+  22   2              }while(--t >0); 
+  23   1      }
+  24          /*************************************************************
+  25          * 函数名称:BufCpy
+  26          * 输    入:dest 缓冲区; size 缓冲区大小
+  27          * 输    出:无
+  28          * 说    明:清空缓冲区
+  29          **************************************************************/
+  30          BOOL BufCpy(UINT8 * dest,UINT8 * src,UINT32 size)
+  31          {
+  32   1          
+  33   1              do
+  34   1              {
+  35   2                      *dest++ = *src++;
+  36   2                      
+  37   2              }while(--size!=0);
+  38   1              
+  39   1              return TRUE;
+  40   1      } 
+  41          /*************************************************************
+  42          * 函数名称:itoa
+  43          * 输    入:val 数值
+  44                     str 字符串
+  45                     DecOrHex 进制
+  46          * 输    出:无
+  47          * 说    明:数值变为字符串
+  48          **************************************************************/ 
+  49          void itoa(UINT32 val,UINT8 *str,UINT8 DecOrHex)
+  50          {
+  51   1           UINT8 i;
+  52   1           UINT8 buf[10];
+  53   1      
+  54   1      
+  55   1           if(10 == DecOrHex)
+C51 COMPILER V7.06   GLOBAL                                                                03/19/2011 11:31:42 PAGE 2   
+
+  56   1           {
+  57   2               for(i=0; i<10 ;i++)
+  58   2               {
+  59   3                   buf[9-i]=(UINT8)('0'+val%10);   
+  60   3                   val/=10;   
+  61   3               } 
+  62   2           
+  63   2               
+  64   2               for(i=0;i<=9;)
+  65   2               {
+  66   3                   if('0' == buf[i])
+  67   3                   {
+  68   4                       i++;
+  69   4                   }
+  70   3                   else
+  71   3                   {
+  72   4                      break;
+  73   4                   }
+  74   3               }
+  75   2      
+  76   2               BufCpy(str,&buf[i],10-i);  
+  77   2                         
+  78   2           }
+  79   1           
+  80   1           if(16 == DecOrHex)
+  81   1           {
+  82   2              *str++='0';
+  83   2                  *str++='x';
+  84   2                  
+  85   2              i=28;
+  86   2              
+  87   2              while(i)
+  88   2              {
+  89   3                  if(0  == ((val>>i) &0x0f))
+  90   3                  {   
+  91   4                      i=i-4;
+  92   4                     
+  93   4                  }
+  94   3                  else
+  95   3                  {
+  96   4                      break;
+  97   4                  }
+  98   3              } 
+  99   2              
+ 100   2              while(1)
+ 101   2              {
+ 102   3                  *str++=(HexTable[(val>>i) &0x0f]); 
+ 103   3                  
+ 104   3                  if(i<=0)
+ 105   3                  {
+ 106   4                      break; 
+ 107   4                  }     
+ 108   3                          
+ 109   3                  i=i-4;
+ 110   3              }  
+ 111   2              
+ 112   2           } 
+ 113   1      
+ 114   1      
+ 115   1      }
+
+
+C51 COMPILER V7.06   GLOBAL                                                                03/19/2011 11:31:42 PAGE 3   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    356    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      29
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

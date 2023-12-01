@@ -1,0 +1,55 @@
+//工程名称：change.spj
+//功能描述：I/O端口的操作
+//涉及的库：
+//组成文件：change.c
+//硬件连接：B端口接16个共阳极LED，要求开始时使LED由低位到高位循环点亮，之后再由高位循环到低位
+	#define		P_IOA_Data			   (*(volatile unsigned int *)0x7000)
+	#define		P_IOA_Buffer		   (*(volatile unsigned int *)0x7001)
+	#define		P_IOA_Dir			   (*(volatile unsigned int *)0x7002)
+	#define		P_IOA_Attrib		   (*(volatile unsigned int *)0x7003)
+	#define		P_IOA_Latch			   (*(volatile unsigned int *)0x7004)
+
+	#define		P_IOB_Data			   (*(volatile unsigned int *)0x7005)
+	#define		P_IOB_Buffer		   (*(volatile unsigned int *)0x7006)
+	#define		P_IOB_Dir			   (*(volatile unsigned int *)0x7007)
+	#define		P_IOB_Attrib		   (*(volatile unsigned int *)0x7008)
+	#define     P_Watchdog_Clear       (*(volatile unsigned int *)0x7012)
+	
+	int delay(unsigned int t)
+	{
+		unsigned int i,delayValue;
+		for(i=0;i<100;i++)
+		 for(delayValue=0;delayValue<t;delayValue++)
+		 {
+			P_Watchdog_Clear=0x0001;   //12us清一次看门狗
+		 }
+		return(0);//无返回值，编译是一定要加入此句，否则会出现编译警告 
+    }
+	int main()	
+	{
+    unsigned char i,I_Key=0x0001;
+    //设置B端口为带数据缓存器的高电平输出
+	P_IOB_Dir   =0xffff;                   //方向向量单元
+	P_IOB_Attrib=0xffff;                   //属性向量单元
+	P_IOB_Data  =0xffff;                   //数据单元	
+	while(1)
+ 	 {
+ 	  I_Key=0x0001;	
+	  for(i=0;i<16;i++)
+	   {
+	  	P_IOB_Data=0xffff & (~I_Key);      //确定只有一位为低电平
+		delay(800);
+		I_Key=I_Key<<1;
+   	   }
+	    I_Key=0x8000;
+		for(i=0;i<16;i++)
+	    {
+		P_IOB_Data=0xffff & (~I_Key);      //确定只有一位为低电平
+		delay(800);//大约为1S
+		I_Key=I_Key>>1;
+	    }
+ 	  }
+	return(0);	//无返回值，编译是一定要加入此句，否则会出现编译警告 
+	}
+	
+	

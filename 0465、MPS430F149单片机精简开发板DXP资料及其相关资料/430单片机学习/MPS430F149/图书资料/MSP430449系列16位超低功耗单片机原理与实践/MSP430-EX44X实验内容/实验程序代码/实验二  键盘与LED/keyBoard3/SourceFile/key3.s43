@@ -1,0 +1,542 @@
+#include  "msp430x44x.h " 
+;-------------------------------------------------------------
+;MSP-Test44x Demo   lcd ,led dishplay the timer
+;
+;                          MSP430F449             
+;                       -----------------
+;                   /|\|              XIN|-  
+;                    | |                 |         74HC373(1)&(2)
+;         LCD        --|RST          XOUT|-       -------------
+;        ----------    |                 |       |             | 
+;       |     COM0|<---|COM0         P3.1|------>|D0           |
+;       |       . |  . |  .            . |   .   |             |
+;       |     COM3|<---|COM3         P3.7|------>|D7           |    
+;       |      S0 |<---|S0           P4.0|------>|             | 
+;       |       . |  . |             P4.1|------>|             |
+;       |      S14|<---|S14          P1.3|------>INC
+;                                    P1.2|------>DEC
+;                                    P1.1|------>FUN
+;
+;--------------------------------------------------------------
+;----------------RAM单元定义-----------------------------------
+;--------------------------------------------------------------
+hour		        equ	        201h	    ;时
+min     		    equ	        202h	    ;分
+second             	equ     	203h        ;秒		
+flag            	equ         204h        ;标志寄存器
+led_disp_data       equ         205h        ;led 显示缓冲
+led_disp_bit        equ         206h        ;led显示位选
+counter         	equ     	207h        ;显示计数
+dip                 equ         208h        ;小数点 
+inc_dec_buffer      equ         209h        ;inc缓存;dec缓存
+fun_buffer          equ         20ah        ;fun缓存
+key_flag            equ         20bh        ;键盘中断标志缓存
+fun_flag            equ         20ch        ;功能键标志缓存
+second_flag         equ         200h        ;0.5S标志
+;-------------------------------------------------------------
+;----------------按键定义-------------------------------------
+;-------------------------------------------------------------
+key_inc                 equ         008h        ;P1.3
+key_dec                 equ         004h        ;P1.2
+key_fun                 equ         002h        ;P1.1
+;-------------------------------------------------------------
+;;首先，对系统进行初始化。关看门狗、置端口的输入输出状态、以及中断情况态
+;;接着，对用到的ram区进行初始化、对标志位初始化。
+;----------------------------------------------
+                ORG     08000h                    ; Program Start
+;-----------------------------------------------
+Reset          
+              	mov.w   #0600h,SP                 ; Initia ize stackpointer
+StopWDT       	mov.w   #WDTPW+WDTHOLD,&WDTCTL    ; Stop WDT              	         	              	
+Setup_P1        
+                bic.b   #key_inc+key_dec+key_fun,&P1DIR
+              	bis.b   #key_inc+key_dec+key_fun,&P1OUT              
+              	bis.b   #key_inc+key_dec+key_fun,&P1IES
+              	bis.b   #key_inc+key_dec+key_fun,&P1IE    	                
+Setup_P3        
+              	mov.b   #0ffh,&P3DIR 
+              	mov.b   #00h,&P3OUT             	                       
+              	mov.b   #0ffh,&P4DIR
+              	bis.b   #03h,&P4OUT
+Setup_BT
+                mov.b   #BTSSEL+BT_ADLY_500,&BTCTL       ;0.5s int
+;               mov.b   #0a5h,&BTCTL
+              	bis.b   #BTIE,&IE2                ;Enable Basic Timer interrupt                	         
+Setup_TA
+              	mov.w   #TASSEL1+TACLR,&TACTL     ;led 刷新一位定时
+             	mov.w   #CCIE,&CCTL0
+              	mov.w   #3600,&CCR0               ;4.5ms            
+              	bis.w   #MC0,&TACTL                 	                      	              	                                
+clr_ram        
+                clr     R8
+loop_clr        clr.b   second_flag(R8)
+                inc.b   R8
+                cmp.b   #0dh,R8
+                jeq     clr_ram_over
+                jmp     loop_clr
+clr_ram_over    clr     R8       
+                call    #lcd_display_ona          ;open lcd                
+              	
+              	eint	
+;--------------------------------------------------
+;-----------        主程序区          -------------
+;--------------------------------------------------
+mainloop		               
+                nop
+                nop                
+                bis.w     #LPM0,SR
+                nop
+                nop
+                bic.b     #key_inc+key_dec+key_fun,&P1IE                             
+                call      #key_scan
+ret_jmp         jmp       mainloop
+               
+key_scan        
+                push      R15
+                call      #delay_10ms                  ;去抖动和防止干扰
+                mov.b     &P1IN,R15
+                inv.b     R15
+                bit.b     #key_inc+key_dec+key_fun,R15 ;判断有无按键按下           
+                jz        ret_scan 
+                                
+loop_key       
+                mov.b     &P1IN,R15                    ;判断按键有无松开
+                inv.b     R15
+                bit.b     #key_inc+key_dec+key_fun,R15  
+                jnz       loop_key                                         
+                call      #keycodej3
+               
+                
+ret_scan        clr.b     &P1IFG
+                bis.b     #key_inc+key_dec+key_fun,&P1IE 
+                 
+                jmp       ret_jmp
+      
+;----------------------------------------------------
+;-----------PORT 1 INT------------------------------
+;----------------------------------------------------
+PORT1_INT  
+            bic.w     #LPM0,0(SP)                  ;退出LMP0
+            mov.b     &P1IFG,&key_flag          
+ret_int     clr.b     &P1IFG            
+            reti    
+;-----------------------------------------------------
+;-----------延时10ms子程序 ---------------------------
+;-----------------------------------------------------
+delay_10ms
+            mov     #2666,R15
+loop_delay  dec     R15
+            jnz     loop_delay
+            ret
+;-----------------------------------------------------
+;-----------判断按键子程序----------------------------
+;-----------------------------------------------------
+keycodej3    
+test_inc    bit.b     #key_inc,&key_flag
+            jz        test_dec
+            call      #inc_fun
+            jmp       ret_1
+test_dec    bit.b     #key_dec,&key_flag
+            jz        test_fun
+            call      #dec_fun
+            jmp       ret_1
+test_fun    bit.b     #key_fun,&key_flag
+            call      #fun_fun
+            jmp       ret_1
+            
+ret_1       
+            ret
+;------------------------------------------------------
+;-----------inc按键子程序-----------------------------
+;------------------------------------------------------
+inc_fun     
+            bit.b     #1,&fun_flag
+            jz        ret_inc 
+            cmp.b     #1,&fun_buffer
+            jeq       inc_hour                
+
+            inc.b     &inc_dec_buffer
+            dadc.b    &inc_dec_buffer            
+            cmp.b     #60h,&inc_dec_buffer
+            jlo       inc_move
+            clr.b     &inc_dec_buffer
+            jmp       inc_move
+inc_hour    
+            inc.b     &inc_dec_buffer
+            dadc.b    &inc_dec_buffer
+            cmp.b     #23h,&hour
+            jlo       inc_move
+            clr.b     &inc_dec_buffer           
+inc_move    mov.b     &fun_buffer,R15
+            
+            mov.b     &inc_dec_buffer,second_flag(R15)
+ret_inc            ret
+;------------------------------------------------------
+;-----------dec按键子程序-----------------------------
+;------------------------------------------------------
+dec_fun     
+            bit.b     #1,&fun_flag
+            jz        ret_dec            
+            cmp.b     #01h,&inc_dec_buffer
+            jhs       loop_dec  
+            cmp.b     #1,&fun_buffer
+            jeq       dec_hour          
+            mov.b     #60h,&inc_dec_buffer
+            jmp       loop_dec
+dec_hour    mov.b     #24h,&inc_dec_buffer            
+loop_dec    bit.b     #0fh,&inc_dec_buffer 
+            jz        set_dec    
+unset_dec   dec.b     &inc_dec_buffer           
+            clrc
+            dadd.b   #0,&inc_dec_buffer   
+            jmp       dec_move
+set_dec     sub.b     #06,&inc_dec_buffer 
+            jmp       unset_dec  
+dec_move    mov.b     &fun_buffer,R15            
+            mov.b     &inc_dec_buffer,second_flag(R15) 
+                                       
+ret_dec     ret
+;------------------------------------------------------
+;-----------fun按键子程序------------------------------
+;------------------------------------------------------
+fun_fun     
+            inc.b    &fun_buffer
+            cmp.b    #1,&fun_buffer
+            jeq      fun_star_hour            
+            cmp.b    #2,&fun_buffer
+            jeq      fun_min
+            cmp.b    #3,&fun_buffer
+            jeq      fun_second
+            cmp.b    #4,&fun_buffer
+            jeq      fun_stop
+
+fun_ret      ret
+;-------------------------------------------------------
+fun_star_hour    
+            bis.b     #1,&fun_flag
+            
+            mov.b     &hour,&inc_dec_buffer  
+                    
+            jmp       fun_ret
+;-------------------------------------------------------
+fun_min    
+            mov.b     &min,&inc_dec_buffer
+            jmp       fun_ret
+;-------------------------------------------------------
+fun_second  
+            mov.b     &second,&inc_dec_buffer
+            jmp       fun_ret
+;-------------------------------------------------------
+fun_stop    
+            clr.b     &fun_flag
+            clr.b     fun_buffer
+            jmp       fun_ret
+                        
+;----------------------------------------------------   
+;----------------   led显示子程序   ------------------
+;----------------------------------------------------	            
+led_chang                   
+                    br          led_take(R8)
+                    EVEN
+led_take            
+                    dw          second_table_h
+                    dw          second_table_l 
+                    dw          min_table_h
+                    dw          min_table_l  
+                    dw          hour_table_h
+                    dw          hour_table_l 
+                    
+                    
+second_table_h      
+                    mov.b       &second,R14
+                    mov.b       #2fh,&led_disp_bit
+                    jmp         take_h
+second_table_l                   
+                    mov.b       &second,R14
+                    mov.b       #1fh,&led_disp_bit
+                    mov.b       #00h,&dip
+                    jmp         take_l   
+                                                                   
+
+min_table_h         mov.b       &min,R14
+                    mov.b       #3bh,&led_disp_bit
+                    jmp         take_h
+
+min_table_l         mov.b       &min,R14
+                    mov.b       #37h,&led_disp_bit
+                    mov.b       #20h,&dip
+                    jmp         take_l
+
+hour_table_h        mov.b       &hour,R14
+                    mov.b       #3eh,&led_disp_bit
+                    jmp         take_h
+
+hour_table_l        mov.b       &hour,R14
+                    mov.b       #3dh,&led_disp_bit
+                    mov.b       #20h,&dip
+                    jmp         take_l
+                                   
+take_h              mov.b     	R14,R13
+	                rra.b     	R13
+            	    rra.b     	R13
+	                rra.b     	R13
+	                rra.b     	R13
+	                and.b     	#0fh,R13
+	                mov.b     	led_table(R13),&led_disp_data
+	            
+	                ret         	           	         
+take_l        	    
+	                mov.b     	R14,R13
+	                and.b     	#0fh,R13
+	                mov.b     	led_table(R13),&led_disp_data	
+	                add.b       &dip,&led_disp_data                              
+	                ret                         	             
+;----------------------------------------------------   
+;----------------   led显示子程序   -----------------
+;----------------------------------------------------
+
+led_display                                                                   
+                    mov.b       &led_disp_data,&P3OUT   ;send data
+                    bis.b       #02h,&P4OUT             ;open data choose                   
+                    bic.b       #02h,&P4OUT             ;close data choose                  
+                     
+                    
+                    mov.b       &led_disp_bit,P3OUT
+                    bis.b       #01h,&P4OUT              ;open bit choose
+                    bic.b       #01h,&P4OUT              ;close data choose 
+                    ret                                                       
+;----------------------------------------------------   
+;----------------   lcd显示子程序   ----------------
+;----------------------------------------------------
+lcd_display     
+                mov.b       #80h,&dip
+	            mov.b     	#LCDM1,R15
+dis_second      
+                mov.b     	&second,R13
+	            rra.b     	R13
+            	rra.b     	R13
+	            rra.b     	R13
+	            rra.b     	R13
+	            and.b     	#0fh,R13
+	            mov.b     	lcd_table(R13),R14	           	         
+        	    mov.b     	R14,1(R15)
+	            mov.b     	&second,R13
+	            and.b     	#0fh,R13
+	            mov.b     	lcd_table(R13),R14	                    
+	            mov.b     	R14,0(R15)	
+	            
+dis_min	       
+                mov.b     	&min,R13
+	            rra.b     	R13
+            	rra.b     	R13
+	            rra.b     	R13
+	            rra.b     	R13
+	            and.b     	#0fh,R13
+	            mov.b     	lcd_table(R13),R14               	         
+        	    mov.b     	R14,3(R15)
+	            mov.b     	&min,R13
+	            and.b     	#0fh,R13
+	            mov.b     	lcd_table(R13),R14	
+	            bis.b       #80h,R14                    
+	            mov.b     	R14,2(R15)	
+	            
+dis_hour       
+                mov.b     	&hour,R13
+	            rra.b     	R13
+            	rra.b     	R13
+	            rra.b     	R13
+	            rra.b     	R13
+	            and.b     	#0fh,R13
+	            mov.b     	lcd_table(R13),R14           	         
+        	    mov.b     	R14,5(R15)
+	            mov.b     	&hour,R13
+	            and.b     	#0fh,R13
+	            mov.b     	lcd_table(R13),R14	 
+	            bis.b       #80h,R14                   
+	            mov.b     	R14,4(R15)		            	                                          
+	            ret            	            
+;-------------------------------------------------- 
+
+lcd_display_ona   
+	              mov.b    #0FCh,&P5SEL                     ;Enable R(LCD) + COM Lines
+	              mov.b    #LCDON+LCD4MUX+LCDP1,&LCDCTL     ;STK LCD 4Mux, S0-S19
+	                                                        ;Basic Timer : SSEL=0 DIV=0 Reset=1,ACLK,32768/256 = 128Hz (7.8ms debounce time)
+	                                                        ;Basic Timer reset disabled
+	                                                        ;enable basic timer intrpt
+	              call     #show_clr                        ;clear LCD
+	              clr      R9
+	              ret         
+;-------------------------------------------------- 
+;-----------------   Timera_int  ------------------
+;--------------------------------------------------
+Timera_int                 
+                      inc.b     R8
+                      inc.b     R8
+                      cmp.b     #0ch,R8
+                      jnz       Timer_int_end
+                      clr.b     R8  
+                                     
+Timer_int_end         push.b  &second
+                      push.b  &min
+                      push.b  &hour
+                      call    #led_blink                      
+                      call    #led_chang                ;led disp  buffer chang 
+                      call    #led_display              ;led display 
+                      pop.b   &hour
+                      pop.b   &min
+                      pop.b   &second
+                      reti     
+;-------------------------------------------------
+;----------------led_blink------------------------
+;-------------------------------------------------
+led_blink           cmp.b       #3,&fun_buffer
+                    jeq         second_blink
+                    cmp.b       #2,&fun_buffer
+                    jeq         min_blink
+                    cmp.b       #1,&fun_buffer
+                    jeq         hour_blink 
+                    jmp         blink_ret
+second_blink        
+                    bit.b       #1,&second_flag
+                    jnz         s_ret                          
+                    mov.b       #0aah,&second
+s_ret               jmp         blink_ret  
+min_blink           
+                    bit.b       #1,&second_flag
+                    jnz         m_ret                          
+                    mov.b       #0aah,&min                    
+m_ret               jmp         blink_ret  
+hour_blink          
+                    bit.b       #1,&second_flag
+                    jnz         blink_ret                         
+                    mov.b       #0aah,&hour
+                      
+blink_ret           ret                                                                                                      
+;--------------------------------------------------
+;-----------------  BASIC TIMER int    ------------
+;-------------------------------------------------- 
+BASIC_INT   	      
+                      xor.b   #01h,&second_flag
+                      bit.b   #1,&second_flag
+                      jz      clock_ret     
+                      
+                      xor.b   #01h,&flag                      
+                      setc
+BASIC_END	          
+                      dadc.b   &second
+                      cmp.b   #60h,&second
+                      jlo     clock_end
+                      clr.b   &second
+                      dadc.b   &min
+                      cmp.b   #60h,&min
+                      jlo     clock_end
+                      dadc.b   &hour
+                      clr.b   &min
+                      cmp.b   #24h,&hour
+                      jlo     clock_end
+                      clr.b   &hour
+clock_end            
+                      call    #lcd_display              ;lcd display
+                      
+clock_ret                 reti
+;--------------------------------------------------                                                    
+;;-------显示处理子程序
+;--------------------------------------------------
+lcd_display_deal              
+                      clr       R5
+next_word_display
+                      mov.b     #0FFH,LCDMEM(R5)
+                      inc       R5
+                      cmp.b     &counter,R5
+                      jnz       next_word_display
+                      ret           
+;-------------------------------------------------------                            
+;---------清显示存储区.
+;-------------------------------------------------------
+show_clr
+            	mov.b	#00h,R6                      ; clear display memory
+show_clr1
+            	mov.b   #00h,LCDMEM(R6)
+            	inc.b   R6
+            	cmp.b	#0ah,R6
+            	jnz     show_clr1
+            	ret
+            
+delay       	mov.b   #0ffh,R9
+ttt         	nop
+            	nop
+            	dec.b   R9
+            	jnz     ttt
+            	ret
+
+;----------------------------------------------------------
+;--------------led显示代码 --------------------------------
+;---------------------------------------------------------- 			
+led_table			
+              db      0d7h          ;0
+              db      14h           ;1
+              db      0cdh          ;2
+              db      5dh           ;3
+              db      1Eh           ;4
+              db      5bh           ;5
+              db      0dbh          ;6
+              db      15h           ;7
+              db      0dfh          ;8
+              db      05fh          ;9
+              db      00h           ;no
+              db      00h           ;no
+              
+;-----------------------------------------------------------
+;---------------lcd显示代码--------------------------------
+;-----------------------------------------------------------
+lcd_table
+            db        7bh            ;0
+            db        12h            ;1
+            db        4fh            ;2
+            db        1fh            ;3
+            db        36h            ;4
+            db        3dh            ;5
+            db        7dh            ;6
+            db        13h            ;7
+            db        7fh            ;8
+            db        3fh            ;9
+            db        00h            ;no
+            db        00h            ;no       
+;----------------------------------------------------------                 
+; Interrupt Vector Table
+;----------------------------------------------------------             
+            RSEG    INTVEC             ; MSP430 RESET Vector        
+;----------------------------------------------------------           
+            DW      BASIC_INT               ;0FFE0h    
+            DW      Reset                   ;0FFE2h    
+            DW      Reset                   ;0FFE4h 
+            DW      Reset                   ;0FFE6h
+            DW      PORT1_INT	            ;0FFE8h
+            DW      Reset                   ;0FFEAh
+            DW      Timera_int              ;0FFECh 
+            DW      Reset                   ;0FFEEh
+            DW      Reset                   ;0FFF0h 
+            DW      Reset                   ;0FFF2h
+            DW      Reset                   ;0FFF4h 
+            DW      Reset                   ;0FFF6h
+            DW      Reset                   ;0FFF8h 
+            DW      Reset                   ;0FFFAh
+            DW      Reset                   ;0FFFCh 
+            DW      Reset                   ;0FFFEh            
+            END    
+              	   
+
+
+		
+		   
+			
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+//	工程名称：	1602.spj
+//	功能描述：	1602液晶显示屏的使用
+//	涉及的库：	CMacro1016.lib
+//	组成文件：	main.c
+//				LCD1602_Driver.asm
+//				LCD1602_User.h/
+//	硬件连接：	IOA8-IOA15 ---- D0-D7（1602液晶）
+//				IOB12 ---- EP(1602液晶)
+//				IOB13 ---- RS（1602液晶）
+//				IOB14 ---- R/w（1602液晶）
+#include<SPCE061A.h>
+#include<1602.h>
+#define	uchar unsigned char  
+char d[32]={' ', ' ', '1', '5', '8', '2','2', '9', '6', '8',  '6', '4', '7', ' ', ' ',' ', 	
+
+       	 ' ', ' ', 's', 'u', 'l', '.','z', 'h', 'a', 'o',  '.', 'l', 'o', 'n', 'g',' ', };
+//========================================================
+//	语法格式：	void Delay(unsigned int uiTime)
+//	实现功能：	延时，在调用Delay(1)时,延时时间小于1us
+//	参数：		uiTime
+//	返回值：	无
+//========================================================
+
+void Delay(unsigned int uiTime)
+{
+	while(uiTime > 0)
+	{
+		uiTime -= 1;
+	}
+}
+
+//========================================================
+//	语法格式：	void PowerOn(void)
+//	实现功能：	开机画面
+//	参数：		无
+//	返回值：	无
+//========================================================
+void PowerOn(void)
+{	
+	int i;
+    uchar h,v;
+	LCD1602_Initial();			//调用初始化程序，包括进行端口初始化和LCD初始化
+	Write_Command(0x0080);		//设置当前DDRAM地址为0x00
+	for(h=0;h<16;h++)
+    {
+   	   Write_Data(d[h]);  
+    }
+    
+	Write_Command(0x00c0);		//在第二行显示
+	
+	for(v=(16);v<32;v++)
+    {
+    	Write_Data(d[v]);  ///n表示有写几位数据
+     }
+	for(i=0;i<20;i++)
+	{
+		Delay(65535);						//延时
+		*P_Watchdog_Clear = 0x0001;			//清看门狗
+	}
+	Write_Command(0x0001);
+}
+int main(void)
+{
+	*P_SystemClock = 0x0018;			//初始化，调整系统时钟24.576MHz/1，强振模式
+	*P_IOB_Attrib = 0xffff;				//初始化IOB同相低电平输出口
+	*P_IOB_Dir = 0xffff;
+	*P_IOB_Data = 0x0000;
+	
+	PowerOn();							//开机界面:www.unsp.com.cn
+										//TEL62981668-2925
+	LCD1602_Initial();					//调用初始化程序，包括进行端口初始化和LCD初始化
+	while(1)
+	{
+	    PowerOn();		
+		*P_Watchdog_Clear = 0x0001;		//清看门狗
+	}
+}

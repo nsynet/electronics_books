@@ -1,0 +1,36 @@
+#include<iom128v.h>
+#include <macros.h>
+#define uint unsigned int
+#define uchar unsigned char
+
+/*******************3?那??‘??*************************/
+void int_io()
+{
+   DDRD  =0xff;   //C???迆那?3?
+}
+
+/************************?車那㊣o‘那y1us米??“辰?*********************/
+void Delay_us(int Timer)
+{
+   int i,j;
+   for( i = Timer; i > 0; i--)
+   for( j = 11   ; j > 0; j--)
+   NOP();
+}
+
+/****************** MAIN ***************************/
+void main()
+{
+    int_io();
+   PORTD|=(1<<4);
+   PORTD|=(1<<5);
+   PORTD&=~(1<<6);
+   while(1)
+   {      
+         Delay_us(10000);
+         PORTD&=~(1<<7);
+         Delay_us(10000);
+         PORTD|=(1<<7);
+        
+   }
+}

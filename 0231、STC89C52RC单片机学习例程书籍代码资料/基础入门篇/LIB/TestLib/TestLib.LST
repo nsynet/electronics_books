@@ -1,0 +1,36 @@
+C51 COMPILER V7.06   TESTLIB                                                               03/16/2011 16:20:20 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE TESTLIB
+OBJECT MODULE PLACED IN TestLib.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE TestLib.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *×÷    Õß£ºÎÂ×Óì÷
+   4           ----------------------------------------------------
+   5           */
+   6          #include "MyLib.h"
+   7          
+   8          void main(void)
+   9          {
+  10   1           unsigned int sum=add(4,5);
+  11   1      
+  12   1           while(1);
+  13   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     13    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

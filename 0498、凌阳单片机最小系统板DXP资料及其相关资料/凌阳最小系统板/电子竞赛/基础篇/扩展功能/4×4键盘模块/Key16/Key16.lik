@@ -1,0 +1,17 @@
+Version: 3.0
+Options: m37
+Obj: "C:\PROGRAM FILES\SUNPLUS\UNSPIDE180\IDE180\startupD.obj"
+Obj: "F:\功能扩展\Key16\Debug\Resource.obj"
+Obj: "F:\功能扩展\Key16\Debug\key.obj"
+Obj: "F:\功能扩展\Key16\Debug\main.obj"
+Output: ".\Debug\Key16.S37"
+;Locate: unSP_StartUp in "startupD.obj" at 8009 
+;Align: unSP_StartUp in "startupD.obj" with 0 
+;Locate: IRAM in "key.obj" at 80D8  linkat 3 
+;Align: IRAM in "key.obj" with 0 
+;Locate: RAM in "main.obj" at 0 
+;Align: RAM in "main.obj" with 0 
+;Locate: CODE in "key.obj" at 8026 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "main.obj" at 80AD 
+;Align: CODE in "main.obj" with 0 

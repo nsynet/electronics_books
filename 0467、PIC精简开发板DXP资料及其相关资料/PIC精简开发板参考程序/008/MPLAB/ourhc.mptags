@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+DelayMS	D:\PIC_16F877A\008\MPLAB\ourhc.c	20;"	f	line:20	signature:(uint i)
+Getch	D:\PIC_16F877A\008\MPLAB\ourhc.c	31;"	f	line:31
+INC	D:\PIC_16F877A\008\MPLAB\ourhc.c	34;"	l	line:34
+Init_IO	D:\PIC_16F877A\008\MPLAB\ourhc.c	79;"	f	line:79	signature:(void)
+Table	D:\PIC_16F877A\008\MPLAB\ourhc.c	15;"	v	line:15
+X	D:\PIC_16F877A\008\MPLAB\ourhc.c	33;"	l	line:33
+Y	D:\PIC_16F877A\008\MPLAB\ourhc.c	33;"	l	line:33
+Z	D:\PIC_16F877A\008\MPLAB\ourhc.c	33;"	l	line:33
+j	D:\PIC_16F877A\008\MPLAB\ourhc.c	22;"	l	line:22
+k	D:\PIC_16F877A\008\MPLAB\ourhc.c	16;"	v	line:16
+main	D:\PIC_16F877A\008\MPLAB\ourhc.c	99;"	f	line:99	signature:(void)
+uchar::unsignedchar	D:\PIC_16F877A\008\MPLAB\ourhc.c	10;"	d	line:10	file:
+uint::unsignedint	D:\PIC_16F877A\008\MPLAB\ourhc.c	11;"	d	line:11	file:

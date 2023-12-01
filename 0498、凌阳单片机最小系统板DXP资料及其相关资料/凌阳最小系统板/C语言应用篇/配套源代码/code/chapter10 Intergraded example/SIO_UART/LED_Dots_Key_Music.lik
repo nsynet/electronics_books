@@ -1,0 +1,63 @@
+Version: 3.0
+Options: m37
+Obj: "D:\PROGRA~1\Sunplus\UNSPID~1\IDE162\startupD.obj"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\Resource.obj"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\main.obj"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\isr.obj"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\key.obj"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\system.obj"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\hardware.obj"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S8_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S1_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S10_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S2_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S3_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S4_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S5_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S6_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S7_48k.res"
+Obj: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\Debug\S0_48k.res"
+Lib: "E:\for meeting\ex6_LED_Dots_Key_Music\ex6_LED_Dots_Key_Music\.\sacmv25.lib"
+Output: ".\Debug\LED_Dots_Key_Music.S37"
+;Locate: TEXT in "Resource.obj" at 8009 
+;Align: TEXT in "Resource.obj" with 0 
+;Locate: IRAM in "hardware.obj" at 8CB9  linkat 1AA 
+;Align: IRAM in "hardware.obj" with 0 
+;Locate: RAM in "key.obj" at 1A4 
+;Align: RAM in "key.obj" with 0 
+;Locate: S480_Section in "s480" of "sacmv25.lib"  at 0 
+;Align: S480_Section in "s480" of "sacmv25.lib"  with 0 
+;Locate: __sn_section_RES_S0_48K in "S0_48k.res" at B533 
+;Align: __sn_section_RES_S0_48K in "S0_48k.res" with 0 
+;Locate: __sn_section_RES_S10_48K in "S10_48k.res" at AF6D 
+;Align: __sn_section_RES_S10_48K in "S10_48k.res" with 0 
+;Locate: __sn_section_RES_S1_48K in "S1_48k.res" at 8CEF 
+;Align: __sn_section_RES_S1_48K in "S1_48k.res" with 0 
+;Locate: __sn_section_RES_S2_48K in "S2_48k.res" at 93D5 
+;Align: __sn_section_RES_S2_48K in "S2_48k.res" with 0 
+;Locate: __sn_section_RES_S3_48K in "S3_48k.res" at 9ABB 
+;Align: __sn_section_RES_S3_48K in "S3_48k.res" with 0 
+;Locate: __sn_section_RES_S4_48K in "S4_48k.res" at A1A1 
+;Align: __sn_section_RES_S4_48K in "S4_48k.res" with 0 
+;Locate: __sn_section_RES_S5_48K in "S5_48k.res" at A887 
+;Align: __sn_section_RES_S5_48K in "S5_48k.res" with 0 
+;Locate: __sn_section_RES_S6_48K in "S6_48k.res" at C0BF 
+;Align: __sn_section_RES_S6_48K in "S6_48k.res" with 0 
+;Locate: __sn_section_RES_S7_48K in "S7_48k.res" at C55C 
+;Align: __sn_section_RES_S7_48K in "S7_48k.res" with 0 
+;Locate: __sn_section_RES_S8_48K in "S8_48k.res" at BAF9 
+;Align: __sn_section_RES_S8_48K in "S8_48k.res" with 0 
+;Locate: CODE in "s480" of "sacmv25.lib"  at 807B 
+;Align: CODE in "s480" of "sacmv25.lib"  with 0 
+;Locate: CODE in "hardware.obj" at 8A42 
+;Align: CODE in "hardware.obj" with 0 
+;Locate: CODE in "main.obj" at 8B6F 
+;Align: CODE in "main.obj" with 0 
+;Locate: CODE in "key.obj" at 8C34 
+;Align: CODE in "key.obj" with 0 
+;Locate: CODE in "system.obj" at 8C95 
+;Align: CODE in "system.obj" with 0 
+;Locate: DATA in "key.obj" at C8D9 
+;Align: DATA in "key.obj" with 0 
+;Locate: DATA in "system.obj" at C8E9 
+;Align: DATA in "system.obj" with 0 

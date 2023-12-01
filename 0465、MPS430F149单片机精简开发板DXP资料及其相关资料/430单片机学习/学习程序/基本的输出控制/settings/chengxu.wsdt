@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>chengxu/Debug</Project><Project>chengxu/Debug</Project></CurrentConfigs><CurrentProj>chengxu</CurrentProj><OverviewSelected>0</OverviewSelected></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>135</Column0><Column1>16</Column1><Column2>27</Column2><Column3>1242220</Column3></ColumnWidths>
+      </Workspace>
+    <Build><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>723</ColumnWidth1><ColumnWidth2>193</ColumnWidth2><ColumnWidth3>48</ColumnWidth3></Build><TerminalIO/><CodeCoveragePlugin/><Profiling/><Debug-Log/></Static>
+    <Windows>
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-29649-20157</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>chengxu</ExpandedNode><ExpandedNode>chengxu/Output</ExpandedNode><ExpandedNode>chengxu/chengxu.c</ExpandedNode><ExpandedNode>chengxu/chengxu.c/Output</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1><Tabs><Tab><Identity>TabID-20260-22175</Identity><TabName>Build</TabName><Factory>Build</Factory><Session/></Tab><Tab><Identity>TabID-6088-21047</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs><SelectedTab>1</SelectedTab></Wnd1></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>E:\&#x4eA7;&#x54C1;&#x6700;&#x65B0;&#x8D44;&#x6599;\MPS430&#x5355;&#x7247;&#x673A;&#x7CBe;&#x7B80;&#x5F00;&#x53D1;&#x677F;\430&#x5355;&#x7247;&#x673A;&#x5B66;&#x4e60;\&#x5B66;&#x4e60;&#x7A0B;&#x5e8F;\&#x57FA;&#x672C;&#x7684;&#x8F93;&#x51FA;&#x63A7;&#x5236;\chengxu.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><ActiveTab>0</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003bb278><key>iaridepm1</key></Toolbar-003bb278></Sizes></Row0></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>448</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>201</yscreen><sizeHorzCX>195313</sizeHorzCX><sizeHorzCY>290462</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>650289</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>199</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>201</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>290462</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>290462</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

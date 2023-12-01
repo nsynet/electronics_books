@@ -1,0 +1,104 @@
+XL
+H 4 areas 9 global symbols
+M chengxu.c
+S push_gset1 Ref0000
+S pop_gset1 Ref0000
+A text size 8E flags 0
+dbfile E:\Proteus\ATMEGA8\1~20HZ·½²¨\icc\chengxu.c
+dbfunc e DelayMS 0 fV
+dbsym r j 14 i
+dbsym r i 10 i
+dbline FFFFFFFF 2
+dbline 22 2
+dbline 24 2
+dbline 25 4
+dbline 26 4
+dbline 26 A
+dbline 26 A
+dbline 26 E
+dbline 27 14
+dbline 24 14
+dbline 24 18
+dbline FFFFFFFE 1E
+dbline 0 20
+dbfunc e Init_IO 22 fV
+dbline FFFFFFFF 22
+dbline 2B 22
+dbline 2D 22
+dbline 2E 26
+dbline 30 28
+dbline 31 2A
+dbline FFFFFFFE 2C
+dbline 0 2C
+dbfunc e main 2E fV
+dbline FFFFFFFF 2E
+dbline 35 2E
+dbline 37 2E
+dbline 38 30
+dbline 3A 34
+dbline 3B 38
+dbline 3D 3C
+dbline 40 40
+dbline 42 40
+dbline 3F 40
+dbline FFFFFFFE 42
+dbline 0 42
+dbfunc e Timer0 44 fV
+dbline FFFFFFFF 4E
+dbline 47 4E
+dbline 48 4E
+dbline 49 58
+dbline 4A 62
+dbline 4B 6A
+dbline 4C 6A
+dbline 4D 70
+dbline 4E 7A
+dbline 50 82
+dbline FFFFFFFE 82
+dbline 0 8C
+S _main Def002E
+S _Timer0 Def0044
+S _Init_IO Def0022
+S _DelayMS Def0000
+A data size 3 flags 20
+dbfile E:\Proteus\ATMEGA8\1~20HZ·½²¨\icc\chengxu.c
+dbsym e CNT 0 c
+dbsym e CNT1 1 c
+dbsym e CNT2 2 c
+S _CNT Def0000
+S _CNT1 Def0001
+S _CNT2 Def0002
+A idata size 3 flags 0
+A vector size 14 flags C
+T 00 00 00
+R 00 00 02 00
+T 01 00 00
+R 00 00 02 00
+T 02 00 00
+R 00 00 02 00
+T 00 00 00 D0 0A C0 40 E4 5F E1 02 C0 41 50 50 40
+R 00 00 00 00 82 02 00 00
+T 0E 00 40 30 45 07 D9 F7 01 50 10 40 00 30 01 07
+R 00 00 00 00
+T 1C 00 99 F7 00 D0 08 95
+R 00 00 00 00 82 04 01 00
+T 22 00 8F EF 84 BB 85 BB 87 BB 88 BB 08 95
+R 00 00 00 00
+T 2E 00 F9 DF 84 E0 83 BF 86 E0 82 BF 81 E0 89 BF
+R 00 00 00 00
+T 3C 00 80 E8 8F BF FF CF 08 95
+R 00 00 00 00
+T 12 00 22 C0
+R 00 00 03 00 80 02 00 00
+T 44 00 2A 92 8A 93 9A 93 2F B6 2A 92 80 91 00 00
+R 00 00 00 00 00 0E 01 00
+T 52 00 8F 5F 80 93 00 00 80 91 02 00 8F 5F 80 93
+R 00 00 00 00 00 06 01 00 00 0A 01 00
+T 60 00 02 00 80 91 00 00 84 30 61 F4 22 24 20 92
+R 00 00 00 00 00 02 01 00 00 06 01 00
+T 6E 00 00 00 80 91 01 00 8F 5F 80 93 01 00 84 E0
+R 00 00 00 00 00 02 01 00 00 06 01 00 00 0C 01 00
+T 7C 00 28 B2 28 26 28 BA 29 90 2F BE 99 91 89 91
+R 00 00 00 00
+T 8A 00 29 90 18 95
+R 00 00 00 00

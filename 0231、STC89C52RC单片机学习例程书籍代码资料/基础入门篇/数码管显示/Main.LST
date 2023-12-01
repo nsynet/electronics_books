@@ -1,0 +1,220 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:23:27 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          #include "stc.h"
+   7          
+   8          /***************************************************
+   9           *          大量宏定义，便于代码移植和阅读
+  10           ***************************************************/
+  11          #define HIGH               1
+  12          #define LOW                0
+  13          #define LS164_DATA(x)    {if((x))P0_4=1;else P0_4=0;}         
+  14          #define LS164_CLK(x)     {if((x))P0_5=1;else P0_5=0;} 
+  15          #define SEG_PORT          P0    //控制数码管字型码端口
+  16          
+  17          unsigned char   Timer0IRQEvent=0; //T/C0中断事件
+  18          unsigned char   Time1SecEvent=0;  //定时1秒事件
+  19          unsigned int    TimeCount=0;       //时间计数值
+  20          unsigned char   SegCurPosition=0; //当前点亮的数码管
+  21          
+  22          //为了验证共阳极的字型码是共阴极的反码，共阳极字型码为共阴极的反码
+  23          //共阳极字型码存储在代码区，用关键字"code"声明
+  24          code unsigned char SegCode[10]={~0x3F,~0x06,~0x5B,~0x4F,~0x66,~0x6D,~0x7D,
+  25          ~0x07,~0x7F,~0x6F};
+  26          
+  27          //片选数码管数组，存储在代码区，用关键字"code"声明
+  28          code unsigned char  SegPosition[4]={0xf7,0xfb,0xfd,0xfe};
+  29          //数码管显示数据缓冲区
+  30            unsigned char  SegBuf[4]  ={0};
+  31          
+  32          /****************************************
+  33          *函数名称:LS164Send
+  34          *输    入:byte 单个字节
+  35          *输    出:无
+  36          *功    能:74LS164发送单个字节
+  37          ******************************************/
+  38          void LS164Send(unsigned char byte)
+  39          {
+  40   1         unsigned char j;
+  41   1      
+  42   1         for(j=0;j<=7;j++)//对输入数据进行移位检测
+  43   1         {
+  44   2      
+  45   2           if(byte&(1<<(7-j))) //检测字节当前位
+  46   2           {
+  47   3                      LS164_DATA(HIGH); //串行数据输入引脚为高电平
+  48   3               }
+  49   2               else
+  50   2               {
+  51   3                      LS164_DATA(LOW); //串行数据输入引脚为低电平
+  52   3               }
+  53   2      
+  54   2           LS164_CLK(LOW); 
+  55   2           LS164_CLK(HIGH);
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:23:27 PAGE 2   
+
+  56   2             
+  57   2         }
+  58   1      }
+  59          
+  60          /****************************************
+  61          *函数名称:SegRefreshDisplayBuf
+  62          *输    入:无
+  63          *输    出:无
+  64          *功    能:数码管刷新显示缓存
+  65          ******************************************/
+  66          void SegRefreshDisplayBuf(void)  
+  67          {
+  68   1                      
+  69   1              SegBuf[0] =TimeCount%10;       //个位
+  70   1              SegBuf[1] =TimeCount/10%10;   //十位
+  71   1              SegBuf[2] =TimeCount/100%10;  //百位
+  72   1              SegBuf[3] =TimeCount/1000%10; //千位
+  73   1      
+  74   1      }
+  75          /****************************************
+  76          *函数名称:SegDisplay
+  77          *输    入:无
+  78          *输    出:无
+  79          *功    能:数码管显示数据
+  80          ******************************************/
+  81          void SegDisplay(void)
+  82          {
+  83   1      
+  84   1         unsigned char  t;
+  85   1      
+  86   1         SEG_PORT = 0x0F;  //熄灭所有数码管
+  87   1         
+  88   1         t = SegCode[SegBuf[SegCurPosition]];   //确定当前的字型码
+  89   1      
+  90   1         LS164Send(t); 
+  91   1      
+  92   1         SEG_PORT = SegPosition[SegCurPosition];//选中一个数码管来显示        
+  93   1                      
+  94   1         if(++SegCurPosition>=4) //下次要点亮的数码管
+  95   1         {                            
+  96   2                  SegCurPosition=0;
+  97   2         }
+  98   1                        
+  99   1      }
+ 100          /****************************************
+ 101          *函数名称:TimerInit
+ 102          *输    入:无
+ 103          *输    出:无
+ 104          *功    能:T/C初始化
+ 105          ******************************************/
+ 106          void TimerInit(void)
+ 107          {
+ 108   1         TH0 = (65536-5000)/256;
+ 109   1         TL0 = (65536-5000)%256; //定时5MS
+ 110   1         TMOD = 0x01;              //T/C0模式1
+ 111   1      }
+ 112          /****************************************
+ 113          *函数名称:Timer0Start
+ 114          *输    入:无
+ 115          *输    出:无
+ 116          *功    能: T/C0启动
+ 117          ******************************************/
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:23:27 PAGE 3   
+
+ 118          void Timer0Start(void)    
+ 119          {
+ 120   1         TR0 = 1;              
+ 121   1         ET0 = 1;     
+ 122   1      }
+ 123          /****************************************
+ 124          *函数名称:PortInit
+ 125          *输    入:无
+ 126          *输    出:无
+ 127          *功    能:I/O口初始化
+ 128          ******************************************/
+ 129          void PortInit(void)         
+ 130          {
+ 131   1         P0=P1=P2=P3=0xFF;
+ 132   1      }
+ 133          /****************************************
+ 134          *函数名称:main
+ 135          *输    入:无
+ 136          *输    出:无
+ 137          *功    能:函数主体
+ 138          ******************************************/
+ 139          void main(void)
+ 140          {
+ 141   1          PortInit();
+ 142   1          TimerInit();
+ 143   1          Timer0Start();
+ 144   1          SegRefreshDisplayBuf();
+ 145   1          EA=1;
+ 146   1      
+ 147   1          while(1)
+ 148   1          {
+ 149   2                      if(Timer0IRQEvent)       //检测T/C0中断事件是否产生
+ 150   2                      { 
+ 151   3                  Timer0IRQEvent=0;
+ 152   3      
+ 153   3                          if(Time1SecEvent)     //检测1秒事件是否产生
+ 154   3                          {
+ 155   4                                      Time1SecEvent=0;
+ 156   4      
+ 157   4                                      if(++TimeCount>=9999)//计数值自加
+ 158   4                         {
+ 159   5                                               TimeCount=0;
+ 160   5                         }
+ 161   4      
+ 162   4                         SegRefreshDisplayBuf();//刷新缓冲区
+ 163   4                     }
+ 164   3      
+ 165   3                     SegDisplay();              //点亮选中的数码管
+ 166   3      
+ 167   3                  }
+ 168   2          }
+ 169   1      }
+ 170          /****************************************
+ 171          *函数名称:Timer0IRQ
+ 172          *输    入:无
+ 173          *输    出:无
+ 174          *功    能:T/C0中断服务函数
+ 175          ******************************************/
+ 176          void Timer0IRQ(void) interrupt 1 
+ 177          {
+ 178   1           static unsigned int cnt=0;
+ 179   1      
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:23:27 PAGE 4   
+
+ 180   1           TH0 = (65536-5000)/256;
+ 181   1           TL0 = (65536-5000)%256; //重载初值
+ 182   1      
+ 183   1           Timer0IRQEvent=1;        //T/C0中断事件标志位置1
+ 184   1      
+ 185   1           if(++cnt>=200)           
+ 186   1           {
+ 187   2                   cnt=0;
+ 188   2                Time1SecEvent=1;   //定时1秒事件置1
+ 189   2           }
+ 190   1      }
+ 191          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    289    ----
+   CONSTANT SIZE    =     14    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

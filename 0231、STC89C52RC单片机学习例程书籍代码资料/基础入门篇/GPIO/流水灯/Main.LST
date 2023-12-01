@@ -1,0 +1,65 @@
+C51 COMPILER V7.06   MAIN                                                                  03/16/2011 16:19:33 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /*
+   2           ----------------------------------------------------
+   3           *作    者：温子祺
+   4           ----------------------------------------------------
+   5           */
+   6          
+   7          #include "stc.h"           // 加载stc.h头文件
+   8          /****************************************
+   9          *函数名称:Delay
+  10          *输    入:无
+  11          *输    出:无
+  12          *功    能:延时一小段时间 
+  13          ******************************************/
+  14          void Delay(void)           //软件延时函数(100ms)
+  15          {
+  16   1              unsigned char i,j;     // 声明变量i,j
+  17   1      
+  18   1              for(i=0;i<130;i++)     //进行循环操作,以达到延时的效果
+  19   1                      for(j=0;j<255;j++);
+  20   1      }
+  21          /****************************************
+  22          *函数名称:main
+  23          *输    入:无
+  24          *输    出:无
+  25          *功    能:函数主体
+  26          ******************************************/
+  27          void main(void)            //主函数,程序是在这里运行的
+  28          {
+  29   1              unsigned char i;
+  30   1      
+  31   1              P2=0xFF;               //P2口置高电平即所有LED灯熄灭
+  32   1      
+  33   1              while(1)               //进入死循环
+  34   1              {
+  35   2                      for(i=0;i<8;i++)   //进入for循环
+  36   2                      {
+  37   3                              P2=(1<<i);     //进入位移操作,熄灭相对应位的LED
+  38   3                              Delay();       //延时
+  39   3                      }
+  40   2          }
+  41   1      }
+  42          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     40    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
