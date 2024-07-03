@@ -1,0 +1,188 @@
+//mega16 7.3728MHz石英晶体 iccavr6.31a
+//相关定义：
+#define uint unsigned int
+#define uchar unsigned char
+#define DS1302_RST 0 //pc0
+#define DS1302_SDA 1 //pc1
+#define DS1302_SCLK 6 //pc6
+//ds1302相关
+//DS1302_RST=1
+#define Set_DS1302_RST() PORTC|=1<<DS1302_RST
+//DS1302_RST=0
+#define Clr_DS1302_RST() PORTC&=~(1<<DS1302_RST)
+//DS1302_SDA=1
+#define Set_DS1302_SDA() PORTC|=1<<DS1302_SDA
+//DS1302_SDA=0
+#define Clr_DS1302_SDA() PORTC&=~(1<<DS1302_SDA)
+//DS1302_SCLK=1
+#define Set_DS1302_SCLK() PORTC|=1<<DS1302_SCLK
+//DS1302_SCLK=0
+#define Clr_DS1302_SCLK() PORTC&=~(1<<DS1302_SCLK)
+//DS1302的SDA置为输出脚
+#define Set_DS1302_DDRSDA() DDRC|=1<<DS1302_SDA
+//DS1302的SDA置为输入脚
+#define Clr_DS1302_DDRSDA() DDRC&=~(1<<DS1302_SDA)
+#define DS1302_SEC_Reg 0x80
+#define DS1302_MIN_Reg 0x82
+#define DS1302_HR_Reg 0x84
+#define DS1302_DATE_Reg 0x86
+#define DS1302_MONTH_Reg 0x88
+#define DS1302_DAY_Reg 0x8a
+#define DS1302_YEAR_Reg 0x8c
+#define DS1302_CONTROL_Reg 0x8e
+#define DS1302_CHARGER_Reg 0x90
+#define DS1302_CLKBURST_Reg 0xbe
+//全局变量
+//为了方便，我把个位和十位分开了
+uchar year1=0x88;
+uchar year0=0x88;
+uchar month1=0x88;
+uchar month0=0x88;
+uchar date0=0x88;
+uchar date1=0x88;
+uchar day=0x88;
+uchar hour1=0x88;
+uchar hour0=0x88;
+uchar minute1=0x88;
+uchar minute0=0x88;
+uchar second1=0x88;
+uchar second0=0x88;
+//自程序开始
+void DS1302_Write(uchar reg,uchar data)
+{
+uchar i;
+Set_DS1302_DDRSDA();
+Clr_DS1302_RST();
+asm("nop");
+asm("nop");
+Clr_DS1302_SCLK();
+asm("nop");
+asm("nop");
+Set_DS1302_RST();
+asm("nop");
+asm("nop");
+for(i=8;i>0;i--)
+{ 
+if(reg&0x01) Set_DS1302_SDA();
+else Clr_DS1302_SDA();
+asm("nop");
+asm("nop");
+Set_DS1302_SCLK(); 
+asm("nop");
+asm("nop");
+Clr_DS1302_SCLK();
+asm("nop");
+asm("nop");
+reg>>=1;
+}
+for(i=8;i>0;i--)
+{ 
+if(data&0x01) Set_DS1302_SDA();
+else Clr_DS1302_SDA();
+asm("nop");
+asm("nop");
+Set_DS1302_SCLK();
+asm("nop");
+asm("nop");
+Clr_DS1302_SCLK();
+asm("nop");
+asm("nop");
+data>>=1;
+}
+Clr_DS1302_RST();
+asm("nop");
+asm("nop");
+Clr_DS1302_DDRSDA();
+}
+uchar DS1302_Read(uchar reg)
+{
+uchar data=0,i;
+reg+=1;//读标志
+Set_DS1302_DDRSDA();
+Clr_DS1302_RST();
+asm("nop");
+asm("nop");
+Clr_DS1302_SCLK();
+asm("nop");
+asm("nop");
+Set_DS1302_RST();
+asm("nop");
+asm("nop");
+for(i=8;i>0;i--)
+{
+
+if(reg&0x01) Set_DS1302_SDA();
+else Clr_DS1302_SDA();
+asm("nop");
+asm("nop");
+Set_DS1302_SCLK(); 
+asm("nop");
+asm("nop"); 
+Clr_DS1302_SCLK();
+asm("nop");
+asm("nop");
+reg>>=1;
+}
+Clr_DS1302_DDRSDA();
+for(i=8;i>0;i--)
+{ 
+data>>=1;
+if((PINC&(1<<DS1302_SDA))==(1<<DS1302_SDA)) data|=0x80;
+Set_DS1302_SCLK();
+asm("nop");
+asm("nop");
+Clr_DS1302_SCLK();
+asm("nop");
+asm("nop"); 
+}
+Clr_DS1302_RST();
+asm("nop");
+asm("nop");
+return(data);
+}
+uchar Check_DS1302(void)
+{
+DS1302_Write(DS1302_CONTROL_Reg,0x80);
+if(DS1302_Read(DS1302_CONTROL_Reg)==0x80) return 1;
+return 0;
+}
+void DS1302_Init(void)
+{
+DS1302_Write(DS1302_CONTROL_Reg,0x00);//关闭写保护 
+DS1302_Write(DS1302_SEC_Reg,0x80);//暂停 
+DS1302_Write(DS1302_CHARGER_Reg,0xa9);//涓流充电
+DS1302_Write(DS1302_YEAR_Reg,0x04); //年
+DS1302_Write(DS1302_MONTH_Reg,0x12); //月
+DS1302_Write(DS1302_DATE_Reg,0x09); //日
+DS1302_Write(DS1302_DAY_Reg,0x04); //周
+DS1302_Write(DS1302_HR_Reg,0x10); //时
+DS1302_Write(DS1302_MIN_Reg,0x25); //分
+DS1302_Write(DS1302_SEC_Reg,0x00); //秒
+
+DS1302_Write(DS1302_CONTROL_Reg,0x80);//打开写保护
+}
+void ReadTime(void)
+{
+uchar data;
+data=DS1302_Read(DS1302_YEAR_Reg);//年
+year0=data&0x0f;
+year1=data>>4;
+data=DS1302_Read(DS1302_MONTH_Reg);//月
+month0=data&0x0f;
+month1=(data>>4)&0x01;
+data=DS1302_Read(DS1302_DATE_Reg);//日
+date0=data&0x0f;
+date1=(data>>4)&0x03;
+data=DS1302_Read(DS1302_DAY_Reg);//周
+day=data&0x07;
+data=DS1302_Read(DS1302_HR_Reg);//时
+hour0=data&0x0f;
+hour1=(data>>4)&0x03;
+data=DS1302_Read(DS1302_MIN_Reg);//分
+minute0=data&0x0f;
+minute1=(data>>4)&0x07;
+data=DS1302_Read(DS1302_SEC_Reg);//秒
+second0=data&0x0f;
+second1=(data>>4)&0x07;
+} 
+
